@@ -34,6 +34,14 @@ class AppController extends Controller {
     // Use DebugKit by sharing Component Toolbar of Plugin DebugKit
     public $components = array('DebugKit.Toolbar');
 
+    // Prepare Helpers for Bootstrap layout
+    public $helpers = array(
+        'Session',
+        'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+        'Form' => array('className' => 'BoostCake.BoostCakeForm'),
+        'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+    );
+
 
 
 //    /**

@@ -107,9 +107,14 @@ CakeLog::config('error', array(
 ));
 
 /**
- * Use DebugKit Plugin
+ * Use DebugKit Plugin for Debugging.
  */
 CakePlugin::load('DebugKit');
+
+/**
+ * Use BoostCake Plugin for Bootstrap Usage.
+ */
+CakePlugin::load('BoostCake');
 
 // TODO: Neue Breiche anpassen. Adminbereich admin Prefix als Ziel-Seite
 //Configure::write('Routing.prefixes', array('admin'));
