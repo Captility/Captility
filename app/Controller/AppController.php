@@ -34,15 +34,19 @@ class AppController extends Controller {
     // Use DebugKit by sharing Component Toolbar of Plugin DebugKit
     public $components = array('DebugKit.Toolbar');
 
+
     // Prepare Helpers for Bootstrap layout
-    public $helpers = array(
+    public $helpers = array( //ToDo BooskCake Plugin Aufräumen:
         'Session',
         'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
         'Form' => array('className' => 'BoostCake.BoostCakeForm'),
         'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
     );
 
-
+    //ToDo Remove or proess BootstrapCake template
+    public function beforeFilter(){
+        $this->layout = 'bootstrap';
+    }
 
 //    /**
 //     * Components are packages of logic that are shared between controllers.

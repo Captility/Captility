@@ -1,4 +1,42 @@
 <div class="users view">
+
+    <?php // Bootstrap Test ?>
+
+    <?php echo $this->Form->create('Hello', array(
+        'inputDefaults' => array(
+            'div' => false,
+            'label' => false,
+            'wrapInput' => false
+        ),
+        'class' => 'well form-inline'
+    )); ?>
+    <?php echo $this->Form->input('email', array(
+        'class' => 'input-small',
+        'placeholder' => 'Email'
+    )); ?>
+    <?php echo $this->Form->input('password', array(
+        'class' => 'input-small',
+        'placeholder' => 'Password'
+    )); ?>
+    <?php echo $this->Form->input('remember', array(
+        'label' => array(
+            'text' => 'Remember me',
+            'class' => 'checkbox'
+        ),
+        'checkboxDiv' => false
+    )); ?>
+    <?php echo $this->Form->submit('Sign in', array(
+        'div' => false,
+        'class' => 'btn'
+    )); ?>
+    <?php echo $this->Form->end(); ?>
+
+
+
+
+
+    <?php // Bootstrap Test ?>
+
 <h2><?php  echo __('User'); ?></h2>
 	<dl>
 		<dt><?php echo __('User Id'); ?></dt>
