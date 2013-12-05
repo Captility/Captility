@@ -4,8 +4,16 @@ App::uses('AppController', 'Controller');
  * Captures Controller
  *
  * @property Capture $Capture
+ * @property PaginatorComponent $Paginator
  */
 class CapturesController extends AppController {
+
+/**
+ * Components
+ *
+ * @var array
+ */
+	public $components = array('Paginator');
 
 /**
  * index method
@@ -14,7 +22,7 @@ class CapturesController extends AppController {
  */
 	public function index() {
 		$this->Capture->recursive = 0;
-		$this->set('captures', $this->paginate());
+		$this->set('captures', $this->Paginator->paginate());
 	}
 
 /**
@@ -25,11 +33,11 @@ class CapturesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		$this->Capture->id = $id;
-		if (!$this->Capture->exists()) {
+		if (!$this->Capture->exists($id)) {
 			throw new NotFoundException(__('Invalid capture'));
 		}
-		$this->set('capture', $this->Capture->read(null, $id));
+		$options = array('conditions' => array('Capture.' . $this->Capture->primaryKey => $id));
+		$this->set('capture', $this->Capture->find('first', $options));
 	}
 
 /**
@@ -41,16 +49,16 @@ class CapturesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Capture->create();
 			if ($this->Capture->save($this->request->data)) {
-				$this->Session->setFlash(__('The capture has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The capture has been saved.'), 'default', array('class' => 'alert alert-success'));
+				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The capture could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		}
-        $users = $this->Capture->User->find('list');
-        $events = $this->Capture->Event->find('list');
-        $tasks = $this->Capture->Task->find('list');
-        $this->set(compact('users', 'events', 'tasks'));
+		$users = $this->Capture->User->find('list');
+		$events = $this->Capture->Event->find('list');
+		$tasks = $this->Capture->Task->find('list');
+		$this->set(compact('users', 'events', 'tasks'));
 	}
 
 /**
@@ -61,43 +69,43 @@ class CapturesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		$this->Capture->id = $id;
-		if (!$this->Capture->exists()) {
+		if (!$this->Capture->exists($id)) {
 			throw new NotFoundException(__('Invalid capture'));
 		}
-		if ($this->request->is('post') || $this->request->is('put')) {
+		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Capture->save($this->request->data)) {
-				$this->Session->setFlash(__('The capture has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The capture has been saved.'), 'default', array('class' => 'alert alert-success'));
+				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The capture could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		} else {
-			$this->request->data = $this->Capture->read(null, $id);
+			$options = array('conditions' => array('Capture.' . $this->Capture->primaryKey => $id));
+			$this->request->data = $this->Capture->find('first', $options);
 		}
+		$users = $this->Capture->User->find('list');
+		$events = $this->Capture->Event->find('list');
+		$tasks = $this->Capture->Task->find('list');
+		$this->set(compact('users', 'events', 'tasks'));
 	}
 
 /**
  * delete method
  *
- * @throws MethodNotAllowedException
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
 	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
 		$this->Capture->id = $id;
 		if (!$this->Capture->exists()) {
 			throw new NotFoundException(__('Invalid capture'));
 		}
+		$this->request->onlyAllow('post', 'delete');
 		if ($this->Capture->delete()) {
-			$this->Session->setFlash(__('Capture deleted'));
-			$this->redirect(array('action' => 'index'));
+			$this->Session->setFlash(__('The capture has been deleted.'), 'default', array('class' => 'alert alert-success'));
+		} else {
+			$this->Session->setFlash(__('The capture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 		}
-		$this->Session->setFlash(__('Capture was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-}
+		return $this->redirect(array('action' => 'index'));
+	}}

@@ -1,92 +1,144 @@
 <div class="events view">
-<h2><?php  echo __('Event'); ?></h2>
-	<dl>
-		<dt><?php echo __('Event Id'); ?></dt>
-		<dd>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<h1><?php echo __('Event'); ?></h1>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-3">
+			<div class="actions">
+				<div class="panel panel-default">
+					<div class="panel-heading">Actions</div>
+						<div class="panel-body">
+							<ul class="nav nav-pills nav-stacked">
+									<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>&nbsp&nbsp;Edit Event'), array('action' => 'edit', $event['Event']['event_id']), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete Event'), array('action' => 'delete', $event['Event']['event_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $event['Event']['event_id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Events'), array('action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Event'), array('action' => 'add'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Workflows'), array('controller' => 'workflows', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Workflow'), array('controller' => 'workflows', 'action' => 'add'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+							</ul>
+						</div><!-- end body -->
+				</div><!-- end panel -->
+			</div><!-- end actions -->
+		</div><!-- end col md 3 -->
+
+		<div class="col-md-9">			
+			<table cellpadding="0" cellspacing="0" class="table table-striped">
+				<tbody>
+				<tr>
+		<th><?php echo __('Event Id'); ?></th>
+		<td>
 			<?php echo h($event['Event']['event_id']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Number'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Number'); ?></th>
+		<td>
 			<?php echo h($event['Event']['number']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Name'); ?></th>
+		<td>
 			<?php echo h($event['Event']['name']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Contact'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Contact'); ?></th>
+		<td>
 			<?php echo h($event['Event']['contact']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Mail'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Mail'); ?></th>
+		<td>
 			<?php echo h($event['Event']['mail']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Host'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Host'); ?></th>
+		<td>
 			<?php echo h($event['Event']['host']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Semester'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Semester'); ?></th>
+		<td>
 			<?php echo h($event['Event']['semester']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Type'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Type'); ?></th>
+		<td>
 			<?php echo h($event['Event']['type']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Comment'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Comment'); ?></th>
+		<td>
 			<?php echo h($event['Event']['comment']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Created'); ?></th>
+		<td>
 			<?php echo h($event['Event']['created']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Modified'); ?></th>
+		<td>
 			<?php echo h($event['Event']['modified']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('User'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($event['User']['user_id'], array('controller' => 'users', 'action' => 'view', $event['User']['user_id'])); ?>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('User'); ?></th>
+		<td>
+			<?php echo $this->Html->link($event['User']['username'], array('controller' => 'users', 'action' => 'view', $event['User']['user_id'])); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Workflow'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Workflow'); ?></th>
+		<td>
 			<?php echo $this->Html->link($event['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $event['Workflow']['workflow_id'])); ?>
 			&nbsp;
-		</dd>
-	</dl>
+		</td>
+</tr>
+				</tbody>
+			</table>
+
+		</div><!-- end col md 9 -->
+
+	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Event'), array('action' => 'edit', $event['Event']['event_id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Event'), array('action' => 'delete', $event['Event']['event_id']), null, __('Are you sure you want to delete # %s?', $event['Event']['event_id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Events'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Event'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Workflows'), array('controller' => 'workflows', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Workflow'), array('controller' => 'workflows', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Captures'), array('controller' => 'captures', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Capture'), array('controller' => 'captures', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
+
+<div class="related row">
+	<div class="col-md-12">
 	<h3><?php echo __('Related Captures'); ?></h3>
 	<?php if (!empty($event['Capture'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
+	<thead>
 	<tr>
 		<th><?php echo __('Capture Id'); ?></th>
 		<th><?php echo __('Online'); ?></th>
@@ -96,11 +148,11 @@
 		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Event Id'); ?></th>
 		<th><?php echo __('Task Id'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
+		<th class="actions"></th>
 	</tr>
-	<?php
-		$i = 0;
-		foreach ($event['Capture'] as $capture): ?>
+	<thead>
+	<tbody>
+	<?php foreach ($event['Capture'] as $capture): ?>
 		<tr>
 			<td><?php echo $capture['capture_id']; ?></td>
 			<td><?php echo $capture['online']; ?></td>
@@ -111,18 +163,18 @@
 			<td><?php echo $capture['event_id']; ?></td>
 			<td><?php echo $capture['task_id']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'captures', 'action' => 'view', $capture['capture_id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'captures', 'action' => 'edit', $capture['capture_id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'captures', 'action' => 'delete', $capture['capture_id']), null, __('Are you sure you want to delete # %s?', $capture['user_id'])); ?>
+				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'captures', 'action' => 'view', $capture['capture_id']), array('escape' => false)); ?>
+				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'captures', 'action' => 'edit', $capture['capture_id']), array('escape' => false)); ?>
+				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'captures', 'action' => 'delete', $capture['capture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $capture['capture_id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
+	</tbody>
 	</table>
 <?php endif; ?>
 
 	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Capture'), array('controller' => 'captures', 'action' => 'add')); ?> </li>
-		</ul>
+		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
 	</div>
+	</div><!-- end col md 12 -->
 </div>

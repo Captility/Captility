@@ -1,45 +1,81 @@
 <div class="tasks view">
-<h2><?php  echo __('Task'); ?></h2>
-	<dl>
-		<dt><?php echo __('Task Id'); ?></dt>
-		<dd>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<h1><?php echo __('Task'); ?></h1>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-3">
+			<div class="actions">
+				<div class="panel panel-default">
+					<div class="panel-heading">Actions</div>
+						<div class="panel-body">
+							<ul class="nav nav-pills nav-stacked">
+									<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>&nbsp&nbsp;Edit Task'), array('action' => 'edit', $task['Task']['task_id']), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete Task'), array('action' => 'delete', $task['Task']['task_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $task['Task']['task_id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Tasks'), array('action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Task'), array('action' => 'add'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Tickets'), array('controller' => 'tickets', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Ticket'), array('controller' => 'tickets', 'action' => 'add'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Workflows'), array('controller' => 'workflows', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Workflow'), array('controller' => 'workflows', 'action' => 'add'), array('escape' => false)); ?> </li>
+							</ul>
+						</div><!-- end body -->
+				</div><!-- end panel -->
+			</div><!-- end actions -->
+		</div><!-- end col md 3 -->
+
+		<div class="col-md-9">			
+			<table cellpadding="0" cellspacing="0" class="table table-striped">
+				<tbody>
+				<tr>
+		<th><?php echo __('Task Id'); ?></th>
+		<td>
 			<?php echo h($task['Task']['task_id']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Name'); ?></th>
+		<td>
 			<?php echo h($task['Task']['name']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Description'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Description'); ?></th>
+		<td>
 			<?php echo h($task['Task']['description']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Step'); ?></dt>
-		<dd>
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Step'); ?></th>
+		<td>
 			<?php echo h($task['Task']['step']); ?>
 			&nbsp;
-		</dd>
-	</dl>
+		</td>
+</tr>
+				</tbody>
+			</table>
+
+		</div><!-- end col md 9 -->
+
+	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Task'), array('action' => 'edit', $task['Task']['task_id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Task'), array('action' => 'delete', $task['Task']['task_id']), null, __('Are you sure you want to delete # %s?', $task['Task']['task_id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Tasks'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Task'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Captures'), array('controller' => 'captures', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Capture'), array('controller' => 'captures', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Tickets'), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ticket'), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
+
+<div class="related row">
+	<div class="col-md-12">
 	<h3><?php echo __('Related Captures'); ?></h3>
 	<?php if (!empty($task['Capture'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
+	<thead>
 	<tr>
 		<th><?php echo __('Capture Id'); ?></th>
 		<th><?php echo __('Online'); ?></th>
@@ -49,11 +85,11 @@
 		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Event Id'); ?></th>
 		<th><?php echo __('Task Id'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
+		<th class="actions"></th>
 	</tr>
-	<?php
-		$i = 0;
-		foreach ($task['Capture'] as $capture): ?>
+	<thead>
+	<tbody>
+	<?php foreach ($task['Capture'] as $capture): ?>
 		<tr>
 			<td><?php echo $capture['capture_id']; ?></td>
 			<td><?php echo $capture['online']; ?></td>
@@ -64,25 +100,27 @@
 			<td><?php echo $capture['event_id']; ?></td>
 			<td><?php echo $capture['task_id']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'captures', 'action' => 'view', $capture['user_id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'captures', 'action' => 'edit', $capture['user_id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'captures', 'action' => 'delete', $capture['user_id']), null, __('Are you sure you want to delete # %s?', $capture['user_id'])); ?>
+				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'captures', 'action' => 'view', $capture['capture_id']), array('escape' => false)); ?>
+				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'captures', 'action' => 'edit', $capture['capture_id']), array('escape' => false)); ?>
+				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'captures', 'action' => 'delete', $capture['capture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $capture['capture_id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
+	</tbody>
 	</table>
 <?php endif; ?>
 
 	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Capture'), array('controller' => 'captures', 'action' => 'add')); ?> </li>
-		</ul>
+		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
 	</div>
+	</div><!-- end col md 12 -->
 </div>
-<div class="related">
+<div class="related row">
+	<div class="col-md-12">
 	<h3><?php echo __('Related Tickets'); ?></h3>
 	<?php if (!empty($task['Ticket'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
+	<thead>
 	<tr>
 		<th><?php echo __('Ticket Id'); ?></th>
 		<th><?php echo __('Status'); ?></th>
@@ -92,11 +130,11 @@
 		<th><?php echo __('Ended'); ?></th>
 		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Task Id'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
+		<th class="actions"></th>
 	</tr>
-	<?php
-		$i = 0;
-		foreach ($task['Ticket'] as $ticket): ?>
+	<thead>
+	<tbody>
+	<?php foreach ($task['Ticket'] as $ticket): ?>
 		<tr>
 			<td><?php echo $ticket['ticket_id']; ?></td>
 			<td><?php echo $ticket['status']; ?></td>
@@ -107,18 +145,51 @@
 			<td><?php echo $ticket['user_id']; ?></td>
 			<td><?php echo $ticket['task_id']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'tickets', 'action' => 'edit', $ticket['ticket_id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'tickets', 'action' => 'delete', $ticket['ticket_id']), null, __('Are you sure you want to delete # %s?', $ticket['ticket_id'])); ?>
+				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id']), array('escape' => false)); ?>
+				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'tickets', 'action' => 'edit', $ticket['ticket_id']), array('escape' => false)); ?>
+				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'tickets', 'action' => 'delete', $ticket['ticket_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $ticket['ticket_id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
+	</tbody>
 	</table>
 <?php endif; ?>
 
 	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Ticket'), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
-		</ul>
+		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Ticket'), array('controller' => 'tickets', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
 	</div>
+	</div><!-- end col md 12 -->
+</div>
+<div class="related row">
+	<div class="col-md-12">
+	<h3><?php echo __('Related Workflows'); ?></h3>
+	<?php if (!empty($task['Workflow'])): ?>
+	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
+	<thead>
+	<tr>
+		<th><?php echo __('Workflow Id'); ?></th>
+		<th><?php echo __('Name'); ?></th>
+		<th class="actions"></th>
+	</tr>
+	<thead>
+	<tbody>
+	<?php foreach ($task['Workflow'] as $workflow): ?>
+		<tr>
+			<td><?php echo $workflow['workflow_id']; ?></td>
+			<td><?php echo $workflow['name']; ?></td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'workflows', 'action' => 'view', $workflow['workflow_id']), array('escape' => false)); ?>
+				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'workflows', 'action' => 'edit', $workflow['workflow_id']), array('escape' => false)); ?>
+				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'workflows', 'action' => 'delete', $workflow['workflow_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $workflow['workflow_id'])); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</tbody>
+	</table>
+<?php endif; ?>
+
+	<div class="actions">
+		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Workflow'), array('controller' => 'workflows', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
+	</div>
+	</div><!-- end col md 12 -->
 </div>

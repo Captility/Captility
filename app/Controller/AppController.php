@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
     // Use DebugKit by sharing Component Toolbar of Plugin DebugKit
-    public $components = array('DebugKit.Toolbar');
+    public $components = array('DebugKit.Toolbar', 'Session');
 
 
     // Prepare Helpers for Bootstrap layout
