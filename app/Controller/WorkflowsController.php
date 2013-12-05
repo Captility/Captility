@@ -4,8 +4,16 @@ App::uses('AppController', 'Controller');
  * Workflows Controller
  *
  * @property Workflow $Workflow
+ * @property PaginatorComponent $Paginator
  */
 class WorkflowsController extends AppController {
+
+/**
+ * Components
+ *
+ * @var array
+ */
+	public $components = array('Paginator');
 
 /**
  * index method
@@ -14,7 +22,7 @@ class WorkflowsController extends AppController {
  */
 	public function index() {
 		$this->Workflow->recursive = 0;
-		$this->set('workflows', $this->paginate());
+		$this->set('workflows', $this->Paginator->paginate());
 	}
 
 /**
@@ -25,11 +33,11 @@ class WorkflowsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		$this->Workflow->id = $id;
-		if (!$this->Workflow->exists()) {
+		if (!$this->Workflow->exists($id)) {
 			throw new NotFoundException(__('Invalid workflow'));
 		}
-		$this->set('workflow', $this->Workflow->read(null, $id));
+		$options = array('conditions' => array('Workflow.' . $this->Workflow->primaryKey => $id));
+		$this->set('workflow', $this->Workflow->find('first', $options));
 	}
 
 /**
@@ -41,10 +49,10 @@ class WorkflowsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Workflow->create();
 			if ($this->Workflow->save($this->request->data)) {
-				$this->Session->setFlash(__('The workflow has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The workflow has been saved.'), 'default', array('class' => 'alert alert-success'));
+				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The workflow could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The workflow could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		}
 		$tasks = $this->Workflow->Task->find('list');
@@ -59,19 +67,19 @@ class WorkflowsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		$this->Workflow->id = $id;
-		if (!$this->Workflow->exists()) {
+		if (!$this->Workflow->exists($id)) {
 			throw new NotFoundException(__('Invalid workflow'));
 		}
-		if ($this->request->is('post') || $this->request->is('put')) {
+		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Workflow->save($this->request->data)) {
-				$this->Session->setFlash(__('The workflow has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The workflow has been saved.'), 'default', array('class' => 'alert alert-success'));
+				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The workflow could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The workflow could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		} else {
-			$this->request->data = $this->Workflow->read(null, $id);
+			$options = array('conditions' => array('Workflow.' . $this->Workflow->primaryKey => $id));
+			$this->request->data = $this->Workflow->find('first', $options);
 		}
 		$tasks = $this->Workflow->Task->find('list');
 		$this->set(compact('tasks'));
@@ -80,24 +88,20 @@ class WorkflowsController extends AppController {
 /**
  * delete method
  *
- * @throws MethodNotAllowedException
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
 	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
 		$this->Workflow->id = $id;
 		if (!$this->Workflow->exists()) {
 			throw new NotFoundException(__('Invalid workflow'));
 		}
+		$this->request->onlyAllow('post', 'delete');
 		if ($this->Workflow->delete()) {
-			$this->Session->setFlash(__('Workflow deleted'));
-			$this->redirect(array('action' => 'index'));
+			$this->Session->setFlash(__('The workflow has been deleted.'), 'default', array('class' => 'alert alert-success'));
+		} else {
+			$this->Session->setFlash(__('The workflow could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 		}
-		$this->Session->setFlash(__('Workflow was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-}
+		return $this->redirect(array('action' => 'index'));
+	}}

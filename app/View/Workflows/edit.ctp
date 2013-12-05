@@ -42,7 +42,7 @@
 					<?php echo $this->Form->input('Task', array('class' => 'form-control', 'placeholder' => 'Name'));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-default')); ?>
+					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary')); ?>
 				</div>
 
 			<?php echo $this->Form->end() ?>

@@ -4,8 +4,16 @@ App::uses('AppController', 'Controller');
  * Events Controller
  *
  * @property Event $Event
+ * @property PaginatorComponent $Paginator
  */
 class EventsController extends AppController {
+
+/**
+ * Components
+ *
+ * @var array
+ */
+	public $components = array('Paginator');
 
 /**
  * index method
@@ -14,7 +22,7 @@ class EventsController extends AppController {
  */
 	public function index() {
 		$this->Event->recursive = 0;
-		$this->set('events', $this->paginate());
+		$this->set('events', $this->Paginator->paginate());
 	}
 
 /**
@@ -25,11 +33,11 @@ class EventsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		$this->Event->id = $id;
-		if (!$this->Event->exists()) {
+		if (!$this->Event->exists($id)) {
 			throw new NotFoundException(__('Invalid event'));
 		}
-		$this->set('event', $this->Event->read(null, $id));
+		$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
+		$this->set('event', $this->Event->find('first', $options));
 	}
 
 /**
@@ -41,10 +49,10 @@ class EventsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {
-				$this->Session->setFlash(__('The event has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The event has been saved.'), 'default', array('class' => 'alert alert-success'));
+				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The event could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		}
 		$users = $this->Event->User->find('list');
@@ -60,19 +68,19 @@ class EventsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		$this->Event->id = $id;
-		if (!$this->Event->exists()) {
+		if (!$this->Event->exists($id)) {
 			throw new NotFoundException(__('Invalid event'));
 		}
-		if ($this->request->is('post') || $this->request->is('put')) {
+		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Event->save($this->request->data)) {
-				$this->Session->setFlash(__('The event has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The event has been saved.'), 'default', array('class' => 'alert alert-success'));
+				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The event could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		} else {
-			$this->request->data = $this->Event->read(null, $id);
+			$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
+			$this->request->data = $this->Event->find('first', $options);
 		}
 		$users = $this->Event->User->find('list');
 		$workflows = $this->Event->Workflow->find('list');
@@ -82,24 +90,20 @@ class EventsController extends AppController {
 /**
  * delete method
  *
- * @throws MethodNotAllowedException
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
 	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
 		$this->Event->id = $id;
 		if (!$this->Event->exists()) {
 			throw new NotFoundException(__('Invalid event'));
 		}
+		$this->request->onlyAllow('post', 'delete');
 		if ($this->Event->delete()) {
-			$this->Session->setFlash(__('Event deleted'));
-			$this->redirect(array('action' => 'index'));
+			$this->Session->setFlash(__('The event has been deleted.'), 'default', array('class' => 'alert alert-success'));
+		} else {
+			$this->Session->setFlash(__('The event could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 		}
-		$this->Session->setFlash(__('Event was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-}
+		return $this->redirect(array('action' => 'index'));
+	}}

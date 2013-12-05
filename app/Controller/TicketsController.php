@@ -4,8 +4,16 @@ App::uses('AppController', 'Controller');
  * Tickets Controller
  *
  * @property Ticket $Ticket
+ * @property PaginatorComponent $Paginator
  */
 class TicketsController extends AppController {
+
+/**
+ * Components
+ *
+ * @var array
+ */
+	public $components = array('Paginator');
 
 /**
  * index method
@@ -14,7 +22,7 @@ class TicketsController extends AppController {
  */
 	public function index() {
 		$this->Ticket->recursive = 0;
-		$this->set('tickets', $this->paginate());
+		$this->set('tickets', $this->Paginator->paginate());
 	}
 
 /**
@@ -25,11 +33,11 @@ class TicketsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		$this->Ticket->id = $id;
-		if (!$this->Ticket->exists()) {
+		if (!$this->Ticket->exists($id)) {
 			throw new NotFoundException(__('Invalid ticket'));
 		}
-		$this->set('ticket', $this->Ticket->read(null, $id));
+		$options = array('conditions' => array('Ticket.' . $this->Ticket->primaryKey => $id));
+		$this->set('ticket', $this->Ticket->find('first', $options));
 	}
 
 /**
@@ -41,10 +49,10 @@ class TicketsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Ticket->create();
 			if ($this->Ticket->save($this->request->data)) {
-				$this->Session->setFlash(__('The ticket has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The ticket has been saved.'), 'default', array('class' => 'alert alert-success'));
+				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The ticket could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The ticket could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		}
 		$users = $this->Ticket->User->find('list');
@@ -60,19 +68,19 @@ class TicketsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		$this->Ticket->id = $id;
-		if (!$this->Ticket->exists()) {
+		if (!$this->Ticket->exists($id)) {
 			throw new NotFoundException(__('Invalid ticket'));
 		}
-		if ($this->request->is('post') || $this->request->is('put')) {
+		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Ticket->save($this->request->data)) {
-				$this->Session->setFlash(__('The ticket has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The ticket has been saved.'), 'default', array('class' => 'alert alert-success'));
+				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The ticket could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The ticket could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		} else {
-			$this->request->data = $this->Ticket->read(null, $id);
+			$options = array('conditions' => array('Ticket.' . $this->Ticket->primaryKey => $id));
+			$this->request->data = $this->Ticket->find('first', $options);
 		}
 		$users = $this->Ticket->User->find('list');
 		$tasks = $this->Ticket->Task->find('list');
@@ -82,24 +90,20 @@ class TicketsController extends AppController {
 /**
  * delete method
  *
- * @throws MethodNotAllowedException
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
 	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
 		$this->Ticket->id = $id;
 		if (!$this->Ticket->exists()) {
 			throw new NotFoundException(__('Invalid ticket'));
 		}
+		$this->request->onlyAllow('post', 'delete');
 		if ($this->Ticket->delete()) {
-			$this->Session->setFlash(__('Ticket deleted'));
-			$this->redirect(array('action' => 'index'));
+			$this->Session->setFlash(__('The ticket has been deleted.'), 'default', array('class' => 'alert alert-success'));
+		} else {
+			$this->Session->setFlash(__('The ticket could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 		}
-		$this->Session->setFlash(__('Ticket was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-}
+		return $this->redirect(array('action' => 'index'));
+	}}

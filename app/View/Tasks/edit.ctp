@@ -50,7 +50,7 @@
 					<?php echo $this->Form->input('Workflow', array('class' => 'form-control', 'placeholder' => 'Step'));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-default')); ?>
+					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary')); ?>
 				</div>
 
 			<?php echo $this->Form->end() ?>
