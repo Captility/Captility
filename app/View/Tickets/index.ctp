@@ -23,6 +23,8 @@
 		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Tasks'), array('controller' => 'tasks', 'action' => 'index'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Task'), array('controller' => 'tasks', 'action' => 'add'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
 							</ul>
 						</div><!-- end body -->
 				</div><!-- end panel -->
@@ -41,6 +43,7 @@
 						<th><?php echo $this->Paginator->sort('ended'); ?></th>
 						<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 						<th><?php echo $this->Paginator->sort('task_id'); ?></th>
+						<th><?php echo $this->Paginator->sort('capture_id'); ?></th>
 						<th class="actions"></th>
 					</tr>
 				</thead>
@@ -54,10 +57,13 @@
 						<td><?php echo h($ticket['Ticket']['modified']); ?>&nbsp;</td>
 						<td><?php echo h($ticket['Ticket']['ended']); ?>&nbsp;</td>
 								<td>
-			<?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
+			<?php echo $this->Html->link($ticket['User'][''], array('controller' => 'users', 'action' => 'view', $ticket['User']['id'])); ?>
 		</td>
 								<td>
 			<?php echo $this->Html->link($ticket['Task']['name'], array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id'])); ?>
+		</td>
+								<td>
+			<?php echo $this->Html->link($ticket['Capture']['name'], array('controller' => 'captures', 'action' => 'view', $ticket['Capture']['capture_id'])); ?>
 		</td>
 						<td class="actions">
 							<?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $ticket['Ticket']['ticket_id']), array('escape' => false)); ?>

@@ -55,10 +55,9 @@ class CapturesController extends AppController {
 				$this->Session->setFlash(__('The capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		}
+		$lectures = $this->Capture->Lecture->find('list');
 		$users = $this->Capture->User->find('list');
-		$events = $this->Capture->Event->find('list');
-		$tasks = $this->Capture->Task->find('list');
-		$this->set(compact('users', 'events', 'tasks'));
+		$this->set(compact('lectures', 'users'));
 	}
 
 /**
@@ -83,10 +82,9 @@ class CapturesController extends AppController {
 			$options = array('conditions' => array('Capture.' . $this->Capture->primaryKey => $id));
 			$this->request->data = $this->Capture->find('first', $options);
 		}
+		$lectures = $this->Capture->Lecture->find('list');
 		$users = $this->Capture->User->find('list');
-		$events = $this->Capture->Event->find('list');
-		$tasks = $this->Capture->Task->find('list');
-		$this->set(compact('users', 'events', 'tasks'));
+		$this->set(compact('lectures', 'users'));
 	}
 
 /**

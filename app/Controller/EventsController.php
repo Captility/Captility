@@ -55,9 +55,8 @@ class EventsController extends AppController {
 				$this->Session->setFlash(__('The event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		}
-		$users = $this->Event->User->find('list');
-		$workflows = $this->Event->Workflow->find('list');
-		$this->set(compact('users', 'workflows'));
+		$eventTypes = $this->Event->EventType->find('list');
+		$this->set(compact('eventTypes'));
 	}
 
 /**
@@ -82,9 +81,8 @@ class EventsController extends AppController {
 			$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
 			$this->request->data = $this->Event->find('first', $options);
 		}
-		$users = $this->Event->User->find('list');
-		$workflows = $this->Event->Workflow->find('list');
-		$this->set(compact('users', 'workflows'));
+		$eventTypes = $this->Event->EventType->find('list');
+		$this->set(compact('eventTypes'));
 	}
 
 /**

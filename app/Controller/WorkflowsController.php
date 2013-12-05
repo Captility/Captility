@@ -55,8 +55,9 @@ class WorkflowsController extends AppController {
 				$this->Session->setFlash(__('The workflow could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
 			}
 		}
+		$lectures = $this->Workflow->Lecture->find('list');
 		$tasks = $this->Workflow->Task->find('list');
-		$this->set(compact('tasks'));
+		$this->set(compact('lectures', 'tasks'));
 	}
 
 /**
@@ -81,8 +82,9 @@ class WorkflowsController extends AppController {
 			$options = array('conditions' => array('Workflow.' . $this->Workflow->primaryKey => $id));
 			$this->request->data = $this->Workflow->find('first', $options);
 		}
+		$lectures = $this->Workflow->Lecture->find('list');
 		$tasks = $this->Workflow->Task->find('list');
-		$this->set(compact('tasks'));
+		$this->set(compact('lectures', 'tasks'));
 	}
 
 /**

@@ -21,8 +21,8 @@
 								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New User'), array('action' => 'add'), array('escape' => false)); ?></li>
 								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Events'), array('controller' => 'events', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Event'), array('controller' => 'events', 'action' => 'add'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Lectures'), array('controller' => 'lectures', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Tickets'), array('controller' => 'tickets', 'action' => 'index'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Ticket'), array('controller' => 'tickets', 'action' => 'add'), array('escape' => false)); ?> </li>
 							</ul>
@@ -39,6 +39,7 @@
 						<th><?php echo $this->Paginator->sort('username'); ?></th>
 						<th><?php echo $this->Paginator->sort('password'); ?></th>
 						<th><?php echo $this->Paginator->sort('email'); ?></th>
+						<th><?php echo $this->Paginator->sort('language'); ?></th>
 						<th><?php echo $this->Paginator->sort('status'); ?></th>
 						<th><?php echo $this->Paginator->sort('created'); ?></th>
 						<th><?php echo $this->Paginator->sort('modified'); ?></th>
@@ -52,6 +53,7 @@
 						<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
 						<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
 						<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
+						<td><?php echo h($user['User']['language']); ?>&nbsp;</td>
 						<td><?php echo h($user['User']['status']); ?>&nbsp;</td>
 						<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
 						<td><?php echo h($user['User']['modified']); ?>&nbsp;</td>

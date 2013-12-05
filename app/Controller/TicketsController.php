@@ -57,7 +57,8 @@ class TicketsController extends AppController {
 		}
 		$users = $this->Ticket->User->find('list');
 		$tasks = $this->Ticket->Task->find('list');
-		$this->set(compact('users', 'tasks'));
+		$captures = $this->Ticket->Capture->find('list');
+		$this->set(compact('users', 'tasks', 'captures'));
 	}
 
 /**
@@ -84,7 +85,8 @@ class TicketsController extends AppController {
 		}
 		$users = $this->Ticket->User->find('list');
 		$tasks = $this->Ticket->Task->find('list');
-		$this->set(compact('users', 'tasks'));
+		$captures = $this->Ticket->Capture->find('list');
+		$this->set(compact('users', 'tasks', 'captures'));
 	}
 
 /**

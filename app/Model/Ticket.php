@@ -3,9 +3,9 @@ App::uses('AppModel', 'Model');
 /**
  * Ticket Model
  *
- * @property Ticket $Ticket
  * @property User $User
  * @property Task $Task
+ * @property Capture $Capture
  */
 class Ticket extends AppModel {
 
@@ -29,18 +29,27 @@ class Ticket extends AppModel {
  * @var array
  */
 	public $validate = array(
-
-		'status' => array(
-			'alphanumeric' => array(
-				'rule' => array('alphanumeric'),
+		'ticket_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'notempty' => array(
-				'rule' => array('notempty'),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'status' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -57,8 +66,8 @@ class Ticket extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'notempty' => array(
-				'rule' => array('notempty'),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -67,6 +76,16 @@ class Ticket extends AppModel {
 			),
 		),
 		'modified' => array(
+			'datetime' => array(
+				'rule' => array('datetime'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'ended' => array(
 			'datetime' => array(
 				'rule' => array('datetime'),
 				//'message' => 'Your custom message here',
@@ -85,8 +104,18 @@ class Ticket extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'notempty' => array(
-				'rule' => array('notempty'),
+		),
+		'task_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -94,15 +123,7 @@ class Ticket extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'task_id' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+		'capture_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -132,6 +153,13 @@ class Ticket extends AppModel {
 		'Task' => array(
 			'className' => 'Task',
 			'foreignKey' => 'task_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Capture' => array(
+			'className' => 'Capture',
+			'foreignKey' => 'capture_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

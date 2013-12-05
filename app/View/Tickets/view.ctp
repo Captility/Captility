@@ -23,6 +23,8 @@
 		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Tasks'), array('controller' => 'tasks', 'action' => 'index'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Task'), array('controller' => 'tasks', 'action' => 'add'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
 							</ul>
 						</div><!-- end body -->
 				</div><!-- end panel -->
@@ -77,7 +79,7 @@
 <tr>
 		<th><?php echo __('User'); ?></th>
 		<td>
-			<?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
+			<?php echo $this->Html->link($ticket['User'][''], array('controller' => 'users', 'action' => 'view', $ticket['User']['id'])); ?>
 			&nbsp;
 		</td>
 </tr>
@@ -85,6 +87,13 @@
 		<th><?php echo __('Task'); ?></th>
 		<td>
 			<?php echo $this->Html->link($ticket['Task']['name'], array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id'])); ?>
+			&nbsp;
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Capture'); ?></th>
+		<td>
+			<?php echo $this->Html->link($ticket['Capture']['name'], array('controller' => 'captures', 'action' => 'view', $ticket['Capture']['capture_id'])); ?>
 			&nbsp;
 		</td>
 </tr>

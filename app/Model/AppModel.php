@@ -31,4 +31,14 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+
+    public function isSemester($check) {
+        // $data array is passed using the form field name as the key
+        // have to extract the value to make the function generic
+        $value = array_values($check);
+        $value = $value[0];
+
+        return preg_match('(WS\s?\d{4,4}\/?\d{2,4}|SS\s?\d{4,4})', $value);
+    }
 }

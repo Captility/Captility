@@ -3,8 +3,8 @@ App::uses('AppModel', 'Model');
 /**
  * Task Model
  *
- * @property Capture $Capture
  * @property Ticket $Ticket
+ * @property Workflow $Workflow
  */
 class Task extends AppModel {
 
@@ -28,10 +28,17 @@ class Task extends AppModel {
  * @var array
  */
 	public $validate = array(
-
-		'name' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+		'task_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -39,9 +46,9 @@ class Task extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'description' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+		'name' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -50,16 +57,16 @@ class Task extends AppModel {
 			),
 		),
 		'step' => array(
-			'decimal' => array(
-				'rule' => array('decimal'),
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'notempty' => array(
-				'rule' => array('notempty'),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -77,19 +84,6 @@ class Task extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Capture' => array(
-			'className' => 'Capture',
-			'foreignKey' => 'task_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'Ticket' => array(
 			'className' => 'Ticket',
 			'foreignKey' => 'task_id',
@@ -105,27 +99,26 @@ class Task extends AppModel {
 		)
 	);
 
-    /**
-     * hasAndBelongsToMany associations
-     *
-     * @var array
-     */
-    public $hasAndBelongsToMany = array(
-        'Workflow' => array(
-            'className' => 'Workflow',
-            'joinTable' => 'workflows_tasks',
-            'foreignKey' => 'task_id',
-            'associationForeignKey' => 'workflow_id',
-            'unique' => 'keepExisting',
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'finderQuery' => '',
-            'deleteQuery' => '',
-            'insertQuery' => ''
-        )
-    );
+
+/**
+ * hasAndBelongsToMany associations
+ *
+ * @var array
+ */
+	public $hasAndBelongsToMany = array(
+		'Workflow' => array(
+			'className' => 'Workflow',
+			'joinTable' => 'tasks_workflows',
+			'foreignKey' => 'task_id',
+			'associationForeignKey' => 'workflow_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+		)
+	);
 
 }
