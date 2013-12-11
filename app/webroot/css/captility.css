@@ -1,0 +1,9 @@
+/* Captility base css. LESS compiled to CSS.
+ * @author Daniel Deppe
+ */
+/**
+ * Case Grid Layout.
+ */
+.container-lower {
+  margin-top: 75px;
+}
