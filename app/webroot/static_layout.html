@@ -82,6 +82,12 @@
 							</ul>
 						</li>
 					</ul>
+
+					<form class="navbar-form navbar-right" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control">
+						</div> <button type="submit" class="btn btn-default">Suche</button>
+					</form>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#">Einstellungen</a>
@@ -104,22 +110,17 @@
                                 </li>
                             </ul>
                         </li>
-
-					<form class="navbar-form navbar-right" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control">
-						</div> <button type="submit" class="btn btn-default">Suche</button>
-					</form>
                     </ul>
 				</div>
-				
-			</nav>
 		</div>
 	</div>
+</div>
+
+</nav>
 
 <!-- End::navbar -->
 
-</div>
+
 <div class="container container-lower">
 
 
@@ -132,10 +133,10 @@
 					<a href="#">Home</a> <span class="divider">/</span>
 				</li>
 				<li>
-					<a href="#">Library</a> <span class="divider">/</span>
+					<a href="#">Aufnahmen</a> <span class="divider">/</span>
 				</li>
 				<li class="active">
-					Data
+					Wochenübersicht - Alle Aufzeichnungen
 				</li>
 			</ul>
 		</div>
@@ -144,7 +145,9 @@
 
 <!-- End::breadcrumbs -->
 
-	<div class="row clearfix">
+<!-- Element::Carousel-->
+
+	<div class="row clearfix" style="display: none">
 		<div class="col-md-12 column">
 			<div class="carousel slide" id="carousel-60740">
 				<ol class="carousel-indicators">
@@ -193,7 +196,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="row clearfix">
+
+<!-- End::Caroussel -->
+<!-- Element::Jumbotron -->
+
+	<div class="row clearfix" style="display: none">
 		<div class="col-md-12 column">
 			<div class="jumbotron well">
 				<h1>
@@ -208,248 +215,235 @@
 			</div>
 		</div>
 	</div>
+
+<!-- End::Jumbotron -->
+
+
 	<div class="row clearfix">
 		<div class="col-md-12 column">
+        <div class="row clearfix">
+            <div class="col-md-1 column">
+            </div>
+            <div class="col-md-11 column">
+                <div class="page-header">
+                    <h1>
+                        Wochenübersicht <small>Alle Aufzeichnungen KW0</small>
+                    </h1>
+                </div>
+            </div>
+        </div>
 			<div class="row clearfix">
-				<div class="col-md-8 column">
+				<div class="col-md-1 column">
 					<div class="row clearfix">
-						<div class="col-md-6 column">
-						</div>
-						<div class="col-md-6 column">
-							<div class="page-header">
-								<h1>
-									Example page header <small>Subtext for header</small>
-								</h1>
-							</div>
-						</div>
-					</div>
-					<div class="row clearfix">
-						<div class="col-md-6 column">
-							<div class="btn-group btn-group-vertical btn-group-sm">
-								 <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> Left</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> Center</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> Right</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> Justify</button>
-							</div>
-							<ul class="nav nav-stacked nav-tabs">
-								<li class="active">
-									<a href="#">Home</a>
-								</li>
-								<li>
-									<a href="#">Profile</a>
-								</li>
-								<li class="disabled">
-									<a href="#">Messages</a>
-								</li>
-								<li class="dropdown pull-right">
-									 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong></a>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#">Action</a>
-										</li>
-										<li>
-											<a href="#">Another action</a>
-										</li>
-										<li>
-											<a href="#">Something else here</a>
-										</li>
-										<li class="divider">
-										</li>
-										<li>
-											<a href="#">Separated link</a>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-						<div class="col-md-6 column">
-							<div class="tabbable" id="tabs-527386">
-								<ul class="nav nav-tabs">
-									<li class="active">
-										<a href="#panel-406734" data-toggle="tab">Section 1</a>
-									</li>
-									<li>
-										<a href="#panel-971006" data-toggle="tab">Section 2</a>
-									</li>
-								</ul>
-								<div class="tab-content">
-									<div class="tab-pane active" id="panel-406734">
-										<p>
-											I'm in Section 1.
-										</p>
-									</div>
-									<div class="tab-pane" id="panel-971006">
-										<p>
-											Howdy, I'm in Section 2.
-										</p>
-									</div>
-								</div>
-							</div>
-							<table class="table">
-								<thead>
-									<tr>
-										<th>
-											#
-										</th>
-										<th>
-											Product
-										</th>
-										<th>
-											Payment Taken
-										</th>
-										<th>
-											Status
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											1
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											01/04/2012
-										</td>
-										<td>
-											Default
-										</td>
-									</tr>
-									<tr class="active">
-										<td>
-											1
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											01/04/2012
-										</td>
-										<td>
-											Approved
-										</td>
-									</tr>
-									<tr class="success">
-										<td>
-											2
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											02/04/2012
-										</td>
-										<td>
-											Declined
-										</td>
-									</tr>
-									<tr class="warning">
-										<td>
-											3
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											03/04/2012
-										</td>
-										<td>
-											Pending
-										</td>
-									</tr>
-									<tr class="danger">
-										<td>
-											4
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											04/04/2012
-										</td>
-										<td>
-											Call in to confirm
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							 <a id="modal-412891" href="#modal-container-412891" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
-							
-							<div class="modal fade" id="modal-container-412891" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-											<h4 class="modal-title" id="myModalLabel">
-												Modal title
-											</h4>
-										</div>
-										<div class="modal-body">
-											...
-										</div>
-										<div class="modal-footer">
-											 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save changes</button>
-										</div>
-									</div>
-									
-								</div>
-								
-							</div>
-							
-							<ul class="pagination">
-								<li>
-									<a href="#">Prev</a>
-								</li>
-								<li>
-									<a href="#">1</a>
-								</li>
-								<li>
-									<a href="#">2</a>
-								</li>
-								<li>
-									<a href="#">3</a>
-								</li>
-								<li>
-									<a href="#">4</a>
-								</li>
-								<li>
-									<a href="#">5</a>
-								</li>
-								<li>
-									<a href="#">Next</a>
-								</li>
-							</ul>
-						</div>
+
+
+                        <!-- tabs left -->
+                        <div class="tabbable tabs-left">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#a" data-toggle="tab">Eigene</a></li>
+                                <li><a href="#b" data-toggle="tab">Gesamt</a></li>
+                                <li><a href="#c" data-toggle="tab">Übersicht</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 column content-pane">
+                    <div class="row clearfix">
+
+                        <div class="alert alert-success alert-dismissable" contenteditable="true">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4>Alert!</h4>
+                            <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#" class="alert-link">alert link</a>
+                        </div>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="a">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                #
+                                            </th>
+                                            <th>
+                                                Product
+                                            </th>
+                                            <th>
+                                                Payment Taken
+                                            </th>
+                                            <th>
+                                                Status
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                TB - Monthly
+                                            </td>
+                                            <td>
+                                                01/04/2012
+                                            </td>
+                                            <td>
+                                                Default
+                                            </td>
+                                        </tr>
+                                        <tr class="active">
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                TB - Monthly
+                                            </td>
+                                            <td>
+                                                01/04/2012
+                                            </td>
+                                            <td>
+                                                Approved
+                                            </td>
+                                        </tr>
+                                        <tr class="success">
+                                            <td>
+                                                2
+                                            </td>
+                                            <td>
+                                                TB - Monthly
+                                            </td>
+                                            <td>
+                                                02/04/2012
+                                            </td>
+                                            <td>
+                                                Declined
+                                            </td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>
+                                                TB - Monthly
+                                            </td>
+                                            <td>
+                                                03/04/2012
+                                            </td>
+                                            <td>
+                                                Pending
+                                            </td>
+                                        </tr>
+                                        <tr class="danger">
+                                            <td>
+                                                4
+                                            </td>
+                                            <td>
+                                                TB - Monthly
+                                            </td>
+                                            <td>
+                                                04/04/2012
+                                            </td>
+                                            <td>
+                                                Call in to confirm
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <a id="modal-412891" href="#modal-container-412891" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
+                                    <div class="modal fade" id="modal-container-412891" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">?</button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                        Modal title
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ...
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <ul class="pagination">
+                                        <li>
+                                            <a href="#">Prev</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">3</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">4</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">5</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Next</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="tab-pane" id="b">
+
+                                </div>
+                                <div class="tab-pane" id="c">
+
+                                </div>
+                            </div>
+
+                        <!-- /tabs -->
 					</div>
 				</div>
-				<div class="col-md-4 column">
-					<div class="row clearfix">
-						<div class="col-md-12 column">
-							<h3 class="text-primary text-right">
-								h3. Lorem ipsum dolor sit amet.
-							</h3>
-						</div>
-					</div>
+				<div class="col-md-3 column">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								Panel title
+								Kalender
 							</h3>
 						</div>
 						<div class="panel-body">
 							Panel content
 						</div>
-						<div class="panel-footer">
-							Panel footer
-						</div>
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Tickets
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            Ticket 1
+                        </div>
+                        <div class="panel-body">
+                            Ticket 2
+                        </div>
+                        <div class="panel-body">
+                            Ticket 3
+                        </div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<h2>
-				Heading
+				Footer
 			</h2>
 			<p>
 				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.

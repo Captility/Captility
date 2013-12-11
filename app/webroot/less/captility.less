@@ -2,9 +2,11 @@
  * @author Daniel Deppe
  */
 
+// Base Variablen
 @navbar-height: 50px;
 @navbar-margin: 25px;
 
+@content-pane-padding: 50px;
 /**
  * Case Grid Layout.
  */
@@ -12,4 +14,30 @@
 .container-lower{
 
   margin-top: @navbar-height + @navbar-margin;
-}‚
+}
+
+/* ###############################################
+ * ################# WIDESCREEN  #################
+ * ###############################################*/
+/** Changes when wide screen avaliable */
+@media(min-width:992px){
+
+  /* Content Tabs arragement: vertically: */
+  @import "bs3-stacked-tabs";
+
+  /* Padding between Tabs and Content */
+  .content-pane{
+
+    padding-left: @content-pane-padding;
+  }
+}
+
+
+/**
+  * Media Queries
+  */
+
+@media(max-width:767px){}
+@media(min-width:768px){}
+@media(min-width:992px){}
+@media(min-width:1200px){}
