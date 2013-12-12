@@ -5,7 +5,6 @@
 /* ###############################################
  * ################# VARIABLES  ##################
  * ###############################################*/
-@import "bootstrap";
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
 
@@ -25,12 +24,6 @@
   margin-top: @navbar-height + @navbar-margin;
 }
 
-
-.navbar-nav>li {
-
-  border-left: 1px dashed #555;
-
-}
 
 /* ###############################################
  * ################# COMPONENTS  #################
@@ -53,6 +46,12 @@
   .content-pane{
 
     padding-left: @content-pane-padding;
+  }
+
+  .navbar-nav>li {
+
+    border-left: 1px dashed #555;
+
   }
 }
 
