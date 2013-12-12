@@ -12,6 +12,7 @@ $(document).ready(function(){
             weekStart: 1,
             todayBtn: true,
             language: "de",
+            orientation: "top auto",
             daysOfWeekDisabled: "0,6",
             calendarWeeks: true,
             todayHighlight: true

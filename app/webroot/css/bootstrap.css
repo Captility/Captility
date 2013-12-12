@@ -2696,6 +2696,7 @@ input[type="button"].btn-block {
 }
 .datepicker th.datepicker-switch {
   width: 145px;
+  font-size: 16px;
 }
 .datepicker thead tr:first-child th,
 .datepicker tfoot tr th {
@@ -2751,6 +2752,28 @@ input[type="button"].btn-block {
   border: 1px solid #ccc;
   margin-left: -5px;
   margin-right: -5px;
+}
+.prev,
+.next {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.prev:empty,
+.next:empty {
+  width: 1em;
+}
+.prev:before {
+  content: "\e079";
+}
+.next:before {
+  content: "\e080";
 }
 .fade {
   opacity: 0;
