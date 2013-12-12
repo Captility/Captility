@@ -15,7 +15,7 @@ $titleDescription = __d('project_name', 'Captility 0.2');
 
     //echo $this->Html->css('cake.generic');
     // Bootstrap Content
-    echo $this->Html->css('bootstrap/bootstrap.css'); //ToDo Add minified Version
+    echo $this->Html->css('bootstrap/bootstrap.original.css'); //ToDo Add minified Version
 
     // jQuery Link
     echo $this->Html->css('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');?>

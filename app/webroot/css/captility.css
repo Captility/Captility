@@ -1,11 +1,59 @@
 /* Captility base css. LESS compiled to CSS.
  * @author Daniel Deppe
  */
-/**
- * Case Grid Layout.
- */
+/* ###############################################
+ * ################# VARIABLES  ##################
+ * ###############################################*/
+/* ###############################################
+ * ############ BASE GRID LAYOUT  ################
+ * ###############################################*/
+/** Margin under Navbar */
 .container-lower {
   margin-top: 75px;
+}
+.navbar-nav > li {
+  border-left: 1px dashed #555;
+}
+/* ###############################################
+ * ################# COMPONENTS  #################
+ * ###############################################*/
+/** Inverse Buttons. */
+.btn-inverse {
+  color: #999;
+  background-color: #333;
+  border-color: #777;
+}
+.btn-inverse:hover,
+.btn-inverse:focus,
+.btn-inverse:active,
+.btn-inverse.active,
+.open .dropdown-toggle.btn-inverse {
+  color: #ffffff;
+  background-color: #444;
+  border-color: #999;
+}
+.btn-inverse:active,
+.btn-inverse.active,
+.open .dropdown-toggle.btn-inverse {
+  background-image: none;
+}
+.btn-inverse.disabled,
+.btn-inverse[disabled],
+fieldset[disabled] .btn-inverse,
+.btn-inverse.disabled:hover,
+.btn-inverse[disabled]:hover,
+fieldset[disabled] .btn-inverse:hover,
+.btn-inverse.disabled:focus,
+.btn-inverse[disabled]:focus,
+fieldset[disabled] .btn-inverse:focus,
+.btn-inverse.disabled:active,
+.btn-inverse[disabled]:active,
+fieldset[disabled] .btn-inverse:active,
+.btn-inverse.disabled.active,
+.btn-inverse[disabled].active,
+fieldset[disabled] .btn-inverse.active {
+  background-color: #444;
+  border-color: #999;
 }
 /* ###############################################
  * ################# WIDESCREEN  #################
@@ -110,3 +158,6 @@
 /**
   * Media Queries
   */
+/* ###############################################
+ * ################## PLUGINS  ###################
+ * ###############################################*/
