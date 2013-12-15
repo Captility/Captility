@@ -4626,8 +4626,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .breadcrumb > li + li:before {
   content: "/\00a0";
-  padding: 0 5px;
+  padding: 0 0px;
   color: #cccccc;
+}
+.breadcrumb > li .divider {
+  margin-left: 5px;
 }
 .breadcrumb > .active {
   color: #999999;

@@ -50,9 +50,24 @@
 
             <div class="row clearfix">
 
-                <?php echo $this->Session->flash(); ?>
+                <?php if (isset($headline)): //Layout in Tabs with Sidebar ?>
+                    <div class="col-md-12 column">
+                        <?php echo $this->Element('headline');?>
+                    </div>
 
-                <?php echo $this->fetch('content'); ?>
+                    <?php echo $this->fetch('content'); ?>
+
+                    <div class="col-md-3 column">
+                        <?php echo $this->Element('sideCalendar');?>
+                        <?php echo $this->Element('sideTickets');?>
+                    </div>
+
+                <?php else:  // Cake/ Admin Layout?>
+
+                    <?php echo $this->Session->flash(); ?>
+                    <?php echo $this->fetch('content'); ?>
+
+                <?php endif; ?>
 
             </div>
         </div>

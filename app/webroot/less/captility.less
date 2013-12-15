@@ -17,13 +17,33 @@
  * ############ BASE GRID LAYOUT  ################
  * ###############################################*/
 
+/** Headline Adjustment */
+
+@media (min-width:992px) {
+
+  .page-header {
+    padding-bottom: 0px;
+
+    > h1 small {
+      text-align: right;
+      right: 15px;
+      position: absolute;
+      bottom: 30px;
+    }
+  }
+}
+
+/** Content Pane*/
+.content-pane {
+
+  overflow: scroll;
+}
 
 /** Margin under Navbar */
-.container-lower{
+.container-lower {
 
   margin-top: @navbar-height + @navbar-margin;
 }
-
 
 /* ###############################################
  * ################# COMPONENTS  #################
@@ -32,18 +52,17 @@
 /** Inverse Buttons. */
 @import "button-inverse";
 
-
 /* ###############################################
  * ################# WIDESCREEN  #################
  * ###############################################*/
 /** Changes when wide screen avaliable */
-@media(min-width:992px){
+@media (min-width:992px) {
 
-  /* Content Tabs arragement: vertically: */
-  @import "bs3-stacked-tabs";
+/* Content Tabs arragement: vertically: */
+@import "bs3-stacked-tabs";
 
-  /* Padding between Tabs and Content */
-  .content-pane{
+/* Padding between Tabs and Content */
+  .content-pane {
 
     padding-left: @content-pane-padding;
   }
@@ -55,15 +74,21 @@
   }
 }
 
-
 /**
   * Media Queries
   */
 
-@media(max-width:767px){}
-@media(min-width:768px){}
-@media(min-width:992px){}
-@media(min-width:1200px){}
+@media (max-width:767px) {
+}
+
+@media (min-width:768px) {
+}
+
+@media (min-width:992px) {
+}
+
+@media (min-width:1200px) {
+}
 
 /* ###############################################
  * ################## PLUGINS  ###################

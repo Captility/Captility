@@ -10,7 +10,7 @@
                 <a href="#">Aufnahmen</a> <span class="divider">/</span>
             </li>
             <li class="active">
-                Wochenübersicht - Alle Aufzeichnungen
+                <?php if(isset($headline)) echo $headline;?>
             </li>
         </ul>
     </div>

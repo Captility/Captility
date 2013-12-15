@@ -45,7 +45,7 @@ class AppController extends Controller {
 
     //ToDo Remove or proess BootstrapCake template
     public function beforeFilter(){
-        $this->layout = 'bootstrap';
+        $this->layout = 'captility';
     }
 
 //    /**

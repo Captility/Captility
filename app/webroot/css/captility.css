@@ -7,6 +7,22 @@
 /* ###############################################
  * ############ BASE GRID LAYOUT  ################
  * ###############################################*/
+/** Headline Adjustment */
+@media (min-width: 992px) {
+  .page-header {
+    padding-bottom: 0px;
+  }
+  .page-header > h1 small {
+    text-align: right;
+    right: 15px;
+    position: absolute;
+    bottom: 30px;
+  }
+}
+/** Content Pane*/
+.content-pane {
+  overflow: scroll;
+}
 /** Margin under Navbar */
 .container-lower {
   margin-top: 75px;
