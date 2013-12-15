@@ -57,7 +57,7 @@
 						<td><?php echo h($ticket['Ticket']['modified']); ?>&nbsp;</td>
 						<td><?php echo h($ticket['Ticket']['ended']); ?>&nbsp;</td>
 								<td>
-			<?php echo $this->Html->link($ticket['User'][''], array('controller' => 'users', 'action' => 'view', $ticket['User']['id'])); ?>
+			<?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
 		</td>
 								<td>
 			<?php echo $this->Html->link($ticket['Task']['name'], array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id'])); ?>

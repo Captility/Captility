@@ -2775,6 +2775,18 @@ input[type="button"].btn-block {
 .next:before {
   content: "\e080";
 }
+@media all and (min-width: 992px) and (max-width: 1200px) {
+  #SideCalendar,
+  .datepicker {
+    font-size: 90%;
+    padding: 0;
+    line-height: 75%;
+    margin: 5px;
+  }
+  .datepicker .cw {
+    font-size: 80%;
+  }
+}
 .fade {
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;

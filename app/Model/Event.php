@@ -3,11 +3,18 @@ App::uses('AppModel', 'Model');
 /**
  * Event Model
  *
- * @property Capture $Capture
  * @property EventType $EventType
+ * @property Capture $Capture
  */
 class Event extends AppModel {
 
+
+    /**
+     * Primary key field
+     *
+     * @var string
+     */
+    public $primaryKey = 'id';
 /**
  * Display field
  *
@@ -50,14 +57,6 @@ class Event extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
 		),
 		'end' => array(
 			'datetime' => array(
@@ -79,6 +78,16 @@ class Event extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'status' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'active' => array(
 			'boolean' => array(
 				'rule' => array('boolean'),
@@ -90,8 +99,8 @@ class Event extends AppModel {
 			),
 		),
 		'created' => array(
-			'date' => array(
-				'rule' => array('date'),
+			'datetime' => array(
+				'rule' => array('datetime'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -114,21 +123,6 @@ class Event extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasOne associations
- *
- * @var array
- */
-	public $hasOne = array(
-		'Capture' => array(
-			'className' => 'Capture',
-			'foreignKey' => 'event_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
-
-/**
  * belongsTo associations
  *
  * @var array
@@ -142,4 +136,26 @@ class Event extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Capture' => array(
+			'className' => 'Capture',
+			'foreignKey' => 'event_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

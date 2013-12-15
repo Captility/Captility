@@ -5,8 +5,8 @@ App::uses('AppModel', 'Model');
  *
  * @property Lecture $Lecture
  * @property User $User
- * @property Ticket $Ticket
  * @property Event $Event
+ * @property Ticket $Ticket
  */
 class Capture extends AppModel {
 
@@ -30,16 +30,6 @@ class Capture extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'capture_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'online' => array(
 			'boolean' => array(
 				'rule' => array('boolean'),
@@ -100,34 +90,6 @@ class Capture extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'lecture_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'user_id' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -151,6 +113,13 @@ class Capture extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Event' => array(
+			'className' => 'Event',
+			'foreignKey' => 'event_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
@@ -163,19 +132,6 @@ class Capture extends AppModel {
 		'Ticket' => array(
 			'className' => 'Ticket',
 			'foreignKey' => 'capture_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'Event' => array(
-			'className' => 'Event',
-			'foreignKey' => 'id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

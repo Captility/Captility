@@ -57,7 +57,8 @@ class CapturesController extends AppController {
 		}
 		$lectures = $this->Capture->Lecture->find('list');
 		$users = $this->Capture->User->find('list');
-		$this->set(compact('lectures', 'users'));
+		$events = $this->Capture->Event->find('list');
+		$this->set(compact('lectures', 'users', 'events'));
 	}
 
 /**
@@ -84,7 +85,8 @@ class CapturesController extends AppController {
 		}
 		$lectures = $this->Capture->Lecture->find('list');
 		$users = $this->Capture->User->find('list');
-		$this->set(compact('lectures', 'users'));
+		$events = $this->Capture->Event->find('list');
+		$this->set(compact('lectures', 'users', 'events'));
 	}
 
 /**

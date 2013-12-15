@@ -79,7 +79,7 @@
 <tr>
 		<th><?php echo __('User'); ?></th>
 		<td>
-			<?php echo $this->Html->link($ticket['User'][''], array('controller' => 'users', 'action' => 'view', $ticket['User']['id'])); ?>
+			<?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
 			&nbsp;
 		</td>
 </tr>
