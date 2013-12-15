@@ -117,53 +117,64 @@
 	</div>
 </div>
 
-<div class="related row">
-	<div class="col-md-12">
-	<h3><?php echo __('Related Captures'); ?></h3>
-	<?php if (!empty($event['Capture'])): ?>
-	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
-	<thead>
-	<tr>
-		<th><?php echo __('Capture Id'); ?></th>
+	<div class="row related">
+		<div class="col-md-12">
+			<h3><?php echo __('Related Captures'); ?></h3>
+			<table class="table table-striped">
+			<tbody>
+		<?php if (!empty($event['Capture'])): ?>
+			<tr>
+				<th><?php echo __('Capture Id'); ?></th>
+		<td>
+	<?php echo $event['Capture']['capture_id']; ?>
+&nbsp;</td>
 		<th><?php echo __('Online'); ?></th>
+		<td>
+	<?php echo $event['Capture']['online']; ?>
+&nbsp;</td>
 		<th><?php echo __('Comment'); ?></th>
+		<td>
+	<?php echo $event['Capture']['comment']; ?>
+&nbsp;</td>
 		<th><?php echo __('Name'); ?></th>
+		<td>
+	<?php echo $event['Capture']['name']; ?>
+&nbsp;</td>
 		<th><?php echo __('Status'); ?></th>
+		<td>
+	<?php echo $event['Capture']['status']; ?>
+&nbsp;</td>
 		<th><?php echo __('Link'); ?></th>
+		<td>
+	<?php echo $event['Capture']['link']; ?>
+&nbsp;</td>
 		<th><?php echo __('Date'); ?></th>
+		<td>
+	<?php echo $event['Capture']['date']; ?>
+&nbsp;</td>
 		<th><?php echo __('Published'); ?></th>
+		<td>
+	<?php echo $event['Capture']['published']; ?>
+&nbsp;</td>
 		<th><?php echo __('Lecture Id'); ?></th>
+		<td>
+	<?php echo $event['Capture']['lecture_id']; ?>
+&nbsp;</td>
 		<th><?php echo __('User Id'); ?></th>
+		<td>
+	<?php echo $event['Capture']['user_id']; ?>
+&nbsp;</td>
 		<th><?php echo __('Event Id'); ?></th>
-		<th class="actions"></th>
-	</tr>
-	<thead>
-	<tbody>
-	<?php foreach ($event['Capture'] as $capture): ?>
-		<tr>
-			<td><?php echo $capture['capture_id']; ?></td>
-			<td><?php echo $capture['online']; ?></td>
-			<td><?php echo $capture['comment']; ?></td>
-			<td><?php echo $capture['name']; ?></td>
-			<td><?php echo $capture['status']; ?></td>
-			<td><?php echo $capture['link']; ?></td>
-			<td><?php echo $capture['date']; ?></td>
-			<td><?php echo $capture['published']; ?></td>
-			<td><?php echo $capture['lecture_id']; ?></td>
-			<td><?php echo $capture['user_id']; ?></td>
-			<td><?php echo $capture['event_id']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'captures', 'action' => 'view', $capture['capture_id']), array('escape' => false)); ?>
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'captures', 'action' => 'edit', $capture['capture_id']), array('escape' => false)); ?>
-				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'captures', 'action' => 'delete', $capture['capture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $capture['capture_id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</tbody>
-	</table>
-<?php endif; ?>
-
-	<div class="actions">
-		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>	</div>
-	</div><!-- end col md 12 -->
-</div>
+		<td>
+	<?php echo $event['Capture']['event_id']; ?>
+&nbsp;</td>
+			</tr>
+		<?php endif; ?>
+			</tbody>
+			</table>
+			<div class="actions">
+				<?php echo $this->Html->link(__('Edit Capture'), array('controller' => 'captures', 'action' => 'edit', $event['Capture']['capture_id']), array('escape' => false, 'class' => 'btn btn-primary')); ?>
+			</div>
+		</div><!-- end col md 12 -->
+	</div>
+	
