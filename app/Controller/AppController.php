@@ -26,16 +26,26 @@ App::uses('Controller', 'Controller');
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
- * @package		app.Controller
- * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
+ * @package        app.Controller
+ * @link        http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller {
+class AppController extends Controller
+{
 
     // Use DebugKit by sharing Component Toolbar of Plugin DebugKit
-    public $components = array('DebugKit.Toolbar', 'Session');
+    public $components = array('DebugKit.Toolbar',
+        'Session',
+        'Acl',
+        'Auth' => array(
+            'loginAction' => array('controller' => 'users', 'action' => 'login'),
+            'loginRedirect' => array('controller' => 'calendar', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'calendar', 'action' => 'index'),
+            'authorize' => array('Controller'),
+            'authError' => 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.')
+    );
 
 
-    // Prepare Helpers for Bootstrap layout
+// Prepare Helpers for Bootstrap layout
     public $helpers = array( //ToDo BooskCake Plugin Aufräumen:
         'Session',
         'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
@@ -43,45 +53,33 @@ class AppController extends Controller {
         'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
     );
 
-    //ToDo Remove or proess BootstrapCake template
-    public function beforeFilter(){
+
+//ToDo Remove or prcoess BootstrapCake template
+    public function beforeFilter()
+    {
+        // Set default layout for all views
         $this->layout = 'captility';
+
+        // Set public pages with: parent::beforeFilter();
+        $this->Auth->allow('index', 'view'); // ToDo Change Login/Public Pages Restricion
     }
 
-//    /**
-//     * Components are packages of logic that are shared between controllers.
-//     * If you find yourself wanting to copy and paste things between controllers,
-//     * you might consider wrapping some functionality in a component.
-//     */
-//    public $components = array(
-//        'Session', // Share Session Component among Controllers
-//        'Auth' => array( // Add Athentification Controller to share among Controllers
-//            'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
-//            'logoutRedirect' => array('controller' => 'posts', 'action' => 'index'),
-//            'authorize' => array('Controller')
-//        )
-//    );
-//
-//    /**
-//     * TODO: Change access to index and view for everyone.
-//     */
-//    public function beforeFilter() {
-//        // Allow all index and view Requests for everyone
-//        $this->Auth->allow('index', 'view');
-//    }
-//
-//    /**
-//     * Allow admin users to see everything. AAuthorization for every request.
-//     * @param $user The requesting user
-//     * @return bool True if authorized
-//     */
-//    public function isAuthorized($user) {
-//        // Admin can access every action
-//        if (isset($user['role']) && $user['role'] === 'admin') {
-//            return true;
-//        }
-//
-//        // Default deny
-//        return false;
-//    }
+    public function isAuthorized($user)
+    {
+        // Admin can access every action
+        if (isset($user['status']) && $user['status'] === 'admin') {
+            return true;
+        }
+
+        // Default denial message.
+        $this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'alert', array(
+            'plugin' => 'BoostCake',
+            'class' => 'alert-info'
+        ));
+
+        // Default deny
+        return false;
+    }
+
+
 }

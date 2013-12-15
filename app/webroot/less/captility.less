@@ -7,6 +7,7 @@
  * ###############################################*/
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
+@import "bootstrap/alerts";
 
 @navbar-height: 50px;
 @navbar-margin: 25px;
@@ -98,4 +99,10 @@
 h3 span.glyphicon {
 
   margin-right: 7px;
+}
+
+/** Show Auth-message as bootstrap alert*/
+#authMessage {
+  .alert;
+  .alert-info;
 }
