@@ -101,6 +101,21 @@ class User extends AppModel
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'length' => array(
+                'rule'      => array('between', 3, 40), //Todo array('between', 8, 40),
+                'message'   => 'Das Passwort sollte aus 8 bis 40 Zeichen bestehen.',
+            ),
+        ),
+        // Password confirmation
+        'repass' => array(
+            'equaltofield' => array(
+                'rule' => array('equaltofield','password'),
+                'message' => 'Die eingegebenen Passwörter sind verschieden.',
+                //'allowEmpty' => false,
+                'required' => true,
+                //'last' => false, // Stop validation after this rule
+                'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
         ),
         'email' => array(
             'email' => array(
@@ -156,16 +171,6 @@ class User extends AppModel
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        'repass' => array(
-            'equaltofield' => array(
-                'rule' => array('equaltofield','password'),
-                'message' => 'Die eingegebenen Passwörter sind verschieden.',
-                //'allowEmpty' => false,
-                'required' => true,
-                //'last' => false, // Stop validation after this rule
-                'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-        )
     );
 
     /**

@@ -123,7 +123,7 @@ class UsersController extends AppController {
             }
             else {
                 $this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'alert', array(
-                    'class' => 'alert alert-info', 'plugin' => 'BoostCake'
+                    'class' => 'alert alert-danger', 'plugin' => 'BoostCake'
                 ));
             }
         }

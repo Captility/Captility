@@ -23,7 +23,7 @@
                 'class' => 'well form-horizontal'
             )); ?>
 
-            <legend><?php echo __('Bitte registrieren sie sich zum einloggen.'); ?></legend>
+            <legend><?php echo __('Bitte registrieren sie sich um sich anzumelden.'); ?></legend>
             <?php echo $this->Form->input('User.username', array(
                 'label' => array('text' => 'Benutzername',
                     'class' => 'col col-md-3 control-label'),

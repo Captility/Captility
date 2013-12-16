@@ -21,12 +21,17 @@
             'class' => 'well form-horizontal'
         )); ?>
 
-        <legend><?php echo __('Please enter your username and password'); ?></legend>
+        <legend><?php echo __('Melden Sie sich mit Ihrem Benutzernamen und Passwort an.'); ?></legend>
         <?php echo $this->Form->input('username', array(
-            'placeholder' => 'Username',
+            'label' => array('text' => 'Benutzername',
+                'class' => 'col col-md-3 control-label'),
+            'placeholder' => 'Geben Sie ihren Nutzernamen ein.',
         )); ?>
         <?php echo $this->Form->input('password', array(
-            'placeholder' => 'Password'
+            'label' => array('text' => 'Passwort',
+                'class' => 'col col-md-3 control-label'),
+            'placeholder' => 'Geben Sie ihr Passwort ein.',
+            'type' => 'password',
         )); ?>
         <div class="form-group">
             <?php echo $this->Form->submit(__('Login'), array(

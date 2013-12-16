@@ -41,7 +41,7 @@ class AppController extends Controller
             'loginRedirect' => array('controller' => 'calendar', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'calendar', 'action' => 'index'),
             'authorize' => array('Controller'),
-            'authError' => 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.')
+            'authError' => 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen. Melden Sie sich an.')
     );
 
 
@@ -68,13 +68,17 @@ class AppController extends Controller
     {
         // Admin can access every action
         if (isset($user['status']) && $user['status'] === 'admin') {
+            $this->Session->setFlash(__('Sie bearbeiten diesen Inhalt als Administrator/Manager.'), 'alert', array(
+                'plugin' => 'BoostCake',
+                'class' => 'alert-info'
+            ));
             return true;
         }
 
         // Default denial message.
         $this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'alert', array(
             'plugin' => 'BoostCake',
-            'class' => 'alert-info'
+            'class' => 'alert-danger'
         ));
 
         // Default deny
