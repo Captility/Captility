@@ -68,10 +68,7 @@ class AppController extends Controller
     {
         // Admin can access every action
         if (isset($user['status']) && $user['status'] === 'admin') {
-            $this->Session->setFlash(__('Sie bearbeiten diesen Inhalt als Administrator/Manager.'), 'alert', array(
-                'plugin' => 'BoostCake',
-                'class' => 'alert-info'
-            ));
+            $this->Session->setFlash(__('Sie bearbeiten diesen Inhalt als Administrator/Manager.'), 'flash/info');
             return true;
         }
 

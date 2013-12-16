@@ -24,9 +24,7 @@ class UsersController extends AppController {
         // A logged in user can't register or login. Others can!
         if (in_array($this->action, array('register', 'login'))) {
             if ($this->Auth->user()) {
-                $this->Session->setFlash(__('Sie sind bereits angemeldet.'), 'alert', array(
-                    'class' => 'alert alert-info', 'plugin' => 'BoostCake'
-                ));
+                $this->Session->setFlash(__('Sie sind bereits angemeldet.'), 'flash/info');
             }
             else {
                 $this->Auth->allow('register');
@@ -44,9 +42,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             if ($this->Auth->user()) {
 
-                $this->Session->setFlash(__('Sie sind bereits eingeloggt.'), 'default', array(
-                    'class' => 'alert alert-info', 'plugin' => 'BoostCake'
-                ));
+                $this->Session->setFlash(__('Sie sind bereits eingeloggt.'), 'flash/info');
 
                 return $this->redirect($this->Auth->redirect());
             }
@@ -57,15 +53,11 @@ class UsersController extends AppController {
             if ($this->Auth->login()) {
 
                 //TODO entfernen:
-                $this->Session->setFlash(__('Erfolgreich eingeloggt'), 'default', array(
-                    'class' => 'alert alert-success', 'plugin' => 'BoostCake'
-                ));
+                $this->Session->setFlash(__('Erfolgreich eingeloggt'), 'flash/success');
 
                 return $this->redirect($this->Auth->redirect());
             }
-            $this->Session->setFlash(__('Invalid username or password try again'), 'default', array(
-                'class' => 'alert alert-danger', 'plugin' => 'BoostCake'
-            ));
+            $this->Session->setFlash(__('Invalid username or password try again'), 'flash/danger');
         }
     }
 
@@ -73,9 +65,7 @@ class UsersController extends AppController {
 
         // If logged in -> logout and flash message.
         if ($this->Auth->user()) {
-            $this->Session->setFlash(__('Logged out.'), 'default', array(
-                'class' => 'alert alert-success', 'plugin' => 'BoostCake'
-            ));
+            $this->Session->setFlash(__('Erfolgreich ausgeloggt.'), 'flash/success');
         }
 
         return $this->redirect($this->Auth->logout());
@@ -88,23 +78,19 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('Der Benutzer wurde erfolgreich  erstellt.'), 'default', array('class' => 'alert alert-success', 'plugin' => 'BoostCake'));
+                $this->Session->setFlash(__('Der Benutzer wurde erfolgreich  erstellt.'), 'success');
 
                 if ($this->Auth->login()) {
 
-                    $this->Session->setFlash(__('Der Benutzer wurde erfolgreich  erstellt und eingeloggt.'), 'default', array(
-                        'class' => 'alert alert-success', 'plugin' => 'BoostCake'
-                    ));
+                    $this->Session->setFlash(__('Der Benutzer wurde erfolgreich erstellt und eingeloggt.'), 'flash/success');
 
                     return $this->redirect($this->Auth->redirect());
                 }
 
-                $this->Session->setFlash(__('Der Benutzer konnte nicht eingeloggt werden.'), 'default', array(
-                    'class' => 'alert alert-danger', 'plugin' => 'BoostCake'
-                ));
+                $this->Session->setFlash(__('Der Benutzer konnte nicht eingeloggt werden.'), 'flash/danger');
             }
             else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger', 'plugin' => 'BoostCake'));
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
             }
 
         }
@@ -122,9 +108,7 @@ class UsersController extends AppController {
                 return true;
             }
             else {
-                $this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'alert', array(
-                    'class' => 'alert alert-danger', 'plugin' => 'BoostCake'
-                ));
+                $this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'flash/danger');
             }
         }
 
@@ -168,11 +152,11 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved.'), 'alert', array('class' => 'alert alert-success', 'plugin' => 'BoostCake'));
+                $this->Session->setFlash(__('The user has been saved.'), 'flash/success');
                 return $this->redirect(array('action' => 'index'));
             }
             else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'alert', array('class' => 'alert alert-danger', 'plugin' => 'BoostCake'));
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
             }
         }
     }
@@ -190,11 +174,11 @@ class UsersController extends AppController {
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved.'), 'alert', array('class' => 'alert alert-success', 'plugin' => 'BoostCake'));
+                $this->Session->setFlash(__('The user has been saved.'), 'flash/success');
                 return $this->redirect(array('action' => 'index'));
             }
             else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'alert', array('class' => 'alert alert-danger', 'plugin' => 'BoostCake'));
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
             }
         }
         else {
@@ -217,10 +201,10 @@ class UsersController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->User->delete()) {
-            $this->Session->setFlash(__('The user has been deleted.'), 'alert', array('class' => 'alert alert-success', 'plugin' => 'BoostCake'));
+            $this->Session->setFlash(__('The user has been deleted.'), 'flash/success');
         }
         else {
-            $this->Session->setFlash(__('The user could not be deleted. Please, try again.'), 'alert', array('class' => 'alert alert-danger', 'plugin' => 'BoostCake'));
+            $this->Session->setFlash(__('The user could not be deleted. Please, try again.'), 'flash/danger');
         }
         return $this->redirect(array('action' => 'index'));
     }

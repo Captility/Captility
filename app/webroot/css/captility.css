@@ -260,9 +260,9 @@ h3 span.glyphicon {
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-  color: #31708f;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
 }
 #authMessage h4 {
   margin-top: 0;
@@ -279,8 +279,8 @@ h3 span.glyphicon {
   margin-top: 5px;
 }
 #authMessage hr {
-  border-top-color: #a6e1ec;
+  border-top-color: #e4b9c0;
 }
 #authMessage .alert-link {
-  color: #245269;
+  color: #843534;
 }
