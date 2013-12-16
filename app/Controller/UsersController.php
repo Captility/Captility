@@ -78,7 +78,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('Der Benutzer wurde erfolgreich  erstellt.'), 'success');
+                $this->Session->setFlash(__('Der Benutzer wurde erfolgreich  erstellt.'), 'flash/success');
 
                 if ($this->Auth->login()) {
 
