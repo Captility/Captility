@@ -18,7 +18,10 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        // Allow users to register and logout.
+
+
+        //TODO Don't allow everything
+        //$this->Auth->allow();
         $this->Auth->allow('logout');
 
         // A logged in user can't register or login. Others can!
@@ -31,6 +34,30 @@ class UsersController extends AppController {
                 $this->Auth->allow('login');
             }
         }
+    }
+
+    public function initAuth() {
+
+        $group = $this->User->Group;
+
+        //Allow admins to everything
+        $group->id = 1;
+        $this->Acl->allow($group, 'controllers');
+
+        //allow managers to posts and widgets
+        $group->id = 2;
+        $this->Acl->allow($group, 'controllers');
+        $this->Acl->deny($group, 'controllers/Users');
+        $this->Acl->deny($group, 'controllers/Groups');
+
+        //allow users to only add and edit on posts and widgets
+        $group->id = 3;
+        $this->Acl->deny($group, 'controllers');
+        $this->Acl->deny($group, 'controllers/Users');
+
+        //we add an exit to avoid an ugly "missing views" error message
+        echo "all done";
+        exit;
     }
 
 
@@ -57,7 +84,7 @@ class UsersController extends AppController {
 
                 return $this->redirect($this->Auth->redirect());
             }
-            $this->Session->setFlash(__('Invalid username or password try again'), 'flash/danger');
+            $this->Session->setFlash(__('Falscher Benutzername oder Passwort. Bitte versuchen Sie es erneut.'), 'flash/danger');
         }
     }
 
@@ -90,7 +117,7 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('Der Benutzer konnte nicht eingeloggt werden.'), 'flash/danger');
             }
             else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
+                $this->Session->setFlash(__('Der Benutzer konnte nicht erstellt werden.'), 'flash/danger');
             }
 
         }
@@ -159,6 +186,8 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
             }
         }
+        $groups = $this->User->Group->find('list');
+        $this->set(compact('groups'));
     }
 
     /**
@@ -185,6 +214,8 @@ class UsersController extends AppController {
             $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
             $this->request->data = $this->User->find('first', $options);
         }
+        $groups = $this->User->Group->find('list');
+        $this->set(compact('groups'));
     }
 
     /**

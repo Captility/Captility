@@ -116,11 +116,16 @@ CakePlugin::load('DebugKit');
  */
 CakePlugin::load('BoostCake');
 
-
 /**
  * Use Calendar Plugin.
  */
 CakePlugin::load('FullCalendar');
+
+/**
+ * Use AclExtras Plugin.
+ */
+CakePlugin::load('AclExtras');
+
 
 // TODO: Neue Breiche anpassen. Adminbereich admin Prefix als Ziel-Seite
 //Configure::write('Routing.prefixes', array('admin'));

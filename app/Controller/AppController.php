@@ -40,7 +40,7 @@ class AppController extends Controller
             'loginAction' => array('controller' => 'users', 'action' => 'login'),
             'loginRedirect' => array('controller' => 'calendar', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'calendar', 'action' => 'index'),
-            'authorize' => array('Controller'),
+            'authorize' => array('Controller', 'Actions' => array('actionPath' => 'controllers')),
             'authError' => 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen. Melden Sie sich an.')
     );
 
@@ -61,7 +61,11 @@ class AppController extends Controller
         $this->layout = 'captility';
 
         // Set public pages with: parent::beforeFilter();
-        $this->Auth->allow('index', 'view'); // ToDo Change Login/Public Pages Restricion
+        $this->Auth->allow('display');
+
+        if ($this->Auth->user()) {
+            $this->Auth->allow('index', 'view');
+        }
     }
 
     public function isAuthorized($user)

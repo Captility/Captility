@@ -8,8 +8,7 @@ App::uses('AuthComponent', 'Controller/Component');
  * @property Lecture $Lecture
  * @property Ticket $Ticket
  */
-class User extends AppModel
-{
+class User extends AppModel {
 
     /**
      * Primary key field
@@ -29,8 +28,7 @@ class User extends AppModel
     /**
      * Password hashing
      */
-    public function beforeSave($options = array())
-    {
+    public function beforeSave($options = array()) {
         $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
         return true;
     }
@@ -41,8 +39,7 @@ class User extends AppModel
      * @param $user
      * @return bool
      */
-    public function isHimself($user_id, $user)
-    {
+    public function isHimself($user_id, $user) {
         return $this->field('user_id', array('user_id' => $user_id, 'user_id' => $user)) === $user_id;
     }
 
@@ -80,7 +77,7 @@ class User extends AppModel
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'unique' => array(
-                'rule'    => 'isUnique',
+                'rule' => 'isUnique',
                 'message' => 'Dieser Nutzername wird bereits verwendet.'
             ),
         ),
@@ -102,14 +99,14 @@ class User extends AppModel
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'length' => array(
-                'rule'      => array('between', 3, 40), //Todo array('between', 8, 40),
-                'message'   => 'Das Passwort sollte aus 8 bis 40 Zeichen bestehen.',
+                'rule' => array('between', 3, 40), //Todo array('between', 8, 40),
+                'message' => 'Das Passwort sollte aus 8 bis 40 Zeichen bestehen.',
             ),
         ),
         // Password confirmation
         'repass' => array(
             'equaltofield' => array(
-                'rule' => array('equaltofield','password'),
+                'rule' => array('equaltofield', 'password'),
                 'message' => 'Die eingegebenen Passwörter sind verschieden.',
                 //'allowEmpty' => false,
                 'required' => true,
@@ -135,7 +132,7 @@ class User extends AppModel
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'unique' => array(
-                'rule'    => 'isUnique',
+                'rule' => 'isUnique',
                 'message' => 'Diese E-Mailadresse wird bereits genutzt.'
             )
         ),
@@ -150,10 +147,19 @@ class User extends AppModel
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        'status' => array(),
+        'group_id' => array(
+            'numeric' => array(
+                'rule' => array('numeric'),
+                'message' => 'Nutzergruppe setzten.',
+                //'allowEmpty' => false,
+                //'required' => true,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
         'created' => array(
-            'date' => array(
-                'rule' => array('date'),
+            'datetime' => array(
+                'rule' => array('datetime'),
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
                 //'required' => false,
@@ -162,8 +168,8 @@ class User extends AppModel
             ),
         ),
         'modified' => array(
-            'date' => array(
-                'rule' => array('date'),
+            'datetime' => array(
+                'rule' => array('datetime'),
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
                 //'required' => false,
@@ -179,11 +185,10 @@ class User extends AppModel
      * @param $otherfield
      * @return bool
      */
-    function equaltofield($check,$otherfield)
-    {
+    function equaltofield($check, $otherfield) {
         //get name of field
         $fname = '';
-        foreach ($check as $key => $value){
+        foreach ($check as $key => $value) {
             $fname = $key;
             break;
         }
@@ -191,6 +196,42 @@ class User extends AppModel
     }
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
+
+    public $belongsTo = array(
+        'Group' => array(
+            'className' => 'Group',
+            'foreignKey' => 'group_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        )
+    );
+
+    // Register as ARO (Access Request Object)
+    public $actsAs = array('Acl' => array('type' => 'requester'));
+
+    // Tie to group
+    public function parentNode() {
+        if (!$this->id && empty($this->data)) {
+            return null;
+        }
+        if (isset($this->data['User']['group_id'])) {
+            $groupId = $this->data['User']['group_id'];
+        }
+        else {
+            $groupId = $this->field('group_id');
+        }
+        if (!$groupId) {
+            return null;
+        }
+        else {
+            return array('Group' => array('group_id' => $groupId));
+        }
+    }
+
+    public function bindNode($user) {
+        return array('model' => 'Group', 'foreign_key' => $user['User']['group_id']);
+    }
 
     /**
      * hasMany associations
