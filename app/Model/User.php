@@ -73,17 +73,21 @@ class User extends AppModel
         'username' => array(
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
-                //'message' => 'Your custom message here',
+                'message' => 'Bitte geben Sie einen Nutzernamen an.',
                 'allowEmpty' => false,
                 'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'unique' => array(
+                'rule'    => 'isUnique',
+                'message' => 'Dieser Nutzername wird bereits verwendet.'
+            ),
         ),
         'password' => array(
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
-                //'message' => 'Your custom message here',
+                'message' => 'Bitte geben Sie ein Passwort ein.',
                 'allowEmpty' => false,
                 'required' => true,
                 //'last' => false, // Stop validation after this rule
@@ -91,7 +95,7 @@ class User extends AppModel
             ),
             'alphaNumeric' => array(
                 'rule' => array('alphaNumeric'),
-                //'message' => 'Your custom message here',
+                'message' => 'Nur Zahlen und Nummern erlaubt.',
                 //'allowEmpty' => false,
                 //'required' => false,
                 //'last' => false, // Stop validation after this rule
@@ -101,20 +105,24 @@ class User extends AppModel
         'email' => array(
             'email' => array(
                 'rule' => array('email'),
-                //'message' => 'Your custom message here',
+                'message' => 'Bitte geben Sie eine gültige Emailadresse an.',
                 //'allowEmpty' => false,
-                //'required' => false,
+                'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
-                //'message' => 'Your custom message here',
+                'message' => 'Bitte geben Sie eine gültige Emailadresse an.',
                 //'allowEmpty' => false,
-                //'required' => false,
+                'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'unique' => array(
+                'rule'    => 'isUnique',
+                'message' => 'Diese E-Mailadresse wird bereits genutzt.'
+            )
         ),
         'language' => array(
 
@@ -148,7 +156,34 @@ class User extends AppModel
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        'repass' => array(
+            'equaltofield' => array(
+                'rule' => array('equaltofield','password'),
+                'message' => 'Die eingegebenen Passwörter sind verschieden.',
+                //'allowEmpty' => false,
+                'required' => true,
+                //'last' => false, // Stop validation after this rule
+                'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        )
     );
+
+    /**
+     * Password confirmation.
+     * @param $check
+     * @param $otherfield
+     * @return bool
+     */
+    function equaltofield($check,$otherfield)
+    {
+        //get name of field
+        $fname = '';
+        foreach ($check as $key => $value){
+            $fname = $key;
+            break;
+        }
+        return $this->data[$this->name][$otherfield] === $this->data[$this->name][$fname];
+    }
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
 

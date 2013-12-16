@@ -83,6 +83,9 @@
                             <li>
                                 <?php echo $this->Html->link("Login", array('controller' => 'users', 'action' => 'login')); ?>
                             </li>
+                            <li>
+                                <?php echo $this->Html->link("Anmelden", array('controller' => 'users', 'action' => 'register')); ?>
+                            </li>
                         <?php endif; ?>
                     </ul>
                 </div>
