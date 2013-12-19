@@ -39,9 +39,9 @@ class AppController extends Controller
         'Auth' => array(
             'loginAction' => array('controller' => 'users', 'action' => 'login'),
             'loginRedirect' => array('controller' => 'calendar', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'calendar', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'index'),
             'authorize' => array('Controller', 'Actions' => array('actionPath' => 'controllers')),
-            'authError' => 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen. Melden Sie sich an.')
+            'authError' => 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.')
     );
 
 
@@ -77,10 +77,10 @@ class AppController extends Controller
         }
 
         // Default denial message.
-        $this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'alert', array(
+        /*$this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'alert', array(
             'plugin' => 'BoostCake',
             'class' => 'alert-danger'
-        ));
+        ));*/
 
         // Default deny
         return false;

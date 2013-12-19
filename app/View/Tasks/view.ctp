@@ -132,9 +132,9 @@
 			<td><?php echo $workflow['workflow_id']; ?></td>
 			<td><?php echo $workflow['name']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'workflows', 'action' => 'view', $workflow['id']), array('escape' => false)); ?>
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'workflows', 'action' => 'edit', $workflow['id']), array('escape' => false)); ?>
-				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'workflows', 'action' => 'delete', $workflow['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $workflow['id'])); ?>
+				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'workflows', 'action' => 'view', $workflow['workflow_id']), array('escape' => false)); ?>
+				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'workflows', 'action' => 'edit', $workflow['workflow_id']), array('escape' => false)); ?>
+				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'workflows', 'action' => 'delete', $workflow['workflow_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $workflow['workflow_id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>

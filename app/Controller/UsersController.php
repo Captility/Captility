@@ -15,7 +15,6 @@ class UsersController extends AppController {
      */
     public $components = array('Paginator');
 
-
     public function beforeFilter() {
         parent::beforeFilter();
 
@@ -36,6 +35,25 @@ class UsersController extends AppController {
         }
     }
 
+    public function isAuthorized($user) {
+
+
+        // A user can edit himself.
+        if (in_array($this->action, array('edit'))) {
+            $userId = $this->request->params['pass'][0];
+            if ($this->User->isHimself($userId, $user['user_id'])) {
+                return true;
+            }
+            else {
+                $this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'flash/danger');
+            }
+        }
+
+
+        return parent::isAuthorized($user);
+
+    }
+
     public function initAuth() {
 
         $group = $this->User->Group;
@@ -46,9 +64,18 @@ class UsersController extends AppController {
 
         //allow managers to posts and widgets
         $group->id = 2;
-        $this->Acl->allow($group, 'controllers');
+        $this->Acl->deny($group, 'controllers');
         $this->Acl->deny($group, 'controllers/Users');
         $this->Acl->deny($group, 'controllers/Groups');
+
+        $this->Acl->allow($group, 'controllers/Calendars');
+        $this->Acl->allow($group, 'controllers/Captures');
+        $this->Acl->allow($group, 'controllers/Events');
+        $this->Acl->allow($group, 'controllers/Hosts');
+        $this->Acl->allow($group, 'controllers/Lectures');
+        $this->Acl->allow($group, 'controllers/Tasks');
+        $this->Acl->allow($group, 'controllers/Tickets');
+        $this->Acl->allow($group, 'controllers/Workflows');
 
         //allow users to only add and edit on posts and widgets
         $group->id = 3;
@@ -104,6 +131,11 @@ class UsersController extends AppController {
 
         if ($this->request->is('post')) {
             $this->User->create();
+
+            // Ensure new User has minimal rights
+            $this->request->data['User']['status'] = 'user';
+            $this->request->data['User']['group_id'] = 3;
+
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('Der Benutzer wurde erfolgreich  erstellt.'), 'flash/success');
 
@@ -121,26 +153,6 @@ class UsersController extends AppController {
             }
 
         }
-
-    }
-
-
-    public function isAuthorized($user) {
-
-
-        // A user can edit himself.
-        if (in_array($this->action, array('edit'))) {
-            $userId = $this->request->params['pass'][0];
-            if ($this->User->isHimself($userId, $user['user_id'])) {
-                return true;
-            }
-            else {
-                $this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'flash/danger');
-            }
-        }
-
-
-        return parent::isAuthorized($user);
 
     }
 

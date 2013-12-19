@@ -65,6 +65,7 @@
                 <?php else:  // Cake/ Admin Layout?>
 
                     <?php echo $this->Session->flash(); ?>
+                    <?php echo $this->Session->flash('auth'); ?>
                     <?php echo $this->fetch('content'); ?>
 
                 <?php endif; ?>
