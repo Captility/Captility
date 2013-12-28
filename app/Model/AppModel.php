@@ -41,4 +41,34 @@ class AppModel extends Model {
 
         return preg_match('(WS\s?\d{4,4}\/?\d{2,4}|SS\s?\d{4,4})', $value);
     }
+
+
+    function equalToField($check, $otherfield) {
+        //get name of field
+        $fname = '';
+        foreach ($check as $key => $value) {
+            $fname = $key;
+            break;
+        }
+        return $this->data[$this->name][$otherfield] === $this->data[$this->name][$fname];
+    }
+
+    public function checkSupportedLanguage($check) {
+        // $data array is passed using the form field name as the key
+        $value = array_values($check);
+        $value = $value[0];
+
+        // if supported Languages are set...
+        if(Configure::check('Captility.supportedLanguages')){
+
+            // check foreach language if..
+            foreach (Configure::read('Captility.supportedLanguages') as $language) {
+
+                // selected language is supported
+                if($language == $value) return true;
+            }
+        }
+
+        return false;
+    }
 }

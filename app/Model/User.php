@@ -105,8 +105,8 @@ class User extends AppModel {
         ),
         // Password confirmation
         'repass' => array(
-            'equaltofield' => array(
-                'rule' => array('equaltofield', 'password'),
+            'equalToField' => array(
+                'rule' => array('equalToField', 'password'),
                 'message' => 'Die eingegebenen Passwörter sind verschieden.',
                 //'allowEmpty' => false,
                 'required' => true,
@@ -138,11 +138,11 @@ class User extends AppModel {
         ),
         'language' => array(
 
-            'alphaNumeric' => array(
-                'rule' => array('alphaNumeric'),
-                //'message' => 'Your custom message here',
-                //'allowEmpty' => false,
-                //'required' => false,
+            'checkSupportedLanguage' => array(
+                'rule' => array('checkSupportedLanguage'),
+                'message' => 'Diese Sprache wird nicht unterstützt.',
+                'allowEmpty' => false,
+                'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -178,22 +178,6 @@ class User extends AppModel {
             ),
         ),
     );
-
-    /**
-     * Password confirmation.
-     * @param $check
-     * @param $otherfield
-     * @return bool
-     */
-    function equaltofield($check, $otherfield) {
-        //get name of field
-        $fname = '';
-        foreach ($check as $key => $value) {
-            $fname = $key;
-            break;
-        }
-        return $this->data[$this->name][$otherfield] === $this->data[$this->name][$fname];
-    }
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
 

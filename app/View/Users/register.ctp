@@ -52,7 +52,7 @@
                 'label' => array('text' => 'Sprache',
                     'class' => 'col col-md-3 control-label'),
                 'placeholder' => 'de/en',
-                'options' => array(array('name' => 'Deutsch', 'value' => 'de'), array('name' => 'English', 'value' => 'en')),
+                'options' => array(array('name' => 'Deutsch', 'value' => 'deu'), array('name' => 'English', 'value' => 'eng')),
                 'selected' => 1,
             ));?>
 

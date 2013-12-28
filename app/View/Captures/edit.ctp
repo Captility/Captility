@@ -55,11 +55,21 @@
 					<?php echo $this->Form->input('link', array('class' => 'form-control', 'placeholder' => 'Link'));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('date', array('class' => 'form-control', 'placeholder' => 'Date'));?>
+					<?php echo $this->Form->input('date',
+                        array(  'dateFormat'=> 'DMY' ,
+                                'timeFormat'=> '24',
+                                'minYear' => date('Y')-2,
+                                'maxYear' => date('Y')+5,
+                                'class' => 'form-control form-control-date'));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('published', array('class' => 'form-control', 'placeholder' => 'Published'));?>
-				</div>
+					<?php echo $this->Form->input('published',
+                        array(  'dateFormat'=> 'DMY' ,
+                            'timeFormat'=> '24',
+                            'minYear' => date('Y')-2,
+                            'maxYear' => date('Y')+5,
+                            'class' => 'form-control form-control-date'));?>
+                </div>
 				<div class="form-group">
 					<?php echo $this->Form->input('lecture_id', array('class' => 'form-control', 'placeholder' => 'Lecture Id'));?>
 				</div>

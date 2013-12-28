@@ -142,6 +142,14 @@ fieldset[disabled] .btn-inverse.active {
   border-color: #999;
 }
 /* ###############################################
+ * ################# DATESELECT  #################
+ * ###############################################*/
+.form-control-date {
+  display: inline-block;
+  width: initial;
+  margin: 5px;
+}
+/* ###############################################
  * ################# WIDESCREEN  #################
  * ###############################################*/
 /** Changes when wide screen avaliable */

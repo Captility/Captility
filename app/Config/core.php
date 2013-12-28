@@ -270,6 +270,12 @@ Configure::write('Routing.prefixes', array('admin'));
 	date_default_timezone_set('Europe/Berlin');
 
 /**
+ * Set default Time for localisation.
+ */
+    Configure::write('Config.language','eng');
+    Configure::write('Captility.supportedLanguages', array('deu', 'eng'));
+
+/**
  *
  * Cache Engine Configuration
  * Default settings provided below
@@ -350,7 +356,7 @@ if (Configure::read('debug') > 0) {
 }
 
 // Prefix each application on the same server with a different string, to avoid Memcache and APC conflicts.
-$prefix = 'myapp_';
+$prefix = 'captility_';
 
 /**
  * Configure the cache used for general framework caching. Path information,

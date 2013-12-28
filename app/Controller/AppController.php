@@ -57,15 +57,30 @@ class AppController extends Controller
 //ToDo Remove or prcoess BootstrapCake template
     public function beforeFilter()
     {
+        // ###### LAYOUT ########
         // Set default layout for all views
         $this->layout = 'captility';
 
+        // ###### AUTHORIZE ########
         // Set public pages with: parent::beforeFilter();
         $this->Auth->allow('display');
 
         if ($this->Auth->user()) {
             $this->Auth->allow('index', 'view');
         }
+
+        // ###### LANGUAGE ########
+        if ($this->Session->check('Config.language')) {
+            Configure::write('Config.language', $this->Session->read('Config.language'));
+        }
+
+        // Time format DMY or MDY
+        if (Configure::read('Config.language') === 'deu') {
+            Configure::write('Captility.dateFormat', 'DMY');
+        } else {
+            Configure::write('Captility.dateFormat', 'MDY');
+        }
+
     }
 
     public function isAuthorized($user)

@@ -33,6 +33,7 @@ class UsersController extends AppController {
                 $this->Auth->allow('login');
             }
         }
+
     }
 
     public function isAuthorized($user) {
@@ -92,7 +93,7 @@ class UsersController extends AppController {
 
         $this->set('headline', 'Login');
 
-        //Alredy logged in
+        //Already logged in
         if ($this->request->is('post')) {
             if ($this->Auth->user()) {
 
@@ -108,6 +109,9 @@ class UsersController extends AppController {
 
                 //TODO entfernen:
                 $this->Session->setFlash(__('Erfolgreich eingeloggt'), 'flash/success');
+
+                // Set Language after login
+                $this->Session->write('Config.language', $this->Session->read('Auth.User.language'));
 
                 return $this->redirect($this->Auth->redirect());
             }
@@ -142,6 +146,9 @@ class UsersController extends AppController {
                 if ($this->Auth->login()) {
 
                     $this->Session->setFlash(__('Der Benutzer wurde erfolgreich erstellt und eingeloggt.'), 'flash/success');
+
+                    // Set Language after login
+                    $this->Session->write('Config.language', $this->Session->read('Auth.User.language'));
 
                     return $this->redirect($this->Auth->redirect());
                 }
@@ -192,6 +199,10 @@ class UsersController extends AppController {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('The user has been saved.'), 'flash/success');
+
+                // Set Language after login
+                $this->Session->write('Config.language', $this->request->data['User']['language']);
+
                 return $this->redirect(array('action' => 'index'));
             }
             else {

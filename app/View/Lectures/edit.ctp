@@ -55,11 +55,19 @@
 					<?php echo $this->Form->input('comment', array('class' => 'form-control', 'placeholder' => 'Comment'));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('start', array('class' => 'form-control', 'placeholder' => 'Start'));?>
-				</div>
+					<?php echo $this->Form->input('start', array(  'dateFormat'=> Configure::read('Captility.dateFormat') ,
+                        'timeFormat'=> '24',
+                        'minYear' => date('Y')-2,
+                        'maxYear' => date('Y')+5,
+                        'class' => 'form-control form-control-date'));?>
+                </div>
 				<div class="form-group">
-					<?php echo $this->Form->input('end', array('class' => 'form-control', 'placeholder' => 'End'));?>
-				</div>
+					<?php echo $this->Form->input('end', array(  'dateFormat'=> Configure::read('Captility.dateFormat') ,
+                        'timeFormat'=> '24',
+                        'minYear' => date('Y')-2,
+                        'maxYear' => date('Y')+5,
+                        'class' => 'form-control form-control-date'));?>
+                </div>
 				<div class="form-group">
 					<?php echo $this->Form->input('user_id', array('class' => 'form-control', 'placeholder' => 'User Id'));?>
 				</div>
