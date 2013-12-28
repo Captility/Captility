@@ -21,7 +21,7 @@ class UsersController extends AppController {
 
         //TODO Don't allow everything
         //$this->Auth->allow();
-        $this->Auth->allow('logout');
+        $this->Auth->allow('logout', 'changePassword');
 
         // A logged in user can't register or login. Others can!
         if (in_array($this->action, array('register', 'login'))) {
@@ -133,14 +133,21 @@ class UsersController extends AppController {
 
         $this->set('headline', 'Anmeldung');
 
-        if ($this->request->is('post')) {
+        if ($this->request->is('post') || $this->request->is('put')) {
+
+            // Prepare Pojo for Save
             $this->User->create();
+
+            //
+            $this->User->Behaviors->attach('Passwordable', array('require' => true, 'confirm' => true));
 
             // Ensure new User has minimal rights
             $this->request->data['User']['status'] = 'user';
             $this->request->data['User']['group_id'] = 3;
+            $this->request->data['User']['password'] = $this->request->data['User']['pwd'];
 
             if ($this->User->save($this->request->data)) {
+
                 $this->Session->setFlash(__('Der Benutzer wurde erfolgreich  erstellt.'), 'flash/success');
 
                 if ($this->Auth->login()) {
@@ -161,6 +168,34 @@ class UsersController extends AppController {
 
         }
 
+        unset($this->request->data['User']['pwd']);
+        unset($this->request->data['User']['pwd_confirm']);
+
+    }
+
+
+    public function changePassword() {
+
+
+        $this->set('headline', 'Change Password');
+
+        if ($this->Auth->user() && $this->request->is(array('post', 'put'))) {
+
+            $this->User->Behaviors->attach('Passwordable', array('require' => true, 'confirm' => true, 'current' => true));
+
+            $this->request->data['User']['user_id'] = $this->Session->read('Auth.User.user_id');
+
+            if ($this->User->save($this->request->data, true, array('user_id', 'pwd', 'pwd_confirm', 'pwd_current'))) {
+                $this->Session->setFlash(__('The user has been saved.'), 'flash/success');
+                return $this->redirect(array('action' => 'index'));
+            }
+            else {
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
+            }
+        }
+
+        unset($this->request->data['User']['pwd']);
+        unset($this->request->data['User']['pwd_confirm']);
     }
 
 
@@ -195,8 +230,11 @@ class UsersController extends AppController {
      * @return void
      */
     public function add() {
-        if ($this->request->is('post')) {
+        if ($this->request->is('post') || $this->request->is('put')) {
             $this->User->create();
+
+            $this->User->Behaviors->attach('Passwordable', array('require' => true, 'confirm' => true));
+
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('The user has been saved.'), 'flash/success');
 
@@ -225,6 +263,8 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->request->is(array('post', 'put'))) {
+            $this->User->Behaviors->attach('Passwordable', array('require' => false, 'confirm' => false));
+
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('The user has been saved.'), 'flash/success');
                 return $this->redirect(array('action' => 'index'));

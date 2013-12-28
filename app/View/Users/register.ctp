@@ -34,17 +34,21 @@
                     'class' => 'col col-md-3 control-label'),
                 'placeholder' => 'E-Mailadresse',
             )); ?>
-            <?php echo $this->Form->input('User.password', array(
+            <?php echo $this->Form->input('User.pwd', array(
                 'label' => array('text' => 'Passwort',
-                    'class' => 'col col-md-3 control-label'),
+                'class' => 'col col-md-3 control-label'),
                 'placeholder' => 'Passwort eingeben',
                 'type' => 'password',
+                'value'=>'',
+                'autocomplete'=>'off'
             )); ?>
-            <?php echo $this->Form->input('User.repass', array(
+            <?php echo $this->Form->input('User.pwd_confirm', array(
                 'label' => array('text' => false,
                     'class' => 'col col-md-3 control-label'),
                 'placeholder' => 'Passwort erneut eingeben',
                 'type' => 'password',
+                'value'=>'',
+                'autocomplete'=>'off'
             )); ?>
 
             <?php /*echo $this->Form->label('User.language', 'Sprache', 'col col-md-3 control-label'); */ ?>

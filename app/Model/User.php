@@ -30,10 +30,14 @@ class User extends AppModel {
      */
     public function beforeSave($options = array()) {
 
-        if(isset($this->data['User']['password'])){
-            $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
-        }
-        return true;
+        parent::beforeSave($options);
+
+        //Already DONE by PasswordableBehavior:
+        /*// manual hashing                                                                                           */
+        /*if (isset($this->data['User']['password'])) {                                                               */
+        /*    $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);             */
+        /*}                                                                                                           */
+        /*return true;                                                                                                */
     }
 
     /**
@@ -102,21 +106,30 @@ class User extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'length' => array(
-                'rule' => array('between', 3, 40), //Todo array('between', 8, 40),
-                'message' => 'Das Passwort sollte aus 8 bis 40 Zeichen bestehen.',
+                'rule' => array('between', 3, 20), //Todo array('between', 8, 40),
+                'message' => 'Das Passwort sollte aus 8 bis 20 Zeichen bestehen.',
+            ),
+        ),
+        /*'pwd' => array(
+            'length' => array(
+                'rule' => array('between', 3, 20), //Todo array('between', 8, 40),
+                'message' => 'Bitte geben Sie ein Passwort ein.',
+                //'allowEmpty' => false,
+                //'required' => true,
+                'message' => 'Das Passwort sollte aus 8 bis 20 Zeichen bestehen.',
             ),
         ),
         // Password confirmation
-        'repass' => array(
+        'pwd_confirm' => array(
             'equalToField' => array(
-                'rule' => array('equalToField', 'password'),
+                'rule' => array('equalToField', 'pwd'),
                 'message' => 'Die eingegebenen Passwörter sind verschieden.',
                 //'allowEmpty' => false,
-                'required' => true,
+                //'required' => true,
                 //'last' => false, // Stop validation after this rule
-                'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-        ),
+        ),*/
         'email' => array(
             'email' => array(
                 'rule' => array('email'),
