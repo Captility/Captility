@@ -29,7 +29,10 @@ class User extends AppModel {
      * Password hashing
      */
     public function beforeSave($options = array()) {
-        $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+
+        if(isset($this->data['User']['password'])){
+            $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+        }
         return true;
     }
 
@@ -86,7 +89,7 @@ class User extends AppModel {
                 'rule' => array('notEmpty'),
                 'message' => 'Bitte geben Sie ein Passwort ein.',
                 'allowEmpty' => false,
-                'required' => true,
+                'required' => false,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
