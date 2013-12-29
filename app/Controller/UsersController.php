@@ -16,17 +16,20 @@ class UsersController extends AppController {
     public $components = array('Paginator');
 
     public function beforeFilter() {
+
         parent::beforeFilter();
 
 
-        //TODO Don't allow everything
+        //Allow everything for debugging:
         //$this->Auth->allow();
-        $this->Auth->allow('logout', 'changePassword');
+
+        $this->Auth->allow('initAuth'); //ToDo AclActions entfernen
 
         // A logged in user can't register or login. Others can!
-        if (in_array($this->action, array('register', 'login'))) {
+        if (in_array($this->action, array('register', 'login', 'logout', 'changePassword'))) {
             if ($this->Auth->user()) {
-                $this->Session->setFlash(__('Sie sind bereits angemeldet.'), 'flash/info');
+                $this->Auth->allow('logout');
+                $this->Auth->allow('changePassword');
             }
             else {
                 $this->Auth->allow('register');
@@ -45,16 +48,14 @@ class UsersController extends AppController {
             if ($this->User->isHimself($userId, $user['user_id'])) {
                 return true;
             }
-            else {
-                $this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'flash/danger');
-            }
-        }
 
+        }
 
         return parent::isAuthorized($user);
 
     }
 
+    //TODO: Remove ACL Action
     public function initAuth() {
 
         $group = $this->User->Group;
@@ -77,6 +78,7 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Tasks');
         $this->Acl->allow($group, 'controllers/Tickets');
         $this->Acl->allow($group, 'controllers/Workflows');
+
 
         //allow users to only add and edit on posts and widgets
         $group->id = 3;
@@ -176,12 +178,12 @@ class UsersController extends AppController {
 
     public function changePassword() {
 
-
+        //Todo change and check access rights and logged out users !!!!!
         $this->set('headline', 'Change Password');
 
         if ($this->Auth->user() && $this->request->is(array('post', 'put'))) {
 
-            $this->User->Behaviors->attach('Passwordable', array('require' => true, 'confirm' => true, 'current' => true));
+            $this->User->Behaviors->attach('Passwordable', array('require' => true, 'confirm' => true, 'current' => true, 'allowSame' => false));
 
             $this->request->data['User']['user_id'] = $this->Session->read('Auth.User.user_id');
 

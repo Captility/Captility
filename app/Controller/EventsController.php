@@ -46,6 +46,9 @@ class EventsController extends AppController {
  * @return void
  */
 	public function add() {
+
+        pr($this->request->data);
+
 		if ($this->request->is('post')) {
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {

@@ -10,7 +10,7 @@
                             data-target="#bs-example-navbar-collapse-1"><span
                             class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
                             class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <?php echo $this->Html->link("Captility", array('controller' => 'calendars', 'action' => 'index'),
+                    <?php echo $this->Html->link("Captility", array('controller' => 'users', 'action' => 'login'),
                         array('class' => 'navbar-brand')); //ToDo Variable für Titel benutzen ?>
                 </div>
 
@@ -65,6 +65,9 @@
                                     <a href="#">Profil bearbeiten</a>
                                 </li>
                                 <li>
+                                    <?php echo $this->Html->link("Passwort ändern", array('controller' => 'users', 'action' => 'changePassword')); ?>
+                                </li>
+                                <li>
                                     <a href="#">Benachrichtigungen</a>
                                 </li>
                                 <li class="divider">
@@ -80,11 +83,12 @@
                             </ul>
                         </li>
                         <?php else: ?>
-                            <li>
-                                <?php echo $this->Html->link("Login", array('controller' => 'users', 'action' => 'login')); ?>
-                            </li>
+
                             <li>
                                 <?php echo $this->Html->link("Anmelden", array('controller' => 'users', 'action' => 'register')); ?>
+                            </li>
+                            <li>
+                                <?php echo $this->Html->link("Login", array('controller' => 'users', 'action' => 'login')); ?>
                             </li>
                         <?php endif; ?>
                     </ul>

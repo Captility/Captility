@@ -40,6 +40,8 @@ class CapturesController extends AppController {
 		$this->set('capture', $this->Capture->find('first', $options));
 	}
 
+    
+
 /**
  * add method
  *
@@ -47,7 +49,9 @@ class CapturesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+
 			$this->Capture->create();
+
 			if ($this->Capture->save($this->request->data)) {
 				$this->Session->setFlash(__('The capture has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));

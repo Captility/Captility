@@ -29,8 +29,7 @@ App::uses('Controller', 'Controller');
  * @package        app.Controller
  * @link        http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller
-{
+class AppController extends Controller {
 
     // Use DebugKit by sharing Component Toolbar of Plugin DebugKit
     public $components = array('DebugKit.Toolbar',
@@ -39,7 +38,7 @@ class AppController extends Controller
         'Auth' => array(
             'loginAction' => array('controller' => 'users', 'action' => 'login'),
             'loginRedirect' => array('controller' => 'calendar', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'users', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
             'authorize' => array('Controller', 'Actions' => array('actionPath' => 'controllers')),
             'authError' => 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.')
     );
@@ -55,8 +54,7 @@ class AppController extends Controller
 
 
 //ToDo Remove or prcoess BootstrapCake template
-    public function beforeFilter()
-    {
+    public function beforeFilter() {
         // ###### LAYOUT ########
         // Set default layout for all views
         $this->layout = 'captility';
@@ -77,28 +75,33 @@ class AppController extends Controller
         // Time format DMY or MDY
         if (Configure::read('Config.language') === 'deu') {
             Configure::write('Captility.dateFormat', 'DMY');
-        } else {
+        }
+        else {
             Configure::write('Captility.dateFormat', 'MDY');
         }
-
     }
 
-    public function isAuthorized($user)
-    {
-        // Admin can access every action
-        if (isset($user['status']) && $user['status'] === 'admin') {
-            $this->Session->setFlash(__('Sie bearbeiten diesen Inhalt als Administrator/Manager.'), 'flash/info');
-            return true;
-        }
+    public function isAuthorized($user) {
 
-        // Default denial message.
-        /*$this->Session->setFlash(__('Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.'), 'alert', array(
-            'plugin' => 'BoostCake',
-            'class' => 'alert-danger'
-        ));*/
+        // Inform over admin/manager actions in AppController
+        $this->informOverAdminAction($user);
 
         // Default deny
         return false;
+    }
+
+    // Inform over admin/manager actions in AppController
+    public function informOverAdminAction($user) {
+
+
+        if (isset($user['Group']['name']) && $user['Group']['name'] === 'admin') {
+            $this->Session->setFlash(__('Sie bearbeiten diesen Inhalt als Administrator'), 'flash/info');
+            //return true;
+        }
+
+        if (isset($user['Group']['name']) && $user['Group']['name'] === 'manager') {
+            $this->Session->setFlash(__('Sie bearbeiten diesen Inhalt als Manager'), 'flash/info');
+        }
     }
 
 
