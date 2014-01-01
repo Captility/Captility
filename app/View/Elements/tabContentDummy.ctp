@@ -1,9 +1,7 @@
 <!-- Element::Content-Pane -->
 
-<div class="row clearfix">
 
-    <div class="tab-content">
-        <div class="tab-pane active" id="a">
+        <div class="tab-pane" id="a">
             <table class="table">
                 <thead>
                 <tr>
@@ -143,15 +141,5 @@
             </ul>
 
         </div>
-        <div class="tab-pane" id="b">
-
-        </div>
-        <div class="tab-pane" id="c">
-
-        </div>
-    </div>
-
-    <!-- /tabs -->
-</div>
 
 <!-- End::Content-Pane -->

@@ -1,5 +1,6 @@
 <?php $titleDescription = __d('project_name', 'Captility - Aufzeichnungsplaner'); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <?php echo $this->Html->charset(); ?>
@@ -14,17 +15,21 @@
     echo $this->Html->css('captility.css'); //ToDo Add minified Version
 
     // jQuery Link
-    echo $this->Html->script('jquery.min.js');
-    echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'); // ToDo Add local jQuery
+    //echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'); // ToDo Add local jQuery
+    echo $this->Html->script('jquery/jquery-1.10.2.min.js');
+    echo $this->Html->script('jquery/jquery-ui-1.10.3.custom.min.js');
     echo $this->Html->script('bootstrap.min.js');
-    echo $this->Html->script('bootstrap-datepicker.js');
-    echo $this->Html->script('captility.js');?>
+    echo $this->Html->script('bootstrap-datepicker.min.js');
+    echo $this->Html->script('fullcalendar/fullcalendar.min.js');
+    //echo $this->Html->script('jquery/jquery.qtip-1.0.0-rc3.min.js');
+
+    echo $this->Html->script('captility.min.js');?>
 
     <?php //ToDo Check this IE8 support ?>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
     <!-- Fav and touch icons -->
@@ -34,13 +39,13 @@
     <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="img/favicon.png">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <?php echo $this->Element('navigation'); ?>
+<?php echo $this->Element('navigation'); ?>
 
-    <div class="container container-lower">
+<div class="container container-lower">
 
     <?php echo $this->Element('breadcrumbs'); ?>
 
@@ -62,7 +67,7 @@
                         <?php echo $this->Element('sideTickets');?>
                     </div>
 
-                <?php else:  // Cake/ Admin Layout?>
+                <?php else: // Cake/ Admin Layout?>
 
                     <?php echo $this->Session->flash(); ?>
                     <?php echo $this->Session->flash('auth'); ?>
@@ -75,7 +80,5 @@
     </div>
 
 
-
-
-  </body>
+</body>
 </html>
