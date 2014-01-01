@@ -54,6 +54,7 @@ class CapturesController extends AppController {
             // EVENT
             $this->request->data['Event']['event_type_id'] = 1;
             $this->request->data['Event']['title'] = $this->request->data['Capture']['name'];
+            $this->request->data['Event']['details'] = $this->request->data['Capture']['comment'];
             $this->request->data['Event']['start'] = $this->request->data['Capture']['date'];
 
             // Endtime
