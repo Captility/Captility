@@ -18,6 +18,7 @@
     //echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'); // ToDo Add local jQuery
     echo $this->Html->script('jquery/jquery-1.10.2.min.js');
     echo $this->Html->script('jquery/jquery-ui-1.10.3.custom.min.js');
+    echo $this->Html->script('jquery/jquery.qtip.min.js');
     echo $this->Html->script('bootstrap.min.js');
     echo $this->Html->script('bootstrap-datepicker.min.js');
     echo $this->Html->script('fullcalendar/fullcalendar.min.js');

@@ -42,7 +42,7 @@
       <option name="outputFromStdout" value="true" />
       <option name="passParentEnvs" value="true" />
       <option name="program" value="/usr/bin/closurecompiler.jar" />
-      <option name="scopeName" value="Project Files" />
+      <option name="scopeName" value="Default" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="$PROJECT_DIR$/app/webroot/js" />
       <envs />

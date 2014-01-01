@@ -66,6 +66,7 @@
                             'min' => '00'),
                     ));?>
             </div>
+
             <div class="form-group">
                 <?php echo $this->Form->input('published',
                     array('dateFormat' => Configure::read('Captility.dateFormat'),

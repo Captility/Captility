@@ -18,18 +18,17 @@
  */
 $(document).ready(function () {
 
-        if ($('#SideCalendar').length) {
-            $('#SideCalendar').datepicker({
-                format: "dd/mm/yyyy",
-                weekStart: 1,
-                todayBtn: true,
-                language: "de",
-                orientation: "top auto",
-                daysOfWeekDisabled: "0,6",
-                calendarWeeks: true,
-                todayHighlight: true
-            })
-        }
+        $('#SideCalendar, .datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            weekStart: 1,
+            todayBtn: true,
+            language: "de",
+            orientation: "top auto",
+            daysOfWeekDisabled: "0,6",
+            calendarWeeks: true,
+            todayHighlight: true
+        })
+
     }
 );
 
@@ -42,7 +41,37 @@ $(document).ready(function () {
  */
 $(document).ready(function () {
 
-    // page is now ready, initialize the calendar...
+
+
+    //Tooltips qtip2
+    var tooltip = $('<div/>').qtip({
+        id: 'calendar',
+        prerender: true,
+        content: {
+            text: ' ',
+            title: {
+                button: true
+            }
+        },
+        position: {
+            my: 'top center',
+            at: ' center',
+            target: 'mouse',
+            viewport: $('#calendar'),
+            adjust: {
+                mouse: false,
+                scroll: false
+            }
+        },
+        show: false,
+        hide: {
+            event: 'unfocus click mouseleave'
+        },
+        style: 'qtip-bootstrap'
+    }).qtip('api');
+
+
+// page is now ready, initialize the calendar...
     $('#calendar').fullCalendar({
 
         //View
@@ -96,35 +125,29 @@ $(document).ready(function () {
             day: 'Tag'
         },
 
-
-        mouseover: function (event, jsEvent, view) {
-
-
-            $(this).css('background-color', 'red');
-
-        },
-
         //Events
         events: "/captility/events/feed",
-        eventRender: function (event, element) {
-            /*element.qtip({
-                content: event.details,
-                position: {
-                    target: 'mouse',
-                    adjust: {
-                        x: 10,
-                        y: -5
-                    }
-                },
-                style: {
-                    name: 'light',
-                    tip: 'leftTop'
-                }
-            });*/
+
+        eventMouseover: function (data, event, view) {
+            var content = '<p><b>Start:</b> ' + data.start + '<br />' +
+                (data.end && '<p><b>End:</b> ' + data.end + '</p>' || '');
+
+            tooltip.set({
+                'content.text': content,
+                'content.title': data.title
+            })
+                .reposition(event).show(event);
         },
-        eventDragStart: function (event) {
-            /*$(this).qtip("destroy");*/
+        eventResizeStart: function () {
+            tooltip.hide()
         },
+        eventDragStart: function () {
+            tooltip.hide()
+        },
+        viewDisplay: function () {
+            tooltip.hide()
+        },
+
         eventDrop: function (event) {
             var startdate = new Date(event.start);
             var startyear = startdate.getFullYear();
@@ -147,9 +170,6 @@ $(document).ready(function () {
             $.post(url, function (data) {
             });
         },
-        eventResizeStart: function (event) {
-            /*$(this).qtip("destroy");*/
-        },
         eventResize: function (event) {
             var startdate = new Date(event.start);
             var startyear = startdate.getFullYear();
@@ -169,4 +189,5 @@ $(document).ready(function () {
         }
     })
 
-});
+})
+;
