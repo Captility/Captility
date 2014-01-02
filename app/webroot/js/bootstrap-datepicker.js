@@ -1356,7 +1356,7 @@
             }
             return date.join('');
         },
-        headTemplate: '<thead><tr><th class="prev">&#32;</th><th colspan="6" class="datepicker-switch"></th><th class="next">&#32;</th></tr></thead>',
+        headTemplate: '<thead><tr><th class="prev">&#32;</th><th colspan="5" class="datepicker-switch"></th><th class="next">&#32;</th></tr></thead>',
         contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>', footTemplate: '<tfoot><tr><th colspan="7" class="today"></th></tr><tr><th colspan="7" class="clear"></th></tr></tfoot>'};
     DPGlobal.template = '<div class="datepicker">' +
         '<div class="datepicker-days">' +

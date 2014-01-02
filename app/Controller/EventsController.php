@@ -45,9 +45,10 @@ class EventsController extends AppController {
                 'start'=>$event['Event']['start'],
                 'end' => $end,
                 'allDay' => $allday,
-                'url' => Router::url('/') . 'full_calendar/events/view/'.$event['Event']['id'],
+                //'url' => Router::url('/') . '/captures/view/'.$event['Capture']['capture_id'],
                 'details' => $event['Event']['details'],
-                'className' => $event['EventType']['color']
+                'className' => $event['EventType']['color'],
+                'capture_id' => $event['Capture']['capture_id']
             );
         }
         $this->set("json", json_encode($data));

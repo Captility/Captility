@@ -76,18 +76,17 @@ $(document).ready(function () {
 
         //View
         header: {
-            left: 'title',
-            center: '',
-            right: 'today agendaDay,agendaWeek,month prev,next'
+            left: 'prev,today,next',
+            center: 'title',
+            right: 'agendaDay,agendaWeek,month'
         },
         defaultView: 'agendaWeek',
         weekMode: 'variable',
         allDaySlot: false, // Show allday-slot
-        weekends: false, // Show Weekends
-        aspectRatio: 1.475, //Dimension of Calendar
-        editable: true,
-        selectable: true,
-
+        weekends: true, // Show Weekends
+        firstDay: 1, //0 = So, 1 = Mo...
+        hiddenDays: [ 0, 6 ], // No So
+        aspectRatio: 1.375, //Dimension of Calendar
 
         //TimeFormat - German
         firstHour: 8,
@@ -97,12 +96,12 @@ $(document).ready(function () {
         formatDate: 'dd.MM.yyyy HH:mm:ss',
         titleFormat: {
             month: 'MMMM yyyy',                             // September 2009
-            week: "d.[MM.][yyyy]{ '&#8212;' d. MMMM yyyy}", // Sep 7 - 13 2009
+            week: "dd.[ MMM.][yy]{ '&#8211;' dd. MMMM yyyy}", // Sep 7 - 13 2009
             day: 'dddd, dd.MM.yyyy'                  // Tuesday, Sep 8, 2009
         },
         columnFormat: {
             month: 'ddd',    // Mon
-            week: 'dddd - d.M.', // Mon 9/7
+            week: "ddd - d.M.", // Mon 9/7
             day: 'dddd d.M.'  // Monday 9/7
         },
         timeFormat: "HH:mm{ — HH:mm}' Uhr'", // Determines the time-text that will be displayed on each event.
@@ -128,9 +127,16 @@ $(document).ready(function () {
         //Events
         events: "/captility/events/feed",
 
-        eventMouseover: function (data, event, view) {
+
+        //Interaction
+        editable: true,
+        selectable: true,
+
+        eventClick: function (data, event, view) {
             var content = '<p><b>Start:</b> ' + data.start + '<br />' +
-                (data.end && '<p><b>End:</b> ' + data.end + '</p>' || '');
+                (data.end && '<p><b>End:</b> ' + data.end + '</p>' || '') +
+                '<a class="btn-m btn-sm btn-default pull-right" name="Bearbeiten" href="/captility/captures/edit/' + data.capture_id + '">Bearbeiten</a>' +
+                '<a class="btn-m btn-sm btn-default pull-right" name="Anzeigen" href="/captility/captures/view/' + data.capture_id + '">Anzeigen</a>';
 
             tooltip.set({
                 'content.text': content,

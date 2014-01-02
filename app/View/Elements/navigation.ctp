@@ -45,11 +45,11 @@
                         </li>
                     </ul>
 
-                    <form class="navbar-form navbar-right" role="search">
+                    <form class="navbar-form navbar-right navbar-search" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control btn-inverse">
                         </div>
-                        <button type="submit" class="btn btn-inverse">Suche</button>
+                        <button type="submit" class="btn btn-inverse navbar-btn-search">Suche</button>
                     </form>
 
                     <ul class="nav navbar-nav navbar-right">

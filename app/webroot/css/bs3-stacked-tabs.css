@@ -31,7 +31,8 @@
 .tabs-below > .nav-tabs > .active a,
 .tabs-below > .nav-tabs > .active a:hover,
 .tabs-below > .nav-tabs > .active a:focus {
-  border-color: transparent #ddd #ddd #ddd;
+  border-color: transparent #ddd #ddd #ddd
+      ;
 }
 .tabs-left > .nav-tabs > li,
 .tabs-right > .nav-tabs > li {
@@ -58,12 +59,14 @@
 }
 .tabs-left > .nav-tabs > li > a:hover,
 .tabs-left > .nav-tabs > li > a:focus {
-  border-color: #eee #ddd #eee #eee;
+  border-color: #eee #ddd #eee #eee
+    ;
 }
 .tabs-left > .nav-tabs > .active a,
 .tabs-left > .nav-tabs > .active a:hover,
 .tabs-left > .nav-tabs > .active a:focus {
-  border-color: #ddd transparent #ddd #ddd;
+  border-color: #ddd transparent #ddd #ddd
+    ;
   *border-right-color: #fff;
 }
 .tabs-right > .nav-tabs {
@@ -79,11 +82,13 @@
 }
 .tabs-right > .nav-tabs > li > a:hover,
 .tabs-right > .nav-tabs > li > a:focus {
-  border-color: #eee #eee #eee #ddd;
+  border-color: #eee #eee #eee #ddd
+    ;
 }
 .tabs-right > .nav-tabs > .active a,
 .tabs-right > .nav-tabs > .active a:hover,
 .tabs-right > .nav-tabs > .active a:focus {
-  border-color: #ddd #ddd #ddd transparent;
+  border-color: #ddd #ddd #ddd transparent
+    ;
   *border-left-color: #fff;
 }

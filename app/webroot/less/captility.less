@@ -8,6 +8,7 @@
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
 @import "bootstrap/alerts";
+@import "bootstrap/buttons";
 
 @navbar-height: 50px;
 @navbar-margin: 25px;
@@ -46,16 +47,23 @@
   margin-top: @navbar-height + @navbar-margin;
 }
 
+/** Navbar Search Alignment */
+.navbar-search{
+
+  padding-right: 0;
+}
+
+.navbar-btn-search{
+
+  font-family: @font-family-nav;
+}
+
 /* ###############################################
  * ################# COMPONENTS  #################
  * ###############################################*/
 
 /** Inverse Buttons. */
 @import "button-inverse";
-
-
-/** Fullcalendar */
-@import "fullcalendar";
 
 /** Qtip2 **/
 @import "jquery.qtip.less";
@@ -80,6 +88,7 @@
 /* Content Tabs arragement: vertically: */
 @import "bs3-stacked-tabs";
 
+
 /* Padding between Tabs and Content */
   .content-pane {
 
@@ -91,6 +100,11 @@
     border-left: 1px dashed #555;
 
   }
+}
+
+.tabs-left {
+
+  margin-bottom: 25px;
 }
 
 /**
@@ -123,4 +137,46 @@ h3 span.glyphicon {
 #authMessage {
   .alert;
   .alert-danger;
+}
+
+/* ###############################################
+ * ################ FULLCALENDAR  ################
+ * ###############################################*/
+/** Fullcalendar */
+@import "fullcalendar";
+
+#calendar{
+
+  margin-top: 5px;
+}
+
+
+.fc-state-default {
+/* non-theme */
+  border: 1px solid;
+  .btn-default;
+}
+
+.fc-header-title h2 {
+  font-size: 21px;
+  opacity: 0.75;
+}
+
+.fc-button-today{
+  /*.btn-primary;
+  text-shadow: none;*/
+}
+
+
+.fc-state-disabled{
+  opacity: 1;
+  color: #aaa;
+}
+
+.fc-widget-header{
+  font-weight: normal;
+}
+
+.fc-event:hover {
+  opacity: 0.75;
 }
