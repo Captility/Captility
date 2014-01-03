@@ -44,7 +44,7 @@
 
 <body>
 
-<?php echo $this->Element('navigation'); ?>
+<?php echo $this->Element('/navigation/navigation'); ?>
 
 <div class="container container-lower">
 

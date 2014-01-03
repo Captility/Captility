@@ -918,8 +918,8 @@ fieldset[disabled] .btn-inverse.active {
   line-height: 18px;
   color: #000000;
   text-shadow: 0 1px 0 #ffffff;
-  opacity: 0.2;
-  filter: alpha(opacity=20);
+  opacity: 0.75;
+  filter: alpha(opacity=75);
 }
 .qtip-bootstrap .qtip-icon .ui-icon:hover {
   /* Taken from Bootstrap .close:hover */
@@ -1123,7 +1123,7 @@ h3 span.glyphicon {
 /* ###############################################
  * ################ FULLCALENDAR  ################
  * ###############################################*/
-/** Fullcalendar */
+/** Fullcalendar Adjustments */
 /*!
  * FullCalendar v1.6.3 Stylesheet
  * Docs & License: http://arshaw.com/fullcalendar/
@@ -1227,7 +1227,7 @@ html .fc,
 }
 .fc-cell-overlay {
   /* semi-transparent rectangle while dragging */
-  background: #ace8d1;
+  background: #d8d8d8;
   opacity: .3;
   filter: alpha(opacity=30);
   /* for IE */
@@ -1661,7 +1661,7 @@ fieldset[disabled] .fc-state-default.active {
 }
 .fc-button-today {
   /*.btn-primary;
-  text-shadow: none;*/
+text-shadow: none;*/
 }
 .fc-state-disabled {
   opacity: 1;
@@ -1672,4 +1672,181 @@ fieldset[disabled] .fc-state-default.active {
 }
 .fc-event:hover {
   opacity: 0.75;
+}
+/*.fc-first th.fc-widget-header {
+
+  border-top-left-radius: @border-radius-base;
+  border-top-right-radius: @border-radius-base;
+}*/
+.fc-first {
+  border-top-left-radius: 5px !important;
+}
+.fc-last {
+  border-top-right-radius: 5px !important;
+}
+.fc-col0 {
+  border-top-left-radius: 0px !important;
+}
+#calendar .fc-event {
+  -webkit-box-shadow: 2px 2px 3px #aaaaaa;
+  box-shadow: 2px 2px 3px #aaaaaa;
+}
+.fc-event-time {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.25em;
+  display: inherit;
+}
+/** Define Event Colors **/
+.eventColorBlue {
+  border: 1px solid #3a87ad;
+  background-color: #3a87ad;
+  color: #ffffff;
+}
+.eventColorBlack {
+  color: #ffffff;
+  background-color: #202020;
+}
+.eventColorWhite {
+  color: #333333;
+  background-color: #fdfdfd;
+}
+.eventColorOrange {
+  color: #ffffff;
+  background-color: #ff7700;
+}
+.eventColorRed {
+  color: #ffffff;
+  background-color: #fd3e20;
+}
+.eventColorYellow {
+  color: #666;
+  background-color: #ffeb00;
+}
+.eventColorYellow > .fc-event-inner .fc-event-time {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.eventColorPurple {
+  color: #ffffff;
+  background-color: #5f43a8;
+}
+.eventColorGreen {
+  color: #ffffff;
+  background-color: #009406;
+}
+.eventColorIndigo {
+  color: #ffffff;
+  background-color: #009b9b;
+}
+.eventColorMint {
+  color: #ffffff;
+  background-color: #579b00;
+}
+.eventColorPink {
+  color: #ffffff;
+  background-color: #ff38d7;
+}
+.qtip-eventColorBlue {
+  border-color: #3a87ad;
+}
+.qtip-eventColorBlue > .qtip-titlebar,
+.qtip-eventColorBlue .qtip-titlebar a.qtip-icon span.ui-icon {
+  border: 1px solid #3a87ad;
+  background-color: #3a87ad;
+  color: #ffffff;
+  border-color: #3a87ad;
+}
+.qtip-eventColorBlack {
+  border-color: #202020;
+}
+.qtip-eventColorBlack > .qtip-titlebar,
+.qtip-eventColorBlack .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #ffffff;
+  background-color: #202020;
+  border-color: #202020;
+}
+.qtip-eventColorWhite {
+  border-color: #fdfdfd;
+}
+.qtip-eventColorWhite > .qtip-titlebar,
+.qtip-eventColorWhite .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #333333;
+  background-color: #fdfdfd;
+  border-color: #fdfdfd;
+}
+.qtip-eventColorOrange {
+  border-color: #ff7700;
+}
+.qtip-eventColorOrange > .qtip-titlebar,
+.qtip-eventColorOrange .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #ffffff;
+  background-color: #ff7700;
+  border-color: #ff7700;
+}
+.qtip-eventColorRed {
+  border-color: #fd3e20;
+}
+.qtip-eventColorRed > .qtip-titlebar,
+.qtip-eventColorRed .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #ffffff;
+  background-color: #fd3e20;
+  border-color: #fd3e20;
+}
+.qtip-eventColorYellow {
+  border-color: #ffeb00;
+}
+.qtip-eventColorYellow > .qtip-titlebar,
+.qtip-eventColorYellow .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #666;
+  background-color: #ffeb00;
+  border-color: #ffeb00;
+}
+.qtip-eventColorYellow > .qtip-titlebar > .fc-event-inner .fc-event-time,
+.qtip-eventColorYellow .qtip-titlebar a.qtip-icon span.ui-icon > .fc-event-inner .fc-event-time {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.qtip-eventColorPurple {
+  border-color: #5f43a8;
+}
+.qtip-eventColorPurple > .qtip-titlebar,
+.qtip-eventColorPurple .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #ffffff;
+  background-color: #5f43a8;
+  border-color: #5f43a8;
+}
+.qtip-eventColorGreen {
+  border-color: #009406;
+}
+.qtip-eventColorGreen > .qtip-titlebar,
+.qtip-eventColorGreen .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #ffffff;
+  background-color: #009406;
+  border-color: #009406;
+}
+.qtip-eventColorIndigo {
+  border-color: #009b9b;
+}
+.qtip-eventColorIndigo > .qtip-titlebar,
+.qtip-eventColorIndigo .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #ffffff;
+  background-color: #009b9b;
+  border-color: #009b9b;
+}
+.qtip-eventColorMint {
+  border-color: #579b00;
+}
+.qtip-eventColorMint > .qtip-titlebar,
+.qtip-eventColorMint .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #ffffff;
+  background-color: #579b00;
+  border-color: #579b00;
+}
+.qtip-eventColorPink {
+  border-color: #ff38d7;
+}
+.qtip-eventColorPink > .qtip-titlebar,
+.qtip-eventColorPink .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #ffffff;
+  background-color: #ff38d7;
+  border-color: #ff38d7;
 }

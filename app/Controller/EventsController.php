@@ -47,7 +47,7 @@ class EventsController extends AppController {
                 'allDay' => $allday,
                 //'url' => Router::url('/') . '/captures/view/'.$event['Capture']['capture_id'],
                 'details' => $event['Event']['details'],
-                'className' => $event['EventType']['color'],
+                'className' => 'eventColor'.$event['EventType']['color'],
                 'capture_id' => $event['Capture']['capture_id']
             );
         }

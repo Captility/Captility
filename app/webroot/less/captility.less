@@ -48,12 +48,12 @@
 }
 
 /** Navbar Search Alignment */
-.navbar-search{
+.navbar-search {
 
   padding-right: 0;
 }
 
-.navbar-btn-search{
+.navbar-btn-search {
 
   font-family: @font-family-nav;
 }
@@ -72,7 +72,7 @@
  * ################# DATESELECT  #################
  * ###############################################*/
 
-.form-control-date{
+.form-control-date {
 
   display: inline-block;
   width: initial;
@@ -142,14 +142,13 @@ h3 span.glyphicon {
 /* ###############################################
  * ################ FULLCALENDAR  ################
  * ###############################################*/
-/** Fullcalendar */
+/** Fullcalendar Adjustments */
 @import "fullcalendar";
 
-#calendar{
+#calendar {
 
   margin-top: 5px;
 }
-
 
 .fc-state-default {
 /* non-theme */
@@ -162,21 +161,239 @@ h3 span.glyphicon {
   opacity: 0.75;
 }
 
-.fc-button-today{
-  /*.btn-primary;
-  text-shadow: none;*/
+.fc-button-today {
+/*.btn-primary;
+text-shadow: none;*/
 }
 
-
-.fc-state-disabled{
+.fc-state-disabled {
   opacity: 1;
   color: #aaa;
 }
 
-.fc-widget-header{
+.fc-widget-header {
   font-weight: normal;
 }
 
 .fc-event:hover {
   opacity: 0.75;
+}
+
+/*.fc-first th.fc-widget-header {
+
+  border-top-left-radius: @border-radius-base;
+  border-top-right-radius: @border-radius-base;
+}*/
+
+.fc-first {
+  border-top-left-radius: 5px !important;
+}
+
+.fc-last {
+  border-top-right-radius: 5px !important;
+}
+
+.fc-col0 {
+  border-top-left-radius: 0px !important;
+}
+
+#calendar .fc-event {
+  .box-shadow(2px 2px 3px #aaa);
+}
+
+.fc-event-time {
+
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.25em;
+  display: inherit;
+}
+
+/** Define Event Colors **/
+@eventColorTextLight: #fff;
+@eventColorTextDark: #333;
+@eventColorBlue: #3a87ad;
+@eventColorBlack: #202020;
+@eventColorWhite: #FDFDFD;
+@eventColorOrange: #f70;
+@eventColorRed: #FD3E20;
+@eventColorYellow: #FFEB00;
+@eventColorPurple: #5F43A8;
+@eventColorGreen: #009406;
+@eventColorIndigo: #009B9B;
+@eventColorMint: #579B00;
+@eventColorPink: #FF38D7;
+
+.eventColorBlue {
+
+  border: 1px solid @eventColorBlue;
+  background-color: @eventColorBlue;
+  color: @eventColorTextLight;
+}
+
+.eventColorBlack {
+
+  color: @eventColorTextLight;
+  background-color: @eventColorBlack;
+}
+
+.eventColorWhite {
+
+  color: @eventColorTextDark;
+  background-color: @eventColorWhite;
+}
+
+.eventColorOrange {
+
+  color: @eventColorTextLight;
+  background-color: @eventColorOrange;
+}
+
+.eventColorRed {
+
+  color: @eventColorTextLight;
+  background-color: @eventColorRed;
+}
+
+.eventColorYellow {
+  color: #666;
+  background-color: @eventColorYellow;
+  >.fc-event-inner .fc-event-time {
+    background-color: rgba(255,255,255, 0.5);
+  }
+}
+
+.eventColorPurple {
+  color: @eventColorTextLight;
+  background-color: @eventColorPurple;
+}
+
+.eventColorGreen {
+  color: @eventColorTextLight;
+  background-color: @eventColorGreen;
+}
+
+.eventColorIndigo {
+  color: @eventColorTextLight;
+  background-color: @eventColorIndigo;
+}
+
+.eventColorMint {
+  color: @eventColorTextLight;
+  background-color: @eventColorMint;
+}
+
+.eventColorPink {
+  color: @eventColorTextLight;
+  background-color: @eventColorPink;
+}
+
+.qtip-eventColorBlue {
+
+  border-color: @eventColorBlue;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorBlue;
+    border-color: @eventColorBlue;
+  }
+}
+
+.qtip-eventColorBlack {
+
+  border-color: @eventColorBlack;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorBlack;
+    border-color: @eventColorBlack;
+  }
+}
+
+.qtip-eventColorWhite {
+
+  border-color: @eventColorWhite;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorWhite;
+    border-color: @eventColorWhite;
+  }
+}
+
+.qtip-eventColorOrange {
+
+  border-color: @eventColorOrange;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorOrange;
+    border-color: @eventColorOrange;
+  }
+}
+
+.qtip-eventColorRed {
+
+  border-color: @eventColorRed;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorRed;
+    border-color: @eventColorRed;
+  }
+}
+
+.qtip-eventColorYellow {
+
+  border-color: @eventColorYellow;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorYellow;
+    border-color: @eventColorYellow;
+  }
+}
+
+.qtip-eventColorPurple {
+
+  border-color: @eventColorPurple;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorPurple;
+    border-color: @eventColorPurple;
+  }
+}
+
+.qtip-eventColorGreen {
+
+  border-color: @eventColorGreen;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorGreen;
+    border-color: @eventColorGreen;
+  }
+}
+
+.qtip-eventColorIndigo {
+
+  border-color: @eventColorIndigo;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorIndigo;
+    border-color: @eventColorIndigo;
+  }
+}
+
+.qtip-eventColorMint {
+
+  border-color: @eventColorMint;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorMint;
+    border-color: @eventColorMint;
+  }
+}
+
+.qtip-eventColorPink {
+
+  border-color: @eventColorPink;
+
+  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+    .eventColorPink;
+    border-color: @eventColorPink;
+  }
 }

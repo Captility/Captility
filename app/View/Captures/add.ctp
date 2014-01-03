@@ -48,6 +48,12 @@
                 <?php echo $this->Form->input('status', array('class' => 'form-control', 'placeholder' => 'Status'));?>
             </div>
             <div class="form-group">
+                <?php echo $this->Form->input('Event.event_type_id', array('class' => 'form-control', 'placeholder' => 'Event Type Id'));?>
+            </div>
+
+            <? pr($eventTypes); ?>
+
+            <div class="form-group">
                 <?php echo $this->Form->input('link', array('class' => 'form-control', 'placeholder' => 'Link'));?>
             </div>
             <div class="form-group">
@@ -67,7 +73,7 @@
                     ));?>
             </div>
 
-            <div class="form-group">
+            <?/*<div class="form-group">
                 <?php echo $this->Form->input('published',
                     array('dateFormat' => Configure::read('Captility.dateFormat'),
                         'timeFormat' => '24',
@@ -75,16 +81,16 @@
                         'maxYear' => date('Y') + 5,
                         'interval' => 5,
                         'class' => 'form-control form-control-date'));?>
-            </div>
+            </div> */?>
             <div class="form-group">
                 <?php echo $this->Form->input('lecture_id', array('class' => 'form-control', 'placeholder' => 'Lecture Id'));?>
             </div>
             <div class="form-group">
                 <?php echo $this->Form->input('user_id', array('class' => 'form-control', 'placeholder' => 'User Id'));?>
             </div>
-            <div class="form-group">
-                <?php echo $this->Form->input('event_id', array('class' => 'form-control', 'placeholder' => 'Event Id'));?>
-            </div>
+            <?/*<div class="form-group">
+                <?php echo $this->Form->input('event_id', array('class' => 'form-control', 'placeholder' => 'Event Id'));?><!--
+            </div>*/ ?>
             <div class="form-group">
                 <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary')); ?>
             </div>

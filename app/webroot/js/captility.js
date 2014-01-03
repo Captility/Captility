@@ -6,8 +6,34 @@
 //############################################### GENERAL ##############################################################
 //######################################################################################################################
 /**
- * Utilities
+ * Variables & Utilities;
  */
+$mobileMaxWidth = 992;
+
+
+//######################################################################################################################
+//############################################ RESPONSIVENESS ##########################################################
+//######################################################################################################################
+
+/*var thisScreenWidth = 0, thisScreenHeight = 0;
+function viewScreenSize() {
+    if (typeof (window.innerWidth) === 'number') {
+        //Non-IE
+        thisScreenWidth = window.innerWidth;
+        thisScreenHeight = window.innerHeight;
+    } else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+        //IE 6+ in 'standards compliant mode'
+        thisScreenWidth = document.documentElement.clientWidth;
+        thisScreenHeight = document.documentElement.clientHeight;
+    } else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
+        //IE 4 compatible
+        thisScreenWidth = document.body.clientWidth;
+        thisScreenHeight = document.body.clientHeight;
+        screenWidth = thisScreenWidth;
+    }
+    // screenSize = div in page footer
+    $("#screenSize").html(thisScreenWidth + "x" + thisScreenHeight);
+}*/
 
 
 //######################################################################################################################
@@ -36,12 +62,15 @@ $(document).ready(function () {
 //######################################################################################################################
 //############################################ FULL CALENDAR ###########################################################
 //######################################################################################################################
+
+
 /**
  * Activate FullCalendar
  */
 $(document).ready(function () {
 
 
+    // ######################################### INIT QTIPS2  ##########################################################
 
     //Tooltips qtip2
     var tooltip = $('<div/>').qtip({
@@ -71,16 +100,42 @@ $(document).ready(function () {
     }).qtip('api');
 
 
-// page is now ready, initialize the calendar...
+    // ##################################### Responsive Calendar  ######################################################
+    // Check if full Calendar or small View is needed:
+
+    //Header for Week/Start/ Production (Landing page)
+    $mediaQueryHeader = {
+        left: 'title',
+        center: '',
+        right: 'prev,today,next'
+    };
+
+    // Header for Calendar (big version)
+    if (window.location.href.indexOf("full_calendar") > -1) {
+        $mediaQueryHeader.left = 'agendaDay,agendaWeek,month';
+        $mediaQueryHeader.center = 'title';
+        $mediaQueryHeader.right = 'prev,today,next';
+    }
+
+    //Initial Start View
+    $mediaQueryView = 'agendaWeek';
+    if ($(document).width() < $mobileMaxWidth) {
+        $mediaQueryView = 'agendaDay';
+    }
+
+    // Later changes on resize
+    $(window).bind('resize', function () {
+        if ($(document).width() < $mobileMaxWidth) $('#calendar').fullCalendar('changeView', 'agendaDay');
+        else $('#calendar').fullCalendar('changeView', 'agendaWeek');
+    });
+
+    // ######################################## INIT CALENDAR ##########################################################
+
     $('#calendar').fullCalendar({
 
         //View
-        header: {
-            left: 'prev,today,next',
-            center: 'title',
-            right: 'agendaDay,agendaWeek,month'
-        },
-        defaultView: 'agendaWeek',
+        header: $mediaQueryHeader,
+        defaultView: $mediaQueryView,
         weekMode: 'variable',
         allDaySlot: false, // Show allday-slot
         weekends: true, // Show Weekends
@@ -104,7 +159,7 @@ $(document).ready(function () {
             week: "ddd - d.M.", // Mon 9/7
             day: 'dddd d.M.'  // Monday 9/7
         },
-        timeFormat: "HH:mm{ — HH:mm}' Uhr'", // Determines the time-text that will be displayed on each event.
+        timeFormat: "HH:mm{ – HH:mm}' Uhr'", // Determines the time-text that will be displayed on each event.
 
 
         //German
@@ -125,8 +180,13 @@ $(document).ready(function () {
         },
 
         //Events
-        events: "/captility/events/feed",
-
+        eventSources: [
+            {
+                url: "/captility/events/feed"
+                //color: 'yellow',   // an option!
+                //textColor: 'black' // an option!
+            }
+        ],
 
         //Interaction
         editable: true,
@@ -140,7 +200,8 @@ $(document).ready(function () {
 
             tooltip.set({
                 'content.text': content,
-                'content.title': data.title
+                'content.title': data.title,
+                'style.classes': 'qtip-bootstrap ' + 'qtip-' + data.className
             })
                 .reposition(event).show(event);
         },

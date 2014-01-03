@@ -23,10 +23,11 @@
 						'Pink' => 'Pink',
 						'Purple' => 'Purple',
 						'Orange' => 'Orange',
+                        'Indigo' => 'Indigo',
 						'Green' => 'Green',
-						'Gray' => 'Gray',
+						'Mint' => 'Mint',
 						'Black' => 'Black',
-						'Brown' => 'Brown'
+						'White' => 'White'
 					)));
 
 	?>
