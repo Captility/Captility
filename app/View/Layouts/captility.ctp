@@ -46,40 +46,54 @@
 
 <?php echo $this->Element('/navigation/navigation'); ?>
 
-<div class="container container-lower">
+<div class="container container-wrapper">
+    <div class="container container-lower">
 
-    <?php echo $this->Element('breadcrumbs'); ?>
+        <?php echo $this->Element('breadcrumbs'); ?>
 
-    <!-- Start::Content -->
-    <div class="row clearfix">
-        <div class="col-md-12 column">
+        <!-- Start::Content -->
+        <div class="row clearfix">
+            <div class="col-md-12 column">
 
-            <div class="row clearfix">
+                <div class="row clearfix">
 
-                <?php if (isset($headline)): //Layout in Tabs with Sidebar ?>
-                    <div class="col-md-12 column">
-                        <?php echo $this->Element('headline');?>
-                    </div>
+                    <?php if (isset($sidebar) && isset($headline)): //Layout in Tabs with Sidebar ?>
+                        <div class="col-md-12 column">
+                            <?php echo $this->Element('headline');?>
+                        </div>
 
-                    <?php echo $this->fetch('content'); ?>
+                        <?php echo $this->fetch('content'); ?>
 
-                    <div class="col-md-3 column">
-                        <?php echo $this->Element('sideCalendar');?>
-                        <?php echo $this->Element('sideTickets');?>
-                    </div>
+                        <div class="col-md-3 column">
+                            <?php echo $this->Element('sideCalendar');?>
+                            <?php echo $this->Element('sideTickets');?>
+                        </div>
 
-                <?php else: // Cake/ Admin Layout?>
 
-                    <?php echo $this->Session->flash(); ?>
-                    <?php echo $this->Session->flash('auth'); ?>
-                    <?php echo $this->fetch('content'); ?>
+                    <?php else: ?>
 
-                <?php endif; ?>
+                        <?php if (isset($headline)): //Layout without Sidebar ?>
 
+                            <div class="col-md-12 column">
+                                <?php echo $this->Element('headline');?>
+                            </div>
+
+                            <?php echo $this->fetch('content'); ?>
+
+
+                        <?php else: // Cake/ Admin Layout?>
+                            <?php echo $this->Session->flash(); ?>
+                            <?php echo $this->Session->flash('auth'); ?>
+                            <?php echo $this->fetch('content'); ?>
+
+                        <?php endif; ?>
+
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
-
+</div>
 
 </body>
 </html>

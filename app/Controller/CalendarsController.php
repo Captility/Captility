@@ -23,8 +23,12 @@ class CalendarsController extends AppController {
         parent::beforeFilter();
 
 
-        //TODO Don't allow everything
-        $this->Auth->allow('myLectures');
+        if (in_array($this->action, array('dashboard', 'myLectures'))) {
+            if ($this->Auth->user()) {
+                $this->Auth->allow('dashboard');
+                $this->Auth->allow('myLectures');
+            }
+        }
 
     }
 
@@ -36,7 +40,21 @@ class CalendarsController extends AppController {
     public function index() {
 
 
-        $this->set('headline', 'Wochenübersicht');
+        $this->set('headline', __('Kalender'));
+
+    }
+
+    /**
+     * index method
+     *
+     * @return void
+     */
+    public function dashboard() {
+
+
+        $this->set('headline', __('Pinnwand – Wochenüberblick'));
+        $this->set('leftTabs', true);
+        $this->set('sidebar', true);
     }
 
 

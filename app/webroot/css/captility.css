@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Istok+Web:400,700);
+@import "bootstrap-colorpalette.css";
 /* Captility base css. LESS compiled to CSS.
  * @author Daniel Deppe
  */
@@ -487,6 +488,33 @@ input[type="button"].btn-block {
 /* ###############################################
  * ############ BASE GRID LAYOUT  ################
  * ###############################################*/
+@media (min-width: 992px) {
+  html,
+  body {
+    height: 100%;
+    background-color: #f0f0f0;
+  }
+  .container-wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    background-color: #fff;
+    padding: 0;
+    margin: 0 auto;
+    box-shadow: 0px 0px 5px #aaa;
+    /*border-radius: @border-radius-base;*/
+  }
+}
+@media (min-width: 992px) {
+  .container-wrapper {
+    width: 992px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-wrapper {
+    width: 1200px;
+  }
+}
 /** Headline Adjustment */
 @media (min-width: 992px) {
   .page-header {
@@ -513,6 +541,16 @@ input[type="button"].btn-block {
 }
 .navbar-btn-search {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.dropdown-menu > li.list-info {
+  position: relative;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 7px;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dddddd;
 }
 /* ###############################################
  * ################# COMPONENTS  #################
@@ -1121,6 +1159,9 @@ h3 span.glyphicon {
   color: #843534;
 }
 /* ###############################################
+ * ############### COLOR PALETTE  ################
+ * ###############################################*/
+/* ###############################################
  * ################ FULLCALENDAR  ################
  * ###############################################*/
 /** Fullcalendar Adjustments */
@@ -1699,59 +1740,57 @@ text-shadow: none;*/
 }
 /** Define Event Colors **/
 .eventColorBlue {
-  border: 1px solid #3a87ad;
   background-color: #3a87ad;
   color: #ffffff;
 }
 .eventColorBlack {
   color: #ffffff;
-  background-color: #202020;
+  background-color: #202020 !important;
 }
 .eventColorWhite {
   color: #333333;
-  background-color: #fdfdfd;
+  background-color: #fdfdfd !important;
 }
 .eventColorOrange {
   color: #ffffff;
-  background-color: #ff7700;
+  background-color: #ff7700 !important;
 }
 .eventColorRed {
   color: #ffffff;
-  background-color: #fd3e20;
+  background-color: #fd3e20 !important;
 }
 .eventColorYellow {
   color: #666;
-  background-color: #ffeb00;
+  background-color: #ffeb00 !important;
 }
 .eventColorYellow > .fc-event-inner .fc-event-time {
   background-color: rgba(255, 255, 255, 0.5);
 }
 .eventColorPurple {
   color: #ffffff;
-  background-color: #5f43a8;
+  background-color: #5f43a8 !important;
 }
 .eventColorGreen {
   color: #ffffff;
-  background-color: #009406;
+  background-color: #009406 !important;
 }
 .eventColorIndigo {
   color: #ffffff;
-  background-color: #009b9b;
+  background-color: #009b9b !important;
 }
 .eventColorMint {
   color: #ffffff;
-  background-color: #579b00;
+  background-color: #579b00 !important;
 }
 .eventColorPink {
   color: #ffffff;
-  background-color: #ff38d7;
+  background-color: #ff38d7 !important;
 }
 .qtip-eventColorBlue {
   border-color: #3a87ad;
 }
 .qtip-eventColorBlue > .qtip-titlebar,
 .qtip-eventColorBlue .qtip-titlebar a.qtip-icon span.ui-icon {
-  border: 1px solid #3a87ad;
   background-color: #3a87ad;
   color: #ffffff;
   border-color: #3a87ad;
@@ -1762,7 +1801,7 @@ text-shadow: none;*/
 .qtip-eventColorBlack > .qtip-titlebar,
 .qtip-eventColorBlack .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #ffffff;
-  background-color: #202020;
+  background-color: #202020 !important;
   border-color: #202020;
 }
 .qtip-eventColorWhite {
@@ -1771,7 +1810,7 @@ text-shadow: none;*/
 .qtip-eventColorWhite > .qtip-titlebar,
 .qtip-eventColorWhite .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #333333;
-  background-color: #fdfdfd;
+  background-color: #fdfdfd !important;
   border-color: #fdfdfd;
 }
 .qtip-eventColorOrange {
@@ -1780,7 +1819,7 @@ text-shadow: none;*/
 .qtip-eventColorOrange > .qtip-titlebar,
 .qtip-eventColorOrange .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #ffffff;
-  background-color: #ff7700;
+  background-color: #ff7700 !important;
   border-color: #ff7700;
 }
 .qtip-eventColorRed {
@@ -1789,7 +1828,7 @@ text-shadow: none;*/
 .qtip-eventColorRed > .qtip-titlebar,
 .qtip-eventColorRed .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #ffffff;
-  background-color: #fd3e20;
+  background-color: #fd3e20 !important;
   border-color: #fd3e20;
 }
 .qtip-eventColorYellow {
@@ -1798,7 +1837,7 @@ text-shadow: none;*/
 .qtip-eventColorYellow > .qtip-titlebar,
 .qtip-eventColorYellow .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #666;
-  background-color: #ffeb00;
+  background-color: #ffeb00 !important;
   border-color: #ffeb00;
 }
 .qtip-eventColorYellow > .qtip-titlebar > .fc-event-inner .fc-event-time,
@@ -1811,7 +1850,7 @@ text-shadow: none;*/
 .qtip-eventColorPurple > .qtip-titlebar,
 .qtip-eventColorPurple .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #ffffff;
-  background-color: #5f43a8;
+  background-color: #5f43a8 !important;
   border-color: #5f43a8;
 }
 .qtip-eventColorGreen {
@@ -1820,7 +1859,7 @@ text-shadow: none;*/
 .qtip-eventColorGreen > .qtip-titlebar,
 .qtip-eventColorGreen .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #ffffff;
-  background-color: #009406;
+  background-color: #009406 !important;
   border-color: #009406;
 }
 .qtip-eventColorIndigo {
@@ -1829,7 +1868,7 @@ text-shadow: none;*/
 .qtip-eventColorIndigo > .qtip-titlebar,
 .qtip-eventColorIndigo .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #ffffff;
-  background-color: #009b9b;
+  background-color: #009b9b !important;
   border-color: #009b9b;
 }
 .qtip-eventColorMint {
@@ -1838,7 +1877,7 @@ text-shadow: none;*/
 .qtip-eventColorMint > .qtip-titlebar,
 .qtip-eventColorMint .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #ffffff;
-  background-color: #579b00;
+  background-color: #579b00 !important;
   border-color: #579b00;
 }
 .qtip-eventColorPink {
@@ -1847,6 +1886,6 @@ text-shadow: none;*/
 .qtip-eventColorPink > .qtip-titlebar,
 .qtip-eventColorPink .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #ffffff;
-  background-color: #ff38d7;
+  background-color: #ff38d7 !important;
   border-color: #ff38d7;
 }

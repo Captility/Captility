@@ -73,6 +73,7 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Calendars');
         $this->Acl->allow($group, 'controllers/Captures');
         $this->Acl->allow($group, 'controllers/Events');
+        $this->Acl->allow($group, 'controllers/EventTypes');
         $this->Acl->allow($group, 'controllers/Hosts');
         $this->Acl->allow($group, 'controllers/Lectures');
         $this->Acl->allow($group, 'controllers/Tasks');

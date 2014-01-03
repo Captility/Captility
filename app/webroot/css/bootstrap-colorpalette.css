@@ -1,0 +1,50 @@
+.bootstrap-colorpalette {
+    padding-left:4px;
+    padding-right:4px;
+    white-space: normal;
+    line-height:1;
+}
+
+.bootstrap-colorpalette div {
+    line-height:0;
+}
+
+.btn-color {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #000;
+    margin: 0;
+    padding: 0;
+    border-radius: 4px;
+    opacity: 0.75;
+    background-color: #3a87ad;
+}
+
+.bootstrap-colorpalette .btn-color {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #000;
+    margin: 0;
+    padding: 0;
+    border-radius: 4px;
+    margin-right: 3px;
+    opacity: 0.6;
+    vertical-align: bottom;
+    background-color: #3a87ad;
+}
+
+
+.bootstrap-colorpalette .btn-color:hover {
+
+    opacity: 1;
+}
+
+.selected-color{
+
+    background-color: #fafafa !important;
+}
+
+.input-group-glyphicon{
+
+    top: 0px;
+}

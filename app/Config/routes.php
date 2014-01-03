@@ -26,12 +26,13 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	#Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
-    Router::connect('/', array('controller' => 'calendars', 'action' => 'index'));
+    Router::connect('/', array('controller' => 'calendars', 'action' => 'dashboard'));
 
 /**
  * Calendars
  */
 Router::connect('/calendar', array('controller' => 'calendars', 'action' => 'index'));
+Router::connect('/dashboard', array('controller' => 'calendars', 'action' => 'dashboard'));
 
 /**
  * Authentification

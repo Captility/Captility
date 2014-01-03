@@ -16,24 +16,24 @@ $mobileMaxWidth = 992;
 //######################################################################################################################
 
 /*var thisScreenWidth = 0, thisScreenHeight = 0;
-function viewScreenSize() {
-    if (typeof (window.innerWidth) === 'number') {
-        //Non-IE
-        thisScreenWidth = window.innerWidth;
-        thisScreenHeight = window.innerHeight;
-    } else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
-        //IE 6+ in 'standards compliant mode'
-        thisScreenWidth = document.documentElement.clientWidth;
-        thisScreenHeight = document.documentElement.clientHeight;
-    } else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
-        //IE 4 compatible
-        thisScreenWidth = document.body.clientWidth;
-        thisScreenHeight = document.body.clientHeight;
-        screenWidth = thisScreenWidth;
-    }
-    // screenSize = div in page footer
-    $("#screenSize").html(thisScreenWidth + "x" + thisScreenHeight);
-}*/
+ function viewScreenSize() {
+ if (typeof (window.innerWidth) === 'number') {
+ //Non-IE
+ thisScreenWidth = window.innerWidth;
+ thisScreenHeight = window.innerHeight;
+ } else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+ //IE 6+ in 'standards compliant mode'
+ thisScreenWidth = document.documentElement.clientWidth;
+ thisScreenHeight = document.documentElement.clientHeight;
+ } else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
+ //IE 4 compatible
+ thisScreenWidth = document.body.clientWidth;
+ thisScreenHeight = document.body.clientHeight;
+ screenWidth = thisScreenWidth;
+ }
+ // screenSize = div in page footer
+ $("#screenSize").html(thisScreenWidth + "x" + thisScreenHeight);
+ }*/
 
 
 //######################################################################################################################
@@ -109,16 +109,19 @@ $(document).ready(function () {
         center: '',
         right: 'prev,today,next'
     };
+    $mediaQueryView = 'agendaWeek';
+    $hiddenDays = [ 0, 6 ];
 
     // Header for Calendar (big version)
-    if (window.location.href.indexOf("full_calendar") > -1) {
+    if ((window.location.href.indexOf("calendar") > -1) || (window.location.href.indexOf("full_calendar") > -1)) { // Todo Entferne FullCalendar
         $mediaQueryHeader.left = 'agendaDay,agendaWeek,month';
         $mediaQueryHeader.center = 'title';
         $mediaQueryHeader.right = 'prev,today,next';
+        $mediaQueryView = 'month';
+        $hiddenDays = [ 0 ];
     }
 
     //Initial Start View
-    $mediaQueryView = 'agendaWeek';
     if ($(document).width() < $mobileMaxWidth) {
         $mediaQueryView = 'agendaDay';
     }
@@ -140,7 +143,7 @@ $(document).ready(function () {
         allDaySlot: false, // Show allday-slot
         weekends: true, // Show Weekends
         firstDay: 1, //0 = So, 1 = Mo...
-        hiddenDays: [ 0, 6 ], // No So
+        hiddenDays: $hiddenDays, // No So
         aspectRatio: 1.375, //Dimension of Calendar
 
         //TimeFormat - German
@@ -258,3 +261,26 @@ $(document).ready(function () {
 
 })
 ;
+
+//######################################################################################################################
+//############################################ FULL CALENDAR ###########################################################
+//######################################################################################################################
+
+
+var eventColorValues = {
+    colors: [
+        ['#202020', '#3a87ad', '#f70', '#009406', '#FFEB00', '#FD3E20',  '#5F43A8', '#009B9B', '#579B00', '#FF38D7', '#FDFDFD']
+    ]
+};
+
+var eventColorNames = ['Black','Blue','Orange', 'Green' , 'Yellow','Red','Purple','Indigo', 'Mint', 'Pink','White']
+/*var eventColorNames = ['Black','Blue','Orange', 'Green' , 'Yellow','Red','Purple','Indigo', 'Mint', 'Pink','White']*/
+
+$(document).ready(function () {
+
+
+    $('.colorpalette').colorPalette(eventColorValues)
+        .on('selectColor', function (e) {
+            $('.selected-color').val(e.color);
+        });
+});

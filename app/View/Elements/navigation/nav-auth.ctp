@@ -13,20 +13,20 @@
             data-target="#bs-example-navbar-collapse-1"><span
             class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
             class="icon-bar"></span><span class="icon-bar"></span></button>
-    <?php echo $this->Html->link("Captility", array('controller' => 'calendars', 'action' => 'index'),
+    <?php echo $this->Html->link("Captility", array('controller' => 'calendars', 'action' => 'dashboard'),
         array('class' => 'navbar-brand')); //ToDo Variable für Titel benutzen ?>
 </div>
 
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
 
-        <li <? if ($this->params['controller'] == "calendars") echo 'class="active"';?>>
-            <?php echo $this->Html->link("Produktion", array('controller' => 'calendars', 'action' => 'index')); ?>
+        <li <? if ($this->params['controller'] == "calendars" && $this->params['action'] == "dashboard") echo 'class="active"';?>>
+            <?php echo $this->Html->link("Pinnwand", array('controller' => 'calendars', 'action' => 'dashboard')); ?>
         </li>
         <li class="divider"></li>
 
-        <li <? if ($this->params['controller'] == "full_calendar") echo 'class="active"';?>>
-            <?php echo $this->Html->link("Kalender", array('controller' => 'full_calendar', 'action' => 'index')); ?>
+        <li <? if ($this->params['controller'] == "calendars" && $this->params['action'] == "index") echo 'class="active"';?>>
+            <?php echo $this->Html->link("Kalender", array('controller' => 'calendars', 'action' => 'index')); ?>
         </li>
 
         <li class="divider"></li>
@@ -36,18 +36,16 @@
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
 
+                <li role="presentation" class="dropdown-header list-info">Katalog verwalten...</li>
                 <li>
                     <?php echo $this->Html->link("Veranstaltungen", array('controller' => 'lectures', 'action' => 'index')); ?>
                 </li>
-                <li class="divider"></li>
                 <li>
                     <?php echo $this->Html->link("Veranstalter", array('controller' => 'hosts', 'action' => 'index')); ?>
                 </li>
-                <li class="divider"></li>
                 <li>
                     <?php echo $this->Html->link("Aufzeichnungen", array('controller' => 'captures', 'action' => 'index')); ?>
                 </li>
-                <li class="divider"></li>
                 <li>
                     <?php echo $this->Html->link("Aufzeichnungsarten", array('controller' => 'event_types', 'action' => 'index')); ?>
                 </li>
@@ -58,22 +56,23 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aufgaben<strong
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
+                <li role="presentation" class="dropdown-header list-info">Verwalten von...</li>
                 <li>
                     <?php echo $this->Html->link("Full Calendar", array('controller' => 'full_calendar', 'action' => 'index')); ?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link("Lectures", array('controller' => 'lectures', 'action' => 'index')); ?>
+                    <?php echo $this->Html->link("Tickets", array('controller' => 'tickets', 'action' => 'index')); ?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link("Captures", array('controller' => 'captures', 'action' => 'index')); ?>
+                    <?php echo $this->Html->link("Aufgaben", array('controller' => 'tasks', 'action' => 'index')); ?>
                 </li>
                 <li>
                     <?php echo $this->Html->link("Workflows", array('controller' => 'workflows', 'action' => 'index')); ?>
                 </li>
                 <li class="divider">
                 </li>
-                <li>
-                    <?php echo $this->Html->link("Users", array('controller' => 'users', 'action' => 'index')); ?>
+                <li class="disabled">
+                    <?php echo $this->Html->link("Benutzern", array('controller' => 'users', 'action' => 'index')); ?>
                 </li>
             </ul>
         </li>
@@ -95,6 +94,7 @@
                 <strong
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
+                <li role="presentation" class="dropdown-header list-info">Account bearbeiten.</li>
                 <li>
                     <a href="#">Profil bearbeiten</a>
                 </li>
@@ -115,7 +115,7 @@
                 <li class="divider">
                 </li>
                 <li>
-                    <?php echo $this->Html->link("Logout", array('controller' => 'users', 'action' => 'logout')); ?>
+                    <?php echo $this->Html->link("Abmelden", array('controller' => 'users', 'action' => 'logout')); ?>
                 </li>
             </ul>
         </li>

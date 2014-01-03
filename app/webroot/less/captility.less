@@ -10,6 +10,8 @@
 @import "bootstrap/alerts";
 @import "bootstrap/buttons";
 
+@body-background-color: #f0f0f0;
+
 @navbar-height: 50px;
 @navbar-margin: 25px;
 
@@ -19,9 +21,43 @@
  * ############ BASE GRID LAYOUT  ################
  * ###############################################*/
 
+@media (min-width:@screen-md-min) {
+  html, body {
+
+    height: 100%;
+    background-color: @body-background-color;
+  }
+
+  .container-wrapper {
+
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    background-color: #fff;
+    padding: 0;
+    margin: 0 auto;
+    box-shadow: 0px 0px 5px #aaa;
+  /*border-radius: @border-radius-base;*/
+  }
+}
+
+@media (min-width: @screen-md-min) {
+
+  .container-wrapper {
+    width: @screen-md-min;
+  }
+}
+
+@media (min-width: @screen-lg-min) {
+
+  .container-wrapper {
+    width: @screen-lg-min;
+  }
+}
+
 /** Headline Adjustment */
 
-@media (min-width:992px) {
+@media (min-width:@screen-md-min) {
 
   .page-header {
     padding-bottom: 0px;
@@ -58,6 +94,18 @@
   font-family: @font-family-nav;
 }
 
+//Nav Dropdown Infos
+.dropdown-menu > li.list-info {
+  position: relative;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 7px;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dddddd;
+}
+
 /* ###############################################
  * ################# COMPONENTS  #################
  * ###############################################*/
@@ -83,7 +131,7 @@
  * ################# WIDESCREEN  #################
  * ###############################################*/
 /** Changes when wide screen avaliable */
-@media (min-width:992px) {
+@media (min-width:@screen-md-min) {
 
 /* Content Tabs arragement: vertically: */
 @import "bs3-stacked-tabs";
@@ -117,10 +165,10 @@
 @media (min-width:768px) {
 }
 
-@media (min-width:992px) {
+@media (min-width:@screen-md-min) {
 }
 
-@media (min-width:1200px) {
+@media (min-width:@screen-lg-min) {
 }
 
 /* ###############################################
@@ -138,6 +186,13 @@ h3 span.glyphicon {
   .alert;
   .alert-danger;
 }
+
+
+/* ###############################################
+ * ############### COLOR PALETTE  ################
+ * ###############################################*/
+
+@import "bootstrap-colorpalette.css";
 
 /* ###############################################
  * ################ FULLCALENDAR  ################
@@ -226,7 +281,6 @@ text-shadow: none;*/
 
 .eventColorBlue {
 
-  border: 1px solid @eventColorBlue;
   background-color: @eventColorBlue;
   color: @eventColorTextLight;
 }
@@ -234,65 +288,65 @@ text-shadow: none;*/
 .eventColorBlack {
 
   color: @eventColorTextLight;
-  background-color: @eventColorBlack;
+  background-color: @eventColorBlack !important;
 }
 
 .eventColorWhite {
 
   color: @eventColorTextDark;
-  background-color: @eventColorWhite;
+  background-color: @eventColorWhite !important;
 }
 
 .eventColorOrange {
 
   color: @eventColorTextLight;
-  background-color: @eventColorOrange;
+  background-color: @eventColorOrange  !important;
 }
 
 .eventColorRed {
 
   color: @eventColorTextLight;
-  background-color: @eventColorRed;
+  background-color: @eventColorRed  !important;
 }
 
 .eventColorYellow {
   color: #666;
-  background-color: @eventColorYellow;
+  background-color: @eventColorYellow !important;
   >.fc-event-inner .fc-event-time {
-    background-color: rgba(255,255,255, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
   }
 }
 
 .eventColorPurple {
   color: @eventColorTextLight;
-  background-color: @eventColorPurple;
+  background-color: @eventColorPurple !important;
 }
 
 .eventColorGreen {
   color: @eventColorTextLight;
-  background-color: @eventColorGreen;
+  background-color: @eventColorGreen !important;
 }
 
 .eventColorIndigo {
   color: @eventColorTextLight;
-  background-color: @eventColorIndigo;
+  background-color: @eventColorIndigo !important;
 }
 
 .eventColorMint {
   color: @eventColorTextLight;
-  background-color: @eventColorMint;
+  background-color: @eventColorMint !important;
 }
 
 .eventColorPink {
   color: @eventColorTextLight;
-  background-color: @eventColorPink;
+  background-color: @eventColorPink !important;
 }
 
 .qtip-eventColorBlue {
 
   border-color: @eventColorBlue;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorBlue;
     border-color: @eventColorBlue;
   }
@@ -302,7 +356,7 @@ text-shadow: none;*/
 
   border-color: @eventColorBlack;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorBlack;
     border-color: @eventColorBlack;
   }
@@ -312,7 +366,7 @@ text-shadow: none;*/
 
   border-color: @eventColorWhite;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorWhite;
     border-color: @eventColorWhite;
   }
@@ -322,7 +376,7 @@ text-shadow: none;*/
 
   border-color: @eventColorOrange;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorOrange;
     border-color: @eventColorOrange;
   }
@@ -332,7 +386,7 @@ text-shadow: none;*/
 
   border-color: @eventColorRed;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorRed;
     border-color: @eventColorRed;
   }
@@ -342,7 +396,7 @@ text-shadow: none;*/
 
   border-color: @eventColorYellow;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorYellow;
     border-color: @eventColorYellow;
   }
@@ -352,7 +406,7 @@ text-shadow: none;*/
 
   border-color: @eventColorPurple;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorPurple;
     border-color: @eventColorPurple;
   }
@@ -362,7 +416,7 @@ text-shadow: none;*/
 
   border-color: @eventColorGreen;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorGreen;
     border-color: @eventColorGreen;
   }
@@ -372,7 +426,7 @@ text-shadow: none;*/
 
   border-color: @eventColorIndigo;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorIndigo;
     border-color: @eventColorIndigo;
   }
@@ -382,7 +436,7 @@ text-shadow: none;*/
 
   border-color: @eventColorMint;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorMint;
     border-color: @eventColorMint;
   }
@@ -392,7 +446,7 @@ text-shadow: none;*/
 
   border-color: @eventColorPink;
 
-  >.qtip-titlebar , .qtip-titlebar a.qtip-icon span.ui-icon{
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorPink;
     border-color: @eventColorPink;
   }
