@@ -1162,6 +1162,19 @@ h3 span.glyphicon {
  * ############### COLOR PALETTE  ################
  * ###############################################*/
 /* ###############################################
+ * ################ DATEPICKER  ##################
+ * ###############################################*/
+@media (min-width: 1200px) {
+  .datepicker-years,
+  .datepicker-months {
+    margin: 0 auto;
+    margin-left: 20px;
+  }
+}
+.datepicker tr.weekHighlight {
+  background-color: #DAEDF8;
+}
+/* ###############################################
  * ################ FULLCALENDAR  ################
  * ###############################################*/
 /** Fullcalendar Adjustments */
@@ -1740,6 +1753,7 @@ text-shadow: none;*/
 }
 /** Define Event Colors **/
 .eventColorBlue {
+  border: 1px solid #3a87ad;
   background-color: #3a87ad;
   color: #ffffff;
 }
@@ -1791,6 +1805,7 @@ text-shadow: none;*/
 }
 .qtip-eventColorBlue > .qtip-titlebar,
 .qtip-eventColorBlue .qtip-titlebar a.qtip-icon span.ui-icon {
+  border: 1px solid #3a87ad;
   background-color: #3a87ad;
   color: #ffffff;
   border-color: #3a87ad;

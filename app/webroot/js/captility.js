@@ -40,6 +40,25 @@ $mobileMaxWidth = 992;
 //############################################ SIDE CALENDAR ###########################################################
 //######################################################################################################################
 /**
+ * German translation for bootstrap-datepicker
+ * Sam Zurcher <sam@orelias.ch>
+ */
+;
+(function ($) {
+    $.fn.datepicker.dates['de'] = {
+        days: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"],
+        daysShort: ["Son", "Mon", "Die", "Mit", "Don", "Fre", "Sam", "Son"],
+        daysMin: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+        months: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+        monthsShort: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+        today: "Heute",
+        weekStart: 1,
+        format: "dd.mm.yyyy"
+    };
+}(jQuery));
+
+
+/**
  * Activate SideCalendar inline in Right Column.
  */
 $(document).ready(function () {
@@ -49,11 +68,34 @@ $(document).ready(function () {
             weekStart: 1,
             todayBtn: true,
             language: "de",
-            orientation: "top auto",
+            orientation: "top center",
             daysOfWeekDisabled: "0,6",
             calendarWeeks: true,
-            todayHighlight: true
+            todayHighlight: true,
+            todayBtn: 'linked' // Today selects current day instead of just showing (true)
+        }, function () {
+
+
         })
+
+        // Combine Datepicker and FullCalendar (inkl. Today-Button
+        $('#SideCalendar').datepicker()
+            .on('changeDate', function (e) {
+
+                $('#calendar').fullCalendar('gotoDate', new Date(e.date));
+
+            });
+
+        $('.datepicker-days').on('click', '.day', function(event){
+
+            console.log($(this).parent());
+            $(this).parent().addClass('weekHighlight');
+        });
+
+        /*$('.datepicker-days tbody tr').on('mouseleave', function(){
+
+            $(this).removeClass('weekHighlight');
+        });*/
 
     }
 );
@@ -269,11 +311,11 @@ $(document).ready(function () {
 
 var eventColorValues = {
     colors: [
-        ['#202020', '#3a87ad', '#f70', '#009406', '#FFEB00', '#FD3E20',  '#5F43A8', '#009B9B', '#579B00', '#FF38D7', '#FDFDFD']
+        ['#202020', '#3a87ad', '#f70', '#009406', '#FFEB00', '#FD3E20', '#5F43A8', '#009B9B', '#579B00', '#FF38D7', '#FDFDFD']
     ]
 };
 
-var eventColorNames = ['Black','Blue','Orange', 'Green' , 'Yellow','Red','Purple','Indigo', 'Mint', 'Pink','White']
+var eventColorNames = ['Black', 'Blue', 'Orange', 'Green' , 'Yellow', 'Red', 'Purple', 'Indigo', 'Mint', 'Pink', 'White']
 /*var eventColorNames = ['Black','Blue','Orange', 'Green' , 'Yellow','Red','Purple','Indigo', 'Mint', 'Pink','White']*/
 
 $(document).ready(function () {
@@ -283,4 +325,5 @@ $(document).ready(function () {
         .on('selectColor', function (e) {
             $('.selected-color').val(e.color);
         });
+
 });

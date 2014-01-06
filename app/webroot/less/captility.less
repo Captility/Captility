@@ -187,12 +187,28 @@ h3 span.glyphicon {
   .alert-danger;
 }
 
-
 /* ###############################################
  * ############### COLOR PALETTE  ################
  * ###############################################*/
 
 @import "bootstrap-colorpalette.css";
+
+/* ###############################################
+ * ################ DATEPICKER  ##################
+ * ###############################################*/
+
+@media (min-width: @screen-lg-min) {
+  .datepicker-years, .datepicker-months {
+
+    margin: 0 auto;
+    margin-left: 20px;
+
+  }
+}
+
+.datepicker tr.weekHighlight {
+  background-color: #DAEDF8;
+}
 
 /* ###############################################
  * ################ FULLCALENDAR  ################
@@ -281,6 +297,7 @@ text-shadow: none;*/
 
 .eventColorBlue {
 
+  border: 1px solid @eventColorBlue;
   background-color: @eventColorBlue;
   color: @eventColorTextLight;
 }
@@ -300,13 +317,13 @@ text-shadow: none;*/
 .eventColorOrange {
 
   color: @eventColorTextLight;
-  background-color: @eventColorOrange  !important;
+  background-color: @eventColorOrange !important;
 }
 
 .eventColorRed {
 
   color: @eventColorTextLight;
-  background-color: @eventColorRed  !important;
+  background-color: @eventColorRed !important;
 }
 
 .eventColorYellow {
