@@ -1174,6 +1174,18 @@ h3 span.glyphicon {
 .datepicker tr.weekHighlight {
   background-color: #DAEDF8;
 }
+.datepicker tr.week td.day:nth-child(2) {
+  border-top-left-radius: 6px;
+}
+.datepicker tr.week td:last-child {
+  border-top-right-radius: 6px;
+}
+.datepicker tr.week td.day:nth-child(2) {
+  border-bottom-left-radius: 6px;
+}
+.datepicker tr td:last-child {
+  border-bottom-right-radius: 6px;
+}
 /* ###############################################
  * ################ FULLCALENDAR  ################
  * ###############################################*/

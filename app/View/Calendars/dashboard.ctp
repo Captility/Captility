@@ -7,7 +7,8 @@
     <div class="clearfix">
         <div class="tabbable tabs-left">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#a" data-toggle="tab">Woche</a></li>
+                <li class="active"><a href="#a" id="GeneralViewFc" data-toggle="tab">Übersicht</a></li>
+                <li class=><a href="#a" id="MyWeekViewFc" data-toggle="tab">Eigene</a></li>
                 <li><a href="#b" data-toggle="tab">Tickets</a></li>
                 <li><a href="#c" data-toggle="tab">Produktion</a></li>
             </ul>

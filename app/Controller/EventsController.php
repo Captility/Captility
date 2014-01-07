@@ -54,6 +54,40 @@ class EventsController extends AppController {
         $this->set("json", json_encode($data));
     }
 
+
+    function feedMy($id=null) {
+        $this->layout = "ajax";
+        $vars = $this->params['url'];
+
+        $userid = $this->Auth->user('user_id');
+        $conditions = array('conditions' => array('UNIX_TIMESTAMP(start) >=' => $vars['start'], 'UNIX_TIMESTAMP(start) <=' => $vars['end'],
+            'Capture.user_id' => $userid));
+        $events = $this->Event->find('all', $conditions);
+        foreach($events as $event) {
+            if($event['Event']['all_day'] == 1) {
+                $allday = true;
+                $end = $event['Event']['start'];
+            } else {
+                $allday = false;
+                $end = $event['Event']['end'];
+            }
+            $data[] = array(
+                'id' => $event['Event']['id'],
+                'title'=>$event['Event']['title'],
+                'start'=>$event['Event']['start'],
+                'end' => $end,
+                'allDay' => $allday,
+                //'url' => Router::url('/') . '/captures/view/'.$event['Capture']['capture_id'],
+                'details' => $event['Event']['details'],
+                'className' => 'eventColor'.$event['EventType']['color'],
+                'capture_id' => $event['Capture']['capture_id']
+            );
+        }
+        $this->set("json", json_encode($data));
+
+        $this -> render('/Events/feed');
+    }
+
     // The update action is called from "webroot/js/ready.js" to update date/time when an event is dragged or resized
     function update() {
         $vars = $this->params['url'];

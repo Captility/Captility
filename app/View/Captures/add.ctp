@@ -51,7 +51,7 @@
                 <?php echo $this->Form->input('Event.event_type_id', array('class' => 'form-control', 'placeholder' => 'Event Type Id'));?>
             </div>
 
-            <? pr($eventTypes); ?>
+            <?/* pr($eventTypes); */?>
 
             <div class="form-group">
                 <?php echo $this->Form->input('link', array('class' => 'form-control', 'placeholder' => 'Link'));?>

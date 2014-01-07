@@ -77,7 +77,6 @@ $(document).ready(function () {
         }, function () {
 
 
-
         })
 
         // Combine Datepicker and FullCalendar (inkl. Today-Button
@@ -93,11 +92,10 @@ $(document).ready(function () {
         $('td.today').click();
 
 
-
         /*$('.datepicker-days tbody tr').on('mouseleave', function(){
 
-            $(this).removeClass('weekHighlight');
-        });*/
+         $(this).removeClass('weekHighlight');
+         });*/
 
     }
 );
@@ -143,6 +141,7 @@ $(document).ready(function () {
         style: 'qtip-bootstrap'
     }).qtip('api');
 
+    // ##################################### CALENDAR SETTINGS  ########################################################
 
     // ##################################### Responsive Calendar  ######################################################
     // Check if full Calendar or small View is needed:
@@ -176,9 +175,50 @@ $(document).ready(function () {
         else $('#calendar').fullCalendar('changeView', 'agendaWeek');
     });
 
+    //Event Sources
+    var captilityEventSources = {
+
+        overview: {
+            url: '/captility/events/feed',
+            type: 'GET',
+            cache: false
+            /*,error: function () {
+             alert('Generelle Events konnten nicht geladen werden.');
+             }*/
+        },
+        myweek: {
+            url: '/captility/events/feedMy',
+            type: 'GET',
+            cache: false
+            /*,error: function () {
+             alert('Eigene Events konnten nicht geladen werden.');
+             }*/
+        }
+    };
+
+    // Changing Event-Sources
+    $('#GeneralViewFc').click(function () {
+
+
+        if (!$(this).parent().hasClass("active")) {
+            $('#calendar').fullCalendar('removeEventSource', captilityEventSources.myweek)
+                .fullCalendar('removeEventSource', captilityEventSources.overview)
+                .fullCalendar('addEventSource', captilityEventSources.overview);
+        }
+    });
+
+    $('#MyWeekViewFc').click(function () {
+
+        if (!$(this).parent().hasClass("active")) {
+            $('#calendar').fullCalendar('removeEventSource', captilityEventSources.overview)
+                .fullCalendar('removeEventSource', captilityEventSources.myweek)
+                .fullCalendar('addEventSource', captilityEventSources.myweek);
+        }
+    });
+
     // ######################################## INIT CALENDAR ##########################################################
 
-    $('#calendar').fullCalendar({
+    var calendar = $('#calendar').fullCalendar({
 
         //View
         header: $mediaQueryHeader,
@@ -227,13 +267,7 @@ $(document).ready(function () {
         },
 
         //Events
-        eventSources: [
-            {
-                url: "/captility/events/feed"
-                //color: 'yellow',   // an option!
-                //textColor: 'black' // an option!
-            }
-        ],
+        eventSources: [captilityEventSources.overview],
 
         //Interaction
         editable: true,
@@ -241,7 +275,7 @@ $(document).ready(function () {
 
         // Datepicker Sync
         viewRender: function (view, element) {
-            console.log('FullCalendar: ' +view.start);
+            console.log('FullCalendar: ' + view.start);
             $('#SideCalendar').datepicker('update', new Date(view.start));
         },
 
@@ -307,6 +341,27 @@ $(document).ready(function () {
             $.post(url, function (data) {
             });
         }
+
+        /*selectHelper: true,
+        , select: function(start, end, allDay) {
+            var title = prompt('Event Title:');
+            if (title) {
+                calendar.fullCalendar('renderEvent',
+                    {
+                        title: title,
+                        start: start,
+                        end: end,
+                        allDay: allDay,
+                        className: 'eventColorBlack'
+                    },
+                    true // make the event "stick"
+                );
+            }
+            calendar.fullCalendar('unselect');
+        }*/
+
+
+
     })
 
 })

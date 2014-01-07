@@ -52,7 +52,7 @@ class CalendarsController extends AppController {
     public function dashboard() {
 
 
-        $this->set('headline', __('Pinnwand – Wochenüberblick'));
+        $this->set('headline', __('Pinnwand – Wochenübersicht'));
         $this->set('leftTabs', true);
         $this->set('sidebar', true);
     }

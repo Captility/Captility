@@ -106,10 +106,12 @@ class CapturesController extends AppController {
         $lectures = $this->Capture->Lecture->find('list');
         $users = $this->Capture->User->find('list');
         $events = $this->Capture->Event->find('list');
-        $eventTypes = $this->Capture->Event->EventType->find('all');
+        $eventTypes = $this->Capture->Event->EventType->find('list', array(
+            'fields' => array('EventType.id', 'EventType.name', 'EventType.color')));
 
 
-/*        $eventTypes = $this->Capture->find('all', array(
+
+        /*$eventTypes = $this->Capture->find('all', array(
             'contain' => array(
                 'Event' => array(
                     'EventType' => array(
