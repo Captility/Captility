@@ -72,8 +72,10 @@ $(document).ready(function () {
             daysOfWeekDisabled: "0,6",
             calendarWeeks: true,
             todayHighlight: true,
+            selectWeek: true,
             todayBtn: 'linked' // Today selects current day instead of just showing (true)
         }, function () {
+
 
 
         })
@@ -82,15 +84,15 @@ $(document).ready(function () {
         $('#SideCalendar').datepicker()
             .on('changeDate', function (e) {
 
+                console.log('Datepicker: ' + e.date);
                 $('#calendar').fullCalendar('gotoDate', new Date(e.date));
 
             });
 
-        $('.datepicker-days').on('click', '.day', function(event){
+        // Start highligting current week
+        $('td.today').click();
 
-            console.log($(this).parent());
-            $(this).parent().addClass('weekHighlight');
-        });
+
 
         /*$('.datepicker-days tbody tr').on('mouseleave', function(){
 
@@ -236,6 +238,12 @@ $(document).ready(function () {
         //Interaction
         editable: true,
         selectable: true,
+
+        // Datepicker Sync
+        viewRender: function (view, element) {
+            console.log('FullCalendar: ' +view.start);
+            $('#SideCalendar').datepicker('update', new Date(view.start));
+        },
 
         eventClick: function (data, event, view) {
             var content = '<p><b>Start:</b> ' + data.start + '<br />' +
