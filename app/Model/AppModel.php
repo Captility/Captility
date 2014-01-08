@@ -71,4 +71,24 @@ class AppModel extends Model {
 
         return false;
     }
+
+    /**
+     * @param $data
+     * @return bool
+     * Usage: var $validate = array('myField1' => array('atLeastOne', 'myField2', 'myField3', 'myField4'), ...
+     */
+    function atLeastOneNotEmpty($data) {
+        $args = func_get_args();  // will contain $data, 'myField2', 'myField3', ...
+
+        foreach ($args as $name) {
+            if (is_array($name)) {
+                $name = current(array_keys($name));
+            }
+            if (!empty($this->data[$this->name][$name])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

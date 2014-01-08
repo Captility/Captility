@@ -59,6 +59,10 @@ class AppController extends Controller {
         // Set default layout for all views
         $this->layout = 'captility';
 
+        // SideElements for all Layouts
+        $this->set('sideCalendar', true);
+        $this->set('sideTickets', true);
+
         // ###### AUTHORIZE ########
         // Set public pages with: parent::beforeFilter();
         $this->Auth->allow('display');

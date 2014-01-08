@@ -31,7 +31,7 @@
 
         <li class="divider"></li>
 
-        <li class="dropdown <? if (in_array($this->params['controller'], array('captures', 'lectures', 'host', 'eventTypes'))) echo 'active'; ?>">
+        <li class="dropdown <? if (in_array($this->params['controller'], array('captures', 'lectures', 'hosts', 'eventTypes'))) echo 'active'; ?>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Verzeichnis<strong
                     class="caret"></strong></a>
             <ul class="dropdown-menu">

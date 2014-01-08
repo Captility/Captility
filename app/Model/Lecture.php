@@ -5,8 +5,8 @@ App::uses('AppModel', 'Model');
  *
  * @property User $User
  * @property Host $Host
+ * @property EventType $EventType
  * @property Capture $Capture
- * @property Workflow $Workflow
  */
 class Lecture extends AppModel {
 
@@ -56,11 +56,6 @@ class Lecture extends AppModel {
                 //'required' => false,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-            'unique' => array(
-                'rule' => 'isUnique',
-                'required' => 'create',
-                'message' => 'Diese Veranstaltungsnummer existiert bereits.',
             ),
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
@@ -114,7 +109,7 @@ class Lecture extends AppModel {
                 'rule' => array('date'),
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
-                //'required' => false,
+                'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -122,7 +117,7 @@ class Lecture extends AppModel {
                 'rule' => array('notEmpty'),
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
-                //'required' => false,
+                'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -209,6 +204,16 @@ class Lecture extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        'link' => array(
+            'url' => array(
+                'rule' => array('url'),
+                //'message' => 'Your custom message here',
+                'allowEmpty' => true,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
     );
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -229,6 +234,13 @@ class Lecture extends AppModel {
         'Host' => array(
             'className' => 'Host',
             'foreignKey' => 'host_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
+        'EventType' => array(
+            'className' => 'EventType',
+            'foreignKey' => 'event_type_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''
@@ -253,28 +265,6 @@ class Lecture extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        )
-    );
-
-
-    /**
-     * hasAndBelongsToMany associations
-     *
-     * @var array
-     */
-    public $hasAndBelongsToMany = array(
-        'Workflow' => array(
-            'className' => 'Workflow',
-            'joinTable' => 'lectures_workflows',
-            'foreignKey' => 'lecture_id',
-            'associationForeignKey' => 'workflow_id',
-            'unique' => 'keepExisting',
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'finderQuery' => '',
         )
     );
 

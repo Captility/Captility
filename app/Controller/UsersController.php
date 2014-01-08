@@ -201,7 +201,6 @@ class UsersController extends AppController {
         unset($this->request->data['User']['pwd_confirm']);
     }
 
-
     /**
      * index method
      *
@@ -292,6 +291,110 @@ class UsersController extends AppController {
      * @return void
      */
     public function delete($id = null) {
+        $this->User->id = $id;
+        if (!$this->User->exists()) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $this->request->onlyAllow('post', 'delete');
+        if ($this->User->delete()) {
+            $this->Session->setFlash(__('The user has been deleted.'), 'flash/success');
+        }
+        else {
+            $this->Session->setFlash(__('The user could not be deleted. Please, try again.'), 'flash/danger');
+        }
+        return $this->redirect(array('action' => 'index'));
+    }
+
+    /**
+     * admin_index method
+     *
+     * @return void
+     */
+    public function admin_index() {
+        $this->User->recursive = 0;
+        $this->set('users', $this->Paginator->paginate());
+    }
+
+    /**
+     * admin_view method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function admin_view($id = null) {
+        if (!$this->User->exists($id)) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+        $this->set('user', $this->User->find('first', $options));
+    }
+
+    /**
+     * admin_add method
+     *
+     * @return void
+     */
+    public function admin_add() {
+        if ($this->request->is('post') || $this->request->is('put')) {
+            $this->User->create();
+
+            $this->User->Behaviors->attach('Passwordable', array('require' => true, 'confirm' => true));
+
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('The user has been saved.'), 'flash/success');
+
+                // Set Language after login
+                $this->Session->write('Config.language', $this->request->data['User']['language']);
+
+                return $this->redirect(array('action' => 'index'));
+            }
+            else {
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
+            }
+        }
+        $groups = $this->User->Group->find('list');
+        $this->set(compact('groups'));
+    }
+
+    /**
+     * admin_edit method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function admin_edit($id = null) {
+        if (!$this->User->exists($id)) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        if ($this->request->is(array('post', 'put'))) {
+            $this->User->Behaviors->attach('Passwordable', array('require' => false, 'confirm' => false));
+
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('The user has been saved.'), 'flash/success');
+                return $this->redirect(array('action' => 'index'));
+            }
+            else {
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
+            }
+        }
+        else {
+            $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+            $this->request->data = $this->User->find('first', $options);
+        }
+        $groups = $this->User->Group->find('list');
+        $this->set(compact('groups'));
+    }
+
+    /**
+     * admin_delete method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function admin_delete($id = null) {
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));

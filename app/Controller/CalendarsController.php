@@ -41,6 +41,8 @@ class CalendarsController extends AppController {
 
 
         $this->set('headline', __('Kalender'));
+        $this->set('sideCalendar', false);
+        $this->set('sideTickets', false);
 
     }
 
@@ -54,7 +56,8 @@ class CalendarsController extends AppController {
 
         $this->set('headline', __('Pinnwand – Wochenübersicht'));
         $this->set('leftTabs', true);
-        $this->set('sidebar', true);
+        $this->set('sideCalendar', true);
+        $this->set('sideTickets', true);
     }
 
 

@@ -149,7 +149,7 @@ Configure::write('App.encoding', 'UTF-8');
  *    `manager_index()` and `/manager/controller/index`
  *
  */
-Configure::write('Routing.prefixes', array('admin'));
+Configure::write('Routing.prefixes', array('admin', 'manager'));
 
 /**
  * Turn off all caching application-wide.
@@ -219,16 +219,16 @@ Configure::write('Session', array(
     'defaults' => 'php'
 ));
 
-Configure::write('Session.timeout', 120 * 60);
+Configure::write('Session.timeout', 120); //120min
 /**
  * A random string used in security hashing methods.
  */
-Configure::write('Security.salt', 'Ha7sM7fs8dzfnSDZDWQFFQHPNF1wfphFSIUGDahfuinx');
+Configure::write('Security.salt', 'Ha07sM7fs8dzfnSDZDW2QFFQ9HPN0F1wfphFSIUG1D8ahfUinVx');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-Configure::write('Security.cipherSeed', 'h1F0jj7g245g8hbKLJK7lv5bb5DHNbjh2cJ');
+Configure::write('Security.cipherSeed', 'h1F0jj7g1245g8hbKLJK7lv5bWb5DHNbjh2cJ');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).

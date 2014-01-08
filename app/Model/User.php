@@ -163,6 +163,12 @@ class User extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        'avatar' => array(
+            'extension' => array(
+                'rule' => array('extension', array('gif', 'png', 'jpg', 'svg')),
+                'message' => 'Only gif, png and jpg are supported.',
+            )
+        ),
         'group_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),

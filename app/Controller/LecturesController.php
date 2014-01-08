@@ -21,10 +21,6 @@ class LecturesController extends AppController {
  * @return void
  */
 	public function index() {
-
-        $this->set('headline', 'Veranstaltungsübersicht');
-        $this->set('underline', 'Alle Veranstaltungen');
-
 		$this->Lecture->recursive = 0;
 		$this->set('lectures', $this->Paginator->paginate());
 	}
@@ -61,8 +57,8 @@ class LecturesController extends AppController {
 		}
 		$users = $this->Lecture->User->find('list');
 		$hosts = $this->Lecture->Host->find('list');
-		$workflows = $this->Lecture->Workflow->find('list');
-		$this->set(compact('users', 'hosts', 'workflows'));
+		$eventTypes = $this->Lecture->EventType->find('list');
+		$this->set(compact('users', 'hosts', 'eventTypes'));
 	}
 
 /**
@@ -89,8 +85,8 @@ class LecturesController extends AppController {
 		}
 		$users = $this->Lecture->User->find('list');
 		$hosts = $this->Lecture->Host->find('list');
-		$workflows = $this->Lecture->Workflow->find('list');
-		$this->set(compact('users', 'hosts', 'workflows'));
+		$eventTypes = $this->Lecture->EventType->find('list');
+		$this->set(compact('users', 'hosts', 'eventTypes'));
 	}
 
 /**
@@ -156,8 +152,8 @@ class LecturesController extends AppController {
 		}
 		$users = $this->Lecture->User->find('list');
 		$hosts = $this->Lecture->Host->find('list');
-		$workflows = $this->Lecture->Workflow->find('list');
-		$this->set(compact('users', 'hosts', 'workflows'));
+		$eventTypes = $this->Lecture->EventType->find('list');
+		$this->set(compact('users', 'hosts', 'eventTypes'));
 	}
 
 /**
@@ -184,8 +180,8 @@ class LecturesController extends AppController {
 		}
 		$users = $this->Lecture->User->find('list');
 		$hosts = $this->Lecture->Host->find('list');
-		$workflows = $this->Lecture->Workflow->find('list');
-		$this->set(compact('users', 'hosts', 'workflows'));
+		$eventTypes = $this->Lecture->EventType->find('list');
+		$this->set(compact('users', 'hosts', 'eventTypes'));
 	}
 
 /**

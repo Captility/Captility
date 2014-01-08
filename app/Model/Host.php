@@ -7,120 +7,126 @@ App::uses('AppModel', 'Model');
  */
 class Host extends AppModel {
 
-/**
- * Use table
- *
- * @var mixed False or table name
- */
-	public $useTable = 'host';
 
-/**
- * Primary key field
- *
- * @var string
- */
-	public $primaryKey = 'host_id';
+    var $displayField = "name";
+    /*var $actsAs = array('MultipleDisplayFields' => array(
+        'fields' => array('firstname', 'surname'),
+        'pattern' => '%s %s'
+    ));*/
 
-/**
- * Display field
- *
- * @var string
- */
-	public $displayField = 'surname';
+    /**
+     * Use table
+     *
+     * @var mixed False or table name
+     */
+    public $useTable = 'host';
 
-/**
- * Validation rules
- *
- * @var array
- */
-	public $validate = array(
-		'host_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'firstname' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'alphaNumeric' => array(
-				'rule' => array('alphaNumeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'surname' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'alphaNumeric' => array(
-				'rule' => array('alphaNumeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'email' => array(
-			'email' => array(
-				'rule' => array('email'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-	);
+    /**
+     * Primary key field
+     *
+     * @var string
+     */
+    public $primaryKey = 'host_id';
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public $validate = array(
+        'host_id' => array(
+            'numeric' => array(
+                'rule' => array('numeric'),
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+            'notEmpty' => array(
+                'rule' => array('notEmpty'),
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+        'name' => array(
+            'notEmpty' => array(
+                'rule' => array('notEmpty'),
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+        'email' => array(
+            'atLeastOneEmail' => array(
+                'rule' => array('atLeastOneEmail'),
+                'message' => 'At least one contact E-Mail is required.',
+                'allowEmpty' => true,
+                'required' => true),
+            'email' => array(
+                'rule' => array('email'),
+                'message' => 'Please enter a valid E-Mail adress.',
+                'allowEmpty' => null,
+                'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+        'contact_email' => array(
+            'atLeastOneEmail' => array(
+                'rule' => array('atLeastOneEmail'),
+                'message' => 'At least one contact E-Mail is required.',
+                'allowEmpty' => true,
+                'required' => true),
+            'email' => array(
+                'rule' => array('email'),
+                'message' => 'Please enter a valid E-Mail adress.',
+                'allowEmpty' => null,
+                'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+    );
 
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $hasMany = array(
-		'Lecture' => array(
-			'className' => 'Lecture',
-			'foreignKey' => 'host_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
+    /**
+     * @param $data
+     * @return bool
+     * Usage: var $validate = array('myField1' => array('atLeastOne', 'myField2', 'myField3', 'myField4'), ...
+     */
+    function atLeastOneEmail($data) {
+
+        return !empty($this->data[$this->name]['contact_email'])
+            || !empty($this->data[$this->name]['email']);
+    }
+
+
+    //The Associations below have been created with all possible keys, those that are not needed can be removed
+
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
+    public $hasMany = array(
+        'Lecture' => array(
+            'className' => 'Lecture',
+            'foreignKey' => 'host_id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
+        )
+    );
 
 }

@@ -17,75 +17,101 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 ?>
-<div class="<?php echo $pluralVar; ?> form">
 
-	<div class="row">
-		<div class="col-md-12">
-			<div class="page-header">
-				<h1><?php printf("<?php echo __('%s %s'); ?>", Inflector::humanize($action), $singularHumanName); ?></h1>
-			</div>
-		</div>
-	</div>
+<?php echo "<? \$this->Html->addCrumb(__('{$pluralHumanName}'),array('action' => 'index')); ?>" ?>
+<?php printf("<?php \$this->Html->addCrumb(__('%s %s'), '#', array('class' => 'active')); ?>", Inflector::humanize($action), $singularHumanName); ?>
 
+<!--<div class="<?php /*echo $pluralVar; */?> form">-->
 
-
-	<div class="row">
-		<div class="col-md-3">
-			<div class="actions">
-				<div class="panel panel-default">
-					<div class="panel-heading">Actions</div>
-						<div class="panel-body">
-							<ul class="nav nav-pills nav-stacked">
-
-							<?php if (strpos($action, 'add') === false): ?>
-									<li><?php echo "<?php echo \$this->Form->postLink(__('<span class=\"glyphicon glyphicon-remove\"></span>&nbsp;&nbsp;Delete'), array('action' => 'delete', \$this->Form->value('{$modelClass}.{$primaryKey}')), array('escape' => false), __('Are you sure you want to delete # %s?', \$this->Form->value('{$modelClass}.{$primaryKey}'))); ?>"; ?></li>
-							<?php endif; ?>
-									<li><?php echo "<?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-list\"></span>&nbsp;&nbsp;List " . $pluralHumanName . "'), array('action' => 'index'), array('escape' => false)); ?>"; ?></li>
-							<?php
-									$done = array();
-									foreach ($associations as $type => $data) {
-										foreach ($data as $alias => $details) {
-											if ($details['controller'] != $this->name && !in_array($details['controller'], $done)) {
-												echo "\t\t<li><?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-list\"></span>&nbsp;&nbsp;List " . Inflector::humanize($details['controller']) . "'), array('controller' => '{$details['controller']}', 'action' => 'index'), array('escape' => false)); ?> </li>\n";
-												echo "\t\t<li><?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-plus\"></span>&nbsp;&nbsp;New " . Inflector::humanize(Inflector::underscore($alias)) . "'), array('controller' => '{$details['controller']}', 'action' => 'add'), array('escape' => false)); ?> </li>\n";
-												$done[] = $details['controller'];
-											}
-										}
-									}
-							?>
-							</ul>
-						</div>
-					</div>
-				</div>			
-		</div><!-- end col md 3 -->
-		<div class="col-md-9">
-<?php 		echo "\t\t\t<?php echo \$this->Form->create('{$modelClass}', array('role' => 'form')); ?>\n\n"; ?>
-<?php
-		foreach ($fields as $field) {
-			if (strpos($action, 'add') !== false && $field == $primaryKey) {
-				continue;
-			} elseif (!in_array($field, array('created', 'modified', 'updated'))) {
-				echo "\t\t\t\t<div class=\"form-group\">\n";
-				echo "\t\t\t\t\t<?php echo \$this->Form->input('{$field}', array('class' => 'form-control', 'placeholder' => '".Inflector::humanize($field)."'));?>\n";
-				echo "\t\t\t\t</div>\n";
-			}
-		}
-		if (!empty($associations['hasAndBelongsToMany'])) {
-			foreach ($associations['hasAndBelongsToMany'] as $assocName => $assocData) {
-				echo "\t\t\t\t<div class=\"form-group\">\n";
-				echo "\t\t\t\t\t<?php echo \$this->Form->input('{$assocName}', array('class' => 'form-control', 'placeholder' => '".Inflector::humanize($field)."'));?>\n";
-				echo "\t\t\t\t</div>\n";
-			}
-		}
-?>
-<?php
-				echo "\t\t\t\t<div class=\"form-group\">\n";
-				echo "\t\t\t\t\t<?php echo \$this->Form->submit(__('Submit'), array('class' => 'btn btn-primary')); ?>\n";
-				echo "\t\t\t\t</div>\n\n";
-
-			echo "\t\t\t<?php echo \$this->Form->end() ?>\n\n";
-
-?>
-		</div><!-- end col md 12 -->
-	</div><!-- end row -->
+<div class="row">
+    <div class="col-md-1 column">
+    </div>
+    <div class="col-md-11 column">
+        <div class="page-header">
+            <h1><?php printf("<?php echo __('%s %s'); ?>", Inflector::humanize($action), $singularHumanName); ?></h1>
+        </div>
+    </div>
 </div>
+
+
+<!--<div class="row">-->
+
+<div class="col-md-1 column">
+</div>
+<div class="col-md-8 column">
+
+    <?php echo "<?php echo \$this->Session->flash(); ?>"?>
+    <?php echo "<?php echo \$this->Session->flash('auth'); ?>"?>
+
+    <?php        echo "\t\t\t<?php echo \$this->Form->create('{$modelClass}', array('role' => 'form')); ?>\n\n"; ?>
+    <?php
+    foreach ($fields as $field) {
+        if (strpos($action, 'add') !== false && $field == $primaryKey) {
+            continue;
+        }
+        elseif (!in_array($field, array('created', 'modified', 'updated'))) {
+            echo "\t\t\t\t<div class=\"form-group\">\n";
+            echo "\t\t\t\t\t<?php echo \$this->Form->input('{$field}', array('class' => 'form-control', 'placeholder' => '" . Inflector::humanize($field) . "'));?>\n";
+            echo "\t\t\t\t</div>\n";
+        }
+    }
+    if (!empty($associations['hasAndBelongsToMany'])) {
+        foreach ($associations['hasAndBelongsToMany'] as $assocName => $assocData) {
+            echo "\t\t\t\t<div class=\"form-group\">\n";
+            echo "\t\t\t\t\t<?php echo \$this->Form->input('{$assocName}', array('class' => 'form-control', 'placeholder' => '" . Inflector::humanize($field) . "'));?>\n";
+            echo "\t\t\t\t</div>\n";
+        }
+    }
+    ?>
+    <?php
+    echo "\t\t\t\t<div class=\"form-group\">\n";
+    echo "\t\t\t\t\t<?php echo \$this->Form->submit(__('Submit'), array('class' => 'btn btn-primary')); ?>\n";
+    echo "\t\t\t\t</div>\n\n";
+
+    echo "\t\t\t<?php echo \$this->Form->end() ?>\n\n";
+
+    ?>
+</div><!-- end col md 12 -->
+
+
+<div class="col-md-3 column">
+    <div class="actions">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-link"></span><?php echo"<?php echo __('Related Actions');?>";?>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+
+                    <?php if (strpos($action, 'add') === false): ?>
+                        <li><?php echo "<?php echo \$this->Form->postLink(__('<span class=\"glyphicon glyphicon-remove\"></span>&nbsp;&nbsp;Delete'), array('action' => 'delete', \$this->Form->value('{$modelClass}.{$primaryKey}')), array('escape' => false), __('Are you sure you want to delete # %s?', \$this->Form->value('{$modelClass}.{$primaryKey}'))); ?>"; ?></li>
+                    <?php endif; ?>
+                    <li><?php echo "<?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-list\"></span>&nbsp;&nbsp;List " . $pluralHumanName . "'), array('action' => 'index'), array('escape' => false)); ?>"; ?></li>
+                    <?php
+                    $done = array();
+                    foreach ($associations as $type => $data) {
+                        foreach ($data as $alias => $details) {
+                            if ($details['controller'] != $this->name && !in_array($details['controller'], $done)) {
+                                echo "\t\t<li><?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-list\"></span>&nbsp;&nbsp;List " . Inflector::humanize($details['controller']) . "'), array('controller' => '{$details['controller']}', 'action' => 'index'), array('escape' => false)); ?> </li>\n";
+                                echo "\t\t<li><?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-plus\"></span>&nbsp;&nbsp;New " . Inflector::humanize(Inflector::underscore($alias)) . "'), array('controller' => '{$details['controller']}', 'action' => 'add'), array('escape' => false)); ?> </li>\n";
+                                $done[] = $details['controller'];
+                            }
+                        }
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <?php echo "<?php if (isset(\$sideCalendar)) echo \$this->Element('sideCalendar');?>"?>
+    <?php echo "<?php if (isset(\$sideTickets)) echo \$this->Element('sideTickets');?>"?>
+
+</div><!-- end col md 3 -->
+
+
+<!--</div>--><!-- end row -->
+<!--</div>-->

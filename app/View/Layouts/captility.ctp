@@ -57,7 +57,7 @@
 
                 <div class="row clearfix">
 
-                    <?php if (isset($sidebar) && isset($headline)): //Layout in Tabs with Sidebar ?>
+                    <?php if (isset($sideCalendar) && isset($headline)): //Layout in Tabs with Sidebar ?>
                         <div class="col-md-12 column">
                             <?php echo $this->Element('headline');?>
                         </div>
@@ -82,8 +82,7 @@
 
 
                         <?php else: // Cake/ Admin Layout?>
-                            <?php echo $this->Session->flash(); ?>
-                            <?php echo $this->Session->flash('auth'); ?>
+
                             <?php echo $this->fetch('content'); ?>
 
                         <?php endif; ?>

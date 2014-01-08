@@ -5,8 +5,9 @@ App::uses('AppModel', 'Model');
  *
  * @property Lecture $Lecture
  * @property User $User
+ * @property Workflow $Workflow
  * @property Event $Event
- * @property Ticket $Ticket
+ * @property Schedule $Schedule
  */
 class Capture extends AppModel {
 
@@ -62,21 +63,22 @@ class Capture extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        'link' => array( /*'url' => array(
-				'rule' => array('url'),
-				'message' => 'Geben sie eine gültige URL ein, oder lassen Sie das Feld frei.',
-				'allowEmpty' => true,
-				'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),*/
+        'link' => array(
+            'url' => array(
+                'rule' => array('url'),
+                'message' => 'Geben sie eine gültige URL ein, oder lassen Sie das Feld frei.',
+                'allowEmpty' => true,
+                'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
         ),
-        'date' => array(
-            'datetime' => array(
-                'rule' => array('datetime'),
+        'type' => array(
+            'bla' => array(
+                //'rule' => array('datetime'),
                 //'message' => 'Your custom message here',
-                //'allowEmpty' => false,
-                //'required' => false,
+                'allowEmpty' => true,
+                'required' => false,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -92,6 +94,7 @@ class Capture extends AppModel {
             ),
         ),
     );
+
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -115,9 +118,9 @@ class Capture extends AppModel {
             'fields' => '',
             'order' => ''
         ),
-        'Event' => array(
-            'className' => 'Event',
-            'foreignKey' => 'event_id',
+        'Workflow' => array(
+            'className' => 'Workflow',
+            'foreignKey' => 'workflow_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''
@@ -130,8 +133,21 @@ class Capture extends AppModel {
      * @var array
      */
     public $hasMany = array(
-        'Ticket' => array(
-            'className' => 'Ticket',
+        'Event' => array(
+            'className' => 'Event',
+            'foreignKey' => 'capture_id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
+        ),
+        'Schedule' => array(
+            'className' => 'Schedule',
             'foreignKey' => 'capture_id',
             'dependent' => false,
             'conditions' => '',

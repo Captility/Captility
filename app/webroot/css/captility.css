@@ -552,6 +552,9 @@ input[type="button"].btn-block {
   background-color: #ffffff;
   border-bottom: 1px solid #dddddd;
 }
+.related {
+  overflow-x: scroll;
+}
 /* ###############################################
  * ################# COMPONENTS  #################
  * ###############################################*/
