@@ -64,9 +64,9 @@
 		</td>
 </tr>
 <tr>
-		<th><?php echo __('Repeat Date'); ?></th>
+		<th><?php echo __('Repeat Week'); ?></th>
 		<td>
-			<?php echo h($schedule['Schedule']['repeat_date']); ?>
+			<?php echo h($schedule['Schedule']['repeat_week']); ?>
 			&nbsp;
 		</td>
 </tr>

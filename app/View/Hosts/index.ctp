@@ -30,7 +30,6 @@
 						<th><?php echo $this->Paginator->sort('email'); ?></th>
 						<th><?php echo $this->Paginator->sort('contact'); ?></th>
 						<th><?php echo $this->Paginator->sort('contact_email'); ?></th>
-						<th><?php echo $this->Paginator->sort('comment'); ?></th>
 						<th class="actions"></th>
 					</tr>
 				</thead>
@@ -39,10 +38,19 @@
 					<tr>
 						<td><?php echo h($host['Host']['host_id']); ?>&nbsp;</td>
 						<td><?php echo h($host['Host']['name']); ?>&nbsp;</td>
-						<td><?php echo h($host['Host']['email']); ?>&nbsp;</td>
+                        <td>
+                            <?php if(!empty($host['Host']['email'])) echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-envelope')),
+                                'mailto:'.h($host['Host']['email']), array('full_base' => true, 'escape' => false));
+                            ?>
+                        </td>
 						<td><?php echo h($host['Host']['contact']); ?>&nbsp;</td>
-						<td><?php echo h($host['Host']['contact_email']); ?>&nbsp;</td>
-						<td><?php echo h($host['Host']['comment']); ?>&nbsp;</td>
+                        <td>
+                            <?php if(!empty($host['Host']['contact_email'])) echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-envelope')),
+                                'mailto:'.h($host['Host']['contact_email']), array('full_base' => true, 'escape' => false));
+                            ?>
+                        </td>
 						<td class="actions">
 							<?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $host['Host']['host_id']), array('escape' => false)); ?>
 							<?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $host['Host']['host_id']), array('escape' => false)); ?>

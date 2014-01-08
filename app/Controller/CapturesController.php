@@ -37,7 +37,7 @@ class CapturesController extends AppController {
         if (!$this->Capture->exists($id)) {
             throw new NotFoundException(__('Invalid capture'));
         }
-        $options = array('conditions' => array('Capture.' . $this->Capture->primaryKey => $id));
+        $options = array('conditions' => array('Capture.' . $this->Capture->primaryKey => $id), 'recursive' => 2);
         $this->set('capture', $this->Capture->find('first', $options));
     }
 
@@ -107,10 +107,11 @@ class CapturesController extends AppController {
         $users = $this->Capture->User->find('list');
         $workflows = $this->Capture->Workflow->find('list');
         $events = $this->Capture->Event->find('list');
+        $schedules = $this->Capture->Schedule->find('list');
         $eventTypes = $this->Capture->Event->EventType->find('list', array(
             'fields' => array('EventType.event_type_id', 'EventType.name', 'EventType.color')));
 
-        $this->set(compact('lectures', 'users', 'workflows', 'events', 'eventTypes'));
+        $this->set(compact('lectures', 'users', 'workflows', 'schedules', 'events', 'eventTypes'));
     }
 
     /**

@@ -45,7 +45,12 @@
 						<td><?php echo h($event['Event']['start']); ?>&nbsp;</td>
 						<td><?php echo h($event['Event']['end']); ?>&nbsp;</td>
 						<td><?php echo h($event['Event']['status']); ?>&nbsp;</td>
-						<td><?php echo h($event['Event']['link']); ?>&nbsp;</td>
+                        <td>
+                            <?php if(!empty($event['Event']['link'])) echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-link')),
+                                h($event['Event']['link']), array('full_base' => true, 'escape' => false));
+                            ?>
+                        </td>
 								<td>
 			<?php echo $this->Html->link($event['EventType']['name'], array('controller' => 'event_types', 'action' => 'view', $event['EventType']['event_type_id'])); ?>
 		</td>

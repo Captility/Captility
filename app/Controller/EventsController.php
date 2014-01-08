@@ -19,10 +19,6 @@ class EventsController extends AppController {
 
         parent::beforeFilter();
 
-
-        //Allow everything for debugging:
-        $this->Auth->allow(); //Todo entfernen
-
     }
 
     function feed($id = null) {
@@ -79,7 +75,7 @@ class EventsController extends AppController {
                 'end' => $end,
                 'allDay' => $allday,
                 //'url' => Router::url('/') . '/captures/view/'.$event['Capture']['capture_id'],
-                'details' => $event['Event']['details'],
+                'details' => $event['Event']['comment'],
                 'className' => 'eventColor' . $event['EventType']['color'],
                 'capture_id' => $event['Capture']['capture_id']
             );

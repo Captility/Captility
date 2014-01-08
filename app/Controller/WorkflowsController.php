@@ -36,7 +36,8 @@ class WorkflowsController extends AppController {
 		if (!$this->Workflow->exists($id)) {
 			throw new NotFoundException(__('Invalid workflow'));
 		}
-		$options = array('conditions' => array('Workflow.' . $this->Workflow->primaryKey => $id));
+		$options = array('conditions' => array('Workflow.' . $this->Workflow->primaryKey => $id), 'recursive' => 2);
+
 		$this->set('workflow', $this->Workflow->find('first', $options));
 	}
 

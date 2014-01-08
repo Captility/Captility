@@ -61,63 +61,69 @@
                     'hour' => date('H'),
                     'min' => '00'),
             ));?>
-        <div class="form-group">
-            <?php echo $this->Form->input('all_day', array('class' => 'form-control', 'placeholder' => 'All Day'));?>
-        </div>
-        <div class="form-group">
-            <?php echo $this->Form->input('status', array('class' => 'form-control', 'placeholder' => 'Status'));?>
-        </div>
-        <div class="form-group">
-            <?php echo $this->Form->input('link', array('class' => 'form-control', 'placeholder' => 'Link'));?>
-        </div>
-        <div class="form-group">
-            <?php echo $this->Form->input('event_type_id', array('class' => 'form-control', 'placeholder' => 'Event Type Id'));?>
-        </div>
-        <div class="form-group">
-            <?php echo $this->Form->input('schedule_id', array('class' => 'form-control', 'placeholder' => 'Schedule Id'));?>
-        </div>
-        <div class="form-group">
-            <?php echo $this->Form->input('capture_id', array('class' => 'form-control', 'placeholder' => 'Capture Id'));?>
-        </div>
-        <div class="form-group">
-            <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary')); ?>
-        </div>
-
-        <?php echo $this->Form->end() ?>
-
     </div>
-    <!-- end col md 12 -->
+    <div class="form-group">
+        <?echo '<div class="control-group">';
+        echo $this->Form->label('Event.all_day', null, array('class' => 'control-label'));
+        echo '<div class="controls">';
+        echo $this->Form->checkbox('Event.all_day');
+        echo '</div>';
+        echo '</div>'; ?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->Form->input('status', array('class' => 'form-control', 'placeholder' => 'Status'));?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->Form->input('link', array('class' => 'form-control', 'placeholder' => 'Link'));?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->Form->input('event_type_id', array('class' => 'form-control', 'placeholder' => 'Event Type Id'));?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->Form->input('schedule_id', array('class' => 'form-control', 'placeholder' => 'Schedule Id'));?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->Form->input('capture_id', array('class' => 'form-control', 'placeholder' => 'Capture Id'));?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary')); ?>
+    </div>
+
+    <?php echo $this->Form->end() ?>
+
+</div>
+<!-- end col md 12 -->
 
 
-    <div class="col-md-3 column">
-        <div class="actions">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <span class="glyphicon glyphicon-link"></span><?php echo __('Related Actions');?>
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <ul class="nav nav-pills nav-stacked">
+<div class="col-md-3 column">
+    <div class="actions">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-link"></span><?php echo __('Related Actions');?>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
 
-                        <li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete'), array('action' => 'delete', $this->Form->value('Event.event_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Event.event_id'))); ?></li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Events'), array('action' => 'index'), array('escape' => false)); ?></li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Event Types'), array('controller' => 'event_types', 'action' => 'index'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Event Type'), array('controller' => 'event_types', 'action' => 'add'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Schedules'), array('controller' => 'schedules', 'action' => 'index'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Schedule'), array('controller' => 'schedules', 'action' => 'add'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    </ul>
-                </div>
+                    <li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete'), array('action' => 'delete', $this->Form->value('Event.event_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Event.event_id'))); ?></li>
+                    <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Events'), array('action' => 'index'), array('escape' => false)); ?></li>
+                    <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Event Types'), array('controller' => 'event_types', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Event Type'), array('controller' => 'event_types', 'action' => 'add'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Schedules'), array('controller' => 'schedules', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Schedule'), array('controller' => 'schedules', 'action' => 'add'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
             </div>
         </div>
-
-
-        <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
     </div>
-    <!-- end col md 3 -->
 
 
-    <!--</div>--><!-- end row -->
-    <!--</div>-->
+    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+</div>
+<!-- end col md 3 -->
+
+
+<!--</div>--><!-- end row -->
+<!--</div>-->

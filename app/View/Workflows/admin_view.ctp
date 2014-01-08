@@ -46,7 +46,6 @@
                     <thead>
                     <tr>
                         		<th><?php echo __('Capture Id'); ?></th>
-		<th><?php echo __('Online'); ?></th>
 		<th><?php echo __('Comment'); ?></th>
 		<th><?php echo __('Name'); ?></th>
 		<th><?php echo __('Status'); ?></th>
@@ -60,7 +59,6 @@
                     	<?php foreach ($workflow['Capture'] as $capture): ?>
 		<tr>
 			<td><?php echo $capture['capture_id']; ?></td>
-			<td><?php echo $capture['online']; ?></td>
 			<td><?php echo $capture['comment']; ?></td>
 			<td><?php echo $capture['name']; ?></td>
 			<td><?php echo $capture['status']; ?></td>

@@ -59,7 +59,12 @@
                     'min' => '00'),
             ));?>
         <div class="form-group">
-            <?php echo $this->Form->input('all_day', array('class' => 'form-control', 'placeholder' => 'All Day'));?>
+            <?echo '<div class="control-group">';
+            echo $this->Form->label('Event.all_day', null, array('class' => 'control-label'));
+            echo '<div class="controls">';
+            echo $this->Form->checkbox('Event.all_day');
+            echo '</div>';
+            echo '</div>'; ?>
         </div>
         <div class="form-group">
             <?php echo $this->Form->input('status', array('class' => 'form-control', 'placeholder' => 'Status'));?>

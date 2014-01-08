@@ -36,7 +36,7 @@ class EventTypesController extends AppController {
 		if (!$this->EventType->exists($id)) {
 			throw new NotFoundException(__('Invalid event type'));
 		}
-		$options = array('conditions' => array('EventType.' . $this->EventType->primaryKey => $id));
+		$options = array('conditions' => array('EventType.' . $this->EventType->primaryKey => $id), 'recursive' => 2);
 		$this->set('eventType', $this->EventType->find('first', $options));
 	}
 

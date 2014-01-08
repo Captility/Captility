@@ -6,29 +6,30 @@ App::uses('AppModel', 'Model');
  * @property EventType $EventType
  * @property Schedule $Schedule
  * @property Capture $Capture
+ * @property Ticket $Ticket
  */
 class Event extends AppModel {
 
-/**
- * Primary key field
- *
- * @var string
- */
-	public $primaryKey = 'event_id';
+    /**
+     * Primary key field
+     *
+     * @var string
+     */
+    public $primaryKey = 'event_id';
 
-/**
- * Display field
- *
- * @var string
- */
-	public $displayField = 'title';
+    /**
+     * Display field
+     *
+     * @var string
+     */
+    public $displayField = 'title';
 
-/**
- * Validation rules
- *
- * @var array
- */
-	public $validate = array(
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public $validate = array(
         'event_type_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
@@ -99,56 +100,78 @@ class Event extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-		'link' => array(
-			'url' => array(
-				'rule' => array('url'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'capture_id' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-	);
+        'link' => array(
+            'url' => array(
+                'rule' => array('url', true),
+                'message' => 'Please enter a valid Link, like "http://www.captility.de"',
+                'allowEmpty' => false,
+                'required' => true,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+        'capture_id' => array(
+            'notEmpty' => array(
+                'rule' => array('notEmpty'),
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+    );
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+    //The Associations below have been created with all possible keys, those that are not needed can be removed
 
-/**
- * belongsTo associations
- *
- * @var array
- */
-	public $belongsTo = array(
-		'EventType' => array(
-			'className' => 'EventType',
-			'foreignKey' => 'event_type_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Schedule' => array(
-			'className' => 'Schedule',
-			'foreignKey' => 'schedule_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Capture' => array(
-			'className' => 'Capture',
-			'foreignKey' => 'capture_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
+    /**
+     * belongsTo associations
+     *
+     * @var array
+     */
+    public $belongsTo = array(
+        'EventType' => array(
+            'className' => 'EventType',
+            'foreignKey' => 'event_type_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
+        'Schedule' => array(
+            'className' => 'Schedule',
+            'foreignKey' => 'schedule_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
+        'Capture' => array(
+            'className' => 'Capture',
+            'foreignKey' => 'capture_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        )
+    );
+
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
+    public $hasMany = array(
+        'Ticket' => array(
+            'className' => 'Ticket',
+            'foreignKey' => 'event_id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
+        )
+    );
+
 }

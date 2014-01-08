@@ -10,7 +10,16 @@
  */
 $mobileMaxWidth = 992;
 
-
+function getParameterByName(name, href) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regexS = "[\\?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(href);
+    if (results == null)
+        return "";
+    else
+        return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 //######################################################################################################################
 //############################################ RESPONSIVENESS ##########################################################
 //######################################################################################################################
@@ -81,15 +90,25 @@ $(document).ready(function () {
 
         // Combine Datepicker and FullCalendar (inkl. Today-Button
         $('#SideCalendar').datepicker()
+            // when Datepicker is clicked...
             .on('changeDate', function (e) {
 
-                console.log('Datepicker: ' + e.date);
-                $('#calendar').fullCalendar('gotoDate', new Date(e.date));
+                //if FullCalendar present
+                if ($('#calendar').length) {
+                    // ... jump in FullCalendar
+                    console.log('Datepicker: ' + e.date);
+                    $('#calendar').fullCalendar('gotoDate', new Date(e.date));
+                }
+                // else: Load Calendar View
+                else {
 
-            });
+                    window.location.href = ".?date=" + e.date;
 
-        // Start highligting current week
-        $('td.today').click();
+                }
+
+
+            }
+        );
 
 
         /*$('.datepicker-days tbody tr').on('mouseleave', function(){
@@ -179,7 +198,7 @@ $(document).ready(function () {
     var captilityEventSources = {
 
         overview: {
-            url: '/captility/events/feed',
+            url: 'events/feed',
             type: 'GET',
             cache: false
             /*,error: function () {
@@ -187,7 +206,7 @@ $(document).ready(function () {
              }*/
         },
         myweek: {
-            url: '/captility/events/feedMy',
+            url: 'events/feedMy',
             type: 'GET',
             cache: false
             /*,error: function () {
@@ -282,8 +301,8 @@ $(document).ready(function () {
         eventClick: function (data, event, view) {
             var content = '<p><b>Start:</b> ' + data.start + '<br />' +
                 (data.end && '<p><b>End:</b> ' + data.end + '</p>' || '') +
-                '<a class="btn-m btn-sm btn-default pull-right" name="Bearbeiten" href="/captility/captures/edit/' + data.capture_id + '">Bearbeiten</a>' +
-                '<a class="btn-m btn-sm btn-default pull-right" name="Anzeigen" href="/captility/captures/view/' + data.capture_id + '">Anzeigen</a>';
+                '<a class="btn-m btn-sm btn-default pull-right" name="Bearbeiten" href="captures/edit/' + data.capture_id + '">Bearbeiten</a>' +
+                '<a class="btn-m btn-sm btn-default pull-right" name="Anzeigen" href="captures/view/' + data.capture_id + '">Anzeigen</a>';
 
             tooltip.set({
                 'content.text': content,
@@ -320,7 +339,7 @@ $(document).ready(function () {
             } else {
                 var allday = 0;
             }
-            var url = "/captility/events/update?id=" + event.id + "&start=" + startyear + "-" + startmonth + "-" + startday + " " + starthour + ":" + startminute + ":00&end=" + endyear + "-" + endmonth + "-" + endday + " " + endhour + ":" + endminute + ":00&allday=" + allday;
+            var url = "events/update?id=" + event.id + "&start=" + startyear + "-" + startmonth + "-" + startday + " " + starthour + ":" + startminute + ":00&end=" + endyear + "-" + endmonth + "-" + endday + " " + endhour + ":" + endminute + ":00&allday=" + allday;
             $.post(url, function (data) {
             });
         },
@@ -337,35 +356,39 @@ $(document).ready(function () {
             var endmonth = enddate.getMonth() + 1;
             var endhour = enddate.getHours();
             var endminute = enddate.getMinutes();
-            var url = "/captility/events/update?id=" + event.id + "&start=" + startyear + "-" + startmonth + "-" + startday + " " + starthour + ":" + startminute + ":00&end=" + endyear + "-" + endmonth + "-" + endday + " " + endhour + ":" + endminute + ":00";
+            var url = "events/update?id=" + event.id + "&start=" + startyear + "-" + startmonth + "-" + startday + " " + starthour + ":" + startminute + ":00&end=" + endyear + "-" + endmonth + "-" + endday + " " + endhour + ":" + endminute + ":00";
             $.post(url, function (data) {
             });
         }
 
         /*selectHelper: true,
-        , select: function(start, end, allDay) {
-            var title = prompt('Event Title:');
-            if (title) {
-                calendar.fullCalendar('renderEvent',
-                    {
-                        title: title,
-                        start: start,
-                        end: end,
-                        allDay: allDay,
-                        className: 'eventColorBlack'
-                    },
-                    true // make the event "stick"
-                );
-            }
-            calendar.fullCalendar('unselect');
-        }*/
+         , select: function(start, end, allDay) {
+         var title = prompt('Event Title:');
+         if (title) {
+         calendar.fullCalendar('renderEvent',
+         {
+         title: title,
+         start: start,
+         end: end,
+         allDay: allDay,
+         className: 'eventColorBlack'
+         },
+         true // make the event "stick"
+         );
+         }
+         calendar.fullCalendar('unselect');
+         }*/
 
+    });
 
+    // Start view from selected date and highligting current week
+    if ($('#calendar').length) {
 
-    })
+        $('#calendar').fullCalendar('gotoDate', new Date(getParameterByName('date', window.location.href)));
+        console.log('Query: ' + getParameterByName('date', window.location.href));
+    };
 
-})
-;
+});
 
 //######################################################################################################################
 //############################################ FULL CALENDAR ###########################################################

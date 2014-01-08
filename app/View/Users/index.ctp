@@ -28,7 +28,6 @@
                             <th><?php echo $this->Paginator->sort('user_id'); ?></th>
                             <th><?php echo $this->Paginator->sort('username'); ?></th>
                             <th><?php echo $this->Paginator->sort('email'); ?></th>
-                            <th><?php echo $this->Paginator->sort('language'); ?></th>
                             <th><?php echo $this->Paginator->sort('avatar'); ?></th>
                             <th><?php echo $this->Paginator->sort('created'); ?></th>
                             <th><?php echo $this->Paginator->sort('modified'); ?></th>
@@ -42,8 +41,12 @@
 					<tr>
 						<td><?php echo h($user['User']['user_id']); ?>&nbsp;</td>
 						<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
-						<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
-						<td><?php echo h($user['User']['language']); ?>&nbsp;</td>
+                        <td>
+                            <?php echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-envelope')),
+                                'mailto:'.h($user['User']['email']), array('full_base' => true, 'escape' => false));
+                            ?>
+                        </td>
 						<td><?php echo h($user['User']['avatar']); ?>&nbsp;</td>
 						<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
 						<td><?php echo h($user['User']['modified']); ?>&nbsp;</td>

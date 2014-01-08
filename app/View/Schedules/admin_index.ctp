@@ -31,7 +31,7 @@
                             <th><?php echo $this->Paginator->sort('duration'); ?></th>
                             <th><?php echo $this->Paginator->sort('repeat_time'); ?></th>
                             <th><?php echo $this->Paginator->sort('repeat_day'); ?></th>
-                            <th><?php echo $this->Paginator->sort('repeat_date'); ?></th>
+                            <th><?php echo $this->Paginator->sort('repeat_week'); ?></th>
                             <th><?php echo $this->Paginator->sort('created'); ?></th>
                             <th><?php echo $this->Paginator->sort('modified'); ?></th>
                             <th><?php echo $this->Paginator->sort('capture_id'); ?></th>
@@ -47,7 +47,7 @@
 						<td><?php echo h($schedule['Schedule']['duration']); ?>&nbsp;</td>
 						<td><?php echo h($schedule['Schedule']['repeat_time']); ?>&nbsp;</td>
 						<td><?php echo h($schedule['Schedule']['repeat_day']); ?>&nbsp;</td>
-						<td><?php echo h($schedule['Schedule']['repeat_date']); ?>&nbsp;</td>
+						<td><?php echo h($schedule['Schedule']['repeat_week']); ?>&nbsp;</td>
 						<td><?php echo h($schedule['Schedule']['created']); ?>&nbsp;</td>
 						<td><?php echo h($schedule['Schedule']['modified']); ?>&nbsp;</td>
 								<td>

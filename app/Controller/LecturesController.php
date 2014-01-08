@@ -36,7 +36,7 @@ class LecturesController extends AppController {
 		if (!$this->Lecture->exists($id)) {
 			throw new NotFoundException(__('Invalid lecture'));
 		}
-		$options = array('conditions' => array('Lecture.' . $this->Lecture->primaryKey => $id));
+		$options = array('conditions' => array('Lecture.' . $this->Lecture->primaryKey => $id), 'recursive' => 2);
 		$this->set('lecture', $this->Lecture->find('first', $options));
 	}
 
