@@ -47,12 +47,12 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                                            <li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>Delete'), array('action' => 'delete', $this->Form->value('Workflow.workflow_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Workflow.workflow_id'))); ?></li>
-                                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Workflows'), array('action' => 'index'), array('escape' => false)); ?></li>
-                    		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Tasks'), array('controller' => 'tasks', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Task'), array('controller' => 'tasks', 'action' => 'add'), array('escape' => false)); ?> </li>
+                                            <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>'.__('Delete'), array('action' => 'delete', $this->Form->value('Workflow.workflow_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Workflow.workflow_id'))); ?></li>
+                                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Workflows'), array('action' => 'index'), array('escape' => false)); ?></li>
+                    		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Tasks'), array('controller' => 'tasks', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Task'), array('controller' => 'tasks', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>
             </div>
         </div>

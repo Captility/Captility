@@ -73,16 +73,6 @@ class Capture extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        'type' => array(
-            'bla' => array(
-                //'rule' => array('datetime'),
-                //'message' => 'Your custom message here',
-                'allowEmpty' => true,
-                'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-        ),
         'published' => array(
             'datetime' => array(
                 'rule' => array('datetime'),

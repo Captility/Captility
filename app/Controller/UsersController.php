@@ -26,10 +26,11 @@ class UsersController extends AppController {
         $this->Auth->allow('initAuth'); //ToDo AclActions entfernen
 
         // A logged in user can't register or login. Others can!
-        if (in_array($this->action, array('register', 'login', 'logout', 'changePassword'))) {
+        if (in_array($this->action, array('register', 'login', 'logout', 'changePassword', 'whoisonline'))) {
             if ($this->Auth->user()) {
                 $this->Auth->allow('logout');
                 $this->Auth->allow('changePassword');
+                $this->Auth->allow('whoisonline');
             }
             else {
                 $this->Auth->allow('register');
@@ -54,6 +55,7 @@ class UsersController extends AppController {
         return parent::isAuthorized($user);
 
     }
+
 
     //TODO: Remove ACL Action
     public function initAuth() {

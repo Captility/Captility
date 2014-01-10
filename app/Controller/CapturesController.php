@@ -197,7 +197,7 @@ class CapturesController extends AppController {
                 $this->Capture->Schedule->id = $capture['Schedule']['schedule_id'];
                 // Delete associated Event
                 if ($this->Capture->Event->delete()) {
-                    $this->Session->setFlash(__('The schedule have been deleted.'), 'default', array('class' => 'alert alert-success'));
+                    $this->Session->setFlash(__('The related schedules have been deleted.'), 'default', array('class' => 'alert alert-success'));
                 }
                 else {
                     $this->Session->setFlash(__('The related schedules could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));

@@ -273,7 +273,7 @@ date_default_timezone_set('Europe/Berlin');
 /**
  * Set default Time for localisation.
  */
-Configure::write('Config.language', 'eng');
+Configure::write('Config.language', 'deu');
 Configure::write('Captility.supportedLanguages', array('deu', 'eng'));
 
 /**

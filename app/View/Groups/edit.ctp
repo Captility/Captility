@@ -47,10 +47,10 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                                            <li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>Delete'), array('action' => 'delete', $this->Form->value('Group.group_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Group.group_id'))); ?></li>
-                                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Groups'), array('action' => 'index'), array('escape' => false)); ?></li>
-                    		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
+                                            <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>'.__('Delete'), array('action' => 'delete', $this->Form->value('Group.group_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Group.group_id'))); ?></li>
+                                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Groups'), array('action' => 'index'), array('escape' => false)); ?></li>
+                    		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>
             </div>
         </div>

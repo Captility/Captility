@@ -33,49 +33,49 @@
     )); ?>
 
     <div class="form-group">
-        <?php echo $this->Form->input('username', array('label' => array('text' => 'Username',
+        <?php echo $this->Form->input('username', array('label' => array('text' => __('Username'),
             'class' => 'col col-md-3 control-label'), 'placeholder' => 'Username'));?>
     </div>
 
     <div class="form-group">
-        <?php echo $this->Form->input('avatar', array('label' => array('text' => 'Avatar',
+        <?php echo $this->Form->input('avatar', array('label' => array('text' => __('Avatar'),
             'class' => 'col col-md-3 control-label'), 'placeholder' => 'Avatar (noch nicht unterstützt)'));?>
     </div>
 
     <div class="form-group">
         <?php echo $this->Form->input('pwd', array(
-            'label' => 'Enter Password', 'type' => 'password', 'label' => array('text' => 'Password',
-                'class' => 'col col-md-3 control-label'), 'placeholder' => 'Repeat password',
+            'label' => 'Enter Password', 'type' => 'password', 'label' => array('text' => __('Password'),
+                'class' => 'col col-md-3 control-label'), 'placeholder' => __('Password'),
             'value' => '',
             'autocomplete' => 'off'));?>
     </div>
     <div class="form-group">
         <?php echo $this->Form->input('pwd_confirm', array(
-            'label' => 'Confirm Password', 'type' => 'password', 'label' => array('text' => 'Password confirmation',
-                'class' => 'col col-md-3 control-label'), 'placeholder' => 'Repeat password',
+            'label' => 'Confirm Password', 'type' => 'password', 'label' => array('text' => __('Password confirmation'),
+                'class' => 'col col-md-3 control-label'), 'placeholder' => __('Repeat password'),
             'value' => '',
             'autocomplete' => 'off'));?>
     </div>
     <div class="form-group">
-        <?php echo $this->Form->input('email', array('label' => array('text' => 'E-Mail',
-            'class' => 'col col-md-3 control-label'), 'placeholder' => 'Email'));?>
+        <?php echo $this->Form->input('email', array('label' => array('text' => __('E-Mail'),
+            'class' => 'col col-md-3 control-label'), 'placeholder' => __('Email')));?>
     </div>
     <div class="form-group">
         <?php echo $this->Form->input('User.language', array(
-            'label' => array('text' => 'Language',
+            'label' => array('text' => __('Language'),
                 'class' => 'col col-md-3 control-label'),
-            'options' => array(array('name' => 'German', 'value' => 'deu'), array('name' => 'English', 'value' => 'eng')),
+            'options' => array(array('name' => 'Deutsch', 'value' => 'deu'), array('name' => 'English', 'value' => 'eng')),
             'selected' => 1,
         ));?>
     </div>
     <div class="form-group">
-        <?php echo $this->Form->input('group_id', array('label' => array('text' => 'User group',
-            'class' => 'col col-md-3 control-label'), 'placeholder' => 'Group Id', 'selected' => 3));?>
+        <?php echo $this->Form->input('group_id', array('label' => array('text' => __('User group'),
+            'class' => 'col col-md-3 control-label'), 'placeholder' => __('Group Id'), 'selected' => 3));?>
     </div>
 
     <div class="form-group">
         <?php echo $this->Form->input('notification', array(
-            'label' => array('text' => 'Notifications',
+            'label' => array('text' => __('Notifications'),
                 'class' => 'col col-md-3 control-label'),
             'options' => array(array('name' => __('Suscribe to Tickets and Events.'), 'value' => '1'), array('name' => __('No Notifications at all.'), 'value' => '0')),
             'selected' => 1,
@@ -89,42 +89,42 @@
         )); ?>
     </div>
 
-        <?php echo $this->Form->end() ?>
+    <?php echo $this->Form->end() ?>
 
-    </div>
-    <!-- end col md 12 -->
+</div>
+<!-- end col md 12 -->
 
 
-    <div class="col-md-3 column">
-        <div class="actions">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <span class="glyphicon glyphicon-link"></span><?php echo __('Related Actions');?>
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <ul class="nav nav-pills nav-stacked">
+<div class="col-md-3 column">
+    <div class="actions">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-link"></span><?php echo __('Related Actions');?>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
 
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Users'), array('action' => 'index'), array('escape' => false)); ?></li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Groups'), array('controller' => 'groups', 'action' => 'index'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Group'), array('controller' => 'groups', 'action' => 'add'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Lectures'), array('controller' => 'lectures', 'action' => 'index'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Tickets'), array('controller' => 'tickets', 'action' => 'index'), array('escape' => false)); ?> </li>
-                        <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Ticket'), array('controller' => 'tickets', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    </ul>
-                </div>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Users'), array('action' => 'index'), array('escape' => false)); ?></li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Groups'), array('controller' => 'groups', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Group'), array('controller' => 'groups', 'action' => 'add'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Lectures'), array('controller' => 'lectures', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Tickets'), array('controller' => 'tickets', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Ticket'), array('controller' => 'tickets', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
             </div>
         </div>
-
-
-        <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
     </div>
-    <!-- end col md 3 -->
 
 
-    <!--</div>--><!-- end row -->
-    <!--</div>-->
+    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+</div>
+<!-- end col md 3 -->
+
+
+<!--</div>--><!-- end row -->
+<!--</div>-->

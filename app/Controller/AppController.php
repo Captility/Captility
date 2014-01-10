@@ -40,7 +40,7 @@ class AppController extends Controller {
             'loginRedirect' => array('controller' => 'calendar', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
             'authorize' => array('Controller', 'Actions' => array('actionPath' => 'controllers')),
-            'authError' => 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.')
+            'authError' => 'Permission denied. You don\'t have the rights to access this action.')
     );
 
 
@@ -74,6 +74,7 @@ class AppController extends Controller {
         // ###### LANGUAGE ########
         if ($this->Session->check('Config.language')) {
             Configure::write('Config.language', $this->Session->read('Config.language'));
+            $this->Auth->authError = __('Permission denied. You don\'t have the rights to access this action.');
         }
 
         // Time format DMY or MDY
@@ -102,12 +103,12 @@ class AppController extends Controller {
 
 
         if (isset($user['Group']['name']) && $user['Group']['name'] === 'admin') {
-            $this->Session->setFlash(__('Sie bearbeiten diesen Inhalt als Administrator'), 'flash/info');
+            $this->Session->setFlash(__('You are editing this entry as admin'), 'flash/info');
             //return true;
         }
 
         if (isset($user['Group']['name']) && $user['Group']['name'] === 'manager') {
-            $this->Session->setFlash(__('Sie bearbeiten diesen Inhalt als Manager'), 'flash/info');
+            $this->Session->setFlash(__('You are editing this entry as manager'), 'flash/info');
         }
 
 

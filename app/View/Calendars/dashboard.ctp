@@ -7,10 +7,10 @@
     <div class="clearfix">
         <div class="tabbable tabs-left">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#a" id="GeneralViewFc" data-toggle="tab">Übersicht</a></li>
-                <li class=><a href="#a" id="MyWeekViewFc" data-toggle="tab">Eigene</a></li>
-                <li><a href="#b" data-toggle="tab">Tickets</a></li>
-                <li><a href="#c" data-toggle="tab">Produktion</a></li>
+                <li class="active"><a href="#a" id="GeneralViewFc" data-toggle="tab"><span class="glyphicon glyphicon-dashboard glyphicon-leftTabs"></span><?php echo __('Week') ?></a></li>
+                <li class=><a href="#a" id="MyWeekViewFc" data-toggle="tab"><span class="glyphicon glyphicon-calendar glyphicon-leftTabs"></span><?php echo __('Mine') ?></a></li>
+                <li><a href="#b" data-toggle="tab"><span class="glyphicon glyphicon-tasks glyphicon-leftTabs"></span><?php echo __('Tickets') ?></a></li>
+                <li><a href="#c" data-toggle="tab"><span class="glyphicon glyphicon-upload glyphicon-leftTabs"></span><?php echo __('Online') ?></a></li>
             </ul>
         </div>
     </div>

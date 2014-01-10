@@ -77,9 +77,9 @@
                     </div>
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
-                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Group'), array('action' => 'add'), array('escape' => false)); ?></li>
-                            		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
+                            <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Group'), array('action' => 'add'), array('escape' => false)); ?></li>
+                            		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
                         </ul>
                     </div><!-- end body -->
                 </div><!-- end panel -->

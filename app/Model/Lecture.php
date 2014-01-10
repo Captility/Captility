@@ -79,7 +79,7 @@ class Lecture extends AppModel {
         'semester' => array(
             'semester' => array(
                 'rule' => 'isSemester',
-                'message' => 'Please enter a Semester like \'WS 2013/14\' or \'SS 2014\' an',
+                'message' => 'Please enter a Semester like \'WS 2013/14\' or \'SS 2014\'',
                 //'allowEmpty' => false,
                 //'required' => false,
                 //'last' => false, // Stop validation after this rule
