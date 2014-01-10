@@ -21,58 +21,92 @@
     <ul class="nav navbar-nav">
 
         <li <? if ($this->params['controller'] == "calendars" && $this->params['action'] == "dashboard") echo 'class="active"';?>>
-            <?php echo $this->Html->link("Pinnwand", array('controller' => 'calendars', 'action' => 'dashboard')); ?>
+            <?php echo $this->Html->link(
+                $this->Html->tag(
+                    'span', '', array('class' => 'glyphicon glyphicon-dashboard')) . __('Dashboard'),
+                array('controller' => 'calendars', 'action' => 'dashboard'), array('escape' => false))?>
         </li>
         <li class="divider"></li>
 
         <li <? if ($this->params['controller'] == "calendars" && $this->params['action'] == "index") echo 'class="active"';?>>
-            <?php echo $this->Html->link("Kalender", array('controller' => 'calendars', 'action' => 'index')); ?>
+            <?php echo $this->Html->link(
+                $this->Html->tag(
+                    'span', '', array('class' => 'glyphicon glyphicon-calendar')) . __('Calendar'),
+                array('controller' => 'calendars', 'action' => 'index'), array('escape' => false))?>
         </li>
 
         <li class="divider"></li>
 
         <li class="dropdown <? if (in_array($this->params['controller'], array('captures', 'lectures', 'hosts', 'eventTypes'))) echo 'active'; ?>">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Verzeichnis<strong
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Records') ?><strong
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
 
-                <li role="presentation" class="dropdown-header list-info">Katalog verwalten...</li>
+                <li role="presentation"
+                    class="dropdown-header list-info"><?php echo __('Edit catalog entries...') ?></li>
+
                 <li>
-                    <?php echo $this->Html->link("Veranstaltungen", array('controller' => 'lectures', 'action' => 'index')); ?>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-user')) . __('Hosts'),
+                        array('controller' => 'hosts', 'action' => 'index'), array('escape' => false))?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link("Veranstalter", array('controller' => 'hosts', 'action' => 'index')); ?>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-th-list')) . __('Lectures'),
+                        array('controller' => 'lectures', 'action' => 'index'), array('escape' => false))?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link("Aufzeichnungen", array('controller' => 'captures', 'action' => 'index')); ?>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-film')) . __('Captures'),
+                        array('controller' => 'captures', 'action' => 'index'), array('escape' => false))?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link("Aufzeichnungsarten", array('controller' => 'event_types', 'action' => 'index')); ?>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-tint')) . __('Event Types'),
+                        array('controller' => 'event_types', 'action' => 'index'), array('escape' => false))?>
                 </li>
             </ul>
         </li>
 
         <li class="dropdown <? if (in_array($this->params['controller'], array('tasks', 'workflows', 'tickets'))) echo 'active'; ?>">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aufgaben<strong
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Team') ?><strong
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
-                <li role="presentation" class="dropdown-header list-info">Verwalten von...</li>
+                <li role="presentation" class="dropdown-header list-info"><?php echo __('Manage duties...') ?>.</li>
                 <li>
-                    <?php echo $this->Html->link("Full Calendar", array('controller' => 'full_calendar', 'action' => 'index')); ?>
-                </li>
-                <li>
-                    <?php echo $this->Html->link("Tickets", array('controller' => 'tickets', 'action' => 'index')); ?>
-                </li>
-                <li>
-                    <?php echo $this->Html->link("Aufgaben", array('controller' => 'tasks', 'action' => 'index')); ?>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-calendar')) . __('Calendar'),
+                        array('controller' => 'calendars', 'action' => 'index'), array('escape' => false))?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link("Workflows", array('controller' => 'workflows', 'action' => 'index')); ?>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-tasks')) . __('Tickets'),
+                        array('controller' => 'tickets', 'action' => 'index'), array('escape' => false))?>
                 </li>
-                <li class="divider">
+                <li>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-tags')) . __('Tasks'),
+                        array('controller' => 'tasks', 'action' => 'index'), array('escape' => false))?>
                 </li>
-                <li class="disabled">
-                    <?php echo $this->Html->link("Benutzern", array('controller' => 'users', 'action' => 'index')); ?>
+                <li>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-transfer')) . __('Workflows'),
+                        array('controller' => 'workflows', 'action' => 'index'), array('escape' => false))?>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-user')) . __('Users'),
+                        array('controller' => 'users', 'action' => 'index'), array('escape' => false))?>
                 </li>
             </ul>
         </li>
@@ -83,7 +117,7 @@
         <div class="form-group">
             <input type="text" class="form-control btn-inverse">
         </div>
-        <button type="submit" class="btn btn-inverse navbar-btn-search">Suche</button>
+        <button type="submit" class="btn btn-inverse navbar-btn-search"><?php echo __('Search') ?></button>
     </form>
 
     <ul class="nav navbar-nav navbar-right">
@@ -94,20 +128,20 @@
                 <strong
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
-                <li role="presentation" class="dropdown-header list-info">Account bearbeiten.</li>
+                <li role="presentation" class="dropdown-header list-info"><?php echo __('Edit account') ?></li>
                 <li>
-                    <a href="#">Profil bearbeiten</a>
+                    <a href="#"><?php echo __('Edit your profile') ?></a>
                 </li>
                 <li>
-                    <?php echo $this->Html->link("Passwort ändern", array('controller' => 'users', 'action' => 'changePassword')); ?>
+                    <?php echo $this->Html->link(__('Change Password'), array('controller' => 'users', 'action' => 'changePassword')); ?>
                 </li>
                 <li>
-                    <a href="#">Benachrichtigungen</a>
+                    <a href="#"><?php echo __('Messages') ?></a>
                 </li>
                 <li class="divider">
                 </li>
                 <li>
-                    <a href="#">Admin Center</a>
+                    <a href="#"><?php echo __('Admin Center') ?></a>
                 </li>
                 <li>
                     <?php echo $this->Html->link("Full Calendar", array('controller' => 'full_calendar', 'action' => 'index')); ?>
@@ -115,12 +149,12 @@
                 <li class="divider">
                 </li>
                 <li>
-                    <?php echo $this->Html->link("Abmelden", array('controller' => 'users', 'action' => 'logout')); ?>
+                    <?php echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); ?>
                 </li>
             </ul>
         </li>
         <li>
-            <?php echo $this->Html->link("Logout", array('controller' => 'users', 'action' => 'logout')); ?>
+            <?php echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); ?>
         </li>
 
     </ul>

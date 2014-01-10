@@ -79,6 +79,7 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Tasks');
         $this->Acl->allow($group, 'controllers/Tickets');
         $this->Acl->allow($group, 'controllers/Workflows');
+        $this->Acl->allow($group, 'controllers/Schedules');
 
 
         //allow users to only add and edit on posts and widgets
@@ -100,7 +101,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             if ($this->Auth->user()) {
 
-                $this->Session->setFlash(__('Sie sind bereits eingeloggt.'), 'flash/info');
+                $this->Session->setFlash(__('You are already logged in.'), 'flash/info');
 
                 return $this->redirect($this->Auth->redirect());
             }
@@ -111,14 +112,14 @@ class UsersController extends AppController {
             if ($this->Auth->login()) {
 
                 //TODO entfernen:
-                $this->Session->setFlash(__('Erfolgreich eingeloggt'), 'flash/success');
+                $this->Session->setFlash(__('Login successfull.'), 'flash/success');
 
                 // Set Language after login
                 $this->Session->write('Config.language', $this->Session->read('Auth.User.language'));
 
                 return $this->redirect($this->Auth->redirect());
             }
-            $this->Session->setFlash(__('Falscher Benutzername oder Passwort. Bitte versuchen Sie es erneut.'), 'flash/danger');
+            $this->Session->setFlash(__('Wrong username or password. Pleasy try again.'), 'flash/danger');
         }
     }
 
@@ -126,7 +127,7 @@ class UsersController extends AppController {
 
         // If logged in -> logout and flash message.
         if ($this->Auth->user()) {
-            $this->Session->setFlash(__('Erfolgreich ausgeloggt.'), 'flash/success');
+            $this->Session->setFlash(__('Logout successfull.'), 'flash/success');
         }
 
         return $this->redirect($this->Auth->logout());
@@ -134,7 +135,7 @@ class UsersController extends AppController {
 
     function register() {
 
-        $this->set('headline', 'Anmeldung');
+        $this->set('headline', __('Registration'));
 
         if ($this->request->is('post') || $this->request->is('put')) {
 
@@ -151,11 +152,11 @@ class UsersController extends AppController {
 
             if ($this->User->save($this->request->data)) {
 
-                $this->Session->setFlash(__('Der Benutzer wurde erfolgreich  erstellt.'), 'flash/success');
+                $this->Session->setFlash(__('The user was successfully created.'), 'flash/success');
 
                 if ($this->Auth->login()) {
 
-                    $this->Session->setFlash(__('Der Benutzer wurde erfolgreich erstellt und eingeloggt.'), 'flash/success');
+                    $this->Session->setFlash(__('The user was successfully created and logged in.'), 'flash/success');
 
                     // Set Language after login
                     $this->Session->write('Config.language', $this->Session->read('Auth.User.language'));
@@ -163,10 +164,10 @@ class UsersController extends AppController {
                     return $this->redirect($this->Auth->redirect());
                 }
 
-                $this->Session->setFlash(__('Der Benutzer konnte nicht eingeloggt werden.'), 'flash/danger');
+                $this->Session->setFlash(__('The user could not be logged in.'), 'flash/danger');
             }
             else {
-                $this->Session->setFlash(__('Der Benutzer konnte nicht erstellt werden.'), 'flash/danger');
+                $this->Session->setFlash(__('The user could not be created.'), 'flash/danger');
             }
 
         }

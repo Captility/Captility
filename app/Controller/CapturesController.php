@@ -51,7 +51,7 @@ class CapturesController extends AppController {
 
         if ($this->request->is('post')) {
 
-            pr($this->request->data);
+            /*pr($this->request->data);*/
 
             // EVENT
             $this->request->data['Event']['event_type_id'] = 1;
@@ -93,13 +93,13 @@ class CapturesController extends AppController {
                 }
                 else {
 
-                    $this->Session->setFlash(__('The Event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+                    $this->Session->setFlash(__('The Event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
                 }
 
                 return $this->redirect(array('action' => 'index'));
             }
             else {
-                $this->Session->setFlash(__('The Capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+                $this->Session->setFlash(__('The Capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 
             }
         }
@@ -131,7 +131,7 @@ class CapturesController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             }
             else {
-                $this->Session->setFlash(__('The capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+                $this->Session->setFlash(__('The capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
             }
         }
         else {
@@ -155,30 +155,57 @@ class CapturesController extends AppController {
     public function delete($id = null) {
         // Set active Capture record
         $this->Capture->id = $id;
-
-        // Set active Event record
-        $event = $this->Capture->findByCaptureId($id);
-        $this->Capture->Event->id = $event['Event']['event_id'];
+        $capture = $this->Capture->findByCaptureId($id);
 
         if (!$this->Capture->exists()) {
             throw new NotFoundException(__('Invalid capture'));
         }
+
         $this->request->onlyAllow('post', 'delete');
+
+/*        //Still has Schedules? Break!
+        if ($this->Capture->hasSchedules($this->Capture->id)) {
+
+            $this->Session->setFlash(__('The Capture could not be deleted. Related Schedules exist!'), 'default', array('class' => 'alert alert-danger'));
+            return $this->redirect(array('action' => 'index'));
+        }*/
+
 
         // Delete Capture
         if ($this->Capture->delete()) {
             $this->Session->setFlash(__('The capture has been deleted.'), 'default', array('class' => 'alert alert-success'));
 
-            // Delete associated Event
-            if ($this->Capture->Event->delete()) {
-                $this->Session->setFlash(__('The event has been deleted.'), 'default', array('class' => 'alert alert-success'));
+
+            // RELATION EVENTS
+            if ($this->Capture->hasEvents($this->Capture->id)) {
+
+                // Set active Event record
+                $this->Capture->Event->id = $capture['Event']['event_id'];
+                // Delete associated Event
+                if ($this->Capture->Event->delete()) {
+                    $this->Session->setFlash(__('The related events have been deleted.'), 'default', array('class' => 'alert alert-success'));
+                }
+                else {
+                    $this->Session->setFlash(__('The related events could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+                }
             }
-            else {
-                $this->Session->setFlash(__('The event could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+
+            // RELATION EVENTS
+            if ($this->Capture->hasSchedules($this->Capture->id)) {
+
+                // Set active Event record
+                $this->Capture->Schedule->id = $capture['Schedule']['schedule_id'];
+                // Delete associated Event
+                if ($this->Capture->Event->delete()) {
+                    $this->Session->setFlash(__('The schedule have been deleted.'), 'default', array('class' => 'alert alert-success'));
+                }
+                else {
+                    $this->Session->setFlash(__('The related schedules could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+                }
             }
         }
         else {
-            $this->Session->setFlash(__('The capture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+            $this->Session->setFlash(__('The capture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
         }
         return $this->redirect(array('action' => 'index'));
     }
@@ -221,7 +248,7 @@ class CapturesController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             }
             else {
-                $this->Session->setFlash(__('The capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+                $this->Session->setFlash(__('The capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
             }
         }
         $lectures = $this->Capture->Lecture->find('list');
@@ -247,7 +274,7 @@ class CapturesController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             }
             else {
-                $this->Session->setFlash(__('The capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+                $this->Session->setFlash(__('The capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
             }
         }
         else {
@@ -277,7 +304,7 @@ class CapturesController extends AppController {
             $this->Session->setFlash(__('The capture has been deleted.'), 'default', array('class' => 'alert alert-success'));
         }
         else {
-            $this->Session->setFlash(__('The capture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+            $this->Session->setFlash(__('The capture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
         }
         return $this->redirect(array('action' => 'index'));
     }

@@ -52,7 +52,7 @@ class SchedulesController extends AppController {
 				$this->Session->setFlash(__('The schedule has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 		$captures = $this->Schedule->Capture->find('list');
@@ -75,7 +75,7 @@ class SchedulesController extends AppController {
 				$this->Session->setFlash(__('The schedule has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Schedule.' . $this->Schedule->primaryKey => $id));
@@ -101,7 +101,7 @@ class SchedulesController extends AppController {
 		if ($this->Schedule->delete()) {
 			$this->Session->setFlash(__('The schedule has been deleted.'), 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('The schedule could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+			$this->Session->setFlash(__('The schedule could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
@@ -143,7 +143,7 @@ class SchedulesController extends AppController {
 				$this->Session->setFlash(__('The schedule has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 		$captures = $this->Schedule->Capture->find('list');
@@ -166,7 +166,7 @@ class SchedulesController extends AppController {
 				$this->Session->setFlash(__('The schedule has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Schedule.' . $this->Schedule->primaryKey => $id));
@@ -192,7 +192,7 @@ class SchedulesController extends AppController {
 		if ($this->Schedule->delete()) {
 			$this->Session->setFlash(__('The schedule has been deleted.'), 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('The schedule could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+			$this->Session->setFlash(__('The schedule could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

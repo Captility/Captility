@@ -100,4 +100,13 @@ class Group extends AppModel {
 		)
 	);
 
+    function hasUsers($id){
+        $count = $this->User->find("count", array("conditions" => array("User.usere_id" => $id)));
+        if ($count == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }

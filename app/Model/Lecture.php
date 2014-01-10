@@ -79,7 +79,7 @@ class Lecture extends AppModel {
         'semester' => array(
             'semester' => array(
                 'rule' => 'isSemester',
-                'message' => 'Bitte geben Sie ein Sommer-/ Wintersemester der Form: \'WS 2013/14\' oder \'SS 2014\' an',
+                'message' => 'Please enter a Semester like \'WS 2013/14\' or \'SS 2014\' an',
                 //'allowEmpty' => false,
                 //'required' => false,
                 //'last' => false, // Stop validation after this rule
@@ -268,4 +268,12 @@ class Lecture extends AppModel {
         )
     );
 
+    function hasCaptures($id){
+        $count = $this->Capture->find("count", array("conditions" => array("Lecture.lecture_id" => $id)));
+        if ($count == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

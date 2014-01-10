@@ -87,8 +87,11 @@ class AppController extends Controller {
 
     public function isAuthorized($user) {
 
-        // Inform over admin/manager actions in AppController
-        $this->informOverAdminAction($user);
+        if (in_array($this->action, array('dashboard', 'myLectures'))) { //ToDo: Edit informActions
+
+            // Inform over admin/manager actions in AppController
+            $this->informOverAdminAction($user);
+        }
 
         // Default deny
         return false;
@@ -106,6 +109,8 @@ class AppController extends Controller {
         if (isset($user['Group']['name']) && $user['Group']['name'] === 'manager') {
             $this->Session->setFlash(__('Sie bearbeiten diesen Inhalt als Manager'), 'flash/info');
         }
+
+
     }
 
 

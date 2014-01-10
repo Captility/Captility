@@ -66,7 +66,7 @@ class Capture extends AppModel {
         'link' => array(
             'url' => array(
                 'rule' => array('url'),
-                'message' => 'Geben sie eine gültige URL ein, oder lassen Sie das Feld frei.',
+                'message' => 'Please enter a valid Link or leave this field empty.',
                 'allowEmpty' => true,
                 'required' => false,
                 //'last' => false, // Stop validation after this rule
@@ -160,5 +160,23 @@ class Capture extends AppModel {
             'counterQuery' => ''
         )
     );
+
+    function hasEvents($id){
+        $count = $this->Event->find("count", array("conditions" => array("Capture.capture_id" => $id)));
+        if ($count == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function hasSchedules($id){
+        $count = $this->Schedule->find("count", array("conditions" => array("Capture.capture_id" => $id)));
+        if ($count == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }

@@ -21,11 +21,11 @@
     <ul class="nav navbar-nav">
 
         <li <? if (!in_array($this->params['controller'], array('users', 'calendars'))) echo 'class="active"';?>>
-            <?php echo $this->Html->link("Start", array('controller' => 'pages', 'action' => 'home')); ?>
+            <?php echo $this->Html->link(__('Start'), array('controller' => 'pages', 'action' => 'home')); ?>
         </li>
 
         <li>
-            <?php echo $this->Html->link(__("Hol dir dein eigenes Captility!"), '//captility.de'); ?>
+            <?php echo $this->Html->link(__("Get your own Captility!"), '//captility.de'); ?>
         </li>
     </ul>
 
@@ -33,16 +33,16 @@
         <div class="form-group">
             <input type="text" class="form-control btn-inverse">
         </div>
-        <button type="submit" class="btn btn-inverse navbar-btn-search">Suche</button>
+        <button type="submit" class="btn btn-inverse navbar-btn-search"><?php echo __('Search')?></button>
     </form>
 
     <ul class="nav navbar-nav navbar-right">
 
             <li <? if ($this->params['controller'] == "users" && $this->params['action'] == "register") echo 'class="active"';?>>
-                <?php echo $this->Html->link("Anmelden", array('controller' => 'users', 'action' => 'register')); ?>
+                <?php echo $this->Html->link(__('Register'), array('controller' => 'users', 'action' => 'register')); ?>
             </li>
             <li <? if ($this->params['controller'] == "users" && $this->params['action'] == "login") echo 'class="active"';?>>
-                <?php echo $this->Html->link("Login", array('controller' => 'users', 'action' => 'login')); ?>
+                <?php echo $this->Html->link(__('Login'), array('controller' => 'users', 'action' => 'login')); ?>
             </li>
     </ul>
 </div>

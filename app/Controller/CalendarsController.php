@@ -40,7 +40,7 @@ class CalendarsController extends AppController {
     public function index() {
 
 
-        $this->set('headline', __('Kalender'));
+        $this->set('headline', __('Calendar'));
         $this->set('sideCalendar', false);
         $this->set('sideTickets', false);
 
@@ -54,7 +54,7 @@ class CalendarsController extends AppController {
     public function dashboard() {
 
 
-        $this->set('headline', __('Pinnwand – Wochenübersicht'));
+        $this->set('headline', __('Dashboard – Week Overview'));
         $this->set('leftTabs', true);
         $this->set('sideCalendar', true);
         $this->set('sideTickets', true);
@@ -64,7 +64,7 @@ class CalendarsController extends AppController {
     public function myLectures() {
 
 
-        $this->set('headline', 'Meine Veranstaltungen');
+        $this->set('headline', __('My Lectures'));
 
         $userid = $this->Auth->user('user_id');
         //$this->set('lectures', $this->Lecture->find('all', array('conditions' => array('Lecture.user_id' => $userid))));

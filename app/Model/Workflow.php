@@ -49,7 +49,7 @@ class Workflow extends AppModel {
         'name' => array(
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
-                'message' => 'Enter a name for the Workflow.',
+                'message' => 'Enter a name for the workflow.',
                 //'allowEmpty' => false,
                 //'required' => false,
                 //'last' => false, // Stop validation after this rule

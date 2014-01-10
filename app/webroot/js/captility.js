@@ -66,7 +66,7 @@ function getParameterByName(name, href) {
     };
 }(jQuery));
 
-
+// ######################################## INIT DATEPICKER ############################################################
 /**
  * Activate SideCalendar inline in Right Column.
  */
@@ -215,24 +215,39 @@ $(document).ready(function () {
         }
     };
 
-    // Changing Event-Sources
+    // ##################################### Combine Calendar with Tabs ################################################
+
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $('#calendar').fullCalendar('render');
+        $('#calendar').fullCalendar('render');
+    });
+
+
+    // Swich Event-Sources
     $('#GeneralViewFc').click(function () {
 
+        //$('.datepicker').datepicker('update', new Date($('#SideCalendar').datepicker('getDate')));
 
         if (!$(this).parent().hasClass("active")) {
+
             $('#calendar').fullCalendar('removeEventSource', captilityEventSources.myweek)
                 .fullCalendar('removeEventSource', captilityEventSources.overview)
                 .fullCalendar('addEventSource', captilityEventSources.overview);
+
         }
+
     });
 
     $('#MyWeekViewFc').click(function () {
+
+        //$('.datepicker').datepicker('update', new Date($('#SideCalendar').datepicker('getDate')));
 
         if (!$(this).parent().hasClass("active")) {
             $('#calendar').fullCalendar('removeEventSource', captilityEventSources.overview)
                 .fullCalendar('removeEventSource', captilityEventSources.myweek)
                 .fullCalendar('addEventSource', captilityEventSources.myweek);
         }
+
     });
 
     // ######################################## INIT CALENDAR ##########################################################
@@ -292,7 +307,7 @@ $(document).ready(function () {
         editable: true,
         selectable: true,
 
-        // Datepicker Sync
+        // ######################################## Sync Datepicker ####################################################
         viewRender: function (view, element) {
             console.log('FullCalendar: ' + view.start);
             $('#SideCalendar').datepicker('update', new Date(view.start));
@@ -311,6 +326,8 @@ $(document).ready(function () {
             })
                 .reposition(event).show(event);
         },
+
+        // ######################################## Event Interaction ##################################################
         eventResizeStart: function () {
             tooltip.hide()
         },
@@ -380,13 +397,21 @@ $(document).ready(function () {
          }*/
 
     });
+    // ######################################## Load StartView #########################################################
 
-    // Start view from selected date and highligting current week
+    // Start view from selected date if set as GET param
     if ($('#calendar').length) {
 
-        $('#calendar').fullCalendar('gotoDate', new Date(getParameterByName('date', window.location.href)));
-        console.log('Query: ' + getParameterByName('date', window.location.href));
+
+        var param = getParameterByName('date', window.location.href);
+        if (param) {
+
+            $('#calendar').fullCalendar('gotoDate', new Date(param));
+            console.log('Query: ' + getParameterByName('date', window.location.href));
+        }
+
     };
+
 
 });
 

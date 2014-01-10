@@ -175,4 +175,13 @@ class Schedule extends AppModel {
 		)
 	);
 
+    function hasEvents($id){
+        $count = $this->Event->find("count", array("conditions" => array("Schedule.schedule_id" => $id)));
+        if ($count == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }

@@ -84,9 +84,18 @@
 }
 
 /** Navbar Search Alignment */
-.navbar-search {
+@media (min-width:@screen-lg-min) {
+  .navbar-search {
 
-  padding-right: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width:@screen-lg-min) {
+  .navbar-search {
+
+    display: none;
+  }
 }
 
 .navbar-btn-search {
@@ -106,7 +115,7 @@
   border-bottom: 1px solid #dddddd;
 }
 
-.related{
+.related {
   overflow-x: scroll;
 }
 
@@ -180,7 +189,7 @@
  * ###############################################*/
 
 /** Glyphicons **/
-h3 span.glyphicon {
+.glyphicon {
 
   margin-right: 7px;
 }
@@ -487,4 +496,28 @@ text-shadow: none;*/
     .eventColorPink;
     border-color: @eventColorPink;
   }
+}
+
+/* ###############################################
+ * ################ SIDE Calendar  ################
+ * ###############################################*/
+.sideCalendar{
+
+}
+
+/* ###############################################
+ * ################ SIDE TICKETS  ################
+ * ###############################################*/
+.sideTickets{
+
+  >.panel-body{
+
+    padding-bottom: 0px;
+  }
+}
+
+
+.side-ticket-heading {
+
+  padding: 10px 5px 10px 10px;
 }

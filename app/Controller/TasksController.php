@@ -52,7 +52,7 @@ class TasksController extends AppController {
 				$this->Session->setFlash(__('The task has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 		$workflows = $this->Task->Workflow->find('list');
@@ -75,7 +75,7 @@ class TasksController extends AppController {
 				$this->Session->setFlash(__('The task has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Task.' . $this->Task->primaryKey => $id));
@@ -101,7 +101,7 @@ class TasksController extends AppController {
 		if ($this->Task->delete()) {
 			$this->Session->setFlash(__('The task has been deleted.'), 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('The task could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+			$this->Session->setFlash(__('The task could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
@@ -143,7 +143,7 @@ class TasksController extends AppController {
 				$this->Session->setFlash(__('The task has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 		$workflows = $this->Task->Workflow->find('list');
@@ -166,7 +166,7 @@ class TasksController extends AppController {
 				$this->Session->setFlash(__('The task has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Task.' . $this->Task->primaryKey => $id));
@@ -192,7 +192,7 @@ class TasksController extends AppController {
 		if ($this->Task->delete()) {
 			$this->Session->setFlash(__('The task has been deleted.'), 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('The task could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+			$this->Session->setFlash(__('The task could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

@@ -23,7 +23,7 @@
                 'class' => 'well form-horizontal'
             )); ?>
 
-            <legend><?php echo __('Ändern Ihres Passwortes.'); ?></legend>
+            <legend><?php echo __('Change Password'); ?></legend>
 
             <?php echo $this->Form->input('User.pwd_current', array(
                 'label' => array('text' => __('Current Password'),

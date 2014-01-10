@@ -536,8 +536,15 @@ input[type="button"].btn-block {
   margin-top: 75px;
 }
 /** Navbar Search Alignment */
-.navbar-search {
-  padding-right: 0;
+@media (min-width: 1200px) {
+  .navbar-search {
+    padding-right: 0;
+  }
+}
+@media (max-width: 1200px) {
+  .navbar-search {
+    display: none;
+  }
 }
 .navbar-btn-search {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1128,7 +1135,7 @@ fieldset[disabled] .btn-inverse.active {
  * ################## PLUGINS  ###################
  * ###############################################*/
 /** Glyphicons **/
-h3 span.glyphicon {
+.glyphicon {
   margin-right: 7px;
 }
 /** Show Auth-message as bootstrap alert*/
@@ -1918,4 +1925,16 @@ text-shadow: none;*/
   color: #ffffff;
   background-color: #ff38d7 !important;
   border-color: #ff38d7;
+}
+/* ###############################################
+ * ################ SIDE Calendar  ################
+ * ###############################################*/
+/* ###############################################
+ * ################ SIDE TICKETS  ################
+ * ###############################################*/
+.sideTickets > .panel-body {
+  padding-bottom: 0px;
+}
+.side-ticket-heading {
+  padding: 10px 5px 10px 10px;
 }

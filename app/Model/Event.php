@@ -174,4 +174,13 @@ class Event extends AppModel {
         )
     );
 
+    function hasTickets($id){
+        $count = $this->Ticket->find("count", array("conditions" => array("Ticket.event_id" => $id)));
+        if ($count == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }

@@ -23,21 +23,21 @@
                 'class' => 'well form-horizontal'
             )); ?>
 
-            <legend><?php echo __('Bitte registrieren sie sich um sich anzumelden.'); ?></legend>
+            <legend><?php echo __('Please register to log in.'); ?></legend>
             <?php echo $this->Form->input('User.username', array(
-                'label' => array('text' => 'Benutzername',
+                'label' => array('text' => __('Username'),
                     'class' => 'col col-md-3 control-label'),
-                'placeholder' => 'Wählen Sie einen Benutzernamen',
+                'placeholder' => __('Choose a username'),
             )); ?>
             <?php echo $this->Form->input('User.email', array(
-                'label' => array('text' => 'E-Mail',
+                'label' => array('text' => __('E-Mail'),
                     'class' => 'col col-md-3 control-label'),
-                'placeholder' => 'E-Mailadresse',
+                'placeholder' => __('enter email-adress')
             )); ?>
             <?php echo $this->Form->input('User.pwd', array(
-                'label' => array('text' => 'Passwort',
+                'label' => array('text' => __('Password'),
                 'class' => 'col col-md-3 control-label'),
-                'placeholder' => 'Passwort eingeben',
+                'placeholder' => __('enter password'),
                 'type' => 'password',
                 'value'=>'',
                 'autocomplete'=>'off'
@@ -45,7 +45,7 @@
             <?php echo $this->Form->input('User.pwd_confirm', array(
                 'label' => array('text' => false,
                     'class' => 'col col-md-3 control-label'),
-                'placeholder' => 'Passwort erneut eingeben',
+                'placeholder' => __('confirm password'),
                 'type' => 'password',
                 'value'=>'',
                 'autocomplete'=>'off'
@@ -53,7 +53,7 @@
 
             <?php /*echo $this->Form->label('User.language', 'Sprache', 'col col-md-3 control-label'); */ ?>
             <?php echo $this->Form->input('User.language', array(
-                'label' => array('text' => 'Sprache',
+                'label' => array('text' => __('Language'),
                     'class' => 'col col-md-3 control-label'),
                 'placeholder' => 'de/en',
                 'options' => array(array('name' => 'Deutsch', 'value' => 'deu'), array('name' => 'English', 'value' => 'eng')),
@@ -62,7 +62,7 @@
 
 
             <div class="form-group">
-                <?php echo $this->Form->submit(__('Registrieren'), array(
+                <?php echo $this->Form->submit(__('Register'), array(
                     'div' => 'col col-md-6 col-md-offset-3',
                     'class' => 'btn btn-primary'
                 )); ?>

@@ -52,7 +52,7 @@ class LecturesController extends AppController {
 				$this->Session->setFlash(__('The lecture has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 		$users = $this->Lecture->User->find('list');
@@ -77,7 +77,7 @@ class LecturesController extends AppController {
 				$this->Session->setFlash(__('The lecture has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Lecture.' . $this->Lecture->primaryKey => $id));
@@ -105,7 +105,7 @@ class LecturesController extends AppController {
 		if ($this->Lecture->delete()) {
 			$this->Session->setFlash(__('The lecture has been deleted.'), 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('The lecture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+			$this->Session->setFlash(__('The lecture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
@@ -147,7 +147,7 @@ class LecturesController extends AppController {
 				$this->Session->setFlash(__('The lecture has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 		$users = $this->Lecture->User->find('list');
@@ -172,7 +172,7 @@ class LecturesController extends AppController {
 				$this->Session->setFlash(__('The lecture has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Lecture.' . $this->Lecture->primaryKey => $id));
@@ -200,7 +200,7 @@ class LecturesController extends AppController {
 		if ($this->Lecture->delete()) {
 			$this->Session->setFlash(__('The lecture has been deleted.'), 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('The lecture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+			$this->Session->setFlash(__('The lecture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

@@ -11,7 +11,7 @@
     echo $this->Html->meta('icon');
 
     // Bootstrap Content
-    echo $this->Html->css('bootstrap.css'); //ToDo Add minified Version
+    echo $this->Html->css('bootstrap.custom.css'); //ToDo Add minified Version
     echo $this->Html->css('captility.css'); //ToDo Add minified Version
 
     // jQuery Link
@@ -19,7 +19,7 @@
     echo $this->Html->script('jquery/jquery-1.10.2.min.js');
     echo $this->Html->script('jquery/jquery-ui-1.10.3.custom.min.js');
     echo $this->Html->script('jquery/jquery.qtip.min.js');
-    echo $this->Html->script('bootstrap.min.js');
+    echo $this->Html->script('bootstrap.custom.min.js');
     echo $this->Html->script('bootstrap-datepicker.min.js');
     echo $this->Html->script('fullcalendar/fullcalendar.min.js');
     //echo $this->Html->script('jquery/jquery.qtip-1.0.0-rc3.min.js');
@@ -57,7 +57,7 @@
 
                 <div class="row clearfix">
 
-                    <?php if (isset($sideCalendar) && isset($headline)): //Layout in Tabs with Sidebar ?>
+                    <?php if (isset($sideCalendar) && $sideCalendar && isset($headline)): //Layout in Tabs with Sidebar ?>
                         <div class="col-md-12 column">
                             <?php echo $this->Element('headline');?>
                         </div>

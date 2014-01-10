@@ -52,7 +52,7 @@ class EventTypesController extends AppController {
 				$this->Session->setFlash(__('The event type has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The event type could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The event type could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 	}
@@ -73,7 +73,7 @@ class EventTypesController extends AppController {
 				$this->Session->setFlash(__('The event type has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The event type could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The event type could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('EventType.' . $this->EventType->primaryKey => $id));
@@ -97,7 +97,7 @@ class EventTypesController extends AppController {
 		if ($this->EventType->delete()) {
 			$this->Session->setFlash(__('The event type has been deleted.'), 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('The event type could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+			$this->Session->setFlash(__('The event type could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

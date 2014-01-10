@@ -77,7 +77,7 @@ class User extends AppModel {
         'username' => array(
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
-                'message' => 'Bitte geben Sie einen Nutzernamen an.',
+                'message' => 'Please enter a username.',
                 'allowEmpty' => false,
                 'required' => true,
                 //'last' => false, // Stop validation after this rule
@@ -85,55 +85,47 @@ class User extends AppModel {
             ),
             'unique' => array(
                 'rule' => 'isUnique',
-                'message' => 'Dieser Nutzername wird bereits verwendet.'
+                'message' => 'Sorry, this username is already taken.'
             ),
         ),
         'password' => array(
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
-                'message' => 'Bitte geben Sie ein Passwort ein.',
+                'message' => 'Please enter a password.',
                 'allowEmpty' => false,
                 'required' => false,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-            'alphaNumeric' => array(
-                'rule' => array('alphaNumeric'),
-                'message' => 'Nur Zahlen und Nummern erlaubt.',
-                //'allowEmpty' => false,
-                //'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
             'length' => array(
                 'rule' => array('between', 3, 20), //Todo array('between', 8, 40),
-                'message' => 'Das Passwort sollte aus 8 bis 20 Zeichen bestehen.',
+                'message' => 'The password should contain 8 to 40 letters.',
             ),
         ),
-        /*'pwd' => array(
+        'pwd' => array(
             'length' => array(
                 'rule' => array('between', 3, 20), //Todo array('between', 8, 40),
                 'message' => 'Bitte geben Sie ein Passwort ein.',
                 //'allowEmpty' => false,
                 //'required' => true,
-                'message' => 'Das Passwort sollte aus 8 bis 20 Zeichen bestehen.',
+                'message' => 'The password should contain 8 to 40 letters.',
             ),
         ),
         // Password confirmation
         'pwd_confirm' => array(
             'equalToField' => array(
                 'rule' => array('equalToField', 'pwd'),
-                'message' => 'Die eingegebenen Passwörter sind verschieden.',
+                'message' => 'The entered passwords do not match.',
                 //'allowEmpty' => false,
                 //'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-        ),*/
+        ),
         'email' => array(
             'email' => array(
                 'rule' => array('email'),
-                'message' => 'Bitte geben Sie eine gültige Emailadresse an.',
+                'message' => 'Please enter a valid email adress.',
                 //'allowEmpty' => false,
                 'required' => true,
                 //'last' => false, // Stop validation after this rule
@@ -141,7 +133,7 @@ class User extends AppModel {
             ),
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
-                'message' => 'Bitte geben Sie eine gültige Emailadresse an.',
+                'message' => 'Please enter a email adress.',
                 //'allowEmpty' => false,
                 'required' => true,
                 //'last' => false, // Stop validation after this rule
@@ -149,14 +141,14 @@ class User extends AppModel {
             ),
             'unique' => array(
                 'rule' => 'isUnique',
-                'message' => 'Diese E-Mailadresse wird bereits genutzt.'
+                'message' => 'This email adress is alredy in use!'
             )
         ),
         'language' => array(
 
             'checkSupportedLanguage' => array(
                 'rule' => array('checkSupportedLanguage'),
-                'message' => 'Diese Sprache wird nicht unterstützt.',
+                'message' => 'This language is not supported.',
                 'allowEmpty' => false,
                 'required' => true,
                 //'last' => false, // Stop validation after this rule
@@ -172,7 +164,7 @@ class User extends AppModel {
         'group_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-                'message' => 'Nutzergruppe setzten.',
+                'message' => 'Please enter a number.',
                 //'allowEmpty' => false,
                 //'required' => true,
                 //'last' => false, // Stop validation after this rule
@@ -285,5 +277,32 @@ class User extends AppModel {
             'counterQuery' => ''
         )
     );
+
+    function hasCaptures($id){
+        $count = $this->Capture->find("count", array("conditions" => array("User.user_id" => $id)));
+        if ($count == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function hasLectures($id){
+        $count = $this->Lecture->find("count", array("conditions" => array("User.user_id" => $id)));
+        if ($count == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function hasTickets($id){
+        $count = $this->Ticket->find("count", array("conditions" => array("User.user_id" => $id)));
+        if ($count == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }

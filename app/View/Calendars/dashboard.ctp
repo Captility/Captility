@@ -1,4 +1,4 @@
-<? $this->Html->addCrumb(__('Produktion'), '#'); ?>
+<? $this->Html->addCrumb(__('Production'), '#'); ?>
 <? $this->Html->addCrumb($headline, '/dashboard', array('class' => 'active')); ?>
 
 <div class="col-md-1 column">

@@ -124,7 +124,7 @@
             <?php endif; ?>
 
             <div class="actions">
-                <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
+                <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
         </div>
         <!-- end col md 12 -->
     </div>
@@ -144,7 +144,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
                     <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>&nbsp&nbsp;Edit Host'), array('action' => 'edit', $host['Host']['host_id']), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete Host'), array('action' => 'delete', $host['Host']['host_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $host['Host']['host_id'])); ?> </li>
+                    <li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>Delete Host'), array('action' => 'delete', $host['Host']['host_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $host['Host']['host_id'])); ?> </li>
                     <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Hosts'), array('action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Host'), array('action' => 'add'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Lectures'), array('controller' => 'lectures', 'action' => 'index'), array('escape' => false)); ?> </li>

@@ -89,9 +89,9 @@
                     </div>
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
-                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Host'), array('action' => 'add'), array('escape' => false)); ?></li>
-                            		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Lectures'), array('controller' => 'lectures', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false)); ?> </li>
+                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Host'), array('action' => 'add'), array('escape' => false)); ?></li>
+                            		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Lectures'), array('controller' => 'lectures', 'action' => 'index'), array('escape' => false)); ?> </li>
+		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false)); ?> </li>
                         </ul>
                     </div><!-- end body -->
                 </div><!-- end panel -->

@@ -52,7 +52,7 @@ class HostsController extends AppController {
 				$this->Session->setFlash(__('The host has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The host could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The host could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 	}
@@ -73,7 +73,7 @@ class HostsController extends AppController {
 				$this->Session->setFlash(__('The host has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The host could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+				$this->Session->setFlash(__('The host could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Host.' . $this->Host->primaryKey => $id));
@@ -97,7 +97,7 @@ class HostsController extends AppController {
 		if ($this->Host->delete()) {
 			$this->Session->setFlash(__('The host has been deleted.'), 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('The host could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+			$this->Session->setFlash(__('The host could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

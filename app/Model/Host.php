@@ -129,4 +129,13 @@ class Host extends AppModel {
         )
     );
 
+    function hasLectures($id){
+        $count = $this->Lecture->find("count", array("conditions" => array("Host.host_id" => $id)));
+        if ($count == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }
