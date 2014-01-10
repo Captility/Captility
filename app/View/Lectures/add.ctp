@@ -22,25 +22,31 @@
     <?php echo $this->Form->create('Lecture', array('role' => 'form')); ?>
 
     <div class="form-group">
-        <?php echo $this->Form->input('number', array('class' => 'form-control', 'placeholder' => 'Number'));?>
+        <?php echo $this->Form->input('number', array('class' => 'form-control', 'placeholder' => __('Number'),
+            'label' => __('Number of lecture')));?>
     </div>
     <div class="form-group">
-        <?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => 'Name'));?>
+        <?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => __('Name'),
+        'label' => __('Lecture name')));?>
     </div>
     <div class="form-group">
         <?php echo $this->Form->input('semester', array('class' => 'form-control', 'placeholder' => 'Semester'));?>
     </div>
     <div class="form-group">
-        <?php echo $this->Form->input('type', array('class' => 'form-control', 'placeholder' => 'Type'));?>
+        <?php echo $this->Form->input('type', array('class' => 'form-control', 'placeholder' => __('Type')));?>
     </div>
+
+    <?php echo $this->Element('tinymce'); ?>
+
     <div class="form-group">
         <?php echo $this->Form->input('comment', array('class' => 'form-control', 'placeholder' => 'Comment'));?>
     </div>
     <div class="form-group">
-        <?php echo $this->Form->input('link', array('class' => 'form-control', 'placeholder' => 'Link'));?>
+        <?php echo $this->Form->input('link', array('class' => 'form-control', 'placeholder' => __('Link')));?>
     </div>
     <div class="form-group">
-        <?php echo $this->Form->input('pwd', array('class' => 'form-control', 'placeholder' => 'Pwd'));?>
+        <?php echo $this->Form->input('pwd', array('class' => 'form-control', 'placeholder' => __('Pwd'),
+        'label' => __('Password')));?>
     </div>
     <div class="form-group">
         <?php echo $this->Form->input('start', array('dateFormat' => Configure::read('Captility.dateFormat'),
@@ -84,24 +90,45 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Lectures'), array('action' => 'index'), array('escape' => false)); ?></li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Hosts'), array('controller' => 'hosts', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Host'), array('controller' => 'hosts', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Event Types'), array('controller' => 'event_types', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Event Type'), array('controller' => 'event_types', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Lectures'), array('controller' => 'lectures', 'action' => 'index'), array('escape' => false)); ?> </li>
                 </ul>
             </div>
+            <div class="panel-heading">
+                <? echo __('Captures') ?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div><div class="panel-heading">
+                <? echo __('Hosts') ?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Hosts'), array('controller' => 'hosts', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Host'), array('controller' => 'hosts', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div>
+            <div class="panel-heading">
+                <? echo __('Event Types') ?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Event Types'), array('controller' => 'event_types', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Event Type'), array('controller' => 'event_types', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div>
+            <!-- end body -->
         </div>
+        <!-- end panel -->
+        <!-- end panel -->
     </div>
-
+    <!-- end actions -->
 
     <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
-</div><!-- end col md 3 -->
+</div>
+<!-- end col md 3 -->
 
 
 <!--</div>--><!-- end row -->

@@ -46,6 +46,7 @@ class LecturesController extends AppController {
  * @return void
  */
 	public function add() {
+
 		if ($this->request->is('post')) {
 			$this->Lecture->create();
 			if ($this->Lecture->save($this->request->data)) {

@@ -494,6 +494,9 @@ input[type="button"].btn-block {
     height: 100%;
     background-color: #f0f0f0;
   }
+  .page-header {
+    margin-top: 25px;
+  }
   .container-wrapper {
     min-height: 100%;
     height: auto !important;
@@ -547,7 +550,7 @@ input[type="button"].btn-block {
   }
 }
 .navbar-btn-search {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 .dropdown-menu > li.list-info {
   position: relative;
@@ -561,6 +564,63 @@ input[type="button"].btn-block {
 }
 .related {
   overflow-x: scroll;
+}
+.actions-column {
+  overflow-x: scroll;
+}
+.panel-heading {
+  background-color: #f5f5f5;
+  padding: 9px;
+}
+.panel-footer {
+  padding: 6px 15px;
+}
+small.disabled {
+  color: #999;
+}
+/* ###############################################
+ * ################# Info Banners  ###############
+ * ###############################################*/
+.info-banner {
+  margin: 20px 0;
+  padding: 20px;
+  border-left: 3px solid #eee;
+}
+.info-banner h4 {
+  margin-top: 0;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+.info-banner strong {
+  font-weight: 400;
+}
+.info-banner p:last-child {
+  margin-bottom: 0;
+}
+.info-banner-danger {
+  background-color: #fdf7f7;
+  border-color: #eed3d7;
+}
+.info-banner-danger > h4,
+.info-banner-danger strong {
+  color: #b94a48;
+}
+.info-banner-warning > h4,
+.info-banner-warning strong {
+  background-color: #faf8f0;
+  border-color: #faebcc;
+}
+.info-banner-warning > h4,
+.info-banner-warning strong {
+  color: #8a6d3b;
+}
+.info-banner-info {
+  background-color: #f4f8fa;
+  border-color: #bce8f1;
+}
+.info-banner-info > h4,
+.info-banner-info strong {
+  color: #34789a;
 }
 /* ###############################################
  * ################# COMPONENTS  #################
@@ -1137,6 +1197,7 @@ fieldset[disabled] .btn-inverse.active {
 /** Glyphicons **/
 .glyphicon {
   margin-right: 7px;
+  color: inherit;
 }
 .glyphicon-leftTabs {
   display: inline;

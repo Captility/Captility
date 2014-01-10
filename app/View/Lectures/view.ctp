@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo __('Lecture'); ?></h1>
+            <h1><?php echo __('Lecture') . ' #' . h($lecture['Lecture']['number']); ?></h1>
         </div>
     </div>
 </div>
@@ -28,14 +28,14 @@
             </td>
         </tr>
         <tr>
-            <th><?php echo __('Number'); ?></th>
+            <th><?php echo __('Number of Lecture'); ?></th>
             <td>
                 <?php echo h($lecture['Lecture']['number']); ?>
                 &nbsp;
             </td>
         </tr>
         <tr>
-            <th><?php echo __('Name'); ?></th>
+            <th><?php echo __('Name of lecture'); ?></th>
             <td>
                 <?php echo h($lecture['Lecture']['name']); ?>
                 &nbsp;
@@ -56,17 +56,9 @@
             </td>
         </tr>
         <tr>
-            <th><?php echo __('Comment'); ?></th>
-            <td>
-                <?php echo h($lecture['Lecture']['comment']); ?>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
             <th><?php echo __('Link'); ?></th>
             <td>
-                <?php echo h($lecture['Lecture']['link']); ?>
-                &nbsp;
+                <?php echo $this->Html->link(h($lecture['Lecture']['link']), h($lecture['Lecture']['link'])); ?>
             </td>
         </tr>
         <tr>
@@ -105,7 +97,7 @@
             </td>
         </tr>
         <tr>
-            <th><?php echo __('User'); ?></th>
+            <th><?php echo __('Responsible'); ?></th>
             <td>
                 <?php echo $this->Html->link($lecture['User']['username'], array('controller' => 'users', 'action' => 'view', $lecture['User']['user_id'])); ?>
                 &nbsp;
@@ -127,6 +119,14 @@
         </tr>
         </tbody>
     </table>
+
+
+    <strong><?php echo __('Comment'); ?></strong>
+
+    <div class="comment-content well well-lg">
+        <?php echo $lecture['Lecture']['comment']; ?>
+    </div>
+
 
     <div class="related row">
         <div class="col-md-12">
@@ -163,7 +163,7 @@
             <?php endif; ?>
 
             <div class="actions">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
         </div>
         <!-- end col md 12 -->
     </div>
@@ -182,22 +182,39 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>&nbsp&nbsp;'.__('Edit Lecture'), array('action' => 'edit', $lecture['Lecture']['lecture_id']), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>'.__('Delete Lecture'), array('action' => 'delete', $lecture['Lecture']['lecture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $lecture['Lecture']['lecture_id'])); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Lectures'), array('action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Lecture'), array('action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Hosts'), array('controller' => 'hosts', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Host'), array('controller' => 'hosts', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Event Types'), array('controller' => 'event_types', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Event Type'), array('controller' => 'event_types', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>'. __('Edit Lecture'), array('action' => 'edit', $lecture['Lecture']['lecture_id']), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>' . __('Delete Lecture'), array('action' => 'delete', $lecture['Lecture']['lecture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $lecture['Lecture']['lecture_id'])); ?> </li>
+                </ul>
+            </div>
+            <div class="panel-heading">
+                <? echo __('Captures') ?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div><div class="panel-heading">
+                <? echo __('Hosts') ?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Hosts'), array('controller' => 'hosts', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Host'), array('controller' => 'hosts', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div>
+            <div class="panel-heading">
+                <? echo __('Event Types') ?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Event Types'), array('controller' => 'event_types', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Event Type'), array('controller' => 'event_types', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>
             </div>
             <!-- end body -->
         </div>
+        <!-- end panel -->
         <!-- end panel -->
     </div>
     <!-- end actions -->

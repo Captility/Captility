@@ -338,7 +338,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Istok Web', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -401,7 +401,7 @@ h6 .small {
 }
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 39px;
 }
 h2,
 .h2 {
@@ -1417,8 +1417,8 @@ th {
 .table-bordered > thead > tr > td {
   border-bottom-width: 2px;
 }
-.table-striped > tbody > tr:nth-child(odd) > td,
-.table-striped > tbody > tr:nth-child(odd) > th {
+.table-striped > tbody > tr:nth-child(even) > td,
+.table-striped > tbody > tr:nth-child(even) > th {
   background-color: #f9f9f9;
 }
 .table-hover > tbody > tr:hover > td,
@@ -4029,7 +4029,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   z-index: 2;
 }
 .nav {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;

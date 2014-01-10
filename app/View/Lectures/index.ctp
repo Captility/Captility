@@ -21,64 +21,68 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <table cellpadding="0" cellspacing="0" class="table table-striped">
-        <thead>
-        <tr>
-            <th><?php echo $this->Paginator->sort('lecture_id'); ?></th>
-            <th><?php echo $this->Paginator->sort('number'); ?></th>
-            <th><?php echo $this->Paginator->sort('name'); ?></th>
-            <th><?php echo $this->Paginator->sort('semester'); ?></th>
-            <th><?php echo $this->Paginator->sort('type'); ?></th>
-            <th><?php echo $this->Paginator->sort('link'); ?></th>
-            <th><?php echo $this->Paginator->sort('user_id'); ?></th>
-            <th><?php echo $this->Paginator->sort('host_id'); ?></th>
-            <th><?php echo $this->Paginator->sort('event_type_id'); ?></th>
-            <th class="actions"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($lectures as $lecture): ?>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+            <thead class="panel-heading">
             <tr>
-                <td><?php echo h($lecture['Lecture']['lecture_id']); ?>&nbsp;</td>
-                <td><?php echo h($lecture['Lecture']['number']); ?>&nbsp;</td>
-                <td><?php echo h($lecture['Lecture']['name']); ?>&nbsp;</td>
-                <td><?php echo h($lecture['Lecture']['semester']); ?>&nbsp;</td>
-                <td><?php echo h($lecture['Lecture']['type']); ?>&nbsp;</td>
-                <td>
-                    <?php if(!empty($lecture['Lecture']['link'])) echo $this->Html->link(
-                    $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-link')),
-                    h($lecture['Lecture']['link']), array('full_base' => true, 'escape' => false));
-                    ?>
-                </td>
-
-
-                <td>
-                <?php echo $this->Html->link($lecture['User']['username'], array('controller' => 'users', 'action' => 'view', $lecture['User']['user_id'])); ?>
-                </td>
-                <td>
-                    <?php echo $this->Html->link($lecture['Host']['name'], array('controller' => 'hosts', 'action' => 'view', $lecture['Host']['host_id'])); ?>
-                </td>
-                <td>
-                    <?php echo $this->Form->create('EventTypes', array('url' => array('controller' => 'eventTypes', 'action' => 'view', $lecture['EventType']['event_type_id'])));?>
-
-                    <button type="submit" title="<?php echo $lecture['EventType']['name']; ?>"
-                            class="btn-color eventColor<?php echo $lecture['EventType']['color']; ?>"></button>
-
-                    <?php echo $this->Form->end() ?>
-                </td>
-                <td class="actions">
-                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $lecture['Lecture']['lecture_id']), array('escape' => false)); ?>
-                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $lecture['Lecture']['lecture_id']), array('escape' => false)); ?>
-                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $lecture['Lecture']['lecture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $lecture['Lecture']['lecture_id'])); ?>
-                </td>
+                <th><?php echo $this->Paginator->sort('number'); ?></th>
+                <th><?php echo $this->Paginator->sort('name', __('Lecture name')); ?></th>
+                <th><?php echo $this->Paginator->sort('host_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('semester'); ?></th>
+                <th><?php echo $this->Paginator->sort('link'); ?></th>
+                <th><?php echo $this->Paginator->sort('user_id', __('Responsible')) ?></th>
+                <th><?php echo $this->Paginator->sort('event_type_id', __('Type')); ?></th>
+                <th class="actions"></th>
             </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <?php foreach ($lectures as $lecture): ?>
+                <tr>
+                    <td>
+                        <?php echo $this->Html->link(h($lecture['Lecture']['number']), array('action' => 'view', $lecture['Lecture']['lecture_id']), array('escape' => false)); ?>
+                    </td>
+                    <td><?php echo h($lecture['Lecture']['name']); ?>&nbsp;</td>
+                    <td>
+                        <?php echo $this->Html->link($lecture['Host']['name'], array('controller' => 'hosts', 'action' => 'view', $lecture['Host']['host_id'])); ?>
+                    </td>
+                    <td><?php echo h($lecture['Lecture']['semester']); ?>&nbsp;</td>
+                    <td>
+                        <?php if (!empty($lecture['Lecture']['link'])) echo $this->Html->link(
+                            $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-link')),
+                            h($lecture['Lecture']['link']), array('full_base' => true, 'escape' => false));
+                        ?>
+                    </td>
 
-    <p>
-        <small><?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')));?></small>
-    </p>
+
+                    <td>
+                        <?php echo $this->Html->link($lecture['User']['username'], array('controller' => 'users', 'action' => 'view', $lecture['User']['user_id'])); ?>
+                    </td>
+                    <td>
+                        <?php echo $this->Form->create('EventTypes', array('url' => array('controller' => 'eventTypes', 'action' => 'view', $lecture['EventType']['event_type_id'])));?>
+
+                        <button type="submit" title="<?php echo $lecture['EventType']['name']; ?>"
+                                class="btn-color eventColor<?php echo $lecture['EventType']['color']; ?>"></button>
+
+                        <?php echo $this->Form->end() ?>
+                    </td>
+                    <td class="actions">
+                        <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $lecture['Lecture']['lecture_id']), array('escape' => false)); ?>
+                        <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $lecture['Lecture']['lecture_id']), array('escape' => false)); ?>
+                        <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $lecture['Lecture']['lecture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $lecture['Lecture']['lecture_id'])); ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <div class="panel-footer">
+            <small
+                class="disabled"><?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')));?></small>
+
+        </div>
+    </div>
 
     <?php
     $params = $this->Paginator->params();
@@ -93,7 +97,8 @@
         </ul>
     <?php } ?>
 
-</div> <!-- end col md 9 -->
+</div>
+<!-- end col md 9 -->
 
 <div class="col-md-3 action-column">
     <div class="actions">
@@ -105,15 +110,34 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Lecture'), array('action' => 'add'), array('escape' => false)); ?></li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Hosts'), array('controller' => 'hosts', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Host'), array('controller' => 'hosts', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Event Types'), array('controller' => 'event_types', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Event Type'), array('controller' => 'event_types', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Lecture'), array('action' => 'add'), array('escape' => false)); ?></li>
+                </ul>
+            </div>
+            <div class="panel-heading">
+                <? echo __('Captures') ?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div>
+            <div class="panel-heading">
+                <? echo __('Hosts') ?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Hosts'), array('controller' => 'hosts', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Host'), array('controller' => 'hosts', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div>
+            <div class="panel-heading">
+                <? echo __('Event Types') ?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Event Types'), array('controller' => 'event_types', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Event Type'), array('controller' => 'event_types', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>
             </div>
             <!-- end body -->
@@ -123,7 +147,8 @@
     <!-- end actions -->
 
     <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
-</div><!-- end col md 3 -->
+</div>
+<!-- end col md 3 -->
 
 <!--</div>--><!-- end row -->
 

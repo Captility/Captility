@@ -82,6 +82,7 @@ $(document).ready(function () {
             calendarWeeks: true,
             todayHighlight: true,
             selectWeek: true,
+            autoclose: true,
             todayBtn: 'linked' // Today selects current day instead of just showing (true)
         }, function () {
 
@@ -102,7 +103,7 @@ $(document).ready(function () {
                 // else: Load Calendar View
                 else {
 
-                    window.location.href = ".?date=" + e.date;
+                    window.location.href = "/captility/calendars/?date=" + e.date;
 
                 }
 

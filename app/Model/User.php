@@ -107,8 +107,9 @@ class User extends AppModel {
                 'rule' => array('between', 3, 20), //Todo array('between', 8, 40),
                 'message' => 'Bitte geben Sie ein Passwort ein.',
                 //'allowEmpty' => false,
-                //'required' => true,
+                'required' => true,
                 'message' => 'The password should contain 8 to 40 letters.',
+                'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         // Password confirmation
@@ -119,7 +120,7 @@ class User extends AppModel {
                 //'allowEmpty' => false,
                 //'required' => true,
                 //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'email' => array(

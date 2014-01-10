@@ -81,7 +81,7 @@ class Lecture extends AppModel {
                 'rule' => 'isSemester',
                 'message' => 'Please enter a Semester like \'WS 2013/14\' or \'SS 2014\'',
                 //'allowEmpty' => false,
-                //'required' => false,
+                'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -275,5 +275,17 @@ class Lecture extends AppModel {
         } else {
             return true;
         }
+    }
+
+    public function beforeSave($options = array()) {
+
+        //unify Semesters, no whitespaces
+        if (!empty($this->data['Lecture']['semester'])) {
+
+            $this->data['Lecture']['semester'] = preg_replace('/\s+/', '', $this->data['Lecture']['semester']);
+        }
+
+
+        return true;
     }
 }
