@@ -503,6 +503,7 @@ input[type="button"].btn-block {
     height: 100%;
     background-color: #fff;
     padding: 0;
+    padding-bottom: 40px;
     margin: 0 auto;
     box-shadow: 0px 0px 5px #aaa;
     /*border-radius: @border-radius-base;*/
@@ -571,12 +572,22 @@ input[type="button"].btn-block {
 .panel-heading {
   background-color: #f5f5f5;
   padding: 9px;
+  padding-left: 15px;
 }
 .panel-footer {
   padding: 6px 15px;
 }
+.submit-panel {
+  margin-top: 75px;
+}
 small.disabled {
   color: #999;
+}
+#ScheduleContainer .panel {
+  margin: 40px 0px;
+}
+.panel-link {
+  cursor: pointer;
 }
 /* ###############################################
  * ################# Info Banners  ###############
@@ -1072,6 +1083,10 @@ fieldset[disabled] .btn-inverse.active {
 /* ###############################################
  * ################# DATESELECT  #################
  * ###############################################*/
+/*.form-control,*/
+.input-thin {
+  width: 66.6666666%;
+}
 .form-control-date {
   display: inline-block;
   width: initial;
@@ -1199,6 +1214,9 @@ fieldset[disabled] .btn-inverse.active {
   margin-right: 7px;
   color: inherit;
 }
+button .glyphicon {
+  top: 2px;
+}
 .glyphicon-leftTabs {
   display: inline;
   margin-left: -7px;
@@ -1245,6 +1263,9 @@ fieldset[disabled] .btn-inverse.active {
     margin: 0 auto;
     margin-left: 20px;
   }
+}
+.datepicker-inline {
+  width: inherit;
 }
 .datepicker tr.weekHighlight {
   background-color: #DAEDF8;

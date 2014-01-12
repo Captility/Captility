@@ -34,11 +34,22 @@
             'type' => 'password',
         )); ?>
         <div class="form-group">
-            <?php echo $this->Form->submit(__('Login'), array(
-                'div' => 'col col-md-6 col-md-offset-3',
-                'class' => 'btn btn-primary'
-            )); ?>
+            <div class="col col-md-6 col-md-offset-3">
+                <?php echo $this->Form->submit(__('Login'), array(
+                    'class' => 'btn btn-primary pull-right',
+                    'style' => 'margin: 0 5px',
+                )); ?>
+                <?php echo $this->Html->link(__('Sign up'), array('controller' => 'users', 'action' => 'register') ,array(
+                    'style' => 'margin: 0 5px',
+                    'controller' => 'users', 'action' => 'register',
+                    'div' => false,
+                    'class' => 'btn btn-default pull-right',
+                    'escape' => false
+                )); ?>
+            </div>
         </div>
+
+        <?php echo $this->Form->end();?>
 
     </div>
 

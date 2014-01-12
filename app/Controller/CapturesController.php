@@ -54,30 +54,43 @@ class CapturesController extends AppController {
             /*pr($this->request->data);*/
 
             // EVENT
-            $this->request->data['Event']['event_type_id'] = 1;
-            $this->request->data['Event']['title'] = $this->request->data['Capture']['name'];
-            $this->request->data['Event']['details'] = $this->request->data['Capture']['comment'];
-
-            // Endtime
-            $date = $this->request->data['Event']['start'];
-            $endDateTime = new DateTime(
-                $date['year'] . '-' . $date['month'] . '-' . $date['day'] . ' ' .
-                    $date['hour'] . ':' . $date['min'] . ':' . '00');
-
-            $endDateTime->modify('+2 hours');
-
-            $endDate = $endDateTime->format('Y-m-d H:i:s');
-
-            $this->request->data['Event']['end'] = $endDate;
+            $Schedules = $this->request->data['Schedule'];
+            $Event = $this->request->data['Event'];
+            $Captures = $this->request->data['Capture'];
 
 
-            //$this->request->data['Event']['end']['hour'] = 2 + $this->request->data['Capture']['date']['hour'];
-            $this->request->data['Event']['all_day'] = 0;
-            $this->request->data['Event']['status'] = $this->request->data['Capture']['status'];
+           /* $this->Capture->Schedule->set($this->request->data);
+            $this->Capture->Schedule->validates();*/
+
+            $validData = true;
+            foreach ($Schedules as $i => $Schedule) {
+
+                // SCHEDULE VALIDATION
+                if (empty($Schedule['interval_start']) || empty($Schedule['duration'])) {
+
+                    $this->Session->setFlash(__('A Schedule is missing information.') .
+                        '\n' . __('The Event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+                    $validData = false;
+                    break;
+                }
+            }
+
+
+            // PROCESS SINGLE OR REGULAR SCHEDULE
+            if ($validData) {
+
+                if (empty($Schedule['interval_end'])) {
+
+                    //SINGLE SCHEDULE = SINGLE EVENT
+                    /*pr('NEW EVENT!');*/
+
+
+                }
+            }
 
 
             // Create and Save Event for Capture
-            if ($this->Capture->save($this->request->data)) {
+            if ($validData && $this->Capture->save($this->request->data)) {
 
 
                 $this->Session->setFlash(__('The Capture has been saved.'), 'default', array('class' => 'alert alert-success'));
@@ -103,7 +116,11 @@ class CapturesController extends AppController {
 
             }
         }
-        $lectures = $this->Capture->Lecture->find('list');
+
+
+        // Normal Form View
+        $lectures = $this->Capture->Lecture->find('list', array(
+            'fields' => array('Lecture.lecture_id', 'Lecture.full_name', 'Lecture.semester')));
         $users = $this->Capture->User->find('list');
         $workflows = $this->Capture->Workflow->find('list');
         $events = $this->Capture->Event->find('list');
@@ -121,7 +138,8 @@ class CapturesController extends AppController {
      * @param string $id
      * @return void
      */
-    public function edit($id = null) {
+    public
+    function edit($id = null) {
         if (!$this->Capture->exists($id)) {
             throw new NotFoundException(__('Invalid capture'));
         }
@@ -152,7 +170,8 @@ class CapturesController extends AppController {
      * @param string $id
      * @return void
      */
-    public function delete($id = null) {
+    public
+    function delete($id = null) {
         // Set active Capture record
         $this->Capture->id = $id;
         $capture = $this->Capture->findByCaptureId($id);
@@ -163,12 +182,12 @@ class CapturesController extends AppController {
 
         $this->request->onlyAllow('post', 'delete');
 
-/*        //Still has Schedules? Break!
-        if ($this->Capture->hasSchedules($this->Capture->id)) {
+        /*        //Still has Schedules? Break!
+                if ($this->Capture->hasSchedules($this->Capture->id)) {
 
-            $this->Session->setFlash(__('The Capture could not be deleted. Related Schedules exist!'), 'default', array('class' => 'alert alert-danger'));
-            return $this->redirect(array('action' => 'index'));
-        }*/
+                    $this->Session->setFlash(__('The Capture could not be deleted. Related Schedules exist!'), 'default', array('class' => 'alert alert-danger'));
+                    return $this->redirect(array('action' => 'index'));
+                }*/
 
 
         // Delete Capture
@@ -215,7 +234,8 @@ class CapturesController extends AppController {
      *
      * @return void
      */
-    public function admin_index() {
+    public
+    function admin_index() {
         $this->Capture->recursive = 0;
         $this->set('captures', $this->Paginator->paginate());
     }
@@ -227,7 +247,8 @@ class CapturesController extends AppController {
      * @param string $id
      * @return void
      */
-    public function admin_view($id = null) {
+    public
+    function admin_view($id = null) {
         if (!$this->Capture->exists($id)) {
             throw new NotFoundException(__('Invalid capture'));
         }
@@ -240,7 +261,8 @@ class CapturesController extends AppController {
      *
      * @return void
      */
-    public function admin_add() {
+    public
+    function admin_add() {
         if ($this->request->is('post')) {
             $this->Capture->create();
             if ($this->Capture->save($this->request->data)) {
@@ -264,7 +286,8 @@ class CapturesController extends AppController {
      * @param string $id
      * @return void
      */
-    public function admin_edit($id = null) {
+    public
+    function admin_edit($id = null) {
         if (!$this->Capture->exists($id)) {
             throw new NotFoundException(__('Invalid capture'));
         }
@@ -294,7 +317,8 @@ class CapturesController extends AppController {
      * @param string $id
      * @return void
      */
-    public function admin_delete($id = null) {
+    public
+    function admin_delete($id = null) {
         $this->Capture->id = $id;
         if (!$this->Capture->exists()) {
             throw new NotFoundException(__('Invalid capture'));

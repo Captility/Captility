@@ -37,7 +37,7 @@ class AppController extends Controller {
         'Acl',
         'Auth' => array(
             'loginAction' => array('controller' => 'users', 'action' => 'login'),
-            'loginRedirect' => array('controller' => 'calendar', 'action' => 'index'),
+            'loginRedirect' => array('controller' => 'calendars', 'action' => 'dashboard'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
             'authorize' => array('Controller', 'Actions' => array('actionPath' => 'controllers')),
             'authError' => 'Permission denied. You don\'t have the rights to access this action.')

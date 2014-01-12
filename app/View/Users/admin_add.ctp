@@ -43,9 +43,7 @@
 				<div class="form-group">
 					<?php echo $this->Form->input('notification', array('class' => 'form-control', 'placeholder' => 'Notification'));?>
 				</div>
-    				<div class="form-group">
-					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary')); ?>
-				</div>
+    				<?php echo $this->Element('submitArea');?>
 
 			<?php echo $this->Form->end() ?>
 

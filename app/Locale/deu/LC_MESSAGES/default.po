@@ -1,0 +1,1215 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-01-10 11:17+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+
+
+
+msgid "List Groups"
+msgstr "Nutzergruppen zeigen"
+
+msgid "New Group"
+msgstr "Nutzergruppe anlegen"
+
+msgid "List Captures"
+msgstr "Aufnahmepläne zeigen"
+
+msgid "List Lectures"
+msgstr "Veranstaltungen zeigen"
+
+msgid "List Tickets"
+msgstr "Tickets anzeigen"
+
+msgid "List Hosts"
+msgstr "Veranstalter zeigen"
+
+msgid "List Users"
+msgstr "Benutzer anzeigen"
+
+msgid "List Tasks"
+msgstr "Aufgaben anzeigen"
+
+msgid "List Workflows"
+msgstr "Workflows anzeigen"
+
+msgid "List Event Types"
+msgstr "Aufnahmetypen zeigen"
+
+msgid "List Events"
+msgstr "Aufnahmen anzeigen"
+
+msgid "List Schedules"
+msgstr "Zeitpläne anzeigen"
+
+msgid "New Capture"
+msgstr "Aufnahmeplan anlegen"
+
+msgid "New Lecture"
+msgstr "Veranstaltung anlegen"
+
+msgid "New Ticket"
+msgstr "Ticket anlegen"
+
+msgid "New Task"
+msgstr "Aufgabe anlegen"
+
+msgid "New Host"
+msgstr "Veranstalter anlegen"
+
+msgid "New Workflow"
+msgstr "Workflow anlegen"
+
+msgid "New Event Type"
+msgstr "Aufnahmetyp anlegen"
+
+msgid "New Event"
+msgstr "Aufnahme anlegen"
+
+msgid "New Schedule"
+msgstr "Zeitplan anlegen"
+
+msgid "Delete Capture"
+msgstr "Aufnahmeplan entfernen"
+
+
+msgid "Delete User"
+msgstr "Benutzer entfernen"
+
+msgid "Delete Lecture"
+msgstr "Veranstaltung entfernen"
+
+msgid "Delete Ticket"
+msgstr "Ticket entfernen"
+
+msgid "Delete Task"
+msgstr "Aufgabe entfernen"
+
+msgid "Delete Host"
+msgstr "Veranstalter entfernen"
+
+msgid "Delete Workflow"
+msgstr "Workflow entfernen"
+
+msgid "Delete Event Type"
+msgstr "Aufnahmetyp entfernen"
+
+msgid "Delete Event"
+msgstr "Aufnahme entfernen"
+
+msgid "Delete Schedule"
+msgstr "Zeitplan entfernen"
+
+msgid "Delete"
+msgstr "Entfernen"
+
+msgid "You are editing this entry as admin"
+msgstr "Sie bearbeiten diesen Inhalt als Administrator"
+
+msgid "You are editing this entry as admin"
+msgstr "Sie bearbeiten diesen Inhalt als Manager"
+
+msgid "Calendar"
+msgstr "Kalender"
+
+msgid "Dashboard – Week Overview"
+msgstr "Pinnwand - Wochenübersicht"
+
+msgid "My Lectures"
+msgstr "Meine Veranstaltungen"
+
+msgid "Invalid capture"
+msgstr "Aufnahmeplan nicht gefunden."
+
+msgid "The Capture has been saved."
+msgstr "Der Aufnahmeplan wurde erfolgreich gesichert."
+
+msgid "The Event has been saved."
+msgstr "Die Aufnahme wurde erfolgreich gesichert."
+
+msgid "The Event could not be saved. Please, try again."
+msgstr "Die Aufnahme konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "The Capture could not be saved. Please, try again."
+msgstr "Der Aufnahmeplan konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "The capture has been saved."
+msgstr "Der Aufnahmeplan wurde erfolgreich gesichert."
+
+msgid "The capture could not be saved. Please, try again."
+msgstr "Der Aufnahmeplan konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "The capture has been deleted."
+msgstr "Der Aufnahmeplan wurde entfernt."
+
+msgid "The related events have been deleted."
+msgstr "Die zugehörigen Aufnahmen wurden entfernt."
+
+msgid "The related events could not be deleted. Please, try again."
+msgstr "Die zugehörigen Aufnahmen konnten nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "The related schedules have been deleted."
+msgstr "Die zugehörigen Zeitpläne wurden entfernt."
+
+msgid "The related schedules could not be deleted. Please, try again."
+msgstr "Die zugehörigen Zeitpläne konnten nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "The capture could not be deleted. Please, try again."
+msgstr "Die Aufnahme konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "Invalid event type"
+msgstr "Ungültiger Aufzeichnungsart."
+
+msgid "The event type has been saved."
+msgstr "Der Aufzeichnungstyp wurde erfolgreich gesichert."
+
+msgid "The event type could not be saved. Please, try again."
+msgstr "Der Aufzeichnungstyp konnte nicht gesichert werden."
+
+msgid "The event type has been deleted."
+msgstr "Der Aufzeichnungstyp wurde entfernt."
+
+msgid "The event type could not be deleted. Please, try again."
+msgstr "Der Aufzeichnungstyp konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "Invalid event"
+msgstr "Ungültige Aufzeichnung."
+
+msgid "The event has been saved."
+msgstr "Die Aufzeichnung wurde gesichert."
+
+msgid "The event could not be saved. Please, try again."
+msgstr "Die Aufzeichnung konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "The event has been deleted."
+msgstr "Die Aufzeichnung wurde erfolgreich entfernt."
+
+msgid "The event could not be deleted. Please, try again."
+msgstr "Die Aufzeichnung konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "Invalid group"
+msgstr "Ungültige Nutzergruppe"
+
+msgid "The group has been saved."
+msgstr "Die Nutzergruppe wurde erfolgreich gesichert."
+
+msgid "The group could not be saved. Please, try again."
+msgstr "Die Nutzergruppe konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "The group has been deleted."
+msgstr "Die Nutzergruppe wurde erfolgreich entfernt."
+
+msgid "The group could not be deleted. Please, try again."
+msgstr "Die Nutzergruppe konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "Invalid host"
+msgstr "Ungültiger Veranstalter."
+
+msgid "The host has been saved."
+msgstr "Der Veranstalter"
+
+msgid "The host could not be saved. Please, try again."
+msgstr "Der Veranstalter konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "The host has been deleted."
+msgstr "Der Veranstalter wurde erfolgreich entfernt."
+
+msgid "The host could not be deleted. Please, try again."
+msgstr "Der Veranstalter konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "Invalid lecture"
+msgstr "Ungültige Veranstaltung"
+
+msgid "The lecture has been saved."
+msgstr "Die Veranstaltung wurde erfolgreich gesichert."
+
+msgid "The lecture could not be saved. Please, try again."
+msgstr "Die Veranstaltung konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "The lecture has been deleted."
+msgstr "Die Veranstaltung wurde erfolgreich entfernt."
+
+msgid "The lecture could not be deleted. Please, try again."
+msgstr "Die Veranstaltung konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "Invalid schedule"
+msgstr "Ungültiger Zeitplan"
+
+msgid "The schedule has been saved."
+msgstr "Die Aufzeichnungsregel wurde erfolgreich gesichert."
+
+msgid "The schedule could not be saved. Please, try again."
+msgstr "Die Aufzeichnungsregel konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "The schedule has been deleted."
+msgstr "Die Aufzeichnungsregel wurde erfolgreich entfernt."
+
+msgid "The schedule could not be deleted. Please, try again."
+msgstr "Die Aufzeichnungsregel konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "Invalid task"
+msgstr "Ungültige Aufgabe"
+
+msgid "The task has been saved."
+msgstr "Die Aufgabe wurde erfolgreich gesichert."
+
+msgid "The task could not be saved. Please, try again."
+msgstr "Die Aufgabe konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "The task has been deleted."
+msgstr "Die Aufgabe hbd"
+
+msgid "The task could not be deleted. Please, try again."
+msgstr "Die Aufgabe konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "Invalid ticket"
+msgstr "Ungültiges Ticket"
+
+msgid "The ticket has been saved."
+msgstr "/ttkt wurde erfolgreich gesichert."
+
+msgid "The ticket could not be saved. Please, try again."
+msgstr "/ttkt konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "The ticket has been deleted."
+msgstr "/ttkt wurde erfolgreich entfernt."
+
+msgid "The ticket could not be deleted. Please, try again."
+msgstr "/ttkt konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "You are already logged in."
+msgstr "Sie sind bereits eingeloggt."
+
+msgid "Login successfull."
+msgstr "Sie haben sich erfolgreich eingeloggt."
+
+msgid "Wrong username or password. Pleasy try again."
+msgstr "Falscher Benutzername oder Passwort. Bitte versuchen Sie es erneut."
+
+msgid "Logout successfull."
+msgstr "Sie haben sich erfolgreich ausgeloggt."
+
+msgid "Registration"
+msgstr "Registrierung"
+
+msgid "The user was successfully created."
+msgstr "Der Benutzer wurde erfolgreich angelegt."
+
+msgid "The user was successfully created and logged in."
+msgstr "Der Benutzer wurde erfolgreich angelegt und eingeloggt."
+
+msgid "The user could not be logged in."
+msgstr "Der Benutzer konnte nicht eingeloggt werden."
+
+msgid "The user could not be created."
+msgstr "Der Benutzer konnte nicht erstellt werden."
+
+msgid "The user has been saved."
+msgstr "Der Benutzer wurde erfolgreich gesichert."
+
+msgid "The user could not be saved. Please, try again."
+msgstr "Der Benutzer konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "Invalid user"
+msgstr "Ungültiger Benutzer"
+
+msgid "The user has been deleted."
+msgstr "Der Benutzer wurde erfolgreich entfernt."
+
+msgid "The user could not be deleted. Please, try again."
+msgstr "Der Benutzer konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "Invalid workflow"
+msgstr "Ungültiger Workflow"
+
+msgid "The workflow has been saved."
+msgstr "Der Workflow wurde erfolgreich gesichert."
+
+msgid "The workflow could not be saved. Please, try again."
+msgstr "Der Workflow konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+
+msgid "The workflow has been deleted."
+msgstr "Der Workflow wurde erfolgreich entfernt."
+
+msgid "The workflow could not be deleted. Please, try again."
+msgstr "Der Workflow konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+
+msgid "valErrPwdNotMatch"
+msgstr "Die eingegebenen Passwörter unterscheiden sich."
+
+msgid "Production"
+msgstr "Produktion"
+
+msgid "Mine"
+msgstr "Eigene"
+
+msgid "Week"
+msgstr "Woche"
+
+msgid "Tickets"
+msgstr "Tickets"
+
+#: View/Lectures/edit.ctp:91
+#: View/Workflows/view.ctp:67;106;135
+msgid "Are you sure you want to delete # %s?"
+msgstr "Sich die sicher, dass sie # %s und eventuell verknüpfte Elemente entfernen wollen?"
+
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Seite {:page} von {:pages}. Zeige: {:current} Einträge von insg. {:count}. Beginnend mit Eintrag {:start} bis Eintrag {:end}."
+
+msgid "Captures"
+msgstr "Aufnahmeplan"
+
+msgid "Add Capture"
+msgstr "Aufnahmeplan anlegen"
+
+#: View/Tickets/admin_add.ctp:44
+msgid "Submit"
+msgstr "Speichern"
+
+#: View/Groups/view.ctp:103
+#: View/Tickets/admin_index.ctp:92
+msgid "Related Actions"
+msgstr "Verknüpfte Aktionen"
+
+#: View/Workflows/admin_index.ctp:77
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#: View/Tickets/index.ctp:102
+
+
+
+
+
+
+msgid "Admin Add Capture"
+msgstr "Admin::Aufzeichnung anlegen"
+
+msgid "Admin Edit Capture"
+msgstr "Admin::Aufzeichnung bearbeiten"
+
+
+
+#: View/Workflows/admin_add.ctp:49
+
+
+msgid "Capture"
+msgstr "Aufnahmeplan"
+
+msgid "Capture Id"
+msgstr "ID"
+
+msgid "Online"
+msgstr ""
+
+msgid "Comment"
+msgstr "Kommentar"
+
+msgid "Name"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Lecture"
+msgstr "Veranstaltung"
+
+msgid "User"
+msgstr "Benutzer"
+
+msgid "Workflow"
+msgstr ""
+
+msgid "Related Events"
+msgstr "Zugehörige Aufnahmen"
+
+msgid "Event Id"
+msgstr "ID"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Start"
+msgstr ""
+
+msgid "End"
+msgstr "Ende"
+
+msgid "All Day"
+msgstr "Ganztätig"
+
+msgid "Link"
+msgstr ""
+
+msgid "Created"
+msgstr "Erstellt"
+
+msgid "Modified"
+msgstr "Bearbeitet"
+
+msgid "Event Type Id"
+msgstr "ID"
+
+msgid "Schedule Id"
+msgstr "ID"
+
+
+
+
+
+
+
+msgid "Related Schedules"
+msgstr "Zugehöriger Zeitplan"
+
+msgid "Interval Start"
+msgstr "Aufnahmezeitraum-Beginn"
+
+msgid "Interval End"
+msgstr "Aufnahmezeitraum-Ende"
+
+msgid "Duration"
+msgstr "Dauer (Stunden)"
+
+msgid "Repeat Time"
+msgstr "Veranstaltungsbeginn (Uhrzeit)"
+
+msgid "Repeat Day"
+msgstr "Wiederholen an Wochentag"
+
+msgid "Wiederholen alle ? Wochen"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+msgid "Edit Capture"
+msgstr "Aufnahmeplan bearbeiten"
+
+msgid "Event Type"
+msgstr "Aufnahmetyp"
+
+msgid "New Tickets"
+msgstr "Neue Tickets"
+
+msgid "Dashboard"
+msgstr "Pinnwand"
+
+msgid "Records"
+msgstr "Katalog"
+
+msgid "Edit catalog entries..."
+msgstr "Einträge verwalten..."
+
+msgid "Hosts"
+msgstr "Veranstalter/Innen"
+
+msgid "Lectures"
+msgstr "Veranstaltungen"
+
+msgid "Event Types"
+msgstr "Aufnahmetypen"
+
+msgid "Team"
+msgstr "Aufgaben"
+
+msgid "Manage duties..."
+msgstr "Steuern der Produktion..."
+
+msgid "Tasks"
+msgstr "Aufgaben"
+
+msgid "Workflows"
+msgstr "Workflows"
+
+msgid "Users"
+msgstr "Benutzer"
+
+msgid "Search"
+msgstr "Suche"
+
+msgid "Edit account"
+msgstr "Account verwalten"
+
+msgid "Edit your profile"
+msgstr "Mein Profil"
+
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+msgid "Messages"
+msgstr "Nachrichten"
+
+msgid "Admin Center"
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "Get your own Captility!"
+msgstr "Hol dir dein eigenes Captility!"
+
+msgid "Register"
+msgstr "Anmelden"
+
+msgid "Login"
+msgstr ""
+
+msgid "Add Event Type"
+msgstr "Aufnahmetyp anlegen"
+
+
+
+msgid "Admin Add Event Type"
+msgstr "Admin::Aufnahmetyp anlegen"
+
+msgid "Admin Edit Event Type"
+msgstr "Admin::Aufnahmetyp bearbeiten"
+
+
+
+msgid "Color"
+msgstr "Farbe"
+
+msgid "Related Lectures"
+msgstr "Verknüpfte Veranstaltungen"
+
+msgid "Lecture Id"
+msgstr "ID"
+
+msgid "Number"
+msgstr "Nummer"
+
+msgid "Semester"
+msgstr ""
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Pwd"
+msgstr "Passwort"
+
+msgid "User Id"
+msgstr "ID"
+
+msgid "Host Id"
+msgstr "ID"
+
+
+
+
+
+
+
+
+
+msgid "Edit Event Type"
+msgstr "Aufnahmetyp bearbeiten"
+
+msgid "Host"
+msgstr "Veranstalter"
+
+msgid "Schedule"
+msgstr "Zeitplan"
+
+msgid "Events"
+msgstr "Aufnahmen"
+
+msgid "Add Event"
+msgstr "Aufnahme anlegen"
+
+msgid "Admin Add Event"
+msgstr "Admin::Aufnahme anlegen"
+
+msgid "Admin Edit Event"
+msgstr "Admin::Aufnahme bearbeiten"
+
+msgid "Event"
+msgstr "Aufnahme"
+
+msgid "Related Tickets"
+msgstr "Verknüpfte Tickets"
+
+msgid "Ticket Id"
+msgstr "ID"
+
+msgid "Ended"
+msgstr "Beendet"
+
+msgid "Task Id"
+msgstr "ID"
+
+
+
+
+
+
+
+
+
+
+
+msgid "Edit Event"
+msgstr "Aufzeichnung bearbeiten"
+
+msgid "Groups"
+msgstr "Nutzergruppe"
+
+msgid "Add Group"
+msgstr "Nutzergruppe anlegen"
+
+
+
+msgid "Admin Add Group"
+msgstr "Admin::Nutzergruppe anlegen"
+
+msgid "Admin Edit Group"
+msgstr "Admin::Nutzergruppe bearbeiten"
+
+
+
+msgid "Group"
+msgstr "Nutzergruppe"
+
+msgid "Group Id"
+msgstr "ID"
+
+msgid "Related Users"
+msgstr "Verknüpfte Benutzer"
+
+msgid "Username"
+msgstr "Benutzername"
+
+msgid "Email"
+msgstr "E?Mail"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "Avatar"
+msgstr ""
+
+msgid "Notification"
+msgstr "Nachrichten"
+
+
+
+
+
+
+
+
+
+msgid "Edit Group"
+msgstr "Nutzergruppe bearbeiten"
+
+msgid "Add Host"
+msgstr "Veranstalter anlegen"
+
+
+
+msgid "Edit Host"
+msgstr "Veranstalter bearbeiten"
+
+
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "Contact Email"
+msgstr "Kontakt E?Mail"
+
+
+
+
+
+
+
+
+
+msgid "Add Lecture"
+msgstr "Veranstaltung anlegen"
+
+msgid "Admin Add Lecture"
+msgstr "Admin::Veranstaltung anlegen"
+
+msgid "Admin Edit Lecture"
+msgstr "Admin::Veranstaltung bearbeiten"
+
+msgid "Related Captures"
+msgstr "Verknüpfte Aufnahmepläne"
+
+msgid "Workflow Id"
+msgstr "ID"
+
+
+
+
+
+msgid "Edit Lecture"
+msgstr "Veranstaltung bearbeiten"
+
+msgid "Schedules"
+msgstr ""
+
+msgid "Add Schedule"
+msgstr "Zeitplan anlegen"
+
+msgid "\"Friday\" for every Friday ..."
+msgstr "\"Freitag\" für jeden Freitag usw  ..."
+
+msgid "1 = repeat every Week, 2 = every second and so on..."
+msgstr "1 = jede Woche wiederholen, 2= jede zweite usw."
+
+msgid "Admin Add Schedule"
+msgstr "Admin::Zeitplan anlegen"
+
+msgid "Admin Edit Schedule"
+msgstr "Admin::Zeitplan bearbeiten"
+
+
+
+
+
+msgid "Edit Schedule"
+msgstr "Zeitplan bearbeiten"
+
+msgid "Add Task"
+msgstr "Aufgabe anlegen"
+
+
+
+
+
+msgid "Admin Add Task"
+msgstr "Admin::Aufgabe anlegen"
+
+msgid "Admin Edit Task"
+msgstr "Admin::Aufgabe bearbeiten"
+
+
+
+msgid "Task"
+msgstr "Aufgabe"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Step"
+msgstr "Index"
+
+
+
+
+
+
+
+
+
+msgid "Edit Task"
+msgstr "Aufgabe bearbeiten"
+
+msgid "Add Ticket"
+msgstr "Ticket anlegen"
+
+msgid "Admin Add Ticket"
+msgstr "Admin::Ticket anlegen"
+
+msgid "Admin Edit Ticket"
+msgstr "Admin::Ticket bearbeiten"
+
+msgid "Ticket"
+msgstr ""
+
+
+
+
+
+msgid "Edit Ticket"
+msgstr "Ticket bearbeiten"
+
+msgid "Add User"
+msgstr "Benutzer anlegen"
+
+msgid "List User"
+msgstr "Benutzer zeigen"
+
+msgid "New User"
+msgstr "Benutzer anlegen"
+
+msgid "List User"
+msgstr "Benutzer zeigen"
+
+msgid "Suscribe to Tickets and Events."
+msgstr "Abboniere Neuigkeiten zu Tickets und Events"
+
+msgid "No Notifications at all."
+msgstr "Keine Neugkeiten abbonieren"
+
+msgid "Admin Add User"
+msgstr "Admin::Benutzer anlegen"
+
+msgid "Admin Edit User"
+msgstr "Admin::Benutzer bearbeiten"
+
+msgid "Password"
+msgstr "Passwort"
+
+
+
+
+
+msgid "Current Password"
+msgstr "Aktuelles Passwort"
+
+msgid "New Password"
+msgstr "Neues Passwort"
+
+msgid "Enter your new password"
+msgstr "Ihr gewünschtes Passwort."
+
+msgid "Repeat new password"
+msgstr "Wiederholen Sie das gewünschte Passwort."
+
+msgid "Edit User"
+msgstr "Benutzer bearbeiten"
+
+msgid "Log in with your username and password."
+msgstr "Bitte loggen Sie sich mit Ihrem Nutzernamen und Passwort ein."
+
+msgid "Please enter your username"
+msgstr "Bitte geben Sie einen Benutzernamen ein."
+
+msgid "Please enter your password."
+msgstr "Bitte geben Sie ein Passwort ein."
+
+msgid "Please register to log in."
+msgstr "Registrieren Sie sich um sich einzuloggen."
+
+msgid "Choose a username"
+msgstr "Wählen Sie einen Benutzernamen"
+
+msgid "E-Mail"
+msgstr ""
+
+msgid "enter email-adress"
+msgstr "Bitte geben Sie eine E?Mail Adresse an."
+
+msgid "enter password"
+msgstr "Bitte geben Sie ein gewünschtes Passwort an."
+
+msgid "confirm password"
+msgstr "Passwort bestätigen."
+
+msgid "Password confirmation"
+msgstr "Passwort Bestätigung"
+
+msgid "Add Workflow"
+msgstr ""
+
+msgid "Admin Add Workflow"
+msgstr "Admin::Workflow anlegen"
+
+msgid "Admin Edit Workflow"
+msgstr "Admin::Workflow bearbeiten"
+
+msgid "Related Tasks"
+msgstr "Verknüpfte Aufgaben"
+
+
+
+
+
+msgid "Edit Workflow"
+msgstr "Workflow bearbeiten"
+
+msgid "boolean"
+msgstr "Boolean"
+
+msgid "notEmpty"
+msgstr "Bitte geben Sie einen Inhalt ein."
+
+msgid "Please enter a valid Link or leave this field empty."
+msgstr "Bitte geben sie einen gültigen Link an."
+
+
+msgid "datetime"
+msgstr "Geben Sie ein Datumsformat mit Uhrzeit an."
+
+msgid "numeric"
+msgstr "Bitte geben Sie nur Zahlen ein."
+
+msgid 'Please enter a valid Link, like "http://www.captility.de"'
+msgstr "Bitte geben Sie einen gültigen Link, wie 'http://www.captility.de' an."
+
+msgid "alphanumeric"
+msgstr "Bitte nur Zahlen und Nummern eingeben."
+
+msgid "At least one contact E-Mail is required."
+msgstr "Geben Sie bitte mindestens eine Kontakt E?Mail Adresse an."
+
+msgid "Please enter a valid E-Mail adress."
+msgstr "Bitte geben Sie eine gültige E?Mailadresse ein."
+
+msgid "alphaNumeric"
+msgstr "Bitte geben Sie nur Zahlen und Nummern an."
+
+msgid "Please enter a Semester like 'WS 2013/14' or 'SS 2014'"
+msgstr "Bitte geben Sie ein gültiges Sommer/Wintersemester an. Format: 'WS 2013/14', 'SS2014 usw."
+
+msgid "date"
+msgstr "Bitte geben Sie ein gültiges Datum ein."
+
+msgid "duration"
+msgstr "Bitte geben Sie eine gültige Dauer an."
+
+msgid "time"
+msgstr "Bitte geben Sie eine gültige Zeit an."
+
+msgid "email"
+msgstr "Bitte geben Sie eine gültige E?Mail Adresse an."
+
+msgid "This email address is already registered"
+msgstr "Diese E?Mail Adresse wird leider bereits benutzt."
+
+msgid "Please enter a username."
+msgstr "Bitte geben Sie einen Benutzernamen an."
+
+msgid "Sorry, this username is already taken."
+msgstr "Dieser Benutzername ist leider bereits belegt."
+
+msgid "Please enter a password."
+msgstr "Bitte geben Sie ein Passwort an."
+
+msgid "The password should contain 8 to 40 letters."
+msgstr "Das Passwort muss aus 8 bis 40 Zeichen bestehen."
+
+msgid "The entered passwords do not match."
+msgstr "Die eingegebenen Passwörter stimmen nicht überein."
+
+msgid "Please enter a valid email adress."
+msgstr "Bitte geben Sie eine gültige E?Mail Adresse ein."
+
+msgid "Please enter a email adress."
+msgstr "Bitte geben Sie eine gültige E?Mail Adresse ein."
+
+msgid "This email adress is alredy in use!"
+msgstr "Diese E?Mail Adresse wird leider bereits benutzt."
+
+msgid "This language is not supported."
+msgstr "Diese Sprache wird zur Zeit leider nicht unterstützt."
+
+msgid "Only gif, png and jpg are supported."
+msgstr "Bitte geben Sie nur die Dateiformate .jpg, .png und .gif an."
+
+msgid "Please enter a number."
+msgstr "Bitte geben Sie eine Nummer ein."
+
+msgid "Enter a name for the workflow."
+msgstr "Bitte benennen Sie den Workflow."
+
+msgid 'Permission denied. You don\'t have the rights to access this action.'
+msgstr 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen. Bitte loggen Sie sich ein.'
+
+msgid "Responsible"
+msgstr "Zuständig"
+
+msgid "Lecture name"
+msgstr "Name der Veranstaltung"
+
+msgid "Number of lecture"
+msgstr "Veranstaltungsnummer"
+
+
+msgid "Capture Name"
+msgstr "Name des Aufzeichnungsplans"
+
+msgid "Repeat Week"
+msgstr "Wöchentlich wiederholen"
+
+msgid "Event start"
+msgstr "Start der Aufzeichnung"
+
+msgid "Event duration"
+msgstr "Dauer der Aufzeichnung"
+
+msgid "Choose the type of your Capture"
+msgstr "Wählen Sie die Art der Aufzeichnung"
+
+msgid "Every"
+msgstr "Jede"
+
+msgid "to"
+msgstr "bis"
+
+msgid "Begin Interval"
+msgstr "Beginn d. Zeitraums"
+
+msgid "End Interval"
+msgstr "Ende d. Zeitraums"
+
+msgid "Single Capture"
+msgstr "Einzelaufzeichnung"
+
+msgid "Capture Date"
+msgstr "Datum der Aufzeichnung"
+
+msgid "Capture Interval"
+msgstr "Zeitraum der Aufzeichnung"
+
+msgid "Exception Rule"
+msgstr "Ausnahmeregel"
+
+msgid "Regular Captures"
+msgstr "Regelmäßige Aufzeichnung"
+
+msgid "Configure Schedule"
+msgstr "Zeitplan einstellen"
+
+msgid "Add another Schedule"
+msgstr "Weiterer Zeitplan"
+
+msgid "A Schedule is corrupt or missing information."
+msgstr "Ein Zeitplan ist unvollständig oder enthält Fehler."
+
+msgid "The date does not lie after the first selected date."
+msgstr "Das angegebene Datum liegt nicht nach dem gewählten Beginn."
+
+msgid "Every second"
+msgstr "Jede zweite"
+
+msgid "Sign up"
+msgstr "Registrieren"
+
+msgid "Every third"
+msgstr "Jede dritte"
+
+msgid "Every fourth"
+msgstr "Jede vierte"
+
+msgid "January"
+msgstr "Januar"
+
+msgid "February"
+msgstr "Februar"
+
+msgid "March"
+msgstr "März"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "Dezember"
+
+msgid "_Mon"
+msgstr "Mo."
+
+msgid "_Tue"
+msgstr "Di."
+
+msgid "_Wed"
+msgstr "Mi."
+
+msgid "_Thu"
+msgstr "Do."
+
+msgid "_Fri"
+msgstr "Fr."
+
+msgid "_Sat"
+msgstr "Sa."
+
+msgid "_Sun"
+msgstr "So."
+
+msgid "Monday"
+msgstr "Montag"
+
+msgid "Tuesday"
+msgstr "Dienstag"
+
+msgid "Wednesday"
+msgstr "Mittwoch"
+
+msgid "Thursday"
+msgstr "Donnerstag"
+
+msgid "Friday"
+msgstr "Freitag"
+
+msgid "Saturday"
+msgstr "Samstag"
+
+msgid "Sunday"
+msgstr "Sonntag"
+
+msgid "Blue"
+msgstr "Blau"

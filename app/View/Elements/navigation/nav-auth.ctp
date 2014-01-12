@@ -129,21 +129,21 @@
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
                 <li role="presentation" class="dropdown-header list-info"><?php echo __('Edit account') ?></li>
-                <li>
+                <li class="disabled">
                     <a href="#"><?php echo __('Edit your profile') ?></a>
                 </li>
                 <li>
                     <?php echo $this->Html->link(__('Change Password'), array('controller' => 'users', 'action' => 'changePassword')); ?>
                 </li>
-                <li>
+                <li class="disabled">
                     <a href="#"><?php echo __('Messages') ?></a>
                 </li>
                 <li class="divider">
                 </li>
-                <li>
+                <li class="disabled">
                     <a href="#"><?php echo __('Admin Center') ?></a>
                 </li>
-                <li>
+                <li class="disabled">
                     <?php echo $this->Html->link("Full Calendar", array('controller' => 'full_calendar', 'action' => 'index')); ?>
                 </li>
                 <li class="divider">

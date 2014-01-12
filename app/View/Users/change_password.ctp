@@ -56,7 +56,7 @@
             <div class="form-group">
                 <?php echo $this->Form->submit(__('Submit'), array(
                     'div' => 'col col-md-6 col-md-offset-3',
-                    'class' => 'btn btn-primary'
+                    'class' => 'btn btn-primary pull-right'
                 )); ?>
             </div>
 

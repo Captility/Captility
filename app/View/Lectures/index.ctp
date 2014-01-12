@@ -114,7 +114,7 @@
                 </ul>
             </div>
             <div class="panel-heading">
-                <? echo __('Captures') ?>
+                <span class="glyphicon glyphicon-film"></span><? echo __('Captures') ?>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
@@ -123,7 +123,7 @@
                 </ul>
             </div>
             <div class="panel-heading">
-                <? echo __('Hosts') ?>
+                <span class="glyphicon glyphicon-user"></span><? echo __('Hosts') ?>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
@@ -132,7 +132,7 @@
                 </ul>
             </div>
             <div class="panel-heading">
-                <? echo __('Event Types') ?>
+                <span class="glyphicon glyphicon-tint"></span><? echo __('Event Types') ?>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">

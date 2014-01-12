@@ -22,7 +22,9 @@ class Lecture extends AppModel {
      *
      * @var string
      */
-    public $displayField = 'name';
+    public $virtualFields = array("full_name"=>"CONCAT(Lecture.number, ' ' ,Lecture.name)");
+    public $displayField = 'full_name';
+
 
     /**
      * Validation rules

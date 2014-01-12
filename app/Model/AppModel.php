@@ -59,13 +59,13 @@ class AppModel extends Model {
         $value = $value[0];
 
         // if supported Languages are set...
-        if(Configure::check('Captility.supportedLanguages')){
+        if (Configure::check('Captility.supportedLanguages')) {
 
             // check foreach language if..
             foreach (Configure::read('Captility.supportedLanguages') as $language) {
 
                 // selected language is supported
-                if($language == $value) return true;
+                if ($language == $value) return true;
             }
         }
 
@@ -78,7 +78,7 @@ class AppModel extends Model {
      * Usage: var $validate = array('myField1' => array('atLeastOne', 'myField2', 'myField3', 'myField4'), ...
      */
     function atLeastOneNotEmpty($data) {
-        $args = func_get_args();  // will contain $data, 'myField2', 'myField3', ...
+        $args = func_get_args(); // will contain $data, 'myField2', 'myField3', ...
 
         foreach ($args as $name) {
             if (is_array($name)) {
@@ -90,5 +90,25 @@ class AppModel extends Model {
         }
 
         return false;
+    }
+
+    /**
+     * Checks if the value defined by the field name is a date set in the future.  This
+     * automatically checks if the value is in proper date format.
+     *
+     * @param string $fieldName The name of the field to validate.
+     * @param array $params Extra validation parameters.
+     * @return bool True if value of the field name is a future date; false otherwise.
+     * @see Validation::validateDate()
+     */
+    function validateFutureDate($fieldName, $params) {
+        if ($result = $this->validateDate($fieldName, $params)) {
+
+            return $result;
+        }
+
+        $date = strtotime($this->data[$this->name][$fieldName]);
+
+        return $this->_evaluate($date > time(), "is not set in a future date", $fieldName, $params);
     }
 }

@@ -40,9 +40,7 @@
 				<div class="form-group">
 					<?php echo $this->Form->input('comment', array('class' => 'form-control', 'placeholder' => 'Comment'));?>
 				</div>
-    				<div class="form-group">
-					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary')); ?>
-				</div>
+    				<?php echo $this->Element('submitArea');?>
 
 			<?php echo $this->Form->end() ?>
 

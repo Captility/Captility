@@ -122,7 +122,6 @@
                     <?php endforeach; ?>
                     </tbody>
                 </table>
-
                 <div class="panel-footer"></div>
             </div>
         <?php endif; ?>
@@ -150,7 +149,7 @@
                         <th><?php echo __('Semester'); ?></th>
                         <th><?php echo __('Link'); ?></th>
                         <th><?php echo __('User'); ?></th>
-                        <th><?php echo __('Event Type'); ?></th>
+                        <th><?php echo __('Type'); ?></th>
                         <th class="actions"></th>
                     </tr>
                     <thead>

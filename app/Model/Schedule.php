@@ -47,11 +47,11 @@ class Schedule extends AppModel {
 			),
 		),
 		'interval_start' => array(
-			'datetime' => array(
+			'date' => array(
 				'rule' => array('date'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
+				'message' => 'Please enter a date.',
+				'allowEmpty' => false,
+				'required' => true,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
@@ -65,6 +65,14 @@ class Schedule extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+            /*'after' => array(
+				'rule' => array('validateIsSameOrAfterDate', array(0 => 'interval_start',1 => 'interval_end')),
+				'message' => 'The date does not lie after the first selected date.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),*/
 		),
 		'duration' => array(
 			'duration' => array(
