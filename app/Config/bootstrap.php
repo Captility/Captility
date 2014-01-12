@@ -107,6 +107,12 @@ CakeLog::config('error', array(
 ));
 
 /**
+ * Time Settings.
+ */
+setlocale(LC_ALL, 'de_DE.UTF8', 'de_DE', 'de', 'ge', 'deu');
+
+
+/**
  * Use DebugKit Plugin for Debugging.
  */
 CakePlugin::load('DebugKit');

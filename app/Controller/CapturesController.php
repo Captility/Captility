@@ -51,17 +51,13 @@ class CapturesController extends AppController {
 
         if ($this->request->is('post')) {
 
-            /*pr($this->request->data);*/
 
-            // EVENT
+            //debug($this->request->data);
+
+            // Markup Container
             $Schedules = $this->request->data['Schedule'];
-            $Event = $this->request->data['Event'];
-            $Captures = $this->request->data['Capture'];
 
-
-           /* $this->Capture->Schedule->set($this->request->data);
-            $this->Capture->Schedule->validates();*/
-
+            // Extra Check valid data
             $validData = true;
             foreach ($Schedules as $i => $Schedule) {
 
@@ -69,45 +65,65 @@ class CapturesController extends AppController {
                 if (empty($Schedule['interval_start']) || empty($Schedule['duration'])) {
 
                     $this->Session->setFlash(__('A Schedule is missing information.') .
-                        '\n' . __('The Event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+                        '\n' . __('The Capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
                     $validData = false;
                     break;
                 }
-            }
+                else {
 
+                    //CONVERT DATA
+                    $Schedules[$i]['interval_start'] = CakeTime::format('Y-m-d', substr($Schedule['interval_start'], 4));
 
-            // PROCESS SINGLE OR REGULAR SCHEDULE
-            if ($validData) {
+                    if (!empty($Schedule['interval_end'])) {
+                        $Schedules[$i]['interval_end'] = CakeTime::format('Y-m-d', substr($Schedule['interval_end'], 4));
+                    }
 
-                if (empty($Schedule['interval_end'])) {
+                    //SCHEDULE[Event] Data
+                    $Schedules[$i]['Event']['event_type_id'] = $this->request->data['Event']['event_type_id'];
+                    $Schedules[$i]['Event']['link'] = $this->request->data['Event']['link'];
 
-                    //SINGLE SCHEDULE = SINGLE EVENT
-                    /*pr('NEW EVENT!');*/
-
-
+                    $Schedules[$i]['Capture']['name'] = $this->request->data['Capture']['name'];
+                    $Schedules[$i]['Capture']['status'] = $this->request->data['Capture']['status'];
+                    $Schedules[$i]['Capture']['comment'] = $this->request->data['Capture']['comment'];
                 }
             }
 
+            //debug($Schedules);
+
+
+            // ########################### SAVE NEW DATA ###############################################################
 
             // Create and Save Event for Capture
-            if ($validData && $this->Capture->save($this->request->data)) {
+            $this->Capture->create();
+            if ($validData && $this->Capture->save($this->request->data['Capture'])) {
 
 
                 $this->Session->setFlash(__('The Capture has been saved.'), 'default', array('class' => 'alert alert-success'));
 
-                // Capture hasOne Event
-                $this->request->data['Event']['capture_id'] = $this->Capture->id;
 
+                // Capture hasMany Schedules
+                foreach ($Schedules as $i => $Schedule) {
 
-                if ($this->Capture->Event->save($this->request->data)) {
+                    $Schedules[$i]['capture_id'] = $this->Capture->id;
 
-                    $this->Session->setFlash(__('The Event has been saved.'), 'default', array('class' => 'alert alert-success'));
+                    $this->Capture->Schedule->create();
+                    if ($this->Capture->Schedule->save($Schedules[$i])) {
 
+                        //debug('SCHEDULE SAVED'); //todo entfernen
+
+                        $this->Capture->Schedule->manageOwnEvents($this->Capture->Schedule->id, $Schedules[$i]);
+                        //$this->Capture->Schedule->delete();
+                    }
+                    else {
+
+                        $this->Session->setFlash(__('A Schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+                        //debug('SCHEDULE NOT SAVED'); //todo entfernen
+                        //debug($Schedules[$i]); //todo entfernen
+                        //debug($this->Capture->Schedule->invalidFields()); //todo entfernen
+                    }
                 }
-                else {
 
-                    $this->Session->setFlash(__('The Event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
-                }
+                //$this->Capture->delete();
 
                 return $this->redirect(array('action' => 'index'));
             }
@@ -191,12 +207,12 @@ class CapturesController extends AppController {
 
 
         // Delete Capture
-        if ($this->Capture->delete()) {
+        if ($this->Capture->delete($this->Capture->id, true)) { //Delete Cascaded
             $this->Session->setFlash(__('The capture has been deleted.'), 'default', array('class' => 'alert alert-success'));
 
 
             // RELATION EVENTS
-            if ($this->Capture->hasEvents($this->Capture->id)) {
+            /*if ($this->Capture->hasEvents($this->Capture->id)) {
 
                 // Set active Event record
                 $this->Capture->Event->id = $capture['Event']['event_id'];
@@ -221,7 +237,7 @@ class CapturesController extends AppController {
                 else {
                     $this->Session->setFlash(__('The related schedules could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
                 }
-            }
+            }*/
         }
         else {
             $this->Session->setFlash(__('The capture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));

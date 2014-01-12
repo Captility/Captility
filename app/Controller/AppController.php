@@ -40,13 +40,13 @@ class AppController extends Controller {
             'loginRedirect' => array('controller' => 'calendars', 'action' => 'dashboard'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
             'authorize' => array('Controller', 'Actions' => array('actionPath' => 'controllers')),
-            'authError' => 'Permission denied. You don\'t have the rights to access this action.')
+            'authError' => 'Sie wurden nach langer Inaktivität ausgeloggt. Bitte loggen Sie sich ein.')
     );
 
 
 // Prepare Helpers for Bootstrap layout
     public $helpers = array( //ToDo BooskCake Plugin Aufräumen:
-        'Session',
+        'Session', 'Time', 'Js',
         'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
         'Form' => array('className' => 'BoostCake.BoostCakeForm'),
         'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
@@ -74,7 +74,7 @@ class AppController extends Controller {
         // ###### LANGUAGE ########
         if ($this->Session->check('Config.language')) {
             Configure::write('Config.language', $this->Session->read('Config.language'));
-            $this->Auth->authError = __('Permission denied. You don\'t have the rights to access this action.');
+            $this->Auth->authError = 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen. Bitte loggen Sie sich ein.';
         }
 
         // Time format DMY or MDY

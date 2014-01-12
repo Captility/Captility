@@ -40,6 +40,10 @@
         'label' => false));?>
 </div>
 
+<div class="form-group">
+    <?php echo $this->Form->input('lecture_id', array('class' => 'form-control', 'placeholder' => 'Lecture Id'));?>
+</div>
+
 <?php echo $this->Form->label('Capture.status', __('Status'), array(
     'class' => 'control-label'));?>
 
@@ -61,10 +65,16 @@
 </div>
 
 <div class="form-group">
-    <?php echo $this->Form->input('lecture_id', array('class' => 'form-control', 'placeholder' => 'Lecture Id'));?>
+    <?php echo $this->Form->input('Event.link', array('class' => 'form-control',
+        'required' => false,
+        'placeholder' => __('Link to Capture Data')));?>
 </div>
+
+
 <div class="form-group">
-    <?php echo $this->Form->input('user_id', array('class' => 'form-control', 'placeholder' => 'User Id', 'empty' => true));?>
+    <?php echo $this->Form->input('user_id', array('class' => 'form-control', 'placeholder' => 'User Id',
+        'label' => __('Responsible'),
+        'empty' => true));?>
 </div>
 <div class="form-group">
     <?php echo $this->Form->input('workflow_id', array('class' => 'form-control', 'placeholder' => 'Workflow Id', 'empty' => true));?>
@@ -193,6 +203,20 @@
     </div>
 
     <div class="form-group">
+        <?php echo $this->Form->input('Schedule.0.repeat_time',
+            array('dateFormat' => Configure::read('Captility.dateFormat'),
+                'timeFormat' => '24',
+                'minYear' => date('Y') - 5,
+                'maxYear' => date('Y') + 5,
+                'class' => 'form-control form-control-date',
+                'interval' => 15,
+                'selected' => array(
+                    'hour' => '12',
+                    'min' => '00'),
+            ));?>
+    </div>
+
+    <div class="form-group">
 
         <?php echo $this->Form->input('Schedule.0.duration', array(
             'dateFormat' => Configure::read('Captility.dateFormat'),
@@ -272,6 +296,8 @@
                 'required' => true,
                 'disabled' => true
             ));
+
+
 
             echo $this->Form->input('Schedule.0.interval_end', array(
                 'type' => 'string',

@@ -44,13 +44,13 @@
             <?php foreach ($schedules as $schedule): ?>
                 <tr>
                     <td><?php echo h($schedule['Schedule']['schedule_id']); ?>&nbsp;</td>
-                    <td><?php echo h($schedule['Schedule']['interval_start']); ?>&nbsp;</td>
-                    <td><?php echo h($schedule['Schedule']['interval_end']); ?>&nbsp;</td>
+                    <td><?php echo  $this->Time->nice(strtotime($schedule['Schedule']['interval_start']), 'CET', '%d.%m.%Y');?>&nbsp;</td>
+                    <td><?php echo  $this->Time->nice(strtotime($schedule['Schedule']['interval_end']), 'CET', '%d.%m.%Y');?>&nbsp;</td>
                     <td><?php echo h($schedule['Schedule']['duration']); ?>&nbsp;</td>
                     <td><?php echo h($schedule['Schedule']['repeat_time']); ?>&nbsp;</td>
                     <td><?php echo h($schedule['Schedule']['repeat_day']); ?>&nbsp;</td>
                     <td><?php echo h($schedule['Schedule']['repeat_week']); ?>&nbsp;</td>
-                    <td><?php echo h($schedule['Schedule']['created']); ?>&nbsp;</td>
+                    <td><?php echo  $this->Time->nice(strtotime($schedule['Schedule']['created']), 'CET', '%d.%m.%Y');?>&nbsp;</td>
                     <td><?php echo h($schedule['Schedule']['modified']); ?>&nbsp;</td>
                     <td>
                         <?php echo $this->Html->link($schedule['Capture']['name'], array('controller' => 'captures', 'action' => 'view', $schedule['Capture']['capture_id'])); ?>

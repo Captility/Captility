@@ -2880,8 +2880,8 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   margin-left: -5px;
   margin-right: -5px;
 }
-.prev,
-.next {
+th.prev,
+th.next {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -2892,14 +2892,14 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.prev:empty,
-.next:empty {
+th.prev:empty,
+th.next:empty {
   width: 1em;
 }
-.prev:before {
+th.prev:before {
   content: "\e079";
 }
-.next:before {
+th.next:before {
   content: "\e080";
 }
 @media all and (min-width: 992px) and (max-width: 1200px) {

@@ -243,16 +243,16 @@ msgid "Invalid schedule"
 msgstr "Ungültiger Zeitplan"
 
 msgid "The schedule has been saved."
-msgstr "Die Aufzeichnungsregel wurde erfolgreich gesichert."
+msgstr "Der Zeitplan wurde erfolgreich gesichert."
 
 msgid "The schedule could not be saved. Please, try again."
-msgstr "Die Aufzeichnungsregel konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Zeitplan konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
 
 msgid "The schedule has been deleted."
-msgstr "Die Aufzeichnungsregel wurde erfolgreich entfernt."
+msgstr "Der Zeitplan wurde erfolgreich entfernt."
 
 msgid "The schedule could not be deleted. Please, try again."
-msgstr "Die Aufzeichnungsregel konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Der Zeitplan konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
 
 msgid "Invalid task"
 msgstr "Ungültige Aufgabe"
@@ -286,6 +286,10 @@ msgstr "/ttkt konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
 
 msgid "You are already logged in."
 msgstr "Sie sind bereits eingeloggt."
+
+
+msgid "Link to Capture Data"
+msgstr "Link zu Aufzeichnungsdaten (optional)"
 
 msgid "Login successfull."
 msgstr "Sie haben sich erfolgreich eingeloggt."
@@ -727,7 +731,7 @@ msgid "Username"
 msgstr "Benutzername"
 
 msgid "Email"
-msgstr "E?Mail"
+msgstr "Email"
 
 msgid "Language"
 msgstr "Sprache"
@@ -763,7 +767,7 @@ msgid "Contact"
 msgstr "Kontakt"
 
 msgid "Contact Email"
-msgstr "Kontakt E?Mail"
+msgstr "Kontakt Email"
 
 
 
@@ -939,7 +943,7 @@ msgid "E-Mail"
 msgstr ""
 
 msgid "enter email-adress"
-msgstr "Bitte geben Sie eine E?Mail Adresse an."
+msgstr "Bitte geben Sie eine Email Adresse an."
 
 msgid "enter password"
 msgstr "Bitte geben Sie ein gewünschtes Passwort an."
@@ -992,10 +996,10 @@ msgid "alphanumeric"
 msgstr "Bitte nur Zahlen und Nummern eingeben."
 
 msgid "At least one contact E-Mail is required."
-msgstr "Geben Sie bitte mindestens eine Kontakt E?Mail Adresse an."
+msgstr "Geben Sie bitte mindestens eine Kontakt Email Adresse an."
 
 msgid "Please enter a valid E-Mail adress."
-msgstr "Bitte geben Sie eine gültige E?Mailadresse ein."
+msgstr "Bitte geben Sie eine gültige Emailadresse ein."
 
 msgid "alphaNumeric"
 msgstr "Bitte geben Sie nur Zahlen und Nummern an."
@@ -1013,10 +1017,10 @@ msgid "time"
 msgstr "Bitte geben Sie eine gültige Zeit an."
 
 msgid "email"
-msgstr "Bitte geben Sie eine gültige E?Mail Adresse an."
+msgstr "Bitte geben Sie eine gültige Email Adresse an."
 
 msgid "This email address is already registered"
-msgstr "Diese E?Mail Adresse wird leider bereits benutzt."
+msgstr "Diese Email Adresse wird leider bereits benutzt."
 
 msgid "Please enter a username."
 msgstr "Bitte geben Sie einen Benutzernamen an."
@@ -1034,13 +1038,13 @@ msgid "The entered passwords do not match."
 msgstr "Die eingegebenen Passwörter stimmen nicht überein."
 
 msgid "Please enter a valid email adress."
-msgstr "Bitte geben Sie eine gültige E?Mail Adresse ein."
+msgstr "Bitte geben Sie eine gültige Email Adresse ein."
 
 msgid "Please enter a email adress."
-msgstr "Bitte geben Sie eine gültige E?Mail Adresse ein."
+msgstr "Bitte geben Sie eine gültige Email Adresse ein."
 
 msgid "This email adress is alredy in use!"
-msgstr "Diese E?Mail Adresse wird leider bereits benutzt."
+msgstr "Diese Email Adresse wird leider bereits benutzt."
 
 msgid "This language is not supported."
 msgstr "Diese Sprache wird zur Zeit leider nicht unterstützt."

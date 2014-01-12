@@ -126,7 +126,7 @@ class Capture extends AppModel {
         'Event' => array(
             'className' => 'Event',
             'foreignKey' => 'capture_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',
@@ -139,7 +139,7 @@ class Capture extends AppModel {
         'Schedule' => array(
             'className' => 'Schedule',
             'foreignKey' => 'capture_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',
@@ -151,20 +151,22 @@ class Capture extends AppModel {
         )
     );
 
-    function hasEvents($id){
+    function hasEvents($id) {
         $count = $this->Event->find("count", array("conditions" => array("Capture.capture_id" => $id)));
         if ($count == 0) {
             return false;
-        } else {
+        }
+        else {
             return true;
         }
     }
 
-    function hasSchedules($id){
+    function hasSchedules($id) {
         $count = $this->Schedule->find("count", array("conditions" => array("Capture.capture_id" => $id)));
         if ($count == 0) {
             return false;
-        } else {
+        }
+        else {
             return true;
         }
     }

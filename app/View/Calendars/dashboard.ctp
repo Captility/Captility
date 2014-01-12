@@ -40,7 +40,7 @@
         <? // Tab Content #c ?>
 
         <div class="tab-pane" id="c">
-
+            <?php echo $this->Element('tabContentDummy2');?>
         </div>
     </div>
 </div>

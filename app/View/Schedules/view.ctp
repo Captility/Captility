@@ -31,14 +31,14 @@
             <tr>
                 <th><?php echo __('Interval Start'); ?></th>
                 <td>
-                    <?php echo h($schedule['Schedule']['interval_start']); ?>
+                    <?php echo  $this->Time->nice(strtotime($schedule['Schedule']['interval_start']), 'CET', '%d.%m.%Y');?>
                     &nbsp;
                 </td>
             </tr>
             <tr>
                 <th><?php echo __('Interval End'); ?></th>
                 <td>
-                    <?php echo h($schedule['Schedule']['interval_end']); ?>
+                    <?php echo  $this->Time->nice(strtotime($schedule['Schedule']['interval_end']), 'CET', '%d.%m.%Y');?>
                     &nbsp;
                 </td>
             </tr>
@@ -73,7 +73,7 @@
             <tr>
                 <th><?php echo __('Created'); ?></th>
                 <td>
-                    <?php echo h($schedule['Schedule']['created']); ?>
+                    <?php echo  $this->Time->nice(strtotime($schedule['Schedule']['created']), 'CET', '%d.%m.%Y');?>
                     &nbsp;
                 </td>
             </tr>

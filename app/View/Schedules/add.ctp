@@ -38,6 +38,15 @@
                     'min' => '00'),
             ));?>
     </div>
+
+    <!--<div class="form-group">
+        <?php /*echo $this->Form->input('interval_start',
+            array('dateFormat' => Configure::read('Captility.dateFormat'),
+                'type' => 'string',
+                'class' => 'pickDate form-control'
+            ));*/?>
+    </div>-->
+
     <div class="form-group">
         <?php echo $this->Form->input('interval_end',
             array('dateFormat' => Configure::read('Captility.dateFormat'),

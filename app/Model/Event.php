@@ -104,8 +104,8 @@ class Event extends AppModel {
             'url' => array(
                 'rule' => array('url', true),
                 'message' => 'Please enter a valid Link, like "http://www.captility.de"',
-                'allowEmpty' => false,
-                'required' => true,
+                'allowEmpty' => true,
+                'required' => false,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),

@@ -264,6 +264,13 @@ class UsersController extends AppController {
      * @return void
      */
     public function edit($id = null) {
+
+
+        if ($this->Auth->user('group_id') != 1) {
+
+            $this->request->data['User']['group_id'] = $this->Auth->user('group_id');
+        }
+
         if (!$this->User->exists($id)) {
             throw new NotFoundException(__('Invalid user'));
         }
