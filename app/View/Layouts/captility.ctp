@@ -11,7 +11,7 @@
     echo $this->Html->meta('icon');
 
     // Bootstrap Content
-    echo $this->Html->css('bootstrap.custom.css'); //ToDo Add minified Version
+    echo $this->Html->css('bootstrap.captility.css'); //ToDo Add minified Version
     echo $this->Html->css('captility.css'); //ToDo Add minified Version
 
     // jQuery Link

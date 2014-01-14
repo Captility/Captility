@@ -123,7 +123,7 @@
                 </ul>
             </div>
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-user"></span><? echo __('Hosts') ?>
+                <span class="glyphicon cp-icon-lecturer"></span><? echo __('Hosts') ?>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">

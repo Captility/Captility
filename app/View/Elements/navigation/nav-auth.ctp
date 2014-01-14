@@ -48,7 +48,7 @@
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
-                            'span', '', array('class' => 'glyphicon glyphicon-user')) . __('Hosts'),
+                            'span', '', array('class' => 'glyphicon cp-icon-lecturer')) . __('Hosts'),
                         array('controller' => 'hosts', 'action' => 'index'), array('escape' => false))?>
                 </li>
                 <li>
@@ -77,10 +77,10 @@
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
                 <li role="presentation" class="dropdown-header list-info"><?php echo __('Manage duties...') ?>.</li>
-                <li>
+                <li class="disabled">
                     <?php echo $this->Html->link(
                         $this->Html->tag(
-                            'span', '', array('class' => 'glyphicon glyphicon-calendar')) . __('Calendar'),
+                            'span', '', array('class' => 'glyphicon glyphicon-stats')) . __('Statistics'),
                         array('controller' => 'calendars', 'action' => 'index'), array('escape' => false))?>
                 </li>
                 <li>
@@ -98,7 +98,7 @@
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
-                            'span', '', array('class' => 'glyphicon glyphicon-transfer')) . __('Workflows'),
+                            'span', '', array('class' => 'glyphicon el-icon-random')) . __('Workflows'),
                         array('controller' => 'workflows', 'action' => 'index'), array('escape' => false))?>
                 </li>
                 <li class="divider"></li>
@@ -108,6 +108,14 @@
                             'span', '', array('class' => 'glyphicon glyphicon-user')) . __('Users'),
                         array('controller' => 'users', 'action' => 'index'), array('escape' => false))?>
                 </li>
+                <?php if ($this->Session->read('Auth.User.group_id') == 1): ?>
+                    <li>
+                        <?php echo $this->Html->link(
+                            $this->Html->tag(
+                                'span', '', array('class' => 'glyphicon el-icon-group')) . __('Groups'),
+                            array('controller' => 'groups', 'action' => 'index'), array('escape' => false))?>
+                    </li>
+                <? endif; ?>
             </ul>
         </li>
 
@@ -130,26 +138,40 @@
             <ul class="dropdown-menu">
                 <li role="presentation" class="dropdown-header list-info"><?php echo __('Edit account') ?></li>
                 <li class="disabled">
-                    <a href="#"><?php echo __('Edit your profile') ?></a>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon el-icon-address-book-alt')) . __('My Profile'),
+                        array('controller' => 'users', 'action' => 'profile'), array('escape' => false))?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link(__('Change Password'), array('controller' => 'users', 'action' => 'changePassword')); ?>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon el-icon-unlock-alt')) . __('Change Password'),
+                        array('controller' => 'users', 'action' => 'profile'), array('escape' => false))?>
                 </li>
                 <li class="disabled">
-                    <a href="#"><?php echo __('Messages') ?></a>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon el-icon-envelope-alt')) . __('Messages'),
+                        array('controller' => 'users', 'action' => 'profile'), array('escape' => false))?>
                 </li>
                 <li class="divider">
                 </li>
-                <li class="disabled">
-                    <a href="#"><?php echo __('Admin Center') ?></a>
-                </li>
-                <li class="disabled">
-                    <?php echo $this->Html->link("Full Calendar", array('controller' => 'full_calendar', 'action' => 'index')); ?>
-                </li>
+                <?php if ($this->Session->read('Auth.User.group_id') == 1): ?>
+                    <li class="disabled">
+                        <?php echo $this->Html->link(
+                            $this->Html->tag(
+                                'span', '', array('class' => 'glyphicon el-icon-wrench-alt')) . __('Admin-Center'),
+                            array('controller' => 'users', 'action' => 'profile'), array('escape' => false))?>
+                    </li>
                 <li class="divider">
+                <? endif; ?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); ?>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon el-icon-remove-sign')) . __('Logout'),
+                        array('controller' => 'users', 'action' => 'profile'), array('escape' => false))?>
                 </li>
             </ul>
         </li>

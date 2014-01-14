@@ -105,7 +105,7 @@
                 </ul>
             </div>
             <div class="panel-heading">
-                <? echo __('Groups') ?>
+                <span class="glyphicon el-icon-group"></span><? echo __('Groups') ?>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
@@ -114,7 +114,7 @@
                 </ul>
             </div>
             <div class="panel-heading">
-                <? echo __('Tickets') ?>
+                <span class="glyphicon glyphicon-tasks"></span><? echo __('Tickets') ?>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">

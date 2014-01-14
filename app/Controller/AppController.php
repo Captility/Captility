@@ -38,7 +38,7 @@ class AppController extends Controller {
         'Auth' => array(
             'loginAction' => array('controller' => 'users', 'action' => 'login'),
             'loginRedirect' => array('controller' => 'calendars', 'action' => 'dashboard'),
-            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+            'logoutRedirect' => array('controller' => 'pages', 'action' => 'landing_page'),
             'authorize' => array('Controller', 'Actions' => array('actionPath' => 'controllers')),
             'authError' => 'Sie wurden nach langer Inaktivität ausgeloggt. Bitte loggen Sie sich ein.')
     );
@@ -78,11 +78,11 @@ class AppController extends Controller {
         }
 
         // Time format DMY or MDY
-        if (Configure::read('Config.language') === 'deu') {
-            Configure::write('Captility.dateFormat', 'DMY');
+        if (Configure::read('Config.language') === 'eng') {
+            Configure::write('Captility.dateFormat', 'MDY');
         }
         else {
-            Configure::write('Captility.dateFormat', 'MDY');
+            Configure::write('Captility.dateFormat', 'DMY');
         }
     }
 

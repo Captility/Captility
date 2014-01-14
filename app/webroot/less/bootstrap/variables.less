@@ -42,11 +42,12 @@
 
 // Typography
 // -------------------------
-@import url(http://fonts.googleapis.com/css?family=Istok+Web:400,700);
+@import url(http://fonts.googleapis.com/css?family=Istok+Web|Titillium+Web:400);
 //Istok+Web|Open+Sans:300,400);
-@font-family-sans-serif: 'Istok Web', "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-nav: Helvetica, "Helvetica Neue", Arial, sans-serif;
-@font-family-headline: Helvetica, "Helvetica Neue", Arial, sans-serif;
+@font-family-sans-serif: 'Istok Web', 'Titillium Web', "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-headline: @font-family-base;
+@font-family-titilium: 'Titillium Web', 'Istok Web', Helvetica, "Helvetica Neue", Arial, sans-serif;
+@font-family-nav: @font-family-base; //"Helvetica Neue", 'Titillium Web', 'Istok Web' Arial, sans-serif;
 @font-family-serif: Georgia, "Times New Roman", Times, serif;
 @font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base: @font-family-sans-serif;

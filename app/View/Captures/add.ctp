@@ -463,7 +463,7 @@
                 </ul>
             </div>
             <div class="panel-heading">
-                <div><span class="glyphicon glyphicon-transfer"></span><?php echo __('Workflows');?></div>
+                <div><span class="glyphicon el-icon-random"></span><?php echo __('Workflows');?></div>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">

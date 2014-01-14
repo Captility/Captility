@@ -51,7 +51,7 @@ class PagesController extends AppController
     {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('home');
+        $this->Auth->allow('home', 'landing_page');
     }
 
     /**
@@ -62,6 +62,9 @@ class PagesController extends AppController
      */
     public function display()
     {
+
+        $headline= "";
+
         $path = func_get_args();
 
         $count = count($path);
@@ -79,6 +82,7 @@ class PagesController extends AppController
         if (!empty($path[$count - 1])) {
             $title_for_layout = Inflector::humanize($path[$count - 1]);
         }
+
         $this->set(compact('page', 'subpage', 'title_for_layout'));
         $this->render(implode('/', $path));
     }

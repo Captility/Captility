@@ -13,7 +13,7 @@
             data-target="#bs-example-navbar-collapse-1"><span
             class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
             class="icon-bar"></span><span class="icon-bar"></span></button>
-    <?php echo $this->Html->link("Captility", array('controller' => 'pages', 'action' => 'home'),
+    <?php echo $this->Html->link("Captility", array('controller' => 'pages', 'action' => 'landing_page'),
         array('class' => 'navbar-brand')); //ToDo Variable für Titel benutzen ?>
 </div>
 
@@ -21,7 +21,7 @@
     <ul class="nav navbar-nav">
 
         <li <? if (!in_array($this->params['controller'], array('users', 'calendars'))) echo 'class="active"';?>>
-            <?php echo $this->Html->link(__('Start'), array('controller' => 'pages', 'action' => 'home')); ?>
+            <?php echo $this->Html->link(__('Start'), array('controller' => 'pages', 'action' => 'landing_page')); ?>
         </li>
 
         <li>

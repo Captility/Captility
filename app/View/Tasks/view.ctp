@@ -137,7 +137,7 @@
                 </ul>
             </div>
             <div class="panel-heading">
-                <? echo __('Workflows') ?>
+                <span class="glyphicon el-icon-random"></span><? echo __('Workflows') ?>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">

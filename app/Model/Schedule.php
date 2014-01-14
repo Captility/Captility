@@ -317,7 +317,7 @@ class Schedule extends AppModel {
                 $event['end'] = date('Y-m-d H:i:s', $end);
 
 
-                //Iterate the requestet weeks
+                //Iterate the amount of requested weeks
                 $iterationDate = strtotime("+" . $schedule['repeat_week'] . " weeks", $iterationDate);
 
 

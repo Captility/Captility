@@ -3366,7 +3366,7 @@ input[type="button"].btn-block {
   content: "\e177";
 }
 
-.glyphicon-transfer:before {
+.el-icon-random:before {
   content: "\e178";
 }
 

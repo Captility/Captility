@@ -11,8 +11,6 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 
-
-
 msgid "List Groups"
 msgstr "Nutzergruppen zeigen"
 
@@ -378,6 +376,12 @@ msgstr "Aufnahmeplan anlegen"
 msgid "Submit"
 msgstr "Speichern"
 
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
 #: View/Groups/view.ctp:103
 #: View/Tickets/admin_index.ctp:92
 msgid "Related Actions"
@@ -561,7 +565,7 @@ msgid "Event Types"
 msgstr "Aufnahmetypen"
 
 msgid "Team"
-msgstr "Aufgaben"
+msgstr "Produktion"
 
 msgid "Manage duties..."
 msgstr "Steuern der Produktion..."
@@ -581,7 +585,7 @@ msgstr "Suche"
 msgid "Edit account"
 msgstr "Account verwalten"
 
-msgid "Edit your profile"
+msgid "My Profile"
 msgstr "Mein Profil"
 
 msgid "Change Password"
@@ -608,7 +612,8 @@ msgstr ""
 msgid "Add Event Type"
 msgstr "Aufnahmetyp anlegen"
 
-
+msgid "Statistics"
+msgstr "Statistiken"
 
 msgid "Admin Add Event Type"
 msgstr "Admin::Aufnahmetyp anlegen"
@@ -703,7 +708,7 @@ msgid "Edit Event"
 msgstr "Aufzeichnung bearbeiten"
 
 msgid "Groups"
-msgstr "Nutzergruppe"
+msgstr "Nutzergruppen"
 
 msgid "Add Group"
 msgstr "Nutzergruppe anlegen"

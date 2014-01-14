@@ -162,6 +162,34 @@ small.disabled {
 }
 
 /* ###############################################
+ * ################# TYPOGRAPHY  #################
+ * ###############################################*/
+
+//Import Icons: Elusive Webfont:
+@import "elusive-webfont.less";
+
+.cp-icon-lecturer {
+  background-image: url('../img/icons/cp-icon-lecturer.svg');
+  background-size: 100%;
+  background-position: top center;
+}
+
+.cp-icon-lecturer:before {
+  content: "\e";
+}
+
+h1, .fc-event-time, .cw, .navbar-brand {
+
+  font-family: @font-family-titilium;
+}
+
+.navbar-brand {
+
+  font-size: 22px;
+  padding-top: 14px;
+}
+
+/* ###############################################
  * ################# Info Banners  ###############
  * ###############################################*/
 
@@ -323,7 +351,7 @@ button .glyphicon {
  * ############### COLOR PALETTE  ################
  * ###############################################*/
 
-@import "bootstrap-colorpalette.css";
+@import "../css/bootstrap-colorpalette.css";
 
 /* ###############################################
  * ################ DATEPICKER  ##################
