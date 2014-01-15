@@ -1,6 +1,12 @@
 {
+    "extra": {
+        "installer-paths": {
+            "Plugin/Linkable": ["lorenzo/linkable"],
+        }
+    },
     "require": {
         "cakephp/debug_kit": "2.2.*",
-        "slywalker/boost_cake": "*"
+        "slywalker/boost_cake": "*",
+        "lorenzo/linkable": "master"
     }
 }

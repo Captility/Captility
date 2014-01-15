@@ -79,16 +79,16 @@ Cache::config('default', array('engine' => 'File'));
  * Feel free to remove or add filters as you see fit for your application. A few examples:
  *
  * Configure::write('Dispatcher.filters', array(
- *		'MyCacheFilter', //  will use MyCacheFilter class from the Routing/Filter package in your app.
- *		'MyPlugin.MyFilter', // will use MyFilter class from the Routing/Filter package in MyPlugin plugin.
- * 		array('callable' => $aFunction, 'on' => 'before', 'priority' => 9), // A valid PHP callback type to be called on beforeDispatch
- *		array('callable' => $anotherMethod, 'on' => 'after'), // A valid PHP callback type to be called on afterDispatch
+ *        'MyCacheFilter', //  will use MyCacheFilter class from the Routing/Filter package in your app.
+ *        'MyPlugin.MyFilter', // will use MyFilter class from the Routing/Filter package in MyPlugin plugin.
+ *        array('callable' => $aFunction, 'on' => 'before', 'priority' => 9), // A valid PHP callback type to be called on beforeDispatch
+ *        array('callable' => $anotherMethod, 'on' => 'after'), // A valid PHP callback type to be called on afterDispatch
  *
  * ));
  */
 Configure::write('Dispatcher.filters', array(
-	'AssetDispatcher',
-	'CacheDispatcher'
+    'AssetDispatcher',
+    'CacheDispatcher'
 ));
 
 /**
@@ -96,39 +96,57 @@ Configure::write('Dispatcher.filters', array(
  */
 App::uses('CakeLog', 'Log');
 CakeLog::config('debug', array(
-	'engine' => 'File',
-	'types' => array('notice', 'info', 'debug'),
-	'file' => 'debug',
+    'engine' => 'File',
+    'types' => array('notice', 'info', 'debug'),
+    'file' => 'debug',
 ));
 CakeLog::config('error', array(
-	'engine' => 'File',
-	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
-	'file' => 'error',
+    'engine' => 'File',
+    'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
+    'file' => 'error',
 ));
 
 /**
- * Time Settings.
+ * TimeZone Settings.
  */
 setlocale(LC_ALL, 'de_DE.UTF8', 'de_DE', 'de', 'ge', 'deu');
 
+/**
+ * LinkableBehavior as alternative for Containable to lighten handling of deep association data mining withot nasty Model-Binding conflicts.
+ * @url https://github.com/lorenzo/linkable
+ * @licence MIT
+ */
+CakePlugin::load('Linkable');
 
 /**
  * Use DebugKit Plugin for Debugging.
+ * @url https://github.com/cakephp/debug_kit - Official CakePHP Debug Kit Git Repository
+ * @author CakePhp
+ * @licence MIT
  */
 CakePlugin::load('DebugKit');
 
 /**
- * Use BoostCake Plugin for Bootstrap Usage.
+ * Use BoostCake Plugin for Bootstrap Usage. Provides a few handy Elements like Alerts and Pagination settings.
+ * @author slywalker
+ * @url http://slywalker.github.io/cakephp-plugin-boost_cake/
+ * @licence MIT
  */
 CakePlugin::load('BoostCake');
 
 /**
- * Use Calendar Plugin.
+ * Lowlevel jQuery Full-Calendar integration template. Depricated, use Captility's own Calendar integration from Captility v0.3 onwards.
+ * @author Adam Shaw
+ * @url http://arshaw.com/fullcalendar/
+ * @licence MIT
  */
-CakePlugin::load('FullCalendar');
+/*CakePlugin::load('FullCalendar');*/
 
 /**
- * Use AclExtras Plugin.
+ * Use AclExtras Plugin to sync ACO Lists. Lots of Handy functions to controll Authorisation.
+ * @url https://github.com/markstory/acl_extras/
+ * @author markstory
+ * @licence MIT
  */
 CakePlugin::load('AclExtras');
 

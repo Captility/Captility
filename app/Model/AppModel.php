@@ -32,6 +32,9 @@ App::uses('Model', 'Model');
  */
 class AppModel extends Model {
 
+    public $actsAs = array('Containable', 'Linkable.Linkable');
+
+
 
     public function isSemester($check) {
         // $data array is passed using the form field name as the key
@@ -43,6 +46,7 @@ class AppModel extends Model {
     }
 
 
+
     function equalToField($check, $otherfield) {
         //get name of field
         $fname = '';
@@ -52,6 +56,8 @@ class AppModel extends Model {
         }
         return $this->data[$this->name][$otherfield] === $this->data[$this->name][$fname];
     }
+
+
 
     public function checkSupportedLanguage($check) {
         // $data array is passed using the form field name as the key

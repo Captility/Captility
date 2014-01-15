@@ -172,13 +172,14 @@ small.disabled {
   background-image: url('../img/icons/cp-icon-lecturer.svg');
   background-size: 100%;
   background-position: top center;
+  background-repeat: no-repeat;
 }
 
 .cp-icon-lecturer:before {
   content: "\e";
 }
 
-h1, .fc-event-time, .cw, .navbar-brand {
+h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
 
   font-family: @font-family-titilium;
 }
@@ -647,6 +648,39 @@ text-shadow: none;*/
     .eventColorPink;
     border-color: @eventColorPink;
   }
+}
+
+.qtip-titlebar {
+
+  opacity: 0.85;
+}
+
+.qtip-content {
+
+  font-size: 90%;
+
+  > ul {
+    list-style-type: none;
+    margin-bottom: 0px;
+
+    >li {
+      display: inline-table;
+      display: inline-flex;
+
+      > .gl-ml {
+
+        margin-left: 15px;
+        margin-right: 3px;
+      }
+    }
+  }
+
+}
+
+.gl-ms {
+
+  margin-left: 7px;
+  margin-right: 5px;
 }
 
 /* ###############################################

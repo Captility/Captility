@@ -25,7 +25,7 @@ function getParameterByName(name, href) {
 }
 
 
-$(function(){
+$(function () {
     var hash = window.location.hash;
     hash && $('ul.nav a[href="' + hash + '"]').first().tab('show');
 
@@ -188,7 +188,10 @@ $(document).ready(function () {
         },
         show: false,
         hide: {
-            event: 'unfocus click mouseleave'
+            event: 'click', /*'unfocus'click mouseleave',*/
+            effect: function () {
+                $(this).animate({ opacity: 0 }, { duration: 300 });
+            }
         },
         style: 'qtip-bootstrap'
     }).qtip('api');
@@ -351,17 +354,51 @@ $(document).ready(function () {
         },
 
         eventClick: function (data, event, view) {
-            var content = '<p><b>Start:</b> ' + data.start + '<br />' +
-                (data.end && '<p><b>End:</b> ' + data.end + '</p>' || '') +
-                '<a class="btn-m btn-sm btn-default pull-right" name="Bearbeiten" href="captures/edit/' + data.capture_id + '">Bearbeiten</a>' +
-                '<a class="btn-m btn-sm btn-default pull-right" name="Anzeigen" href="captures/view/' + data.capture_id + '">Anzeigen</a>';
 
+            //Todo Default Date entfernen
+            data.place = 'H12';
+            var content = '' +
+
+                '<ul class="list-group">' +
+
+                '<li><span class="glyphicon glyphicon-calendar"></span>' + '' + data.datec + ' ' +
+                '<li><span class="glyphicon glyphicon-time gl-ml"></span>' + '' + data.time + ' ' +
+                (data.place && '  <span class="glyphicon glyphicon-map-marker gl-ml"></span>' + data.place + '</li><br/>' || '') +
+
+                (data.niceEnd && '<p><b>End:</b> ' + data.end + '</p>' || '') +
+
+                '<li><span class="glyphicon glyphicon-th-list"></span><a href="lectures/view/' + data.Lecture.lecture_id + '">' +
+                '' + data.Lecture.number + ' ' + data.Lecture.name + '</a>' +
+                (data.Lecture.link && '<a href="' + data.Lecture.link + '"> <span class="glyphicon glyphicon-link gl-ms"></span></a>') +'</li><br/>' +
+
+
+                '<li><span class="glyphicon cp-icon-lecturer"></span>' +
+                '<a href="hosts/view/' + data.Host.host_id + '">' + data.Host.name + '</a>' +
+                (data.Host.email && '<a href="mailto:' + data.Host.email + '"> <span class="glyphicon glyphicon-envelope gl-ms"></span></a>') +
+                (data.Host.contact_email && '<a href="mailto:' + data.Host.contact_email + '"><span class="glyphicon glyphicon-envelope gl-ms"></span></a>') + '</li><br/>' +
+
+
+                '<li><span class="glyphicon glyphicon-facetime-video"></span>' + '' + data.EventType.name + '' + '</li><br/>' +
+
+
+                '<li><span class="glyphicon glyphicon-user"></span>' +
+                '<a href="users/view/' + data.User.user_id + '">' + data.User.username + '</a>' +
+                '<a href="mailto:' + data.User.email + '"> <span class="glyphicon glyphicon-envelope gl-ms"></span></a></li><br/>' +
+
+
+                '</ul>' +
+
+                '<a class="btn-m btn-sm btn-default pull-right" name="Bearbeiten" href="captures/edit/' + data.capture_id + '">Bearbeiten' +
+
+                '<a class="btn-m btn-sm btn-default pull-right" name="Anzeigen" href="captures/view/' + data.capture_id + '">Anzeigen';
+
+
+            console.log(data);
             tooltip.set({
                 'content.text': content,
-                'content.title': data.title,
+                'content.title': '<span class="glyphicon glyphicon-film"></span>' + data.title,
                 'style.classes': 'qtip-bootstrap ' + 'qtip-' + data.className
-            })
-                .reposition(event).show(event);
+            }).reposition(event).show(event);
         },
 
         // ######################################## Event Interaction ##################################################
@@ -482,13 +519,19 @@ $(document).ready(function () {
 
     $(document).keydown(function (e) {
 
+        //prevent stealing input
+        if ($(event.target).is('input, textarea, select')) {
+            return true;
+        }
+
+
         // If Key Left / W
         if (e.keyCode == 37 || e.keyCode == 65) {
 
             //Move forward in current view
             $('.fc-button-prev').click();
 
-            return false;
+            return true;
         }
 
         // If Key Right / D
@@ -496,7 +539,7 @@ $(document).ready(function () {
 
             $('.fc-button-next').click();
 
-            return false;
+            return true;
         }
 
         // If Space / W / S
@@ -504,7 +547,7 @@ $(document).ready(function () {
 
             $('.fc-button-today').click();
 
-            return false;
+            return true;
         }
 
 

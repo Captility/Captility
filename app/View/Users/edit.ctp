@@ -43,7 +43,10 @@
         <?php echo $this->Form->input('email', array('class' => 'form-control', 'placeholder' => 'Email'));?>
     </div>
     <div class="form-group">
-        <?php echo $this->Form->input('language', array('class' => 'form-control', 'placeholder' => 'Language'));?>
+        <?php echo $this->Form->input('language', array(
+            'class' => 'form-control',
+            'placeholder' => 'Language',
+            'options' => array(array('name' => 'Deutsch', 'value' => 'deu'), array('name' => 'English', 'value' => 'eng')),));?>
     </div>
 
     <?php if ($this->Session->read('Auth.User.group_id') == 1): ?>
@@ -85,7 +88,7 @@
 
                     <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>' . __('Delete'), array('action' => 'delete', $this->Form->value('User.user_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('User.user_id'))); ?></li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Users'), array('action' => 'index'), array('escape' => false)); ?></li>
-                    </ul>
+                </ul>
             </div>
             <div class="panel-heading">
                 <h3 class="panel-title">

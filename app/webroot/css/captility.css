@@ -1516,6 +1516,7 @@ small.disabled {
   background-image: url('../img/icons/cp-icon-lecturer.svg');
   background-size: 100%;
   background-position: top center;
+  background-repeat: no-repeat;
 }
 .cp-icon-lecturer:before {
   content: "\e";
@@ -1523,7 +1524,8 @@ small.disabled {
 h1,
 .fc-event-time,
 .cw,
-.navbar-brand {
+.navbar-brand,
+qtip-calendar {
   font-family: 'Titillium Web', 'Istok Web', Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 .navbar-brand {
@@ -2952,6 +2954,28 @@ text-shadow: none;*/
   color: #ffffff;
   background-color: #ff38d7 !important;
   border-color: #ff38d7;
+}
+.qtip-titlebar {
+  opacity: 0.85;
+}
+.qtip-content {
+  font-size: 90%;
+}
+.qtip-content > ul {
+  list-style-type: none;
+  margin-bottom: 0px;
+}
+.qtip-content > ul > li {
+  display: inline-table;
+  display: inline-flex;
+}
+.qtip-content > ul > li > .gl-ml {
+  margin-left: 15px;
+  margin-right: 3px;
+}
+.gl-ms {
+  margin-left: 7px;
+  margin-right: 5px;
 }
 /* ###############################################
  * ################ SIDE Calendar  ################
