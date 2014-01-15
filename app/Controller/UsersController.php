@@ -183,7 +183,7 @@ class UsersController extends AppController {
     public function changePassword() {
 
         //Todo change and check access rights and logged out users !!!!!
-        $this->set('headline', 'Change Password');
+        $this->set('headline', __('My Profile'));
 
         if ($this->Auth->user() && $this->request->is(array('post', 'put'))) {
 
@@ -196,6 +196,7 @@ class UsersController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             }
             else {
+                debug($this->User->validationErrors);
                 $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
             }
         }

@@ -132,7 +132,7 @@
                 </ul>
             </div>
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-tint"></span><? echo __('Event Types') ?>
+                <span class="glyphicon glyphicon-facetime-video"></span><? echo __('Event Types') ?>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">

@@ -1,5 +1,10 @@
 <!--Submit Area-->
-<hr class="submit-panel"/>
+
+<? if (!isset($hr)): ?>
+
+    <hr class="submit-panel"/>
+
+<? endif; ?>
 
 <div class="form-group well well-sm ">
 

@@ -11,7 +11,7 @@
     <div class="panel-body" id="accordion">
 
 
-        <div class="panel panel-danger">
+        <div class="panel panel-info">
             <div class="panel-heading side-ticket-heading">
                 <div class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel panel-warning">
+        <div class="panel panel-default">
             <div class="panel-heading side-ticket-heading">
                 <div class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel panel-info">
+        <div class="panel panel-default">
             <div class="panel-heading side-ticket-heading">
                 <div class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">

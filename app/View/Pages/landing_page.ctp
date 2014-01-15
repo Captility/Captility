@@ -25,6 +25,8 @@
 
         <div class="col-md-8 column content-pane">
 
+            <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
+
             <div class="jumbotron">
                 <h1 style="font-size:  110px">Captility</h1>
                 <small
@@ -34,7 +36,8 @@
                 <p style="
 margin-top: 30px;
 padding: 15px;"><a class="btn btn-primary pull-right btn-lg" onclick="window.location.href='../login'" role="button">Login</a><a
-                        class="btn btn-primary btn-lg pull-right" style="margin-right: 20px" role="button">Was ist das?</a></p>
+                        class="btn btn-primary btn-lg pull-right" style="margin-right: 20px" role="button">Was ist
+                        das?</a></p>
             </div>
 
         </div>

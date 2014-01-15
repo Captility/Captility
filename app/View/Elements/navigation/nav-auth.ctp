@@ -45,12 +45,7 @@
                 <li role="presentation"
                     class="dropdown-header list-info"><?php echo __('Edit catalog entries...') ?></li>
 
-                <li>
-                    <?php echo $this->Html->link(
-                        $this->Html->tag(
-                            'span', '', array('class' => 'glyphicon cp-icon-lecturer')) . __('Hosts'),
-                        array('controller' => 'hosts', 'action' => 'index'), array('escape' => false))?>
-                </li>
+
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
@@ -66,7 +61,13 @@
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
-                            'span', '', array('class' => 'glyphicon glyphicon-tint')) . __('Event Types'),
+                            'span', '', array('class' => 'glyphicon cp-icon-lecturer')) . __('Hosts'),
+                        array('controller' => 'hosts', 'action' => 'index'), array('escape' => false))?>
+                </li>
+                <li>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-facetime-video')) . __('Event Types'),
                         array('controller' => 'event_types', 'action' => 'index'), array('escape' => false))?>
                 </li>
             </ul>
@@ -77,12 +78,6 @@
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
                 <li role="presentation" class="dropdown-header list-info"><?php echo __('Manage duties...') ?>.</li>
-                <li class="disabled">
-                    <?php echo $this->Html->link(
-                        $this->Html->tag(
-                            'span', '', array('class' => 'glyphicon glyphicon-stats')) . __('Statistics'),
-                        array('controller' => 'calendars', 'action' => 'index'), array('escape' => false))?>
-                </li>
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
@@ -100,6 +95,12 @@
                         $this->Html->tag(
                             'span', '', array('class' => 'glyphicon el-icon-random')) . __('Workflows'),
                         array('controller' => 'workflows', 'action' => 'index'), array('escape' => false))?>
+                </li>
+                <li class="disabled">
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon glyphicon-stats')) . __('Statistics'),
+                        array('controller' => 'calendars', 'action' => 'index'), array('escape' => false))?>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -137,41 +138,41 @@
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
                 <li role="presentation" class="dropdown-header list-info"><?php echo __('Edit account') ?></li>
-                <li class="disabled">
+                <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
                             'span', '', array('class' => 'glyphicon el-icon-address-book-alt')) . __('My Profile'),
-                        array('controller' => 'users', 'action' => 'profile'), array('escape' => false))?>
+                        array('controller' => 'users', 'action' => 'view/'.$this->Session->read('Auth.User.user_id')), array('escape' => false))?>
                 </li>
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
                             'span', '', array('class' => 'glyphicon el-icon-unlock-alt')) . __('Change Password'),
-                        array('controller' => 'users', 'action' => 'profile'), array('escape' => false))?>
+                        array('controller' => 'users', 'action' => 'changePassword'), array('escape' => false))?>
                 </li>
                 <li class="disabled">
                     <?php echo $this->Html->link(
                         $this->Html->tag(
                             'span', '', array('class' => 'glyphicon el-icon-envelope-alt')) . __('Messages'),
-                        array('controller' => 'users', 'action' => 'profile'), array('escape' => false))?>
+                        array('controller' => 'users', 'action' => 'messages'), array('escape' => false))?>
                 </li>
                 <li class="divider">
                 </li>
                 <?php if ($this->Session->read('Auth.User.group_id') == 1): ?>
-                    <li class="disabled">
-                        <?php echo $this->Html->link(
-                            $this->Html->tag(
-                                'span', '', array('class' => 'glyphicon el-icon-wrench-alt')) . __('Admin-Center'),
-                            array('controller' => 'users', 'action' => 'profile'), array('escape' => false))?>
-                    </li>
+                <li class="disabled">
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon el-icon-wrench-alt')) . __('Admin-Center'),
+                        array('controller' => 'admin', 'action' => 'admin'), array('escape' => false))?>
+                </li>
                 <li class="divider">
-                <? endif; ?>
+                    <? endif; ?>
                 </li>
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
                             'span', '', array('class' => 'glyphicon el-icon-remove-sign')) . __('Logout'),
-                        array('controller' => 'users', 'action' => 'profile'), array('escape' => false))?>
+                        array('controller' => 'users', 'action' => 'logout'), array('escape' => false))?>
                 </li>
             </ul>
         </li>

@@ -102,27 +102,6 @@ class User extends AppModel {
                 'message' => 'The password should contain 8 to 40 letters.',
             ),
         ),
-        'pwd' => array(
-            'length' => array(
-                'rule' => array('between', 3, 20), //Todo array('between', 8, 40),
-                'message' => 'Bitte geben Sie ein Passwort ein.',
-                //'allowEmpty' => false,
-                'required' => true,
-                'message' => 'The password should contain 8 to 40 letters.',
-                'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-        ),
-        // Password confirmation
-        'pwd_confirm' => array(
-            'equalToField' => array(
-                'rule' => array('equalToField', 'pwd'),
-                'message' => 'The entered passwords do not match.',
-                //'allowEmpty' => false,
-                //'required' => true,
-                //'last' => false, // Stop validation after this rule
-                'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-        ),
         'email' => array(
             'email' => array(
                 'rule' => array('email'),

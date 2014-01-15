@@ -295,6 +295,9 @@ msgstr "Sie haben sich erfolgreich eingeloggt."
 msgid "Wrong username or password. Pleasy try again."
 msgstr "Falscher Benutzername oder Passwort. Bitte versuchen Sie es erneut."
 
+msgid "The entered password was not correct."
+msgstr "Das eingegebene Passwort ist nicht korrekt."
+
 msgid "Logout successfull."
 msgstr "Sie haben sich erfolgreich ausgeloggt."
 
@@ -358,6 +361,10 @@ msgstr "Woche"
 msgid "Tickets"
 msgstr "Tickets"
 
+
+msgid "Enter your old password"
+msgstr "Ihr aktuelles Passwort."
+
 #: View/Lectures/edit.ctp:91
 #: View/Workflows/view.ctp:67;106;135
 msgid "Are you sure you want to delete # %s?"
@@ -367,7 +374,7 @@ msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} tota
 msgstr "Seite {:page} von {:pages}. Zeige: {:current} Einträge von insg. {:count}. Beginnend mit Eintrag {:start} bis Eintrag {:end}."
 
 msgid "Captures"
-msgstr "Aufnahmeplan"
+msgstr "Aufnahmepläne"
 
 msgid "Add Capture"
 msgstr "Aufnahmeplan anlegen"

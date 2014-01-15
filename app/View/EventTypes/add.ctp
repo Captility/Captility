@@ -29,7 +29,7 @@
     <div class="form-group">
         <div style="display: inline-block">
             <div class="input-group">
-                <span class="input-group-addon glyphicon glyphicon-tint input-group-glyphicon"></span>
+                <span class="input-group-addon glyphicon glyphicon-facetime-video input-group-glyphicon"></span>
                 <input class="form-control selected-color" placeholder="Blue" name="data[EventType][color]"
                        maxlength="255" type="text" value="<? echo $this->Form->value('EventType.color'); ?>"
                        id="EventTypeColor" required="required" readonly>

@@ -95,13 +95,13 @@ class PasswordableBehavior extends ModelBehavior {
         'formFieldCurrent' => array(
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
-                'message' => 'valErrProvideCurrentPwd',
+                'message' => 'Bitte geben Sie Ihr aktuelles Passwort an.',
                 'allowEmpty' => null,
                 'last' => true,
             ),
             'validateCurrentPwd' => array(
                 'rule' => 'validateCurrentPwd',
-                'message' => 'valErrCurrentPwdIncorrect',
+                'message' => 'Das angegebene Passwort ist nicht korrekt.',
                 'allowEmpty' => null,
                 'last' => true,
             )
