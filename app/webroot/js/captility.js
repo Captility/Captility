@@ -188,7 +188,7 @@ $(document).ready(function () {
         },
         show: false,
         hide: {
-            event: 'click', /*'unfocus'click mouseleave',*/
+            event: 'unfocus click mouseleave',
             effect: function () {
                 $(this).animate({ opacity: 0 }, { duration: 300 });
             }
@@ -234,7 +234,7 @@ $(document).ready(function () {
     var captilityEventSources = {
 
         overview: {
-            url: 'events/feed',
+            url: '/captility/events/feed',
             type: 'GET',
             cache: false
             /*,error: function () {
@@ -242,7 +242,7 @@ $(document).ready(function () {
              }*/
         },
         myweek: {
-            url: 'events/feedMy',
+            url: '/captility/events/feedMy',
             type: 'GET',
             cache: false
             /*,error: function () {
