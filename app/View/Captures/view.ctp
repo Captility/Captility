@@ -78,6 +78,57 @@
 
     <div class="related row">
         <div class="col-md-12">
+            <h3><?php echo __('Related Schedules'); ?></h3>
+            <?php if (!empty($capture['Schedule'])): ?>
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+
+                    <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+                        <thead class="panel-heading">
+                        <tr>
+                            <th><?php echo __('Schedule Id'); ?></th>
+                            <th><?php echo __('Interval Start'); ?></th>
+                            <th><?php echo __('Interval End'); ?></th>
+                            <th><?php echo __('Duration'); ?></th>
+                            <th><?php echo __('Repeat Time'); ?></th>
+                            <th><?php echo __('Repeat Day'); ?></th>
+                            <th><?php echo __('Repeat Week'); ?></th>
+                            <th class="actions"></th>
+                        </tr>
+                        <thead>
+                        <tbody>
+                        <?php foreach ($capture['Schedule'] as $schedule): ?>
+                            <tr>
+                                <td><?php echo $schedule['schedule_id']; ?></td>
+                                <td><?php echo $schedule['interval_start']; ?></td>
+                                <td><?php echo $schedule['interval_end']; ?></td>
+                                <td><?php echo $schedule['duration']; ?></td>
+                                <td><?php echo $schedule['repeat_time']; ?></td>
+                                <td><?php echo $schedule['repeat_day']; ?></td>
+                                <td><?php echo $schedule['repeat_week']; ?></td>
+                                <td class="actions">
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'schedules', 'action' => 'view', $schedule['schedule_id']), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('controller' => 'schedules', 'action' => 'edit', $schedule['schedule_id']), array('escape' => false)); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'schedules', 'action' => 'delete', $schedule['schedule_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $schedule['schedule_id'])); ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div class="panel-footer"></div>
+                </div>
+            <?php endif; ?>
+
+            <div class="actions">
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Schedule'), array('controller' => 'schedules', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
+        </div>
+        <!-- end col md 12 -->
+    </div>
+
+    <hr/>
+
+    <div class="related row">
+        <div class="col-md-12">
             <h3><?php echo __('Related Events'); ?></h3>
             <?php if (!empty($capture['Event'])): ?>
                 <div class="panel panel-default">
@@ -138,57 +189,6 @@
 
             <div class="actions">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Event'), array('controller' => 'events', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
-        </div>
-        <!-- end col md 12 -->
-    </div>
-
-    <hr/>
-
-    <div class="related row">
-        <div class="col-md-12">
-            <h3><?php echo __('Related Schedules'); ?></h3>
-            <?php if (!empty($capture['Schedule'])): ?>
-                <div class="panel panel-default">
-                    <!-- Default panel contents -->
-
-                    <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
-                        <thead class="panel-heading">
-                        <tr>
-                            <th><?php echo __('Schedule Id'); ?></th>
-                            <th><?php echo __('Interval Start'); ?></th>
-                            <th><?php echo __('Interval End'); ?></th>
-                            <th><?php echo __('Duration'); ?></th>
-                            <th><?php echo __('Repeat Time'); ?></th>
-                            <th><?php echo __('Repeat Day'); ?></th>
-                            <th><?php echo __('Repeat Week'); ?></th>
-                            <th class="actions"></th>
-                        </tr>
-                        <thead>
-                        <tbody>
-                        <?php foreach ($capture['Schedule'] as $schedule): ?>
-                            <tr>
-                                <td><?php echo $schedule['schedule_id']; ?></td>
-                                <td><?php echo $schedule['interval_start']; ?></td>
-                                <td><?php echo $schedule['interval_end']; ?></td>
-                                <td><?php echo $schedule['duration']; ?></td>
-                                <td><?php echo $schedule['repeat_time']; ?></td>
-                                <td><?php echo $schedule['repeat_day']; ?></td>
-                                <td><?php echo $schedule['repeat_week']; ?></td>
-                                <td class="actions">
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'schedules', 'action' => 'view', $schedule['schedule_id']), array('escape' => false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('controller' => 'schedules', 'action' => 'edit', $schedule['schedule_id']), array('escape' => false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'schedules', 'action' => 'delete', $schedule['schedule_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $schedule['schedule_id'])); ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                    <div class="panel-footer"></div>
-                </div>
-            <?php endif; ?>
-
-            <div class="actions">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Schedule'), array('controller' => 'schedules', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
         </div>
         <!-- end col md 12 -->
     </div>

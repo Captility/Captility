@@ -172,11 +172,36 @@ class CapturesController extends AppController {
             $options = array('conditions' => array('Capture.' . $this->Capture->primaryKey => $id));
             $this->request->data = $this->Capture->find('first', $options);
         }
-        $lectures = $this->Capture->Lecture->find('list');
+
+
+        // VIEW
+
+        // Related Model Data of this particular Capture
+        $this->set('myEvent', $this->Capture->Event->find('first', array(
+                'conditions' => array('Capture.' . $this->Capture->primaryKey => $id),
+            )
+        ));
+
+        $this->set('mySchedules', $this->Capture->Schedule->find('all', array(
+                'link' => array(
+                    'Capture'
+                ),
+                'conditions' => array('Capture.' . $this->Capture->primaryKey => $id),
+            )
+        ));
+
+
+        // Normal View Data for ALL related Models
+        $lectures = $this->Capture->Lecture->find('list', array(
+            'fields' => array('Lecture.lecture_id', 'Lecture.full_name', 'Lecture.semester')));
         $users = $this->Capture->User->find('list');
-        $events = $this->Capture->Event->find('list');
         $workflows = $this->Capture->Workflow->find('list');
-        $this->set(compact('lectures', 'users', 'events', 'workflows'));
+        $events = $this->Capture->Event->find('list');
+        $schedules = $this->Capture->Schedule->find('list');
+        $eventTypes = $this->Capture->Event->EventType->find('list', array(
+            'fields' => array('EventType.event_type_id', 'EventType.name', 'EventType.color')));
+
+        $this->set(compact('lectures', 'users', 'workflows', 'schedules', 'events', 'eventTypes'));
     }
 
     /**

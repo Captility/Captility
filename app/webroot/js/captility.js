@@ -369,7 +369,7 @@ $(document).ready(function () {
 
                 '<li><span class="glyphicon glyphicon-th-list"></span><a href="lectures/view/' + data.Lecture.lecture_id + '">' +
                 '' + data.Lecture.number + ' ' + data.Lecture.name + '</a>' +
-                (data.Lecture.link && '<a href="' + data.Lecture.link + '"> <span class="glyphicon glyphicon-link gl-ms"></span></a>') +'</li><br/>' +
+                (data.Lecture.link && '<a href="' + data.Lecture.link + '"> <span class="glyphicon glyphicon-link gl-ms"></span></a>') + '</li><br/>' +
 
 
                 '<li><span class="glyphicon cp-icon-lecturer"></span>' +
@@ -572,6 +572,8 @@ $(document).ready(function () {
                 $buttons.prop('disabled', true);
             }
 
+            console.log($buttons.length);
+
             return true;
         };
     })(jQuery);
@@ -618,9 +620,12 @@ $(document).ready(function () {
 
         if ($('#ScheduleContainer button.form-schedule-remove').length > 1) {
 
-            $(this).parents('.panel').first().remove();
+            $(this).parents('.panel').first().slideUp(800, function () {
+                $(this).remove();
+                $(this).updateScheduleRemoveState();
+            })
 
-            $(this).updateScheduleRemoveState()
+
         }
     });
 
@@ -665,5 +670,49 @@ $(document).ready(function () {
         $(this).dequeue();
     });
 
+
+    /**
+     * Sliding Panels.
+     */
+    //$('.panel-body').hide().slideDown(1000);
+
+    /**
+     * Sliding Schedule Panels.
+     */
+
+    $('#ScheduleContainer').on('click', 'button.form-schedule-add', function () {
+
+        var newSchedule = $('#ScheduleContainer .panel-body').last();
+
+        newSchedule.hide();
+
+        $('html, body').animate({
+            scrollTop: (newSchedule.parent().offset().top)
+        }, 800, function () {
+
+            newSchedule.slideDown(800);
+        });
+
+    });
+
+
+    /**
+     * Scroll To Top.
+     */
+    var content = $('.container-wrapper').first();
+    var scrollTop = $('.btn-scrollTop').first();
+    content.on('click', 'button.btn-scrollTop', function () {
+
+        $('html, body').animate({
+            scrollTop: ($('body').offset().top)
+        }, 600);
+
+    });
+
+
+    if (scrollTop.offset().top < $(window).height()) {
+
+        scrollTop.hide();
+    }
 
 });
