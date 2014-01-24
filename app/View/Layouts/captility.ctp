@@ -25,6 +25,9 @@
     echo $this->Html->script('fullcalendar/fullcalendar.min.js');
     //echo $this->Html->script('jquery/jquery.qtip-1.0.0-rc3.min.js');
 
+    // Ajax application root
+    echo $this->Html->scriptBlock('$appRoot = "'. $this->Html->url('/', true) . '"');
+    // custom JS
     echo $this->Html->script('captility.min.js');?>
 
     <?php //ToDo Check this IE8 support ?>

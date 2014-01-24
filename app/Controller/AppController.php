@@ -53,7 +53,6 @@ class AppController extends Controller {
     );
 
 
-//ToDo Remove or prcoess BootstrapCake template
     public function beforeFilter() {
         // ###### LAYOUT ########
         // Set default layout for all views
@@ -68,6 +67,7 @@ class AppController extends Controller {
         $this->Auth->allow('display');
 
         if ($this->Auth->user()) {
+
             $this->Auth->allow('index', 'view');
         }
 
@@ -85,6 +85,18 @@ class AppController extends Controller {
             Configure::write('Captility.dateFormat', 'DMY');
         }
     }
+
+
+    public function beforeRender() {
+
+
+        if ($this->Auth->user() && $this->request->is('post')) {
+
+            //Delay Session Timeout on new action
+            $this->Session->renew();
+        }
+    }
+
 
     public function isAuthorized($user) {
 

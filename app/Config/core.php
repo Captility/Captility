@@ -219,7 +219,7 @@ Configure::write('Session', array(
     'defaults' => 'php'
 ));
 
-Configure::write('Session.timeout', 120); //120min
+Configure::write('Session.timeout', 150); //120min
 /**
  * A random string used in security hashing methods.
  */

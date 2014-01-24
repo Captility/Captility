@@ -135,7 +135,7 @@ $(document).ready(function () {
                 // else: Load Calendar View
                 else {
 
-                    window.location.href = "/captility/calendars/?date=" + e.date;
+                    window.location.href = $appRoot + "/calendars/?date=" + e.date;
 
                 }
 
@@ -234,7 +234,7 @@ $(document).ready(function () {
     var captilityEventSources = {
 
         overview: {
-            url: '/captility/events/feed',
+            url: $appRoot + 'events/feed',
             type: 'GET',
             cache: false
             /*,error: function () {
@@ -242,7 +242,7 @@ $(document).ready(function () {
              }*/
         },
         myweek: {
-            url: '/captility/events/feedMy',
+            url: $appRoot + 'events/feedMy',
             type: 'GET',
             cache: false
             /*,error: function () {
@@ -430,9 +430,9 @@ $(document).ready(function () {
             } else {
                 var allday = 0;
             }
-            var url = "events/update?id=" + event.id + "&start=" + startyear + "-" + startmonth + "-" + startday + " " + starthour + ":" + startminute + ":00&end=" + endyear + "-" + endmonth + "-" + endday + " " + endhour + ":" + endminute + ":00&allday=" + allday;
+            var url = $appRoot + "events/update?id=" + event.id + "&start=" + startyear + "-" + startmonth + "-" + startday + " " + starthour + ":" + startminute + ":00&end=" + endyear + "-" + endmonth + "-" + endday + " " + endhour + ":" + endminute + ":00&allday=" + allday;
             $.post(url, function (data) {
-            });
+             });
         },
         eventResize: function (event) {
             var startdate = new Date(event.start);
@@ -447,7 +447,7 @@ $(document).ready(function () {
             var endmonth = enddate.getMonth() + 1;
             var endhour = enddate.getHours();
             var endminute = enddate.getMinutes();
-            var url = "events/update?id=" + event.id + "&start=" + startyear + "-" + startmonth + "-" + startday + " " + starthour + ":" + startminute + ":00&end=" + endyear + "-" + endmonth + "-" + endday + " " + endhour + ":" + endminute + ":00";
+            var url = $appRoot + "events/update?id=" + event.id + "&start=" + startyear + "-" + startmonth + "-" + startday + " " + starthour + ":" + startminute + ":00&end=" + endyear + "-" + endmonth + "-" + endday + " " + endhour + ":" + endminute + ":00";
             $.post(url, function (data) {
             });
         }
@@ -709,8 +709,7 @@ $(document).ready(function () {
 
     });
 
-
-    if (scrollTop.offset().top < $(window).height()) {
+    if (scrollTop.length && scrollTop.offset().top < $(window).height()) {
 
         scrollTop.hide();
     }

@@ -324,7 +324,7 @@ class Schedule extends AppModel {
                 //############## SAVE ####################################
                 //debug($event); //todo entfernen
 
-                //SAVE NEW TICKET
+                //SAVE NEW EVENT
                 $this->Event->create();
                 if ($this->Event->save($event)) {
 
