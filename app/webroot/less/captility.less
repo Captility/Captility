@@ -179,6 +179,7 @@ small.disabled {
   content: "\e";
 }
 
+
 h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
 
   font-family: @font-family-titilium;
@@ -704,4 +705,333 @@ text-shadow: none;*/
 .side-ticket-heading {
 
   padding: 10px 5px 10px 10px;
+}
+
+/* ###############################################
+ * ################ LANDING PAGE  ################
+ * ###############################################*/
+
+@landing-page-bgDefault      : #258;
+//#285F8F;
+//#3276b1;
+//#34789a;
+@landing-page-bgHighlight    : #236E92;
+//@eventColorBlue;
+//#3276b1;
+@landing-page-bgBorder       : #85a3b4;
+@landing-page-colDefault     : #acd;
+@landing-page-colHighlight   : #fff;
+
+.landing-page-container {
+
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  background-color: #fff;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.landing-page-wrapper {
+
+  box-shadow: none;
+  width: 100%;
+  padding: 35px 0px 35px 0px;
+}
+
+.landing-page-wrapper-black {
+
+  background-color: #050510; //#023;
+}
+
+.landing-page-wrapper-blue {
+
+  background-color: @landing-page-bgDefault;
+
+}
+
+.landing-page-wrapper-white {
+
+  background-color: #fff;
+
+}
+
+.landing-page {
+
+  > h1 {
+
+    font-size: 120px;
+    color: @landing-page-colHighlight;
+    opacity: 0.85;
+    margin-top: 50px;
+    margin-left: -10px;
+
+  }
+
+  > h2 {
+
+    font-size: 22px;
+    color: #2971AF; //@landing-page-bgDefault;
+  }
+
+  > h3 {
+
+    font-size: 20px;
+    font-family: @font-family-titilium;
+  }
+
+  > h4 {
+
+    font-size: 18px;
+    font-family: @font-family-titilium;
+  }
+
+  > small {
+
+    font-size: 13px;
+    font-family: @font-family-titilium;
+  }
+
+  > strong {
+
+    color: #2971AF; //@landing-page-bgDefault;
+    font-weight: 400;
+  }
+
+  > p a.btn-primary {
+
+    color: @landing-page-colDefault;
+    background-color: @landing-page-bgDefault;
+
+    &:hover, &:active {
+
+      color: @landing-page-colHighlight;
+      background-color: @landing-page-bgHighlight;
+    }
+  }
+
+  > .alert {
+
+    margin-top: 70px;
+  }
+
+  > .media-glyphicon {
+
+    font-size: 42px;
+    padding: 9px 11px 11px 11px;
+    background-color: #2971AF;
+    width: 64px;
+    height: 64px;
+    color: #fff;
+    border-radius: @border-radius-large;
+    margin-top: 4px;
+    &:hover, &:active {
+
+      color: @landing-page-colDefault;
+      background-color: @landing-page-bgHighlight;
+    }
+  }
+
+  > .media-body h3 {
+
+    margin: 0px;
+  }
+
+  > .media-body {
+    height: 100px;
+  }
+
+  > .navbar-inverse {
+
+    background-color: @landing-page-bgDefault;
+    border-color: @landing-page-bgHighlight; //box-: 0px 5px 10px #000;
+
+    .navbar-brand {
+      color: @landing-page-colDefault;
+      &:hover, &:focus {
+        color: @landing-page-colHighlight;
+      }
+    }
+    .navbar-nav {
+      > li {
+        > a {
+          color: @landing-page-colDefault;
+          border-left: 1px dashed @landing-page-bgBorder;
+          &:hover, &:focus {
+            color: @landing-page-colHighlight;
+          }
+        }
+      }
+      .active {
+        > a, > a:hover, > a:focus {
+          color: @landing-page-colHighlight;
+          background-color: @landing-page-bgHighlight;
+        }
+      }
+      .open {
+        > a, > a:hover, > a:focus {
+          color: @landing-page-colHighlight;
+          background-color: @landing-page-bgHighlight;
+          .caret {
+            border-top-color: @landing-page-colHighlight;
+            border-bottom-color: @landing-page-colHighlight;
+          }
+        }
+      }
+      > .dropdown {
+        > a {
+          .caret {
+            border-top-color: @landing-page-colDefault;
+            border-bottom-color: @landing-page-colDefault;
+          }
+          &:hover, &:focus {
+            .caret {
+              border-top-color: @landing-page-colHighlight;
+              border-bottom-color: @landing-page-colHighlight;
+            }
+          }
+        }
+      }
+    }
+    .dropdown-menu {
+      .divider {
+        background-color: @landing-page-colDefault;
+      }
+    }
+    .navbar-toggle {
+      border-color: @landing-page-bgHighlight;
+      &:hover, &:focus {
+        background-color: @landing-page-bgHighlight;
+      }
+      .icon-bar {
+        background-color: @landing-page-colDefault;
+      }
+    }
+  }
+  .navbar-collapse {
+    > form.navbar-search {
+      > .form-group {
+        > input.btn-inverse {
+
+          background-color: @landing-page-bgHighlight;
+          border: 1px dashed @landing-page-bgBorder;
+        }
+      }
+      > button.btn-inverse {
+        background-color: @landing-page-bgHighlight;
+        color: #ddd;
+        border: 1px dashed @landing-page-bgBorder;
+        &:hover, &:active {
+          color: @landing-page-colHighlight;
+        }
+      }
+    }
+  }
+  .navbar-collapse,
+  .navbar-form {
+    border-color: @landing-page-colDefault;
+  }
+  @media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+      color: @landing-page-colDefault;
+      &:hover, &:focus {
+        color: @landing-page-colHighlight;
+        background-color: @landing-page-bgHighlight;
+      }
+    }
+  }
+}
+
+.landing-page-black {
+
+  > h2 strong, h3 strong, h4 strong {
+
+    color: @landing-page-colHighlight;
+    opacity: 0.75;
+    font-weight: 00;
+  }
+
+}
+
+.landing-page-blue {
+
+  > h2 {
+
+    color: @landing-page-colHighlight;
+    font-weight: 200;
+  }
+
+  > h4, small {
+
+    color: @landing-page-colDefault;
+    opacity: 0.65;
+    font-weight: 200;
+  }
+
+  > h3 strong, h4 strong {
+
+    color: #2971AF; //@landing-page-bgDefault;
+    font-weight: 400;
+  }
+}
+
+.landing-page-white {
+
+  > h2 {
+
+    color: #000; //@landing-page-bgDefault;
+  }
+
+  > h4, small {
+
+    color: #777; //@landing-page-bgDefault;
+    font-weight: 200;
+  }
+
+  > h3 strong, h4 strong {
+
+    color: #2971AF; //@landing-page-bgDefault;
+    font-weight: 400;
+  }
+
+}
+
+// FOOTER
+
+.landing-page-footer-wrapper {
+  padding: 0px 20px 10px 20px;
+}
+
+.landing-page-footer {
+
+  padding: 0;
+  margin: 0;
+
+  > h3 {
+
+    padding-bottom: 10px;
+  }
+
+  > span {
+
+    color: #999;
+  }
+
+  > .media-glyphicon {
+
+    font-size: 18px;
+    padding: 3px 4px 4px 4px;
+    background-color: #2971AF;
+    width: 26px;
+    height: 26px;
+    color: #fff;
+    border-radius: 4px;
+    opacity: 0.85;
+
+    &:hover, &:active {
+
+      background-color: @landing-page-bgHighlight;
+      opacity: 1;
+    }
+  }
 }

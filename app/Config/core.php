@@ -276,6 +276,13 @@ date_default_timezone_set('Europe/Berlin');
 Configure::write('Config.language', 'deu');
 Configure::write('Captility.supportedLanguages', array('deu', 'eng'));
 
+
+/**
+ * CAPTILITY VERSION
+ */
+
+Configure::write('Captility.version', '0.3.1');
+
 /**
  *
  * Cache Engine Configuration

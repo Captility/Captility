@@ -63,6 +63,9 @@ class PagesController extends AppController
     public function display()
     {
 
+        $this->layout = 'landing';
+
+
         $headline= "";
 
         $path = func_get_args();

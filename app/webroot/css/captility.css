@@ -2989,3 +2989,237 @@ text-shadow: none;*/
 .side-ticket-heading {
   padding: 10px 5px 10px 10px;
 }
+/* ###############################################
+ * ################ LANDING PAGE  ################
+ * ###############################################*/
+.landing-page-container {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  background-color: #fff;
+  padding: 0;
+  margin: 0 auto;
+}
+.landing-page-wrapper {
+  box-shadow: none;
+  width: 100%;
+  padding: 35px 0px 35px 0px;
+}
+.landing-page-wrapper-black {
+  background-color: #050510;
+}
+.landing-page-wrapper-blue {
+  background-color: #225588;
+}
+.landing-page-wrapper-white {
+  background-color: #fff;
+}
+.landing-page > h1 {
+  font-size: 120px;
+  color: #ffffff;
+  opacity: 0.85;
+  margin-top: 50px;
+  margin-left: -10px;
+}
+.landing-page > h2 {
+  font-size: 22px;
+  color: #2971AF;
+}
+.landing-page > h3 {
+  font-size: 20px;
+  font-family: 'Titillium Web', 'Istok Web', Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+.landing-page > h4 {
+  font-size: 18px;
+  font-family: 'Titillium Web', 'Istok Web', Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+.landing-page > small {
+  font-size: 13px;
+  font-family: 'Titillium Web', 'Istok Web', Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+.landing-page > strong {
+  color: #2971AF;
+  font-weight: 400;
+}
+.landing-page > p a.btn-primary {
+  color: #aaccdd;
+  background-color: #225588;
+}
+.landing-page > p a.btn-primary:hover,
+.landing-page > p a.btn-primary:active {
+  color: #ffffff;
+  background-color: #236e92;
+}
+.landing-page > .alert {
+  margin-top: 70px;
+}
+.landing-page > .media-glyphicon {
+  font-size: 42px;
+  padding: 9px 11px 11px 11px;
+  background-color: #2971AF;
+  width: 64px;
+  height: 64px;
+  color: #fff;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+.landing-page > .media-glyphicon:hover,
+.landing-page > .media-glyphicon:active {
+  color: #aaccdd;
+  background-color: #236e92;
+}
+.landing-page > .media-body h3 {
+  margin: 0px;
+}
+.landing-page > .media-body {
+  height: 100px;
+}
+.landing-page > .navbar-inverse {
+  background-color: #225588;
+  border-color: #236e92;
+}
+.landing-page > .navbar-inverse .navbar-brand {
+  color: #aaccdd;
+}
+.landing-page > .navbar-inverse .navbar-brand:hover,
+.landing-page > .navbar-inverse .navbar-brand:focus {
+  color: #ffffff;
+}
+.landing-page > .navbar-inverse .navbar-nav > li > a {
+  color: #aaccdd;
+  border-left: 1px dashed #85a3b4;
+}
+.landing-page > .navbar-inverse .navbar-nav > li > a:hover,
+.landing-page > .navbar-inverse .navbar-nav > li > a:focus {
+  color: #ffffff;
+}
+.landing-page > .navbar-inverse .navbar-nav .active > a,
+.landing-page > .navbar-inverse .navbar-nav .active > a:hover,
+.landing-page > .navbar-inverse .navbar-nav .active > a:focus {
+  color: #ffffff;
+  background-color: #236e92;
+}
+.landing-page > .navbar-inverse .navbar-nav .open > a,
+.landing-page > .navbar-inverse .navbar-nav .open > a:hover,
+.landing-page > .navbar-inverse .navbar-nav .open > a:focus {
+  color: #ffffff;
+  background-color: #236e92;
+}
+.landing-page > .navbar-inverse .navbar-nav .open > a .caret,
+.landing-page > .navbar-inverse .navbar-nav .open > a:hover .caret,
+.landing-page > .navbar-inverse .navbar-nav .open > a:focus .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.landing-page > .navbar-inverse .navbar-nav > .dropdown > a .caret {
+  border-top-color: #aaccdd;
+  border-bottom-color: #aaccdd;
+}
+.landing-page > .navbar-inverse .navbar-nav > .dropdown > a:hover .caret,
+.landing-page > .navbar-inverse .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.landing-page > .navbar-inverse .dropdown-menu .divider {
+  background-color: #aaccdd;
+}
+.landing-page > .navbar-inverse .navbar-toggle {
+  border-color: #236e92;
+}
+.landing-page > .navbar-inverse .navbar-toggle:hover,
+.landing-page > .navbar-inverse .navbar-toggle:focus {
+  background-color: #236e92;
+}
+.landing-page > .navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #aaccdd;
+}
+.landing-page .navbar-collapse > form.navbar-search > .form-group > input.btn-inverse {
+  background-color: #236e92;
+  border: 1px dashed #85a3b4;
+}
+.landing-page .navbar-collapse > form.navbar-search > button.btn-inverse {
+  background-color: #236e92;
+  color: #ddd;
+  border: 1px dashed #85a3b4;
+}
+.landing-page .navbar-collapse > form.navbar-search > button.btn-inverse:hover,
+.landing-page .navbar-collapse > form.navbar-search > button.btn-inverse:active {
+  color: #ffffff;
+}
+.landing-page .navbar-collapse,
+.landing-page .navbar-form {
+  border-color: #aaccdd;
+}
+@media (max-width: 767px) {
+  .landing-page .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #aaccdd;
+  }
+  .landing-page .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .landing-page .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ffffff;
+    background-color: #236e92;
+  }
+}
+.landing-page-black > h2 strong,
+.landing-page-black h3 strong,
+.landing-page-black h4 strong {
+  color: #ffffff;
+  opacity: 0.75;
+  font-weight: 00;
+}
+.landing-page-blue > h2 {
+  color: #ffffff;
+  font-weight: 200;
+}
+.landing-page-blue > h4,
+.landing-page-blue small {
+  color: #aaccdd;
+  opacity: 0.65;
+  font-weight: 200;
+}
+.landing-page-blue > h3 strong,
+.landing-page-blue h4 strong {
+  color: #2971AF;
+  font-weight: 400;
+}
+.landing-page-white > h2 {
+  color: #000;
+}
+.landing-page-white > h4,
+.landing-page-white small {
+  color: #777;
+  font-weight: 200;
+}
+.landing-page-white > h3 strong,
+.landing-page-white h4 strong {
+  color: #2971AF;
+  font-weight: 400;
+}
+.landing-page-footer-wrapper {
+  padding: 0px 20px 10px 20px;
+}
+.landing-page-footer {
+  padding: 0;
+  margin: 0;
+}
+.landing-page-footer > h3 {
+  padding-bottom: 10px;
+}
+.landing-page-footer > span {
+  color: #999;
+}
+.landing-page-footer > .media-glyphicon {
+  font-size: 18px;
+  padding: 3px 4px 4px 4px;
+  background-color: #2971AF;
+  width: 26px;
+  height: 26px;
+  color: #fff;
+  border-radius: 4px;
+  opacity: 0.85;
+}
+.landing-page-footer > .media-glyphicon:hover,
+.landing-page-footer > .media-glyphicon:active {
+  background-color: #236e92;
+  opacity: 1;
+}
