@@ -139,7 +139,7 @@ class UsersController extends AppController {
 
         $this->set('headline', __('Registration'));
 
-        if ($this->request->is('post') || $this->request->is('put')) {
+        /*if ($this->request->is('post') || $this->request->is('put')) {
 
             // Prepare Pojo for Save
             $this->User->create();
@@ -172,7 +172,9 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('The user could not be created.'), 'flash/danger');
             }
 
-        }
+        }*/
+
+        $this->Session->setFlash(__('This function is in the demo currently disabled.'), 'flash/danger');
 
         unset($this->request->data['User']['pwd']);
         unset($this->request->data['User']['pwd_confirm']);

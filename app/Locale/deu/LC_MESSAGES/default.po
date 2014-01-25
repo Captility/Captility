@@ -349,6 +349,9 @@ msgstr "Der Workflow konnte nicht entfernt werden. Bitte versuchen Sie es erneut
 msgid "valErrPwdNotMatch"
 msgstr "Die eingegebenen Passwörter unterscheiden sich."
 
+msgid "This function is in the demo currently disabled."
+msgstr "Diese Funktion ist in der Demo-Version zur Zeit deaktiviert."
+
 msgid "Production"
 msgstr "Produktion"
 

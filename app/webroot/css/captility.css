@@ -492,7 +492,7 @@ input[type="button"].btn-block {
   html,
   body {
     height: 100%;
-    background-color: #f0f0f0;
+    background-color: #fff;
   }
   .page-header {
     margin-top: 25px;
@@ -505,7 +505,6 @@ input[type="button"].btn-block {
     padding: 0;
     padding-bottom: 40px;
     margin: 0 auto;
-    box-shadow: 0px 0px 5px #aaa;
     /*border-radius: @border-radius-base;*/
   }
 }
@@ -3017,7 +3016,7 @@ text-shadow: none;*/
 .landing-page > h1 {
   font-size: 120px;
   color: #ffffff;
-  opacity: 0.85;
+  opacity: 0.9;
   margin-top: 50px;
   margin-left: -10px;
 }
@@ -3195,6 +3194,21 @@ text-shadow: none;*/
   color: #2971AF;
   font-weight: 400;
 }
+.landing-page-captility-logo-icon {
+  height: 200px;
+  left: -70px;
+  top: -15px;
+  width: 350px;
+  position: absolute;
+  z-index: 0;
+  background-image: url('../img/logo/captility-logo-icon.svg');
+  background-size: auto 100%;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+.landing-page-header.landing-page h1 {
+  margin-left: 70px;
+}
 .landing-page-footer-wrapper {
   padding: 0px 20px 10px 20px;
 }
@@ -3250,14 +3264,26 @@ text-shadow: none;*/
   padding: 0;
   height: 100%;
 }
-.landing-page-showcase-carousel {
-  z-index: 2;
-  padding: 0;
-  height: 350px;
-  width: 500px;
-  position: absolute;
-  top: 50px;
-  right: 0px;
+@media (min-width: 992px) {
+  .landing-page-showcase-carousel {
+    z-index: 2;
+    padding: 0;
+    width: 350px;
+    position: absolute;
+    top: 70px;
+    right: -50px;
+  }
+}
+@media (min-width: 1200px) {
+  .landing-page-showcase-carousel {
+    z-index: 2;
+    padding: 0;
+    height: 350px;
+    width: 500px;
+    position: absolute;
+    top: 50px;
+    right: -25px;
+  }
 }
 ol.landing-page-showcase-carousel-indicators {
   bottom: auto;

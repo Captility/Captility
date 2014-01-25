@@ -1,4 +1,4 @@
-<div class="landing-page-wrapper landing-page-wrapper-white" style="padding: 0px;">
+<div class="landing-page-wrapper landing-page-wrapper-black" style="padding: 0px;">
 
     <div class="container landing-page" style="">
         <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
@@ -10,14 +10,22 @@
 
 
 <div class="landing-page-wrapper landing-page-wrapper-black">
+
     <div class="container container-lower landing-page">
+
         <div class="col-md-12 column landing-page">
 
             <div class="row clearfix">
 
+
                 <div class="col-md-9 column landing-page landing-page-black landing-page-header">
 
+
+                    <div class="landing-page-captility-logo-icon"></div>
+
                     <div class="container landing-page landing-page-black">
+
+
                         <h1>Captility</h1>
 
                         <h2>
@@ -27,7 +35,7 @@
                         <p style=" margin-top: 25px;">
                             <a class="btn btn-primary" role="button">Mehr erfahren</a>
                             <a class="btn btn-primary" style="margin-left: 10px"
-                               onclick="window.location.href='../login'" role="button">Login</a>
+                               onclick="window.location.href='<? echo $this->Html->url('/', true) ?>login'" role="button">Demo</a>
                         </p>
                     </div>
 
@@ -39,8 +47,6 @@
                     <div class="landing-page-showcase-body">
 
 
-                        <!--img src="../img/landing-page/landing-page-showcase-0.png"-->
-
                         <div class="landing-page-showcase-carousel">
 
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -49,19 +55,22 @@
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img src="../img/landing-page/landing-page-showcase-0.png">
+                                        <img src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-0.png" alt="Example Picture Captility"/>
                                     </div>
                                     <div class="item">
-                                        <img src="../img/landing-page/landing-page-showcase-1.png">
+                                        <img src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-1.png" alt="Example Picture Captility" />
                                     </div>
                                     <div class="item">
-                                        <img src="../img/landing-page/landing-page-showcase-2.png">
+                                        <img src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-2.png" alt="Example Picture Captility"/>
                                     </div>
                                     <div class="item">
-                                        <img src="../img/landing-page/landing-page-showcase-3.png">
+                                        <img src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-3.png" alt="Example Picture Captility"/>
                                     </div>
                                     <div class="item">
-                                        <img src="../img/landing-page/landing-page-showcase-4.png">
+                                        <img src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-4.png" alt="Example Picture Captility"/>
+                                    </div>
+                                    <div class="item">
+                                        <img src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-5.png" alt="Example Picture Captility"/>
                                     </div>
                                 </div>
 
@@ -74,6 +83,7 @@
                                     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                                     <li data-target="#carousel-example-generic" data-slide-to="3"></li>
                                     <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="5"></li>
                                 </ol>
 
                             </div>
@@ -126,7 +136,7 @@
                 <div class="col-md-4 column landing-page landing-page-white">
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../lectures">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>lectures">
                             <span class="glyphicon glyphicon-list"></span>
                         </a>
 
@@ -140,7 +150,7 @@
                     </div>
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>">
                             <span class="glyphicon glyphicon-dashboard"></span>
                         </a>
 
@@ -154,7 +164,7 @@
                     </div>
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../users">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>users">
                             <span class="glyphicon el-icon-group"></span>
                         </a>
 
@@ -172,7 +182,7 @@
 
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../calendar" style="">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>calendar" style="">
                             <span class="glyphicon el-icon-calendar"></span>
                         </a>
 
@@ -187,7 +197,7 @@
 
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../captures">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>captures">
                             <span class="glyphicon glyphicon-film"></span>
                         </a>
 
@@ -201,7 +211,7 @@
                     </div>
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../calendar/statistic">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>calendar/statistic">
                             <span class="glyphicon el-icon-graph"></span>
                         </a>
 
@@ -217,7 +227,7 @@
                 <div class="col-md-4 column landing-page landing-page-white">
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../tickets">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>tickets">
                             <span class="glyphicon el-icon-tags"></span>
                         </a>
 
@@ -231,7 +241,7 @@
 
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../workflows">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>workflows">
                             <span class="glyphicon el-icon-random"></span>
                         </a>
 
@@ -304,25 +314,25 @@
 
                 <div class="col-xs-6 col-md-3 landing-page landing-page-blue">
                     <a href="#" class="thumbnail">
-                        <img data-src="" alt="" style="height: 350px">
+                        <img data-src="" alt="" style="height: 350px"/>
                     </a>
                 </div>
 
                 <div class="col-xs-6 col-md-3 landing-page landing-page-blue">
                     <a href="#" class="thumbnail">
-                        <img data-src="" alt="" style="height: 350px">
+                        <img data-src="" alt="" style="height: 350px"/>
                     </a>
                 </div>
 
                 <div class="col-xs-6 col-md-3 landing-page landing-page-blue">
                     <a href="#" class="thumbnail">
-                        <img data-src="" alt="" style="height: 350px">
+                        <img data-src="" alt="" style="height: 350px"/>
                     </a>
                 </div>
 
                 <div class="col-xs-6 col-md-3 landing-page landing-page-blue">
                     <a href="#" class="thumbnail">
-                        <img data-src="" alt="" style="height: 350px">
+                        <img data-src="" alt="" style="height: 350px"/>
                     </a>
                 </div>
 
@@ -372,7 +382,7 @@
                 <div class="col-md-4 column landing-page landing-page-white">
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../lectures">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>lectures">
                             <span class="glyphicon glyphicon-list"></span>
                         </a>
 
@@ -386,7 +396,7 @@
                     </div>
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>">
                             <span class="glyphicon glyphicon-dashboard"></span>
                         </a>
 
@@ -400,7 +410,7 @@
                     </div>
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../users">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>users">
                             <span class="glyphicon el-icon-group"></span>
                         </a>
 
@@ -418,7 +428,7 @@
 
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../calendar" style="">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>calendar" style="">
                             <span class="glyphicon el-icon-calendar"></span>
                         </a>
 
@@ -433,7 +443,7 @@
 
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../captures">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>captures">
                             <span class="glyphicon glyphicon-film"></span>
                         </a>
 
@@ -447,7 +457,7 @@
                     </div>
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../calendar/statistic">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>calendar/statistic">
                             <span class="glyphicon el-icon-graph"></span>
                         </a>
 
@@ -463,7 +473,7 @@
                 <div class="col-md-4 column landing-page landing-page-white">
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../tickets">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>tickets">
                             <span class="glyphicon el-icon-tags"></span>
                         </a>
 
@@ -477,7 +487,7 @@
 
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="../workflows">
+                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>workflows">
                             <span class="glyphicon el-icon-random"></span>
                         </a>
 

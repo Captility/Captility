@@ -40,7 +40,7 @@ class AppController extends Controller {
             'loginRedirect' => array('controller' => 'calendars', 'action' => 'dashboard'),
             'logoutRedirect' => array('controller' => 'pages', 'action' => 'landing_page'),
             'authorize' => array('Controller', 'Actions' => array('actionPath' => 'controllers')),
-            'authError' => 'Sie wurden nach langer Inaktivität ausgeloggt. Bitte loggen Sie sich ein.')
+            'authError' => 'Bitte loggen Sie sich ein um auf diese Funktion zugreifen zu können.')
     );
 
 
