@@ -179,7 +179,6 @@ small.disabled {
   content: "\e";
 }
 
-
 h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
 
   font-family: @font-family-titilium;
@@ -800,12 +799,12 @@ text-shadow: none;*/
 
   > p a.btn-primary {
 
-    color: @landing-page-colDefault;
+    color: @landing-page-colHighlight;
     background-color: @landing-page-bgDefault;
 
     &:hover, &:active {
 
-      color: @landing-page-colHighlight;
+      color: #fff;
       background-color: @landing-page-bgHighlight;
     }
   }
@@ -1033,5 +1032,70 @@ text-shadow: none;*/
       background-color: @landing-page-bgHighlight;
       opacity: 1;
     }
+  }
+}
+
+// SHOWCASE
+
+.landing-page-header {
+
+  z-index: 5;
+}
+
+@media (max-width: @screen-md-min) {
+  .landing-page-showcase {
+    display: none;
+  }
+}
+
+@media (min-width: @screen-md-min) {
+  .landing-page-showcase {
+
+    width: 60%;
+    margin-left: 40%;
+    padding: 0;
+    height: 420px;
+    position: absolute;
+    z-index: 1;
+    background-image: url('../img/landing-page/landing-page-showcase-bg.png');
+    background-size: auto 100%;
+    background-position: right top;
+    background-repeat: no-repeat;
+
+  }
+
+}
+
+.landing-page-showcase-body {
+
+  width: 100%;
+  padding: 0;
+  height: 100%;
+}
+
+.landing-page-showcase-carousel {
+
+  z-index: 2;
+  padding: 0;
+  height: 350px;
+  width: 500px;
+  position: absolute;
+  top: 50px;
+  right: 0px;
+}
+
+ol.landing-page-showcase-carousel-indicators {
+
+  bottom: auto;
+
+  > li {
+
+    border-color: #2971AF;
+
+  }
+
+  >li.active {
+
+    background-color: #2971AF;
   }
 }

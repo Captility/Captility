@@ -1,6 +1,3 @@
-<div class="landing-page-container">
-
-
 <div class="landing-page-wrapper landing-page-wrapper-white" style="padding: 0px;">
 
     <div class="container landing-page" style="">
@@ -18,13 +15,13 @@
 
             <div class="row clearfix">
 
-                <div class="col-md-9 column landing-page landing-page-black">
+                <div class="col-md-9 column landing-page landing-page-black landing-page-header">
 
                     <div class="container landing-page landing-page-black">
                         <h1>Captility</h1>
 
                         <h2>
-                            Aufzeichnungsplaner | CMS | Kalender | Projektmanagement-Tool
+                            Aufzeichnungsplaner | CMS | Kalender | Projektmanagement
                         </h2>
 
                         <p style=" margin-top: 25px;">
@@ -35,16 +32,64 @@
                     </div>
 
                 </div>
-                <div class="col-md-3 column  landing-page landing-page-black">
+
+
+                <div class="col-md-3 column  landing-page-showcase">
+
+                    <div class="landing-page-showcase-body">
+
+
+                        <!--img src="../img/landing-page/landing-page-showcase-0.png"-->
+
+                        <div class="landing-page-showcase-carousel">
+
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="../img/landing-page/landing-page-showcase-0.png">
+                                    </div>
+                                    <div class="item">
+                                        <img src="../img/landing-page/landing-page-showcase-1.png">
+                                    </div>
+                                    <div class="item">
+                                        <img src="../img/landing-page/landing-page-showcase-2.png">
+                                    </div>
+                                    <div class="item">
+                                        <img src="../img/landing-page/landing-page-showcase-3.png">
+                                    </div>
+                                    <div class="item">
+                                        <img src="../img/landing-page/landing-page-showcase-4.png">
+                                    </div>
+                                </div>
+
+
+                                <!-- Indicators -->
+                                <ol class="landing-page-showcase-carousel-indicators carousel-indicators ">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0"
+                                        class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                                </ol>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
 
             </div>
         </div>
-
-
     </div>
+
+</div>
 </div>
 
 <div class="landing-page-wrapper landing-page-wrapper-white">
@@ -226,9 +271,6 @@
     </div>
 
 </div>
-
-
-</div> <!-- end landing-page-container-wrapper -->
 
 
 <div class="landing-page-wrapper landing-page-wrapper-blue">

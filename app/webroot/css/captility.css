@@ -3042,12 +3042,12 @@ text-shadow: none;*/
   font-weight: 400;
 }
 .landing-page > p a.btn-primary {
-  color: #aaccdd;
+  color: #ffffff;
   background-color: #225588;
 }
 .landing-page > p a.btn-primary:hover,
 .landing-page > p a.btn-primary:active {
-  color: #ffffff;
+  color: #fff;
   background-color: #236e92;
 }
 .landing-page > .alert {
@@ -3222,4 +3222,49 @@ text-shadow: none;*/
 .landing-page-footer > .media-glyphicon:active {
   background-color: #236e92;
   opacity: 1;
+}
+.landing-page-header {
+  z-index: 5;
+}
+@media (max-width: 992px) {
+  .landing-page-showcase {
+    display: none;
+  }
+}
+@media (min-width: 992px) {
+  .landing-page-showcase {
+    width: 60%;
+    margin-left: 40%;
+    padding: 0;
+    height: 420px;
+    position: absolute;
+    z-index: 1;
+    background-image: url('../img/landing-page/landing-page-showcase-bg.png');
+    background-size: auto 100%;
+    background-position: right top;
+    background-repeat: no-repeat;
+  }
+}
+.landing-page-showcase-body {
+  width: 100%;
+  padding: 0;
+  height: 100%;
+}
+.landing-page-showcase-carousel {
+  z-index: 2;
+  padding: 0;
+  height: 350px;
+  width: 500px;
+  position: absolute;
+  top: 50px;
+  right: 0px;
+}
+ol.landing-page-showcase-carousel-indicators {
+  bottom: auto;
+}
+ol.landing-page-showcase-carousel-indicators > li {
+  border-color: #2971AF;
+}
+ol.landing-page-showcase-carousel-indicators > li.active {
+  background-color: #2971AF;
 }
