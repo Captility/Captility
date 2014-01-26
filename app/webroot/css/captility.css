@@ -1527,9 +1527,33 @@ h1,
 qtip-calendar {
   font-family: 'Titillium Web', 'Istok Web', Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
-.navbar-brand {
+.navbar-header a.navbar-brand {
   font-size: 22px;
-  padding-top: 14px;
+  z-index: 100;
+  position: relative;
+  top: 2px;
+}
+.captility-logo-nav {
+  height: 35px;
+  left: 14px;
+  top: 4px;
+  width: 47px;
+  position: absolute;
+  z-index: 1;
+  background-image: url('../img/logo/captility-logo-icon.png');
+  background-image: none, url('../img/logo/captility-logo-nav.svg');
+  background-size: auto 100%;
+  background-position: right top;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+}
+.navbar-nav > li > a {
+  padding-top: 16px;
+  padding-bottom: 14px;
+}
+.navbar-header:hover .captility-logo-nav,
+.navbar-header:active .captility-logo-nav {
+  opacity: 1;
 }
 /* ###############################################
  * ################# Info Banners  ###############
@@ -3067,7 +3091,7 @@ text-shadow: none;*/
 }
 .landing-page > .media-glyphicon:hover,
 .landing-page > .media-glyphicon:active {
-  color: #aaccdd;
+  color: rgba(255, 255, 255, 0.66);
   background-color: #236e92;
 }
 .landing-page > .media-body h3 {
@@ -3077,18 +3101,27 @@ text-shadow: none;*/
   height: 100px;
 }
 .landing-page > .navbar-inverse {
+  box-shadow: 1px 1px 5px #000;
   background-color: #225588;
   border-color: #236e92;
 }
 .landing-page > .navbar-inverse .navbar-brand {
-  color: #aaccdd;
+  color: rgba(255, 255, 255, 0.66);
 }
 .landing-page > .navbar-inverse .navbar-brand:hover,
 .landing-page > .navbar-inverse .navbar-brand:focus {
   color: #ffffff;
 }
+.landing-page > .navbar-inverse .captility-logo-nav {
+  background-image: url('../img/logo/landing-page-captility-logo-nav.svg');
+  opacity: 0.5;
+}
+.landing-page > .navbar-inverse .navbar-header:hover .captility-logo-nav,
+.landing-page > .navbar-inverse .navbar-header:active .captility-logo-nav {
+  opacity: 1;
+}
 .landing-page > .navbar-inverse .navbar-nav > li > a {
-  color: #aaccdd;
+  color: rgba(255, 255, 255, 0.66);
   border-left: 1px dashed #85a3b4;
 }
 .landing-page > .navbar-inverse .navbar-nav > li > a:hover,
@@ -3114,8 +3147,8 @@ text-shadow: none;*/
   border-bottom-color: #ffffff;
 }
 .landing-page > .navbar-inverse .navbar-nav > .dropdown > a .caret {
-  border-top-color: #aaccdd;
-  border-bottom-color: #aaccdd;
+  border-top-color: rgba(255, 255, 255, 0.66);
+  border-bottom-color: rgba(255, 255, 255, 0.66);
 }
 .landing-page > .navbar-inverse .navbar-nav > .dropdown > a:hover .caret,
 .landing-page > .navbar-inverse .navbar-nav > .dropdown > a:focus .caret {
@@ -3123,7 +3156,7 @@ text-shadow: none;*/
   border-bottom-color: #ffffff;
 }
 .landing-page > .navbar-inverse .dropdown-menu .divider {
-  background-color: #aaccdd;
+  background-color: rgba(255, 255, 255, 0.66);
 }
 .landing-page > .navbar-inverse .navbar-toggle {
   border-color: #236e92;
@@ -3133,15 +3166,22 @@ text-shadow: none;*/
   background-color: #236e92;
 }
 .landing-page > .navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #aaccdd;
+  background-color: rgba(255, 255, 255, 0.66);
 }
 .landing-page .navbar-collapse > form.navbar-search > .form-group > input.btn-inverse {
   background-color: #236e92;
   border: 1px dashed #85a3b4;
 }
+.landing-page .navbar-collapse > form.navbar-search > .form-group > input.btn-inverse {
+  color: rgba(255, 255, 255, 0.66);
+}
+.landing-page .navbar-collapse > form.navbar-search > .form-group > input.btn-inverse:hover,
+.landing-page .navbar-collapse > form.navbar-search > .form-group > input.btn-inverse:active {
+  color: #ffffff;
+}
 .landing-page .navbar-collapse > form.navbar-search > button.btn-inverse {
   background-color: #236e92;
-  color: #ddd;
+  color: rgba(255, 255, 255, 0.66);
   border: 1px dashed #85a3b4;
 }
 .landing-page .navbar-collapse > form.navbar-search > button.btn-inverse:hover,
@@ -3150,11 +3190,11 @@ text-shadow: none;*/
 }
 .landing-page .navbar-collapse,
 .landing-page .navbar-form {
-  border-color: #aaccdd;
+  border-color: rgba(255, 255, 255, 0.66);
 }
 @media (max-width: 767px) {
   .landing-page .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #aaccdd;
+    color: rgba(255, 255, 255, 0.66);
   }
   .landing-page .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .landing-page .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -3178,7 +3218,7 @@ text-shadow: none;*/
 }
 .landing-page-blue > h4,
 .landing-page-blue small {
-  color: #aaccdd;
+  color: rgba(255, 255, 255, 0.66);
   opacity: 0.65;
   font-weight: 200;
 }
@@ -3207,7 +3247,8 @@ text-shadow: none;*/
   width: 350px;
   position: absolute;
   z-index: 0;
-  background-image: url('../img/logo/captility-logo-icon.svg');
+  background-image: url('../img/logo/captility-logo-icon.png');
+  background-image: none, url('../img/logo/captility-logo-icon.svg');
   background-size: auto 100%;
   background-position: right top;
   background-repeat: no-repeat;
@@ -3243,32 +3284,38 @@ text-shadow: none;*/
   background-color: #236e92;
   opacity: 1;
 }
+#LandingPageModal .modal-dialog {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+.modal-body .thumbnail {
+  margin-bottom: 0px;
+}
 .landing-page-header {
   z-index: 5;
 }
-@media (max-width: 992px) {
-  .landing-page-showcase {
-    display: none;
-  }
-}
-@media (min-width: 992px) {
-  .landing-page-showcase {
-    width: 60%;
-    margin-left: 40%;
-    padding: 0;
-    height: 420px;
-    position: absolute;
-    z-index: 1;
-    background-image: url('../img/landing-page/landing-page-showcase-bg.png');
-    background-size: auto 100%;
-    background-position: right top;
-    background-repeat: no-repeat;
-  }
+.landing-page-showcase {
+  width: 60%;
+  margin-left: 40%;
+  padding: 0;
+  height: 420px;
+  position: absolute;
+  z-index: 1;
+  background-image: url('../img/landing-page/landing-page-showcase-bg.png');
+  background-size: auto 100%;
+  background-position: right top;
+  background-repeat: no-repeat;
 }
 .landing-page-showcase-body {
   width: 100%;
   padding: 0;
   height: 100%;
+}
+img.landing-page-thumbnail {
+  max-width: 100%;
+  cursor: pointer;
 }
 @media (min-width: 992px) {
   .landing-page-showcase-carousel {

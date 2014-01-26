@@ -41,8 +41,7 @@
     background-color: #fff;
     padding: 0;
     padding-bottom: 40px;
-    margin: 0 auto;
-    //box-shadow: 0px 0px 5px #aaa;
+    margin: 0 auto; //box-shadow: 0px 0px 5px #aaa;
   /*border-radius: @border-radius-base;*/
   }
 }
@@ -184,10 +183,43 @@ h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
   font-family: @font-family-titilium;
 }
 
-.navbar-brand {
+// Navbar LOGO
+
+.navbar-header a.navbar-brand {
 
   font-size: 22px;
-  padding-top: 14px;
+  z-index: 100;
+  position: relative;
+  top: 2px;
+}
+
+.captility-logo-nav {
+
+  height: 35px;
+  left: 14px;
+  top: 4px;
+  width: 47px;
+  position: absolute;
+  z-index: 1;
+  background-image: url('../img/logo/captility-logo-icon.png');
+  background-image: none, url('../img/logo/captility-logo-nav.svg');
+  background-size: auto 100%;
+  background-position: right top;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+}
+
+.navbar-nav > li > a {
+  padding-top: 16px;
+  padding-bottom: 14px;
+}
+
+.navbar-header:hover, .navbar-header:active{
+
+  .captility-logo-nav {
+
+    opacity: 1;
+  }
 }
 
 /* ###############################################
@@ -718,7 +750,8 @@ text-shadow: none;*/
 //@eventColorBlue;
 //#3276b1;
 @landing-page-bgBorder       : #85a3b4;
-@landing-page-colDefault     : #acd;
+@landing-page-colDefault     : rgba(255, 255, 255, 0.66);
+//#acd;
 @landing-page-colHighlight   : #fff;
 
 .landing-page-container {
@@ -845,6 +878,7 @@ text-shadow: none;*/
 
   > .navbar-inverse {
 
+    box-shadow: 1px 1px 5px #000;
     background-color: @landing-page-bgDefault;
     border-color: @landing-page-bgHighlight; //box-: 0px 5px 10px #000;
 
@@ -852,6 +886,19 @@ text-shadow: none;*/
       color: @landing-page-colDefault;
       &:hover, &:focus {
         color: @landing-page-colHighlight;
+      }
+    }
+
+    .captility-logo-nav {
+
+      background-image: url('../img/logo/landing-page-captility-logo-nav.svg');
+      opacity: 0.5;
+    }
+    .navbar-header:hover, .navbar-header:active{
+
+      .captility-logo-nav {
+
+        opacity: 1;
       }
     }
     .navbar-nav {
@@ -918,15 +965,24 @@ text-shadow: none;*/
           background-color: @landing-page-bgHighlight;
           border: 1px dashed @landing-page-bgBorder;
         }
+        > input.btn-inverse {
+
+          color: @landing-page-colDefault;
+
+          &:hover, &:active {
+            color: @landing-page-colHighlight;
+          }
+        }
       }
       > button.btn-inverse {
         background-color: @landing-page-bgHighlight;
-        color: #ddd;
+        color: @landing-page-colDefault;
         border: 1px dashed @landing-page-bgBorder;
         &:hover, &:active {
           color: @landing-page-colHighlight;
         }
       }
+
     }
   }
   .navbar-collapse,
@@ -953,7 +1009,7 @@ text-shadow: none;*/
     font-weight: 00;
   }
 
-  >h2 strong{
+  >h2 strong {
 
     color: #09f;
   }
@@ -1012,7 +1068,8 @@ text-shadow: none;*/
   width: 350px;
   position: absolute;
   z-index: 0;
-  background-image: url('../img/logo/captility-logo-icon.svg');
+  background-image: url('../img/logo/captility-logo-icon.png');
+  background-image: none, url('../img/logo/captility-logo-icon.svg');
   background-size: auto 100%;
   background-position: right top;
   background-repeat: no-repeat;
@@ -1064,6 +1121,21 @@ text-shadow: none;*/
   }
 }
 
+// MODAL LIGHTOX
+
+#LandingPageModal .modal-dialog {
+
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.modal-body .thumbnail {
+
+  margin-bottom: 0px;
+}
+
 // SHOWCASE
 
 .landing-page-header {
@@ -1071,27 +1143,18 @@ text-shadow: none;*/
   z-index: 5;
 }
 
-@media (max-width: @screen-md-min) {
-  .landing-page-showcase {
-    display: none;
-  }
-}
+.landing-page-showcase {
 
-@media (min-width: @screen-md-min) {
-  .landing-page-showcase {
-
-    width: 60%;
-    margin-left: 40%;
-    padding: 0;
-    height: 420px;
-    position: absolute;
-    z-index: 1;
-    background-image: url('../img/landing-page/landing-page-showcase-bg.png');
-    background-size: auto 100%;
-    background-position: right top;
-    background-repeat: no-repeat;
-
-  }
+  width: 60%;
+  margin-left: 40%;
+  padding: 0;
+  height: 420px;
+  position: absolute;
+  z-index: 1;
+  background-image: url('../img/landing-page/landing-page-showcase-bg.png');
+  background-size: auto 100%;
+  background-position: right top;
+  background-repeat: no-repeat;
 
 }
 
@@ -1102,6 +1165,11 @@ text-shadow: none;*/
   height: 100%;
 }
 
+img.landing-page-thumbnail{
+
+  max-width: 100%;
+  cursor: pointer;
+}
 
 @media (min-width: @screen-md-min) {
   .landing-page-showcase-carousel {

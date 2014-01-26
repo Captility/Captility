@@ -13,7 +13,8 @@
             data-target="#bs-example-navbar-collapse-1"><span
             class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
             class="icon-bar"></span><span class="icon-bar"></span></button>
-    <?php echo $this->Html->link("Captility", array('controller' => 'calendars', 'action' => 'dashboard'),
+    <div class="captility-logo-nav"></div>
+    <?php echo $this->Html->link("Captility", $this->Html->url('/', true),
         array('class' => 'navbar-brand')); //ToDo Variable für Titel benutzen ?>
 </div>
 

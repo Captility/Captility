@@ -714,4 +714,20 @@ $(document).ready(function () {
         scrollTop.hide();
     }
 
+
+    /**
+     * Lightbox.
+     */
+    $('img.landing-page-thumbnail').click(function(){
+
+        var self = this;
+        $('.modal-body').empty();
+        var title = $(this).parent('a').attr("title");
+        $('.modal-title').html(title);
+        $($(this).parents('div').html()).appendTo('.modal-body');
+
+        $('#LandingPageModal').modal({show:true}).find('.modal-dialog').css({'max-width' : self.naturalWidth + 52});
+
+    });
+
 });
