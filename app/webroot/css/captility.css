@@ -3021,8 +3021,11 @@ text-shadow: none;*/
   margin-left: -10px;
 }
 .landing-page > h2 {
-  font-size: 22px;
-  color: #2971AF;
+  font-size: 20px;
+  color: #ddd;
+  opacity: 0.75;
+  font-family: 'Titillium Web', 'Istok Web', Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 200;
 }
 .landing-page > h3 {
   font-size: 20px;
@@ -3166,6 +3169,9 @@ text-shadow: none;*/
   opacity: 0.75;
   font-weight: 00;
 }
+.landing-page-black > h2 strong {
+  color: #09f;
+}
 .landing-page-blue > h2 {
   color: #ffffff;
   font-weight: 200;
@@ -3197,7 +3203,7 @@ text-shadow: none;*/
 .landing-page-captility-logo-icon {
   height: 200px;
   left: -70px;
-  top: -15px;
+  top: -13px;
   width: 350px;
   position: absolute;
   z-index: 0;

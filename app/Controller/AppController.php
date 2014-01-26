@@ -38,7 +38,7 @@ class AppController extends Controller {
         'Auth' => array(
             'loginAction' => array('controller' => 'users', 'action' => 'login'),
             'loginRedirect' => array('controller' => 'calendars', 'action' => 'dashboard'),
-            'logoutRedirect' => array('controller' => 'pages', 'action' => 'landing_page'),
+            'logoutRedirect' => "/",
             'authorize' => array('Controller', 'Actions' => array('actionPath' => 'controllers')),
             'authError' => 'Bitte loggen Sie sich ein um auf diese Funktion zugreifen zu können.')
     );

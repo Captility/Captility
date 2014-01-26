@@ -29,7 +29,7 @@
                         <h1>Captility</h1>
 
                         <h2>
-                            Aufzeichnungsplaner | CMS | Kalender | Projektmanagement
+                            Aufzeichnungsplaner <strong>|</strong> CMS <strong>|</strong> Kalender <strong>|</strong> Projektmanagement-Tool
                         </h2>
 
                         <p style=" margin-top: 25px;">
@@ -82,7 +82,7 @@
                                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                                     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                                     <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                                    <li data-target="#carousel-example-generic" dphata-slide-to="4"></li>
                                     <li data-target="#carousel-example-generic" data-slide-to="5"></li>
                                 </ol>
 
@@ -568,7 +568,7 @@
                         </a>
 
 
-                        <a class="media-glyphicon pull-right" href="#">
+                        <a class="media-glyphicon pull-right" href="https://github.com/Captility/Captility">
                             <span class="glyphicon el-icon-github"></span>
                         </a>
                     </div>
