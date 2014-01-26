@@ -18,7 +18,8 @@
             <div class="row clearfix">
 
 
-                <div class="col-sm-12 col-xs-12 col-md-8 col-lg-7 column landing-page landing-page-black landing-page-header">
+                <div
+                    class="col-sm-12 col-xs-12 col-md-8 col-lg-7 column landing-page landing-page-black landing-page-header">
 
 
                     <div class="landing-page-captility-logo-icon"></div>
@@ -63,27 +64,32 @@
                                     </div>
                                     <div class="item">
                                         <img
-                                            src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-1.png"
+                                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-1.png"
+                                            src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
                                             alt="Example Picture Captility" class="landing-page-thumbnail"/>
                                     </div>
                                     <div class="item">
                                         <img
-                                            src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-2.png"
+                                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-2.png"
+                                            src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
                                             alt="Example Picture Captility" class="landing-page-thumbnail"/>
                                     </div>
                                     <div class="item">
                                         <img
-                                            src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-3.png"
+                                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-3.png"
+                                            src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
                                             alt="Example Picture Captility" class="landing-page-thumbnail"/>
                                     </div>
                                     <div class="item">
                                         <img
-                                            src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-4.png"
+                                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-4.png"
+                                            src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
                                             alt="Example Picture Captility" class="landing-page-thumbnail"/>
                                     </div>
                                     <div class="item">
                                         <img
-                                            src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-5.png"
+                                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-showcase-5.png"
+                                            src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
                                             alt="Example Picture Captility" class="landing-page-thumbnail"/>
                                     </div>
                                 </div>
@@ -96,7 +102,7 @@
                                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                                     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                                     <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                                    <li data-target="#carousel-example-generic" dphata-slide-to="4"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
                                     <li data-target="#carousel-example-generic" data-slide-to="5"></li>
                                 </ol>
 
@@ -329,26 +335,46 @@
 
 
                 <div class="col-xs-6 col-md-4 col-lg-3 landing-page landing-page-blue">
-                    <a title="Screenshot #1" href="#LandingPageScreenshots" data-dismiss="modal" class="thumbnail  landing-page-thumbnail">
-                        <img src="//placehold.it/600x800/DDD/225588" alt="" class="landing-page-thumbnail"/>
+                    <a title="Nie mehr die Terminübersicht verlieren!" href="#LandingPageScreenshots"
+                       data-dismiss="modal"
+                       class="thumbnail  landing-page-thumbnail">
+                        <img
+                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-screenshot-0.png"
+                            src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
+                            alt="" class="landing-page-thumbnail"/>
                     </a>
                 </div>
 
                 <div class="col-xs-6 col-md-4 col-lg-3 landing-page landing-page-blue">
-                    <a title="Screenshot #1" href="#LandingPageScreenshots" data-dismiss="modal" class="thumbnail  landing-page-thumbnail">
-                        <img src="//placehold.it/600x800/DDD/225588" alt="" class="landing-page-thumbnail"/>
+                    <a title="Nie mehr die Terminübersicht verlieren!" href="#LandingPageScreenshots"
+                       data-dismiss="modal"
+                       class="thumbnail  landing-page-thumbnail">
+                        <img
+                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-screenshot-0.png"
+                            src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
+                            alt="" class="landing-page-thumbnail"/>
                     </a>
                 </div>
 
                 <div class="col-xs-6 col-md-4 col-lg-3 landing-page landing-page-blue">
-                    <a title="Screenshot #1" href="#LandingPageScreenshots" data-dismiss="modal" class="thumbnail landing-page-thumbnail">
-                        <img src="//placehold.it/600x800/DDD/225588" alt="" class="landing-page-thumbnail"/>
+                    <a title="Nie mehr die Terminübersicht verlieren!" href="#LandingPageScreenshots"
+                       data-dismiss="modal"
+                       class="thumbnail  landing-page-thumbnail">
+                        <img
+                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-screenshot-0.png"
+                            src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
+                            alt="" class="landing-page-thumbnail"/>
                     </a>
                 </div>
 
-                <div class="col-xs-6 hidden-md col-lg-3 landing-page landing-page-blue">
-                    <a title="Screenshot #1" href="#LandingPageScreenshots" data-dismiss="modal" class="thumbnail landing-page-thumbnail">
-                        <img src="//placehold.it/600x800/DDD/225588" alt="" class="landing-page-thumbnail"/>
+                <div class="col-xs-6 col-md-4 col-lg-3 landing-page landing-page-blue">
+                    <a title="Nie mehr die Terminübersicht verlieren!" href="#LandingPageScreenshots"
+                       data-dismiss="modal"
+                       class="thumbnail  landing-page-thumbnail">
+                        <img
+                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-screenshot-0.png"
+                            src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
+                            alt="" class="landing-page-thumbnail"/>
                     </a>
                 </div>
 
@@ -361,11 +387,11 @@
 
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <!--<div class="modal-header">
+                        <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">×</button>
-                            <h3 class="modal-title">Showcase</h3>
+                            <h4 class="modal-title text-center"></h4>
 
-                        </div>-->
+                        </div>
                         <div class="modal-body"></div>
                     </div>
                 </div>

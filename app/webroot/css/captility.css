@@ -485,118 +485,18 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
 }
-/* ###############################################
- * ############ BASE GRID LAYOUT  ################
- * ###############################################*/
-@media (min-width: 992px) {
-  html,
-  body {
-    height: 100%;
-    background-color: #fff;
-  }
-  .page-header {
-    margin-top: 25px;
-  }
-  .container-wrapper {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    background-color: #fff;
-    padding: 0;
-    padding-bottom: 40px;
-    margin: 0 auto;
-    /*border-radius: @border-radius-base;*/
-  }
-}
-@media (min-width: 992px) {
-  .container-wrapper {
-    width: 992px;
-  }
-}
-@media (min-width: 1200px) {
-  .container-wrapper {
-    width: 1200px;
-  }
-}
-/** Headline Adjustment */
-@media (min-width: 992px) {
-  .page-header {
-    padding-bottom: 0px;
-  }
-  .page-header > h1 small {
-    text-align: right;
-    right: 15px;
-    position: absolute;
-    bottom: 30px;
-  }
-}
-/** Content Pane*/
-.content-pane {
-  overflow: scroll;
-}
-/** Margin under Navbar */
-.container-lower {
-  margin-top: 75px;
-}
-/** Navbar Search Alignment */
-@media (min-width: 1200px) {
-  .navbar-search {
-    padding-right: 0;
-  }
-}
-@media (max-width: 1200px) {
-  .navbar-search {
-    display: none;
-  }
-}
-.navbar-btn-search {
-  font-family: 'Istok Web', 'Titillium Web', "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-.dropdown-menu > li.list-info {
-  position: relative;
-  display: block;
-  padding-top: 5px;
-  padding-bottom: 7px;
-  padding-left: 20px;
-  margin-bottom: 5px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #dddddd;
-}
-.related {
-  overflow-x: scroll;
-}
-.actions-column {
-  overflow-x: scroll;
-}
-.panel-heading {
-  background-color: #f5f5f5;
-  padding: 9px;
-  padding-left: 15px;
-}
-.panel-footer {
-  padding: 6px 15px;
-}
-.submit-panel {
-  margin-top: 75px;
-}
-small.disabled {
-  color: #999;
-}
-#ScheduleContainer .panel {
-  margin: 40px 0px;
-}
-.panel-link {
-  cursor: pointer;
-}
-/* ###############################################
- * ################# TYPOGRAPHY  #################
- * ###############################################*/
 @font-face {
   font-family: 'Elusive-Icons';
   src: url('../fonts/Elusive-Icons.eot?v=2');
-  src: url('../fonts/Elusive-Icons.eot?#iefix&v=2') format('embedded-opentype'), url('../fonts/Elusive-Icons.svg#Elusive-Icons?v=2') format('svg'), url('../fonts/Elusive-Icons.woff?v=2') format('woff'), url('../fonts/Elusive-Icons.ttf?v=2') format('truetype');
+  src: url('../fonts/Elusive-Icons.eot?#iefix&v=2') format('embedded-opentype'), url('../fonts/Elusive-Icons.woff?v=2') format('woff'), url('../fonts/Elusive-Icons.ttf?v=2') format('truetype'), url('../fonts/Elusive-Icons.svg#Elusive-Icons?v=2') format('svg');
   font-weight: normal;
   font-style: normal;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: 'Elusive-Icons';
+    src: url('../fonts/Elusive-Icons.svg#Elusive-Icons?v=2') format('svg');
+  }
 }
 [class*="el-icon-"] {
   font-family: 'Elusive-Icons';
@@ -1511,6 +1411,112 @@ small.disabled {
 .el-icon-asterisk:before {
   content: "\e72a";
 }
+/* ###############################################
+ * ############ BASE GRID LAYOUT  ################
+ * ###############################################*/
+@media (min-width: 992px) {
+  html,
+  body {
+    height: 100%;
+    background-color: #fff;
+  }
+  .page-header {
+    margin-top: 25px;
+  }
+  .container-wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    background-color: #fff;
+    padding: 0;
+    padding-bottom: 40px;
+    margin: 0 auto;
+    /*border-radius: @border-radius-base;*/
+  }
+}
+@media (min-width: 992px) {
+  .container-wrapper {
+    width: 992px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-wrapper {
+    width: 1200px;
+  }
+}
+/** Headline Adjustment */
+@media (min-width: 992px) {
+  .page-header {
+    padding-bottom: 0px;
+  }
+  .page-header > h1 small {
+    text-align: right;
+    right: 15px;
+    position: absolute;
+    bottom: 30px;
+  }
+}
+/** Content Pane*/
+.content-pane {
+  overflow: scroll;
+}
+/** Margin under Navbar */
+.container-lower {
+  margin-top: 75px;
+}
+/** Navbar Search Alignment */
+@media (min-width: 1200px) {
+  .navbar-search {
+    padding-right: 0;
+  }
+}
+@media (max-width: 1200px) {
+  .navbar-search {
+    display: none;
+  }
+}
+.navbar-btn-search {
+  font-family: 'Istok Web', 'Titillium Web', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.dropdown-menu > li.list-info {
+  position: relative;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 7px;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dddddd;
+}
+.related {
+  overflow-x: scroll;
+}
+.actions-column {
+  overflow-x: scroll;
+}
+.panel-heading {
+  background-color: #f5f5f5;
+  padding: 9px;
+  padding-left: 15px;
+}
+.panel-footer {
+  padding: 6px 15px;
+}
+.submit-panel {
+  margin-top: 75px;
+}
+small.disabled {
+  color: #999;
+}
+#ScheduleContainer .panel {
+  margin: 40px 0px;
+}
+.panel-link {
+  cursor: pointer;
+}
+/* ###############################################
+ * ################# TYPOGRAPHY  #################
+ * ###############################################*/
 .cp-icon-lecturer {
   background-image: url('../img/icons/cp-icon-lecturer.svg');
   background-size: 100%;
@@ -3047,7 +3053,6 @@ text-shadow: none;*/
 .landing-page > h2 {
   font-size: 20px;
   color: #ddd;
-  opacity: 0.75;
   font-family: 'Titillium Web', 'Istok Web', Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-weight: 200;
 }
@@ -3209,6 +3214,9 @@ text-shadow: none;*/
   opacity: 0.75;
   font-weight: 00;
 }
+.landing-page-black > h2 {
+  opacity: 0.75;
+}
 .landing-page-black > h2 strong {
   color: #09f;
 }
@@ -3219,7 +3227,7 @@ text-shadow: none;*/
 .landing-page-blue > h4,
 .landing-page-blue small {
   color: rgba(255, 255, 255, 0.66);
-  opacity: 0.65;
+  opacity: 0.75;
   font-weight: 200;
 }
 .landing-page-blue > h3 strong,
@@ -3266,6 +3274,9 @@ text-shadow: none;*/
 .landing-page-footer > h3 {
   padding-bottom: 10px;
 }
+.landing-page-footer > h3 > strong {
+  font-weight: 400;
+}
 .landing-page-footer > span {
   color: #999;
 }
@@ -3289,6 +3300,9 @@ text-shadow: none;*/
   height: auto;
   max-height: 100%;
   max-width: 100%;
+}
+h4.modal-title {
+  font-family: 'Titillium Web', 'Istok Web', Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 .modal-body .thumbnail {
   margin-bottom: 0px;

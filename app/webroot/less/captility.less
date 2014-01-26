@@ -9,6 +9,8 @@
 @import "bootstrap/mixins";
 @import "bootstrap/alerts";
 @import "bootstrap/buttons";
+//Import Icons: Elusive Webfont:
+@import "elusive-webfont.less";
 
 @body-background-color: #f0f0f0;
 
@@ -164,9 +166,6 @@ small.disabled {
  * ################# TYPOGRAPHY  #################
  * ###############################################*/
 
-//Import Icons: Elusive Webfont:
-@import "elusive-webfont.less";
-
 .cp-icon-lecturer {
   background-image: url('../img/icons/cp-icon-lecturer.svg');
   background-size: 100%;
@@ -214,7 +213,7 @@ h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
   padding-bottom: 14px;
 }
 
-.navbar-header:hover, .navbar-header:active{
+.navbar-header:hover, .navbar-header:active {
 
   .captility-logo-nav {
 
@@ -804,7 +803,6 @@ text-shadow: none;*/
 
     font-size: 20px;
     color: #ddd;
-    opacity: 0.75;
     font-family: @font-family-titilium;
     font-weight: 200;
   }
@@ -894,7 +892,7 @@ text-shadow: none;*/
       background-image: url('../img/logo/landing-page-captility-logo-nav.svg');
       opacity: 0.5;
     }
-    .navbar-header:hover, .navbar-header:active{
+    .navbar-header:hover, .navbar-header:active {
 
       .captility-logo-nav {
 
@@ -1009,9 +1007,14 @@ text-shadow: none;*/
     font-weight: 00;
   }
 
-  >h2 strong {
+  >h2 {
 
-    color: #09f;
+    opacity: 0.75;
+
+    strong {
+
+      color: #09f;
+    }
   }
 
 }
@@ -1027,7 +1030,7 @@ text-shadow: none;*/
   > h4, small {
 
     color: @landing-page-colDefault;
-    opacity: 0.65;
+    opacity: 0.75;
     font-weight: 200;
   }
 
@@ -1095,6 +1098,11 @@ text-shadow: none;*/
   > h3 {
 
     padding-bottom: 10px;
+
+    > strong {
+
+      font-weight: 400;
+    }
   }
 
   > span {
@@ -1131,6 +1139,11 @@ text-shadow: none;*/
   max-width: 100%;
 }
 
+h4.modal-title {
+
+  font-family: @font-family-titilium;
+}
+
 .modal-body .thumbnail {
 
   margin-bottom: 0px;
@@ -1165,7 +1178,7 @@ text-shadow: none;*/
   height: 100%;
 }
 
-img.landing-page-thumbnail{
+img.landing-page-thumbnail {
 
   max-width: 100%;
   cursor: pointer;

@@ -17,12 +17,9 @@
     // jQuery Link
     //echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'); // ToDo Add local jQuery
     echo $this->Html->script('jquery/jquery-1.10.2.min.js');
-    echo $this->Html->script('jquery/jquery-ui-1.10.3.custom.min.js');
-    echo $this->Html->script('jquery/jquery.qtip.min.js');
-    echo $this->Html->script('jquery/tinymce/jquery.tinymce.min.js');
+    echo $this->Html->script('jquery/jquery.unveil.min.js');
     echo $this->Html->script('bootstrap.custom.min.js');
-    echo $this->Html->script('bootstrap-datepicker.min.js');
-    echo $this->Html->script('fullcalendar/fullcalendar.min.js');
+
     //echo $this->Html->script('jquery/jquery.qtip-1.0.0-rc3.min.js');
 
     // Ajax application root
@@ -42,8 +39,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72.png">
     <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-72.png">
-    <link rel="shortcut icon" href="img/logo/favicon.ico">
-    <link rel="icon" href="img/logo/favicon.png" type="image/png">
+    <link rel="shorcut icon" href="favicon.png" type="image/png">
 
 </head>
 
