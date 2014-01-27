@@ -46,6 +46,7 @@
     margin: 0 auto; //box-shadow: 0px 0px 5px #aaa;
   /*border-radius: @border-radius-base;*/
   }
+
 }
 
 @media (min-width: @screen-md-min) {
@@ -87,7 +88,7 @@
 /** Margin under Navbar */
 .container-lower {
 
-  margin-top: @navbar-height + @navbar-margin;
+  margin-top: @navbar-height - 20px; //h1 20px
 }
 
 /** Navbar Search Alignment */
@@ -205,7 +206,6 @@ h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
   background-size: auto 100%;
   background-position: right top;
   background-repeat: no-repeat;
-  opacity: 0.75;
 }
 
 .navbar-nav > li > a {
@@ -213,11 +213,28 @@ h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
   padding-bottom: 14px;
 }
 
-.navbar-header:hover, .navbar-header:active {
+.navbar-header {
 
-  .captility-logo-nav {
+  opacity: 1;
 
-    opacity: 1;
+  &:hover, &:active {
+
+    opacity: 0.75;
+
+    .captility-logo-nav {
+
+      opacity: 0.75;
+    }
+  }
+
+  a.navbar-brand {
+
+    color: #eee;
+
+    &:hover, &:active {
+
+      color: #999;
+    }
   }
 }
 
@@ -763,6 +780,10 @@ text-shadow: none;*/
   margin: 0 auto;
 }
 
+.landing-page-container-lower {
+  margin-top: @navbar-height + @navbar-margin;
+}
+
 .landing-page-wrapper {
 
   box-shadow: none;
@@ -1227,23 +1248,59 @@ ol.landing-page-showcase-carousel-indicators {
   }
 }
 
-//BREADCRUMBS
+/* ###############################################
+ * ################ BRADCRUMB BAR  ################
+ * ###############################################*/
 
-@breadcrumb-odd-bg : #e4e4e4;
-@breadcrumb-even-bg : rgba(169, 203, 240, 0.44);//#f2f2f2;
-@breadcrumb-hover-bg : #a9cbf0;
+//Odd 1th
+@breadcrumb-odd : @landing-page-bgDefault;
+// #eee;
+//#1e6eb3; //#000;
+@breadcrumb-odd-bg : #f5f5f5;
+//#eee; //#f5f5f5; //#e4e4e4;
+
+//Even 2nd
+@breadcrumb-even : #fff;
+// rgb(30, 110, 179);
+@breadcrumb-even-bg : #2c87d6;
+// #2c87d6;
+//#2c87d6;//#a9cbf0; //rgba(169, 203, 240, 0.44);//#f2f2f2;
+
+//Hover
+@breadcrumb-hover: #eee;
+@breadcrumb-hover-bg : #0f2e4b;
+//#2c87d6;
+//#fff;
+
+.breadcrumb-bar {
+
+  margin-top: 40px;
+  padding: 5px 0px;
+  background-color: @landing-page-bgDefault;
+  height: 50px;
+}
 
 ul.captility-breadcrumb {
-  list-style: none;
-  display: inline-block;
+  list-style: none; //display: inline-block;
   padding-left: 0px;
+  margin-bottom: 0px;
+  overflow-x: scroll;
 
-  .glyphicon-alone{
+  .glyphicon {
 
-    top: 7px;
+    font-size: 15px;
+    top: 2px;
   }
 
-  .breadcrumbs-logo{
+  .glyphicon-alone {
+
+    margin-right: 0;
+    margin: 0px;
+    font-size: 18px;
+    top: 6px;
+  }
+
+  .breadcrumbs-logo {
 
     background-image: url('../favicon.png');
     background-repeat: no-repeat;
@@ -1254,11 +1311,12 @@ ul.captility-breadcrumb {
 
   li {
     float: left;
-    margin-right: 8px;
-    margin-bottom: 10px;
+    margin-right: 2px;
+    margin-top: 10px;
+    position: relative;
 
     a {
-      color: #1e6eb3;
+      color: @breadcrumb-odd;
       display: block;
       background: @breadcrumb-odd-bg;
       text-decoration: none;
@@ -1272,7 +1330,7 @@ ul.captility-breadcrumb {
     &:nth-child(even) {
       a {
         background-color: @breadcrumb-even-bg;
-        color: rgb(30, 110, 179);
+        color: @breadcrumb-even;
         &:before {
           border-color: @breadcrumb-even-bg;
           border-left-color: transparent;
@@ -1285,7 +1343,7 @@ ul.captility-breadcrumb {
     &:first-child {
       a {
         padding-left: 15px;
-       border-radius: 4px 0 0 4px;
+        border-radius: 4px 0 0 4px;
         &:before {
           border: none;
         }
@@ -1294,8 +1352,7 @@ ul.captility-breadcrumb {
     &:last-child {
       a {
         padding-right: 15px;
-        color: rgba(0,0,0, 0.65);
-      border-radius: 0 4px 4px 0;
+        border-radius: 0 4px 4px 0;
 
         &:after {
           border: none;
@@ -1313,6 +1370,7 @@ ul.captility-breadcrumb {
         border-width: 15px 10px;
         width: 0;
         height: 0;
+
       }
       &:before {
         left: -20px;
@@ -1325,7 +1383,7 @@ ul.captility-breadcrumb {
       }
       &:hover {
         background-color: @breadcrumb-hover-bg;
-        color: #000;
+        color: @breadcrumb-hover;
 
         &:before {
           border-color: @breadcrumb-hover-bg;
@@ -1345,4 +1403,18 @@ ul.captility-breadcrumb {
       }
     }
   }
+}
+
+ul.navbar-nav li.active:after {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 7px solid @landing-page-bgDefault;
+  border-top: none;
+  height: 0;
+  width: 0;
+  bottom: 0;
+  content: "";
+  left: 50%;
+  margin-left: -5px;
+  position: absolute;
 }

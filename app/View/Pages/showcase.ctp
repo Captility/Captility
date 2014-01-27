@@ -11,7 +11,7 @@
 
 <div class="landing-page-wrapper landing-page-wrapper-black">
 
-    <div class="container container-lower landing-page">
+    <div class="container landing-page-container-lower landing-page">
 
         <div class="col-md-12 column landing-page">
 

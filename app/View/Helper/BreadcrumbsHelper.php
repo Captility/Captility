@@ -65,7 +65,7 @@ class BreadcrumbsHelper extends AppHelper {
             if ($home === true) {
                 $home = __('Home', true);
             }
-            array_unshift($breadcrumbs, array('label' => '<span class="glyphicon breadcrumbs-logo"></span>', 'link' => '/'));
+            array_unshift($breadcrumbs, array('label' => '<span class="glyphicon el-icon-captility glyphicon-alone"></span>', 'link' => '/'));
            /* array_unshift($breadcrumbs, array('label' => $home, 'link' => '/'));*/
 
         }

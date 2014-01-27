@@ -1,16 +1,16 @@
 <!-- Element::breadcrumbs -->
+<div class="breadcrumb-bar">
 
-<div class="row clearfix">
-    <div class="col-md-12 column">
-        <!--<ul class="captility-breadcrumb">
+        <div class="container">
 
-            <a href="/"><span class="glyphicon glyphicon-home"></span></a>
-            <?/* echo $this->Html->getCrumbs(' <span class="divider">/</span> ', 'Captility', array(
-                'class'=>'glyphicon glyphicon-home'))*/?>
-        </ul>-->
+            <div class="row clearfix">
+                <div class="col-md-12  col-xs-12 column">
 
-        <? echo $this->Breadcrumbs->getCrumbs('<span class="glyphicon breadcrumbs-logo"></span>')?>
+                    <? echo $this->Breadcrumbs->getCrumbs(true)?>
 
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

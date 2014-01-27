@@ -37,6 +37,27 @@ $(function () {
 });
 
 
+/**
+ * SlideRight Animation for eg. breadcrumbs
+ * @param speed
+ * @param callback
+ * @returns {*}
+ */
+jQuery.fn.slideRight = function (speed, callback) {
+
+    $(this).css({'width': '0'});
+
+    var elem, height, width;
+    return this.each(function (i, el) {
+        el = jQuery(el), elem = el.clone().css({"width": "auto"}).appendTo(el.parent());
+        width = elem.css("width"),
+            elem.remove();
+
+        el.animate({"width": width}, speed, callback);
+
+    });
+}
+
 //######################################################################################################################
 //############################################ RESPONSIVENESS ##########################################################
 //######################################################################################################################
@@ -760,5 +781,26 @@ $(document).ready(function () {
 
         $("img").unveil();
     }
+
+    /**
+     * Breadcrumbs Animation
+     */
+
+    // Last 2 or all
+    /*$('.captility-breadcrumb li').last().prev().andSelf().hide().css({"margin-left": "-500px"});
+
+    $('.captility-breadcrumb li').last().prev().andSelf().each(function (index) {
+        $(this).css({"z-index": 255 - index}).delay(450 * index).show().animate({"margin-left": "0"}, 400);
+    });*/
+
+
+    //Last Only
+    $('.captility-breadcrumb li').each(function (index) {
+        $(this).css({"z-index": 255 - index});
+    });
+
+    $('.captility-breadcrumb li').last().hide().css({"margin-left": "-500px"}).show().animate({"margin-left": "0"}, 400);
+
+
 
 });

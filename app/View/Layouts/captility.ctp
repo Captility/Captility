@@ -50,10 +50,11 @@
 
 <?php echo $this->Element('/navigation/navigation'); ?>
 
+<?php echo $this->Element('breadcrumbs'); ?>
+
+
 <div class="container container-wrapper">
     <div class="container container-lower">
-
-        <?php echo $this->Element('breadcrumbs'); ?>
 
         <!-- Start::Content -->
         <div class="row clearfix">
