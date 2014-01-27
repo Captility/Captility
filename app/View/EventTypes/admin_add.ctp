@@ -1,4 +1,4 @@
-<? $this->Html->addCrumb(__('Event Types'), array('action' => 'index')); ?><?php $this->Html->addCrumb(__('Admin Add Event Type'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-facetime-video"></span>'.__('Event Types'), array('action' => 'index')); ?><?php $this->Breadcrumbs->addCrumb(__('Admin Add Event Type'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -66,7 +66,7 @@
     </div>
 
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div><!-- end col md 3 -->
 
 

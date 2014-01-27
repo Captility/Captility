@@ -1,4 +1,6 @@
-<? $this->Html->addCrumb(__('Workflows'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Team'), '/pages/production'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-random"></span>'.__('Workflows'), '#', array('class' => 'active')); ?>
+
 <!--<div class=" index">-->
 
 <div class="row">
@@ -38,7 +40,7 @@
                     <td><?php echo h($workflow['Workflow']['name']); ?>&nbsp;</td>
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $workflow['Workflow']['workflow_id']), array('escape' => false)); ?>
-                        <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $workflow['Workflow']['workflow_id']), array('escape' => false)); ?>
+                        <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('action' => 'edit', $workflow['Workflow']['workflow_id']), array('escape' => false)); ?>
                         <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $workflow['Workflow']['workflow_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $workflow['Workflow']['workflow_id'])); ?>
                     </td>
                 </tr>
@@ -91,7 +93,7 @@
     </div>
     <!-- end actions -->
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div><!-- end col md 3 -->
 
 <!--</div>--><!-- end row -->

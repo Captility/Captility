@@ -3161,7 +3161,7 @@ th.next:before {
 .glyphicon-facetime-video:before {
   content: "\e064";
 }
-.glyphicon-edit:before {
+.el-icon-file-edit:before {
   content: "\e065";
 }
 .glyphicon-share:before {

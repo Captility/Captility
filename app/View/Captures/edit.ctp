@@ -1,4 +1,7 @@
-<? $this->Html->addCrumb(__('Captures'), array('action' => 'index')); ?><?php $this->Html->addCrumb(__('Edit Capture'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>'.__('Captures'), array('action' => 'index')); ?>
+<? $this->Breadcrumbs->addCrumb(' #' . h($this->request->data['Capture']['capture_id']) . ' ' . h($this->request->data['Capture']['name']), '/captures/view/' . h($this->request->data['Capture']['capture_id'])); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Capture'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -376,7 +379,7 @@
         'class' => 'btn btn-default form-schedule-remove',
         'escape' => false,
         'type' => 'button',
-        'disabled' => (count($this->request->data['Schedule']) == 1)? true : false,
+        'disabled' => (count($this->request->data['Schedule']) == 1) ? true : false,
     )); ?>
 
 
@@ -445,7 +448,7 @@
     </div>
 
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div><!-- end col md 3 -->
 
 

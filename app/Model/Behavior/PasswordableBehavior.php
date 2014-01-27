@@ -282,7 +282,7 @@ class PasswordableBehavior extends ModelBehavior {
             if (!$this->settings[$Model->alias]['allowSame']) {
                 $Model->validator()->add($formField, 'validateNotSame', array(
                     'rule' => array('validateNotSame', $formField, $formFieldCurrent),
-                    'message' => 'valErrPwdSameAsBefore',
+                    'message' => 'Selbes Passwort wie zuvor.',
                     'allowEmpty' => !$this->settings[$Model->alias]['require'],
                     'last' => true,
                 ));
@@ -292,7 +292,7 @@ class PasswordableBehavior extends ModelBehavior {
             if (!$this->settings[$Model->alias]['allowSame']) {
                 $Model->validator()->add($formField, 'validateNotSame', array(
                     'rule' => array('validateNotSameHash', $formField),
-                    'message' => 'valErrPwdSameAsBefore',
+                    'message' => 'Selbes Passwort wie zuvor.',
                     'allowEmpty' => !$this->settings[$Model->alias]['require'],
                     'last' => true,
                 ));

@@ -174,7 +174,7 @@ class UsersController extends AppController {
 
         }*/
 
-        $this->Session->setFlash(__('This function is in the demo currently disabled.'), 'flash/danger');
+        $this->Session->setFlash(__('This function is in the demo currently disabled.'), 'flash/info');
 
         unset($this->request->data['User']['pwd']);
         unset($this->request->data['User']['pwd_confirm']);
@@ -198,7 +198,7 @@ class UsersController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             }
             else {
-                debug($this->User->validationErrors);
+                //debug($this->User->validationErrors);
                 $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
             }
         }

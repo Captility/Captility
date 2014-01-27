@@ -1,5 +1,19 @@
-<? $this->Html->addCrumb(__('Users'), array('action' => 'index')); ?><?php $this->Html->addCrumb(__('Edit User'), '#', array('class' => 'active')); ?>
-<!--<div class=" form">-->
+<? if ($this->Session->read('Auth.User.user_id') === h($this->request->data['User']['user_id'])): ?>
+
+    <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-user"></span>'.__('Users'), '/users', array('class' => 'active')); ?>
+    <? $this->Breadcrumbs->addCrumb(h($this->Session->read('Auth.User.username')), '/users/view/' . $this->Session->read('Auth.User.user_id')); ?>
+    <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-address-book-alt"></span>'.__('My Profile'), '/users/profile/' . $this->Session->read('Auth.User.user_id')); ?>
+    <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit User'), '#', array('class' => 'active')); ?>
+
+<? else: ?>
+
+    <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-myspace"></span>'.__('User Registry'), '/admin_center'); ?>
+    <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-user"></span>'.__('Users'), '/users', array('class' => 'active')); ?>
+    <? $this->Breadcrumbs->addCrumb(h($this->request->data['User']['username']), '/users/view/' . h($this->request->data['User']['user_id'])); ?>
+    <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit User'), '#', array('class' => 'active')); ?>
+
+<? endif; ?>
+
 
 <div class="row">
     <div class="col-md-1 column">
@@ -105,7 +119,7 @@
     </div>
 
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div><!-- end col md 3 -->
 
 

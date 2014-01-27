@@ -1,4 +1,5 @@
-<? $this->Html->addCrumb(__('Users'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-myspace"></span>'.__('User Registry'), '/admin_center'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-user"></span>'.__('Users'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->
 
 <div class="row">
@@ -60,7 +61,7 @@
                     </td>
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $user['User']['user_id']), array('escape' => false)); ?>
-                        <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $user['User']['user_id']), array('escape' => false)); ?>
+                        <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('action' => 'edit', $user['User']['user_id']), array('escape' => false)); ?>
                         <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $user['User']['user_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $user['User']['user_id'])); ?>
                     </td>
                 </tr>
@@ -128,7 +129,7 @@
     </div>
     <!-- end actions -->
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div>
 <!-- end col md 3 -->
 

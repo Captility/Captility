@@ -1,3 +1,7 @@
+<? $this->Breadcrumbs->addCrumb(h($this->Session->read('Auth.User.username')), '/users/view/'. $this->Session->read('Auth.User.user_id')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-address-book-alt"></span>'.__('My Profile'), '/users/profile/'. $this->Session->read('Auth.User.user_id')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Change Password'), '#'); ?>
+
 <div class="col-md-1 column content-pane">
 
 </div>

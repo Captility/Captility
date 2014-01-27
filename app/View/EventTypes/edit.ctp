@@ -1,4 +1,7 @@
-<? $this->Html->addCrumb(__('Event Types'), array('action' => 'index')); ?><?php $this->Html->addCrumb(__('Edit Event Type'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-facetime-video"></span>'.__('Event Types'), array('action' => 'index')); ?>
+<? $this->Breadcrumbs->addCrumb(h($this->request->data['EventType']['name']), '/event_types/view/'.h($this->request->data['EventType']['event_type_id'])); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Event Type'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -70,7 +73,7 @@
     </div>
 
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div><!-- end col md 3 -->
 
 

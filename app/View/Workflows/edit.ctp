@@ -1,5 +1,7 @@
-
-<? $this->Html->addCrumb(__('Workflows'),array('action' => 'index')); ?><?php $this->Html->addCrumb(__('Edit Workflow'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Team'), '/pages/production'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-random"></span>'.__('Workflows'),array('action' => 'index')); ?>
+<? $this->Breadcrumbs->addCrumb(' #' . h($this->request->data['Workflow']['workflow_id']) . ' ' . h($this->request->data['Workflow']['name']), '/workflows/view/' . h($this->request->data['Workflow']['workflow_id'])); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Workflow'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -7,7 +9,7 @@
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo __('Edit Workflow'); ?></h1>
+            <h1><?php echo ' #' . h($this->request->data['Workflow']['workflow_id']) . ' ' . h($this->request->data['Workflow']['name']); ?></h1>
         </div>
     </div>
 </div>
@@ -57,7 +59,7 @@
     </div>
 
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div><!-- end col md 3 -->
 
 

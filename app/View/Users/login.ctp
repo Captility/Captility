@@ -1,3 +1,6 @@
+<? $this->Breadcrumbs->addCrumb(__('Captility'), '/'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-unlock"></span>'.__('Login'), '/login'); ?>
+
 <div class="col-md-1 column">
 
 </div>

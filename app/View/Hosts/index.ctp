@@ -1,4 +1,5 @@
-<? $this->Html->addCrumb(__('Hosts'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon cp-icon-lecturer"></span>'.__('Hosts'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->
 
 <div class="row">
@@ -55,7 +56,7 @@
                     </td>
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $host['Host']['host_id']), array('escape' => false)); ?>
-                        <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $host['Host']['host_id']), array('escape' => false)); ?>
+                        <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('action' => 'edit', $host['Host']['host_id']), array('escape' => false)); ?>
                         <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $host['Host']['host_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $host['Host']['host_id'])); ?>
                     </td>
                 </tr>
@@ -105,7 +106,7 @@
     </div>
     <!-- end actions -->
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>            <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>            <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div><!-- end col md 3 -->
 
 <!--</div>--><!-- end row -->

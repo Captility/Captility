@@ -1,5 +1,7 @@
-
-<? $this->Html->addCrumb(__('Hosts'),array('action' => 'index')); ?><?php $this->Html->addCrumb(__('Edit Host'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon cp-icon-lecturer"></span>'.__('Hosts'), '/hosts', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(h($this->request->data['Host']['name']), '/hosts/view/'.h($this->request->data['Host']['host_id']), array('class' => 'active')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Host'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -67,7 +69,7 @@
     </div>
 
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div><!-- end col md 3 -->
 
 

@@ -1,11 +1,13 @@
-<? $this->Html->addCrumb(__('Group'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-myspace"></span>'.__('User Registry'), '/admin_center'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-group"></span>'.__('Groups'), array('action' => 'index')); ?>
+<? $this->Breadcrumbs->addCrumb(h($group['Group']['name']), '#', array('class' => 'active')); ?>
 <!--<div class=" view">-->
 <div class="row">
     <div class="col-md-1 column">
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo __('Group'); ?></h1>
+            <h1><?php echo h($group['Group']['name']); ?></h1>
         </div>
     </div>
 </div>
@@ -83,7 +85,7 @@
                                 <td><?php echo $user['group_id']; ?></td>
                                 <td class="actions">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'users', 'action' => 'view', $user['user_id']), array('escape' => false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('controller' => 'users', 'action' => 'edit', $user['user_id']), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('controller' => 'users', 'action' => 'edit', $user['user_id']), array('escape' => false)); ?>
                                     <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'users', 'action' => 'delete', $user['user_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $user['user_id'])); ?>
                                 </td>
                             </tr>
@@ -114,10 +116,20 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>&nbsp&nbsp;' . __('Edit Group'), array('action' => 'edit', $group['Group']['group_id']), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>' . __('Edit Group'), array('action' => 'edit', $group['Group']['group_id']), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>' . __('Delete Group'), array('action' => 'delete', $group['Group']['group_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $group['Group']['group_id'])); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Groups'), array('action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Group'), array('action' => 'add'), array('escape' => false)); ?> </li>
+                    </ul>
+            </div>
+            <!-- end body -->
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-user"></span><?php echo __('Users');?>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New User'), array('controller' => 'users', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>
@@ -128,7 +140,7 @@
     </div>
     <!-- end actions -->
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div>
 <!-- end col md 3 -->
 

@@ -1,5 +1,5 @@
-<? $this->Html->addCrumb(__('Production'), '#'); ?>
-<? $this->Html->addCrumb($headline, '/calendar', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Production'), '#'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-calendar"></span>'.__('Calendar'), '/calendar', array('class' => 'active')); ?>
 
 <div class="col-md-12 column content-pane">
     <?php echo $this->Session->flash(); ?>

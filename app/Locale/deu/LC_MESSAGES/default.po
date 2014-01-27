@@ -42,7 +42,7 @@ msgid "List Event Types"
 msgstr "Aufnahmetypen zeigen"
 
 msgid "List Events"
-msgstr "Aufnahmen anzeigen"
+msgstr "Aufzeichnungen anzeigen"
 
 msgid "List Schedules"
 msgstr "Zeitpläne anzeigen"
@@ -69,7 +69,7 @@ msgid "New Event Type"
 msgstr "Aufnahmetyp anlegen"
 
 msgid "New Event"
-msgstr "Aufnahme anlegen"
+msgstr "Aufzeichnung anlegen"
 
 msgid "New Schedule"
 msgstr "Zeitplan anlegen"
@@ -100,7 +100,7 @@ msgid "Delete Event Type"
 msgstr "Aufnahmetyp entfernen"
 
 msgid "Delete Event"
-msgstr "Aufnahme entfernen"
+msgstr "Aufzeichnung entfernen"
 
 msgid "Delete Schedule"
 msgstr "Zeitplan entfernen"
@@ -148,10 +148,10 @@ msgid "The capture has been deleted."
 msgstr "Der Aufnahmeplan wurde entfernt."
 
 msgid "The related events have been deleted."
-msgstr "Die zugehörigen Aufnahmen wurden entfernt."
+msgstr "Die zugehörigen Aufzeichnungen wurden entfernt."
 
 msgid "The related events could not be deleted. Please, try again."
-msgstr "Die zugehörigen Aufnahmen konnten nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Die zugehörigen Aufzeichnungen konnten nicht entfernt werden. Bitte versuchen Sie es erneut."
 
 msgid "The related schedules have been deleted."
 msgstr "Die zugehörigen Zeitpläne wurden entfernt."
@@ -460,7 +460,7 @@ msgid "Workflow"
 msgstr ""
 
 msgid "Related Events"
-msgstr "Zugehörige Aufnahmen"
+msgstr "Zugehörige Aufzeichnungen"
 
 msgid "Event Id"
 msgstr "ID"
@@ -678,10 +678,10 @@ msgid "Schedule"
 msgstr "Zeitplan"
 
 msgid "Events"
-msgstr "Aufnahmen"
+msgstr "Aufzeichnungen"
 
 msgid "Add Event"
-msgstr "Aufnahme anlegen"
+msgstr "Aufzeichnung anlegen"
 
 msgid "Admin Add Event"
 msgstr "Admin::Aufnahme anlegen"
@@ -690,7 +690,7 @@ msgid "Admin Edit Event"
 msgstr "Admin::Aufnahme bearbeiten"
 
 msgid "Event"
-msgstr "Aufnahme"
+msgstr "Aufzeichnung"
 
 msgid "Related Tickets"
 msgstr "Verknüpfte Tickets"
@@ -982,8 +982,8 @@ msgid "Related Tasks"
 msgstr "Verknüpfte Aufgaben"
 
 
-
-
+msgid "User Registry"
+msgstr "Benutzerverwaltung"
 
 msgid "Edit Workflow"
 msgstr "Workflow bearbeiten"

@@ -1,5 +1,5 @@
-<? $this->Html->addCrumb(__('Production'), '#'); ?>
-<? $this->Html->addCrumb($headline, '/dashboard', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Production'), '#'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-dashboard"></span>'.$headline, '/dashboard', array('class' => 'active')); ?>
 
 <div class="col-md-1 column">
     <!-- Element::LeftTabs -->

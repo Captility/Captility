@@ -1,11 +1,13 @@
-<? $this->Html->addCrumb(__('Ticket'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Team'), '/pages/production'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-tags"></span>'.__('Tickets'), array('action' => 'index')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-tags"></span>'.__('Ticket').' #'.h($ticket['Ticket']['ticket_id']), '#', array('class' => 'active')); ?>
 <!--<div class=" view">-->
 <div class="row">
     <div class="col-md-1 column">
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo __('Ticket'); ?></h1>
+            <h1><?php echo __('Ticket').' #'.h($ticket['Ticket']['ticket_id']); ?></h1>
         </div>
     </div>
 </div>
@@ -102,7 +104,7 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>&nbsp&nbsp;' . __('Edit Ticket'), array('action' => 'edit', $ticket['Ticket']['ticket_id']), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>' . __('Edit Ticket'), array('action' => 'edit', $ticket['Ticket']['ticket_id']), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>' . __('Delete Ticket'), array('action' => 'delete', $ticket['Ticket']['ticket_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $ticket['Ticket']['ticket_id'])); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Tickets'), array('action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Ticket'), array('action' => 'add'), array('escape' => false)); ?> </li>
@@ -132,7 +134,7 @@
     </div>
     <!-- end actions -->
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div>
 <!-- end col md 3 -->
 

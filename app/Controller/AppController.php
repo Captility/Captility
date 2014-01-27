@@ -50,6 +50,7 @@ class AppController extends Controller {
         'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
         'Form' => array('className' => 'BoostCake.BoostCakeForm'),
         'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+        'Breadcrumbs'
     );
 
 

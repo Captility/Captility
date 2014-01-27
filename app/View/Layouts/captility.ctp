@@ -26,7 +26,7 @@
     //echo $this->Html->script('jquery/jquery.qtip-1.0.0-rc3.min.js');
 
     // Ajax application root
-    echo $this->Html->scriptBlock('$appRoot = "'. $this->Html->url('/', true) . '"');
+    echo $this->Html->scriptBlock('$appRoot = "' . $this->Html->url('/', true) . '"');
     // custom JS
     echo $this->Html->script('captility.min.js');?>
 
@@ -61,7 +61,10 @@
 
                 <div class="row clearfix">
 
+
                     <?php if (isset($sideCalendar) && $sideCalendar && isset($headline)): //Layout in Tabs with Sidebar ?>
+
+
                         <div class="col-md-12 column">
                             <?php echo $this->Element('headline');?>
                         </div>

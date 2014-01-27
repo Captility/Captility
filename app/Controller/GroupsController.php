@@ -15,6 +15,16 @@ class GroupsController extends AppController {
  */
 	public $components = array('Paginator');
 
+
+    public function beforeFilter() {
+
+        parent::beforeFilter();
+
+        // SideElements for all Layouts
+        $this->set('sideCalendar', false);
+        $this->set('sideTickets', false);
+    }
+
 /**
  * index method
  *

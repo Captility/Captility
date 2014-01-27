@@ -1,11 +1,25 @@
-<? $this->Html->addCrumb(__('User'), '#', array('class' => 'active')); ?>
+<? if ($this->Session->read('Auth.User.user_id') === h($user['User']['user_id'])): ?>
+
+    <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-user"></span>'.__('Users'), '/users', array('class' => 'active')); ?>
+    <? $this->Breadcrumbs->addCrumb(h($this->Session->read('Auth.User.username')), '/users/view/' . $this->Session->read('Auth.User.user_id')); ?>
+    <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-address-book-alt"></span>'.__('My Profile'), '/users/profile/' . $this->Session->read('Auth.User.user_id')); ?>
+    <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit User'), '#', array('class' => 'active')); ?>
+
+<? else: ?>
+
+    <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-myspace"></span>'.__('User Registry'), '/admin_center'); ?>
+    <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-user"></span>'.__('Users'), '/users', array('class' => 'active')); ?>
+    <? $this->Breadcrumbs->addCrumb(h($user['User']['username']), '#', array('class' => 'active')); ?>
+
+<? endif; ?>
+
 <!--<div class=" view">-->
 <div class="row">
     <div class="col-md-1 column">
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo __('User'); ?></h1>
+            <h1><?php echo h($user['User']['username']) ?></h1>
         </div>
     </div>
 </div>
@@ -115,7 +129,7 @@
                             <td><?php echo $this->Html->link($capture['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $capture['Workflow']['workflow_id'])); ?></td>
                             <td class="actions">
                                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'captures', 'action' => 'view', $capture['capture_id']), array('escape' => false)); ?>
-                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('controller' => 'captures', 'action' => 'edit', $capture['capture_id']), array('escape' => false)); ?>
+                                <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('controller' => 'captures', 'action' => 'edit', $capture['capture_id']), array('escape' => false)); ?>
                                 <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'captures', 'action' => 'delete', $capture['capture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $capture['capture_id'])); ?>
                             </td>
                         </tr>
@@ -178,7 +192,7 @@
                             </td>
                             <td class="actions">
                                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'lectures', 'action' => 'view', $lecture['lecture_id']), array('escape' => false)); ?>
-                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('controller' => 'lectures', 'action' => 'edit', $lecture['lecture_id']), array('escape' => false)); ?>
+                                <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('controller' => 'lectures', 'action' => 'edit', $lecture['lecture_id']), array('escape' => false)); ?>
                                 <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'lectures', 'action' => 'delete', $lecture['lecture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $lecture['lecture_id'])); ?>
                             </td>
                         </tr>
@@ -235,7 +249,7 @@
                             <td><?php echo $ticket['event_id']; ?></td>
                             <td class="actions">
                                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id']), array('escape' => false)); ?>
-                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('controller' => 'tickets', 'action' => 'edit', $ticket['ticket_id']), array('escape' => false)); ?>
+                                <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('controller' => 'tickets', 'action' => 'edit', $ticket['ticket_id']), array('escape' => false)); ?>
                                 <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'tickets', 'action' => 'delete', $ticket['ticket_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $ticket['ticket_id'])); ?>
                             </td>
                         </tr>
@@ -267,7 +281,7 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>' . __('Edit User'), array('action' => 'edit', $user['User']['user_id']), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>' . __('Edit User'), array('action' => 'edit', $user['User']['user_id']), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>' . __('Delete User'), array('action' => 'delete', $user['User']['user_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $user['User']['user_id'])); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Users'), array('action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New User'), array('action' => 'add'), array('escape' => false)); ?> </li>
@@ -297,7 +311,7 @@
     </div>
     <!-- end actions -->
 
-    <?php if (isset($sideCalendar)) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets)) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
 </div>
 <!-- end col md 3 -->
 

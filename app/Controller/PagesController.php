@@ -51,7 +51,7 @@ class PagesController extends AppController
     {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('home', 'landing_page');
+        $this->Auth->allow('home', 'showcase');
     }
 
     /**
@@ -63,7 +63,13 @@ class PagesController extends AppController
     public function display()
     {
 
-        $this->layout = 'landing';
+        // TODO Enable Landing Page again:
+        $this->Session->setFlash(__('Showcase under construction!'), 'flash/info');
+        // TODO IMPLEMENT SCHEDULE AND TICKETS FIRST
+        return $this->redirect(array('controller' => 'users', 'action' => 'login'));
+
+
+        $this->layout = 'showcase';
 
 
         $headline= "";

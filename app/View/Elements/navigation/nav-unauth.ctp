@@ -22,7 +22,7 @@
     <ul class="nav navbar-nav">
 
         <li <? if (!in_array($this->params['controller'], array('users', 'calendars'))) echo 'class="active"';?>>
-            <?php echo $this->Html->link(__('Start'), $this->Html->url('/', true) /*array('controller' => 'pages', 'action' => 'landing_page')*/); ?>
+            <?php echo $this->Html->link(__('Start'), $this->Html->url('/', true) /*array('controller' => 'pages', 'action' => 'showcase')*/); ?>
         </li>
 
         <li>

@@ -1347,9 +1347,9 @@ class HtmlHelperTest extends CakeTestCase {
 	public function testBreadcrumb() {
 		$this->assertNull($this->Html->getCrumbs());
 
-		$this->Html->addCrumb('First', '#first');
-		$this->Html->addCrumb('Second', '#second');
-		$this->Html->addCrumb('Third', '#third');
+		$this->Breadcrumbs->addCrumb('First', '#first');
+		$this->Breadcrumbs->addCrumb('Second', '#second');
+		$this->Breadcrumbs->addCrumb('Third', '#third');
 
 		$result = $this->Html->getCrumbs();
 		$expected = array(
@@ -1383,7 +1383,7 @@ class HtmlHelperTest extends CakeTestCase {
 		);
 		$this->assertTags($result, $expected);
 
-		$this->Html->addCrumb('Fourth', null);
+		$this->Breadcrumbs->addCrumb('Fourth', null);
 
 		$result = $this->Html->getCrumbs();
 		$expected = array(
@@ -1442,8 +1442,8 @@ class HtmlHelperTest extends CakeTestCase {
 			)
 		);
 
-		$this->Html->addCrumb('First', '#first');
-		$this->Html->addCrumb('Second', '#second');
+		$this->Breadcrumbs->addCrumb('First', '#first');
+		$this->Breadcrumbs->addCrumb('Second', '#second');
 
 		$result = $this->Html->getCrumbs(' - ', array('url' => '/home', 'text' => '<img src="/home.png" />', 'escape' => false));
 		$expected = array(
@@ -2034,9 +2034,9 @@ class HtmlHelperTest extends CakeTestCase {
 	public function testCrumbList() {
 		$this->assertNull($this->Html->getCrumbList());
 
-		$this->Html->addCrumb('Home', '/', array('class' => 'home'));
-		$this->Html->addCrumb('Some page', '/some_page');
-		$this->Html->addCrumb('Another page');
+		$this->Breadcrumbs->addCrumb('Home', '/', array('class' => 'home'));
+		$this->Breadcrumbs->addCrumb('Some page', '/some_page');
+		$this->Breadcrumbs->addCrumb('Another page');
 		$result = $this->Html->getCrumbList(
 			array('class' => 'breadcrumbs')
 		);
@@ -2062,8 +2062,8 @@ class HtmlHelperTest extends CakeTestCase {
  * Test getCrumbList startText
  */
 	public function testCrumbListFirstLink() {
-		$this->Html->addCrumb('First', '#first');
-		$this->Html->addCrumb('Second', '#second');
+		$this->Breadcrumbs->addCrumb('First', '#first');
+		$this->Breadcrumbs->addCrumb('Second', '#second');
 
 		$result = $this->Html->getCrumbList(null, 'Home');
 		$this->assertTags(
@@ -2108,9 +2108,9 @@ class HtmlHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testCrumbListBootstrapStyle() {
-		$this->Html->addCrumb('Home', '/', array('class' => 'home'));
-		$this->Html->addCrumb('Library', '/lib');
-		$this->Html->addCrumb('Data');
+		$this->Breadcrumbs->addCrumb('Home', '/', array('class' => 'home'));
+		$this->Breadcrumbs->addCrumb('Library', '/lib');
+		$this->Breadcrumbs->addCrumb('Data');
 		$result = $this->Html->getCrumbList(array(
 			'class' => 'breadcrumb',
 			'separator' => '<span class="divider">-</span>',
@@ -2141,10 +2141,10 @@ class HtmlHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testCrumbListZurbStyle() {
-		$this->Html->addCrumb('Home', '#');
-		$this->Html->addCrumb('Features', '#');
-		$this->Html->addCrumb('Gene Splicing', '#');
-		$this->Html->addCrumb('Home', '#');
+		$this->Breadcrumbs->addCrumb('Home', '#');
+		$this->Breadcrumbs->addCrumb('Features', '#');
+		$this->Breadcrumbs->addCrumb('Gene Splicing', '#');
+		$this->Breadcrumbs->addCrumb('Home', '#');
 		$result = $this->Html->getCrumbList(
 			array('class' => 'breadcrumbs', 'firstClass' => false, 'lastClass' => 'current')
 		);
