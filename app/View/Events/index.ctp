@@ -27,14 +27,13 @@
         <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
             <thead class="panel-heading">
             <tr>
-                <th><?php echo $this->Paginator->sort('event_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('event_id', 'ID'); ?></th>
                 <th><?php echo $this->Paginator->sort('title'); ?></th>
                 <th><?php echo $this->Paginator->sort('start'); ?></th>
                 <th><?php echo $this->Paginator->sort('end'); ?></th>
                 <th><?php echo $this->Paginator->sort('status'); ?></th>
                 <th><?php echo $this->Paginator->sort('link'); ?></th>
-                <th><?php echo $this->Paginator->sort('event_type_id'); ?></th>
-                <th><?php echo $this->Paginator->sort('schedule_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('event_type_id', __('Type')) ; ?></th>
                 <th><?php echo $this->Paginator->sort('capture_id'); ?></th>
                 <th class="actions"></th>
             </tr>
@@ -54,18 +53,19 @@
                         ?>
                     </td>
                     <td>
-                        <?php echo $this->Html->link($event['EventType']['name'], array('controller' => 'event_types', 'action' => 'view', $event['EventType']['event_type_id'])); ?>
-                    </td>
-                    <td>
-                        <?php echo $this->Html->link($event['Schedule']['schedule_id'], array('controller' => 'schedules', 'action' => 'view', $event['Schedule']['schedule_id'])); ?>
-                    </td>
-                    <td>
+                        <?php echo $this->Form->create('EventTypes', array('url' => array('controller' => 'eventTypes', 'action' => 'view', $event['EventType']['event_type_id'])));?>
+
+                        <button type="submit" title="<?php echo $event['EventType']['name']; ?>"
+                                class="btn-color eventColor<?php echo $event['EventType']['color']; ?>"></button>
+
+                        <?php echo $this->Form->end() ?>
+                    </td><td>
                         <?php echo $this->Html->link($event['Capture']['name'], array('controller' => 'captures', 'action' => 'view', $event['Capture']['capture_id'])); ?>
                     </td>
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $event['Event']['event_id']), array('escape' => false)); ?>
                         <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('action' => 'edit', $event['Event']['event_id']), array('escape' => false)); ?>
-                        <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $event['Event']['event_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $event['Event']['event_id'])); ?>
+                        <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $event['Event']['event_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $event['Event']['event_id'])); ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

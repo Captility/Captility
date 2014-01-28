@@ -32,6 +32,9 @@ class GroupsController extends AppController {
  */
 	public function index() {
 		$this->Group->recursive = 0;
+        $this->Paginator->settings = array(
+            'limit' => 12
+        );
 		$this->set('groups', $this->Paginator->paginate());
 	}
 

@@ -1148,6 +1148,7 @@ input[type="button"].btn-block {
 }
 .el-icon-file-edit:before {
   content: "\e6d2";
+  vertical-align: bottom;
 }
 .el-icon-file-alt:before {
   content: "\e6d3";
@@ -1516,6 +1517,9 @@ small.disabled {
 }
 .panel-link {
   cursor: pointer;
+}
+.pagination {
+  float: right !important;
 }
 /* ###############################################
  * ################# TYPOGRAPHY  #################
@@ -3144,6 +3148,9 @@ text-shadow: none;*/
 .landing-page > .navbar-inverse .navbar-header:active .captility-logo-nav {
   opacity: 1;
 }
+.landing-page > .navbar-inverse ul.navbar-nav li.active:after {
+  border-bottom: 7px solid #000;
+}
 .landing-page > .navbar-inverse .navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.66);
   border-left: 1px dashed #85a3b4;
@@ -3500,4 +3507,80 @@ ul.navbar-nav li.active:after {
   left: 50%;
   margin-left: -5px;
   position: absolute;
+}
+.actions-column .panel {
+  border-color: #357ebd;
+}
+.actions-column .panel table thead.panel-heading {
+  background-color: #357ebd;
+  color: #fff;
+  font-weight: 400;
+}
+.actions-column .panel table thead.panel-heading a {
+  color: #fff;
+  font-weight: 400;
+}
+.actions-column .panel table thead.panel-heading tr th.actions {
+  width: 80px;
+}
+.actions-column .panel table thead.panel-heading th {
+  font-weight: 400;
+}
+.actions-column .panel table thead.panel-heading th .glyphicon {
+  margin-bottom: 4px;
+}
+.actions-column .panel table tbody td.actions > a {
+  margin: 3px -2px;
+}
+.actions a span.glyphicon-search {
+  color: #f89406;
+}
+.actions a span.glyphicon-search:hover,
+.actions a span.glyphicon-search:active {
+  color: #428bca;
+}
+.actions a span.glyphicon-trash,
+.actions a span.glyphicon-remove {
+  color: #e15b47;
+}
+.actions a span.glyphicon-trash:hover,
+.actions a span.glyphicon-remove:hover,
+.actions a span.glyphicon-trash:active,
+.actions a span.glyphicon-remove:active {
+  color: #428bca;
+}
+.actions a span.glyphicon-ok {
+  color: #3cba47;
+}
+.actions a span.glyphicon-ok:hover,
+.actions a span.glyphicon-ok:active {
+  color: #428bca;
+}
+.sideTicket {
+  padding: 30px 10px 5px 10px;
+}
+.sideTicket .ticket-body {
+  font-size: 90%;
+}
+.sideTicket .ticket-body strong {
+  font-weight: 400;
+}
+.sideTicket .ticket-icon {
+  height: 20px;
+  float: right;
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  z-index: 1;
+}
+.sideTicket .ticket-icon span.glyphicon {
+  color: #fff;
+  font-size: 85%;
+}
+.sideTicket .ticket-actions {
+  height: 20px;
+  float: right;
+  position: absolute;
+  top: 3px;
+  right: 0;
 }

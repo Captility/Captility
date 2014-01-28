@@ -1,5 +1,5 @@
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>'.__('Captures'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>' . __('Captures'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->
 
 <div class="row">
@@ -20,30 +20,6 @@
 <div class="col-md-1 column">
 </div>
 <div class="col-md-8 column actions-column">
-
-
-    <div class="info-banner info-banner-info" id="Infobanner">
-
-        <button type="button" class="close" data-dismiss="info-banner" aria-hidden="true">&times;</button>
-
-        <h4 data-toggle="collapse" data-parent="#Infobanner" href="#Collabse-info-banner">
-            <small class="glyphicon glyphicon-hand-right"></small>
-            Plan regelmäßiger Aufzeichnungen
-        </h4>
-
-
-        <div id="Collabse-info-banner" class="panel-collapse collapse <!--in-->">
-
-            <hr/>
-            <p>Aufnahmen, Aufzeichnungs-Typen, Aufnahme-Pläne, Aufnahme-Salat.. man ist das verwirrend.</p>
-
-            Eine <strong>AufnahmeReihe</strong> bezeichnet eine Folge von einzelnen Terminen, an denen Aufgezeichnet
-            werden soll. Diese kann also Einzelaufzeichnungen, als auch regelmäßige Termine bezeichnen.<br/>
-            Charakteristisch für eine Reihe von Aufzeichnungen ist ein gemeinsamer Typ der Aufzeichnung, wie eine
-            Manuelle Aufnahme, oder eine Automatische Aufnahme.</p>
-
-        </div>
-    </div>
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
     <div class="panel panel-default">
@@ -79,7 +55,7 @@
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $capture['Capture']['capture_id']), array('escape' => false)); ?>
                         <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('action' => 'edit', $capture['Capture']['capture_id']), array('escape' => false)); ?>
-                        <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $capture['Capture']['capture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $capture['Capture']['capture_id'])); ?>
+                        <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $capture['Capture']['capture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $capture['Capture']['capture_id'])); ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -105,6 +81,31 @@
             ?>
         </ul>
     <?php } ?>
+
+
+
+    <div class="info-banner info-banner-info" id="Infobanner">
+
+        <button type="button" class="close" data-dismiss="info-banner" aria-hidden="true">&times;</button>
+
+        <h4 data-toggle="collapse" data-parent="#Infobanner" href="#Collabse-info-banner">
+            <small class="glyphicon glyphicon-hand-right"></small>
+            Plan regelmäßiger Aufzeichnungen
+        </h4>
+
+
+        <div id="Collabse-info-banner" class="panel-collapse collapse <!--in-->">
+
+            <hr/>
+            <p>Aufnahmen, Aufzeichnungs-Typen, Aufnahme-Pläne, Aufnahme-Salat.. man ist das verwirrend.</p>
+
+            Eine <strong>AufnahmeReihe</strong> bezeichnet eine Folge von einzelnen Terminen, an denen Aufgezeichnet
+            werden soll. Diese kann also Einzelaufzeichnungen, als auch regelmäßige Termine bezeichnen.<br/>
+            Charakteristisch für eine Reihe von Aufzeichnungen ist ein gemeinsamer Typ der Aufzeichnung, wie eine
+            Manuelle Aufnahme, oder eine Automatische Aufnahme.</p>
+
+        </div>
+    </div>
 
 </div>
 <!-- end col md 9 -->

@@ -326,6 +326,10 @@ class EventsController extends AppController {
      */
     public function index() {
         $this->Event->recursive = 0;
+
+        $this->Paginator->settings = array(
+            'limit' => 12
+        );
         $this->set('events', $this->Paginator->paginate());
     }
 

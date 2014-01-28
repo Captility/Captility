@@ -22,6 +22,9 @@ class LecturesController extends AppController {
  */
 	public function index() {
 		$this->Lecture->recursive = 0;
+        $this->Paginator->settings = array(
+            'limit' => 12
+        );
 		$this->set('lectures', $this->Paginator->paginate());
 	}
 

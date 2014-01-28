@@ -22,6 +22,9 @@ class HostsController extends AppController {
  */
 	public function index() {
 		$this->Host->recursive = 0;
+        $this->Paginator->settings = array(
+            'limit' => 12
+        );
 		$this->set('hosts', $this->Paginator->paginate());
 	}
 

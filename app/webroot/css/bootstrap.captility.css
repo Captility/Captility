@@ -2972,7 +2972,7 @@ th.next:before {
 .glyphicon-envelope:before {
   content: "\2709";
 }
-.glyphicon-pencil:before {
+.el-icon-file-edit:before {
   content: "\270f";
 }
 .glyphicon-glass:before {
@@ -3215,7 +3215,7 @@ th.next:before {
 .glyphicon-minus-sign:before {
   content: "\e082";
 }
-.glyphicon-remove-sign:before {
+.glyphicon-trash-sign:before {
   content: "\e083";
 }
 .glyphicon-ok-sign:before {
@@ -3230,7 +3230,7 @@ th.next:before {
 .glyphicon-screenshot:before {
   content: "\e087";
 }
-.glyphicon-remove-circle:before {
+.glyphicon-trash-circle:before {
   content: "\e088";
 }
 .glyphicon-ok-circle:before {
@@ -5007,6 +5007,54 @@ a.list-group-item.active > .badge,
 }
 .nav-pills > li > a > .badge {
   margin-left: 3px;
+}
+/* Badger
+------------------------- */
+[class*="badger"] {
+  position: relative;
+  margin-bottom: 15px;
+  padding: /*39px*/ 20px 19px 14px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+}
+[class*="badger"]:after {
+  content: attr(data-badger);
+  position: absolute;
+  top: 0;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  background: #999;
+  color: #fff;
+  padding-left: 22px;
+}
+.badger-left:after {
+  left: 0;
+  border-radius: 6px 0 6px 0;
+}
+.badger-right:after {
+  right: 0;
+  border-radius: 0 6px 0 6px;
+}
+.badger-danger:after {
+  background: #d9534f;
+}
+.badger-warning:after {
+  background: #f0ad4e;
+}
+.badger-success:after {
+  background: #5cb85c;
+}
+.badger-primary:after {
+  background: #357ebd;
+}
+.badger-info:after {
+  background: #5bc0de;
+}
+.badger-inverse:after {
+  background: #222;
 }
 .jumbotron {
   padding: 30px;

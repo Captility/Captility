@@ -661,6 +661,7 @@
 }
 .el-icon-file-edit:before {
   content: "\e6d2";
+  vertical-align: bottom;
 }
 .el-icon-file-alt:before {
   content: "\e6d3";

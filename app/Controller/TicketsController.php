@@ -23,6 +23,9 @@ class TicketsController extends AppController {
  */
 	public function index() {
 		$this->Ticket->recursive = 0;
+        $this->Paginator->settings = array(
+            'limit' => 12
+        );
 		$this->set('tickets', $this->Paginator->paginate());
 	}
 

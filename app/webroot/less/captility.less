@@ -14,6 +14,8 @@
 
 @body-background-color: #f0f0f0;
 
+@link-color: #428bca;
+
 @navbar-height: 50px;
 @navbar-margin: 25px;
 
@@ -161,6 +163,11 @@ small.disabled {
 .panel-link {
 
   cursor: pointer;
+}
+
+.pagination {
+
+  float: right !important;
 }
 
 /* ###############################################
@@ -920,6 +927,10 @@ text-shadow: none;*/
         opacity: 1;
       }
     }
+    ul.navbar-nav li.active:after {
+
+      border-bottom: 7px solid #000;
+    }
     .navbar-nav {
       > li {
         > a {
@@ -1417,4 +1428,121 @@ ul.navbar-nav li.active:after {
   left: 50%;
   margin-left: -5px;
   position: absolute;
+}
+
+// PANEL TABLE
+
+.actions-column .panel {
+
+  border-color: @btn-primary-border;
+
+  table {
+
+    thead.panel-heading {
+
+      background-color: @btn-primary-border;
+      color: #fff;
+      font-weight: 400;
+
+      a {
+        color: #fff;
+        font-weight: 400;
+      }
+
+      tr {
+
+        th.actions {
+
+          width: 80px;
+
+        }
+      }
+
+      th {
+        font-weight: 400;
+
+        .glyphicon {
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    tbody {
+
+      td.actions {
+
+        > a {
+          margin: 3px -2px;
+        }
+      }
+    }
+  }
+}
+
+//Colored Edit Buttons
+
+.actions {
+
+  a span.glyphicon-search {
+
+    color: rgb(248, 148, 6); //#FFB800;
+    &:hover, &:active {
+      color: @link-color;
+    }
+  }
+
+  a span.glyphicon-trash, a span.glyphicon-remove {
+
+    color: rgb(225, 91, 71);
+    &:hover, &:active {
+      color: @link-color;
+    }
+  }
+
+  a span.glyphicon-ok {
+
+    color: rgb(60, 186, 71);
+    &:hover, &:active {
+      color: @link-color;
+    }
+  }
+}
+
+// SideTickets
+
+.sideTicket {
+
+  padding: 30px 10px 5px 10px;
+
+  .ticket-body {
+    font-size: 90%;
+
+    strong {
+
+      font-weight: 400;
+    }
+  }
+  .ticket-icon {
+
+    height: 20px;
+    float: right;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+    z-index: 1;
+
+    span.glyphicon {
+      color: #fff;
+      font-size: 85%;
+    }
+  }
+
+  .ticket-actions {
+
+    height: 20px;
+    float: right;
+    position: absolute;
+    top: 3px;
+    right: 0;
+  }
 }

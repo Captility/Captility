@@ -22,6 +22,9 @@ class EventTypesController extends AppController {
  */
 	public function index() {
 		$this->EventType->recursive = 0;
+        $this->Paginator->settings = array(
+            'limit' => 12
+        );
 		$this->set('eventTypes', $this->Paginator->paginate());
 	}
 

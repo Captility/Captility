@@ -2678,7 +2678,7 @@ input[type="button"].btn-block {
   content: "\2709";
 }
 
-.glyphicon-pencil:before {
+.el-icon-file-edit:before {
   content: "\270f";
 }
 
@@ -2730,7 +2730,7 @@ input[type="button"].btn-block {
   content: "\e013";
 }
 
-.glyphicon-remove:before {
+.glyphicon-trash:before {
   content: "\e014";
 }
 
@@ -3002,7 +3002,7 @@ input[type="button"].btn-block {
   content: "\e082";
 }
 
-.glyphicon-remove-sign:before {
+.glyphicon-trash-sign:before {
   content: "\e083";
 }
 
@@ -3022,7 +3022,7 @@ input[type="button"].btn-block {
   content: "\e087";
 }
 
-.glyphicon-remove-circle:before {
+.glyphicon-trash-circle:before {
   content: "\e088";
 }
 

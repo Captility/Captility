@@ -63,10 +63,10 @@ class PagesController extends AppController
     public function display()
     {
 
-      /*  // TODO Enable Landing Page again:
+        // TODO Enable Landing Page again:
         $this->Session->setFlash(__('Showcase under construction!'), 'flash/info');
         // TODO IMPLEMENT SCHEDULE AND TICKETS FIRST
-        return $this->redirect(array('controller' => 'users', 'action' => 'login'));*/
+        return $this->redirect(array('controller' => 'users', 'action' => 'login'));
 
 
         $this->layout = 'showcase';

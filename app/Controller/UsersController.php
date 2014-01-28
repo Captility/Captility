@@ -214,6 +214,9 @@ class UsersController extends AppController {
      */
     public function index() {
         $this->User->recursive = 0;
+        $this->Paginator->settings = array(
+            'limit' => 12
+        );
         $this->set('users', $this->Paginator->paginate());
     }
 

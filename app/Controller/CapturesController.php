@@ -23,6 +23,10 @@ class CapturesController extends AppController {
      */
     public function index() {
         $this->Capture->recursive = 0;
+
+        $this->Paginator->settings = array(
+            'limit' => 12
+        );
         $this->set('captures', $this->Paginator->paginate());
     }
 

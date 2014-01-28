@@ -375,7 +375,7 @@
         'escape' => false,
         'type' => 'button',
     )); ?>
-    <?php echo $this->Form->button('<span class="glyphicon glyphicon-remove"></span > ' . __('Delete Schedule'), array(
+    <?php echo $this->Form->button('<span class="glyphicon glyphicon-trash"></span > ' . __('Delete Schedule'), array(
         'class' => 'btn btn-default form-schedule-remove',
         'escape' => false,
         'type' => 'button',

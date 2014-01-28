@@ -100,7 +100,7 @@
             Daniel
         </td>
         <td>
-            <span class="glyphicon glyphicon-remove"></span>
+            <span class="glyphicon glyphicon-trash"></span>
         </td>
     </tr>
     </tbody>

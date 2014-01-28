@@ -22,6 +22,9 @@ class TasksController extends AppController {
  */
 	public function index() {
 		$this->Task->recursive = 0;
+        $this->Paginator->settings = array(
+            'limit' => 12
+        );
 		$this->set('tasks', $this->Paginator->paginate());
 	}
 
