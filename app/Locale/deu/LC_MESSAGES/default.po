@@ -271,16 +271,16 @@ msgid "Invalid ticket"
 msgstr "Ungültiges Ticket"
 
 msgid "The ticket has been saved."
-msgstr "/ttkt wurde erfolgreich gesichert."
+msgstr "Das Ticket wurde erfolgreich gesichert."
 
 msgid "The ticket could not be saved. Please, try again."
-msgstr "/ttkt konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Das Ticket konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
 
 msgid "The ticket has been deleted."
-msgstr "/ttkt wurde erfolgreich entfernt."
+msgstr "Das Ticket wurde erfolgreich entfernt."
 
 msgid "The ticket could not be deleted. Please, try again."
-msgstr "/ttkt konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Das Ticket konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
 
 msgid "You are already logged in."
 msgstr "Sie sind bereits eingeloggt."
@@ -404,6 +404,24 @@ msgstr "Verknüpfte Aktionen"
 
 
 
+
+msgid "New"
+msgstr "Ausstehend"
+
+msgid "Requested"
+msgstr "Zugewiesen"
+
+msgid "Urgend"
+msgstr "Dringend"
+
+msgid "Overdue"
+msgstr "Überfällig"
+
+msgid "Done"
+msgstr "Erledigt"
+
+msgid "Error"
+msgstr "Fehler"
 
 
 

@@ -89,7 +89,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>'.__('Delete'), array('action' => 'delete', $this->Form->value('Schedule.schedule_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Schedule.schedule_id'))); ?></li>
+                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">'. __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Schedule.schedule_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Schedule.schedule_id'))); ?></li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Schedules'), array('action' => 'index'), array('escape' => false)); ?></li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>

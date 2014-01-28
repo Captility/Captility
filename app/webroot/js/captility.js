@@ -372,7 +372,7 @@ $(document).ready(function () {
             eventSources: [captilityEventSources.overview],
 
             //Interaction
-            editable: true,
+            editable: false,
             selectable: true,
 
 
@@ -544,6 +544,22 @@ $(document).ready(function () {
             $('.selected-color').val(e.color);
         });
 
+
+//######################################################################################################################
+//############################################# INPUT FIELDS  ##########################################################
+//######################################################################################################################
+
+    $('select:not(.form-control-date)').addClass('show-tick').selectpicker({
+        selectedTextFormat : 'values',
+        noneSelectedText : '<span class="glyphicon el-icon-error"></span>'
+
+    });
+
+    $('select.form-control-date').selectpicker({
+        selectedTextFormat : 'values',
+        noneSelectedText : '<span class="glyphicon el-icon-error"></span>',
+        width : 'auto'
+    });
 
 //######################################################################################################################
 //########################################### KEY CALENDAR CONTROL  ####################################################
@@ -789,9 +805,9 @@ $(document).ready(function () {
     // Last 2 or all
     /*$('.captility-breadcrumb li').last().prev().andSelf().hide().css({"margin-left": "-500px"});
 
-    $('.captility-breadcrumb li').last().prev().andSelf().each(function (index) {
-        $(this).css({"z-index": 255 - index}).delay(450 * index).show().animate({"margin-left": "0"}, 400);
-    });*/
+     $('.captility-breadcrumb li').last().prev().andSelf().each(function (index) {
+     $(this).css({"z-index": 255 - index}).delay(450 * index).show().animate({"margin-left": "0"}, 400);
+     });*/
 
 
     //Last Only
@@ -800,7 +816,6 @@ $(document).ready(function () {
     });
 
     $('.captility-breadcrumb li').last().hide().css({"margin-left": "-400px"}).show().animate({"margin-left": "0"}, 600);
-
 
 
 });

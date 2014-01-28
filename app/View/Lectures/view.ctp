@@ -161,7 +161,7 @@
                                 <td><?php echo $this->Html->link($capture['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $capture['Workflow']['workflow_id'])); ?></td>
                                 <td class="actions">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'captures', 'action' => 'view', $capture['capture_id']), array('escape' => false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('controller' => 'captures', 'action' => 'edit', $capture['capture_id']), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'captures', 'action' => 'edit', $capture['capture_id']), array('escape' => false)); ?>
                                     <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('controller' => 'captures', 'action' => 'delete', $capture['capture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $capture['capture_id'])); ?>
                                 </td>
                             </tr>
@@ -192,7 +192,7 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>' . __('Edit Lecture'), array('action' => 'edit', $lecture['Lecture']['lecture_id']), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>' . __('Edit Lecture'), array('action' => 'edit', $lecture['Lecture']['lecture_id']), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . __('Delete Lecture'), array('action' => 'delete', $lecture['Lecture']['lecture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $lecture['Lecture']['lecture_id'])); ?> </li>
                 </ul>
             </div>

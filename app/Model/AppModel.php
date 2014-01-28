@@ -21,6 +21,7 @@
  */
 
 App::uses('Model', 'Model');
+App::uses('CakeTime', 'Utility');
 
 /**
  * Application model for Cake.
@@ -35,7 +36,6 @@ class AppModel extends Model {
     public $actsAs = array('Containable', 'Linkable.Linkable');
 
 
-
     public function isSemester($check) {
         // $data array is passed using the form field name as the key
         // have to extract the value to make the function generic
@@ -44,7 +44,6 @@ class AppModel extends Model {
 
         return preg_match('(WS\s?\d{4,4}\/?\d{2,4}|SS\s?\d{4,4})', $value);
     }
-
 
 
     function equalToField($check, $otherfield) {
@@ -56,7 +55,6 @@ class AppModel extends Model {
         }
         return $this->data[$this->name][$otherfield] === $this->data[$this->name][$fname];
     }
-
 
 
     public function checkSupportedLanguage($check) {
@@ -116,5 +114,12 @@ class AppModel extends Model {
         $date = strtotime($this->data[$this->name][$fieldName]);
 
         return $this->_evaluate($date > time(), "is not set in a future date", $fieldName, $params);
+    }
+
+
+    public function datepickerFormatBeforeSave($dateString) {
+
+        //return date('Y-m-d', strtotime($dateString));
+        return CakeTime::format('Y-m-d H:i:s', substr($dateString, 4));
     }
 }

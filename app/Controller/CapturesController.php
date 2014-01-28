@@ -1,6 +1,5 @@
 <?php
 App::uses('AppController', 'Controller');
-App::uses('CakeTime', 'Utility');
 /**
  * Captures Controller
  *

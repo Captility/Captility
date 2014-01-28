@@ -3,7 +3,7 @@
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-play-alt"></span>'.__('Event'), '/events/view/' . h($this->request->data['Event']['event_id'])); ?>
 <? $this->Breadcrumbs->addCrumb('#' . h($this->request->data['Event']['event_id']) . ' ' . h($this->request->data['Event']['title']),
     '/events/view/' . h($this->request->data['Event']['event_id'])); ?>
-<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Event'), '#', array('class' => 'active')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>'.__('Edit Event'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -97,7 +97,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . __('Delete'), array('action' => 'delete', $this->Form->value('Event.event_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Event.event_id'))); ?></li>
+                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">'. __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Event.event_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Event.event_id'))); ?></li>
                 </ul>
             </div>
             <div class="panel-heading">

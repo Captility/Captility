@@ -281,7 +281,20 @@ Configure::write('Captility.supportedLanguages', array('deu', 'eng'));
  * CAPTILITY VERSION
  */
 
-Configure::write('Captility.version', '0.3.1');
+Configure::write('CAPTILITY.VERSION', '0.3.1');
+
+
+/** TICKET STATUSES */
+Configure::write('TICKET.STATUSES', array(
+    // Name => Class
+    'New' => 'default',
+    'Requested' => 'primary',
+    'Urgend' => 'warning',
+    'Overdue' => 'danger',
+    'Error' => 'inverse',
+    'Done' => 'success'
+
+));
 
 /**
  *

@@ -1530,6 +1530,14 @@ small.disabled {
   background-position: top center;
   background-repeat: no-repeat;
 }
+.cp-icon-lecturer:hover,
+.cp-icon-lecturer:active {
+  background-image: url('../img/icons/cp-icon-lecturer-inverse.svg');
+}
+a:hover .cp-icon-lecturer,
+a:active .cp-icon-lecturer {
+  background-image: url('../img/icons/cp-icon-lecturer-inverse.svg');
+}
 .cp-icon-lecturer:before {
   content: "\e";
 }
@@ -2077,7 +2085,12 @@ fieldset[disabled] .btn-inverse.active {
  * ###############################################*/
 /*.form-control,*/
 .input-thin {
-  width: 66.6666666%;
+  width: 33.333333333333%;
+}
+@media (max-width: 1199px) {
+  .input-thin {
+    width: 100%;
+  }
 }
 .form-control-date {
   display: inline-block;
@@ -2246,6 +2259,51 @@ button .glyphicon {
 /* ###############################################
  * ############### COLOR PALETTE  ################
  * ###############################################*/
+/* ###############################################
+ * ############### SELECTPICKER  #################
+ * ###############################################*/
+.selectpicker span.filter-option .glyphicon {
+  top: 1px;
+  font-size: 120%;
+}
+ul.selectpicker li a span.label {
+  line-height: 2;
+}
+.bootstrap-select.btn-group.show-tick .dropdown-menu li a span.text:empty {
+  min-height: 20px;
+  height: 20px;
+  display: block;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #ffffff;
+  text-decoration: none;
+  outline: 0;
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
 /* ###############################################
  * ################ DATEPICKER  ##################
  * ###############################################*/
@@ -3027,6 +3085,14 @@ text-shadow: none;*/
   margin-right: 5px;
 }
 /* ###############################################
+ * ################ SIDE BAR #### ################
+ * ###############################################*/
+@media (max-width: 992px) {
+  .sideBar {
+    padding-top: 20px;
+  }
+}
+/* ###############################################
  * ################ SIDE Calendar  ################
  * ###############################################*/
 /* ###############################################
@@ -3532,6 +3598,9 @@ ul.navbar-nav li.active:after {
 .actions-column .panel table tbody td.actions > a {
   margin: 3px -2px;
 }
+.table > tbody > tr > td.labels {
+  padding-top: 12px;
+}
 .actions a span.glyphicon-search {
   color: #f89406;
 }
@@ -3555,6 +3624,9 @@ ul.navbar-nav li.active:after {
 .actions a span.glyphicon-ok:hover,
 .actions a span.glyphicon-ok:active {
   color: #428bca;
+}
+.remove-text {
+  color: #e15b47;
 }
 .sideTicket {
   padding: 30px 10px 5px 10px;
@@ -3583,4 +3655,31 @@ ul.navbar-nav li.active:after {
   position: absolute;
   top: 3px;
   right: 0;
+}
+.sideTicket .ticket-actions a span.glyphicon-search {
+  opacity: 0.75;
+}
+.sideTicket .ticket-actions a span.glyphicon-search:hover,
+.sideTicket .ticket-actions a span.glyphicon-search:active {
+  color: #f89406;
+  opacity: 1;
+}
+.sideTicket .ticket-actions a span.glyphicon-trash,
+.sideTicket .ticket-actions a span.glyphicon-remove {
+  opacity: 0.75;
+}
+.sideTicket .ticket-actions a span.glyphicon-trash:hover,
+.sideTicket .ticket-actions a span.glyphicon-remove:hover,
+.sideTicket .ticket-actions a span.glyphicon-trash:active,
+.sideTicket .ticket-actions a span.glyphicon-remove:active {
+  color: #e15b47;
+  opacity: 1;
+}
+.sideTicket .ticket-actions a span.glyphicon-ok {
+  opacity: 0.75;
+}
+.sideTicket .ticket-actions a span.glyphicon-ok:hover,
+.sideTicket .ticket-actions a span.glyphicon-ok:active {
+  color: #3cba47;
+  opacity: 1;
 }

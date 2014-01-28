@@ -12,7 +12,9 @@
 
     // Bootstrap Content
     echo $this->Html->css('bootstrap.captility.css'); //ToDo Add minified Version
+    echo $this->Html->css('bootstrap-select.css'); //ToDo Add minified Version
     echo $this->Html->css('captility.css'); //ToDo Add minified Version
+
 
     // jQuery Link
     //echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'); // ToDo Add local jQuery
@@ -22,6 +24,7 @@
     echo $this->Html->script('jquery/tinymce/jquery.tinymce.min.js');
     echo $this->Html->script('bootstrap.custom.min.js');
     echo $this->Html->script('bootstrap-datepicker.min.js');
+    echo $this->Html->script('bootstrap-select.min.js');
     echo $this->Html->script('fullcalendar/fullcalendar.min.js');
     //echo $this->Html->script('jquery/jquery.qtip-1.0.0-rc3.min.js');
 
@@ -72,7 +75,7 @@
 
                         <?php echo $this->fetch('content'); ?>
 
-                        <div class="col-md-3 column">
+                        <div class="sideBar col-md-3 column">
                             <?php echo $this->Element('sideCalendar');?>
                             <?php echo $this->Element('sideTickets');?>
                         </div>

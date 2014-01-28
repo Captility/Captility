@@ -2,7 +2,7 @@
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-th-list"></span>'.__('Lectures'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(' #' . h($this->request->data['Lecture']['number']) . ' ' . h($this->request->data['Lecture']['name']),
     '/lectures/view/' . h($this->request->data['Lecture']['lecture_id']), array('class' => 'active')); ?>
-<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Lecture'), '#', array('class' => 'active')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>'.__('Edit Lecture'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -93,7 +93,7 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . __('Delete'), array('action' => 'delete', $this->Form->value('Lecture.lecture_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Lecture.lecture_id'))); ?></li>
+                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">'. __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Lecture.lecture_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Lecture.lecture_id'))); ?></li>
 
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Lectures'), array('controller' => 'lectures', 'action' => 'index'), array('escape' => false)); ?> </li>
                 </ul>

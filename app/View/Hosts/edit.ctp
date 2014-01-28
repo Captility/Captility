@@ -1,7 +1,7 @@
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records', array('class' => 'active')); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon cp-icon-lecturer"></span>'.__('Hosts'), '/hosts', array('class' => 'active')); ?>
 <? $this->Breadcrumbs->addCrumb(h($this->request->data['Host']['name']), '/hosts/view/'.h($this->request->data['Host']['host_id']), array('class' => 'active')); ?>
-<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Host'), '#', array('class' => 'active')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>'.__('Edit Host'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -59,7 +59,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                                            <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>'.__('Delete'), array('action' => 'delete', $this->Form->value('Host.host_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Host.host_id'))); ?></li>
+                                            <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">'. __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Host.host_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Host.host_id'))); ?></li>
                                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Hosts'), array('action' => 'index'), array('escape' => false)); ?></li>
                     		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Lectures'), array('controller' => 'lectures', 'action' => 'index'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false)); ?> </li>

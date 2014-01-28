@@ -3,14 +3,14 @@
     <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-user"></span>'.__('Users'), '/users', array('class' => 'active')); ?>
     <? $this->Breadcrumbs->addCrumb(h($this->Session->read('Auth.User.username')), '/users/view/' . $this->Session->read('Auth.User.user_id')); ?>
     <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-address-book-alt"></span>'.__('My Profile'), '/users/profile/' . $this->Session->read('Auth.User.user_id')); ?>
-    <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit User'), '#', array('class' => 'active')); ?>
+    <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>'.__('Edit User'), '#', array('class' => 'active')); ?>
 
 <? else: ?>
 
     <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-myspace"></span>'.__('User Registry'), '/admin_center'); ?>
     <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-user"></span>'.__('Users'), '/users', array('class' => 'active')); ?>
     <? $this->Breadcrumbs->addCrumb(h($this->request->data['User']['username']), '/users/view/' . h($this->request->data['User']['user_id'])); ?>
-    <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit User'), '#', array('class' => 'active')); ?>
+    <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>'.__('Edit User'), '#', array('class' => 'active')); ?>
 
 <? endif; ?>
 
@@ -100,7 +100,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . __('Delete'), array('action' => 'delete', $this->Form->value('User.user_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('User.user_id'))); ?></li>
+                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">'. __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('User.user_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('User.user_id'))); ?></li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Users'), array('action' => 'index'), array('escape' => false)); ?></li>
                 </ul>
             </div>

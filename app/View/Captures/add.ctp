@@ -283,7 +283,7 @@
         <?php echo $this->Form->label('Schedule.0.interval_start', __('Capture Interval'), array(
             'class' => 'control-label'));?>
 
-        <div class="input-group input-thin">
+        <div class="input-group">
 
             <?php
             echo $this->Form->input('Schedule.0.interval_start', array(

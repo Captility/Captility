@@ -121,7 +121,7 @@
 			<td><?php echo $event['capture_id']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'events', 'action' => 'view', $event['event_id']), array('escape' => false)); ?>
-				<?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('controller' => 'events', 'action' => 'edit', $event['event_id']), array('escape' => false)); ?>
+				<?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'events', 'action' => 'edit', $event['event_id']), array('escape' => false)); ?>
 				<?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('controller' => 'events', 'action' => 'delete', $event['event_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $event['event_id'])); ?>
 			</td>
 		</tr>
@@ -170,7 +170,7 @@
 			<td><?php echo $schedule['capture_id']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'schedules', 'action' => 'view', $schedule['schedule_id']), array('escape' => false)); ?>
-				<?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('controller' => 'schedules', 'action' => 'edit', $schedule['schedule_id']), array('escape' => false)); ?>
+				<?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'schedules', 'action' => 'edit', $schedule['schedule_id']), array('escape' => false)); ?>
 				<?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('controller' => 'schedules', 'action' => 'delete', $schedule['schedule_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $schedule['schedule_id'])); ?>
 			</td>
 		</tr>
@@ -198,7 +198,7 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    		<li><?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Capture'), array('action' => 'edit', $capture['Capture']['capture_id']), array('escape' => false)); ?> </li>
+                    		<li><?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>'.__('Edit Capture'), array('action' => 'edit', $capture['Capture']['capture_id']), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>'.__('Delete Capture'), array('action' => 'delete', $capture['Capture']['capture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $capture['Capture']['capture_id'])); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Captures'), array('action' => 'index'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Capture'), array('action' => 'add'), array('escape' => false)); ?> </li>

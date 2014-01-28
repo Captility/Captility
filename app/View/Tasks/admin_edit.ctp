@@ -54,7 +54,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                                            <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>'.__('Delete'), array('action' => 'delete', $this->Form->value('Task.task_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Task.task_id'))); ?></li>
+                                            <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">'. __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Task.task_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Task.task_id'))); ?></li>
                                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Tasks'), array('action' => 'index'), array('escape' => false)); ?></li>
                     		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Workflows'), array('controller' => 'workflows', 'action' => 'index'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Workflow'), array('controller' => 'workflows', 'action' => 'add'), array('escape' => false)); ?> </li>

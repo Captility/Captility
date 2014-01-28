@@ -85,7 +85,7 @@
                                 <td><?php echo $user['group_id']; ?></td>
                                 <td class="actions">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'users', 'action' => 'view', $user['user_id']), array('escape' => false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('controller' => 'users', 'action' => 'edit', $user['user_id']), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'users', 'action' => 'edit', $user['user_id']), array('escape' => false)); ?>
                                     <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('controller' => 'users', 'action' => 'delete', $user['user_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $user['user_id'])); ?>
                                 </td>
                             </tr>
@@ -116,7 +116,7 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>' . __('Edit Group'), array('action' => 'edit', $group['Group']['group_id']), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>' . __('Edit Group'), array('action' => 'edit', $group['Group']['group_id']), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . __('Delete Group'), array('action' => 'delete', $group['Group']['group_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $group['Group']['group_id'])); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Groups'), array('action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Group'), array('action' => 'add'), array('escape' => false)); ?> </li>

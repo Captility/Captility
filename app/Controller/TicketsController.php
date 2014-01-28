@@ -50,6 +50,9 @@ class TicketsController extends AppController {
  * @return void
  */
 	public function add() {
+
+
+
 		if ($this->request->is('post')) {
 			$this->Ticket->create();
 			if ($this->Ticket->save($this->request->data)) {

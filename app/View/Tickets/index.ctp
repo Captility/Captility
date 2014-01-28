@@ -1,5 +1,5 @@
 <? $this->Breadcrumbs->addCrumb(__('Team'), '/pages/production'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-tags"></span>'.__('Tickets'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-tags"></span>' . __('Tickets'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->
 
 <div class="row">
@@ -28,15 +28,13 @@
         <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
             <thead class="panel-heading">
             <tr>
-                <th><?php echo $this->Paginator->sort('ticket_id'); ?></th>
-                <th><?php echo $this->Paginator->sort('status'); ?></th>
-                <th><?php echo $this->Paginator->sort('comment'); ?></th>
-                <th><?php echo $this->Paginator->sort('created'); ?></th>
-                <th><?php echo $this->Paginator->sort('modified'); ?></th>
-                <th><?php echo $this->Paginator->sort('ended'); ?></th>
-                <th><?php echo $this->Paginator->sort('user_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('ticket_id', __('ID')); ?></th>
                 <th><?php echo $this->Paginator->sort('task_id'); ?></th>
                 <th><?php echo $this->Paginator->sort('event_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('user_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('status'); ?></th>
+                <th><?php echo $this->Paginator->sort('created'); ?></th>
+                <th><?php echo $this->Paginator->sort('ended'); ?></th>
                 <th class="actions"></th>
             </tr>
             </thead>
@@ -44,23 +42,26 @@
             <?php foreach ($tickets as $ticket): ?>
                 <tr>
                     <td><?php echo h($ticket['Ticket']['ticket_id']); ?>&nbsp;</td>
-                    <td><?php echo h($ticket['Ticket']['status']); ?>&nbsp;</td>
-                    <td><?php echo h($ticket['Ticket']['comment']); ?>&nbsp;</td>
-                    <td><?php echo h($ticket['Ticket']['created']); ?>&nbsp;</td>
-                    <td><?php echo h($ticket['Ticket']['modified']); ?>&nbsp;</td>
-                    <td><?php echo h($ticket['Ticket']['ended']); ?>&nbsp;</td>
-                    <td>
-                        <?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
-                    </td>
                     <td>
                         <?php echo $this->Html->link($ticket['Task']['name'], array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id'])); ?>
                     </td>
                     <td>
                         <?php echo $this->Html->link($ticket['Event']['title'], array('controller' => 'events', 'action' => 'view', $ticket['Event']['event_id'])); ?>
                     </td>
+                    <td>
+                        <?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
+                    </td>
+
+                    <td class="labels"><?php $statuses = Configure::read('TICKET.STATUSES');
+                        $class = $statuses[$ticket['Ticket']['status']]; ?>
+
+                        <span class="label label-<? echo $class ?>"><? echo h($ticket['Ticket']['status']) ?></span>
+                    </td>
+                    <td><?php echo h($ticket['Ticket']['created']); ?>&nbsp;</td>
+                    <td><?php echo h($ticket['Ticket']['ended']); ?>&nbsp;</td>
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $ticket['Ticket']['ticket_id']), array('escape' => false)); ?>
-                        <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('action' => 'edit', $ticket['Ticket']['ticket_id']), array('escape' => false)); ?>
+                        <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('action' => 'edit', $ticket['Ticket']['ticket_id']), array('escape' => false)); ?>
                         <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $ticket['Ticket']['ticket_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $ticket['Ticket']['ticket_id'])); ?>
                     </td>
                 </tr>

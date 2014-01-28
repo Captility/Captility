@@ -40,7 +40,7 @@
                 <td><?php echo h($group['Group']['modified']); ?>&nbsp;</td>
                 <td class="actions">
                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $group['Group']['group_id']), array('escape' => false)); ?>
-                    <?php echo $this->Html->link('<span class="glyphicon el-icon-file-edit"></span>', array('action' => 'edit', $group['Group']['group_id']), array('escape' => false)); ?>
+                    <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('action' => 'edit', $group['Group']['group_id']), array('escape' => false)); ?>
                     <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $group['Group']['group_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $group['Group']['group_id'])); ?>
                 </td>
             </tr>

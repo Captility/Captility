@@ -1,7 +1,7 @@
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-myspace"></span>'.__('User Registry'), '/admin_center'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-group"></span>'.__('Groups'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(h($this->request->data['Group']['name']), '/groups/view/' . h($this->request->data['Group']['group_id'])); ?>
-<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Group'), '#', array('class' => 'active')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>'.__('Edit Group'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -47,7 +47,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . __('Delete'), array('action' => 'delete', $this->Form->value('Group.group_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Group.group_id'))); ?></li>
+                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">'. __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Group.group_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Group.group_id'))); ?></li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Groups'), array('action' => 'index'), array('escape' => false)); ?></li>
 
                 </ul>

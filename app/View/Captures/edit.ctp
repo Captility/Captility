@@ -1,7 +1,7 @@
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>'.__('Captures'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(' #' . h($this->request->data['Capture']['capture_id']) . ' ' . h($this->request->data['Capture']['name']), '/captures/view/' . h($this->request->data['Capture']['capture_id'])); ?>
-<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Capture'), '#', array('class' => 'active')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>'.__('Edit Capture'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -256,7 +256,7 @@
             <?php echo $this->Form->label('Schedule.' . $sid . '.interval_start', __('Capture Interval'), array(
                 'class' => 'control-label'));?>
 
-            <div class="input-group input-thin">
+            <div class="input-group">
 
                 <?php
                 echo $this->Form->input('Schedule.' . $sid . '.interval_start', array(

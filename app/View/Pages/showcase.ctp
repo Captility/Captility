@@ -602,7 +602,7 @@
 
 
                     <strong><span class="glyphicon el-icon-picasa"></span>Captility
-                        v<? echo Configure::read('Captility.version');?> ©<? echo date("Y"); ?> Daniel
+                        v<? echo Configure::read('CAPTILITY.VERSION');?> ©<? echo date("Y"); ?> Daniel
                         Deppe</a></strong> <span>|</span> <a><span class="glyphicon el-icon-paper-clip-alt"></span>www.danieldeppe.de</a>
                     <span>|</span> <a><span class="glyphicon el-icon-idea-alt"></span>Impressum</a> <span>|</span>
                     <a><span class="glyphicon el-icon-envelope-alt"></span>Kontakt</a> <span>|</span>

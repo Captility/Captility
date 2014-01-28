@@ -1,7 +1,7 @@
 <? $this->Breadcrumbs->addCrumb(__('Team'), '/pages/production'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-random"></span>'.__('Workflows'),array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(' #' . h($this->request->data['Workflow']['workflow_id']) . ' ' . h($this->request->data['Workflow']['name']), '/workflows/view/' . h($this->request->data['Workflow']['workflow_id'])); ?>
-<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-file-edit"></span>'.__('Edit Workflow'), '#', array('class' => 'active')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>'.__('Edit Workflow'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -47,7 +47,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                                            <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>'.__('Delete'), array('action' => 'delete', $this->Form->value('Workflow.workflow_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Workflow.workflow_id'))); ?></li>
+                                            <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">'. __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Workflow.workflow_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Workflow.workflow_id'))); ?></li>
                                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Workflows'), array('action' => 'index'), array('escape' => false)); ?></li>
                     		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
