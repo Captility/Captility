@@ -22,7 +22,7 @@ class Lecture extends AppModel {
      *
      * @var string
      */
-    public $virtualFields = array("full_name"=>"CONCAT(Lecture.number, ' ' ,Lecture.name)");
+    public $virtualFields = array("full_name" => "CONCAT(Lecture.number, ' ' ,Lecture.name)");
     public $displayField = 'full_name';
 
 
@@ -32,36 +32,18 @@ class Lecture extends AppModel {
      * @var array
      */
     public $validate = array(
-        'lecture_id' => array(
+        'number' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-                //'message' => 'Your custom message here',
-                //'allowEmpty' => false,
-                //'required' => false,
+                'message' => 'Please enter a number.',
+                'allowEmpty' => false,
+                'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
-                //'message' => 'Your custom message here',
-                //'allowEmpty' => false,
-                //'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-        ),
-        'number' => array(
-            'alphaNumeric' => array(
-                'rule' => array('alphaNumeric'),
-                //'message' => 'Your custom message here',
-                //'allowEmpty' => false,
-                //'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-            'notEmpty' => array(
-                'rule' => array('notEmpty'),
-                //'message' => 'Your custom message here',
+                'message' => 'Please enter a number.',
                 //'allowEmpty' => false,
                 //'required' => false,
                 //'last' => false, // Stop validation after this rule
@@ -72,8 +54,8 @@ class Lecture extends AppModel {
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
                 //'message' => 'Your custom message here',
-                //'allowEmpty' => false,
-                //'required' => false,
+                'allowEmpty' => false,
+                'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -96,20 +78,11 @@ class Lecture extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        'type' => array(
-            'notEmpty' => array(
-                'rule' => array('notEmpty'),
-                //'message' => 'Your custom message here',
-                //'allowEmpty' => false,
-                //'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-        ),
         'start' => array(
+
             'date' => array(
                 'rule' => array('date'),
-                //'message' => 'Your custom message here',
+                'message' => 'Please enter a date.',
                 //'allowEmpty' => false,
                 'required' => true,
                 //'last' => false, // Stop validation after this rule
@@ -117,7 +90,7 @@ class Lecture extends AppModel {
             ),
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
-                //'message' => 'Your custom message here',
+                'message' => 'Please enter a date.',
                 //'allowEmpty' => false,
                 'required' => true,
                 //'last' => false, // Stop validation after this rule
@@ -127,7 +100,7 @@ class Lecture extends AppModel {
         'end' => array(
             'date' => array(
                 'rule' => array('date'),
-                //'message' => 'Your custom message here',
+                'message' => 'Please enter a date.',
                 //'allowEmpty' => false,
                 //'required' => false,
                 //'last' => false, // Stop validation after this rule
@@ -189,6 +162,7 @@ class Lecture extends AppModel {
             ),
         ),
         'host_id' => array(
+
             'numeric' => array(
                 'rule' => array('numeric'),
                 //'message' => 'Your custom message here',
@@ -206,12 +180,11 @@ class Lecture extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        'link' => array(
-            'url' => array(
+        'link' => array('url' => array(
                 'rule' => array('url', true),
-                'message' => 'Please enter a valid Link, like "http://www.captility.de"',
+                'message' => 'Please enter a valid Link, like http://www.captility.de',
                 'allowEmpty' => true,
-                'required' => true,
+                'required' => false,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -270,16 +243,18 @@ class Lecture extends AppModel {
         )
     );
 
-    function hasCaptures($id){
+    function hasCaptures($id) {
         $count = $this->Capture->find("count", array("conditions" => array("Lecture.lecture_id" => $id)));
         if ($count == 0) {
             return false;
-        } else {
+        }
+        else {
             return true;
         }
     }
 
-    public function beforeSave($options = array()) {
+
+    public function beforeValidate($options = array()) {
 
         //unify Semesters, no whitespaces
         if (!empty($this->data['Lecture']['semester'])) {
@@ -287,6 +262,17 @@ class Lecture extends AppModel {
             $this->data['Lecture']['semester'] = preg_replace('/\s+/', '', $this->data['Lecture']['semester']);
         }
 
+
+        if (!empty($this->data['Lecture']['start'])) {
+
+            $this->data['Lecture']['start'] = $this->formatDatepickerToValid($this->data['Lecture']['start'], 'Y-m-d');
+        }
+
+
+        if (!empty($this->data['Lecture']['end'])) {
+
+            $this->data['Lecture']['end'] = $this->formatDatepickerToValid($this->data['Lecture']['end'], 'Y-m-d');
+        }
 
         return true;
     }

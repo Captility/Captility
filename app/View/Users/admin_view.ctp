@@ -260,7 +260,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
                     		<li><?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>'.__('Edit User'), array('action' => 'edit', $user['User']['user_id']), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>'.__('Delete User'), array('action' => 'delete', $user['User']['user_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $user['User']['user_id'])); ?> </li>
+		<li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">' . __('Delete User') . '</span>', array('action' => 'delete', $user['User']['user_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $user['User']['user_id'])); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Users'), array('action' => 'index'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New User'), array('action' => 'add'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Groups'), array('controller' => 'groups', 'action' => 'index'), array('escape' => false)); ?> </li>

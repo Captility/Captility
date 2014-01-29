@@ -1015,6 +1015,11 @@ msgstr "Bitte geben Sie einen Inhalt ein."
 msgid "Please enter a valid Link or leave this field empty."
 msgstr "Bitte geben sie einen gültigen Link an."
 
+msgid "Please enter a date."
+msgstr "Bitte geben sie ein Datum an."
+
+msgid "Password for Data Acess"
+msgstr "Passwort für Dateizugriff"
 
 msgid "datetime"
 msgstr "Geben Sie ein Datumsformat mit Uhrzeit an."
@@ -1022,8 +1027,8 @@ msgstr "Geben Sie ein Datumsformat mit Uhrzeit an."
 msgid "numeric"
 msgstr "Bitte geben Sie nur Zahlen ein."
 
-msgid 'Please enter a valid Link, like "http://www.captility.de"'
-msgstr "Bitte geben Sie einen gültigen Link, wie 'http://www.captility.de' an."
+msgid "Please enter a valid Link, like http://www.captility.de"
+msgstr "Bitte geben Sie einen gültigen Link, wie http://www.captility.de an."
 
 msgid "alphanumeric"
 msgstr "Bitte nur Zahlen und Nummern eingeben."
@@ -1139,6 +1144,9 @@ msgstr "Datum der Aufzeichnung"
 
 msgid "Capture Interval"
 msgstr "Zeitraum der Aufzeichnung"
+
+msgid "Lecture Interval"
+msgstr "Laufzeit der Veranstaltung"
 
 msgid "Exception Rule"
 msgstr "Ausnahmeregel"

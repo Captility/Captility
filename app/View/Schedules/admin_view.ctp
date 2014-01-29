@@ -164,7 +164,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
                     		<li><?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>'.__('Edit Schedule'), array('action' => 'edit', $schedule['Schedule']['schedule_id']), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>'.__('Delete Schedule'), array('action' => 'delete', $schedule['Schedule']['schedule_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $schedule['Schedule']['schedule_id'])); ?> </li>
+		<li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">' . __('Delete Schedule') . '</span>', array('action' => 'delete', $schedule['Schedule']['schedule_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $schedule['Schedule']['schedule_id'])); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Schedules'), array('action' => 'index'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>'.__('New Schedule'), array('action' => 'add'), array('escape' => false)); ?> </li>
 		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>'.__('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>

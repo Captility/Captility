@@ -296,6 +296,20 @@ Configure::write('TICKET.STATUSES', array(
 
 ));
 
+
+Configure::write('FORM.INPUT_DEFAULTS', array(
+    'role' => 'form',
+    'inputDefaults' => array(
+        'div' => 'form-group',
+        'label' => array( //'class' => 'control-label'
+            //'class' => 'col col-md-3 control-label'
+        ),
+        //'wrapInput' => 'col col-md-9',
+        'class' => 'form-control'
+    ),
+    //'class' => 'well form-horizontal'
+));
+
 /**
  *
  * Cache Engine Configuration

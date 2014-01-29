@@ -55,7 +55,7 @@
                     <td class="labels"><?php $statuses = Configure::read('TICKET.STATUSES');
                         $class = $statuses[$ticket['Ticket']['status']]; ?>
 
-                        <span class="label label-<? echo $class ?>"><? echo h($ticket['Ticket']['status']) ?></span>
+                        <span class="label label-<? echo $class ?>"><? echo __(h($ticket['Ticket']['status'])) ?></span>
                     </td>
                     <td><?php echo h($ticket['Ticket']['created']); ?>&nbsp;</td>
                     <td><?php echo h($ticket['Ticket']['ended']); ?>&nbsp;</td>

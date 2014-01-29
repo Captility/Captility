@@ -87,16 +87,6 @@ class Ticket extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        'ended' => array(
-            'datetime' => array(
-                'rule' => array('datetime'),
-                'message' => 'Please enter a valid Datetime',
-                'allowEmpty' => true,
-                'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-        ),
         'user_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
@@ -174,9 +164,11 @@ class Ticket extends AppModel {
 
         if (!empty($this->data['Ticket']['ended'])) {
 
-            $this->data['Ticket']['ended'] = $this->datepickerFormatBeforeSave($this->data['Ticket']['ended']);
+            $this->data['Ticket']['ended'] = $this->formatDatepickerToValid($this->data['Ticket']['ended'], 'Y-m-d H:i:s');
         }
 
+
+        //debug($this->data['Ticket']['ended']);debug($this->data['Ticket']['ended']);debug($this->data['Ticket']['ended']);debug($this->data['Ticket']['ended']);
         return true;
     }
 }

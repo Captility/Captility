@@ -117,9 +117,15 @@ class AppModel extends Model {
     }
 
 
-    public function datepickerFormatBeforeSave($dateString) {
+    public function formatDatepickerToValid($dateString, $formatString) {
 
         //return date('Y-m-d', strtotime($dateString));
-        return CakeTime::format('Y-m-d H:i:s', substr($dateString, 4));
+        return CakeTime::format($formatString, substr($dateString, 4));
+    }
+
+
+    public function validateFalse() {
+
+        return false;
     }
 }

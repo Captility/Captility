@@ -22,54 +22,39 @@
 <div class="col-md-8 column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <?php echo $this->Form->create('Ticket', array('role' => 'form')); ?>
+
+
+
+    <?php echo $this->Form->create('Ticket', Configure::read('FORM.INPUT_DEFAULTS')); ?>
+
 
     <div class="form-group">
         <?php echo $this->Form->input('ticket_id', array('class' => 'form-control', 'placeholder' => 'Ticket Id'));?>
-
-
-    </div>
-
-    <div class="form-group">
-
-        <?php echo $this->Form->label('event_id', __('Event'), array(
-            'class' => 'control-label'));?>
-
-        <?php echo $this->Form->input('event_id', array('disabled' => false,
-            'div' => 'input-group',
-            'label' => false,
-            'class' => 'form-control',
-            'before' => '<span class="input-group-addon glyphicon glyphicon-play-circle input-group-glyphicon"></span>',
-            'placeholder' => 'Event Id'));?>
-    </div>
-
-    <div class="form-group">
-
-        <?php echo $this->Form->label('task_id', __('Task'), array(
-            'class' => 'control-label'));?>
-
-        <?php echo $this->Form->input('task_id', array('disabled' => false,
-            'div' => 'input-group',
-            'label' => false,
-            'class' => 'form-control',
-            'before' => '<span class="input-group-addon glyphicon glyphicon-tags input-group-glyphicon"></span>',
-            'placeholder' => 'Task Id'));?>
     </div>
 
 
-    <div class="form-group">
 
-        <?php echo $this->Form->label('user_id', __('User'), array(
-            'class' => 'control-label'));?>
+    <?php echo $this->Form->input('event_id', array(
 
-        <?php echo $this->Form->input('user_id', array('class' => 'form-control',
-            'div' => 'input-group input-thin',
-            'empty' => false,
-            'label' => false,
-            'class' => 'form-control',
-            'before' => '<span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>',
-            'placeholder' => 'User Id'));?>
-    </div>
+        'placeholder' => __('event_id'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-play-circle input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    ));?>
+
+
+    <?php echo $this->Form->input('task_id', array(
+
+        'placeholder' => __('task_id'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-tags input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    ));?>
+
+
+
+    <?php echo $this->Form->input('user_id', array(
+
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'class' => 'form-control input-thin',
+    ));?>
+
 
 
     <!--<div class="form-group form-horizontal">
@@ -92,18 +77,18 @@
 
         <label for="TicketStatus">Status</label>
 
-        <div class="input-thin required">
+        <div class="required">
             <div class="input input-group select required">
 
                 <span class="input-group-addon glyphicon glyphicon-tasks input-group-glyphicon"></span>
 
-                <select name="data[Ticket][status]" class="form-control"
+                <select name="data[Ticket][status]" class="form-control input-thin"
                         id="TicketStatus" required="required"
                         style="/* display: none; */">
 
                     <? foreach (Configure::read('TICKET.STATUSES') as $status => $class): ?>
 
-                        <option <? if($this->request->data['Ticket']['status'] ==  $status) echo 'selected';?>
+                        <option <? if ($this->request->data['Ticket']['status'] == $status) echo 'selected';?>
                             data-content='<span class="label label-<? echo $class ?>"><? echo __($status) ?></span>'><? echo $status ?></option>
                     <? endforeach; ?>
 
@@ -112,25 +97,16 @@
         </div>
     </div>
 
-    <div class="form-group">
 
-        <?php echo $this->Form->label('ended', __('Ended'), array(
-            'class' => 'control-label'));?>
 
-        <?php
-        echo $this->Form->input('ended', array(
-            'type' => 'string',
-            'format' => array('label', 'before', 'input', 'error', 'after'),
-            'div' => 'input-group input-thin',
-            'label' => false,
-            'class' => 'form-control pickDate',
-            'before' => '<span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>',
-            'placeholder' => __('Ended'),
-            'required' => false,
-            'error' => true,
-            'value' => $this->Form->value('ended')
-        ));?>
-    </div>
+
+    <?php echo $this->Form->input('ended', array(
+
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'class' => 'form-control input-thin pickDate',
+        'value' => $this->Time->nice(strtotime(h($this->Form->value('ended'))), 'CET', '%a, %d.%m.%Y'),
+        'type' => 'string'
+    ));?>
 
 
     <div class="form-group">
@@ -165,7 +141,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">'. __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Ticket.ticket_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Ticket.ticket_id'))); ?></li>
+                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">' . __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Ticket.ticket_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Ticket.ticket_id'))); ?></li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Tickets'), array('action' => 'index'), array('escape' => false)); ?></li>
                 </ul>
             </div>

@@ -185,6 +185,21 @@ small.disabled {
   }
 }
 
+.input-group .cp-icon-lecturer {
+  background-size: 45%;
+  background-position: center center;
+  width: 40px;
+
+  &:hover, &:active{
+
+    background-image: url('../img/icons/cp-icon-lecturer.svg');
+  }
+}
+
+.input-group-addon strong{
+
+  font-size: 140%;
+}
 a:hover, a:active {
 
   .cp-icon-lecturer {
@@ -256,6 +271,11 @@ h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
       color: #999;
     }
   }
+}
+
+.error-message{
+
+  color: #a94442;
 }
 
 /* ###############################################
@@ -332,9 +352,9 @@ h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
  * ###############################################*/
 
 /*.form-control,*/
-.input-thin {
+.input-thin{
 
-  width: 33.333333333333%;
+  width: 33.333333333333% !important;
 }
 
 @media (max-width:@screen-md-max) {
@@ -1514,7 +1534,7 @@ ul.navbar-nav li.active:after {
 
 // PANEL TABLE
 
-.actions-column .panel {
+.actions-column .panel-default {
 
   border-color: @btn-primary-border;
 

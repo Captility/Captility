@@ -208,7 +208,7 @@
                 'placeholder' => __('Capture Date'),
                 'required' => true,
                 'error' => true,
-                'value' => $this->Form->value('Schedule.' . $sid . '.interval_start'),
+                'value' => $this->Time->nice(strtotime(h($this->Form->value('Schedule.' . $sid . '.interval_start'))), 'CET', '%a, %d.%m.%Y'),
                 'disabled' => !$singleSchedule
             ));?>
         </div>
@@ -267,7 +267,7 @@
                     'class' => 'form-control pickDate',
                     'before' => '<span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>',
                     'placeholder' => __('Begin Interval'),
-                    'value' => $this->Form->value('Schedule.' . $sid . '.interval_start'),
+                    'value' => $this->Time->nice(strtotime(h($this->Form->value('Schedule.' . $sid . '.interval_start'))), 'CET', '%a, %d.%m.%Y'),
                     'required' => true,
                     'disabled' => $singleSchedule
                 ));
@@ -282,7 +282,7 @@
                     'class' => 'form-control pickDate',
                     'before' => '<span class="input-group-addon">' . __('to') . '</span>',
                     'placeholder' => __('End Interval'),
-                    'value' => $this->Form->value('Schedule.' . $sid . '.interval_end'),
+                    'value' => $this->Time->nice(strtotime(h($this->Form->value('Schedule.' . $sid . '.interval_end'))), 'CET', '%a, %d.%m.%Y'),
                     'required' => true,
                     'disabled' => $singleSchedule
                 ));

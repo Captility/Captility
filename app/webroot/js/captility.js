@@ -24,19 +24,6 @@ function getParameterByName(name, href) {
 }
 
 
-$(function () {
-    var hash = window.location.hash;
-    hash && $('ul.nav a[href="' + hash + '"]').first().tab('show');
-
-    $('.nav-tabs a').click(function (e) {
-        //$(this).tab('show');
-        var scrollmem = $('body').scrollTop();
-        window.location.hash = this.hash;
-        $('html,body').scrollTop(scrollmem);
-    });
-});
-
-
 /**
  * SlideRight Animation for eg. breadcrumbs
  * @param speed
@@ -512,6 +499,7 @@ $(document).ready(function () {
             var param = getParameterByName('date', window.location.href);
             if (param) {
 
+                $('#calendar').fullCalendar('changeView', 'agendaDay');
                 $('#calendar').fullCalendar('gotoDate', new Date(param));
                 //console.log('Query: ' + getParameterByName('date', window.location.href));
             }
@@ -550,15 +538,15 @@ $(document).ready(function () {
 //######################################################################################################################
 
     $('select:not(.form-control-date)').addClass('show-tick').selectpicker({
-        selectedTextFormat : 'values',
-        noneSelectedText : '<span class="glyphicon el-icon-error"></span>'
+        selectedTextFormat: 'values',
+        noneSelectedText: '<span class="glyphicon el-icon-error"></span>'
 
     });
 
     $('select.form-control-date').selectpicker({
-        selectedTextFormat : 'values',
-        noneSelectedText : '<span class="glyphicon el-icon-error"></span>',
-        width : 'auto'
+        selectedTextFormat: 'values',
+        noneSelectedText: '<span class="glyphicon el-icon-error"></span>',
+        width: 'auto'
     });
 
 //######################################################################################################################
@@ -626,13 +614,40 @@ $(document).ready(function () {
         };
     })(jQuery);
 
-    // TOGGLE ACTIVE TABS OF FORM
-    $('#ScheduleContainer').on('click', 'a.form-toggle', function () {
 
-        var $target = $($(this).attr('href'));
+    //####################################### HASHED AND TABS  #########################################################
 
-        $target.parent().find('input, select').prop('disabled', true);
-        $target.find('input, select').prop('disabled', false);
+
+    /*  // TOGGLE ACTIVE TABS OF FORM
+     $('#ScheduleContainer').on('click', 'a.form-toggle', function () {
+
+     var $target = $($(this).attr('href'));
+
+     $target.parent().find('input, select').prop('disabled', true).selectpicker('refresh');;
+     $target.find('input, select').prop('disabled', false).selectpicker('refresh');
+     });*/
+
+
+      // TOGGLE ACTIVE TABS OF FORM
+     $('#ScheduleContainer').on('shown.bs.tab', 'a.form-toggle', function (e) {
+
+     var $target = $($(this).attr('href'));
+
+     $target.parent().find('input, select').prop('disabled', true).selectpicker('refresh');;
+     $target.find('input, select').prop('disabled', false).selectpicker('refresh');
+     });
+
+    // HASHED TABBING
+    $(function () {
+        var hash = window.location.hash;
+        hash && $('ul.nav a[href="' + hash + '"]').first().tab('show');
+
+        $('.nav-tabs a').click(function (e) {
+            //$(this).tab('show');
+            var scrollmem = $('body').scrollTop();
+            window.location.hash = this.hash;
+            $('html,body').scrollTop(scrollmem);
+        });
     });
 
 

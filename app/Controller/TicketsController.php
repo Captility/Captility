@@ -94,6 +94,9 @@ class TicketsController extends AppController {
 		$tasks = $this->Ticket->Task->find('list');
 		$events = $this->Ticket->Event->find('list');
 		$this->set(compact('users', 'tasks', 'events'));
+
+
+
 	}
 
 /**

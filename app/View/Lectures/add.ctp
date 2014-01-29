@@ -1,6 +1,6 @@
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-th-list"></span>'.__('Lectures'), array('action' => 'index')); ?>
-<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-plus"></span>'.__('Add Lecture'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-th-list"></span>' . __('Lectures'), array('action' => 'index')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-plus"></span>' . __('Add Lecture'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
@@ -21,61 +21,142 @@
 <div class="col-md-8 column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <?php echo $this->Form->create('Lecture', array('role' => 'form')); ?>
+
+
+    <?php echo $this->Form->create('Lecture', Configure::read('FORM.INPUT_DEFAULTS')); ?>
+
+
+    <?php echo $this->Form->input('number', array(
+
+        'label' => __('Number of lecture'),
+        'placeholder' => __('Number'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon input-group-glyphicon"><strong>#</strong></span>', 'afterInput' => '</div>',
+        'class' => 'form-control input-thin',
+    ));?>
+
+
+
+    <?php echo $this->Form->input('name', array(
+
+        'label' => __('Lecture name'),
+        'placeholder' => __('Name'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-th-list input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+    ));?>
+
+    <?php echo $this->Form->input('host_id', array(
+
+        'placeholder' => __('Host_Id'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon cp-icon-lecturer input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+    ));?>
+
+
+
+    <?php echo $this->Form->input('event_type_id', array(
+
+        'placeholder' => __('Event Type Id'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-facetime-video input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+    ));?>
+
+
+    <?php echo $this->Form->input('semester', array(
+
+        'placeholder' => __('WS2014/15'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'class' => 'form-control input-thin form-inline',
+    ));?>
+
 
     <div class="form-group">
-        <?php echo $this->Form->input('number', array('class' => 'form-control', 'placeholder' => __('Number'),
-            'label' => __('Number of lecture')));?>
+
+        <?php echo $this->Form->label('start', __('Lecture Interval'), array(
+            'class' => 'control-label'));?>
+
+        <div class="input-group">
+            <?php
+            echo $this->Form->input('start', array(
+                'type' => 'string',
+                'format' => array('label', 'before', 'input', 'error', 'after'),
+                'label' => false,
+                'div' => false,
+                'class' => 'form-control pickDate',
+                'before' => '<span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>',
+                'value' => $this->Time->nice(strtotime('first Monday this week'), 'CET', '%a, %d.%m.%Y'),
+                'placeholder' => __('End Interval'),
+                'required' => true,
+                'error' => false,
+            ));?>
+
+
+            <?php
+            echo $this->Form->input('end', array(
+                'type' => 'string',
+                'format' => array('label', 'before', 'input', 'error', 'after'),
+                'label' => false,
+                'div' => false,
+                'class' => 'form-control pickDate',
+                'before' => '<span class="input-group-addon">' . __('to') . '</span>',
+                'value' => $this->Time->nice($this->Form->value('end'), 'CET', '%a, %d.%m.%Y'),
+                'placeholder' => __('End Interval'),
+                'required' => true,
+                'value' => $this->Time->nice(strtotime('first Sunday of +4 months'), 'CET', '%a, %d.%m.%Y'),
+                'error' => false,
+            ));?>
+
+        </div>
+
+        <? if ($this->Form->isFieldError('start')) {
+            echo $this->Form->error('start');
+        } ?>
     </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => __('Name'),
-        'label' => __('Lecture name')));?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('semester', array('class' => 'form-control', 'placeholder' => 'Semester'));?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('type', array('class' => 'form-control', 'placeholder' => __('Type')));?>
-    </div>
+
+
+    <?php echo $this->Form->input('user_id', array(
+
+        'placeholder' => __('User_Id'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'class' => 'form-control input-thin form-inline',
+    ));?>
+
+
+    <?php echo $this->Form->input('link', array(
+
+        'placeholder' => __('http://www.captility.de'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-link input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+    ));?>
+
+
+    <?php echo $this->Form->input('pwd', array(
+
+        'placeholder' => __('Password for Data Acess'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-lock input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+    ));?>
+
+    <?php echo $this->Form->input('type', array(
+
+        'placeholder' => __('Type'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-question-sign input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+    ));?>
+
+
+
 
     <?php echo $this->Element('tinymce'); ?>
-
     <div class="form-group">
         <?php echo $this->Form->input('comment', array('class' => 'form-control', 'placeholder' => 'Comment'));?>
     </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('link', array('class' => 'form-control', 'placeholder' => __('Link')));?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('pwd', array('class' => 'form-control', 'placeholder' => __('Pwd'),
-        'label' => __('Password')));?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('start', array('dateFormat' => Configure::read('Captility.dateFormat'),
-            'timeFormat' => '24',
-            'minYear' => date('Y') - 5,
-            'maxYear' => date('Y') + 5,
-            'class' => 'form-control form-control-date'));?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('end', array('dateFormat' => Configure::read('Captility.dateFormat'),
-            'timeFormat' => '24',
-            'minYear' => date('Y') - 5,
-            'maxYear' => date('Y') + 5,
-            'class' => 'form-control form-control-date'));?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('user_id', array('class' => 'form-control', 'placeholder' => 'User Id'));?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('host_id', array('class' => 'form-control', 'placeholder' => 'Host Id'));?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('event_type_id', array('class' => 'form-control', 'placeholder' => 'Event Type Id'));?>
-    </div>
+
+
     <?php echo $this->Element('submitArea');?>
 
     <?php echo $this->Form->end() ?>
+
+
 
 </div><!-- end col md 12 -->
 
@@ -101,7 +182,8 @@
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>
-            </div><div class="panel-heading">
+            </div>
+            <div class="panel-heading">
                 <? echo __('Hosts') ?>
             </div>
             <div class="panel-body">

@@ -1534,6 +1534,18 @@ small.disabled {
 .cp-icon-lecturer:active {
   background-image: url('../img/icons/cp-icon-lecturer-inverse.svg');
 }
+.input-group .cp-icon-lecturer {
+  background-size: 45%;
+  background-position: center center;
+  width: 40px;
+}
+.input-group .cp-icon-lecturer:hover,
+.input-group .cp-icon-lecturer:active {
+  background-image: url('../img/icons/cp-icon-lecturer.svg');
+}
+.input-group-addon strong {
+  font-size: 140%;
+}
 a:hover .cp-icon-lecturer,
 a:active .cp-icon-lecturer {
   background-image: url('../img/icons/cp-icon-lecturer-inverse.svg');
@@ -1588,6 +1600,9 @@ qtip-calendar {
 .navbar-header a.navbar-brand:hover,
 .navbar-header a.navbar-brand:active {
   color: #999;
+}
+.error-message {
+  color: #a94442;
 }
 /* ###############################################
  * ################# Info Banners  ###############
@@ -2085,7 +2100,7 @@ fieldset[disabled] .btn-inverse.active {
  * ###############################################*/
 /*.form-control,*/
 .input-thin {
-  width: 33.333333333333%;
+  width: 33.333333333333% !important;
 }
 @media (max-width: 1199px) {
   .input-thin {
@@ -3574,28 +3589,28 @@ ul.navbar-nav li.active:after {
   margin-left: -5px;
   position: absolute;
 }
-.actions-column .panel {
+.actions-column .panel-default {
   border-color: #357ebd;
 }
-.actions-column .panel table thead.panel-heading {
+.actions-column .panel-default table thead.panel-heading {
   background-color: #357ebd;
   color: #fff;
   font-weight: 400;
 }
-.actions-column .panel table thead.panel-heading a {
+.actions-column .panel-default table thead.panel-heading a {
   color: #fff;
   font-weight: 400;
 }
-.actions-column .panel table thead.panel-heading tr th.actions {
+.actions-column .panel-default table thead.panel-heading tr th.actions {
   width: 80px;
 }
-.actions-column .panel table thead.panel-heading th {
+.actions-column .panel-default table thead.panel-heading th {
   font-weight: 400;
 }
-.actions-column .panel table thead.panel-heading th .glyphicon {
+.actions-column .panel-default table thead.panel-heading th .glyphicon {
   margin-bottom: 4px;
 }
-.actions-column .panel table tbody td.actions > a {
+.actions-column .panel-default table tbody td.actions > a {
   margin: 3px -2px;
 }
 .table > tbody > tr > td.labels {
