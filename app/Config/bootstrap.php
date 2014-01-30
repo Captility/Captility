@@ -153,3 +153,64 @@ CakePlugin::load('AclExtras');
 
 // TODO: Neue Breiche anpassen. Adminbereich admin Prefix als Ziel-Seite
 //Configure::write('Routing.prefixes', array('admin'));
+
+
+/**
+ * CAPTILITY VERSION
+ */
+
+Configure::write('CAPTILITY.VERSION', '0.3.1');
+
+
+/**
+ * GLOBAL VARIABLES AND CONSTANTS
+ */
+
+/**
+ * Supported Languages.
+ */
+Configure::write('Captility.supportedLanguages', array('deu', 'eng'));
+
+
+/** TICKET STATUSES */
+Configure::write('TICKET.STATUSES', array(
+    // Name => Class
+    'New' => 'default',
+    'Requested' => 'primary',
+    'Urgend' => 'warning',
+    'Overdue' => 'danger',
+    'Error' => 'inverse',
+    'Done' => 'success'
+
+));
+
+/** TICKET STATUSES */
+Configure::write('CAPTURE.STATUSES', array(
+    // Name => Class
+    'zugesagt' => 'success',
+    'angefragt' => 'primary',
+    'unklar' => 'warning',
+    'abgelehnt' => 'danger',
+    'beendet' => 'default',
+));
+
+/**
+ * Bootstrap Layout for Forms.
+ */
+Configure::write('FORM.INPUT_DEFAULTS', array(
+    'role' => 'form',
+    'inputDefaults' => array(
+        'div' => 'form-group',
+        'label' => array( //'class' => 'control-label'
+            //'class' => 'col col-md-3 control-label'
+        ),
+        //'wrapInput' => 'col col-md-9',
+        'class' => 'form-control'
+    ),
+    //'class' => 'well form-horizontal'
+));
+
+/**
+ * Toogle all fields invalidate fpr debugging.
+ */
+Configure::write('MODEL.INVALIDATE_ALL', false);

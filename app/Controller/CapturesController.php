@@ -97,7 +97,7 @@ class CapturesController extends AppController {
 
             // Create and Save Event for Capture
             $this->Capture->create();
-            if ($validData && $this->Capture->save($this->request->data['Capture'])) {
+            if ($validData && $this->Capture->save($this->request->data['Capture'], array('validate' => 'only'))) {
 
 
                 $this->Session->setFlash(__('The Capture has been saved.'), 'default', array('class' => 'alert alert-success'));
@@ -179,6 +179,9 @@ class CapturesController extends AppController {
 
             //debug($this->request->data);
 
+            //TODO: CAPTURE::EDIT
+            /*
+
             // Markup Container
             $Schedules = $this->request->data['Schedule'];
 
@@ -215,18 +218,19 @@ class CapturesController extends AppController {
 
             //debug($Schedules);
 
+            */ //TODO: CAPTURE::EDIT
 
             // ########################### SAVE NEW DATA ###############################################################
 
             // Create and Save Event for Capture
-            if ($validData && $this->Capture->save($this->request->data['Capture'])) {
+            if (/*TODO: CAPTURE::EDIT $validData && */ $this->Capture->save($this->request->data['Capture'])) {
 
 
                 $this->Session->setFlash(__('The Capture has been saved.'), 'default', array('class' => 'alert alert-success'));
 
 
                 // Capture hasMany Schedules
-                foreach ($Schedules as $i => $Schedule) {
+                /* //TODO: CAPTURE::EDIT foreach ($Schedules as $i => $Schedule) {
 
                     $Schedules[$i]['capture_id'] = $this->Capture->id;
 
@@ -244,7 +248,7 @@ class CapturesController extends AppController {
                         //debug($Schedules[$i]); //todo entfernen
                         //debug($this->Capture->Schedule->invalidFields()); //todo entfernen
                     }
-                }
+                }*/
 
                 return $this->redirect(array('action' => 'index'));
             }

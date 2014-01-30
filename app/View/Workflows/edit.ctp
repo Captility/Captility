@@ -6,6 +6,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
+     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-random"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">

@@ -1,11 +1,12 @@
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>'.__('Captures'), array('action' => 'index')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>' . __('Captures'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(' #' . h($this->request->data['Capture']['capture_id']) . ' ' . h($this->request->data['Capture']['name']), '/captures/view/' . h($this->request->data['Capture']['capture_id'])); ?>
-<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>'.__('Edit Capture'), '#', array('class' => 'active')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>' . __('Edit Capture'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
     <div class="col-md-1 column">
+     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-film"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -23,93 +24,104 @@
 
 <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
 
-<?php echo $this->Form->create('Capture', array('role' => 'form')); ?>
+<?php echo $this->Form->create('Capture', Configure::read('FORM.INPUT_DEFAULTS')); ?>
+
 
 
 <? ################################################################################################################## ?>
 <? ################################################### CAPTURE ###################################################### ?>
 <? ################################################################################################################## ?>
 
-<?php echo $this->Form->label('Capture.name', __('Name'), array(
-    'class' => 'control-label'));?>
-
 <div class="form-group">
-    <?php echo $this->Form->input('name', array(
-        'before' => '<span class="input-group-addon glyphicon glyphicon-film input-group-glyphicon"> </span>',
-        'format' => array('label', 'before', 'input', 'error', 'after'),
-        'div' => 'input-group',
-        'class' => 'form-control',
-        'placeholder' => __('Name'),
-        'label' => false));?>
-</div>
-
-<div class="form-group">
-    <?php echo $this->Form->input('lecture_id', array('class' => 'form-control', 'placeholder' => 'Lecture Id'));?>
-</div>
-
-<?php echo $this->Form->label('Capture.status', __('Status'), array(
-    'class' => 'control-label'));?>
-
-
-<div class="form-group">
-    <?php echo $this->Form->input('status', array(
-        'class' => 'form-control',
-        'placeholder' => 'Status',
-        'before' => '<span class="input-group-addon glyphicon glyphicon-barcode input-group-glyphicon"> </span>',
-        'format' => array('label', 'before', 'input', 'error', 'after'),
-        'div' => 'input-group',
-        'class' => 'form-control',
-        'label' => false,
-    ));?>
+    <?php echo $this->Form->input('capture_id');?>
 </div>
 
 
-<div class="form-group">
-    <?php echo $this->Form->input('Event.event_type_id', array('class' => 'form-control',
-        'placeholder' => 'Event Type Id',
-        'selected' => $this->Form->value('Event.0.event_type_id')
-    ));?>
-</div>
+<?php echo $this->Form->input('Capture.name', array(
 
-<div class="form-group">
-    <?php echo $this->Form->input('Event.link', array('class' => 'form-control',
-        'required' => false,
-        'placeholder' => __('Link to Capture Data')));?>
-</div>
+    'label' => __('Name'),
+    'placeholder' => __('Name'),
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-film input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+));?>
 
 
-<div class="form-group">
-    <?php echo $this->Form->input('user_id', array('class' => 'form-control', 'placeholder' => 'User Id',
-        'label' => __('Responsible'),
-        'empty' => true));?>
+
+<?php echo $this->Form->input('lecture_id', array(
+
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-th-list input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+));?>
+
+
+<div class="form-group form-horizontal">
+
+    <label for="CaptureStatus">Status</label>
+
+    <div class="required">
+        <div class="input input-group select required">
+
+            <span class="input-group-addon glyphicon glyphicon-barcode input-group-glyphicon"></span>
+
+            <select name="data[Capture][status]" class="form-control input-thin"
+                    id="CaptureStatus" required="required"
+                    style="/* display: none; */">
+
+                <? foreach (Configure::read('CAPTURE.STATUSES') as $status => $class): ?>
+
+                    <option <? if ($this->request->data['Capture']['status'] == $status) echo 'selected';?>
+                        data-content='<span class="label label-<? echo $class ?>"><? echo __($status) ?></span>'><? echo $status ?></option>
+                <? endforeach; ?>
+
+            </select>
+        </div>
+    </div>
 </div>
-<div class="form-group">
-    <?php echo $this->Form->input('workflow_id', array('class' => 'form-control', 'placeholder' => 'Workflow Id', 'empty' => true));?>
-</div>
+
+
+
+
+
+<?php echo $this->Form->input('Event.event_type_id', array(
+
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-facetime-video input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    'selected' => $this->Form->value('Event.0.event_type_id')
+
+));?>
+
+
+<?php echo $this->Form->input('link', array(
+
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-link input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    'placeholder' => __('http://www.captility.de'),
+
+));?>
+
+
+
+<?php echo $this->Form->input('user_id', array(
+
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+    'label' => __('Responsible'),
+    'empty' => true, 'required' => false
+));?>
+
+
+
+
+<?php echo $this->Form->input('workflow_id', array(
+
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-random input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    'empty' => true, 'required' => false
+));?>
+
+
 <?php echo $this->Element('tinymce'); ?>
 
 
 
-<? // EVENT ?>
-
-<!--<div class="form-group">
-        <?php /*echo $this->Form->input('Event.start',
-            array('dateFormat' => Configure::read('Captility.dateFormat'),
-                'timeFormat' => '24',
-                'minYear' => date('Y') - 2,
-                'maxYear' => date('Y') + 5,
-                'class' => 'form-control form-control-date',
-                'interval' => 15,
-                'selected' => array(
-                    'day' => date('d'),
-                    'month' => date('m'),
-                    'year' => date('Y'),
-                    'hour' => date('H'),
-                    'min' => '00'),
-            ));*/?>
-    </div>-->
-
-
+<? /* //TODO: CAPTURE::EDIT
 
 <? ################################################################################################################## ?>
 <? ################################################## SCHEDULE ###################################################### ?>
@@ -173,23 +185,6 @@
     <!-- Single Instance Schedule -->
     <div class="tab-content">
     <div class="tab-pane <? echo ($singleSchedule ? 'active' : ''); ?>" id="single<? echo $sid ?>">
-
-        <!--<div class="form-group">
-            <?php /*echo $this->Form->input('Schedule.'. $sid .'.start',
-                array('dateFormat' => Configure::read('Captility.dateFormat'),
-                    'label' => false, 'div' => false,
-                    'type' => 'datetime',
-                    'timeFormat' => '24',
-                    'minYear' => date('Y') - 5,
-                    'maxYear' => date('Y') + 5,
-                    'class' => 'form-control form-control-date',
-                    'interval' => 15,
-                    'selected' => array(
-                        'hour' => '12',
-                        'min' => '00'),
-                    'label' => __('Event start')
-                ));*/?>
-        </div>-->
 
 
         <div class="form-group">
@@ -394,6 +389,9 @@
 
 </div>
 <!-- ScheduleContainer -->
+
+
+   ######################################################################################### //TODO: CAPTURE::EDIT  */?>
 
 <hr/>
 

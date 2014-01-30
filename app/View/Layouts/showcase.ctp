@@ -7,8 +7,11 @@
     <title>
         <?php echo $titleDescription; ?>
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <?php
     echo $this->Html->meta('icon');
+
 
     // Bootstrap Content
     echo $this->Html->css('bootstrap.captility.css'); //ToDo Add minified Version

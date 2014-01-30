@@ -4403,7 +4403,6 @@ a.list-group-item.active > .badge,
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
-  cursor: pointer;
 }
 [class*="badger"]:after {
   content: attr(data-badger);

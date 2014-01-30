@@ -5,6 +5,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
+     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-th-list"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -32,6 +33,7 @@
         'placeholder' => __('Number'),
         'beforeInput' => '<div class="input-group"><span class="input-group-addon input-group-glyphicon"><strong>#</strong></span>', 'afterInput' => '</div>',
         'class' => 'form-control input-thin',
+        'autofocus'=>'autofocus'
     ));?>
 
 

@@ -21,6 +21,9 @@ class EventTypesController extends AppController {
  * @return void
  */
 	public function index() {
+
+        $this->set('sideTickets', false);
+
 		$this->EventType->recursive = 0;
         $this->Paginator->settings = array(
             'limit' => 12
@@ -36,6 +39,8 @@ class EventTypesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+
+
 		if (!$this->EventType->exists($id)) {
 			throw new NotFoundException(__('Invalid event type'));
 		}
@@ -49,6 +54,10 @@ class EventTypesController extends AppController {
  * @return void
  */
 	public function add() {
+
+
+        $this->set('sideTickets', false);
+
 		if ($this->request->is('post')) {
 			$this->EventType->create();
 			if ($this->EventType->save($this->request->data)) {
@@ -68,6 +77,9 @@ class EventTypesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+
+
+        $this->set('sideTickets', false);
 		if (!$this->EventType->exists($id)) {
 			throw new NotFoundException(__('Invalid event type'));
 		}

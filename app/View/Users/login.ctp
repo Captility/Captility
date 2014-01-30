@@ -29,13 +29,16 @@
             'label' => array('text' => __('Username'),
                 'class' => 'col col-md-3 control-label'),
             'placeholder' => __('Please enter your username'),
+            'autofocus'=>'autofocus'
         )); ?>
+
         <?php echo $this->Form->input('password', array(
             'label' => array('text' => __('Password'),
                 'class' => 'col col-md-3 control-label'),
             'placeholder' => __('Please enter your password.'),
             'type' => 'password',
         )); ?>
+
         <div class="form-group">
             <div class="col col-md-6 col-md-offset-3">
                 <?php echo $this->Form->submit(__('Login'), array(

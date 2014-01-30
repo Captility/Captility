@@ -5,6 +5,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
+     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-film"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -22,65 +23,94 @@
 
 <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
 
-<?php echo $this->Form->create('Capture', array('role' => 'form')); ?>
+<?php echo $this->Form->create('Capture', Configure::read('FORM.INPUT_DEFAULTS')); ?>
 
 
 <? ################################################################################################################## ?>
 <? ################################################### CAPTURE ###################################################### ?>
 <? ################################################################################################################## ?>
 
-<?php echo $this->Form->label('Capture.name', __('Name'), array(
-    'class' => 'control-label'));?>
 
-<div class="form-group">
-    <?php echo $this->Form->input('name', array(
-        'before' => '<span class="input-group-addon glyphicon glyphicon-film input-group-glyphicon"> </span>',
-        'format' => array('label', 'before', 'input', 'error', 'after'),
-        'div' => 'input-group',
-        'class' => 'form-control',
-        'placeholder' => __('Name'),
-        'label' => false));?>
+<?php echo $this->Form->input('Capture.name', array(
+
+    'label' => __('Name'),
+    'placeholder' => __('Name'),
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-film input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    'autofocus'=>'autofocus'
+));?>
+
+
+
+<?php echo $this->Form->input('lecture_id', array(
+
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-th-list input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+));?>
+
+
+
+<div class="form-group form-horizontal">
+
+    <label for="CaptureStatus">Status</label>
+
+    <div class="required">
+        <div class="input input-group select required">
+
+            <span class="input-group-addon glyphicon glyphicon-barcode input-group-glyphicon"></span>
+
+            <select name="data[Capture][status]" class="form-control input-thin"
+                    id="CaptureStatus" required="required"
+                    style="/* display: none; */">
+
+                <? foreach (Configure::read('CAPTURE.STATUSES') as $status => $class): ?>
+
+                    <option
+                        data-content='<span class="label label-<? echo $class ?>"><? echo __($status) ?></span>'><? echo $status ?></option>
+                <? endforeach; ?>
+
+            </select>
+        </div>
+    </div>
 </div>
 
-<div class="form-group">
-    <?php echo $this->Form->input('lecture_id', array('class' => 'form-control', 'placeholder' => 'Lecture Id'));?>
-</div>
-
-<?php echo $this->Form->label('Capture.status', __('Status'), array(
-    'class' => 'control-label'));?>
 
 
-<div class="form-group">
-    <?php echo $this->Form->input('status', array(
-        'class' => 'form-control',
-        'placeholder' => 'Status',
-        'before' => '<span class="input-group-addon glyphicon glyphicon-barcode input-group-glyphicon"> </span>',
-        'format' => array('label', 'before', 'input', 'error', 'after'),
-        'div' => 'input-group',
-        'class' => 'form-control',
-        'label' => false,
-    ));?>
-</div>
 
-<div class="form-group">
-    <?php echo $this->Form->input('Event.event_type_id', array('class' => 'form-control', 'placeholder' => 'Event Type Id'));?>
-</div>
+<?php echo $this->Form->input('Event.event_type_id', array(
 
-<div class="form-group">
-    <?php echo $this->Form->input('Event.link', array('class' => 'form-control',
-        'required' => false,
-        'placeholder' => __('Link to Capture Data')));?>
-</div>
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-facetime-video input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    'selected' => $this->Form->value('Event.0.event_type_id')
+
+));?>
 
 
-<div class="form-group">
-    <?php echo $this->Form->input('user_id', array('class' => 'form-control', 'placeholder' => 'User Id',
-        'label' => __('Responsible'),
-        'empty' => true));?>
-</div>
-<div class="form-group">
-    <?php echo $this->Form->input('workflow_id', array('class' => 'form-control', 'placeholder' => 'Workflow Id', 'empty' => true));?>
-</div>
+<?php echo $this->Form->input('Event.link', array(
+
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-link input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    'placeholder' => __('http://www.captility.de'),
+
+));?>
+
+
+
+<?php echo $this->Form->input('user_id', array(
+
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
+    'label' => __('Responsible'),
+    'empty' => true, 'required' => false
+));?>
+
+
+
+
+<?php echo $this->Form->input('workflow_id', array(
+
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-random input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    'empty' => true, 'required' => false
+));?>
+
+
 <?php echo $this->Element('tinymce'); ?>
 
 

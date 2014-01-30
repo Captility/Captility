@@ -1,5 +1,17 @@
 <? $this->Breadcrumbs->addCrumb(__('Production'), '/pages/production'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-dashboard"></span>' . $headline, '/dashboard', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-dashboard"></span>' . __('Dashboard – Week Overview'), '/dashboard', array('class' => 'active')); ?>
+
+
+<div class="row">
+    <div class="col-md-1 column">
+     <div class="glyphicon-headline hidden-xs hidden-sm"><span class="glyphicon el-icon-captility"></span></div>
+    </div>
+    <div class="col-md-11 column">
+        <div class="page-header">
+            <h1><?php echo __('Dashboard – Week Overview') ?></h1>
+        </div>
+    </div>
+</div>
 
 <div class="col-md-1 column">
     <!-- Element::LeftTabs -->
@@ -51,3 +63,8 @@
         </div>
     </div>
 </div>
+
+<div class="col-md-3 column">
+
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
+</div><!-- end col md 3 -->

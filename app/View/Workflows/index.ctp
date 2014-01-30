@@ -5,6 +5,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
+     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-random"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -22,7 +23,8 @@
 </div>
 <div class="col-md-8 column actions-column">
 
-    <div class="panel panel-default">
+    <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
+    <div class="panel panel-primary">
         <!-- Default panel contents -->
 
         <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">

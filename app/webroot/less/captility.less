@@ -113,6 +113,23 @@
   font-family: @font-family-nav;
 }
 
+//FORM ALIGNMENT
+@media (min-width:@screen-lg-min) {
+  .form-split-6 {
+
+    .make-lg-column(6);
+    padding: 0px 25px 0px 0px;
+  }
+
+
+  .form-split-6:nth-child(2n+1) {
+
+    padding: 0;
+  }
+}
+
+
+
 //Nav Dropdown Infos
 .dropdown-menu > li.list-info {
   position: relative;
@@ -129,9 +146,9 @@
   overflow-x: scroll;
 }
 
-.actions-column {
+.actions-column .panel {
 
-  overflow-x: scroll;
+  overflow: scroll;
 }
 
 .panel-heading {
@@ -180,6 +197,10 @@ small.disabled {
   background-position: top center;
   background-repeat: no-repeat;
 
+}
+
+a.cp-icon-lecturer {
+
   &:hover, &:active {
     background-image: url('../img/icons/cp-icon-lecturer-inverse.svg');
   }
@@ -189,17 +210,13 @@ small.disabled {
   background-size: 45%;
   background-position: center center;
   width: 40px;
-
-  &:hover, &:active{
-
-    background-image: url('../img/icons/cp-icon-lecturer.svg');
-  }
 }
 
-.input-group-addon strong{
+.input-group-addon strong {
 
   font-size: 140%;
 }
+
 a:hover, a:active {
 
   .cp-icon-lecturer {
@@ -273,7 +290,7 @@ h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
   }
 }
 
-.error-message{
+.error-message {
 
   color: #a94442;
 }
@@ -352,13 +369,13 @@ h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
  * ###############################################*/
 
 /*.form-control,*/
-.input-thin{
+.input-group .input-thin, .input-thin {
 
-  width: 33.333333333333% !important;
+  width: 44%;
 }
 
 @media (max-width:@screen-md-max) {
-  .input-thin {
+  .input-group .input-thin, .input-thin {
 
     width: 100%;
   }
@@ -435,6 +452,18 @@ button .glyphicon {
 
   display: inline;
   margin-left: -7px;
+}
+
+.glyphicon-headline span.glyphicon:empty {
+
+  font-size: 39px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: inherit;
+  top: 7px;
+  margin-left: 37px;
+  position: absolute;
+  right: 0;
 }
 
 /** Show Auth-message as bootstrap alert*/
@@ -572,8 +601,13 @@ text-shadow: none;*/
   font-weight: normal;
 }
 
-.fc-event:hover {
-  opacity: 0.75;
+.fc-event{
+
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 0.75;
+  }
 }
 
 /*.fc-first th.fc-widget-header {
@@ -600,10 +634,19 @@ text-shadow: none;*/
 
 .fc-event-time {
 
-  text-align: center;
   background-color: rgba(0, 0, 0, 0.2);
   margin-bottom: 0.25em;
   display: inherit;
+
+  &:before {
+
+    font-family: 'Elusive-Icons';
+    line-height: 1.5;
+    margin-right: 5px;
+    content: "\e664";
+    margin-left: 2px;
+
+  }
 }
 
 /** Define Event Colors **/
@@ -1361,6 +1404,31 @@ ol.landing-page-showcase-carousel-indicators {
   }
 }
 
+.quick-nav {
+
+  position: relative;
+  right: 0px;
+  top: 15px;
+  font-size: 125%;
+
+  a {
+
+    color: #fff;
+    opacity: 0.55;
+
+    &:hover, &:active {
+
+      opacity: 1;
+    }
+  }
+}
+
+.qr-code-container {
+
+  height: 250px !important;
+  width: 250px !important;
+}
+
 /* ###############################################
  * ################ BRADCRUMB BAR  ################
  * ###############################################*/
@@ -1389,8 +1457,7 @@ ol.landing-page-showcase-carousel-indicators {
 
   margin-top: 40px;
   padding: 5px 0px;
-  background-color: @landing-page-bgDefault;
-  height: 50px;
+  background-color: @landing-page-bgDefault; //height: 50px;
 }
 
 ul.captility-breadcrumb {
@@ -1534,7 +1601,7 @@ ul.navbar-nav li.active:after {
 
 // PANEL TABLE
 
-.actions-column .panel-default {
+.actions-column .panel-primary {
 
   border-color: @btn-primary-border;
 
@@ -1581,7 +1648,7 @@ ul.navbar-nav li.active:after {
   }
 }
 
-.table > tbody > tr > td.labels{
+.table > tbody > tr > td.labels {
 
   padding-top: 12px;
 }
@@ -1600,7 +1667,7 @@ ul.navbar-nav li.active:after {
 
   a span.glyphicon-trash, a span.glyphicon-remove {
 
-    color: rgb(225, 91, 71);
+    color: #a94442; //rgb(225, 91, 71);
     &:hover, &:active {
       color: @link-color;
     }
@@ -1616,7 +1683,7 @@ ul.navbar-nav li.active:after {
 }
 
 .remove-text {
-  color: rgb(225, 91, 71);
+  color: #a94442; //rgb(225, 91, 71);
 }
 
 // SideTickets

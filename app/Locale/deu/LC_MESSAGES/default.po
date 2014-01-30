@@ -511,13 +511,8 @@ msgid "Schedule Id"
 msgstr "ID"
 
 
-
-
-
-
-
 msgid "Related Schedules"
-msgstr "Zugehöriger Zeitplan"
+msgstr "Zugehörige Zeitpläne"
 
 msgid "Interval Start"
 msgstr "Aufnahmezeitraum-Beginn"
@@ -797,7 +792,7 @@ msgstr "Veranstalter bearbeiten"
 
 
 msgid "Contact"
-msgstr "Kontakt"
+msgstr "Kontaktperson"
 
 msgid "Contact Email"
 msgstr "Kontakt Email"
@@ -879,14 +874,7 @@ msgid "Description"
 msgstr "Beschreibung"
 
 msgid "Step"
-msgstr "Index"
-
-
-
-
-
-
-
+msgstr "Schritt"
 
 
 msgid "Edit Task"
@@ -999,6 +987,20 @@ msgstr "Admin::Workflow bearbeiten"
 msgid "Related Tasks"
 msgstr "Verknüpfte Aufgaben"
 
+msgid "Interval"
+msgstr "Intervall"
+
+msgid "once"
+msgstr "Einmalig"
+
+msgid "regular"
+msgstr "Regulär"
+
+msgid "Time"
+msgstr "Zeit"
+
+msgid "Date"
+msgstr "Datum"
 
 msgid "User Registry"
 msgstr "Benutzerverwaltung"
@@ -1102,12 +1104,17 @@ msgstr 'Sie verfügen nicht über die nötigen Rechte diese Aktion auszuführen.
 msgid "Responsible"
 msgstr "Zuständig"
 
-msgid "Lecture name"
-msgstr "Name der Veranstaltung"
+msgid "Name of lecture"
+msgstr "Veranstaltung"
+
+msgid "Number of Lecture"
+msgstr "Veranstaltungsnummer"
 
 msgid "Number of lecture"
 msgstr "Veranstaltungsnummer"
 
+msgid "Lecture name"
+msgstr "Veranstaltung"
 
 msgid "Capture Name"
 msgstr "Name des Aufzeichnungsplans"
@@ -1258,3 +1265,6 @@ msgstr "Sonntag"
 
 msgid "Blue"
 msgstr "Blau"
+
+msgid "every"
+msgstr "jeden"

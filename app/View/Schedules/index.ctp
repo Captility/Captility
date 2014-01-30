@@ -21,7 +21,7 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
         <!-- Default panel contents -->
 
         <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">

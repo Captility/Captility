@@ -1,9 +1,10 @@
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records', array('class' => 'active')); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon cp-icon-lecturer"></span>'.__('Hosts'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon cp-icon-lecturer"></span>' . __('Hosts'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->
 
 <div class="row">
     <div class="col-md-1 column">
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon cp-icon-lecturer"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -22,7 +23,7 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
         <!-- Default panel contents -->
 
         <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
@@ -96,6 +97,15 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Host'), array('action' => 'add'), array('escape' => false)); ?></li>
+                </ul>
+            </div>
+            <!-- end body -->
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-th-list"></span><?php echo __('Lectures');?></h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Lectures'), array('controller' => 'lectures', 'action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>

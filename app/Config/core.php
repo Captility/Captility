@@ -274,41 +274,7 @@ date_default_timezone_set('Europe/Berlin');
  * Set default Time for localisation.
  */
 Configure::write('Config.language', 'deu');
-Configure::write('Captility.supportedLanguages', array('deu', 'eng'));
 
-
-/**
- * CAPTILITY VERSION
- */
-
-Configure::write('CAPTILITY.VERSION', '0.3.1');
-
-
-/** TICKET STATUSES */
-Configure::write('TICKET.STATUSES', array(
-    // Name => Class
-    'New' => 'default',
-    'Requested' => 'primary',
-    'Urgend' => 'warning',
-    'Overdue' => 'danger',
-    'Error' => 'inverse',
-    'Done' => 'success'
-
-));
-
-
-Configure::write('FORM.INPUT_DEFAULTS', array(
-    'role' => 'form',
-    'inputDefaults' => array(
-        'div' => 'form-group',
-        'label' => array( //'class' => 'control-label'
-            //'class' => 'col col-md-3 control-label'
-        ),
-        //'wrapInput' => 'col col-md-9',
-        'class' => 'form-control'
-    ),
-    //'class' => 'well form-horizontal'
-));
 
 /**
  *

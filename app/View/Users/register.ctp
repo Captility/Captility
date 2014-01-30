@@ -1,5 +1,5 @@
 <? $this->Breadcrumbs->addCrumb(__('Captility'), '/'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-key"></span>'.__('Register'), '/login'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-key"></span>' . __('Register'), '/login'); ?>
 
 <div class="col-md-1 column content-pane">
 
@@ -31,27 +31,31 @@
                 'label' => array('text' => __('Username'),
                     'class' => 'col col-md-3 control-label'),
                 'placeholder' => __('Choose a username'),
+                'autofocus' => 'autofocus'
             )); ?>
+
             <?php echo $this->Form->input('User.email', array(
                 'label' => array('text' => __('E-Mail'),
                     'class' => 'col col-md-3 control-label'),
                 'placeholder' => __('enter email-adress')
             )); ?>
+
             <?php echo $this->Form->input('User.pwd', array(
                 'label' => array('text' => __('Password'),
-                'class' => 'col col-md-3 control-label'),
+                    'class' => 'col col-md-3 control-label'),
                 'placeholder' => __('enter password'),
                 'type' => 'password',
-                'value'=>'',
-                'autocomplete'=>'off'
+                'value' => '',
+                'autocomplete' => 'off'
             )); ?>
+
             <?php echo $this->Form->input('User.pwd_confirm', array(
                 'label' => array('text' => false,
                     'class' => 'col col-md-3 control-label'),
                 'placeholder' => __('confirm password'),
                 'type' => 'password',
-                'value'=>'',
-                'autocomplete'=>'off'
+                'value' => '',
+                'autocomplete' => 'off'
             )); ?>
 
             <?php /*echo $this->Form->label('User.language', 'Sprache', 'col col-md-3 control-label'); */ ?>

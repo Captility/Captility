@@ -4,6 +4,7 @@
 <!--<div class=" view">-->
 <div class="row">
     <div class="col-md-1 column">
+     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-facetime-video"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -20,28 +21,28 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <div class="panel panel-default">
+    <div class="panel panel-default badger-right badger-default"
+         data-badger="<? echo __('Event Type') . ' #' . h($eventType['EventType']['event_type_id']); ?>">
         <table cellpadding="0" cellspacing="0" class="table table-striped">
             <tbody>
             <tr>
-                <th><?php echo __('Event Type Id'); ?></th>
-                <td>
-                    <?php echo h($eventType['EventType']['event_type_id']); ?>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
                 <th><?php echo __('Name'); ?></th>
-                <td>
+                <td><span class="glyphicon glyphicon-facetime-video"></span>
                     <?php echo h($eventType['EventType']['name']); ?>
                     &nbsp;
                 </td>
             </tr>
             <tr>
-                <th><?php echo __('Color'); ?></th>
+                <th><?php echo __('Event Type'); ?></th>
                 <td>
-                    <?php echo __(h($eventType['EventType']['color'])); ?>
-                    &nbsp;
+                    <?php echo $this->Form->create('EventTypes', array('url' => array('controller' => 'eventTypes', 'action' => 'view', $eventType['EventType']['event_type_id'])));?>
+                    <span class="glyphicon glyphicon-facetime-video"></span>
+                    <? echo __(h($eventType['EventType']['color'])) ?>
+                    <button type="submit" title="<?php echo $eventType['EventType']['name']; ?>"
+                            style=" margin-left: 5px; margin-top: -5px;vertical-align: bottom;"
+                            class="btn-color eventColor<?php echo $eventType['EventType']['color']; ?>"></button>
+                    <?php echo $this->Form->end() ?>
+
                 </td>
             </tr>
             </tbody>
@@ -53,8 +54,7 @@
     <div class="related row">
         <div class="col-md-12">
             <h3><?php echo __('Related Lectures'); ?></h3>
-            <?php if (!empty($eventType['Lecture'])): ?>
-                <div class="panel panel-default">
+            <?php if (!empty($eventType['Lecture'])): ?>                 <div class="panel panel-primary">
                     <!-- Default panel contents -->
 
                     <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
@@ -110,40 +110,56 @@
             <?php endif; ?>
 
             <div class="actions">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary pull-right')); ?>                </div>
         </div>
         <!-- end col md 12 -->
     </div>
 
     <hr/>
 
+
     <div class="related row">
         <div class="col-md-12">
             <h3><?php echo __('Related Events'); ?></h3>
             <?php if (!empty($eventType['Event'])): ?>
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <!-- Default panel contents -->
 
                     <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
                         <thead class="panel-heading">
                         <tr>
-                            <th><?php echo __('Title'); ?></th>
-                            <th><?php echo __('Start'); ?></th>
-                            <th><?php echo __('End'); ?></th>
+                            <th><?php echo __('Event Id'); ?></th>
+                            <!--<th><?php /*echo __('Title'); */?></th>-->
+                            <th><?php echo __('Date'); ?></th>
+                            <th><?php echo __('Time'); ?></th>
                             <th><?php echo __('Status'); ?></th>
                             <th><?php echo __('Link'); ?></th>
-                            <th><?php echo __('Event Type'); ?></th>
-                            <th><?php echo __('Schedule'); ?></th>
-                            <th><?php echo __('Capture'); ?></th>
+                            <th><?php echo __('Type'); ?></th>
+                            <th><?php echo __('Schedule Id'); ?></th>
                             <th class="actions"></th>
                         </tr>
                         <thead>
                         <tbody>
                         <?php foreach ($eventType['Event'] as $event): ?>
                             <tr>
-                                <td><?php echo $event['title']; ?></td>
-                                <td><?php echo $event['start']; ?></td>
-                                <td><?php echo $event['end']; ?></td>
+                                <td><?php echo $event['event_id']; ?></td>
+                                <!--<td><?php /*echo $event['title']; */?></td>-->
+                                <td>
+
+                                    <?php echo //VON
+                                        '<span class="glyphicon glyphicon-calendar"></span>' .
+                                        $this->Captility->linkDate($event['start'], '%a, %d.%m.%Y');?>
+
+                                </td>
+                                <td>
+                                    <?
+                                    echo '<span class="glyphicon glyphicon-time"></span>' .
+                                        $this->Captility->calcDate($event['start'], '%H:%M');
+
+                                    echo ' - ' .
+                                        $this->Captility->calcDate($event['end'], '%H:%M');
+                                    ?>
+                                </td>
                                 <td><?php echo $event['status']; ?></td>
                                 <td>
                                     <?php if (!empty($event['link'])) echo $this->Html->link(
@@ -151,20 +167,18 @@
                                         h($event['link']), array('full_base' => true, 'escape' => false));
                                     ?>
                                 </td>
-                                <td>
-                                    <?php echo $this->Form->create('EventTypes', array('url' => array('controller' => 'eventTypes', 'action' => 'view', $event['EventType']['event_type_id'])));?>
 
+                                <td>
+                                    <?php echo $this->Form->create('EventTypes', array('url' => array('controller' => 'eventTypes', 'action' => 'view', $event['event_type_id'])));?>
+                                    <!--<form action="captility/eventTypes/view/<?php /*echo $event['event_type_id'] */?>">-->
                                     <button type="submit" title="<?php echo $event['EventType']['name']; ?>"
                                             class="btn-color eventColor<?php echo $event['EventType']['color']; ?>"></button>
 
                                     <?php echo $this->Form->end() ?>
                                 </td>
-                                <td>
-                                    <?php echo $this->Html->link('#' . $event['schedule_id'], array('controller' => 'schedules', 'action' => 'view', $event['schedule_id'])); ?>
-                                </td>
-                                <td>
-                                    <?php echo $this->Html->link($event['Capture']['name'], array('controller' => 'captures', 'action' => 'view', $event['capture_id'])); ?>
-                                </td>
+
+
+                                <td><?php echo $this->Html->link('#' . $event['schedule_id'], array('controller' => 'scheduled', 'action' => 'view', $event['capture_id'])); ?></td>
                                 <td class="actions">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'events', 'action' => 'view', $event['event_id']), array('escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'events', 'action' => 'edit', $event['event_id']), array('escape' => false)); ?>
@@ -179,7 +193,7 @@
             <?php endif; ?>
 
             <div class="actions">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Event'), array('controller' => 'events', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Event'), array('controller' => 'events', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary pull-right')); ?>                </div>
         </div>
         <!-- end col md 12 -->
     </div>

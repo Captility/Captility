@@ -45,8 +45,12 @@ class AppModel extends Model {
         return preg_match('(WS\s?\d{4,4}\/?\d{2,4}|SS\s?\d{4,4})', $value);
     }
 
-
-    function equalToField($check, $otherfield) {
+    /**
+     * @param $check
+     * @param $otherfield
+     * @return bool
+     */
+    public function equalToField($check, $otherfield) {
         //get name of field
         $fname = '';
         foreach ($check as $key => $value) {
@@ -127,5 +131,19 @@ class AppModel extends Model {
     public function validateFalse() {
 
         return false;
+    }
+
+
+    public function afterValidate($options = array()) {
+
+        if (Configure::read('MODEL.INVALIDATE_ALL')) {
+
+            foreach ($this->_schema as $key => $field) {
+
+                $this->invalidate($key, 'Invalidation Rule was applied. Check bootstrap.php for invalidation rule.');
+            }
+        }
+
+        return true;
     }
 }

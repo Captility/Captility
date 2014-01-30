@@ -1482,6 +1482,24 @@ input[type="button"].btn-block {
 .navbar-btn-search {
   font-family: 'Istok Web', 'Titillium Web', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+@media (min-width: 1200px) {
+  .form-split-6 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding: 0px 25px 0px 0px;
+  }
+  .form-split-6:nth-child(2n+1) {
+    padding: 0;
+  }
+}
+@media (min-width: 1200px) and (min-width: 1200px) {
+  .form-split-6 {
+    float: left;
+    width: 50%;
+  }
+}
 .dropdown-menu > li.list-info {
   position: relative;
   display: block;
@@ -1495,8 +1513,8 @@ input[type="button"].btn-block {
 .related {
   overflow-x: scroll;
 }
-.actions-column {
-  overflow-x: scroll;
+.actions-column .panel {
+  overflow: scroll;
 }
 .panel-heading {
   background-color: #f5f5f5;
@@ -1530,18 +1548,14 @@ small.disabled {
   background-position: top center;
   background-repeat: no-repeat;
 }
-.cp-icon-lecturer:hover,
-.cp-icon-lecturer:active {
+a.cp-icon-lecturer:hover,
+a.cp-icon-lecturer:active {
   background-image: url('../img/icons/cp-icon-lecturer-inverse.svg');
 }
 .input-group .cp-icon-lecturer {
   background-size: 45%;
   background-position: center center;
   width: 40px;
-}
-.input-group .cp-icon-lecturer:hover,
-.input-group .cp-icon-lecturer:active {
-  background-image: url('../img/icons/cp-icon-lecturer.svg');
 }
 .input-group-addon strong {
   font-size: 140%;
@@ -2099,10 +2113,12 @@ fieldset[disabled] .btn-inverse.active {
  * ################# DATESELECT  #################
  * ###############################################*/
 /*.form-control,*/
+.input-group .input-thin,
 .input-thin {
-  width: 33.333333333333% !important;
+  width: 44%;
 }
 @media (max-width: 1199px) {
+  .input-group .input-thin,
   .input-thin {
     width: 100%;
   }
@@ -2240,6 +2256,16 @@ button .glyphicon {
 .glyphicon-leftTabs {
   display: inline;
   margin-left: -7px;
+}
+.glyphicon-headline span.glyphicon:empty {
+  font-size: 39px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: inherit;
+  top: 7px;
+  margin-left: 37px;
+  position: absolute;
+  right: 0;
 }
 /** Show Auth-message as bootstrap alert*/
 #authMessage {
@@ -2897,6 +2923,9 @@ text-shadow: none;*/
 .fc-widget-header {
   font-weight: normal;
 }
+.fc-event {
+  cursor: pointer;
+}
 .fc-event:hover {
   opacity: 0.75;
 }
@@ -2919,10 +2948,16 @@ text-shadow: none;*/
   box-shadow: 2px 2px 3px #aaaaaa;
 }
 .fc-event-time {
-  text-align: center;
   background-color: rgba(0, 0, 0, 0.2);
   margin-bottom: 0.25em;
   display: inherit;
+}
+.fc-event-time:before {
+  font-family: 'Elusive-Icons';
+  line-height: 1.5;
+  margin-right: 5px;
+  content: "\e664";
+  margin-left: 2px;
 }
 /** Define Event Colors **/
 .eventColorBlue {
@@ -3468,6 +3503,24 @@ ol.landing-page-showcase-carousel-indicators > li {
 ol.landing-page-showcase-carousel-indicators > li.active {
   background-color: #2971AF;
 }
+.quick-nav {
+  position: relative;
+  right: 0px;
+  top: 15px;
+  font-size: 125%;
+}
+.quick-nav a {
+  color: #fff;
+  opacity: 0.55;
+}
+.quick-nav a:hover,
+.quick-nav a:active {
+  opacity: 1;
+}
+.qr-code-container {
+  height: 250px !important;
+  width: 250px !important;
+}
 /* ###############################################
  * ################ BRADCRUMB BAR  ################
  * ###############################################*/
@@ -3475,7 +3528,6 @@ ol.landing-page-showcase-carousel-indicators > li.active {
   margin-top: 40px;
   padding: 5px 0px;
   background-color: #225588;
-  height: 50px;
 }
 ul.captility-breadcrumb {
   list-style: none;
@@ -3589,28 +3641,28 @@ ul.navbar-nav li.active:after {
   margin-left: -5px;
   position: absolute;
 }
-.actions-column .panel-default {
+.actions-column .panel-primary {
   border-color: #357ebd;
 }
-.actions-column .panel-default table thead.panel-heading {
+.actions-column .panel-primary table thead.panel-heading {
   background-color: #357ebd;
   color: #fff;
   font-weight: 400;
 }
-.actions-column .panel-default table thead.panel-heading a {
+.actions-column .panel-primary table thead.panel-heading a {
   color: #fff;
   font-weight: 400;
 }
-.actions-column .panel-default table thead.panel-heading tr th.actions {
+.actions-column .panel-primary table thead.panel-heading tr th.actions {
   width: 80px;
 }
-.actions-column .panel-default table thead.panel-heading th {
+.actions-column .panel-primary table thead.panel-heading th {
   font-weight: 400;
 }
-.actions-column .panel-default table thead.panel-heading th .glyphicon {
+.actions-column .panel-primary table thead.panel-heading th .glyphicon {
   margin-bottom: 4px;
 }
-.actions-column .panel-default table tbody td.actions > a {
+.actions-column .panel-primary table tbody td.actions > a {
   margin: 3px -2px;
 }
 .table > tbody > tr > td.labels {
@@ -3625,7 +3677,7 @@ ul.navbar-nav li.active:after {
 }
 .actions a span.glyphicon-trash,
 .actions a span.glyphicon-remove {
-  color: #e15b47;
+  color: #a94442;
 }
 .actions a span.glyphicon-trash:hover,
 .actions a span.glyphicon-remove:hover,
@@ -3641,7 +3693,7 @@ ul.navbar-nav li.active:after {
   color: #428bca;
 }
 .remove-text {
-  color: #e15b47;
+  color: #a94442;
 }
 .sideTicket {
   padding: 30px 10px 5px 10px;

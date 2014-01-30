@@ -1,9 +1,10 @@
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records', array('class' => 'active')); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon cp-icon-lecturer"></span>'.__('Hosts'), '/hosts', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon cp-icon-lecturer"></span>' . __('Hosts'), '/hosts', array('class' => 'active')); ?>
 <? $this->Breadcrumbs->addCrumb(h($host['Host']['name']), '#', array('class' => 'active')); ?>
 <!--<div class=" view">-->
 <div class="row">
     <div class="col-md-1 column">
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon cp-icon-lecturer"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -20,48 +21,37 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <div class="panel panel-default">
+
+    <div class="panel panel-default badger-right badger-default" data-badger="<? echo __('Host'). ' #'. h($host['Host']['host_id']) ?>">
+
         <table cellpadding="0" cellspacing="0" class="table table-striped">
             <tbody>
-            <tr>
-                <th><?php echo __('Host Id'); ?></th>
-                <td>
-                    <?php echo h($host['Host']['host_id']); ?>
-                    &nbsp;
-                </td>
-            </tr>
+
             <tr>
                 <th><?php echo __('Name'); ?></th>
-                <td>
+                <td><span class="glyphicon cp-icon-lecturer"></span>
                     <?php echo h($host['Host']['name']); ?>
                     &nbsp;
                 </td>
             </tr>
             <tr>
                 <th><?php echo __('Email'); ?></th>
-                <td>
+                <td><span class="glyphicon glyphicon-envelope"></span>
                     <?php echo h($host['Host']['email']); ?>
                     &nbsp;
                 </td>
             </tr>
             <tr>
                 <th><?php echo __('Contact'); ?></th>
-                <td>
+                <td><span class="glyphicon el-icon-adult"></span>
                     <?php echo h($host['Host']['contact']); ?>
                     &nbsp;
                 </td>
             </tr>
             <tr>
                 <th><?php echo __('Contact Email'); ?></th>
-                <td>
+                <td><span class="glyphicon glyphicon-envelope"></span>
                     <?php echo h($host['Host']['contact_email']); ?>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <th><?php echo __('Comment'); ?></th>
-                <td>
-                    <?php echo h($host['Host']['comment']); ?>
                     &nbsp;
                 </td>
             </tr>
@@ -71,64 +61,69 @@
 
     <hr/>
 
-    <div class="related row">
-        <div class="col-md-12">
-            <h3><?php echo __('Related Lectures'); ?></h3>
-            <?php if (!empty($host['Lecture'])): ?>
-                <div class="panel panel-default">
-                    <table cellpadding="0" cellspacing="0" class="table table-striped">
-                        <tbody>
-                        <tr>
-                            <th><?php echo __('Number'); ?></th>
-                            <th><?php echo __('Name'); ?></th>
-                            <th><?php echo __('Semester'); ?></th>
-                            <th><?php echo __('Link'); ?></th>
-                            <th><?php echo __('User'); ?></th>
-                            <th><?php echo __('Event Type'); ?></th>
-                            <th class="actions"></th>
-                        </tr>
-                        <thead>
-                        <tbody>
-                        <?php foreach ($host['Lecture'] as $lecture): ?>
-                            <tr>
-                                <td><?php echo $lecture['number']; ?></td>
-                                <td><?php echo $lecture['name']; ?></td>
-                                <td><?php echo $lecture['semester']; ?></td>
-                                <td>
-                                    <?php if (!empty($lecture['link'])) echo $this->Html->link(
-                                        $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-link')),
-                                        h($lecture['link']), array('full_base' => true, 'escape' => false));
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php echo $this->Html->link($lecture['User']['username'], array('controller' => 'users', 'action' => 'view', $lecture['User']['user_id'])); ?>
-                                </td>
-                                <td>
-                                    <?php echo $this->Form->create('EventTypes', array('url' => array('controller' => 'eventTypes', 'action' => 'view', $lecture['EventType']['event_type_id'])));?>
+    <? if (!empty($ticket['Ticket']['comment'])): ?>
+        <strong><?php echo __('Comment'); ?></strong>
 
-                                    <button type="submit" title="<?php echo $lecture['EventType']['name']; ?>"
-                                            class="btn-color eventColor<?php echo $lecture['EventType']['color']; ?>"></button>
-
-                                    <?php echo $this->Form->end() ?>
-                                </td>
-                                <td class="actions">
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'lectures', 'action' => 'view', $lecture['lecture_id']), array('escape' => false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'lectures', 'action' => 'edit', $lecture['lecture_id']), array('escape' => false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('controller' => 'lectures', 'action' => 'delete', $lecture['lecture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $lecture['lecture_id'])); ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                    <div class="panel-footer"></div>
-                </div>
-            <?php endif; ?>
-
-            <div class="actions">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
+        <div class="comment-content well well-lg">
+            <?php echo $ticket['Host']['comment']; ?>
         </div>
-        <!-- end col md 12 -->
-    </div>
+
+        <hr/>
+
+    <? endif; ?>
+
+    <h3><?php echo __('Related Lectures'); ?></h3>
+    <?php if (!empty($host['Lecture'])): ?>                 <div class="panel panel-primary">
+            <table cellpadding="0" cellspacing="0" class="table table-striped">
+                <thead class="panel-heading">
+                <tr>
+                    <th><?php echo __('Number'); ?></th>
+                    <th><?php echo __('Name'); ?></th>
+                    <th><?php echo __('Semester'); ?></th>
+                    <th><?php echo __('Link'); ?></th>
+                    <th><?php echo __('User'); ?></th>
+                    <th><?php echo __('Event Type'); ?></th>
+                    <th class="actions"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($host['Lecture'] as $lecture): ?>
+                    <tr>
+                        <td><?php echo $lecture['number']; ?></td>
+                        <td><?php echo $lecture['name']; ?></td>
+                        <td><?php echo $lecture['semester']; ?></td>
+                        <td>
+                            <?php if (!empty($lecture['link'])) echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-link')),
+                                h($lecture['link']), array('full_base' => true, 'escape' => false));
+                            ?>
+                        </td>
+                        <td>
+                            <?php echo $this->Html->link($lecture['User']['username'], array('controller' => 'users', 'action' => 'view', $lecture['User']['user_id'])); ?>
+                        </td>
+                        <td>
+                            <?php echo $this->Form->create('EventTypes', array('url' => array('controller' => 'eventTypes', 'action' => 'view', $lecture['EventType']['event_type_id'])));?>
+
+                            <button type="submit" title="<?php echo $lecture['EventType']['name']; ?>"
+                                    class="btn-color eventColor<?php echo $lecture['EventType']['color']; ?>"></button>
+
+                            <?php echo $this->Form->end() ?>
+                        </td>
+                        <td class="actions">
+                            <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'lectures', 'action' => 'view', $lecture['lecture_id']), array('escape' => false)); ?>
+                            <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'lectures', 'action' => 'edit', $lecture['lecture_id']), array('escape' => false)); ?>
+                            <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('controller' => 'lectures', 'action' => 'delete', $lecture['lecture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $lecture['lecture_id'])); ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+            <div class="panel-footer"></div>
+        </div>
+    <?php endif; ?>
+
+    <div class="actions">
+        <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary pull-right')); ?>                </div>
 
 
 </div>

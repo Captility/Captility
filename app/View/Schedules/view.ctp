@@ -18,7 +18,7 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
         <table cellpadding="0" cellspacing="0" class="table table-striped">
             <tbody>
             <tr>
@@ -100,8 +100,7 @@
     <div class="related row">
         <div class="col-md-12">
             <h3><?php echo __('Related Events'); ?></h3>
-            <?php if (!empty($schedule['Event'])): ?>
-                <div class="panel panel-default">
+            <?php if (!empty($schedule['Event'])): ?>                 <div class="panel panel-primary">
                     <!-- Default panel contents -->
 
                     <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
@@ -153,7 +152,7 @@
             <?php endif; ?>
 
             <div class="actions">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Event'), array('controller' => 'events', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Event'), array('controller' => 'events', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary pull-right')); ?>                </div>
         </div>
         <!-- end col md 12 -->
     </div>

@@ -4,6 +4,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
+     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-film"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -22,7 +23,7 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
         <!-- Default panel contents -->
 
         <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
@@ -42,7 +43,13 @@
                 <tr>
                     <td><?php echo h($capture['Capture']['capture_id']); ?>&nbsp;</td>
                     <td><?php echo h($capture['Capture']['name']); ?>&nbsp;</td>
-                    <td><?php echo h($capture['Capture']['status']); ?>&nbsp;</td>
+
+                    <td class="labels"><?php $statuses = Configure::read('CAPTURE.STATUSES');
+                        $class = $statuses[$capture['Capture']['status']]; ?>
+
+                        <span class="label label-<? echo $class ?>"><? echo __(h($capture['Capture']['status'])) ?></span>
+                    </td>
+
                     <td>
                         <?php echo $this->Html->link($capture['Lecture']['name'], array('controller' => 'lectures', 'action' => 'view', $capture['Lecture']['lecture_id'])); ?>
                     </td>

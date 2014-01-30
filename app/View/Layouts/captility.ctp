@@ -7,6 +7,8 @@
     <title>
         <?php echo $titleDescription; ?>
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <?php
     echo $this->Html->meta('icon');
 
@@ -21,11 +23,13 @@
     echo $this->Html->script('jquery/jquery-1.10.2.min.js');
     echo $this->Html->script('jquery/jquery-ui-1.10.3.custom.min.js');
     echo $this->Html->script('jquery/jquery.qtip.min.js');
-    echo $this->Html->script('jquery/tinymce/jquery.tinymce.min.js');
     echo $this->Html->script('bootstrap.custom.min.js');
     echo $this->Html->script('bootstrap-datepicker.min.js');
     echo $this->Html->script('bootstrap-select.min.js');
     echo $this->Html->script('fullcalendar/fullcalendar.min.js');
+    echo $this->Html->script('jquery/jquery.qr-code.min.js');
+    echo $this->Html->script('jquery/tinymce/jquery.tinymce.min.js');
+
     //echo $this->Html->script('jquery/jquery.qtip-1.0.0-rc3.min.js');
 
     // Ajax application root

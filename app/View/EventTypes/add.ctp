@@ -5,6 +5,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
+     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-facetime-video"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -62,7 +63,9 @@
                 </ul>
             </div>
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-th-table"></span><?php echo __('Related Lectures');?>
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-link"></span><?php echo __('Lectures');?>
+                </h3>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
@@ -70,6 +73,18 @@
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Lecture'), array('controller' => 'lectures', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>
             </div>
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-film"></span><?php echo __('Captures');?>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Captures'), array('controller' => 'capture', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'capture', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div>
+            <!-- end body -->
         </div>
     </div>
 

@@ -206,7 +206,7 @@ $(document).ready(function () {
                 },
                 show: false,
                 hide: {
-                    event: 'unfocus click mouseleave',
+                    event: 'unfocus',
                     effect: function () {
                         $(this).animate({ opacity: 0 }, { duration: 300 });
                     }
@@ -320,7 +320,7 @@ $(document).ready(function () {
             aspectRatio: 1.215, //1.375, //Dimension of Calendar
 
             //TimeFormat - German
-            firstHour: 8,
+            firstHour: 7,
             minTime: 6,
             maxTime: 22,
             axisFormat: 'HH:mm',
@@ -628,14 +628,15 @@ $(document).ready(function () {
      });*/
 
 
-      // TOGGLE ACTIVE TABS OF FORM
-     $('#ScheduleContainer').on('shown.bs.tab', 'a.form-toggle', function (e) {
+    // TOGGLE ACTIVE TABS OF FORM
+    $('#ScheduleContainer').on('shown.bs.tab', 'a.form-toggle', function (e) {
 
-     var $target = $($(this).attr('href'));
+        var $target = $($(this).attr('href'));
 
-     $target.parent().find('input, select').prop('disabled', true).selectpicker('refresh');;
-     $target.find('input, select').prop('disabled', false).selectpicker('refresh');
-     });
+        $target.parent().find('input, select').prop('disabled', true).selectpicker('refresh');
+        ;
+        $target.find('input, select').prop('disabled', false).selectpicker('refresh');
+    });
 
     // HASHED TABBING
     $(function () {
@@ -833,4 +834,55 @@ $(document).ready(function () {
     $('.captility-breadcrumb li').last().hide().css({"margin-left": "-400px"}).show().animate({"margin-left": "0"}, 600);
 
 
-});
+
+    // QR-CODE:
+
+    if ($.isFunction($.fn.qrcode)) {
+
+
+        $('a.qr-code').qtip({
+                id: 'qr-code',
+                prerender: true,
+                content: {
+                    text: '<div class="qr-code-container"></div>',
+                    title:
+
+                        '<a href="' + window.location.href + '">' +
+                        '<span class="glyphicon glyphicon-link"></span>'
+                            + window.location.href.substring(0,30) + '...</a>',
+                    button: 'Close'
+                },
+                show: {
+                    event: 'click'
+                },
+                style: 'qtip-bootstrap',
+
+                position: {
+                    my: 'top right',
+                    at: ' top right'
+                },
+                events: {
+
+                    show: function (event, api) {
+
+                        var url = window.location.href;
+
+                        $(this).find('.qr-code-container').empty().qrcode({width: 250, height:250, text: url});
+
+                        console.log(url);
+                    }
+                },
+                hide: {
+                    event: 'unfocus',
+                    effect: function () {
+                        $(this).animate({ opacity: 0 }, { duration: 300 });
+                    }
+                }
+
+            }
+        )};
+
+
+
+})
+;

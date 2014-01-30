@@ -1,8 +1,9 @@
-<? $this->Breadcrumbs->addCrumb(__('Events'), array('action' => 'index')); ?><?php $this->Breadcrumbs->addCrumb(__('Admin Add Event'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-play-circle"></span>'.__('Events'), array('action' => 'index')); ?><?php $this->Breadcrumbs->addCrumb(__('Admin Add Event'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
     <div class="col-md-1 column">
+     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-play-circle"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
