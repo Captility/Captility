@@ -28,7 +28,7 @@
 
     <div class="form-group">
         <?php echo $this->Form->input('event_type_id', array('class' => 'form-control', 'placeholder' => 'Event Type Id'));?>
-    </div>
+    </div><div class="clearfix"></div>
     <div class="form-group">
         <?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => 'Name'));?>
     </div>

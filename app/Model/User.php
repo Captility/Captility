@@ -129,8 +129,8 @@ class User extends AppModel {
             'checkSupportedLanguage' => array(
                 'rule' => array('checkSupportedLanguage'),
                 'message' => 'This language is not supported.',
-                'allowEmpty' => false,
-                'required' => true,
+                'allowEmpty' => true,
+                'required' => false,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),

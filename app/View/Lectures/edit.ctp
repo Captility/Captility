@@ -32,7 +32,7 @@
 
     <div class="form-group">
         <?php echo $this->Form->input('lecture_id', array('class' => 'form-control', 'placeholder' => 'Lecture Id'));?>
-    </div>
+    </div><div class="clearfix"></div>
 
 
     <?php echo $this->Form->input('number', array(

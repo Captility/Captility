@@ -1490,7 +1490,7 @@ input[type="button"].btn-block {
     padding-right: 15px;
     padding: 0px 25px 0px 0px;
   }
-  .form-split-6:nth-child(2n+1) {
+  form div.form-split-6:nth-child(odd) {
     padding: 0;
   }
 }

@@ -18,7 +18,7 @@
                 'label' => array(
                     'class' => 'col col-md-3 control-label'
                 ),
-                'wrapInput' => 'col col-md-6',
+                'wrapInput' => 'col col-md-7',
                 'class' => 'form-control'
             ),
             'class' => 'well form-horizontal'
@@ -29,18 +29,22 @@
             'label' => array('text' => __('Username'),
                 'class' => 'col col-md-3 control-label'),
             'placeholder' => __('Please enter your username'),
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
             'autofocus'=>'autofocus'
         )); ?>
+
 
         <?php echo $this->Form->input('password', array(
             'label' => array('text' => __('Password'),
                 'class' => 'col col-md-3 control-label'),
             'placeholder' => __('Please enter your password.'),
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-unlock input-group-glyphicon"></span>', 'afterInput' => '</div>',
+
             'type' => 'password',
         )); ?>
 
         <div class="form-group">
-            <div class="col col-md-6 col-md-offset-3">
+            <div class="col col-md-7 col-md-offset-3">
                 <?php echo $this->Form->submit(__('Login'), array(
                     'class' => 'btn btn-primary pull-right',
                     'style' => 'margin: 0 5px',

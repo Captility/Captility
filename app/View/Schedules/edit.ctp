@@ -21,6 +21,13 @@
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
     <?php echo $this->Form->create('Schedule', array('role' => 'form')); ?>
 
+
+    <div class="form-group">
+        <?php echo $this->Form->input('schedule_id'); ?>
+    </div>
+    <div class="clearfix"></div>
+
+
     <div class="form-group">
         <?php echo $this->Form->input('interval_start',
             array('dateFormat' => Configure::read('Captility.dateFormat'),

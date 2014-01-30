@@ -912,7 +912,7 @@ msgid "List User"
 msgstr "Benutzer zeigen"
 
 msgid "Suscribe to Tickets and Events."
-msgstr "Abboniere Neuigkeiten zu Tickets und Events"
+msgstr "Neuigkeiten zu Tickets und Events"
 
 msgid "No Notifications at all."
 msgstr "Keine Neugkeiten abbonieren"
@@ -927,7 +927,8 @@ msgid "Password"
 msgstr "Passwort"
 
 
-
+msgid "Notifications"
+msgstr "Abbonement"
 
 
 msgid "Current Password"
@@ -949,10 +950,10 @@ msgid "Log in with your username and password."
 msgstr "Bitte loggen Sie sich mit Ihrem Nutzernamen und Passwort ein."
 
 msgid "Please enter your username"
-msgstr "Bitte geben Sie einen Benutzernamen ein."
+msgstr "Bitte geben Sie Ihren Namen an."
 
 msgid "Please enter your password."
-msgstr "Bitte geben Sie ein Passwort ein."
+msgstr "Bitte geben Sie hier Ihr Passwort ein."
 
 msgid "Please register to log in."
 msgstr "Registrieren Sie sich um sich einzuloggen."

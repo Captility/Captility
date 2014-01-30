@@ -28,14 +28,13 @@
 
 
     <?php echo $this->Form->input('host_id', array('class' => 'form-control', 'placeholder' => 'Host Id'));?>
-
+    <div class="clearfix"></div>
 
     <?php echo $this->Form->input('name', array(
 
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon cp-icon-lecturer input-group-glyphicon"></span>', 'afterInput' => '</div>',
         'div' => 'form-group form-split-6',
         'placeholder' => __('Name'),
-        'autofocus' => 'autofocus'
     ));?>
 
     <?php echo $this->Form->input('email', array(
