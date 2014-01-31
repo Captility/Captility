@@ -855,8 +855,12 @@ msgstr "Zeitplan bearbeiten"
 msgid "Add Task"
 msgstr "Aufgabe anlegen"
 
+msgid "Add a new Task to this Workflow"
+msgstr "Diesem Ablauf eine neue Aufgabe hinzufügen.<br/> Aufgaben dienen als Vorlage für später generierte Tickets."
 
 
+msgid "Add new Task"
+msgstr "Neue Aufgabe anlegen"
 
 
 msgid "Admin Add Task"

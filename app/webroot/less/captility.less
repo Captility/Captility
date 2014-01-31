@@ -121,17 +121,12 @@
     padding: 0px 25px 0px 0px;
   }
 
-  form div.form-split-6:nth-child(odd){
-
+  form div.form-split-6:nth-child(odd) {
 
     padding: 0;
   }
 
 }
-
-
-
-
 
 //Nav Dropdown Infos
 .dropdown-menu > li.list-info {
@@ -604,10 +599,10 @@ text-shadow: none;*/
   font-weight: normal;
 }
 
-.fc-event{
+.fc-event {
 
   cursor: pointer;
-  
+
   &:hover {
     opacity: 0.75;
   }
@@ -1481,6 +1476,7 @@ ul.captility-breadcrumb {
     margin: 0px;
     font-size: 18px;
     top: 6px;
+
   }
 
   .breadcrumbs-logo {
@@ -1693,6 +1689,7 @@ ul.navbar-nav li.active:after {
 
 .sideTicket {
 
+  cursor: pointer;
   padding: 30px 10px 5px 10px;
 
   .ticket-body {
@@ -1757,4 +1754,25 @@ ul.navbar-nav li.active:after {
       }
     }
   }
+}
+
+/* ###############################################
+ * ############## WORKFLOW & TASKS ###############
+ * ###############################################*/
+
+.task-template{
+
+  display: none;
+}
+
+li.workflow-task-add:hover {
+
+  .timeline-panel, .timeline-badge {
+
+    opacity: 0.5;
+  }
+}
+
+.workflow-task-edit {
+  min-width: 80%;
 }

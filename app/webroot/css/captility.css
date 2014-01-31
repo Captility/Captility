@@ -729,6 +729,9 @@ input[type="button"].btn-block {
 .el-icon-rss:before {
   content: "\e648";
 }
+.el-icon-rss {
+  top: 0px;
+}
 .el-icon-road:before {
   content: "\e649";
 }
@@ -3696,6 +3699,7 @@ ul.navbar-nav li.active:after {
   color: #a94442;
 }
 .sideTicket {
+  cursor: pointer;
   padding: 30px 10px 5px 10px;
 }
 .sideTicket .ticket-body {
@@ -3749,4 +3753,17 @@ ul.navbar-nav li.active:after {
 .sideTicket .ticket-actions a span.glyphicon-ok:active {
   color: #3cba47;
   opacity: 1;
+}
+/* ###############################################
+ * ############## WORKFLOW & TASKS ###############
+ * ###############################################*/
+.task-template {
+  display: none;
+}
+li.workflow-task-add:hover .timeline-panel,
+li.workflow-task-add:hover .timeline-badge {
+  opacity: 0.5;
+}
+.workflow-task-edit {
+  min-width: 80%;
 }

@@ -45,6 +45,13 @@ jQuery.fn.slideRight = function (speed, callback) {
     });
 }
 
+// ACCORDION
+
+//Make Links clickable. Prevent Panel from collapse.
+$(".panel-collapse  a").click(function (e) {
+    e.stopPropagation();
+});
+
 //######################################################################################################################
 //############################################ RESPONSIVENESS ##########################################################
 //######################################################################################################################
@@ -834,7 +841,6 @@ $(document).ready(function () {
     $('.captility-breadcrumb li').last().hide().css({"margin-left": "-400px"}).show().animate({"margin-left": "0"}, 600);
 
 
-
     // QR-CODE:
 
     if ($.isFunction($.fn.qrcode)) {
@@ -845,11 +851,9 @@ $(document).ready(function () {
                 prerender: true,
                 content: {
                     text: '<div class="qr-code-container"></div>',
-                    title:
-
-                        '<a href="' + window.location.href + '">' +
+                    title: '<a href="' + window.location.href + '">' +
                         '<span class="glyphicon glyphicon-link"></span>'
-                            + window.location.href.substring(0,30) + '...</a>',
+                        + window.location.href.substring(0, 30) + '...</a>',
                     button: 'Close'
                 },
                 show: {
@@ -867,7 +871,7 @@ $(document).ready(function () {
 
                         var url = window.location.href;
 
-                        $(this).find('.qr-code-container').empty().qrcode({width: 250, height:250, text: url});
+                        $(this).find('.qr-code-container').empty().qrcode({width: 250, height: 250, text: url});
 
                         console.log(url);
                     }
@@ -880,8 +884,133 @@ $(document).ready(function () {
                 }
 
             }
-        )};
+        )
+    }
+    ;
 
+
+//######################################################################################################################
+//############################################# TABBED FORMS  ##########################################################
+//######################################################################################################################
+
+
+    // SWITCH TO EDIT MODE
+    jQuery.fn.switchTaskToEditMode = function () {
+
+        $(this).find('.task-view').hide();
+        $(this).find('.task-edit').show().find('input, textarea').each(function () {
+
+            $(this).prop('disabled', false);
+        });
+
+        return $(this)
+    }
+
+
+    // SWITCH TASK TO VIEW MODE
+    jQuery.fn.switchTaskToViewMode = function () {
+
+
+        $(this).find('.task-edit').hide().find('input, textarea').each(function () {
+
+            //$(this).prop('disabled', true); NO - WOULDNT SEND DATA!!!
+        });
+
+        $(this).find('.task-view').show();
+
+        return $(this)
+    }
+
+    // count tasks from parent
+    jQuery.fn.countTasksFrom = function (parent) {
+
+
+        console.log($(parent).find('li:not(.task-template, .workflow-task-add)').length);
+
+
+        return $(parent).find('li:not(.task-template, .workflow-task-add)').length;
+    }
+
+
+    // SWITCH TO EDIT MODE
+    jQuery.fn.updateTaskId = function (id) {
+
+
+        $(this).find('label, textarea, input').each(function () {
+
+
+            var props = ['name', 'for', 'id'];
+
+            for (var i = 0; i < props.length; ++i) {
+
+                if ($(this).prop(props[i]) !== undefined) {
+
+                    var newProp = $(this).prop(props[i]).replace('$placeholder$', id);
+                    $(this).prop(props[i], newProp);
+                }
+            }
+
+        });
+
+        return $(this)
+    }
+
+    // SWITCH TO EDIT MODE
+    function sortableTasks() {
+
+
+        if ($.isFunction($.fn.sortable)) {
+
+            //SORTABLE TASKS
+            $('.workflow-task-list').sortable(
+
+                {
+                    forcePlaceholderSize: true,
+                    items: ':not(.sort-disabled)'
+                }).bind('sortupdate', function () {
+
+                });
+        }
+
+    }
+
+    sortableTasks();
+
+
+    //SORTABLE TASKS
+    $('.workflow-task-list').sortable({
+        forcePlaceholderSize: true,
+        items: ':not(.sort-disabled)'
+    }).bind('sortupdate', function () {
+
+        });
+
+
+    // BUTTON: ADD NEW TASK IN EDIT MODE FROM TEMPLATE .task-template
+    $('.workflow-task-list').on('click', '.workflow-task-add', function () {
+
+        //Find Template
+        var taskTemplate = ($(this).parent().find('li.task-template'));
+
+        // IF TEMPLATE Exists..
+        if (taskTemplate.length > 0) {
+
+            // Generate new Task Container from template (remove template class)
+            var newTask = taskTemplate.clone().removeClass('task-template').hide().addClass('task');
+
+            // .. show editable edit options only
+            newTask.switchTaskToEditMode();
+            // .. and set correct ID in fields, for Post data
+            newTask.updateTaskId(newTask.countTasksFrom(taskTemplate.parent()));
+
+            taskTemplate.before(newTask); // append before template / add button
+
+            newTask.slideDown('800')
+
+            sortableTasks();
+
+        }
+    });
 
 
 })

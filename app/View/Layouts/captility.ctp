@@ -27,7 +27,8 @@
     echo $this->Html->script('bootstrap-datepicker.min.js');
     echo $this->Html->script('bootstrap-select.min.js');
     echo $this->Html->script('fullcalendar/fullcalendar.min.js');
-    echo $this->Html->script('jquery/jquery.qr-code.min.js');
+    echo $this->Html->script('jquery/jquery.qr-code.min.js'); // TODO Require.js
+    echo $this->Html->script('jquery/jquery.sortable.min.js'); // TODO Require.js
     echo $this->Html->script('jquery/tinymce/jquery.tinymce.min.js');
 
     //echo $this->Html->script('jquery/jquery.qtip-1.0.0-rc3.min.js');
