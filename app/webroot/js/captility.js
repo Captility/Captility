@@ -52,6 +52,14 @@ $(".panel-collapse  a").click(function (e) {
     e.stopPropagation();
 });
 
+
+//SWITCH ELEMENTS
+
+
+function cssprop($e, id) {
+    return parseInt($e.css(id), 10);
+}
+
 //######################################################################################################################
 //############################################ RESPONSIVENESS ##########################################################
 //######################################################################################################################
@@ -419,7 +427,7 @@ $(document).ready(function () {
                     '<a class="btn-m btn-sm btn-default pull-right" name="Anzeigen" href="captures/view/' + data.capture_id + '">Anzeigen';
 
 
-                console.log(data);
+                //console.log(data);
                 tooltip.set({
                     'content.text': content,
                     'content.title': '<span class="glyphicon glyphicon-film"></span>' + data.title,
@@ -615,7 +623,7 @@ $(document).ready(function () {
                 $buttons.prop('disabled', true);
             }
 
-            console.log($buttons.length);
+            //console.log($buttons.length);
 
             return true;
         };
@@ -873,7 +881,7 @@ $(document).ready(function () {
 
                         $(this).find('.qr-code-container').empty().qrcode({width: 250, height: 250, text: url});
 
-                        console.log(url);
+                        //console.log(url);
                     }
                 },
                 hide: {
@@ -890,8 +898,48 @@ $(document).ready(function () {
 
 
 //######################################################################################################################
-//############################################# TABBED FORMS  ##########################################################
+//############################################# WORKFLOW TASKS  ########################################################
 //######################################################################################################################
+
+    // SWAP NEIGHTBOUR TASKS, THE UPPER ONE COMES FIRST!
+    function swapTasks($taskUpper, $taskLower, callback) {
+
+
+        var $set3 = $taskLower.last().nextAll();
+
+        var mb_prev = cssprop($taskUpper.first().prev(), "margin-bottom");
+        if (isNaN(mb_prev)) mb_prev = 0;
+        var mt_next = cssprop($taskLower.last().next(), "margin-top");
+        if (isNaN(mt_next)) mt_next = 0;
+
+        var mt_1 = cssprop($taskUpper.first(), "margin-top");
+        var mb_1 = cssprop($taskUpper.last(), "margin-bottom");
+        var mt_2 = cssprop($taskLower.first(), "margin-top");
+        var mb_2 = cssprop($taskLower.last(), "margin-bottom");
+
+        var h1 = $taskUpper.last().offset().top + $taskUpper.last().outerHeight() - $taskUpper.first().offset().top;
+        var h2 = $taskLower.last().offset().top + $taskLower.last().outerHeight() - $taskLower.first().offset().top;
+
+        move1 = h2 + Math.max(mb_2, mt_1) + Math.max(mb_prev, mt_2) - Math.max(mb_prev, mt_1);
+        move2 = -h1 - Math.max(mb_1, mt_2) - Math.max(mb_prev, mt_1) + Math.max(mb_prev, mt_2);
+        move3 = move1 + $taskUpper.first().offset().top + h1 - $taskLower.first().offset().top - h2 +
+            Math.max(mb_1, mt_next) - Math.max(mb_2, mt_next);
+
+        // let's move stuff
+        $taskUpper.css('position', 'relative');
+        $taskLower.css('position', 'relative');
+        $taskUpper.animate({'top': move1}, {duration: 800});
+        $taskLower.animate({'top': move2}, {duration: 800, complete: function () {
+            // rearrange the DOM and restore positioning when we're done moving
+            $taskUpper.insertAfter($taskLower.last())
+            $taskUpper.removeAttr('style');
+            $taskLower.removeAttr('style');
+
+            $taskUpper.updateTaskStep();
+        }
+        });
+
+    }
 
 
     // SWITCH TO EDIT MODE
@@ -911,12 +959,12 @@ $(document).ready(function () {
     jQuery.fn.switchTaskToViewMode = function () {
 
 
-        $(this).find('.task-edit').hide().find('input, textarea').each(function () {
+        $(this).find('.task-edit').slideUp().find('input, textarea').each(function () {
 
             //$(this).prop('disabled', true); NO - WOULDNT SEND DATA!!!
         });
 
-        $(this).find('.task-view').show();
+        $(this).find('.task-view').fadeIn();
 
         return $(this)
     }
@@ -924,15 +972,11 @@ $(document).ready(function () {
     // count tasks from parent
     jQuery.fn.countTasksFrom = function (parent) {
 
-
-        console.log($(parent).find('li:not(.task-template, .workflow-task-add)').length);
-
-
         return $(parent).find('li:not(.task-template, .workflow-task-add)').length;
     }
 
 
-    // SWITCH TO EDIT MODE
+    // UPDATE TASK ID
     jQuery.fn.updateTaskId = function (id) {
 
 
@@ -955,36 +999,58 @@ $(document).ready(function () {
         return $(this)
     }
 
-    // SWITCH TO EDIT MODE
+
+    // UPDATE STEP ID FROM SORTING
+    jQuery.fn.updateTaskStep = function () {
+
+
+        /*var task = $(this);
+
+         var taskStepField = task.find('.task-step-field').find('input');
+
+         taskStepField
+
+         console.log(taskStepField.get(0));*/
+
+        var taskList = $('.workflow-task-list li.task').each(function (i, el) {
+
+            var taskStepField = $(this).find('.task-step-field').find('input');
+
+            taskStepField.val(i);
+
+        });
+
+        return $(this);
+    }
+
+    // MAKE TASKS SORTABLE AND SET STEP
     function sortableTasks() {
 
 
         if ($.isFunction($.fn.sortable)) {
 
             //SORTABLE TASKS
-            $('.workflow-task-list').sortable(
+            var taskList = $('.workflow-task-list');
+
+            taskList.sortable(
 
                 {
                     forcePlaceholderSize: true,
                     items: ':not(.sort-disabled)'
-                }).bind('sortupdate', function () {
 
+                }).bind('sortupdate', function (e, ui) {
+
+                    ui.item.updateTaskStep();
                 });
         }
 
     }
 
+    // Ignite!
     sortableTasks();
 
 
-    //SORTABLE TASKS
-    $('.workflow-task-list').sortable({
-        forcePlaceholderSize: true,
-        items: ':not(.sort-disabled)'
-    }).bind('sortupdate', function () {
-
-        });
-
+    var classes = ['primary', 'warning', 'danger', 'info'];
 
     // BUTTON: ADD NEW TASK IN EDIT MODE FROM TEMPLATE .task-template
     $('.workflow-task-list').on('click', '.workflow-task-add', function () {
@@ -998,6 +1064,9 @@ $(document).ready(function () {
             // Generate new Task Container from template (remove template class)
             var newTask = taskTemplate.clone().removeClass('task-template').hide().addClass('task');
 
+            //Badge Color
+            newTask.find('.timeline-badge').addClass(classes[newTask.countTasksFrom(taskTemplate.parent()) % 4])
+
             // .. show editable edit options only
             newTask.switchTaskToEditMode();
             // .. and set correct ID in fields, for Post data
@@ -1008,10 +1077,87 @@ $(document).ready(function () {
             newTask.slideDown('800')
 
             sortableTasks();
+            newTask.updateTaskStep()
 
         }
     });
 
+    // BUTTON: SAVE TASK / GO TO VIEW MODE
+    $('ul.workflow-task-list').on('click', '.task-save', function () {
 
-})
-;
+        var task = $(this).parents('li.task');
+
+
+        // Get Representations
+        var taskName = task.find('h4.task-name');
+        var taskDescription = task.find('.task-description');
+
+        var taskNameField = task.find('.task-name-field').find('input');
+        var taskDescriptionField = task.find('.task-description-field').find('textarea');
+
+
+        if (taskNameField.val() === "") {
+
+            taskNameField.closest('.form-group').addClass('has-error');
+
+        } else {
+
+            // SET VALUES
+            taskName.find('hr').before(taskNameField.val());
+            taskDescription.html(taskDescriptionField.val());
+
+            task.switchTaskToViewMode();
+        }
+
+    });
+
+
+    // TODO: workflow::edit remove!?
+    // BUTTON: REMOVE TASK
+    $('ul.workflow-task-list').on('click', '.task-delete', function () {
+
+        var task = $(this).parents('li.task');
+
+
+        task.slideUp('800', function () {
+
+            task.remove();
+        });
+    });
+
+
+    // CONFIG BUTTON: GOTO EDIT MODE
+    $('ul.workflow-task-list').on('click', '.task-config', function () {
+
+        var task = $(this).parents('li.task');
+
+        task.switchTaskToEditMode();
+    });
+
+    // BUTTON: SWAP DONW
+    $('ul.workflow-task-list').on('click', '.task-down', function () {
+
+        var task = $(this).parents('li.task');
+
+        var nextTask = task.next('li.task:not(.task-template, .workflow-task-add)');
+
+        if (nextTask.length) {
+
+            swapTasks(task, nextTask, task.updateTaskStep());
+        }
+    });
+
+    // BUTTON: SWAP UP
+    $('ul.workflow-task-list').on('click', '.task-up', function () {
+
+        var task = $(this).parents('li.task');
+
+        var prevTask = task.prev('li.task:not(.task-template, .workflow-task-add)');
+
+        if (prevTask.length) {
+
+            swapTasks(prevTask, task);
+        }
+    });
+
+});

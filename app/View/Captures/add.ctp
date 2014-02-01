@@ -145,7 +145,7 @@
 <div class="info-banner info-banner-info" id="Infobanner">
 
     <h4 data-toggle="collapse" data-parent="#Infobanner" href="#Collabse-info-banner">
-        <small class="glyphicon glyphicon-hand-right"></small>
+        <small class="glyphicon el-icon-info-sign"></small>
         Zeitplan der Aufnahme
     </h4>
 

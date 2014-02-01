@@ -1626,13 +1626,24 @@ qtip-calendar {
  * ###############################################*/
 .info-banner {
   margin: 20px 0;
-  padding: 20px;
   border-left: 3px solid #eee;
+  margin-top: 60px;
+}
+.info-banner .panel-collapse {
+  padding: 20px;
+  padding-top: 0px;
+}
+.info-banner hr {
+  margin-top: 0;
 }
 .info-banner h4 {
   margin-top: 0;
   margin-bottom: 0px;
+  padding: 20px;
   cursor: pointer;
+}
+.info-banner h4 small.glyphicon {
+  font-size: 20px;
 }
 .info-banner strong {
   font-weight: 400;
@@ -3763,6 +3774,9 @@ ul.navbar-nav li.active:after {
 li.workflow-task-add:hover .timeline-panel,
 li.workflow-task-add:hover .timeline-badge {
   opacity: 0.5;
+}
+.timeline-body p.task-view {
+  widows: 80%;
 }
 .workflow-task-edit {
   min-width: 80%;

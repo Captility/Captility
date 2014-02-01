@@ -96,7 +96,7 @@
         <button type="button" class="close" data-dismiss="info-banner" aria-hidden="true">&times;</button>
 
         <h4 data-toggle="collapse" data-parent="#Infobanner" href="#Collabse-info-banner">
-            <small class="glyphicon glyphicon-hand-right"></small>
+            <small class="glyphicon el-icon-info-sign"></small>
             Plan regelmäßiger Aufzeichnungen
         </h4>
 

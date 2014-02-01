@@ -24,6 +24,7 @@
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
     <?php echo $this->Form->create('Workflow', Configure::read('FORM.INPUT_DEFAULTS')); ?>
 
+
     <?php echo $this->Form->input('name', array(
 
         'placeholder' => __('Name'),
@@ -34,25 +35,32 @@
     ));?>
 
 
-    <!-- /// TESTAREA -->
+
+
+
+
+
+
+
+    <!-- /// TASK TEMPLATE -->
 
 
     <ul class="timeline workflow-task-list">
 
 
         <li class="task-template">
-            <div class="timeline-badge workflow-task primary"><span class="glyphicon glyphicon-tags"></span></div>
+            <div class="timeline-badge workflow-task"><span class="glyphicon glyphicon-tags"></span></div>
             <div class="timeline-panel">
                 <div class="timeline-heading">
-                    <h4 class="timeline-title task-title task-view">
+                    <h4 class="timeline-title task-name task-view">
                         <hr/>
                     </h4>
 
-                    <div class="text-name-field task-edit">
+                    <div class="task-name-field task-edit">
                         <?php echo $this->Form->input('Task.$placeholder$.name', array(
 
                             'placeholder' => __('Name'),
-                            'label' => __('Name'),
+                            'label' => __('Task'),
                             'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-tags input-group-glyphicon"></span>', 'afterInput' => '</div>',
                             'autofocus' => 'autofocus',
                             'disabled' => true,
@@ -60,41 +68,46 @@
                     </div>
 
                     <div class="btn-group-vertical pull-right task-view">
-                        <button type="button" class="btn btn-default btn-sm">
+                        <button type="button" class="btn btn-default btn-sm task-up">
                             <i class="glyphicon  el-icon-chevron-up"></i>
                         </button>
-                        <button type="button" class="btn btn-default btn-sm">
+                        <button type="button" class="btn btn-default btn-sm task-config">
                             <i class="glyphicon el-icon-cog"></i>
                         </button>
-                        <button type="button" class="btn btn-default btn-sm">
+                        <button type="button" class="btn btn-default btn-sm task-down">
                             <i class="glyphicon  el-icon-chevron-down"></i>
                         </button>
                     </div>
                 </div>
 
                 <div class="timeline-body">
-                    <p class="task-description task-view">
+                    <p class="task-view">
                         <small class="text-muted task-description">
 
                         </small>
                     </p>
 
-                    <div class="text-description-field task-edit">
+                    <div class="task-description-field task-edit">
                         <?php echo $this->Form->input('Task.$placeholder$.description', array(
                             'placeholder' => __('Description'),
-                           'disabled' => true,
+                            'disabled' => true,
                         ));?>
                     </div>
-                    <div class="text-step-field task-edit">
+                    <div class="task-step-field task-edit">
                         <?php echo $this->Form->hidden('Task.$placeholder$.step', array(
                             'placeholder' => 'Step',
                             'hiddenField' => true,
-                           'disabled' => true,
+                            'disabled' => true,
                         ));?>
                     </div>
                     <div class="task-button task-edit">
-
-
+                        <button type="button" class="btn btn-default pull-right task-save">
+                            <i class="glyphicon glyphicon-ok"></i><? echo __('Ok');?>
+                        </button>
+                        <button type="button" class="btn btn-default pull-right task-delete"
+                                style="margin-right: 10px;">
+                            <i class="glyphicon  glyphicon-remove"></i><? echo __('Delete'); ?></i>
+                        </button>
                     </div>
                 </div>
 
@@ -119,10 +132,33 @@
     </ul>
 
 
-    <!-- /// TESTAREA -->
+    <!-- /// TASK TEMPLATE ENDE -->
 
 
-    <?php echo $this->Element('submitArea');?>
+    <div class="info-banner info-banner-info" id="Infobanner">
+
+        <h4 data-toggle="collapse" data-parent="#Infobanner" href="#Collabse-info-banner">
+            <small class="glyphicon el-icon-info-sign"></small>
+            Routinen vorkonfigurieren
+        </h4>
+
+
+        <div id="Collabse-info-banner" class="panel-collapse collapse <!--in-->">
+
+            <hr/>
+
+            Ein <strong>Workflow</strong> definiert einen Arbeitsablauf durch eine Reihe vorgegebener Aufgaben.<br/>
+
+            Workflows können mit Aufzeichnungen gekoppelt werden um auf komfortable weise Tickets nach vorgegebenem
+            Muster für jeden Aufzeichnungstermin zu generieren.
+            Definieren sie eine Abfolge von nötigen Schritten, die nacheinander erfolgen sollen. Captility erledigt den Rest.</p>
+
+        </div>
+    </div>
+
+    <hr/>
+
+    <?php echo $this->Element('submitArea', array('hr' => false));?>
 
     <?php echo $this->Form->end() ?>
 

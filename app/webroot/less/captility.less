@@ -298,15 +298,33 @@ h1, .fc-event-time, .cw, .navbar-brand, qtip-calendar {
  * ###############################################*/
 
 .info-banner {
+
   margin: 20px 0;
-  padding: 20px;
   border-left: 3px solid #eee;
+  margin-top: 60px;
+
+  .panel-collapse{
+
+    padding: 20px;
+    padding-top: 0px;
+  }
+
+  hr{
+
+    margin-top: 0;
+  }
 }
 
 .info-banner h4 {
   margin-top: 0;
   margin-bottom: 0px;
+  padding: 20px;
   cursor: pointer;
+
+  small.glyphicon {
+
+    font-size: 20px;
+  }
 }
 
 .info-banner strong {
@@ -1760,7 +1778,7 @@ ul.navbar-nav li.active:after {
  * ############## WORKFLOW & TASKS ###############
  * ###############################################*/
 
-.task-template{
+.task-template {
 
   display: none;
 }
@@ -1771,6 +1789,11 @@ li.workflow-task-add:hover {
 
     opacity: 0.5;
   }
+}
+
+.timeline-body p.task-view{
+
+  widows: 80%;
 }
 
 .workflow-task-edit {

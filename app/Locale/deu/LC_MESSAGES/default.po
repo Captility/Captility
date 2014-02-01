@@ -981,7 +981,7 @@ msgid "Password confirmation"
 msgstr "Passwort Bestätigung"
 
 msgid "Add Workflow"
-msgstr ""
+msgstr "Workflow hinzufügen"
 
 msgid "Admin Add Workflow"
 msgstr "Admin::Workflow anlegen"

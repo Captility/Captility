@@ -2716,7 +2716,7 @@ input[type="button"].btn-block {
 .glyphicon-thumbs-down:before {
   content: "\e126";
 }
-.glyphicon-hand-right:before {
+.el-icon-info-sign:before {
   content: "\e127";
 }
 .glyphicon-hand-left:before {
