@@ -44,7 +44,7 @@
 <?php echo $this->Form->input('lecture_id', array(
 
     'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-th-list input-group-glyphicon"></span>', 'afterInput' => '</div>',
-
+    'data-live-search' => true, 'data-size' => 5,
 ));?>
 
 
@@ -79,7 +79,8 @@
 <?php echo $this->Form->input('Event.event_type_id', array(
 
     'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-facetime-video input-group-glyphicon"></span>', 'afterInput' => '</div>',
-    'selected' => $this->Form->value('Event.0.event_type_id')
+    'selected' => $this->Form->value('Event.0.event_type_id'),
+    'data-live-search' => true, 'data-size' => 5,
 
 ));?>
 
@@ -98,7 +99,8 @@
     'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
 
     'label' => __('Responsible'),
-    'empty' => true, 'required' => false
+    'empty' => true, 'required' => false,
+    'data-live-search' => true,
 ));?>
 
 
@@ -107,7 +109,8 @@
 <?php echo $this->Form->input('workflow_id', array(
 
     'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-random input-group-glyphicon"></span>', 'afterInput' => '</div>',
-    'empty' => true, 'required' => false
+    'empty' => true, 'required' => false,
+    'data-live-search' => true,
 ));?>
 
 

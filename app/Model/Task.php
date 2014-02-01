@@ -1,5 +1,4 @@
-<?php
-App::uses('AppModel', 'Model');
+<?php App::uses('AppModel', 'Model');
 /**
  * Task Model
  *

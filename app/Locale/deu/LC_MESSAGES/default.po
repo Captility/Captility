@@ -133,16 +133,16 @@ msgid "The Event has been saved."
 msgstr "Die Aufnahme wurde erfolgreich gesichert."
 
 msgid "The Event could not be saved. Please, try again."
-msgstr "Die Aufnahme konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Die Aufnahme konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The Capture could not be saved. Please, try again."
-msgstr "Der Aufnahmeplan konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Aufnahmeplan konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The capture has been saved."
 msgstr "Der Aufnahmeplan wurde erfolgreich gesichert."
 
 msgid "The capture could not be saved. Please, try again."
-msgstr "Der Aufnahmeplan konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Aufnahmeplan konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The capture has been deleted."
 msgstr "Der Aufnahmeplan wurde entfernt."
@@ -151,16 +151,16 @@ msgid "The related events have been deleted."
 msgstr "Die zugehörigen Aufzeichnungen wurden entfernt."
 
 msgid "The related events could not be deleted. Please, try again."
-msgstr "Die zugehörigen Aufzeichnungen konnten nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Die zugehörigen Aufzeichnungen konnten nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The related schedules have been deleted."
 msgstr "Die zugehörigen Zeitpläne wurden entfernt."
 
 msgid "The related schedules could not be deleted. Please, try again."
-msgstr "Die zugehörigen Zeitpläne konnten nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Die zugehörigen Zeitpläne konnten nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The capture could not be deleted. Please, try again."
-msgstr "Die Aufnahme konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Die Aufnahme konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "Invalid event type"
 msgstr "Ungültiger Aufzeichnungsart."
@@ -175,7 +175,7 @@ msgid "The event type has been deleted."
 msgstr "Der Aufzeichnungstyp wurde entfernt."
 
 msgid "The event type could not be deleted. Please, try again."
-msgstr "Der Aufzeichnungstyp konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Der Aufzeichnungstyp konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "Invalid event"
 msgstr "Ungültige Aufzeichnung."
@@ -184,13 +184,13 @@ msgid "The event has been saved."
 msgstr "Die Aufzeichnung wurde gesichert."
 
 msgid "The event could not be saved. Please, try again."
-msgstr "Die Aufzeichnung konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Die Aufzeichnung konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The event has been deleted."
 msgstr "Die Aufzeichnung wurde erfolgreich entfernt."
 
 msgid "The event could not be deleted. Please, try again."
-msgstr "Die Aufzeichnung konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Die Aufzeichnung konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "Invalid group"
 msgstr "Ungültige Nutzergruppe"
@@ -199,13 +199,13 @@ msgid "The group has been saved."
 msgstr "Die Nutzergruppe wurde erfolgreich gesichert."
 
 msgid "The group could not be saved. Please, try again."
-msgstr "Die Nutzergruppe konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Die Nutzergruppe konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The group has been deleted."
 msgstr "Die Nutzergruppe wurde erfolgreich entfernt."
 
 msgid "The group could not be deleted. Please, try again."
-msgstr "Die Nutzergruppe konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Die Nutzergruppe konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "Invalid host"
 msgstr "Ungültiger Veranstalter."
@@ -214,13 +214,13 @@ msgid "The host has been saved."
 msgstr "Der Veranstalter"
 
 msgid "The host could not be saved. Please, try again."
-msgstr "Der Veranstalter konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Veranstalter konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The host has been deleted."
 msgstr "Der Veranstalter wurde erfolgreich entfernt."
 
 msgid "The host could not be deleted. Please, try again."
-msgstr "Der Veranstalter konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Der Veranstalter konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "Invalid lecture"
 msgstr "Ungültige Veranstaltung"
@@ -229,13 +229,13 @@ msgid "The lecture has been saved."
 msgstr "Die Veranstaltung wurde erfolgreich gesichert."
 
 msgid "The lecture could not be saved. Please, try again."
-msgstr "Die Veranstaltung konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Die Veranstaltung konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The lecture has been deleted."
 msgstr "Die Veranstaltung wurde erfolgreich entfernt."
 
 msgid "The lecture could not be deleted. Please, try again."
-msgstr "Die Veranstaltung konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Die Veranstaltung konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "Invalid schedule"
 msgstr "Ungültiger Zeitplan"
@@ -244,13 +244,13 @@ msgid "The schedule has been saved."
 msgstr "Der Zeitplan wurde erfolgreich gesichert."
 
 msgid "The schedule could not be saved. Please, try again."
-msgstr "Der Zeitplan konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Zeitplan konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The schedule has been deleted."
 msgstr "Der Zeitplan wurde erfolgreich entfernt."
 
 msgid "The schedule could not be deleted. Please, try again."
-msgstr "Der Zeitplan konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Der Zeitplan konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "Invalid task"
 msgstr "Ungültige Aufgabe"
@@ -259,13 +259,13 @@ msgid "The task has been saved."
 msgstr "Die Aufgabe wurde erfolgreich gesichert."
 
 msgid "The task could not be saved. Please, try again."
-msgstr "Die Aufgabe konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Die Aufgabe konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The task has been deleted."
 msgstr "Die Aufgabe hbd"
 
 msgid "The task could not be deleted. Please, try again."
-msgstr "Die Aufgabe konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Die Aufgabe konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "Invalid ticket"
 msgstr "Ungültiges Ticket"
@@ -274,13 +274,13 @@ msgid "The ticket has been saved."
 msgstr "Das Ticket wurde erfolgreich gesichert."
 
 msgid "The ticket could not be saved. Please, try again."
-msgstr "Das Ticket konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Das Ticket konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The ticket has been deleted."
 msgstr "Das Ticket wurde erfolgreich entfernt."
 
 msgid "The ticket could not be deleted. Please, try again."
-msgstr "Das Ticket konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Das Ticket konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "You are already logged in."
 msgstr "Sie sind bereits eingeloggt."
@@ -293,7 +293,7 @@ msgid "Login successfull."
 msgstr "Sie haben sich erfolgreich eingeloggt."
 
 msgid "Wrong username or password. Pleasy try again."
-msgstr "Falscher Benutzername oder Passwort. Bitte versuchen Sie es erneut."
+msgstr "Falscher Benutzername oder Passwort. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The entered password was not correct."
 msgstr "Das eingegebene Passwort ist nicht korrekt."
@@ -320,7 +320,7 @@ msgid "The user has been saved."
 msgstr "Der Benutzer wurde erfolgreich gesichert."
 
 msgid "The user could not be saved. Please, try again."
-msgstr "Der Benutzer konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Benutzer konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "Invalid user"
 msgstr "Ungültiger Benutzer"
@@ -329,7 +329,7 @@ msgid "The user has been deleted."
 msgstr "Der Benutzer wurde erfolgreich entfernt."
 
 msgid "The user could not be deleted. Please, try again."
-msgstr "Der Benutzer konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Der Benutzer konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "Invalid workflow"
 msgstr "Ungültiger Workflow"
@@ -338,13 +338,13 @@ msgid "The workflow has been saved."
 msgstr "Der Workflow wurde erfolgreich gesichert."
 
 msgid "The workflow could not be saved. Please, try again."
-msgstr "Der Workflow konnte nicht gesichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Workflow konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The workflow has been deleted."
 msgstr "Der Workflow wurde erfolgreich entfernt."
 
 msgid "The workflow could not be deleted. Please, try again."
-msgstr "Der Workflow konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Der Workflow konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "valErrPwdNotMatch"
 msgstr "Die eingegebenen Passwörter unterscheiden sich."
@@ -1072,6 +1072,9 @@ msgstr "Bitte geben Sie einen Benutzernamen an."
 
 msgid "Sorry, this username is already taken."
 msgstr "Dieser Benutzername ist leider bereits belegt."
+
+msgid "This name is already in use."
+msgstr "Dieser Name wird bereits genutzt."
 
 msgid "Please enter a password."
 msgstr "Bitte geben Sie ein Passwort an."

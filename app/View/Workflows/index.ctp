@@ -1,11 +1,11 @@
 <? $this->Breadcrumbs->addCrumb(__('Team'), '/pages/production'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-random"></span>'.__('Workflows'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-random"></span>' . __('Workflows'), '#', array('class' => 'active')); ?>
 
 <!--<div class=" index">-->
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-random"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-random"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -30,16 +30,53 @@
         <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
             <thead class="panel-heading">
             <tr>
-                <th><?php echo $this->Paginator->sort('workflow_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('workflow_id', __('ID')); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th class="actions"></th>
             </tr>
             </thead>
             <tbody>
+
+
+            <?// SORT TASKS TO SHOW IN RIGHT ORDER
+
+            // DECLARATION
+            function sortByStep($a, $b) {
+
+                return $a['step'] - $b['step'];
+            }?>
+
             <?php foreach ($workflows as $workflow): ?>
                 <tr>
-                    <td><?php echo h($workflow['Workflow']['workflow_id']); ?>&nbsp;</td>
-                    <td><?php echo h($workflow['Workflow']['name']); ?>&nbsp;</td>
+                    <td><?php echo h($workflow['Workflow']['workflow_id']); ?></td>
+                    <td><?php echo h($workflow['Workflow']['name']); ?></br>
+
+
+                        <?php if (!empty($workflow['Task'])): ?>
+
+                            <? // SORT TASKS TO SHOW IN RIGHT ORDER
+
+                            // SORT
+                            if (!empty($workflow['Workflow']['Task'])) {
+
+                                usort($workflow['Workflow']['Task'], 'sortByStep');
+                            }
+                            ?>
+
+                            <small class="text-muted task-description">
+
+                                <small class="glyphicon glyphicon-tags"></small>
+
+                                <?php foreach ($workflow['Task'] as $task): ?>
+
+                                    <? echo $task['name'] . ',&nbsp;' ?>
+
+                                <? endforeach ?>
+                            </small>
+
+                        <? endif; ?>
+
+                    </td>
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $workflow['Workflow']['workflow_id']), array('escape' => false)); ?>
                         <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('action' => 'edit', $workflow['Workflow']['workflow_id']), array('escape' => false)); ?>
@@ -83,10 +120,16 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Workflow'), array('action' => 'add'), array('escape' => false)); ?></li>
+                </ul>
+            </div>
+            <!-- end body -->
+            <div class="panel-heading">
+                    <span class="glyphicon glyphicon-film"></span><?php echo __('Captures');?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Tasks'), array('controller' => 'tasks', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Task'), array('controller' => 'tasks', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>
             </div>
             <!-- end body -->

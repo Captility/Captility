@@ -549,20 +549,32 @@ $(document).ready(function () {
 
 
 //######################################################################################################################
-//############################################# INPUT FIELDS  ##########################################################
+//############################################# SELECT PICKER  #########################################################
 //######################################################################################################################
 
-    $('select:not(.form-control-date)').addClass('show-tick').selectpicker({
-        selectedTextFormat: 'values',
-        noneSelectedText: '<span class="glyphicon el-icon-error"></span>'
 
-    });
+    if ($.isFunction($.fn.selectpicker)) {
 
-    $('select.form-control-date').selectpicker({
-        selectedTextFormat: 'values',
-        noneSelectedText: '<span class="glyphicon el-icon-error"></span>',
-        width: 'auto'
-    });
+        $('select:not(.form-control-date)').addClass('show-tick').selectpicker({
+            selectedTextFormat: 'values',
+            noneSelectedText: '<span class="glyphicon el-icon-error"></span>',
+            noneResultsText: '<span class="glyphicon el-icon-remove-sign"></span>',
+            dropupAuto: false,
+            liveSearch: true
+
+
+        });
+
+
+        $('select.form-control-date').selectpicker({
+            selectedTextFormat: 'values',
+            noneSelectedText: '<span class="glyphicon el-icon-error"></span>',
+            noneResultsText: '<span class="glyphicon el-icon-remove-sign"></span>',
+            dropupAuto: false,
+            width: 'auto'
+        });
+
+    }
 
 //######################################################################################################################
 //########################################### KEY CALENDAR CONTROL  ####################################################
@@ -609,7 +621,7 @@ $(document).ready(function () {
 //############################################# TABBED FORMS  ##########################################################
 //######################################################################################################################
 
-    // ADD SCHEDULE BUTTONS
+// ADD SCHEDULE BUTTONS
     (function ($) {
         $.fn.updateScheduleRemoveState = function () {
 
@@ -630,7 +642,7 @@ $(document).ready(function () {
     })(jQuery);
 
 
-    //####################################### HASHED AND TABS  #########################################################
+//####################################### HASHED AND TABS  #########################################################
 
 
     /*  // TOGGLE ACTIVE TABS OF FORM
@@ -643,7 +655,7 @@ $(document).ready(function () {
      });*/
 
 
-    // TOGGLE ACTIVE TABS OF FORM
+// TOGGLE ACTIVE TABS OF FORM
     $('#ScheduleContainer').on('shown.bs.tab', 'a.form-toggle', function (e) {
 
         var $target = $($(this).attr('href'));
@@ -653,7 +665,7 @@ $(document).ready(function () {
         $target.find('input, select').prop('disabled', false).selectpicker('refresh');
     });
 
-    // HASHED TABBING
+// HASHED TABBING
     $(function () {
         var hash = window.location.hash;
         hash && $('ul.nav a[href="' + hash + '"]').first().tab('show');
@@ -667,7 +679,7 @@ $(document).ready(function () {
     });
 
 
-    //Check module: Datepicker
+//Check module: Datepicker
     if ($.isFunction($.fn.datepicker)) {
 
         // ADD SCHEDULES TO FORM
@@ -698,7 +710,7 @@ $(document).ready(function () {
         });
     }
 
-    // REMOVE SCHEDULES FROM FORM
+// REMOVE SCHEDULES FROM FORM
     $('#ScheduleContainer').on('click', 'button.form-schedule-remove', function () {
 
         if ($('#ScheduleContainer button.form-schedule-remove').length > 1) {
@@ -757,7 +769,7 @@ $(document).ready(function () {
     /**
      * Sliding Panels.
      */
-    //$('.panel-body').hide().slideDown(1000);
+//$('.panel-body').hide().slideDown(1000);
 
     /**
      * Sliding Schedule Panels.
@@ -823,7 +835,7 @@ $(document).ready(function () {
     /**
      * Lazy Load.
      */
-    //Lazy load unveil images if plugin loaded
+//Lazy load unveil images if plugin loaded
     if ($.isFunction($.fn.unveil)) {
 
         $("img").unveil();
@@ -833,7 +845,7 @@ $(document).ready(function () {
      * Breadcrumbs Animation
      */
 
-    // Last 2 or all
+// Last 2 or all
     /*$('.captility-breadcrumb li').last().prev().andSelf().hide().css({"margin-left": "-500px"});
 
      $('.captility-breadcrumb li').last().prev().andSelf().each(function (index) {
@@ -841,7 +853,7 @@ $(document).ready(function () {
      });*/
 
 
-    //Last Only
+//Last Only
     $('.captility-breadcrumb li').each(function (index) {
         $(this).css({"z-index": 255 - index});
     });
@@ -849,7 +861,7 @@ $(document).ready(function () {
     $('.captility-breadcrumb li').last().hide().css({"margin-left": "-400px"}).show().animate({"margin-left": "0"}, 600);
 
 
-    // QR-CODE:
+// QR-CODE:
 
     if ($.isFunction($.fn.qrcode)) {
 
@@ -901,7 +913,7 @@ $(document).ready(function () {
 //############################################# WORKFLOW TASKS  ########################################################
 //######################################################################################################################
 
-    // SWAP NEIGHTBOUR TASKS, THE UPPER ONE COMES FIRST!
+// SWAP NEIGHTBOUR TASKS, THE UPPER ONE COMES FIRST!
     function swapTasks($taskUpper, $taskLower, callback) {
 
 
@@ -942,7 +954,7 @@ $(document).ready(function () {
     }
 
 
-    // SWITCH TO EDIT MODE
+// SWITCH TO EDIT MODE
     jQuery.fn.switchTaskToEditMode = function () {
 
         $(this).find('.task-view').hide();
@@ -955,7 +967,7 @@ $(document).ready(function () {
     }
 
 
-    // SWITCH TASK TO VIEW MODE
+// SWITCH TASK TO VIEW MODE
     jQuery.fn.switchTaskToViewMode = function () {
 
 
@@ -969,14 +981,37 @@ $(document).ready(function () {
         return $(this)
     }
 
-    // count tasks from parent
+// Catch Enter Key in Tasks to prevent FORM POST
+    jQuery.fn.enableEnterListener = function () {
+
+        var self = this;
+
+        //Bind Keypress event on Field
+        $(this).find('.task-name-field :input').keydown(function (e) {
+
+            var code = e.keyCode || e.which;
+
+            // if enter
+            if (code == 13) {
+
+                // save task and dont post form
+                $(self).find('.task-save').click();
+                return false;
+            }
+
+        });
+    }
+
+    $('.task').enableEnterListener();
+
+// count tasks from parent
     jQuery.fn.countTasksFrom = function (parent) {
 
         return $(parent).find('li:not(.task-template, .workflow-task-add)').length;
     }
 
 
-    // UPDATE TASK ID
+// UPDATE TASK ID
     jQuery.fn.updateTaskId = function (id) {
 
 
@@ -1000,7 +1035,7 @@ $(document).ready(function () {
     }
 
 
-    // UPDATE STEP ID FROM SORTING
+// UPDATE STEP ID FROM SORTING
     jQuery.fn.updateTaskStep = function () {
 
 
@@ -1023,7 +1058,7 @@ $(document).ready(function () {
         return $(this);
     }
 
-    // MAKE TASKS SORTABLE AND SET STEP
+// MAKE TASKS SORTABLE AND SET STEP
     function sortableTasks() {
 
 
@@ -1046,13 +1081,13 @@ $(document).ready(function () {
 
     }
 
-    // Ignite!
+// Ignite!
     sortableTasks();
 
 
     var classes = ['primary', 'warning', 'danger', 'info'];
 
-    // BUTTON: ADD NEW TASK IN EDIT MODE FROM TEMPLATE .task-template
+// BUTTON: ADD NEW TASK IN EDIT MODE FROM TEMPLATE .task-template
     $('.workflow-task-list').on('click', '.workflow-task-add', function () {
 
         //Find Template
@@ -1077,12 +1112,13 @@ $(document).ready(function () {
             newTask.slideDown('800')
 
             sortableTasks();
-            newTask.updateTaskStep()
+            newTask.updateTaskStep();
+            newTask.enableEnterListener();
 
         }
     });
 
-    // BUTTON: SAVE TASK / GO TO VIEW MODE
+// BUTTON: SAVE TASK / GO TO VIEW MODE
     $('ul.workflow-task-list').on('click', '.task-save', function () {
 
         var task = $(this).parents('li.task');
@@ -1112,21 +1148,41 @@ $(document).ready(function () {
     });
 
 
-    // TODO: workflow::edit remove!?
-    // BUTTON: REMOVE TASK
+// BUTTON: REMOVE TASK, IF TASK ALREADY EXISTENT: AJAX DELETE
     $('ul.workflow-task-list').on('click', '.task-delete', function () {
 
         var task = $(this).parents('li.task');
+        var taskId = task.find('.task-id-field').find('input').val();
+
+        if (typeof taskId !== 'undefined') {
+
+            if (confirm('Sind Sie sicher, dass die die Aufgabe entgültig löschen möchten ?')) {  // TODO SPRACHE
+
+                $.post($appRoot + '/tasks/delete/' + taskId, function (data) {
+
+                    alert('Killed Task');
+
+                    task.slideUp('800', function () {
+
+                        task.remove();
+                    });
+
+                });
+            }
+
+        } else {
+
+            task.slideUp('800', function () {
+
+                task.remove();
+            });
+        }
 
 
-        task.slideUp('800', function () {
-
-            task.remove();
-        });
     });
 
 
-    // CONFIG BUTTON: GOTO EDIT MODE
+// CONFIG BUTTON: GOTO EDIT MODE
     $('ul.workflow-task-list').on('click', '.task-config', function () {
 
         var task = $(this).parents('li.task');
@@ -1134,7 +1190,7 @@ $(document).ready(function () {
         task.switchTaskToEditMode();
     });
 
-    // BUTTON: SWAP DONW
+// BUTTON: SWAP DONW
     $('ul.workflow-task-list').on('click', '.task-down', function () {
 
         var task = $(this).parents('li.task');
@@ -1147,7 +1203,7 @@ $(document).ready(function () {
         }
     });
 
-    // BUTTON: SWAP UP
+// BUTTON: SWAP UP
     $('ul.workflow-task-list').on('click', '.task-up', function () {
 
         var task = $(this).parents('li.task');
@@ -1160,4 +1216,5 @@ $(document).ready(function () {
         }
     });
 
-});
+})
+;

@@ -49,7 +49,7 @@
         'placeholder' => __('Name'),
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-th-list input-group-glyphicon"></span>', 'afterInput' => '</div>',
 
-    ));?>
+    ));?><div></div>
 
     <?php echo $this->Form->input('host_id', array(
 

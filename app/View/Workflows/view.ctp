@@ -1,15 +1,15 @@
 <? $this->Breadcrumbs->addCrumb(__('Team'), '/pages/production'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-random"></span>'.__('Workflows'),array('action' => 'index')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-random"></span>' . __('Workflows'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(' #' . h($workflow['Workflow']['workflow_id']) . ' ' . h($workflow['Workflow']['name']), '#'); ?>
 
 <!--<div class=" view">-->
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-random"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-random"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo ' #' . h($workflow['Workflow']['workflow_id']) . ' ' . h($workflow['Workflow']['name']);  ?></h1>
+            <h1><?php echo h($workflow['Workflow']['name']);  ?></h1>
         </div>
     </div>
 </div>
@@ -22,20 +22,15 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <div class="panel panel-primary">
+    <div class="panel panel-default badger-right badger-default well"
+         data-badger="<? echo __('Workflow') . ' #' . h($workflow['Workflow']['workflow_id']) ?>">
         <table cellpadding="0" cellspacing="0" class="table table-striped">
             <tbody>
+
             <tr>
-                <th><?php echo __('Workflow Id'); ?></th>
+                <th class><?php echo __('Name'); ?></th>
                 <td>
-                    <?php echo h($workflow['Workflow']['workflow_id']); ?>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <th><?php echo __('Name'); ?></th>
-                <td>
-                    <?php echo h($workflow['Workflow']['name']); ?>
+                    <span class="glyphicon el-icon-random"></span><?php echo h($workflow['Workflow']['name']); ?>
                     &nbsp;
                 </td>
             </tr>
@@ -45,10 +40,63 @@
 
     <hr/>
 
+
+    <!-- TASK LIST -->
+    <ul class="timeline workflow-task-list">
+
+
+        <? $classes = array('primary', 'warning', 'danger', 'info'); ?>
+        <!-- // TASKS(request-data) -->
+
+        <? // SORT TASKS TO SHOW IN RIGHT ORDER
+
+        //RULE
+        function sortByStep($a, $b) {
+
+            return $a['step'] - $b['step'];
+        }
+
+        // SORT
+        if (!empty($workflow['Task'])) {
+
+            usort($workflow['Task'], 'sortByStep');
+        }
+        ?>
+
+        <? if (isset($workflow['Task'])) foreach ($workflow['Task'] as $i => $task): ?>
+
+            <li class="task sort-disabled no-cursor">
+                <div class="timeline-badge workflow-task <? $classes[$i % sizeof($classes)] ?>"><span
+                        class="glyphicon glyphicon-tags"></span></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title task-name">
+                            <? echo $task['name']?>
+                            <hr/>
+                        </h4>
+                    </div>
+
+                    <div class="timeline-body">
+
+                        <small class="text-muted task-description">
+                            <? echo $task['description']?>
+                        </small>
+                    </div>
+                </div>
+            </li>
+
+
+        <? endforeach; ?>
+
+    </ul>
+
+    <hr/>
+
     <div class="related row">
         <div class="col-md-12">
             <h3><?php echo __('Related Captures'); ?></h3>
-            <?php if (!empty($workflow['Capture'])): ?>                 <div class="panel panel-primary">
+            <?php if (!empty($workflow['Capture'])): ?>
+                <div class="panel panel-primary">
                     <!-- Default panel contents -->
 
                     <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
@@ -92,10 +140,11 @@
     <hr/>
 
 
-    <div class="related row">
+    <?/*<div class="related row">
         <div class="col-md-12">
             <h3><?php echo __('Related Tasks'); ?></h3>
-            <?php if (!empty($workflow['Task'])): ?>                 <div class="panel panel-primary">
+            <?php if (!empty($workflow['Task'])): ?>
+                <div class="panel panel-primary">
                     <!-- Default panel contents -->
 
                     <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
@@ -134,7 +183,7 @@
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Task'), array('controller' => 'tasks', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary pull-right')); ?>                </div>
         </div>
         <!-- end col md 12 -->
-    </div>
+    </div>*/?>
 
 
 </div>
@@ -154,10 +203,16 @@
                     <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">' . __('Delete Workflow') . '</span>', array('action' => 'delete', $workflow['Workflow']['workflow_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $workflow['Workflow']['workflow_id'])); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Workflows'), array('action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Workflow'), array('action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div>
+            <!-- end body -->
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-film"></span><?php echo __('Captures');?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Tasks'), array('controller' => 'tasks', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Task'), array('controller' => 'tasks', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>
             </div>
             <!-- end body -->

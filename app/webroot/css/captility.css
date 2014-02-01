@@ -1518,6 +1518,8 @@ input[type="button"].btn-block {
 }
 .actions-column .panel {
   overflow: scroll;
+  border: none;
+  border-radius: 0px;
 }
 .panel-heading {
   background-color: #f5f5f5;

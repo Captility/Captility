@@ -85,12 +85,12 @@
                             'span', '', array('class' => 'glyphicon glyphicon-tasks')) . __('Tickets'),
                         array('controller' => 'tickets', 'action' => 'index'), array('escape' => false))?>
                 </li>
-                <li>
+                <?/*<li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
                             'span', '', array('class' => 'glyphicon glyphicon-tags')) . __('Tasks'),
                         array('controller' => 'tasks', 'action' => 'index'), array('escape' => false))?>
-                </li>
+                    </li>*/?>
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
@@ -143,7 +143,7 @@
                     <?php echo $this->Html->link(
                         $this->Html->tag(
                             'span', '', array('class' => 'glyphicon el-icon-address-book-alt')) . __('My Profile'),
-                        array('controller' => 'users', 'action' => 'view/'.$this->Session->read('Auth.User.user_id')), array('escape' => false))?>
+                        array('controller' => 'users', 'action' => 'view/' . $this->Session->read('Auth.User.user_id')), array('escape' => false))?>
                 </li>
                 <li>
                     <?php echo $this->Html->link(

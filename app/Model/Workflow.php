@@ -55,6 +55,10 @@ class Workflow extends AppModel {
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'unique' => array(
+                'rule' => 'isUnique',
+                'message' => 'This name is already in use.'
+            ),
         ),
     );
 
