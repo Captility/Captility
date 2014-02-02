@@ -40,7 +40,14 @@
         'label' => __('Number of lecture'),
         'placeholder' => __('Number'),
         'beforeInput' => '<div class="input-group"><span class="input-group-addon input-group-glyphicon"><strong>#</strong></span>', 'afterInput' => '</div>',
-        'class' => 'form-control input-thin',
+        'div' => 'form-group form-split-6',
+    ));?>
+
+    <?php echo $this->Form->input('semester', array(
+
+        'placeholder' => __('WS2014/15'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'div' => 'form-group form-split-6',
     ));?>
 
 
@@ -57,6 +64,7 @@
 
         'placeholder' => __('Host_Id'),
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon cp-icon-lecturer input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'div' => 'form-group form-split-6',
 
     ));?>
 
@@ -66,16 +74,11 @@
 
         'placeholder' => __('Event Type Id'),
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-facetime-video input-group-glyphicon"></span>', 'afterInput' => '</div>',
-
+        'div' => 'form-group form-split-6',
     ));?>
 
 
-    <?php echo $this->Form->input('semester', array(
 
-        'placeholder' => __('WS2014/15'),
-        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>', 'afterInput' => '</div>',
-        'class' => 'form-control input-thin form-inline',
-    ));?>
 
 
     <div class="form-group">

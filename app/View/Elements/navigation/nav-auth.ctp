@@ -110,7 +110,7 @@
                             'span', '', array('class' => 'glyphicon glyphicon-user')) . __('Users'),
                         array('controller' => 'users', 'action' => 'index'), array('escape' => false))?>
                 </li>
-                <?php if ($this->Session->read('Auth.User.group_id') == 1): ?>
+                <?php if ($this->Session->read('Auth.User.group_id') == 1 || $this->Session->read('Auth.User.group_id') == 2): ?>
                     <li>
                         <?php echo $this->Html->link(
                             $this->Html->tag(

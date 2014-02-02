@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-tags"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-tags"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -58,8 +58,10 @@
 
                         <span class="label label-<? echo $class ?>"><? echo __(h($ticket['Ticket']['status'])) ?></span>
                     </td>
-                    <td><?php echo h($ticket['Ticket']['created']); ?>&nbsp;</td>
-                    <td><?php echo h($ticket['Ticket']['ended']); ?>&nbsp;</td>
+                    <td>
+                        <?php echo $this->Captility->linkDate(h($ticket['Ticket']['created']), '%d.%m.%Y %H:%M') ?>
+                    </td>
+                    <td><?php echo $this->Captility->linkDate(h($ticket['Ticket']['ended']), '%d.%m.%Y %H:%M') ?></td>
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $ticket['Ticket']['ticket_id']), array('escape' => false)); ?>
                         <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('action' => 'edit', $ticket['Ticket']['ticket_id']), array('escape' => false)); ?>

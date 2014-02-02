@@ -325,12 +325,22 @@ class EventsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Event->recursive = 0;
+        $this->Event->recursive = 1;
 
         $this->Paginator->settings = array(
-            'limit' => 12
+            'limit' => 12,
+            'contain' => false,
+            'link' => array(
+
+                'Ticket',
+                'User' => array(
+                    'fields' => array('User.user_id', 'User.username', 'User.email', 'User.avatar'),
+                    'conditions' => array('exactly' => 'Ticket.user_id = User.user_id')),
+            ),
+
         );
         $this->set('events', $this->Paginator->paginate());
+
     }
 
     /**
