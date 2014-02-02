@@ -130,6 +130,7 @@ if ($.isFunction($.fn.datepicker) && $.isFunction($.fn.fullCalendar)) {
                 selectWeek: true,
                 autoclose: true,
                 todayBtn: true // Today selects current day instead of just showing (true)
+
             }, function () {
 
 
@@ -143,14 +144,75 @@ if ($.isFunction($.fn.datepicker) && $.isFunction($.fn.fullCalendar)) {
                 autoclose: true,
                 orientation: "top center",
                 todayBtn: "linked"
+
             }, function () {
 
 
             });
 
+            // init moment.js
+            moment().format();
+
+
+            // DateTime Picker INIT
+            $('.pickDateTime').each(function () {
+
+                // http://momentjs.com/docs/#/displaying/format/
+                $(this).val(moment($(this).val(), "DD.MM.YYYY hh:mm", 'de').format("dd, DD.MM.YYYY HH:mm [Uhr]", 'de'));
+
+                if (!moment($(this).val(), "dd, DD.MM.YYYY HH:mm [Uhr]", true).isValid()) {
+
+                    $(this).val(null);
+                }
+                ;
+
+                $(this).datetimepicker({
+
+                    language: 'de',
+                    format: "dd, DD.MM.YYYY HH:mm [Uhr]",
+                    minuteStepping: 15,
+                    useSeconds: false
+
+                });
+
+            });
+
+            // Time Picker INIT
+            $('.pickTime').each(function () {
+
+                // http://momentjs.com/docs/#/displaying/format/
+                $(this).val(moment($(this).val(), "hh:mm", 'de').format("HH:mm [Uhr]", 'de'));
+
+                if (!moment($(this).val(), "HH:mm [Uhr]", true).isValid()) {
+
+                    $(this).val(null);
+                }
+                ;
+
+                $(this).datetimepicker({
+
+                    language: 'de',
+                    format: "HH:mm [Uhr]",
+                    minuteStepping: 15,
+                    useSeconds: false,
+                    pickDate: false
+
+                });
+
+            });
+
+            // START END
+            $(".pickStart").on("change.dp", function (e) {
+                $('.pickEnd').data("DateTimePicker").setStartDate(e.date);
+            });
+            $(".pickEnd").on("change.dp", function (e) {
+                $('.pickStart').data("DateTimePicker").setEndDate(e.date);
+            });
+
+
             // Combine Datepicker and FullCalendar (inkl. Today-Button
             $('#SideCalendar').datepicker()
-// when Datepicker is clicked...
+                // when Datepicker is clicked...
                 .on('changeDate', function (e) {
 
                     //if FullCalendar present
@@ -396,35 +458,43 @@ $(document).ready(function () {
                     '<ul class="list-group">' +
 
                     '<li><span class="glyphicon glyphicon-calendar"></span>' + '' + data.datec + ' ' +
-                    '<li><span class="glyphicon glyphicon-time gl-ml"></span>' + '' + data.time + ' ' +
-                    (data.place && '  <span class="glyphicon glyphicon-map-marker gl-ml"></span>' + data.place + '</li><br/>' || '') +
+                    '<li><span class="glyphicon glyphicon-time gl-ml"></span>' + data.time;
 
-                    (data.niceEnd && '<p><b>End:</b> ' + data.end + '</p>' || '') +
+                if (data.place != null) {
+                    content += (data.place && '  <span class="glyphicon glyphicon-map-marker gl-ml"></span>' + data.place + '</li><br/>' || '') +
 
-                    '<li><span class="glyphicon glyphicon-th-list"></span><a href="lectures/view/' + data.Lecture.lecture_id + '">' +
-                    '' + data.Lecture.number + ' ' + data.Lecture.name + '</a>' +
-                    (data.Lecture.link && '<a href="' + data.Lecture.link + '"> <span class="glyphicon glyphicon-link gl-ms"></span></a>') + '</li><br/>' +
+                        (data.niceEnd && '<p><b>End:</b> ' + data.end + '</p>' || '');
+                }
 
-
-                    '<li><span class="glyphicon cp-icon-lecturer"></span>' +
-                    '<a href="hosts/view/' + data.Host.host_id + '">' + data.Host.name + '</a>' +
-                    (data.Host.email && '<a href="mailto:' + data.Host.email + '"> <span class="glyphicon glyphicon-envelope gl-ms"></span></a>') +
-                    (data.Host.contact_email && '<a href="mailto:' + data.Host.contact_email + '"><span class="glyphicon glyphicon-envelope gl-ms"></span></a>') + '</li><br/>' +
-
-
-                    '<li><span class="glyphicon glyphicon-facetime-video"></span>' + '' + data.EventType.name + '' + '</li><br/>' +
+                if (data.Lecture.lecture_id != null) {
+                    content += '<li><span class="glyphicon glyphicon-th-list"></span><a href="lectures/view/' + data.Lecture.lecture_id + '">' +
+                        '' + data.Lecture.number + ' ' + data.Lecture.name + '</a>' +
+                        (data.Lecture.link && '<a href="' + data.Lecture.link + '"> <span class="glyphicon glyphicon-link gl-ms"></span></a>') + '</li><br/>';
+                }
 
 
-                    '<li><span class="glyphicon glyphicon-user"></span>' +
-                    '<a href="users/view/' + data.User.user_id + '">' + data.User.username + '</a>' +
-                    '<a href="mailto:' + data.User.email + '"> <span class="glyphicon glyphicon-envelope gl-ms"></span></a></li><br/>' +
+                if (data.Host.host_id != null) {
+                    content += '<li><span class="glyphicon cp-icon-lecturer"></span>' +
+                        '<a href="hosts/view/' + data.Host.host_id + '">' + data.Host.name + '</a>' +
+                        (data.Host.email && '<a href="mailto:' + data.Host.email + '"> <span class="glyphicon glyphicon-envelope gl-ms"></span></a>') +
+                        (data.Host.contact_email && '<a href="mailto:' + data.Host.contact_email + '"><span class="glyphicon glyphicon-envelope gl-ms"></span></a>') + '</li><br/>';
+                }
+
+                if (data.EventType.name != null) {
+                    content += '<li><span class="glyphicon glyphicon-facetime-video"></span>' + '' + data.EventType.name + '' + '</li><br/>';
+                }
 
 
-                    '</ul>' +
+                if (data.User.user_id != null) {
+                    content += '<li><span class="glyphicon glyphicon-user"></span>' +
+                        '<a href="users/view/' + data.User.user_id + '">' + data.User.username + '</a>' +
+                        '<a href="mailto:' + data.User.email + '"> <span class="glyphicon glyphicon-envelope gl-ms"></span></a></li><br/>';
+                }
 
-                    '<a class="btn-m btn-sm btn-default pull-right" name="Bearbeiten" href="captures/edit/' + data.capture_id + '">Bearbeiten' +
 
-                    '<a class="btn-m btn-sm btn-default pull-right" name="Anzeigen" href="captures/view/' + data.capture_id + '">Anzeigen';
+                content += '<a class="btn-m btn-sm btn-default pull-right" name="Bearbeiten" href="' + $appRoot + 'events/edit/' + data.id + '">Bearbeiten' +
+
+                    '<a class="btn-m btn-sm btn-default pull-right" name="Anzeigen" href="' + $appRoot + 'events/view/' + data.id + '">Anzeigen';
 
 
                 //console.log(data);
@@ -656,14 +726,19 @@ $(document).ready(function () {
 
 
 // TOGGLE ACTIVE TABS OF FORM
-    $('#ScheduleContainer').on('shown.bs.tab', 'a.form-toggle', function (e) {
+    if ($.isFunction($.fn.selectpicker)) {
 
-        var $target = $($(this).attr('href'));
+        $('#ScheduleContainer').on('shown.bs.tab', 'a.form-toggle', function (e) {
 
-        $target.parent().find('input, select').prop('disabled', true).selectpicker('refresh');
-        ;
-        $target.find('input, select').prop('disabled', false).selectpicker('refresh');
-    });
+            var $target = $($(this).attr('href'));
+
+            $target.parent().find('input, select').prop('disabled', true).selectpicker('refresh');
+            ;
+            $target.find('input, select').prop('disabled', false).selectpicker('refresh');
+        });
+    }
+    ;
+
 
 // HASHED TABBING
     $(function () {

@@ -184,7 +184,7 @@ msgid "The event has been saved."
 msgstr "Die Aufzeichnung wurde gesichert."
 
 msgid "The event could not be saved. Please, try again."
-msgstr "Die Aufzeichnung konnte nicht entfernt werden. Bitte überprüfen Sie ihre Eingabe."
+msgstr "Die Aufzeichnung konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The event has been deleted."
 msgstr "Die Aufzeichnung wurde erfolgreich entfernt."
@@ -401,10 +401,6 @@ msgstr "Verknüpfte Aktionen"
 
 
 
-
-
-
-
 msgid "New"
 msgstr "Ausstehend"
 
@@ -424,13 +420,24 @@ msgid "Error"
 msgstr "Fehler"
 
 
+msgid "Accepted"
+msgstr "Zugesagt"
+msgid "Request"
+msgstr "Angefragt"
+msgid "Pending"
+msgstr "Unklar"
+msgid "Refused"
+msgstr "Abgelehnt"
+msgid "Closed"
+msgstr "Beendet"
 
 
-
-
-
-
-
+msgid "Due"
+msgstr "Ausstehend"
+msgid "Processing"
+msgstr "In Bearbeitung"
+msgid "Failed"
+msgstr "Gescheitert"
 
 #: View/Tickets/index.ctp:102
 
@@ -1138,6 +1145,13 @@ msgstr "Dauer der Aufzeichnung"
 
 msgid "Choose the type of your Capture"
 msgstr "Wählen Sie die Art der Aufzeichnung"
+
+
+
+
+msgid "Date"
+msgstr "Datum"
+
 
 msgid "Every"
 msgstr "Jede"

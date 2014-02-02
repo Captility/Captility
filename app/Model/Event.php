@@ -60,12 +60,32 @@ class Event extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        'start-time' => array(
+            'datetime' => array(
+                'rule' => array('isUhrzeit'),
+                'message' => 'Uhrzeit angeben.',
+                'allowEmpty' => false,
+                'required' => true,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
         'end' => array(
             'datetime' => array(
                 'rule' => array('datetime'),
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
                 //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+        'end-time' => array(
+            'datetime' => array(
+                'rule' => array('isUhrzeit'),
+                'message' => 'Uhrzeit angeben.',
+                'allowEmpty' => false,
+                'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -174,13 +194,29 @@ class Event extends AppModel {
         )
     );
 
-    function hasTickets($id){
+    function hasTickets($id) {
         $count = $this->Ticket->find("count", array("conditions" => array("Ticket.event_id" => $id)));
         if ($count == 0) {
             return false;
-        } else {
+        }
+        else {
             return true;
         }
+    }
+
+    public function beforeValidate($options = array()) {
+
+        if (!empty($this->data['Event']['start']) && !empty($this->data['Event']['start-time'])) {
+
+            $this->data['Event']['start'] = $this->formatDateTimepickerToValid($this->data['Event']['start'], $this->data['Event']['start-time'], 'Y-m-d H:i:s');
+        }
+
+        if (!empty($this->data['Event']['end']) && !empty($this->data['Event']['end-time'])) {
+
+            $this->data['Event']['end'] = $this->formatDateTimepickerToValid($this->data['Event']['end'], $this->data['Event']['end-time'], 'Y-m-d H:i:s');
+        }
+
+        return true;
     }
 
 }

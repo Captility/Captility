@@ -184,15 +184,27 @@ Configure::write('TICKET.STATUSES', array(
 
 ));
 
-/** TICKET STATUSES */
+/** CAPTURE STATUSES */
 Configure::write('CAPTURE.STATUSES', array(
     // Name => Class
-    'zugesagt' => 'success',
-    'angefragt' => 'primary',
-    'unklar' => 'warning',
-    'abgelehnt' => 'danger',
-    'beendet' => 'default',
+    'Accepted' => 'success',
+    'Request' => 'primary',
+    'Pending' => 'warning',
+    'Refused' => 'danger',
+    'Closed' => 'default',
 ));
+
+
+/** EVENT STATUSES */
+Configure::write('EVENT.STATUSES', array(
+    // Name => Class
+    'Due' => 'default',
+    'Processing' => 'primary',
+    'Failed' => 'danger',
+    'Online' => 'success'
+
+));
+
 
 /**
  * Bootstrap Layout for Forms.

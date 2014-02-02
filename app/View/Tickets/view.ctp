@@ -86,7 +86,7 @@
                             '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['Ticket']['created']))), // Calendar-Link
                             array('escape' => false)) .
                         '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
-                        $this->Time->nice(strtotime(h($ticket['Ticket']['created'])), 'CET', '%H:%I')                       // Time
+                        $this->Time->nice(strtotime(h($ticket['Ticket']['created'])), 'CET', '%H:%M')                       // Time
                     ?>
                 </td>
             </tr>
@@ -102,7 +102,7 @@
                             '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['Ticket']['modified']))), // Calendar-Link
                             array('escape' => false)) .
                         '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
-                        $this->Time->nice(strtotime(h($ticket['Ticket']['modified'])), 'CET', '%H:%I')                       // Time
+                        $this->Time->nice(strtotime(h($ticket['Ticket']['modified'])), 'CET', '%H:%M')                       // Time
                     ?>
                 </td>
             </tr>
@@ -118,7 +118,7 @@
                             '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['Ticket']['ended']))), // Calendar-Link
                             array('escape' => false)) .
                         '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
-                        $this->Time->nice(strtotime(h($ticket['Ticket']['ended'])), 'CET', '%H:%I')                       // Time
+                        $this->Time->nice(strtotime(h($ticket['Ticket']['ended'])), 'CET', '%H:%M')                       // Time
                     ?>
                 </td>
             </tr>

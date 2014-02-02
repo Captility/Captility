@@ -113,12 +113,18 @@
   font-family: @font-family-nav;
 }
 
+
 //FORM ALIGNMENT
 @media (min-width:@screen-lg-min) {
   .form-split-6 {
 
     .make-lg-column(6);
     padding: 0px 25px 0px 0px;
+
+    .form-group {
+
+      padding: 0;
+    }
   }
 
   form div.form-split-6:nth-child(odd) {
@@ -126,6 +132,20 @@
     padding: 0;
   }
 
+}
+
+.form-split-6 {
+
+  .form-group {
+
+    padding: 0;
+    margin-bottom: 0;
+
+    &:nth-child(odd) {
+
+      padding-right: 5%;
+    }
+  }
 }
 
 //Nav Dropdown Infos

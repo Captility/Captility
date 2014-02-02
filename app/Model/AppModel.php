@@ -45,6 +45,15 @@ class AppModel extends Model {
         return preg_match('(WS\s?\d{4,4}\/?\d{2,4}|SS\s?\d{4,4})', $value);
     }
 
+    public function isUhrzeit($check) {
+        // $data array is passed using the form field name as the key
+        // have to extract the value to make the function generic
+        $value = array_values($check);
+        $value = $value[0];
+
+        return preg_match('([0-9]{2}:[0-9]{2}\s*Uhr)', $value);
+    }
+
     /**
      * @param $check
      * @param $otherfield
@@ -123,8 +132,15 @@ class AppModel extends Model {
 
     public function formatDatepickerToValid($dateString, $formatString) {
 
-        //return date('Y-m-d', strtotime($dateString));
+        // - ...Mo,
         return CakeTime::format($formatString, substr($dateString, 4));
+    }
+
+
+    public function formatDateTimepickerToValid($dateString, $timeString, $formatString = 'Y-m-d H:i:s') {
+
+        // - ...\sUhr
+        return $this->formatDatepickerToValid($dateString . ' ' . substr($timeString, 0, -4), $formatString);
     }
 
 

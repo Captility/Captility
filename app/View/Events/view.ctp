@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo '#' . h($event['Event']['event_id']) . ' ' . h($event['Event']['title']); ?></h1>
+            <h1><?php echo h($event['Event']['title']); ?></h1>
         </div>
     </div>
 </div>
@@ -35,75 +35,96 @@
             </tr>
 
             <tr>
+                <th><?php echo __('Capture'); ?></th>
+                <td><span class="glyphicon glyphicon-film"></span>
+                    <?php echo $this->Html->link($event['Capture']['name'], array('controller' => 'captures', 'action' => 'view', $event['Capture']['capture_id'])); ?>
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <th><?php echo __('Event Type'); ?></th>
+                <td><span class="glyphicon glyphicon-facetime-video"></span>
+                    <?php echo $this->Html->link($event['EventType']['name'], array('controller' => 'event_types', 'action' => 'view', $event['EventType']['event_type_id'])); ?>
+                    &nbsp;
+                </td>
+            </tr>
+
+            <tr>
                 <th><?php echo __('Start'); ?></th>
                 <td>
-                    <?php echo h($event['Event']['start']); ?>
-                    &nbsp;
+                    <?php if (!empty($event['Event']['start'])) echo
+
+                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                        $this->Captility->linkDate($event['Event']['start']) .
+                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                        $this->Time->nice(strtotime(h($event['Event']['start'])), 'CET', '%H:%M')                       // Time
+                    ?>
                 </td>
             </tr>
             <tr>
                 <th><?php echo __('End'); ?></th>
                 <td>
-                    <?php echo h($event['Event']['end']); ?>
-                    &nbsp;
+                    <?php if (!empty($event['Event']['end'])) echo
+
+                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                        $this->Captility->linkDate($event['Event']['end']) .
+                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                        $this->Time->nice(strtotime(h($event['Event']['end'])), 'CET', '%H:%M')                       // Time
+                    ?>
                 </td>
             </tr>
-            <tr>
-                <th><?php echo __('All Day'); ?></th>
+            <!--<tr>
+                <th><?php /*echo __('All Day'); */?></th>
                 <td>
-                    <?php echo h($event['Event']['all_day']); ?>
+                    <?php /*echo h($event['Event']['all_day']); */?>
                     &nbsp;
                 </td>
-            </tr>
+            </tr>-->
             <tr>
                 <th><?php echo __('Status'); ?></th>
-                <td>
-                    <?php echo h($event['Event']['status']); ?>
-                    &nbsp;
+                <?php $statuses = Configure::read('EVENT.STATUSES');
+                $class = $statuses[$event['Event']['status']]; ?>
+                <td class="labels">
+
+                    <span class="glyphicon glyphicon-tasks"></span>
+
+
+                    <span class="label label-<? echo $class ?>"><? echo __(h($event['Event']['status'])) ?></span>
                 </td>
             </tr>
             <tr>
                 <th><?php echo __('Link'); ?></th>
-                <td>
-                    <?php echo h($event['Event']['link']); ?>
+                <td><span class="glyphicon glyphicon-link"></span>
+                    <?php echo $this->Html->link($this->Captility->trimLink($event['Event']['link']), h($event['Event']['link'])); ?>
                     &nbsp;
                 </td>
             </tr>
             <tr>
                 <th><?php echo __('Created'); ?></th>
                 <td>
-                    <?php echo h($event['Event']['created']); ?>
-                    &nbsp;
+                    <?php if (!empty($event['Event']['created'])) echo
+
+                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                        $this->Captility->linkDate($event['Event']['created']) .
+                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                        $this->Time->nice(strtotime(h($event['Event']['created'])), 'CET', '%H:%M')                       // Time
+                    ?>
                 </td>
             </tr>
             <tr>
                 <th><?php echo __('Modified'); ?></th>
                 <td>
-                    <?php echo h($event['Event']['modified']); ?>
-                    &nbsp;
+                    <?php if (!empty($event['Event']['modified'])) echo
+
+                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                        $this->Captility->linkDate($event['Event']['modified']) .
+                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                        $this->Time->nice(strtotime(h($event['Event']['modified'])), 'CET', '%H:%M')                       // Time
+                    ?>
                 </td>
             </tr>
-            <tr>
-                <th><?php echo __('Event Type'); ?></th>
-                <td>
-                    <?php echo $this->Html->link($event['EventType']['name'], array('controller' => 'event_types', 'action' => 'view', $event['EventType']['event_type_id'])); ?>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <th><?php echo __('Schedule'); ?></th>
-                <td>
-                    <?php echo $this->Html->link($event['Schedule']['schedule_id'], array('controller' => 'schedules', 'action' => 'view', $event['Schedule']['schedule_id'])); ?>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <th><?php echo __('Capture'); ?></th>
-                <td>
-                    <?php echo $this->Html->link($event['Capture']['name'], array('controller' => 'captures', 'action' => 'view', $event['Capture']['capture_id'])); ?>
-                    &nbsp;
-                </td>
-            </tr>
+
             </tbody>
         </table>
     </div>
@@ -122,8 +143,6 @@
     <? endif; ?>
 
 
-    <? echo pr($event) ?>
-
 
     <div class="related row">
         <div class="col-md-12">
@@ -140,9 +159,6 @@
                             <th><?php echo __('Created'); ?></th>
                             <th><?php echo __('Modified'); ?></th>
                             <th><?php echo __('Ended'); ?></th>
-                            <th><?php echo __('Responsible'); ?></th>
-                            <th><?php echo __('Task Id'); ?></th>
-                            <th><?php echo __('Event Id'); ?></th>
                             <th class="actions"></th>
                         </tr>
                         <thead>
@@ -153,14 +169,12 @@
                                 <td class="labels"><?php $statuses = Configure::read('TICKET.STATUSES');
                                     $class = $statuses[$ticket['status']]; ?>
 
-                                    <span class="label label-<? echo $class ?>"><? echo __(h($ticket['status'])) ?></span>
+                                    <span
+                                        class="label label-<? echo $class ?>"><? echo __(h($ticket['status'])) ?></span>
                                 </td>
                                 <td><?php echo $this->Captility->linkDate(h($ticket['created']), '%d.%m.%Y %H:%M') ?></td>
                                 <td><?php echo $this->Captility->linkDate(h($ticket['modified']), '%d.%m.%Y %H:%M') ?></td>
                                 <td><?php echo $this->Captility->linkDate(h($ticket['ended']), '%d.%m.%Y %H:%M') ?></td>
-                                <td><?php echo $ticket['User']['username']; ?></td>
-                                <td><?php echo $ticket['task_id']; ?></td>
-                                <td><?php echo $ticket['event_id']; ?></td>
                                 <td class="actions">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id']), array('escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'tickets', 'action' => 'edit', $ticket['ticket_id']), array('escape' => false)); ?>

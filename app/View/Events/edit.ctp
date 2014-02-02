@@ -1,14 +1,14 @@
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>'.__('Captures'), '/captures'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-play-alt"></span>'.__('Event'), '/events/view/' . h($this->request->data['Event']['event_id'])); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>' . __('Captures'), '/captures'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-play-alt"></span>' . __('Event'), '/events/view/' . h($this->request->data['Event']['event_id'])); ?>
 <? $this->Breadcrumbs->addCrumb('#' . h($this->request->data['Event']['event_id']) . ' ' . h($this->request->data['Event']['title']),
     '/events/view/' . h($this->request->data['Event']['event_id'])); ?>
-<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>'.__('Edit Event'), '#', array('class' => 'active')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>' . __('Edit Event'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-play-circle"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-play-circle"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -25,60 +25,121 @@
 <div class="col-md-8 column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <?php echo $this->Form->create('Event', array('role' => 'form')); ?>
+    <?php echo $this->Form->create('Event', Configure::read('FORM.INPUT_DEFAULTS')); ?>
 
-    <div class="form-group">
-        <?php echo $this->Form->input('event_id', array('class' => 'form-control', 'placeholder' => 'Event Id'));?>
-    </div><div class="clearfix"></div>
-    <div class="form-group">
-        <?php echo $this->Form->input('title', array('class' => 'form-control', 'placeholder' => 'Title'));?>
+    <?php echo $this->Form->input('event_id');?>
+
+    <?php echo $this->Form->input('title', array(
+        'placeholder' => __('Name'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-play-circle input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    ));?>
+
+
+    <div class="form-group form-split-6">
+        <?php echo $this->Form->input('start', array(
+            'placeholder' => __('Date'),
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'class' => 'form-control pickDate pickStart',
+            'type' => 'string',
+            'div' => 'form-group col-xs-7',
+            'value' => $this->Captility->calcDate(h($this->Form->value('start')), '%a, %d.%m.%Y')
+        ));?>
+
+        <?php echo $this->Form->input('start-time', array(
+            'placeholder' => __('Time'),
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'class' => 'form-control pickTime pickStart',
+            'label' => '&nbsp;',
+            'div' => 'form-group col-xs-5',
+            'value' => $this->Captility->calcDate(h($this->Form->value('start')), '%H:%M Uhr')
+        ));?>
     </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('comment', array('class' => 'form-control', 'placeholder' => 'Comment'));?>
+
+    <div class="form-group form-split-6">
+        <?php echo $this->Form->input('end', array(
+            'placeholder' => __('Date'),
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'class' => 'form-control pickDate pickEnd',
+            'type' => 'string',
+            'div' => 'form-group col-xs-7',
+            'value' => $this->Captility->calcDate(h($this->Form->value('end')), '%a, %d.%m.%Y')
+        ));?>
+
+        <?php echo $this->Form->input('end-time', array(
+            'placeholder' => __('Time'),
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'class' => 'form-control pickTime pickEnd',
+            'label' => '&nbsp;',
+            'div' => 'form-group col-xs-5',
+            'value' => $this->Captility->calcDate(h($this->Form->value('end')), '%H:%M Uhr')
+        ));?>
     </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('start',
-            array('dateFormat' => Configure::read('Captility.dateFormat'),
-                'timeFormat' => '24',
-                'minYear' => date('Y') - 5,
-                'maxYear' => date('Y') + 5,
-                'class' => 'form-control form-control-date',
-                'interval' => 15
-            ));?>
+
+
+    <?php echo $this->Form->input('event_type_id', array(
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-facetime-video input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'placeholder' => __('Event Type Id'),
+        'div' => 'form-group form-split-6',
+    ));?>
+
+    <div class="form-group form-horizontal form-split-6">
+
+        <label for="TicketStatus">Status</label>
+
+        <div class="required">
+            <div class="input input-group select required">
+
+                <span class="input-group-addon glyphicon glyphicon-tasks input-group-glyphicon"></span>
+
+                <select name="data[Event][status]" class="form-control"
+                        id="EventStatus" required="required"
+                        style="/* display: none; */">
+
+                    <? foreach (Configure::read('EVENT.STATUSES') as $status => $class): ?>
+
+                        <option <? if ($this->request->data['Event']['status'] == $status) echo 'selected';?>
+                            data-content='<span class="label label-<? echo $class ?>"><? echo __($status) ?></span>'><? echo $status ?></option>
+                    <? endforeach; ?>
+
+                </select>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('end',
-            array('dateFormat' => Configure::read('Captility.dateFormat'),
-                'timeFormat' => '24',
-                'minYear' => date('Y') - 5,
-                'maxYear' => date('Y') + 5,
-                'class' => 'form-control form-control-date',
-                'interval' => 15
-            ));?>
-    </div>
-    <div class="form-group">
+
+
+    <?/*<div class="form-group">
         <?echo '<div class="control-group">';
         echo $this->Form->label('Event.all_day', null, array('class' => 'control-label'));
         echo '<div class="controls">';
         echo $this->Form->checkbox('Event.all_day');
         echo '</div>';
-        echo '</div>'; ?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('status', array('class' => 'form-control', 'placeholder' => 'Status'));?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('link', array('class' => 'form-control', 'placeholder' => 'Link'));?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('event_type_id', array('class' => 'form-control', 'placeholder' => 'Event Type Id'));?>
-    </div>
-    <div class="form-group">
+        echo '</div>';
+    </div>*/?>
+
+
+    <?php echo $this->Form->input('link', array(
+        'class' => 'form-control',
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-link input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'placeholder' => 'Link'
+
+    ));?>
+
+
+    <?/*<div class="form-group">
         <?php echo $this->Form->input('schedule_id', array('class' => 'form-control', 'placeholder' => 'Schedule Id'));?>
     </div>
     <div class="form-group">
         <?php echo $this->Form->input('capture_id', array('class' => 'form-control', 'placeholder' => 'Capture Id'));?>
+    </div>*/?>
+
+
+    <hr/>
+
+    <div class="form-group">
+        <?php echo $this->Element('tinymce'); ?>
+        <?php echo $this->Form->input('comment', array('class' => 'form-control', 'placeholder' => 'Comment'));?>
     </div>
+
     <?php echo $this->Element('submitArea');?>
 
     <?php echo $this->Form->end() ?>
@@ -98,7 +159,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">'. __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Event.event_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Event.event_id'))); ?></li>
+                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . '<span class="remove-text">' . __('Delete') . '</span>', array('action' => 'delete', $this->Form->value('Event.event_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Event.event_id'))); ?></li>
                 </ul>
             </div>
             <div class="panel-heading">

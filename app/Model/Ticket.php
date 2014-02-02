@@ -164,11 +164,9 @@ class Ticket extends AppModel {
 
         if (!empty($this->data['Ticket']['ended'])) {
 
-            $this->data['Ticket']['ended'] = $this->formatDatepickerToValid($this->data['Ticket']['ended'], 'Y-m-d H:i:s');
+            $this->data['Ticket']['ended'] = $this->formatDateTimepickerToValid($this->data['Ticket']['ended'], $this->data['Ticket']['ended-time'], 'Y-m-d H:i:s');
         }
 
-
-        //debug($this->data['Ticket']['ended']);debug($this->data['Ticket']['ended']);debug($this->data['Ticket']['ended']);debug($this->data['Ticket']['ended']);
         return true;
     }
 }

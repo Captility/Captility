@@ -1,9 +1,9 @@
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-play-circle"></span>'.__('Events'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-play-circle"></span>' . __('Events'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-play-circle"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-play-circle"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -34,7 +34,7 @@
                 <th><?php echo $this->Paginator->sort('end'); ?></th>
                 <th><?php echo $this->Paginator->sort('status'); ?></th>
                 <th><?php echo $this->Paginator->sort('link'); ?></th>
-                <th><?php echo $this->Paginator->sort('event_type_id', __('Type')) ; ?></th>
+                <th><?php echo $this->Paginator->sort('event_type_id', __('Type')); ?></th>
                 <th><?php echo $this->Paginator->sort('capture_id'); ?></th>
                 <th class="actions"></th>
             </tr>
@@ -43,10 +43,21 @@
             <?php foreach ($events as $event): ?>
                 <tr>
                     <td><?php echo h($event['Event']['event_id']); ?>&nbsp;</td>
-                    <td><?php echo h($event['Event']['title']); ?>&nbsp;</td>
-                    <td><?php echo h($event['Event']['start']); ?>&nbsp;</td>
-                    <td><?php echo h($event['Event']['end']); ?>&nbsp;</td>
-                    <td><?php echo h($event['Event']['status']); ?>&nbsp;</td>
+                    <td>
+                        <?php echo h($event['Event']['title']); ?>
+                    </td>
+                    <td>
+                        <?php echo $this->Captility->linkDate(h($event['Event']['start']), '%d.%m.%Y %H:%M Uhr') ?>
+                    </td>
+                    <td>
+
+                        <?php echo $this->Captility->linkDate(h($event['Event']['end']), '%d.%m.%Y %H:%M Uhr') ?>
+                    </td>
+                    <td class="labels"><?php $statuses = Configure::read('EVENT.STATUSES');
+                        $class = $statuses[$event['Event']['status']]; ?>
+
+                        <span class="label label-<? echo $class ?>"><? echo __(h($event['Event']['status'])) ?></span>
+                    </td>
                     <td>
                         <?php if (!empty($event['Event']['link'])) echo $this->Html->link(
                             $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-link')),
@@ -60,7 +71,8 @@
                                 class="btn-color eventColor<?php echo $event['EventType']['color']; ?>"></button>
 
                         <?php echo $this->Form->end() ?>
-                    </td><td>
+                    </td>
+                    <td>
                         <?php echo $this->Html->link($event['Capture']['name'], array('controller' => 'captures', 'action' => 'view', $event['Capture']['capture_id'])); ?>
                     </td>
                     <td class="actions">
@@ -106,10 +118,28 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Event'), array('action' => 'add'), array('escape' => false)); ?></li>
+                </ul>
+            </div>
+            <!-- end body -->
+            <div class="panel-heading">
+
+                    <span class="glyphicon glyphicon-facetime-video"></span><?php echo __('Event Types');?>
+
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Event Types'), array('controller' => 'event_types', 'action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Event Type'), array('controller' => 'event_types', 'action' => 'add'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Schedules'), array('controller' => 'schedules', 'action' => 'index'), array('escape' => false)); ?> </li>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Schedule'), array('controller' => 'schedules', 'action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div>
+            <!-- end body -->
+            <div class="panel-heading">
+
+                    <span class="glyphicon glyphicon-film"></span><?php echo __('Captures');?>
+
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>

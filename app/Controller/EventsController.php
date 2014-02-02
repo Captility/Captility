@@ -329,14 +329,16 @@ class EventsController extends AppController {
 
         $this->Paginator->settings = array(
             'limit' => 12,
-            'contain' => false,
+            /*'contain' => false,
             'link' => array(
 
-                'Ticket',
-                'User' => array(
-                    'fields' => array('User.user_id', 'User.username', 'User.email', 'User.avatar'),
-                    'conditions' => array('exactly' => 'Ticket.user_id = User.user_id')),
-            ),
+                'Ticket' => array(
+
+                    'User' => array(
+                        'fields' => array('User.user_id', 'User.username', 'User.email', 'User.avatar'),
+                        'conditions' => array('exactly' => 'Ticket.user_id = User.user_id')),
+                ),
+            ),*/
 
         );
         $this->set('events', $this->Paginator->paginate());

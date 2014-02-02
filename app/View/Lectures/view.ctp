@@ -110,7 +110,7 @@
         <tr>
             <th><?php echo __('Link'); ?></th>
             <td><span class="glyphicon glyphicon-link"></span>
-                <?php echo $this->Html->link(h($lecture['Lecture']['link']), h($lecture['Lecture']['link'])); ?>
+                <?php echo $this->Html->link($this->Captility->trimLink($lecture['Lecture']['link']), h($lecture['Lecture']['link'])); ?>
             </td>
         </tr>
         <tr>

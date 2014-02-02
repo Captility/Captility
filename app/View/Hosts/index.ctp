@@ -29,7 +29,7 @@
         <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
             <thead class="panel-heading">
             <tr>
-                <th><?php echo $this->Paginator->sort('host_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('host_id', 'ID'); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th><?php echo $this->Paginator->sort('email'); ?></th>
                 <th><?php echo $this->Paginator->sort('contact'); ?></th>

@@ -83,4 +83,15 @@ class CaptilityHelper extends AppHelper {
         return $time;
     }
 
+
+    public function trimLink($string, $len = 50) {
+
+        if (strlen($string) <= $len) {
+            return $string;
+        }
+        $s2 = substr($string, 0, $len - 3);
+        $s2 .= "...";
+        return h($s2);
+    }
+
 }

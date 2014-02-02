@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-tags"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-tags"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -38,7 +38,7 @@
 
         'placeholder' => __('task_id'),
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-tags input-group-glyphicon"></span>', 'afterInput' => '</div>',
-        'autofocus'=>'autofocus'
+        'autofocus' => 'autofocus'
     ));?>
 
 
@@ -66,8 +66,8 @@
         ));*/?>
     </div>-->
 
-
-    <div class="form-group form-horizontal">
+    <div></div>
+    <div class="form-group form-split-6">
 
         <label for="TicketStatus">Status</label>
 
@@ -94,13 +94,34 @@
 
 
 
-    <?php echo $this->Form->input('ended', array(
+    <?php /*echo $this->Form->input('ended', array(
 
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>', 'afterInput' => '</div>',
         'class' => 'form-control input-thin pickDate',
         'value' => '', //$this->Time->nice(strtotime(h($this->Form->value('ended'))), 'CET', '%a, %d.%m.%Y'),
         'type' => 'string'
-    ));?>
+    ));*/?>
+
+
+
+        <div class="form-group form-split-6">
+            <?php echo $this->Form->input('ended', array(
+                'placeholder' => __('Date'),
+                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>', 'afterInput' => '</div>',
+                'class' => 'form-control pickDate',
+                'type' => 'string',
+                'div' => 'form-group col-xs-7',
+            ));?>
+
+            <?php echo $this->Form->input('ended-time', array(
+                'placeholder' => __('Time'),
+                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
+                'class' => 'form-control pickTime',
+                'label' => '&nbsp;',
+                'div' => 'form-group col-xs-5',
+            ));?>
+        </div>
+
 
 
     <div class="form-group">
