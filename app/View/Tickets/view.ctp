@@ -4,7 +4,7 @@
 <!--<div class=" view">-->
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-tags"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-tags"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -141,6 +141,8 @@
 
 </div>
 <!-- end col md 9 -->
+
+
 
 <div class="col-md-3 column">
     <div class="actions">

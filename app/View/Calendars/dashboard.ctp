@@ -1,10 +1,10 @@
 <? $this->Breadcrumbs->addCrumb(__('Production'), '/pages/production'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-dashboard"></span>' . __('Dashboard – Week Overview'), '/dashboard', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-dashboard"></span>' . __('Dashboard'), '/dashboard', array('class' => 'active')); ?>
 
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-xs hidden-sm"><span class="glyphicon el-icon-captility"></span></div>
+        <div class="glyphicon-headline hidden-xs hidden-sm"><span class="glyphicon el-icon-captility"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -25,11 +25,11 @@
                 <li class=><a href="#week" id="MyWeekViewFc" data-toggle="tab"><span
                             class="glyphicon glyphicon-calendar glyphicon-leftTabs"></span><?php echo __('Mine') ?></a>
                 </li>
-                <li><a href="#tickets" data-toggle="tab"><span
+                <li><a href="#tickets" id="TicketView" data-toggle="tab"><span
                             class="glyphicon glyphicon-tasks glyphicon-leftTabs"></span><?php echo __('Tickets') ?></a>
                 </li>
-                <li><a href="#online" data-toggle="tab"><span
-                            class="glyphicon glyphicon-upload glyphicon-leftTabs"></span><?php echo __('Online') ?></a>
+                <li><a href="#online" id="OnlineView" data-toggle="tab"><span
+                            class="glyphicon glyphicon-upload glyphicon-leftTabs"></span><?php echo __('Status') ?></a>
                 </li>
             </ul>
         </div>
@@ -51,15 +51,25 @@
 
 
         <div class="tab-pane" id="tickets">
-            <?php echo $this->Element('tabContentDummy');?>
+
+            <?php //echo $this->Element('tabContentDummy');?>
             <? // Tab Content #b ?>
+
+            <?php if (!empty($data[0]['Ticket'])) foreach ($data as $i => $ticket): ?>
+
+                <?php echo $this->Element('dashboard/tickets', array('ticket' => $ticket)); ?>
+
+            <? endforeach; ?>
+
         </div>
 
 
         <? // Tab Content #c ?>
 
         <div class="tab-pane" id="online">
-            <?php echo $this->Element('tabContentDummy2');?>
+            <?php /*echo $this->Element('tabContentDummy2');*/?>
+
+            <?php echo $this->Element('dashboard/online', array('events' => $events)); ?>
         </div>
     </div>
 </div>

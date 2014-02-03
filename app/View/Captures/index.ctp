@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-film"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-film"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -23,7 +23,7 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <div class="panel panel-primary">
+    <div class="panel panel-primary" id="Pagination">
         <!-- Default panel contents -->
 
         <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
@@ -47,7 +47,8 @@
                     <td class="labels"><?php $statuses = Configure::read('CAPTURE.STATUSES');
                         $class = $statuses[$capture['Capture']['status']]; ?>
 
-                        <span class="label label-<? echo $class ?>"><? echo __(h($capture['Capture']['status'])) ?></span>
+                        <span
+                            class="label label-<? echo $class ?>"><? echo __(h($capture['Capture']['status'])) ?></span>
                     </td>
 
                     <td>
@@ -82,35 +83,37 @@
         ?>
         <ul class="pagination pagination-sm">
             <?php
-            echo $this->Paginator->prev('&larr; Previous', array('class' => 'prev', 'tag' => 'li', 'escape' => false), '<a onclick="return false;">&larr; Previous</a>', array('class' => 'prev disabled', 'tag' => 'li', 'escape' => false));
+            echo $this->Paginator->prev('← ' . __('Previous'), array('class' => 'prev', 'tag' => 'li', 'escape' => false), '<a onclick="return false;">&larr; Previous</a>', array('class' => 'prev disabled', 'tag' => 'li', 'escape' => false));
             echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li', 'currentClass' => 'active', 'currentTag' => 'a'));
-            echo $this->Paginator->next('Next &rarr;', array('class' => 'next', 'tag' => 'li', 'escape' => false), '<a onclick="return false;">Next &rarr;</a>', array('class' => 'next disabled', 'tag' => 'li', 'escape' => false));
+            echo $this->Paginator->next(__('Next') . ' →', array('class' => 'next', 'tag' => 'li', 'escape' => false), '<a onclick="return false;">Next →</a>', array('class' => 'next disabled', 'tag' => 'li', 'escape' => false));
             ?>
         </ul>
     <?php } ?>
 
 
 
-    <div class="info-banner info-banner-info" id="Infobanner">
+    <div class="clearfix">
 
-        <button type="button" class="close" data-dismiss="info-banner" aria-hidden="true">&times;</button>
-
-        <h4 data-toggle="collapse" data-parent="#Infobanner" href="#Collabse-info-banner">
-            <small class="glyphicon el-icon-info-sign"></small>
-            Plan regelmäßiger Aufzeichnungen
-        </h4>
+        <div class="info-banner info-banner-info" id="Infobanner">
 
 
-        <div id="Collabse-info-banner" class="panel-collapse collapse <!--in-->">
+            <h4 data-toggle="collapse" data-parent="#Infobanner" href="#Collabse-info-banner">
+                <small class="glyphicon el-icon-info-sign"></small>
+                Plan regelmäßiger Aufzeichnungen
+            </h4>
 
-            <hr/>
-            <p>Aufnahmen, Aufzeichnungs-Typen, Aufnahme-Pläne, Aufnahme-Salat.. man ist das verwirrend.</p>
 
-            Eine <strong>AufnahmeReihe</strong> bezeichnet eine Folge von einzelnen Terminen, an denen Aufgezeichnet
-            werden soll. Diese kann also Einzelaufzeichnungen, als auch regelmäßige Termine bezeichnen.<br/>
-            Charakteristisch für eine Reihe von Aufzeichnungen ist ein gemeinsamer Typ der Aufzeichnung, wie eine
-            Manuelle Aufnahme, oder eine Automatische Aufnahme.</p>
+            <div id="Collabse-info-banner" class="panel-collapse collapse <!--in-->">
 
+                <hr/>
+                <p>Aufnahmen, Aufzeichnungs-Typen, Aufnahme-Pläne, Aufnahme-Salat.. man ist das verwirrend.</p>
+
+                Eine <strong>AufnahmeReihe</strong> bezeichnet eine Folge von einzelnen Terminen, an denen Aufgezeichnet
+                werden soll. Diese kann also Einzelaufzeichnungen, als auch regelmäßige Termine bezeichnen.<br/>
+                Charakteristisch für eine Reihe von Aufzeichnungen ist ein gemeinsamer Typ der Aufzeichnung, wie eine
+                Manuelle Aufnahme, oder eine Automatische Aufnahme.</p>
+
+            </div>
         </div>
     </div>
 

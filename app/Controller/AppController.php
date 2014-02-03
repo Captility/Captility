@@ -34,7 +34,7 @@ class AppController extends Controller {
 
     // Use DebugKit by sharing Component Toolbar of Plugin DebugKit
     public $components = array('DebugKit.Toolbar',
-        'Session',
+        'Session', 'RequestHandler',
         'Acl',
         'Auth' => array(
             'loginAction' => array('controller' => 'users', 'action' => 'login'),
@@ -47,7 +47,7 @@ class AppController extends Controller {
 
 // Prepare Helpers for Bootstrap layout
     public $helpers = array( //ToDo BooskCake Plugin Aufräumen:
-        'Session', 'Time', 'Js',
+        'Session', 'Time', 'Js' => array('Jquery'),
         'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
         'Form' => array('className' => 'BoostCake.BoostCakeForm'),
         'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),

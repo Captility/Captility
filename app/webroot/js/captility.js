@@ -136,24 +136,23 @@ if ($.isFunction($.fn.datepicker) && $.isFunction($.fn.fullCalendar)) {
 
             });
 
-            $('.pickDate').datepicker({
 
-                weekStart: 1,
-                language: "de",
-                todayHighlight: true,
-                autoclose: true,
-                orientation: "top center",
-                todayBtn: "linked"
+            $('body').on('focus', ".pickDate", function () {
+                $(this).datepicker({
 
-            }, function () {
+                    weekStart: 1,
+                    language: "de",
+                    todayHighlight: true,
+                    autoclose: true,
+                    orientation: "top center",
+                    todayBtn: "linked"
 
-
+                });
             });
+
 
             // init moment.js
             moment().format();
-
-
             // DateTime Picker INIT
             $('.pickDateTime').each(function () {
 
@@ -164,18 +163,8 @@ if ($.isFunction($.fn.datepicker) && $.isFunction($.fn.fullCalendar)) {
 
                     $(this).val(null);
                 }
-                ;
-
-                $(this).datetimepicker({
-
-                    language: 'de',
-                    format: "dd, DD.MM.YYYY HH:mm [Uhr]",
-                    minuteStepping: 15,
-                    useSeconds: false
-
-                });
-
             });
+
 
             // Time Picker INIT
             $('.pickTime').each(function () {
@@ -187,7 +176,10 @@ if ($.isFunction($.fn.datepicker) && $.isFunction($.fn.fullCalendar)) {
 
                     $(this).val(null);
                 }
-                ;
+
+            });
+
+            $('body').on('focus', ".pickTime", function () {
 
                 $(this).datetimepicker({
 
@@ -198,7 +190,6 @@ if ($.isFunction($.fn.datepicker) && $.isFunction($.fn.fullCalendar)) {
                     pickDate: false
 
                 });
-
             });
 
             // START END
@@ -451,8 +442,6 @@ $(document).ready(function () {
 
             eventClick: function (data, event, view) {
 
-                //Todo Default Date entfernen
-                data.place = 'H12';
                 var content = '' +
 
                     '<ul class="list-group">' +
@@ -460,8 +449,8 @@ $(document).ready(function () {
                     '<li><span class="glyphicon glyphicon-calendar"></span>' + '' + data.datec + ' ' +
                     '<li><span class="glyphicon glyphicon-time gl-ml"></span>' + data.time;
 
-                if (data.place != null) {
-                    content += (data.place && '  <span class="glyphicon glyphicon-map-marker gl-ml"></span>' + data.place + '</li><br/>' || '') +
+                if (data.location != null) {
+                    content += (data.location && '  <span class="glyphicon glyphicon-map-marker gl-ml"></span>' + data.location + '</li><br/>' || '') +
 
                         (data.niceEnd && '<p><b>End:</b> ' + data.end + '</p>' || '');
                 }
@@ -688,7 +677,7 @@ $(document).ready(function () {
 
 
 //######################################################################################################################
-//############################################# TABBED FORMS  ##########################################################
+//############################################# SCHEDULE TABS ##########################################################
 //######################################################################################################################
 
 // ADD SCHEDULE BUTTONS
@@ -707,22 +696,12 @@ $(document).ready(function () {
 
             //console.log($buttons.length);
 
-            return true;
+            return $buttons.length;
         };
     })(jQuery);
 
 
-//####################################### HASHED AND TABS  #########################################################
-
-
-    /*  // TOGGLE ACTIVE TABS OF FORM
-     $('#ScheduleContainer').on('click', 'a.form-toggle', function () {
-
-     var $target = $($(this).attr('href'));
-
-     $target.parent().find('input, select').prop('disabled', true).selectpicker('refresh');;
-     $target.find('input, select').prop('disabled', false).selectpicker('refresh');
-     });*/
+//####################################### SWICH TABS AND HASHES  #########################################################
 
 
 // TOGGLE ACTIVE TABS OF FORM
@@ -740,50 +719,59 @@ $(document).ready(function () {
     ;
 
 
-// HASHED TABBING
-    $(function () {
-        var hash = window.location.hash;
-        hash && $('ul.nav a[href="' + hash + '"]').first().tab('show');
+    // ADD A NEW SCHEDULE TO CAPTURE FORM
+    jQuery.fn.addSchedule = function () {
 
-        $('.nav-tabs a').click(function (e) {
-            //$(this).tab('show');
-            var scrollmem = $('body').scrollTop();
-            window.location.hash = this.hash;
-            $('html,body').scrollTop(scrollmem);
+        var id = $(this).updateScheduleRemoveState();
+
+        console.log('New ID: ' + id);
+
+        var props = ['name', 'for', 'id', 'href'];
+
+        $schedule = $(this).parents('.panel').clone();
+
+        // CHANGE INPUTS
+        $schedule.find('label, textarea, input, a, .tab-pane, select').each(function () {
+
+            // CALC PROPS
+            for (var i = 0; i < props.length; ++i) {
+
+                if ($(this).prop(props[i]) !== undefined) {
+
+                    var newProp = $(this).prop(props[i]).replace(/(\d+)/g, id);
+
+                    // cut hashes from href
+                    if (props[i] == 'href') newProp = newProp.substr(newProp.indexOf("#"));
+
+                    $(this).prop(props[i], newProp);
+                }
+            }
         });
-    });
+
+        //APPEND
+        $('#ScheduleContainer').append($schedule);
+        $schedule.slideDown();
+
+        // UPDATE
+        $schedule.find('.bootstrap-select').remove();
+        $schedule.find('input, select').selectpicker('refresh');
+        $(this).updateScheduleRemoveState()
 
 
-//Check module: Datepicker
+        return $(this)
+    }
+
+    //Check module: Datepicker
     if ($.isFunction($.fn.datepicker)) {
 
         // ADD SCHEDULES TO FORM
         $('#ScheduleContainer').on('click', 'button.form-schedule-add', function () {
 
-            var $i = $('#ScheduleContainer .panel').length;
+            $(this).addSchedule();
 
-
-            var $schedulesBoxText = '<div class="panel panel-default"> <div class="panel-heading panel-link" data-toggle="collapse" href="#container' + $i + '"> <small class="glyphicon glyphicon-time"></small> <strong>Aufnahmezeit einstellen</strong></div> <div class="panel-body" id="container' + $i + '"> <ul class="nav nav-tabs nav-justified tabs-left"> <li class="active"><a href="#single' + $i + '" class="form-toggle" data-toggle="tab">Einzelaufzeichnung</a> </li> <li><a href="#regular' + $i + '" class="form-toggle" data-toggle="tab">Regelmäßige Aufzeichnung</a></li> <li class="disabled"><a href="#except' + $i + '" class="form-toggle" data-toggle="tab">Ausnahmeregel</a> </li> </ul> <!-- Single Instance Schedule --> <div class="tab-content"> <div class="tab-pane active" id="single' + $i + '"><!--<div class="form-group"></div>--> <div class="form-group"><label for="Schedule' + $i + 'IntervalStart" class="control-label">Datum der Aufzeichnung</label> <div class="input-group input-thin"><span  class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span> <div class="input string required"><input name="data[Schedule][' + $i + '][interval_start]"    class="form-control pickDate"    placeholder="Datum der Aufzeichnung" type="string"    id="Schedule' + $i + 'IntervalStart"></div> </div> </div> <div class="form-group"> <div class="required"><label  for="Schedule' + $i + 'RepeatTimeHour">Veranstaltungsbeginn(Uhrzeit)</label> <div class="input time required"><select name="data[Schedule][' + $i + '][repeat_time][hour]"    class="form-control form-control-date"    id="Schedule' + $i + 'RepeatTimeHour">  <option value="00">00</option>  <option value="01">1</option>  <option value="03">3</option>  <option value="04">4</option>  <option value="05">5</option>  <option value="06">6</option>  <option value="07">7</option>  <option value="08">8</option>  <option value="09">9</option>  <option value="10">10</option>  <option value="11">11</option>  <option value="12" selected="selected">12</option>  <option value="13">13</option>  <option value="14">14</option>  <option value="15">15</option>  <option value="16">16</option>  <option value="17">17</option>  <option value="18">18</option>  <option value="19">19</option>  <option value="20">20</option>  <option value="21">21</option>  <option value="22">22</option>  <option value="23">23</option> </select>:<select name="data[Schedule][' + $i + '][repeat_time][min]"  class="form-control form-control-date" id="Schedule' + $i + 'RepeatTimeMin">  <option value="00" selected="selected">00</option>  <option value="15">15</option>  <option value="30">30</option>  <option value="45">45</option> </select></div> </div> </div> <div class="form-group"> <div class="required"><label for="Schedule' + $i + 'DurationHour">Dauer der Aufzeichnung</label> <div class="input time required"><select name="data[Schedule][' + $i + '][duration][hour]"    class="form-control form-control-date"    id="Schedule' + $i + 'DurationHour"    required="required">  <option value="00">' + $i + '</option>  <option value="01">1</option>  <option value="02" selected="selected">2</option>  <option value="03">3</option>  <option value="04">4</option>  <option value="05">5</option>  <option value="06">6</option>  <option value="07">7</option>  <option value="08">8</option>  <option value="09">9</option>  <option value="10">10</option>  <option value="11">11</option>  <option value="12">12</option>  <option value="13">13</option>  <option value="14">14</option>  <option value="15">15</option>  <option value="16">16</option>  <option value="17">17</option>  <option value="18">18</option>  <option value="19">19</option>  <option value="20">20</option>  <option value="21">21</option>  <option value="22">22</option>  <option value="23">23</option> </select>:<select name="data[Schedule][' + $i + '][duration][min]"  class="form-control form-control-date" id="Schedule' + $i + 'DurationMin"  required="required">  <option value="00" selected="selected">00</option>  <option value="15">15</option>  <option value="30">30</option>  <option value="45">45</option> </select></div> </div> </div> </div> <!-- Regular Schedule --> <div class="tab-pane" id="regular' + $i + '"> <!--<div class="form-group"></div><div class="form-group"></div>--> <div class="form-group"><label for="Schedule' + $i + 'IntervalStart" class="control-label">Zeitraum der Aufzeichnung</label> <div class="input-group input-thin"><span  class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span> <div class="input string required"><input name="data[Schedule][' + $i + '][interval_start]"    class="form-control pickDate"    placeholder="Beginn d. Zeitraums" disabled="disabled"    type="string" id="Schedule' + $i + 'IntervalStart"> </div> <span class="input-group-addon">bis</span> <div class="input string required"><input name="data[Schedule][' + $i + '][interval_end]"    class="form-control pickDate"    placeholder="Ende d. Zeitraums" disabled="disabled"    type="string" id="Schedule' + $i + 'IntervalEnd"> </div> </div> </div> <div class="form-group"> <div><label for="Schedule' + $i + 'RepeatWeek">Wöchentlich wiederholen</label> <div class="input select"><select name="data[Schedule][' + $i + '][repeat_week]"   class="form-control"   placeholder="1 = jede Woche wiederholen, 2= jede zweite usw."   disabled="disabled" id="Schedule' + $i + 'RepeatWeek">  <option value="1" selected="selected">Jede Woche</option>  <option value="2">Jede zweite Woche</option>  <option value="3">Jede dritte Woche</option>  <option value="4">Jede vierte Woche</option> </select></div> </div> </div> <div class="form-group"> <div><label for="Schedule' + $i + 'RepeatDay">Wiederholen an Wochentag</label> <div class="input select"><select name="data[Schedule][' + $i + '][repeat_day]"   class="form-control"   placeholder="&quot;Freitag&quot; für jeden Freitag usw..."   disabled="disabled" id="Schedule' + $i + 'RepeatDay">  <option value="Monday">Montag</option>  <option value="Tuesday">Dienstag</option>  <option value="Wednesday">Mittwoch</option>  <option value="Thursday">Donnerstag</option>  <option value="Friday">Freitag</option>  <option value="Saturday" selected="selected">Samstag</option>  <option value="Sunday">Sonntag</option> </select></div> </div> </div> <div class="form-group"> <div class="required"><label  for="Schedule' + $i + 'RepeatTimeHour">Veranstaltungsbeginn(Uhrzeit)</label> <div class="input time required"><select name="data[Schedule][' + $i + '][repeat_time][hour]"    class="form-control form-control-date"    disabled="disabled"    id="Schedule' + $i + 'RepeatTimeHour">  <option value="00">0</option>  <option value="01">1</option>  <option value="02">2</option>  <option value="03">3</option>  <option value="04">4</option>  <option value="05">5</option>  <option value="06">6</option>  <option value="07">7</option>  <option value="08">8</option>  <option value="09">9</option>  <option value="10">10</option>  <option value="11">11</option>  <option value="12" selected="selected">12</option>  <option value="13">13</option>  <option value="14">14</option>  <option value="15">15</option>  <option value="16">16</option>  <option value="17">17</option>  <option value="18">18</option>  <option value="19">19</option>  <option value="20">20</option>  <option value="21">21</option>  <option value="22">22</option>  <option value="23">23</option> </select>:<select name="data[Schedule][' + $i + '][repeat_time][min]"  class="form-control form-control-date" disabled="disabled"  id="Schedule' + $i + 'RepeatTimeMin">  <option value="00" selected="selected">00</option>  <option value="15">15</option>  <option value="3' + $i + '">3' + $i + '</option>  <option value="45">45</option> </select></div> </div> </div> <div class="form-group"> <div class="required"><label for="Schedule' + $i + 'DurationHour">Dauer (Stunden)</label> <div class="input time required"><select name="data[Schedule][' + $i + '][duration][hour]"    class="form-control form-control-date"    disabled="disabled"    id="Schedule' + $i + 'DurationHour">  <option value="00">0</option>  <option value="01">1</option>  <option value="02" selected="selected">2</option>  <option value="03">3</option>  <option value="04">4</option>  <option value="05">5</option>  <option value="06">6</option>  <option value="07">7</option>  <option value="08">8</option>  <option value="09">9</option>  <option value="10">10</option>  <option value="11">11</option>  <option value="12">12</option>  <option value="13">13</option>  <option value="14">14</option>  <option value="15">15</option>  <option value="16">16</option>  <option value="17">17</option>  <option value="18">18</option>  <option value="19">19</option>  <option value="20">20</option>  <option value="21">21</option>  <option value="22">22</option>  <option value="23">23</option> </select>:<select name="data[Schedule][' + $i + '][duration][min]"  class="form-control form-control-date" disabled="disabled"  id="Schedule' + $i + 'DurationMin">  <option value="00" selected="selected">00</option>  <option value="15">15</option>  <option value="30">30</option>  <option value="45">45</option> </select></div> </div> </div> </div> <!-- Exception Schedule --> <div class="tab-pane" id="except' + $i + '"> <div class="alert alert-warning alert-dismissable"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button> <strong>Achtung!</strong>Ausnahmeregeln werden in der aktuellen Version von Captility noch nicht unterstützt. </div> </div> <hr/> <button class="btn btn-default form-schedule-add pull-right" type="button"><span class="glyphicon glyphicon-plus"></span>Weiterer Zeitplan </button> <button class="btn btn-default form-schedule-remove" type="button" onclick=""><span class="glyphicon glyphicon-trash"></span>Zeitplan entfernen </button> </div> </div> </div>';
-            //var $schedulesBoxText = '<div class="panel panel-default"> <div class="panel-heading panel-link" data-toggle="collapse" href="#container' + $i + '">  <small class="glyphicon glyphicon-time"></small>  <strong>Aufnahmezeit einstellen</strong></div> <div class="panel-body" id="container' + $i + '">  <ul class="nav nav-tabs nav-justified tabs-left"><li class="active"><a href="#single' + $i + '" class="form-toggle" data-toggle="tab">Einzelaufzeichnung</a></li><li><a href="#regular' + $i + '" class="form-toggle" data-toggle="tab">Regelmäßige Aufzeichnung</a></li><li class="disabled"><a href="#except' + $i + '" class="form-toggle" data-toggle="tab">Ausnahmeregel</a></li>  </ul>  <!-- Single Instance Schedule -->  <div class="tab-content"><div class="tab-pane active" id="single' + $i + '"><!--<div class="form-group"></div>--> <div class="form-group"><label for="Schedule' + $i + 'IntervalStart" class="control-label">Datum der  Aufzeichnung</label>  <div class="input-group input-thin"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span><div class="input string required"><input name="data[Schedule][' + $i + '][interval_start]"class="form-control pickDate"placeholder="Datum der Aufzeichnung" type="string"id="Schedule' + $i + 'IntervalStart"></div>  </div> </div> <div class="form-group">  <div class="required"><label for="Schedule' + $i + 'RepeatTimeHour">Veranstaltungsbeginn(Uhrzeit)</label><div class="input time required"><select name="data[Schedule][' + $i + '][repeat_time][hour]"  class="form-control form-control-date"  id="Schedule' + $i + 'RepeatTimeHour"> <option value="00">00</option> <option value="01">1</option> <option value="03">3</option> <option value="04">4</option> <option value="05">5</option> <option value="06">6</option> <option value="07">7</option> <option value="08">8</option> <option value="09">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12" selected="selected">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option></select>:<select name="data[Schedule][' + $i + '][repeat_time][min]"class="form-control form-control-date"id="Schedule' + $i + 'RepeatTimeMin"> <option value="00" selected="selected">00</option> <option value="15">15</option> <option value="30">30</option> <option value="45">45</option></select></div>  </div> </div><div class="form-group">  <div class="required"><label for="Schedule' + $i + 'DurationHour">Dauer der Aufzeichnung</label><div class="input time required"><select name="data[Schedule][' + $i + '][duration][hour]"  class="form-control form-control-date"  id="Schedule' + $i + 'DurationHour"  required="required"> <option value="00">' + $i + '</option> <option value="01">1</option> <option value="02" selected="selected">2</option> <option value="03">3</option> <option value="04">4</option> <option value="05">5</option> <option value="06">6</option> <option value="07">7</option> <option value="08">8</option> <option value="09">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option></select>:<select name="data[Schedule][' + $i + '][duration][min]"class="form-control form-control-date" id="Schedule' + $i + 'DurationMin"required="required"> <option value="00" selected="selected">00</option> <option value="15">15</option> <option value="30">30</option> <option value="45">45</option></select></div>  </div> </div></div><!-- Regular Schedule --><div class="tab-pane" id="regular' + $i + '"> <!--<div class="form-group"></div><div class="form-group"></div>--> <div class="form-group"><label for="Schedule' + $i + 'IntervalStart" class="control-label">Zeitraum der  Aufzeichnung</label>  <div class="input-group input-thin"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span><div class="input string required"><input name="data[Schedule][' + $i + '][interval_start]"class="form-control pickDate"placeholder="Beginn d. Zeitraums" disabled="disabled"type="string" id="Schedule' + $i + 'IntervalStart"></div><span class="input-group-addon">bis</span><div class="input string required"><input name="data[Schedule][' + $i + '][interval_end]"class="form-control pickDate"placeholder="Ende d. Zeitraums" disabled="disabled"type="string" id="Schedule' + $i + 'IntervalEnd"></div>  </div> </div> <div class="form-group">  <div><label for="Schedule' + $i + 'RepeatDay">Wiederholen an Wochentag</label><div class="input select"><select name="data[Schedule][' + $i + '][repeat_day]" class="form-control" placeholder="&quot;Freitag&quot; für jeden Freitag usw..." disabled="disabled" id="Schedule' + $i + 'RepeatDay"> <option value="Monday">Montag</option> <option value="Tuesday">Dienstag</option> <option value="Wednesday">Mittwoch</option> <option value="Thursday">Donnerstag</option> <option value="Friday">Freitag</option> <option value="Saturday" selected="selected">Samstag</option> <option value="Sunday">Sonntag</option></select></div>  </div> </div> <div class="form-group">  <div class="required"><label for="Schedule' + $i + 'RepeatTimeHour">Veranstaltungsbeginn(Uhrzeit)</label><div class="input time required"><select name="data[Schedule][' + $i + '][repeat_time][hour]"  class="form-control form-control-date"  disabled="disabled"  id="Schedule' + $i + 'RepeatTimeHour"> <option value="00">0</option> <option value="01">1</option> <option value="02">2</option> <option value="03">3</option> <option value="04">4</option> <option value="05">5</option> <option value="06">6</option> <option value="07">7</option> <option value="08">8</option> <option value="09">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12" selected="selected">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option></select>:<select name="data[Schedule][' + $i + '][repeat_time][min]"class="form-control form-control-date" disabled="disabled"id="Schedule' + $i + 'RepeatTimeMin"> <option value="00" selected="selected">00</option> <option value="15">15</option> <option value="3' + $i + '">3' + $i + '</option> <option value="45">45</option></select></div>  </div> </div> <div class="form-group">  <div class="required"><label for="Schedule' + $i + 'DurationHour">Dauer (Stunden)</label><div class="input time required"><select name="data[Schedule][' + $i + '][duration][hour]"  class="form-control form-control-date"  disabled="disabled"  id="Schedule' + $i + 'DurationHour"> <option value="00">0</option> <option value="01">1</option> <option value="02" selected="selected">2</option> <option value="03">3</option> <option value="04">4</option> <option value="05">5</option> <option value="06">6</option> <option value="07">7</option> <option value="08">8</option> <option value="09">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option></select>:<select name="data[Schedule][' + $i + '][duration][min]"class="form-control form-control-date" disabled="disabled"id="Schedule' + $i + 'DurationMin"> <option value="00" selected="selected">00</option> <option value="15">15</option> <option value="30">30</option> <option value="45">45</option></select></div>  </div> </div> <div class="form-group">  <div><label for="Schedule' + $i + 'RepeatWeek">Wöchentlich wiederholen</label><div class="input select"><select name="data[Schedule][' + $i + '][repeat_week]" class="form-control" placeholder="1 = jede Woche wiederholen, 2= jede zweite usw." disabled="disabled" id="Schedule' + $i + 'RepeatWeek"> <option value="1" selected="selected">Jede Woche</option> <option value="2">Jede zweite Woche</option> <option value="3">Jede dritte Woche</option> <option value="4">Jede vierte Woche</option></select></div>  </div> </div></div><!-- Exception Schedule --><div class="tab-pane" id="except' + $i + '"> <div class="alert alert-warning alert-dismissable">  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">?</button>  <strong>Achtung!</strong>Ausnahmeregeln werden in der aktuellen Version von Captility noch nicht  unterstützt. </div></div><hr/><button class="btn btn-default form-schedule-add pull-right" type="button"><span  class="glyphicon glyphicon-plus"></span>Weiterer Zeitplan</button><button class="btn btn-default form-schedule-remove" type="button" onclick=""><span  class="glyphicon glyphicon-trash"></span>Zeitplan entfernen</button>  </div> </div></div>';
-
-            $('#ScheduleContainer').append($schedulesBoxText);
-
-            $(this).updateScheduleRemoveState()
-
-
-            //TODO: Remove redundant code:
-            $('.pickDate').datepicker({
-
-
-                weekStart: 1,
-                language: "de",
-                todayHighlight: true,
-                autoclose: true,
-                orientation: "top center",
-                todayBtn: 'linked'
-            });
         });
     }
+
 
 // REMOVE SCHEDULES FROM FORM
     $('#ScheduleContainer').on('click', 'button.form-schedule-remove', function () {
@@ -797,6 +785,23 @@ $(document).ready(function () {
 
 
         }
+    });
+
+
+//######################################################################################################################
+//############################################# HASHED TABS ############################################################
+//######################################################################################################################
+
+    $(function () {
+        var hash = window.location.hash;
+        hash && $('ul.nav a[href="' + hash + '"]').first().tab('show');
+
+        $('.nav-tabs a').click(function (e) {
+            //$(this).tab('show');
+            var scrollmem = $('body').scrollTop();
+            window.location.hash = this.hash;
+            $('html,body').scrollTop(scrollmem);
+        });
     });
 
 

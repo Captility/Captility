@@ -37,6 +37,7 @@ class CapturesController extends AppController {
      * @return void
      */
     public function view($id = null) {
+
         if (!$this->Capture->exists($id)) {
             throw new NotFoundException(__('Invalid capture'));
         }
@@ -58,6 +59,7 @@ class CapturesController extends AppController {
 
             // Markup Container
             $Schedules = $this->request->data['Schedule'];
+            $this->Capture->Schedule->validates($this->request->data['Schedule']);
 
             // Extra Check valid data
             $validData = true;
@@ -73,12 +75,12 @@ class CapturesController extends AppController {
                 }
                 else {
 
-                    //CONVERT DATA
+                    /*//CONVERT DATA
                     $Schedules[$i]['interval_start'] = CakeTime::format('Y-m-d', substr($Schedule['interval_start'], 4));
 
                     if (!empty($Schedule['interval_end'])) {
                         $Schedules[$i]['interval_end'] = CakeTime::format('Y-m-d', substr($Schedule['interval_end'], 4));
-                    }
+                    }*/
 
                     //SCHEDULE[Event] Data
                     $Schedules[$i]['Event']['event_type_id'] = $this->request->data['Event']['event_type_id'];
@@ -97,7 +99,7 @@ class CapturesController extends AppController {
 
             // Create and Save Event for Capture
             $this->Capture->create();
-            if ($validData && $this->Capture->save($this->request->data['Capture'], array('validate' => 'only'))) {
+            if ($validData && $this->Capture->save($this->request->data['Capture'] /*, array('validate' => 'only')*/)) {
 
 
                 $this->Session->setFlash(__('The Capture has been saved.'), 'default', array('class' => 'alert alert-success'));
@@ -107,27 +109,27 @@ class CapturesController extends AppController {
                 foreach ($Schedules as $i => $Schedule) {
 
                     $Schedules[$i]['capture_id'] = $this->Capture->id;
-
-                    $this->Capture->Schedule->create();
-                    if ($this->Capture->Schedule->save($Schedules[$i])) {
-
-                        //debug('SCHEDULE SAVED'); //todo entfernen
-
-                        $this->Capture->Schedule->manageOwnEvents($this->Capture->Schedule->id, $Schedules[$i]);
-                        //$this->Capture->Schedule->delete();
-                    }
-                    else {
-
-                        $this->Session->setFlash(__('A Schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
-                        //debug('SCHEDULE NOT SAVED'); //todo entfernen
-                        //debug($Schedules[$i]); //todo entfernen
-                        //debug($this->Capture->Schedule->invalidFields()); //todo entfernen
-                    }
                 }
 
-                //$this->Capture->delete();
 
-                return $this->redirect(array('action' => 'index'));
+                if ($this->Capture->Schedule->saveAll($Schedules)) {
+
+                    debug('SCHEDULE SAVED');
+                    //$this->Capture->Schedule->delete();
+
+                    return $this->redirect(array('action' => 'index'));
+                }
+                else {
+
+                    $this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+
+                    //debug('SCHEDULE NOT SAVED'); //todo entfernen
+                    //debug($this->Capture->Schedule->invalidFields()); //todo entfernen
+
+                    $this->Capture->delete();
+
+                }
+
             }
             else {
                 $this->Session->setFlash(__('The Capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -223,7 +225,9 @@ class CapturesController extends AppController {
             // ########################### SAVE NEW DATA ###############################################################
 
             // Create and Save Event for Capture
-            if (/*TODO: CAPTURE::EDIT $validData && */ $this->Capture->save($this->request->data['Capture'])) {
+            if ( /*TODO: CAPTURE::EDIT $validData && */
+                $this->Capture->save($this->request->data['Capture'])
+            ) {
 
 
                 $this->Session->setFlash(__('The Capture has been saved.'), 'default', array('class' => 'alert alert-success'));
@@ -236,7 +240,7 @@ class CapturesController extends AppController {
 
                     if ($this->Capture->Schedule->save($Schedules[$i])) {
 
-                        //debug('SCHEDULE SAVED'); //todo entfernen
+        //              //debug('SCHEDULE SAVED'); //todo entfernen
 
                         $this->Capture->Schedule->manageOwnEvents($this->Capture->Schedule->id, $Schedules[$i]);
                         //$this->Capture->Schedule->delete();

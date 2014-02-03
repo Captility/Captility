@@ -113,7 +113,6 @@
   font-family: @font-family-nav;
 }
 
-
 //FORM ALIGNMENT
 @media (min-width:@screen-lg-min) {
   .form-split-6 {
@@ -945,6 +944,39 @@ text-shadow: none;*/
 }
 
 /* ###############################################
+ * ################ SIDE TICKETS  ################
+ * ###############################################*/
+
+#tickets {
+
+  .ticket {
+
+    margin-bottom: 40px;
+    .box-shadow(0 0 3px rgba(0,0,0,.15));
+    cursor: auto;
+
+    .ticket-actions {
+
+      top: 6px;
+      right: 8px;
+    }
+
+    .ticket-body {
+
+      table {
+
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+tr span.label {
+  top: -4px;
+  position: relative;
+}
+
+/* ###############################################
  * ################ LANDING PAGE  ################
  * ###############################################*/
 
@@ -1687,9 +1719,17 @@ ul.navbar-nav li.active:after {
   }
 }
 
-.table > tbody > tr > td.labels {
+.table > tbody > tr {
 
-  padding-top: 12px;
+  > td.labels {
+
+    padding-top: 12px;
+  }
+
+  > td.lower-labels span.label {
+
+    top: 0px;
+  }
 }
 
 //Colored Edit Buttons
@@ -1762,13 +1802,13 @@ ul.navbar-nav li.active:after {
     position: absolute;
     top: 3px;
     right: 0;
+    cursor: pointer;
 
     a span.glyphicon-search {
 
       opacity: 0.75;
 
-      &:hover, &:active {
-        color: rgb(248, 148, 6);
+      &:hover, &:active { //color: rgb(248, 148, 6);
         opacity: 1;
       }
     }
@@ -1777,8 +1817,7 @@ ul.navbar-nav li.active:after {
 
       opacity: 0.75;
 
-      &:hover, &:active {
-        color: rgb(225, 91, 71);
+      &:hover, &:active { //color: rgb(225, 91, 71);
         opacity: 1;
       }
     }
@@ -1787,9 +1826,7 @@ ul.navbar-nav li.active:after {
 
       opacity: 0.75;
 
-      &:hover, &:active {
-
-        color: rgb(60, 186, 71);
+      &:hover, &:active { //color: rgb(60, 186, 71);
         opacity: 1;
       }
     }

@@ -1444,7 +1444,7 @@ table th[class*="col-"] {
 .table > thead > .active > th,
 .table > tbody > .active > th,
 .table > tfoot > .active > th {
-  background-color: #f5f5f5;
+  background-color: #f5f5f5 !important;
 }
 .table-hover > tbody > tr > .active:hover,
 .table-hover > tbody > .active:hover > td,
@@ -1460,12 +1460,28 @@ table th[class*="col-"] {
 .table > thead > .success > th,
 .table > tbody > .success > th,
 .table > tfoot > .success > th {
-  background-color: #dff0d8;
+  background-color: #dff0d8 !important;
 }
 .table-hover > tbody > tr > .success:hover,
 .table-hover > tbody > .success:hover > td,
 .table-hover > tbody > .success:hover > th {
   background-color: #d0e9c6;
+}
+.table > thead > tr > .primary,
+.table > tbody > tr > .primary,
+.table > tfoot > tr > .primary,
+.table > thead > .primary > td,
+.table > tbody > .primary > td,
+.table > tfoot > .primary > td,
+.table > thead > .primary > th,
+.table > tbody > .primary > th,
+.table > tfoot > .primary > th {
+  background-color: #d9edf7 !important;
+}
+.table-hover > tbody > tr > .primary:hover,
+.table-hover > tbody > .primary:hover > td,
+.table-hover > tbody > .primary:hover > th {
+  background-color: #c4e3f3;
 }
 .table > thead > tr > .danger,
 .table > tbody > tr > .danger,
@@ -1476,7 +1492,7 @@ table th[class*="col-"] {
 .table > thead > .danger > th,
 .table > tbody > .danger > th,
 .table > tfoot > .danger > th {
-  background-color: #f2dede;
+  background-color: #f2dede !important;
 }
 .table-hover > tbody > tr > .danger:hover,
 .table-hover > tbody > .danger:hover > td,
@@ -1492,7 +1508,7 @@ table th[class*="col-"] {
 .table > thead > .warning > th,
 .table > tbody > .warning > th,
 .table > tfoot > .warning > th {
-  background-color: #fcf8e3;
+  background-color: #fcf8e3 !important;
 }
 .table-hover > tbody > tr > .warning:hover,
 .table-hover > tbody > .warning:hover > td,
@@ -6671,7 +6687,11 @@ border-top: 1px solid #ddd !important;
 .bootstrap-datetimepicker-widget .timepicker-second {
   width: 100%;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 3.5em;
+}
+.bootstrap-datetimepicker-widget .timepicker a.btn,
+.bootstrap-datetimepicker-widget .timepicker td.separator {
+  font-size: 2.5em;
 }
 .bootstrap-datetimepicker-widget table[data-hour-format="12"] .separator {
   width: 4px;

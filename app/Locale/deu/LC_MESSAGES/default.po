@@ -401,6 +401,10 @@ msgstr "Verknüpfte Aktionen"
 
 
 
+msgid "Time does not lie after specified start time."
+msgstr "Zeit liegt nicht nach dem gewählten Startdatum."
+
+
 msgid "New"
 msgstr "Ausstehend"
 
@@ -438,6 +442,9 @@ msgid "Processing"
 msgstr "In Bearbeitung"
 msgid "Failed"
 msgstr "Gescheitert"
+msgid "Canceled"
+msgstr "Ausgefallen"
+
 
 #: View/Tickets/index.ctp:102
 
@@ -464,7 +471,7 @@ msgid "Capture Id"
 msgstr "ID"
 
 msgid "Online"
-msgstr ""
+msgstr " Online "
 
 msgid "Comment"
 msgstr "Kommentar"
@@ -528,10 +535,10 @@ msgid "Interval End"
 msgstr "Aufnahmezeitraum-Ende"
 
 msgid "Duration"
-msgstr "Dauer (Stunden)"
+msgstr "Ende"
 
 msgid "Repeat Time"
-msgstr "Veranstaltungsbeginn (Uhrzeit)"
+msgstr "Veranstaltungsbeginn"
 
 msgid "Repeat Day"
 msgstr "Wiederholen an Wochentag"
@@ -540,31 +547,11 @@ msgid "Wiederholen alle ? Wochen"
 msgstr ""
 
 
+msgid "Location"
+msgstr "Ort der Aufzeichnung"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+msgid "Place"
+msgstr "Raum / Gebäude"
 
 
 msgid "Edit Capture"
@@ -1290,3 +1277,6 @@ msgstr "Blau"
 
 msgid "every"
 msgstr "jeden"
+
+msgid "Day"
+msgstr "Tag"

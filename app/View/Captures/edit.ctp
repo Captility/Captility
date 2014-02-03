@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-film"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-film"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -43,7 +43,7 @@
     'placeholder' => __('Name'),
     'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-film input-group-glyphicon"></span>', 'afterInput' => '</div>',
 
-));?>
+));?> <div></div>
 
 
 
@@ -54,7 +54,8 @@
 ));?>
 
 
-<div class="form-group form-horizontal">
+
+<div class="form-group form-split-6">
 
     <label for="CaptureStatus">Status</label>
 
@@ -78,6 +79,15 @@
     </div>
 </div>
 
+<?php echo $this->Form->input('user_id', array(
+
+    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
+    'div' => 'form-group form-split-6',
+    'label' => __('Responsible'),
+    'empty' => true, 'required' => false,
+    'data-live-search' => true,
+));?>
+
 
 
 
@@ -95,16 +105,6 @@
     'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-link input-group-glyphicon"></span>', 'afterInput' => '</div>',
     'placeholder' => __('http://www.captility.de'),
 
-));?>
-
-
-
-<?php echo $this->Form->input('user_id', array(
-
-    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
-
-    'label' => __('Responsible'),
-    'empty' => true, 'required' => false
 ));?>
 
 

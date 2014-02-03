@@ -113,6 +113,7 @@ class EventsController extends AppController {
             $events[$key]['capture_id'] = $event['Capture']['capture_id'];
             $events[$key]['datec'] = CakeTime::nice(strtotime($event['Event']['start']), 'CET', '%a, %d.%m.%y');
             $events[$key]['time'] = CakeTime::nice(strtotime($event['Event']['start']), 'CET', '%H:%M');
+            $events[$key]['location'] = $event['Event']['location'];
         }
         $this->set("json", json_encode($events));
     }
@@ -302,6 +303,7 @@ class EventsController extends AppController {
             $events[$key]['capture_id'] = $event['Capture']['capture_id'];
             $events[$key]['datec'] = CakeTime::nice(strtotime($event['Event']['start']), 'CET', '%a, %d.%m.%y');
             $events[$key]['time'] = CakeTime::nice(strtotime($event['Event']['start']), 'CET', '%H:%M');
+            $events[$key]['location'] = $event['Event']['location'];
 
         }
         $this->set("json", json_encode($events));

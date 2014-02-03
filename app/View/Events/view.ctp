@@ -74,6 +74,16 @@
                     ?>
                 </td>
             </tr>
+            <tr>
+                <th><?php echo __('Location'); ?></th>
+                <td>
+                    <?php if (!empty($event['Event']['location'])) echo
+
+                        '<span class="glyphicon glyphicon-map-marker"></span>' . // Calendar Icon
+                        h($event['Event']['location'])                       // Time
+                    ?>
+                </td>
+            </tr>
             <!--<tr>
                 <th><?php /*echo __('All Day'); */?></th>
                 <td>

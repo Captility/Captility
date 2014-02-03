@@ -17,7 +17,7 @@ class CalendarsController extends AppController {
 
     //public $useTable = false;
 
-    var $uses = array('Lecture');
+    var $uses = array('Lecture', 'Event', 'Ticket');
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -55,6 +55,106 @@ class CalendarsController extends AppController {
         $this->set('leftTabs', true);
         $this->set('sideCalendar', true);
         $this->set('sideTickets', true);
+
+
+        // Get german Week defaults
+        $week_start = date('Y-m-d', strtotime('-' . date('w') + 1 . ' days'));
+        $week_end = date('Y-m-d', strtotime('+' . (8 - date('w')) . ' days'));
+
+
+        //Get Data
+        $data = $this->Ticket->find('all', array(
+
+            'link' => array(
+
+                'Event' => array(
+                    'conditions' => array('exactly' => 'Event.event_id = Ticket.event_id'),
+
+                    'Capture' => array(
+                        'fields' => array('Capture.capture_id', 'Capture.user_id'),
+                        'conditions' => array('exactly' => 'Capture.capture_id = Event.capture_id'),
+
+                        'Lecture' => array(
+                            'fields' => array('Lecture.lecture_id', 'Lecture.number', 'Lecture.name', 'Lecture.host_id'),
+                            'conditions' => array('exactly' => 'Lecture.lecture_id = Capture.lecture_id'),
+                        ),
+                    ),
+                ),
+
+                'Task' => array(
+                    'conditions' => array('exactly' => 'Task.task_id = Ticket.task_id'),
+                ),
+
+                'User' => array(
+                    'fields' => array('User.user_id', 'User.username', 'User.avatar'),
+                    'conditions' => array('exactly' => 'User.user_id = Ticket.user_id')
+                ),
+
+            ),
+
+            'conditions' => array(
+
+                'AND' => array(
+
+                    //TODO: 'Ticket.user_id' => $this->Auth->user('user_id'),
+                    //TODO: 'Event.start >=' => $week_start,
+                    //TODO: 'Event.end <=' => $week_end,
+                    'Ticket.status !=' => array('Done', 'Error')
+                )
+            ),
+
+            'limit' => '5',
+
+            'order' => array('Ticket.modified DESC', 'Ticket.created'),
+        ));
+
+
+        //debug($data);
+        $this->set('data', $data);
+
+
+        //Get OnlineStatus
+        $events = $this->Event->find('all', array(
+
+            'link' => array(
+
+                'EventType',
+                'Ticket' => array(
+                    'conditions' => array('exactly' => 'Event.event_id = Ticket.event_id')),
+
+                'Capture' => array(
+                    'fields' => array('Capture.capture_id', 'Capture.status', 'Capture.user_id'),
+                    'conditions' => array('exactly' => 'Capture.capture_id = Event.capture_id'),
+
+                    'Lecture' => array(
+                        'fields' => array('Lecture.lecture_id', 'Lecture.number', 'name', 'Lecture.host_id', 'Lecture.link'),
+                        'conditions' => array('exactly' => 'Lecture.lecture_id = Capture.lecture_id'),
+                    ),
+
+                    'User' => array(
+                        'fields' => array('User.user_id', 'User.username', 'User.email', 'User.avatar'),
+                        'conditions' => array('exactly' => 'User.user_id = Capture.user_id')
+                    ),
+                ),
+            ),
+
+            'conditions' => array(
+
+                'AND' => array(
+
+                    'Event.start >=' => $week_start,
+                    'Event.end <=' => $week_end,
+                )
+            ),
+
+            //'limit' => '30', //TODO ENTFERNEN
+
+            'order' => array('Event.start'),
+        ));
+
+
+        //debug($data);
+        $this->set('events', $events);
     }
 
 

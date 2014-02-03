@@ -98,9 +98,9 @@
     <ul class="pagination pagination-sm">
         <?php
         echo "\t<?php\n";
-        echo "\t\t\t\t\techo \$this->Paginator->prev('&larr; Previous', array('class' => 'prev','tag' => 'li','escape' => false), '<a onclick=\"return false;\">&larr; Previous</a>', array('class' => 'prev disabled','tag' => 'li','escape' => false));\n";
+        echo "\t\t\t\t\techo \$this->Paginator->prev('← ' . __('Previous'), array('class' => 'prev','tag' => 'li','escape' => false), '<a onclick=\"return false;\">&larr; Previous</a>', array('class' => 'prev disabled','tag' => 'li','escape' => false));\n";
         echo "\t\t\t\t\techo \$this->Paginator->numbers(array('separator' => '','tag' => 'li','currentClass' => 'active','currentTag' => 'a'));\n";
-        echo "\t\t\t\t\techo \$this->Paginator->next('Next &rarr;', array('class' => 'next','tag' => 'li','escape' => false), '<a onclick=\"return false;\">Next &rarr;</a>', array('class' => 'next disabled','tag' => 'li','escape' => false));\n";
+        echo "\t\t\t\t\techo \$this->Paginator->next(__('Next') . ' →', array('class' => 'next','tag' => 'li','escape' => false), '<a onclick=\"return false;\">Next →</a>', array('class' => 'next disabled','tag' => 'li','escape' => false));\n";
         echo "\t\t\t\t?>\n";
         ?>
     </ul>

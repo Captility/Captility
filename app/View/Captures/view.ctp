@@ -64,6 +64,38 @@
                 &nbsp;
             </td>
         </tr>
+        <tr>
+            <th><?php echo __('Created'); ?></th>
+            <td>
+                <?php if (!empty($capture['Capture']['created'])) echo
+
+                    '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                    $this->Html->link( // <a>
+
+                        $this->Time->nice(strtotime(h($capture['Capture']['created'])), 'CET', '%A, %d.%m.%Y'), // Date
+                        '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($capture['Capture']['created']))), // Calendar-Link
+                        array('escape' => false)) .
+                    '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                    $this->Time->nice(strtotime(h($capture['Capture']['created'])), 'CET', '%H:%M')                       // Time
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <th><?php echo __('Modified'); ?></th>
+            <td>
+                <?php if (!empty($capture['Capture']['modified'])) echo
+
+                    '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                    $this->Html->link( // <a>
+
+                        $this->Time->nice(strtotime(h($capture['Capture']['modified'])), 'CET', '%A, %d.%m.%Y'), // Date
+                        '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($capture['Capture']['modified']))), // Calendar-Link
+                        array('escape' => false)) .
+                    '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                    $this->Time->nice(strtotime(h($capture['Capture']['modified'])), 'CET', '%H:%M')                       // Time
+                ?>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -139,7 +171,7 @@
                                 echo '<span class="glyphicon glyphicon-time"></span>' .
                                     $this->Captility->calcDate($schedule['repeat_time'], '%H:%M');
 
-                                echo ' - ' . $this->Captility->durationToTime($schedule['repeat_time'], $schedule['duration']);
+                                echo ' - ' . $this->Captility->calcDate($schedule['duration'], '%H:%M'); //durationToTime($schedule['repeat_time'], $schedule['duration']);
                                 ?>
                             </td>
 
@@ -148,6 +180,7 @@
                                 <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'schedules', 'action' => 'edit', $schedule['schedule_id']), array('escape' => false)); ?>
                                 <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('controller' => 'schedules', 'action' => 'delete', $schedule['schedule_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $schedule['schedule_id'])); ?>
                             </td>
+
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
@@ -206,7 +239,11 @@
                                     $this->Captility->calcDate($event['end'], '%H:%M');
                                 ?>
                             </td>
-                            <td><?php echo $event['status']; ?></td>
+                            <td class="labels"><?php $statuses = Configure::read('EVENT.STATUSES');
+                                $class = $statuses[$event['status']]; ?>
+
+                                <span class="label label-<? echo $class ?>"><? echo __(h($event['status'])) ?></span>
+                            </td>
                             <td>
                                 <?php if (!empty($event['link'])) echo $this->Html->link(
                                     $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-link')),

@@ -60,6 +60,7 @@ class Event extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        /*
         'start-time' => array(
             'datetime' => array(
                 'rule' => array('isUhrzeit'),
@@ -69,7 +70,7 @@ class Event extends AppModel {
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-        ),
+        ),*/
         'end' => array(
             'datetime' => array(
                 'rule' => array('datetime'),
@@ -79,7 +80,7 @@ class Event extends AppModel {
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-        ),
+        ), /*
         'end-time' => array(
             'datetime' => array(
                 'rule' => array('isUhrzeit'),
@@ -89,7 +90,7 @@ class Event extends AppModel {
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-        ),
+        ),*/
         'all_day' => array(
             'boolean' => array(
                 'rule' => array('boolean'),
@@ -215,6 +216,15 @@ class Event extends AppModel {
 
             $this->data['Event']['end'] = $this->formatDateTimepickerToValid($this->data['Event']['end'], $this->data['Event']['end-time'], 'Y-m-d H:i:s');
         }
+
+        return true;
+    }
+
+
+    public function afterValidate($options = array()) {
+
+        //debug($this->data);
+        //debug($this->validationErrors);
 
         return true;
     }

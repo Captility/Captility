@@ -200,6 +200,7 @@ Configure::write('EVENT.STATUSES', array(
     // Name => Class
     'Due' => 'default',
     'Processing' => 'primary',
+    'Canceled' => 'warning',
     'Failed' => 'danger',
     'Online' => 'success'
 

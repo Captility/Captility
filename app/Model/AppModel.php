@@ -129,8 +129,27 @@ class AppModel extends Model {
         return $this->_evaluate($date > time(), "is not set in a future date", $fieldName, $params);
     }
 
+    function validateAfterDate($afterDate, $beforeDate) {
 
-    public function formatDatepickerToValid($dateString, $formatString) {
+        $date1 = strtotime($this->data[$this->alias][$beforeDate]);
+
+        $date2 = strtotime($this->data[$this->alias][$afterDate]);
+
+        return ($date1 <= $date2);
+
+    }
+
+
+    function validateAfterTime($check, $afterTime, $beforeTime) {
+
+        $date1 = strtotime(date('Y-m-d') . ' ' . $this->data[$this->alias][$beforeTime]);
+
+        $date2 = strtotime(date('Y-m-d') . ' ' . $this->data[$this->alias][$afterTime]);
+
+        return ($date1 < $date2);
+    }
+
+    public function formatDatepickerToValid($dateString, $formatString = 'Y-m-d') {
 
         // - ...Mo,
         return CakeTime::format($formatString, substr($dateString, 4));
@@ -141,6 +160,12 @@ class AppModel extends Model {
 
         // - ...\sUhr
         return $this->formatDatepickerToValid($dateString . ' ' . substr($timeString, 0, -4), $formatString);
+    }
+
+    public function formatTimepickerToValid($timeString, $formatString = 'H:i:s') {
+
+        // - ...\sUhr
+        return CakeTime::format($formatString, substr($timeString, 0, -4));
     }
 
 

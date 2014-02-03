@@ -116,9 +116,13 @@
         echo '</div>';
     </div>*/?>
 
+    <?php echo $this->Form->input('location', array(
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-map-marker input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'placeholder' => __('Place')
+
+    ));?>
 
     <?php echo $this->Form->input('link', array(
-        'class' => 'form-control',
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-link input-group-glyphicon"></span>', 'afterInput' => '</div>',
         'placeholder' => 'Link'
 
