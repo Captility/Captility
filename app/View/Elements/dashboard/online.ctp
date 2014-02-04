@@ -7,19 +7,19 @@
                 <span class="glyphicon glyphicon-calendar"></span><? echo __('Day') ?>
             </th>
             <th>
-                <? echo __('Event') ?>
+                <span class="glyphicon glyphicon-play-circle"></span><? echo __('Event') ?>
             </th>
             <th>
-                <span class="glyphicon glyphicon-link glyphicon-alone"></span>
+                <span class="glyphicon glyphicon-link"></span>&nbsp;
             </th>
             <th>
-                <? echo __('Responsible') ?>
+                <span class="glyphicon glyphicon-user"></span><? echo __('Responsible') ?>
             </th>
             <th>
-                <? echo __('Status') ?>
+                <span class="glyphicon glyphicon-barcode"></span><? echo __('Status') ?>
             </th>
             <th>
-                <span class="glyphicon glyphicon-cload-upload"></span>
+                <span class="glyphicon glyphicon-upload"></span>&nbsp;
             </th>
         </tr>
         </thead>
@@ -28,7 +28,8 @@
         <? foreach ($events as $i => $event): ?>
 
             <?php $statuses = Configure::read('EVENT.STATUSES');
-            $class = $statuses[$event['Event']['status']];?>
+            $class = (array_key_exists($event['Event']['status'], $statuses)) ? $statuses[$event['Event']['status']] : "";
+            ?>
 
             <tr class="<? echo $class; ?>">
                 <td>

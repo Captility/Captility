@@ -180,6 +180,7 @@ Configure::write('TICKET.STATUSES', array(
     'Urgend' => 'warning',
     'Overdue' => 'danger',
     'Error' => 'inverse',
+    'Canceled' => 'inverse',
     'Done' => 'success'
 
 ));

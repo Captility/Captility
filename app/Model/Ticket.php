@@ -169,4 +169,18 @@ class Ticket extends AppModel {
 
         return true;
     }
+
+
+    public function update($status) {
+
+        $conditions = array(
+
+            'Ticket.ticket_id' => $this->id
+        );
+        if ($this->hasAny($conditions) && array_key_exists($status, Configure::read('TICKET.STATUSES'))){
+            return $this->saveField('status', $status);
+        }
+
+        return false;
+    }
 }

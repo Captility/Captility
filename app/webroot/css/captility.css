@@ -2889,7 +2889,10 @@ table.fc-border-separate {
   _overflow: hidden;
 }
 #calendar {
-  margin-top: 5px;
+  margin-top: 4px;
+}
+.week-header {
+  margin-bottom: 10px;
 }
 .fc-state-default {
   /* non-theme */
@@ -3451,6 +3454,39 @@ tr span.label {
 }
 .landing-page-header.landing-page h1 {
   margin-left: 70px;
+}
+a.scrollTop {
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  bottom: 50px;
+  right: 60px;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  line-height: 50px;
+  font-size: 1.4em;
+  text-align: center;
+  margin-left: -25px;
+  z-index: 255;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+a.scrollTop:hover {
+  transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+a.scrollTop .glyphicon {
+  top: 10px;
+  left: 5px;
+  font-size: 27px;
 }
 .landing-page-footer-wrapper {
   padding: 0px 20px 10px 20px;

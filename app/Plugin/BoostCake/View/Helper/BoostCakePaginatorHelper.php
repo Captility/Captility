@@ -135,7 +135,7 @@ class BoostCakePaginatorHelper extends PaginatorHelper {
 			'separator' => false,
 			'first' => null,
 			'last' => null,
-			'ellipsis' => '<li class="disabled"><a href="#">…</a></li>',
+			'ellipsis' => '<li class="disabled"><a href="javascript:void(0)">…</a></li>',
 			'currentClass' => 'current'
 		);
 		$options += $defaults;

@@ -32,13 +32,13 @@
             'type' => 'reset',
             'style' => 'margin-right: 5px;')); ?>
 
-        <?php echo $this->Form->button('<span class="glyphicon glyphicon-upload"></span>' . __('Up'), array(
+        <?php /*echo $this->Form->button('<span class="glyphicon glyphicon-upload"></span>' . __('Up'), array(
             'escape' => false,
             'class' => 'btn btn-default btn-scrollTop',
             'formnovalidate' => TRUE,
             'div' => false,
             'type' => 'reset',
-            'style' => 'margin-right: 5px;')); ?>
+            'style' => 'margin-right: 5px;')); */?>
 
     </div>
     <!--End::Submit Area-->

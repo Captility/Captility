@@ -55,6 +55,8 @@
             <?php //echo $this->Element('tabContentDummy');?>
             <? // Tab Content #b ?>
 
+            <?php echo $this->Element('dashboard/week_header', array('week_start' => $week_start, 'week_end' => $week_end)); ?>
+
             <?php if (!empty($data[0]['Ticket'])) foreach ($data as $i => $ticket): ?>
 
                 <?php echo $this->Element('dashboard/tickets', array('ticket' => $ticket)); ?>
@@ -69,7 +71,10 @@
         <div class="tab-pane" id="online">
             <?php /*echo $this->Element('tabContentDummy2');*/?>
 
+            <?php echo $this->Element('dashboard/week_header', array('week_start' => $week_start, 'week_end' => $week_end)); ?>
+
             <?php echo $this->Element('dashboard/online', array('events' => $events)); ?>
+
         </div>
     </div>
 </div>

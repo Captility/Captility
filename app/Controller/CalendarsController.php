@@ -77,6 +77,11 @@ class CalendarsController extends AppController {
                         'Lecture' => array(
                             'fields' => array('Lecture.lecture_id', 'Lecture.number', 'Lecture.name', 'Lecture.host_id'),
                             'conditions' => array('exactly' => 'Lecture.lecture_id = Capture.lecture_id'),
+
+                            'Host' => array(
+                                'fields' => array('Host.host_id', 'Host.name'),
+                                'conditions' => array('exactly' => 'Lecture.host_id = Host.host_id'),
+                            ),
                         ),
                     ),
                 ),
@@ -86,7 +91,7 @@ class CalendarsController extends AppController {
                 ),
 
                 'User' => array(
-                    'fields' => array('User.user_id', 'User.username', 'User.avatar'),
+                    'fields' => array('User.user_id', 'User.username'),
                     'conditions' => array('exactly' => 'User.user_id = Ticket.user_id')
                 ),
 
@@ -154,7 +159,8 @@ class CalendarsController extends AppController {
 
 
         //debug($data);
-        $this->set('events', $events);
+        $week_end = date('Y-m-d', strtotime('+' . (7 - date('w')) . ' days'));
+        $this->set(array('events' => $events, 'week_start' => $week_start, 'week_end' => $week_end));
     }
 
 
@@ -177,6 +183,11 @@ class CalendarsController extends AppController {
         $data = $this->Paginator->paginate('Lecture');
 
         $this->set('lectures', $data);
+
+    }
+
+    public function updateAll() {
+
 
     }
 }

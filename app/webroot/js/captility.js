@@ -395,7 +395,7 @@ $(document).ready(function () {
             formatDate: 'dd.MM.yyyy HH:mm:ss',
             titleFormat: {
                 month: 'MMMM yyyy',     // September 2009
-                week: "dd.[ MMM.][yy]{ '&#8211;' dd. MMMM yyyy}", // Sep 7 - 13 2009
+                week: "dd.[ MMMM][ yyyy]{ '&#8211;' dd. MMMM yyyy}", // Sep 7 - 13 2009
                 day: 'dddd, dd.MM.yyyy'// Tuesday, Sep 8, 2009
             },
             columnFormat: {
@@ -872,22 +872,23 @@ $(document).ready(function () {
 
 
     /**
-     * Scroll To Top.
+     * Scroll To Top Button.
      */
-    var content = $('.container-wrapper').first();
-    var scrollTop = $('.btn-scrollTop').first();
-    content.on('click', 'button.btn-scrollTop', function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() < 300) {
 
-        $('html, body').animate({
-            scrollTop: ($('body').offset().top)
-        }, 600);
+            $('.scrollTop').fadeOut(400);
+        } else {
 
+            $('.scrollTop').fadeIn(800);
+        }
     });
+    $('.scrollTop').on('click', function () {
 
-    if (scrollTop.length && scrollTop.offset().top < $(window).height()) {
+        $('html, body').animate({scrollTop: 0}, 400);
 
-        scrollTop.hide();
-    }
+        return false;
+    });
 
 
     /**

@@ -115,6 +115,9 @@ class EventsController extends AppController {
             $events[$key]['time'] = CakeTime::nice(strtotime($event['Event']['start']), 'CET', '%H:%M');
             $events[$key]['location'] = $event['Event']['location'];
         }
+
+
+
         $this->set("json", json_encode($events));
     }
 

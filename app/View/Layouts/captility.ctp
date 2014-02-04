@@ -112,5 +112,10 @@
     </div>
 </div>
 
+
+<div class="captility-footer">
+    <?php echo $this->Element('scrollTop');?>
+</div>
+
 </body>
 </html>
