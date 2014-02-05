@@ -66,29 +66,56 @@ class TicketsController extends AppController {
 
         //if ($this->request->is(array('post', 'put'))) {
 
-            $this->Ticket->id = $id;
+        $this->Ticket->id = $id;
 
-            if ($this->Ticket->update($status)) {
+        if ($this->Ticket->update($status)) {
 
-                //$this->Session->setFlash(__('The ticket has been updated.'), 'default', array('class' => 'alert alert-success'));
+            //$this->Session->setFlash(__('The ticket has been updated.'), 'default', array('class' => 'alert alert-success'));
 
-                $this->set("json", json_encode('The ticket has been updated.'));
+            $this->set("json", json_encode('The ticket has been updated.'));
 
 
-            }
-            else {
+        }
+        else {
 
-                //$this->Session->setFlash(__('The ticket could not be updated. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+            //$this->Session->setFlash(__('The ticket could not be updated. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 
-                $this->set("json", json_encode('The ticket could not be updated. Please, try again.'));
+            $this->set("json", json_encode('The ticket could not be updated. Please, try again.'));
 
-                throw new InternalErrorException(__('The ticket could not be updated. Please, try again.'));
+            throw new InternalErrorException(__('The ticket could not be updated. Please, try again.'));
 
-                //return $this->redirect(array('action' => 'index'));
-            }
+            //return $this->redirect(array('action' => 'index'));
+        }
         //}
 
         $this->render('json');
+    }
+
+
+    public function feed($my = null, $limit = 3, $sideTicket = false) {
+
+
+        $this->layout = "ajax";
+
+        // MY TICKETS
+        $user_id = (isset($my)) ? $this->Auth->user('user_id') : null;
+
+        $week_start = $this->Ticket->getWeekStart();
+        $week_end = $this->Ticket->getNextWeekStart();
+
+        // GET due Tickets this week, that aren't done or canceled or have failed.
+        $tickets = $this->Ticket->getPendingTickets($week_start, $week_end, $user_id);
+
+        $this->set('tickets', $tickets);
+
+        if ($sideTicket) {
+
+            $this->render('feedSideTicket');
+        }
+        else {
+
+            $this->render('feed');
+        }
     }
 
     /**

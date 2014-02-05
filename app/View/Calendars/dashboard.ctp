@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div class="col-md-1 column">
+<div class="col-md-1 column sideTabs">
     <!-- Element::LeftTabs -->
 
     <div class="clearfix">
@@ -25,8 +25,11 @@
                 <li class=><a href="#week" id="MyWeekViewFc" data-toggle="tab"><span
                             class="glyphicon glyphicon-calendar glyphicon-leftTabs"></span><?php echo __('Mine') ?></a>
                 </li>
-                <li><a href="#tickets" id="TicketView" data-toggle="tab"><span
-                            class="glyphicon glyphicon-tasks glyphicon-leftTabs"></span><?php echo __('Tickets') ?></a>
+                <li><a href="#tickets" id="TicketsView" data-toggle="tab"><span
+                            class="glyphicon glyphicon-dashboard glyphicon-leftTabs"></span><?php echo __('Tickets') ?></a>
+                </li>
+                <li><a href="#myTickets" id="MyTicketsView" data-toggle="tab"><span
+                            class="glyphicon glyphicon-tasks glyphicon-leftTabs"></span><?php echo __('Mine') ?></a>
                 </li>
                 <li><a href="#online" id="OnlineView" data-toggle="tab"><span
                             class="glyphicon glyphicon-upload glyphicon-leftTabs"></span><?php echo __('Status') ?></a>
@@ -58,6 +61,20 @@
             <?php echo $this->Element('dashboard/week_header', array('week_start' => $week_start, 'week_end' => $week_end)); ?>
 
             <?php if (!empty($data[0]['Ticket'])) foreach ($data as $i => $ticket): ?>
+
+                <?php echo $this->Element('dashboard/tickets', array('ticket' => $ticket)); ?>
+
+            <? endforeach; ?>
+
+        </div>
+
+
+        <div class="tab-pane" id="myTickets">
+
+
+            <?php echo $this->Element('dashboard/week_header', array('week_start' => $week_start, 'week_end' => $week_end)); ?>
+
+            <?php if (!empty($tickets[0]['Ticket'])) foreach ($tickets as $i => $ticket): ?>
 
                 <?php echo $this->Element('dashboard/tickets', array('ticket' => $ticket)); ?>
 

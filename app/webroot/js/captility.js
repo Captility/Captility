@@ -329,7 +329,7 @@ $(document).ready(function () {
                  }*/
             },
             myweek: {
-                url: $appRoot + 'events/feedMy',
+                url: $appRoot + 'events/feed/my',
                 type: 'GET',
                 cache: false
                 /*,error: function () {

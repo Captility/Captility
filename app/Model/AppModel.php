@@ -187,4 +187,19 @@ class AppModel extends Model {
 
         return true;
     }
+
+
+    public function getWeekStart() {
+
+        // Get german Week defaults
+        return date('Y-m-d', strtotime('-' . date('w') + 1 . ' days'));
+    }
+
+    public function getNextWeekStart() {
+
+        // Get german Week defaults
+        return date('Y-m-d', strtotime('+' . (8 - date('w')) . ' days'));
+    }
+
+
 }

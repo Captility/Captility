@@ -1471,6 +1471,9 @@ input[type="button"].btn-block {
 .container-lower {
   margin-top: 30px;
 }
+h1 {
+  margin-bottom: 15px;
+}
 /** Navbar Search Alignment */
 @media (min-width: 1200px) {
   .navbar-search {
@@ -1484,6 +1487,16 @@ input[type="button"].btn-block {
 }
 .navbar-btn-search {
   font-family: 'Istok Web', 'Titillium Web', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.sideTabs {
+  padding: 0;
+}
+@media (min-width: 992px) {
+  .sideTabs {
+    padding-right: 0px;
+    padding-left: inherit;
+    padding-left: 10px;
+  }
 }
 @media (min-width: 1200px) {
   .form-split-6 {
@@ -3186,17 +3199,20 @@ text-shadow: none;*/
 /* ###############################################
  * ################ SIDE TICKETS  ################
  * ###############################################*/
-#tickets .ticket {
+#tickets .ticket,
+#myTickets .ticket {
   margin-bottom: 40px;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   cursor: auto;
 }
-#tickets .ticket .ticket-actions {
+#tickets .ticket .ticket-actions,
+#myTickets .ticket .ticket-actions {
   top: 6px;
   right: 8px;
 }
-#tickets .ticket .ticket-body table {
+#tickets .ticket .ticket-body table,
+#myTickets .ticket .ticket-body table {
   margin-bottom: 0;
 }
 tr span.label {

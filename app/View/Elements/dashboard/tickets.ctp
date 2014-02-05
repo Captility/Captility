@@ -11,9 +11,11 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
     </div>
 
     <div class="ticket-actions actions">
-        <a href="javascript:void(0)" class="postLink" data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Error"><span
+        <a href="javascript:void(0)" class="postLink"
+           data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Error"><span
                 class="glyphicon glyphicon-remove pull-right"></span></a>
-        <a href="javascript:void(0)" class="postLink" data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Done"><span
+        <a href="javascript:void(0)" class="postLink"
+           data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Done"><span
                 class="glyphicon glyphicon-ok pull-right"></span></a>
         <a href="<? echo Router::url('/', true); ?>tickets/edit/<? echo $ticket['Ticket']['ticket_id'] ?>"><span
                 class="glyphicon el-icon-pencil pull-right"></span></a>
@@ -60,7 +62,8 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
                 <td>
                     <span class="glyphicon glyphicon-calendar"></span>
                     <?php echo $this->Captility->linkDate($ticket['Event']['start'], '%a, %d.%m.%Y')?>&nbsp;
-                    <span class="glyphicon glyphicon-time"></span><?php echo $this->Captility->calcDate($ticket['Event']['start'], '%H:%M')?>
+                    <span
+                        class="glyphicon glyphicon-time"></span><?php echo $this->Captility->calcDate($ticket['Event']['start'], '%H:%M')?>
                 </td>
             </tr>
             <tr>

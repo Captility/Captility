@@ -93,6 +93,13 @@
   margin-top: @navbar-height - 20px; //h1 20px
 }
 
+h1 {
+
+  margin-bottom: 15px;
+}
+
+// NAVBAR
+
 /** Navbar Search Alignment */
 @media (min-width:@screen-lg-min) {
   .navbar-search {
@@ -111,6 +118,22 @@
 .navbar-btn-search {
 
   font-family: @font-family-nav;
+}
+
+//SIDETABS
+
+.sideTabs {
+
+  padding: 0;
+}
+
+@media (min-width:@screen-md-min) {
+  .sideTabs {
+
+    padding-right: 0px;
+    padding-left: inherit;
+    padding-left: 10px;
+  }
 }
 
 //FORM ALIGNMENT
@@ -952,7 +975,7 @@ text-shadow: none;*/
  * ################ SIDE TICKETS  ################
  * ###############################################*/
 
-#tickets {
+#tickets, #myTickets {
 
   .ticket {
 
