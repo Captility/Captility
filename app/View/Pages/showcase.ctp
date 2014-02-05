@@ -278,7 +278,7 @@
 
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="#">
+                        <a class="media-glyphicon pull-left" href="javascript:void(0)">
                             <span class="glyphicon el-icon-rss"></span>
                         </a>
 
@@ -562,7 +562,7 @@
 
 
                     <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="#">
+                        <a class="media-glyphicon pull-left" href="javascript:void(0)">
                             <span class="glyphicon el-icon-rss"></span>
                         </a>
 
@@ -618,12 +618,12 @@
                     <div class="clearfix"></div>
 
                     <div class="media landing-page landing-page-black landing-page-footer pull-right">
-                        <a class="media-glyphicon pull-right" href="#">
+                        <a class="media-glyphicon pull-right" href="javascript:void(0)">
                             <span class="glyphicon el-icon-facebook"></span>
                         </a>
 
 
-                        <a class="media-glyphicon pull-right" href="#">
+                        <a class="media-glyphicon pull-right" href="javascript:void(0)">
                             <span class="glyphicon el-icon-twitter"></span>
                         </a>
 

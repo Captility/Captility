@@ -679,17 +679,17 @@ podeís adquirirla.</span></p>
 		$result = $this->Text->stripLinks($text);
 		$this->assertEquals($expected, $result);
 
-		$text = 'This is a <a href="#">test</a> text';
+		$text = 'This is a <a href="javascript:void(0)">test</a> text';
 		$expected = 'This is a test text';
 		$result = $this->Text->stripLinks($text);
 		$this->assertEquals($expected, $result);
 
-		$text = 'This <strong>is</strong> a <a href="#">test</a> <a href="#">text</a>';
+		$text = 'This <strong>is</strong> a <a href="javascript:void(0)">test</a> <a href="javascript:void(0)">text</a>';
 		$expected = 'This <strong>is</strong> a test text';
 		$result = $this->Text->stripLinks($text);
 		$this->assertEquals($expected, $result);
 
-		$text = 'This <strong>is</strong> a <a href="#">test</a> and <abbr>some</abbr> other <a href="#">text</a>';
+		$text = 'This <strong>is</strong> a <a href="javascript:void(0)">test</a> and <abbr>some</abbr> other <a href="javascript:void(0)">text</a>';
 		$expected = 'This <strong>is</strong> a test and <abbr>some</abbr> other text';
 		$result = $this->Text->stripLinks($text);
 		$this->assertEquals($expected, $result);

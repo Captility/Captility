@@ -109,10 +109,10 @@
 
 <ul class="pagination">
     <li>
-        <a href="#">Prev</a>
+        <a href="javascript:void(0)">Prev</a>
     </li>
     <li>
-        <a href="#">Next</a>
+        <a href="javascript:void(0)">Next</a>
     </li>
 </ul>
 

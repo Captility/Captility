@@ -41,7 +41,7 @@ class HtmlCoverageReport extends BaseCoverageReport {
 		$output = $this->coverageScript();
 		$output .= <<<HTML
 		<h3>Code coverage results
-		<a href="#" onclick="coverage_toggle_all()" class="coverage-toggle">Toggle all files</a>
+		<a href="javascript:void(0)" onclick="coverage_toggle_all()" class="coverage-toggle">Toggle all files</a>
 		</h3>
 HTML;
 		foreach ($coverageData as $file => $coverageData) {

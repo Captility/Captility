@@ -39,7 +39,7 @@
         <li class="divider"></li>
 
         <li class="dropdown <? if (in_array($this->params['controller'], array('captures', 'lectures', 'hosts', 'eventTypes'))) echo 'active'; ?>">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Records') ?><strong
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Records') ?><strong
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
 
@@ -75,7 +75,7 @@
         </li>
 
         <li class="dropdown <? if (in_array($this->params['controller'], array('tasks', 'workflows', 'tickets'))) echo 'active'; ?>">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Team') ?><strong
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Team') ?><strong
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
                 <li role="presentation" class="dropdown-header list-info"><?php echo __('Manage duties...') ?>.</li>
@@ -133,7 +133,7 @@
     <ul class="nav navbar-nav navbar-right">
 
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle"
+            <a href="javascript:void(0)" class="dropdown-toggle"
                data-toggle="dropdown"><?php echo $this->Session->read('Auth.User.username') . ' '; ?>
                 <strong
                     class="caret"></strong></a>

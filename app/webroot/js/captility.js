@@ -1297,5 +1297,34 @@ $(document).ready(function () {
         }
     });
 
+
+//######################################################################################################################
+//############################################# TICKETS UPDATE  ########################################################
+//######################################################################################################################
+
+
+    $('body').on('click', 'a.postLink', function () {
+
+        var $self = $(this);
+
+        var url = $(this).data("href"); //gets data-href
+
+
+        var jqxhr = $.post(url,function () {
+
+            $self.parents('.ticket').slideUp(600, function () {
+
+                $self.remove();
+            });
+
+        }).fail(function () {
+
+                alert("Das Ticket konnte nicht aktualisiert werden.");
+
+                // Reload (logout)
+                window.location.replace(window.location.pathname);
+            })
+    });
+
 })
 ;

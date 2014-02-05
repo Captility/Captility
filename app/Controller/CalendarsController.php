@@ -104,7 +104,7 @@ class CalendarsController extends AppController {
                     //TODO: 'Ticket.user_id' => $this->Auth->user('user_id'),
                     //TODO: 'Event.start >=' => $week_start,
                     //TODO: 'Event.end <=' => $week_end,
-                    'Ticket.status !=' => array('Done', 'Error')
+                    'Ticket.status !=' => array('Done', 'Error', 'Canceled')
                 )
             ),
 
@@ -124,8 +124,8 @@ class CalendarsController extends AppController {
             'link' => array(
 
                 'EventType',
-                'Ticket' => array(
-                    'conditions' => array('exactly' => 'Event.event_id = Ticket.event_id')),
+                /*'Ticket' => array(
+                    'conditions' => array('exactly' => 'Event.event_id = Ticket.event_id')),*/
 
                 'Capture' => array(
                     'fields' => array('Capture.capture_id', 'Capture.status', 'Capture.user_id'),

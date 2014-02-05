@@ -11,10 +11,10 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
     </div>
 
     <div class="ticket-actions actions">
-        <a href="javascript:void(0)" data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Error"><span
-                class="glyphicon glyphicon-remove pull-right postLink"></span></a>
-        <a href="javascript:void(0)" data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Done"><span
-                class="glyphicon glyphicon-ok pull-right postLink"></span></a>
+        <a href="javascript:void(0)" class="postLink" data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Error"><span
+                class="glyphicon glyphicon-remove pull-right"></span></a>
+        <a href="javascript:void(0)" class="postLink" data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Done"><span
+                class="glyphicon glyphicon-ok pull-right"></span></a>
         <a href="<? echo Router::url('/', true); ?>tickets/edit/<? echo $ticket['Ticket']['ticket_id'] ?>"><span
                 class="glyphicon el-icon-pencil pull-right"></span></a>
         <a href="<? echo Router::url('/', true); ?>tickets/view/<? echo $ticket['Ticket']['ticket_id'] ?>"><span

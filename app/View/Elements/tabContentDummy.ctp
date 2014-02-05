@@ -248,25 +248,25 @@
 
     <ul class="pagination">
         <li>
-            <a href="#">Prev</a>
+            <a href="javascript:void(0)">Prev</a>
         </li>
         <li>
-            <a href="#">1</a>
+            <a href="javascript:void(0)">1</a>
         </li>
         <li>
-            <a href="#">2</a>
+            <a href="javascript:void(0)">2</a>
         </li>
         <li>
-            <a href="#">3</a>
+            <a href="javascript:void(0)">3</a>
         </li>
         <li>
-            <a href="#">4</a>
+            <a href="javascript:void(0)">4</a>
         </li>
         <li>
-            <a href="#">5</a>
+            <a href="javascript:void(0)">5</a>
         </li>
         <li>
-            <a href="#">Next</a>
+            <a href="javascript:void(0)">Next</a>
         </li>
     </ul>
 

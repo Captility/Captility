@@ -64,7 +64,7 @@ class TicketsController extends AppController {
 
         $this->set("json", json_encode('Before'));
 
-        if ($this->request->is(array('post', 'put'))) {
+        //if ($this->request->is(array('post', 'put'))) {
 
             $this->Ticket->id = $id;
 
@@ -82,9 +82,11 @@ class TicketsController extends AppController {
 
                 $this->set("json", json_encode('The ticket could not be updated. Please, try again.'));
 
+                throw new InternalErrorException(__('The ticket could not be updated. Please, try again.'));
+
                 //return $this->redirect(array('action' => 'index'));
             }
-        }
+        //}
 
         $this->render('json');
     }

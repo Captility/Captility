@@ -8,7 +8,7 @@
 
                 <div class="pull-right quick-nav"><a href="javascript:void(0)" class="qr-code"><span
                             class="glyphicon glyphicon-qrcode"></span></a>
-                    <a href="#" class="rss-icon"><span class="glyphicon el-icon-rss"></span></a>
+                    <a href="javascript:void(0)" class="rss-icon"><span class="glyphicon el-icon-rss"></span></a>
                 </div>
 
                 <? echo $this->Breadcrumbs->getCrumbs(true)?>

@@ -28,7 +28,7 @@ App::uses('Debugger', 'Utility');
 
 	if (isset($stack['file']) && isset($stack['line'])):
 		printf(
-			'<a href="#" onclick="traceToggle(event, \'file-excerpt-%s\')">%s line %s</a>',
+			'<a href="javascript:void(0)" onclick="traceToggle(event, \'file-excerpt-%s\')">%s line %s</a>',
 			$i,
 			Debugger::trimPath($stack['file']),
 			$stack['line']
@@ -37,7 +37,7 @@ App::uses('Debugger', 'Utility');
 		$excerpt .= implode("\n", Debugger::excerpt($stack['file'], $stack['line'] - 1, 2));
 		$excerpt .= '</pre></div> ';
 	else:
-		echo '<a href="#">[internal function]</a>';
+		echo '<a href="javascript:void(0)">[internal function]</a>';
 	endif;
 	echo ' &rarr; ';
 	if ($stack['function']):
@@ -52,7 +52,7 @@ App::uses('Debugger', 'Utility');
 		$called = isset($stack['class']) ? $stack['class'] . $stack['type'] . $stack['function'] : $stack['function'];
 
 		printf(
-			'<a href="#" onclick="traceToggle(event, \'trace-args-%s\')">%s(%s)</a> ',
+			'<a href="javascript:void(0)" onclick="traceToggle(event, \'trace-args-%s\')">%s(%s)</a> ',
 			$i,
 			$called,
 			h(implode(', ', $args))

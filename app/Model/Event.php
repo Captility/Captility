@@ -229,4 +229,81 @@ class Event extends AppModel {
         return true;
     }
 
+    public function generateNext($nextStep = 0, $options = array()) {
+
+
+        $event = $this->find('first', array(
+
+            'link' => array(
+
+                //'Ticket',
+                'Capture' => array(
+                    'fields' => array('Capture.capture_id', 'Capture.user_id'),
+                    'conditions' => array('exactly' => 'Event.capture_id = Capture.capture_id'),
+
+                    'User' => array(
+                        'fields' => array('User.user_id'),
+                        'conditions' => array('exactly' => 'User.user_id = Capture.user_id')),
+
+                    'Workflow' => array(
+                        'fields' => array('Workflow.workflow_id'),
+                        'conditions' => array('exactly' => 'Workflow.workflow_id = Capture.workflow_id'),
+
+                        'Task' => array(
+                            'fields' => array('Task.task_id', 'Task.step'),
+                            'conditions' => array('exactly' => 'Task.workflow_id = Workflow.workflow_id')),
+                    )
+                )
+            ),
+
+            'conditions' => array(
+
+                'AND' => array(
+
+                    'Event.event_id' => $this->id,
+                    'Task.step' => $nextStep
+                ),
+            ),
+
+            'order' => array('Task.step'),
+        ));
+
+
+        //Update Processing Status with first Task
+        if ($nextStep == 0) {
+
+            // ELSE SET DONE
+            $this->updateStatus('Processing');
+        }
+
+        // IF NEW TASKS TO GENERATE TO TICKET
+        if (!empty($event)) {
+
+            $newTicket['Ticket']['event_id'] = $this->id;
+            $newTicket['Ticket']['task_id'] = $event['Task']['task_id'];
+            $newTicket['Ticket']['user_id'] = $event['User']['user_id'];
+            $newTicket['Ticket']['status'] = (isset($event['User']['user_id'])) ? 'Requested' : 'New';
+
+            $this->Ticket->generateNewTicket($newTicket);
+
+        }
+        else {
+
+            // ELSE SET DONE
+            $this->updateStatus('Online');
+        }
+    }
+
+
+    private function updateStatus($newStatus) {
+
+        $status = $this->field('status');
+
+        if ($status != 'Failed' && $status != 'Canceled') {
+
+            $this->saveField('status', $newStatus);
+        }
+
+    }
+
 }
