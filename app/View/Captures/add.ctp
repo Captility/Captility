@@ -104,7 +104,7 @@
     'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
     'div' => 'form-group form-split-6',
     'label' => __('Responsible'),
-    'empty' => true, 'required' => false,
+    //'empty' => true, 'required' => false,
     'data-live-search' => true,
 ));?>
 
