@@ -296,7 +296,7 @@ class Event extends AppModel {
 
 
         //Update Processing Status with first Task
-        if ($nextStep == 0) {
+        if ($nextStep == 1) {
 
             // ELSE SET DONE
             $this->updateStatus('Processing');

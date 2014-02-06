@@ -146,11 +146,10 @@ class CalendarsController extends AppController {
 
             if ($event['Event']['ticketCount'] == 0) {
 
-                $jsonResponse[$i] = json_encode($event);
+                $jsonResponse[$count] = json_encode($event);
 
                 $this->Event->id = $event['Event']['event_id'];
                 $this->Event->generateNext();
-
                 $count++;
             }
         }
