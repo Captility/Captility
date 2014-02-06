@@ -23,8 +23,9 @@ class WorkflowsController extends AppController {
     public function index() {
         $this->Workflow->recursive = 1;
         $this->Paginator->settings = array(
-            'limit' => 15
+            'limit' => 15,
         );
+
         $this->set('workflows', $this->Paginator->paginate());
     }
 

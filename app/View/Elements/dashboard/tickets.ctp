@@ -86,7 +86,7 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
 
                 <th><?php echo __('Status'); ?></th>
 
-                <td class="labels">
+                <td class="labels lower-labels">
 
                     <span class="glyphicon glyphicon-tasks"></span>
 

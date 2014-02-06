@@ -26,7 +26,8 @@
                             class="glyphicon glyphicon-calendar glyphicon-leftTabs"></span><?php echo __('Mine') ?></a>
                 </li>
                 <li><a href="#tickets" id="TicketsView" data-toggle="tab"><span
-                            class="glyphicon glyphicon-dashboard glyphicon-leftTabs"></span><?php echo __('Tickets') ?></a>
+                            class="glyphicon glyphicon-dashboard glyphicon-leftTabs"></span><?php echo __('Tickets') ?>
+                    </a>
                 </li>
                 <li><a href="#myTickets" id="MyTicketsView" data-toggle="tab"><span
                             class="glyphicon glyphicon-tasks glyphicon-leftTabs"></span><?php echo __('Mine') ?></a>
@@ -60,11 +61,17 @@
 
             <?php echo $this->Element('dashboard/week_header', array('week_start' => $week_start, 'week_end' => $week_end)); ?>
 
-            <?php if (!empty($data[0]['Ticket'])) foreach ($data as $i => $ticket): ?>
+            <div class="ticketContainer">
 
-                <?php echo $this->Element('dashboard/tickets', array('ticket' => $ticket)); ?>
+                <?// AJAX: ?>
 
-            <? endforeach; ?>
+                <?/* if (!empty($data[0]['Ticket'])) foreach ($data as $i => $ticket): */?>
+
+                <?php /*echo $this->Element('dashboard/tickets', array('ticket' => $ticket)); */?>
+
+                <?/* endforeach; */?>
+
+            </div>
 
         </div>
 
@@ -74,12 +81,17 @@
 
             <?php echo $this->Element('dashboard/week_header', array('week_start' => $week_start, 'week_end' => $week_end)); ?>
 
-            <?php if (!empty($tickets[0]['Ticket'])) foreach ($tickets as $i => $ticket): ?>
+            <div class="myTicketContainer">
 
-                <?php echo $this->Element('dashboard/tickets', array('ticket' => $ticket)); ?>
+                <?// AJAX: ?>
 
-            <? endforeach; ?>
+                <?php /*if (!empty($tickets[0]['Ticket'])) foreach ($tickets as $i => $ticket): */?>
 
+                    <?php /*echo $this->Element('dashboard/tickets', array('ticket' => $ticket)); */?>
+
+                <?/* endforeach; */?>
+
+            </div>
         </div>
 
 

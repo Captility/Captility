@@ -87,16 +87,6 @@ class Ticket extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        'user_id' => array(
-            'numeric' => array(
-                'rule' => array('numeric'),
-                //'message' => 'Your custom message here',
-                //'allowEmpty' => false,
-                'required' => true,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-        ),
         'task_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
@@ -121,6 +111,27 @@ class Ticket extends AppModel {
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
                 //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+
+        'event_type_id' => array(
+            'numeric' => array(
+                'rule' => array('numeric'),
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => true,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+        'user_id' => array(
+            'numeric' => array(
+                'rule' => array('numeric'),
+                //'message' => 'Your custom message here',
+                'allowEmpty' => false,
+                'required' => true,
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -176,7 +187,8 @@ class Ticket extends AppModel {
 
         if ($this->hasAny(array('Ticket.ticket_id' => $this->id)) && array_key_exists($status, Configure::read('TICKET.STATUSES'))) {
 
-            return $this->saveField('status', $status);
+            return $this->saveField('status', $status, false);
+
         }
 
         return false;
@@ -192,12 +204,16 @@ class Ticket extends AppModel {
             $this->data['Ticket']['old_status'] = $this->field('status');
         }
 
+        return true;
+
     }
 
     public function afterSave($created, $options = array()) {
 
+
         //Boolean
         $created = ($created === 'true');
+
 
         // Check if Update or next Ticket required
         if (!$created && !empty($this->data) && isset($this->data['Ticket']['old_status'])) {
@@ -208,6 +224,8 @@ class Ticket extends AppModel {
                 // check if Ticket is now done and next is required
                 if ($this->field('status') == 'Done') {
 
+                    // set ended
+                    $this->saveField('ended', date('Y-m-d H:i:s'));
 
                     // calc next Task
                     $this->Task->id = $this->field('task_id');
@@ -224,6 +242,7 @@ class Ticket extends AppModel {
 
                     $this->Event->id = $this->field('event_id');
                     $this->Event->saveField('status', 'Canceled');
+                    $this->Event->saveField('ended', date('Y-m-d H:i:s'));
                 }
 
 
@@ -232,6 +251,7 @@ class Ticket extends AppModel {
 
                     $this->Event->id = $this->field('event_id');
                     $this->Event->saveField('status', 'Failed');
+                    $this->Event->saveField('ended', date('Y-m-d H:i:s'));
                 }
 
             }
@@ -249,16 +269,26 @@ class Ticket extends AppModel {
 
     public function generateNewTicket($ticketData) {
 
+        //$this->create();
 
-        $this->create();
+        // Custom Query for performance and to avoid integrity violations on ajax-call saveField::afterSave
+        $insertQuery = "INSERT INTO `Captility`.`tickets` (`status`, `event_id`, `task_id`, `user_id`, `modified`, `created`) " .
+            "VALUES ('" . $ticketData['Ticket']['status'] . "', " . $ticketData['Ticket']['event_id'] . ", " .
+            $ticketData['Ticket']['task_id'] . ", " . $ticketData['Ticket']['user_id'] . ", '" . date('Y-m-d H:i:s') . "', '" . date('Y-m-d H:i:s') . "')";
 
-        if ($this->save($ticketData)) {
+        $this->query($insertQuery);
+
+        /*if ($this->save($ticketData)) {
 
         }
         else {
-            throw new InternalErrorException(__('The next Ticket of related workflow could not be generated.'));
-        }
 
+            debug($this->validationErrors);
+            //throw new InternalErrorException(__('The next Ticket of related workflow could not be generated.'));
+        }*/
+
+        /*$log = $this->getDataSource()->getLog(false, false);
+        debug($log);*/
     }
 
 

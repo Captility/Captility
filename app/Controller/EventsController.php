@@ -29,8 +29,6 @@ class EventsController extends AppController {
                 $this->Auth->allow('feedMy');
             }
         }
-
-
     }
 
 
@@ -64,7 +62,6 @@ class EventsController extends AppController {
             $events[$key]['datec'] = CakeTime::nice(strtotime($event['Event']['start']), 'CET', '%a, %d.%m.%y');
             $events[$key]['time'] = CakeTime::nice(strtotime($event['Event']['start']), 'CET', '%H:%M');
             $events[$key]['location'] = $event['Event']['location'];
-
         }
 
         $this->set("json", json_encode($events));
@@ -114,6 +111,9 @@ class EventsController extends AppController {
      */
     public
     function view($id = null) {
+
+        $this->Event->recursive = 2;
+
         if (!$this->Event->exists($id)) {
             throw new NotFoundException(__('Invalid event'));
         }

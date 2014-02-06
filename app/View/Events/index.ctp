@@ -53,7 +53,7 @@
 
                         <?php echo $this->Captility->linkDate(h($event['Event']['end']), '%d.%m.%Y %H:%M Uhr') ?>
                     </td>
-                    <td class="labels"><?php $statuses = Configure::read('EVENT.STATUSES');
+                    <td class="labels lower-labels"><?php $statuses = Configure::read('EVENT.STATUSES');
                         $class = $statuses[$event['Event']['status']]; ?>
 
                         <span class="label label-<? echo $class ?>"><? echo __(h($event['Event']['status'])) ?></span>

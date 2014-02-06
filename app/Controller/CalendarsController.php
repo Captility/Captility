@@ -117,5 +117,6 @@ class CalendarsController extends AppController {
     public function updateEvents($salt = 0) {
 
 
+
     }
 }

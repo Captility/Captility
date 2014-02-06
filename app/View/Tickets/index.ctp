@@ -53,7 +53,7 @@
                         <?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
                     </td>
 
-                    <td class="labels"><?php $statuses = Configure::read('TICKET.STATUSES');
+                    <td class="labels lower-labels"><?php $statuses = Configure::read('TICKET.STATUSES');
                         $class = $statuses[$ticket['Ticket']['status']]; ?>
 
                         <span class="label label-<? echo $class ?>"><? echo __(h($ticket['Ticket']['status'])) ?></span>

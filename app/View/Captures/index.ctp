@@ -44,7 +44,7 @@
                     <td><?php echo h($capture['Capture']['capture_id']); ?>&nbsp;</td>
                     <td><?php echo h($capture['Capture']['name']); ?>&nbsp;</td>
 
-                    <td class="labels"><?php $statuses = Configure::read('CAPTURE.STATUSES');
+                    <td class="labels lower-labels"><?php $statuses = Configure::read('CAPTURE.STATUSES');
                         $class = $statuses[$capture['Capture']['status']]; ?>
 
                         <span

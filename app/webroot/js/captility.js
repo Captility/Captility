@@ -601,10 +601,10 @@ var eventColorNames = ['Black', 'Blue', 'Orange', 'Green' , 'Yellow', 'Red', 'Pu
 $(document).ready(function () {
 
 
-    $('.colorpalette').colorPalette(eventColorValues)
-        .on('selectColor', function (e) {
-            $('.selected-color').val(e.color);
-        });
+        $('.colorpalette').colorPalette(eventColorValues)
+            .on('selectColor', function (e) {
+                $('.selected-color').val(e.color);
+            });
 
 
 //######################################################################################################################
@@ -612,68 +612,68 @@ $(document).ready(function () {
 //######################################################################################################################
 
 
-    if ($.isFunction($.fn.selectpicker)) {
+        if ($.isFunction($.fn.selectpicker)) {
 
-        $('select:not(.form-control-date)').addClass('show-tick').selectpicker({
-            selectedTextFormat: 'values',
-            noneSelectedText: '<span class="glyphicon el-icon-error"></span>',
-            noneResultsText: '<span class="glyphicon el-icon-remove-sign"></span>',
-            dropupAuto: false,
-            liveSearch: true
-
-
-        });
+            $('select:not(.form-control-date)').addClass('show-tick').selectpicker({
+                selectedTextFormat: 'values',
+                noneSelectedText: '<span class="glyphicon el-icon-error"></span>',
+                noneResultsText: '<span class="glyphicon el-icon-remove-sign"></span>',
+                dropupAuto: false,
+                liveSearch: true
 
 
-        $('select.form-control-date').selectpicker({
-            selectedTextFormat: 'values',
-            noneSelectedText: '<span class="glyphicon el-icon-error"></span>',
-            noneResultsText: '<span class="glyphicon el-icon-remove-sign"></span>',
-            dropupAuto: false,
-            width: 'auto'
-        });
+            });
 
-    }
+
+            $('select.form-control-date').selectpicker({
+                selectedTextFormat: 'values',
+                noneSelectedText: '<span class="glyphicon el-icon-error"></span>',
+                noneResultsText: '<span class="glyphicon el-icon-remove-sign"></span>',
+                dropupAuto: false,
+                width: 'auto'
+            });
+
+        }
 
 //######################################################################################################################
 //########################################### KEY CALENDAR CONTROL  ####################################################
 //######################################################################################################################
 
-    $(document).keydown(function (e) {
+        $(document).keydown(function (e) {
 
-        //prevent stealing input
-        if ($(event.target).is('input, textarea, select')) {
-            return true;
-        }
-
-
-        // If Key Left / W
-        if (e.keyCode == 37 || e.keyCode == 65) {
-
-            //Move forward in current view
-            $('.fc-button-prev').click();
-
-            return true;
-        }
-
-        // If Key Right / D
-        if (e.keyCode == 39 || e.keyCode == 68) {
-
-            $('.fc-button-next').click();
-
-            return true;
-        }
-
-        // If Space / W / S
-        if (e.keyCode == 32 || e.keyCode == 83 || e.keyCode == 87) {
-
-            $('.fc-button-today').click();
-
-            return true;
-        }
+            //prevent stealing input
+            if ($(event.target).is('input, textarea, select')) {
+                return true;
+            }
 
 
-    });
+            // If Key Left / W
+            if (e.keyCode == 37 || e.keyCode == 65) {
+
+                //Move forward in current view
+                $('.fc-button-prev').click();
+
+                return true;
+            }
+
+            // If Key Right / D
+            if (e.keyCode == 39 || e.keyCode == 68) {
+
+                $('.fc-button-next').click();
+
+                return true;
+            }
+
+            // If Space / W / S
+            if (e.keyCode == 32 || e.keyCode == 83 || e.keyCode == 87) {
+
+                $('.fc-button-today').click();
+
+                return true;
+            }
+
+
+        });
 
 
 //######################################################################################################################
@@ -681,313 +681,313 @@ $(document).ready(function () {
 //######################################################################################################################
 
 // ADD SCHEDULE BUTTONS
-    (function ($) {
-        $.fn.updateScheduleRemoveState = function () {
+        (function ($) {
+            $.fn.updateScheduleRemoveState = function () {
 
-            var $buttons = $('#ScheduleContainer button.form-schedule-remove');
+                var $buttons = $('#ScheduleContainer button.form-schedule-remove');
 
-            if ($buttons.length > 1) {
+                if ($buttons.length > 1) {
 
-                $buttons.prop('disabled', false);
-            } else {
+                    $buttons.prop('disabled', false);
+                } else {
 
-                $buttons.prop('disabled', true);
-            }
+                    $buttons.prop('disabled', true);
+                }
 
-            //console.log($buttons.length);
+                //console.log($buttons.length);
 
-            return $buttons.length;
-        };
-    })(jQuery);
+                return $buttons.length;
+            };
+        })(jQuery);
 
 
 //####################################### SWICH TABS AND HASHES  #########################################################
 
 
 // TOGGLE ACTIVE TABS OF FORM
-    if ($.isFunction($.fn.selectpicker)) {
+        if ($.isFunction($.fn.selectpicker)) {
 
-        $('#ScheduleContainer').on('shown.bs.tab', 'a.form-toggle', function (e) {
+            $('#ScheduleContainer').on('shown.bs.tab', 'a.form-toggle', function (e) {
 
-            var $target = $($(this).attr('href'));
+                var $target = $($(this).attr('href'));
 
-            $target.parent().find('input, select').prop('disabled', true).selectpicker('refresh');
-            ;
-            $target.find('input, select').prop('disabled', false).selectpicker('refresh');
-        });
-    }
-    ;
+                $target.parent().find('input, select').prop('disabled', true).selectpicker('refresh');
+                ;
+                $target.find('input, select').prop('disabled', false).selectpicker('refresh');
+            });
+        }
+        ;
 
 
-    // ADD A NEW SCHEDULE TO CAPTURE FORM
-    jQuery.fn.addSchedule = function () {
+        // ADD A NEW SCHEDULE TO CAPTURE FORM
+        jQuery.fn.addSchedule = function () {
 
-        var id = $(this).updateScheduleRemoveState();
+            var id = $(this).updateScheduleRemoveState();
 
-        console.log('New ID: ' + id);
+            console.log('New ID: ' + id);
 
-        var props = ['name', 'for', 'id', 'href'];
+            var props = ['name', 'for', 'id', 'href'];
 
-        $schedule = $(this).parents('.panel').clone();
+            $schedule = $(this).parents('.panel').clone();
 
-        // CHANGE INPUTS
-        $schedule.find('label, textarea, input, a, .tab-pane, select').each(function () {
+            // CHANGE INPUTS
+            $schedule.find('label, textarea, input, a, .tab-pane, select').each(function () {
 
-            // CALC PROPS
-            for (var i = 0; i < props.length; ++i) {
+                // CALC PROPS
+                for (var i = 0; i < props.length; ++i) {
 
-                if ($(this).prop(props[i]) !== undefined) {
+                    if ($(this).prop(props[i]) !== undefined) {
 
-                    var newProp = $(this).prop(props[i]).replace(/(\d+)/g, id);
+                        var newProp = $(this).prop(props[i]).replace(/(\d+)/g, id);
 
-                    // cut hashes from href
-                    if (props[i] == 'href') newProp = newProp.substr(newProp.indexOf("#"));
+                        // cut hashes from href
+                        if (props[i] == 'href') newProp = newProp.substr(newProp.indexOf("#"));
 
-                    $(this).prop(props[i], newProp);
+                        $(this).prop(props[i], newProp);
+                    }
                 }
-            }
-        });
+            });
 
-        //APPEND
-        $('#ScheduleContainer').append($schedule);
-        $schedule.slideDown();
+            //APPEND
+            $('#ScheduleContainer').append($schedule);
+            $schedule.slideDown();
 
-        // UPDATE
-        $schedule.find('.bootstrap-select').remove();
-        $schedule.find('input, select').selectpicker('refresh');
-        $(this).updateScheduleRemoveState()
+            // UPDATE
+            $schedule.find('.bootstrap-select').remove();
+            $schedule.find('input, select').selectpicker('refresh');
+            $(this).updateScheduleRemoveState()
 
 
-        return $(this)
-    }
+            return $(this)
+        }
 
-    //Check module: Datepicker
-    if ($.isFunction($.fn.datepicker)) {
+        //Check module: Datepicker
+        if ($.isFunction($.fn.datepicker)) {
 
-        // ADD SCHEDULES TO FORM
-        $('#ScheduleContainer').on('click', 'button.form-schedule-add', function () {
+            // ADD SCHEDULES TO FORM
+            $('#ScheduleContainer').on('click', 'button.form-schedule-add', function () {
 
-            $(this).addSchedule();
+                $(this).addSchedule();
 
-        });
-    }
+            });
+        }
 
 
 // REMOVE SCHEDULES FROM FORM
-    $('#ScheduleContainer').on('click', 'button.form-schedule-remove', function () {
+        $('#ScheduleContainer').on('click', 'button.form-schedule-remove', function () {
 
-        if ($('#ScheduleContainer button.form-schedule-remove').length > 1) {
+            if ($('#ScheduleContainer button.form-schedule-remove').length > 1) {
 
-            $(this).parents('.panel').first().slideUp(800, function () {
-                $(this).remove();
-                $(this).updateScheduleRemoveState();
-            })
+                $(this).parents('.panel').first().slideUp(800, function () {
+                    $(this).remove();
+                    $(this).updateScheduleRemoveState();
+                })
 
 
-        }
-    });
+            }
+        });
 
 
 //######################################################################################################################
 //############################################# HASHED TABS ############################################################
 //######################################################################################################################
 
-    $(function () {
-        var hash = window.location.hash;
-        hash && $('ul.nav a[href="' + hash + '"]').first().tab('show');
+        $(function () {
+            var hash = window.location.hash;
+            hash && $('ul.nav a[href="' + hash + '"]').first().tab('show');
 
-        $('.nav-tabs a').click(function (e) {
-            //$(this).tab('show');
-            var scrollmem = $('body').scrollTop();
-            window.location.hash = this.hash;
-            $('html,body').scrollTop(scrollmem);
+            $('.nav-tabs a').click(function (e) {
+                //$(this).tab('show');
+                var scrollmem = $('body').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
         });
-    });
 
 
 //######################################################################################################################
 //############################################# ANIMATIONS  ############################################################
 //######################################################################################################################
 
-    $.fn.pulse = function (options) {
+        $.fn.pulse = function (options) {
 
-        var options = $.extend({
-            times: 3,
-            duration: 'slow'
-        }, options);
+            var options = $.extend({
+                times: 3,
+                duration: 'slow'
+            }, options);
 
-        for (var i = 0; i < options.times; i++) {
-            //$(this).delay(50).fadeOut(options.duration).delay(50).fadeIn(options.duration);
-            $(this).animate({opacity: 0.65}, options.duration).animate({opacity: 1}, options.duration).delay(50);
-        }
+            for (var i = 0; i < options.times; i++) {
+                //$(this).delay(50).fadeOut(options.duration).delay(50).fadeIn(options.duration);
+                $(this).animate({opacity: 0.65}, options.duration).animate({opacity: 1}, options.duration).delay(50);
+            }
 
-        return $(this);
-    };
+            return $(this);
+        };
 
-    /**
-     * Remove Success Alerts.
-     */
-    /*$('.alert').pulse({times: 2, duration: 500}, function () {
+        /**
+         * Remove Success Alerts.
+         */
+        /*$('.alert').pulse({times: 2, duration: 500}, function () {
 
-     $(this).delay(100).queue(function (next) {
+         $(this).delay(100).queue(function (next) {
 
-     alert('trigger');
-     $('.alert-success, .alert-info').animate({"opacity": '0'}, 'slow').slideUp('slow');
-     next();
-     });
+         alert('trigger');
+         $('.alert-success, .alert-info').animate({"opacity": '0'}, 'slow').slideUp('slow');
+         next();
+         });
 
-     });*/
+         });*/
 
-    var alertPulse = {times: 3, duration: 600};
-    $(".alert, .message").css({'opacity': 0}).animate({opacity: 1}, alertPulse.duration)/*.pulse(alertPulse)*/.delay(3500);
-    $(this).queue(function () {
-        $('.alert-success, .alert-info').animate({"opacity": '0'}, 'slow').slideUp(1000);
-        $(this).dequeue();
-    });
-
-
-    /**
-     * Sliding Panels.
-     */
-//$('.panel-body').hide().slideDown(1000);
-
-    /**
-     * Sliding Schedule Panels.
-     */
-
-    $('#ScheduleContainer').on('click', 'button.form-schedule-add', function () {
-
-        var newSchedule = $('#ScheduleContainer .panel-body').last();
-
-        newSchedule.hide();
-
-        $('html, body').animate({
-            scrollTop: (newSchedule.parent().offset().top)
-        }, 800, function () {
-
-            newSchedule.slideDown(800);
+        var alertPulse = {times: 3, duration: 600};
+        $(".alert, .message").css({'opacity': 0}).animate({opacity: 1}, alertPulse.duration)/*.pulse(alertPulse)*/.delay(3500);
+        $(this).queue(function () {
+            $('.alert-success, .alert-info').animate({"opacity": '0'}, 'slow').slideUp(1000);
+            $(this).dequeue();
         });
 
-    });
+
+        /**
+         * Sliding Panels.
+         */
+//$('.panel-body').hide().slideDown(1000);
+
+        /**
+         * Sliding Schedule Panels.
+         */
+
+        $('#ScheduleContainer').on('click', 'button.form-schedule-add', function () {
+
+            var newSchedule = $('#ScheduleContainer .panel-body').last();
+
+            newSchedule.hide();
+
+            $('html, body').animate({
+                scrollTop: (newSchedule.parent().offset().top)
+            }, 800, function () {
+
+                newSchedule.slideDown(800);
+            });
+
+        });
 
 
-    /**
-     * Scroll To Top Button.
-     */
-    $(window).scroll(function () {
-        if ($(this).scrollTop() < 300) {
+        /**
+         * Scroll To Top Button.
+         */
+        $(window).scroll(function () {
+            if ($(this).scrollTop() < 300) {
 
-            $('.scrollTop').fadeOut(400);
-        } else {
+                $('.scrollTop').fadeOut(400);
+            } else {
 
-            $('.scrollTop').fadeIn(800);
-        }
-    });
-    $('.scrollTop').on('click', function () {
+                $('.scrollTop').fadeIn(800);
+            }
+        });
+        $('.scrollTop').on('click', function () {
 
-        $('html, body').animate({scrollTop: 0}, 400);
+            $('html, body').animate({scrollTop: 0}, 400);
 
-        return false;
-    });
+            return false;
+        });
 
 
-    /**
-     * Lightbox.
-     */
-    $('img.landing-page-thumbnail').click(function () {
+        /**
+         * Lightbox.
+         */
+        $('img.landing-page-thumbnail').click(function () {
 
-        var self = this;
-        $('.modal-body').empty();
-        var title = $(this).parent('a').attr("title");
-        if (title) {
-            $('.modal-title').html(title);
-            $('#LandingPageModal').find('.modal-dialog').css({'max-width': /*self.naturalWidth*/ 600 + 52});
-        } else {
-            $('.modal-title').html('Captility unterstützt alle Geräte!');
-            $('#LandingPageModal').find('.modal-dialog').css({'max-width': self.naturalWidth + 52});
-        }
+            var self = this;
+            $('.modal-body').empty();
+            var title = $(this).parent('a').attr("title");
+            if (title) {
+                $('.modal-title').html(title);
+                $('#LandingPageModal').find('.modal-dialog').css({'max-width': /*self.naturalWidth*/ 600 + 52});
+            } else {
+                $('.modal-title').html('Captility unterstützt alle Geräte!');
+                $('#LandingPageModal').find('.modal-dialog').css({'max-width': self.naturalWidth + 52});
+            }
 
-        $($(this).parents('div').html()).appendTo('.modal-body');
+            $($(this).parents('div').html()).appendTo('.modal-body');
 
-        $('#LandingPageModal').modal({show: true});
+            $('#LandingPageModal').modal({show: true});
 
-    });
+        });
 
-    /**
-     * Lazy Load.
-     */
+        /**
+         * Lazy Load.
+         */
 //Lazy load unveil images if plugin loaded
-    if ($.isFunction($.fn.unveil)) {
+        if ($.isFunction($.fn.unveil)) {
 
-        $("img").unveil();
-    }
+            $("img").unveil();
+        }
 
-    /**
-     * Breadcrumbs Animation
-     */
+        /**
+         * Breadcrumbs Animation
+         */
 
 // Last 2 or all
-    /*$('.captility-breadcrumb li').last().prev().andSelf().hide().css({"margin-left": "-500px"});
+        /*$('.captility-breadcrumb li').last().prev().andSelf().hide().css({"margin-left": "-500px"});
 
-     $('.captility-breadcrumb li').last().prev().andSelf().each(function (index) {
-     $(this).css({"z-index": 255 - index}).delay(450 * index).show().animate({"margin-left": "0"}, 400);
-     });*/
+         $('.captility-breadcrumb li').last().prev().andSelf().each(function (index) {
+         $(this).css({"z-index": 255 - index}).delay(450 * index).show().animate({"margin-left": "0"}, 400);
+         });*/
 
 
 //Last Only
-    $('.captility-breadcrumb li').each(function (index) {
-        $(this).css({"z-index": 255 - index});
-    });
+        $('.captility-breadcrumb li').each(function (index) {
+            $(this).css({"z-index": 255 - index});
+        });
 
-    $('.captility-breadcrumb li').last().hide().css({"margin-left": "-400px"}).show().animate({"margin-left": "0"}, 600);
+        $('.captility-breadcrumb li').last().hide().css({"margin-left": "-400px"}).show().animate({"margin-left": "0"}, 600);
 
 
 // QR-CODE:
 
-    if ($.isFunction($.fn.qrcode)) {
+        if ($.isFunction($.fn.qrcode)) {
 
 
-        $('a.qr-code').qtip({
-                id: 'qr-code',
-                prerender: true,
-                content: {
-                    text: '<div class="qr-code-container"></div>',
-                    title: '<a href="' + window.location.href + '">' +
-                        '<span class="glyphicon glyphicon-link"></span>'
-                        + window.location.href.substring(0, 30) + '...</a>',
-                    button: 'Close'
-                },
-                show: {
-                    event: 'click'
-                },
-                style: 'qtip-bootstrap',
+            $('a.qr-code').qtip({
+                    id: 'qr-code',
+                    prerender: true,
+                    content: {
+                        text: '<div class="qr-code-container"></div>',
+                        title: '<a href="' + window.location.href + '">' +
+                            '<span class="glyphicon glyphicon-link"></span>'
+                            + window.location.href.substring(0, 30) + '...</a>',
+                        button: 'Close'
+                    },
+                    show: {
+                        event: 'click'
+                    },
+                    style: 'qtip-bootstrap',
 
-                position: {
-                    my: 'top right',
-                    at: ' top right'
-                },
-                events: {
+                    position: {
+                        my: 'top right',
+                        at: ' top right'
+                    },
+                    events: {
 
-                    show: function (event, api) {
+                        show: function (event, api) {
 
-                        var url = window.location.href;
+                            var url = window.location.href;
 
-                        $(this).find('.qr-code-container').empty().qrcode({width: 250, height: 250, text: url});
+                            $(this).find('.qr-code-container').empty().qrcode({width: 250, height: 250, text: url});
 
-                        //console.log(url);
+                            //console.log(url);
+                        }
+                    },
+                    hide: {
+                        event: 'unfocus',
+                        effect: function () {
+                            $(this).animate({ opacity: 0 }, { duration: 300 });
+                        }
                     }
-                },
-                hide: {
-                    event: 'unfocus',
-                    effect: function () {
-                        $(this).animate({ opacity: 0 }, { duration: 300 });
-                    }
+
                 }
-
-            }
-        )
-    }
-    ;
+            )
+        }
+        ;
 
 
 //######################################################################################################################
@@ -995,336 +995,397 @@ $(document).ready(function () {
 //######################################################################################################################
 
 // SWAP NEIGHTBOUR TASKS, THE UPPER ONE COMES FIRST!
-    function swapTasks($taskUpper, $taskLower, callback) {
+        function swapTasks($taskUpper, $taskLower, callback) {
 
 
-        var $set3 = $taskLower.last().nextAll();
+            var $set3 = $taskLower.last().nextAll();
 
-        var mb_prev = cssprop($taskUpper.first().prev(), "margin-bottom");
-        if (isNaN(mb_prev)) mb_prev = 0;
-        var mt_next = cssprop($taskLower.last().next(), "margin-top");
-        if (isNaN(mt_next)) mt_next = 0;
+            var mb_prev = cssprop($taskUpper.first().prev(), "margin-bottom");
+            if (isNaN(mb_prev)) mb_prev = 0;
+            var mt_next = cssprop($taskLower.last().next(), "margin-top");
+            if (isNaN(mt_next)) mt_next = 0;
 
-        var mt_1 = cssprop($taskUpper.first(), "margin-top");
-        var mb_1 = cssprop($taskUpper.last(), "margin-bottom");
-        var mt_2 = cssprop($taskLower.first(), "margin-top");
-        var mb_2 = cssprop($taskLower.last(), "margin-bottom");
+            var mt_1 = cssprop($taskUpper.first(), "margin-top");
+            var mb_1 = cssprop($taskUpper.last(), "margin-bottom");
+            var mt_2 = cssprop($taskLower.first(), "margin-top");
+            var mb_2 = cssprop($taskLower.last(), "margin-bottom");
 
-        var h1 = $taskUpper.last().offset().top + $taskUpper.last().outerHeight() - $taskUpper.first().offset().top;
-        var h2 = $taskLower.last().offset().top + $taskLower.last().outerHeight() - $taskLower.first().offset().top;
+            var h1 = $taskUpper.last().offset().top + $taskUpper.last().outerHeight() - $taskUpper.first().offset().top;
+            var h2 = $taskLower.last().offset().top + $taskLower.last().outerHeight() - $taskLower.first().offset().top;
 
-        move1 = h2 + Math.max(mb_2, mt_1) + Math.max(mb_prev, mt_2) - Math.max(mb_prev, mt_1);
-        move2 = -h1 - Math.max(mb_1, mt_2) - Math.max(mb_prev, mt_1) + Math.max(mb_prev, mt_2);
-        move3 = move1 + $taskUpper.first().offset().top + h1 - $taskLower.first().offset().top - h2 +
-            Math.max(mb_1, mt_next) - Math.max(mb_2, mt_next);
+            move1 = h2 + Math.max(mb_2, mt_1) + Math.max(mb_prev, mt_2) - Math.max(mb_prev, mt_1);
+            move2 = -h1 - Math.max(mb_1, mt_2) - Math.max(mb_prev, mt_1) + Math.max(mb_prev, mt_2);
+            move3 = move1 + $taskUpper.first().offset().top + h1 - $taskLower.first().offset().top - h2 +
+                Math.max(mb_1, mt_next) - Math.max(mb_2, mt_next);
 
-        // let's move stuff
-        $taskUpper.css('position', 'relative');
-        $taskLower.css('position', 'relative');
-        $taskUpper.animate({'top': move1}, {duration: 800});
-        $taskLower.animate({'top': move2}, {duration: 800, complete: function () {
-            // rearrange the DOM and restore positioning when we're done moving
-            $taskUpper.insertAfter($taskLower.last())
-            $taskUpper.removeAttr('style');
-            $taskLower.removeAttr('style');
+            // let's move stuff
+            $taskUpper.css('position', 'relative');
+            $taskLower.css('position', 'relative');
+            $taskUpper.animate({'top': move1}, {duration: 800});
+            $taskLower.animate({'top': move2}, {duration: 800, complete: function () {
+                // rearrange the DOM and restore positioning when we're done moving
+                $taskUpper.insertAfter($taskLower.last())
+                $taskUpper.removeAttr('style');
+                $taskLower.removeAttr('style');
 
-            $taskUpper.updateTaskStep();
+                $taskUpper.updateTaskStep();
+            }
+            });
+
         }
-        });
-
-    }
 
 
 // SWITCH TO EDIT MODE
-    jQuery.fn.switchTaskToEditMode = function () {
+        jQuery.fn.switchTaskToEditMode = function () {
 
-        $(this).find('.task-view').hide();
-        $(this).find('.task-edit').show().find('input, textarea').each(function () {
+            $(this).find('.task-view').hide();
+            $(this).find('.task-edit').show().find('input, textarea').each(function () {
 
-            $(this).prop('disabled', false);
-        });
+                $(this).prop('disabled', false);
+            });
 
-        return $(this)
-    }
+            return $(this)
+        }
 
 
 // SWITCH TASK TO VIEW MODE
-    jQuery.fn.switchTaskToViewMode = function () {
+        jQuery.fn.switchTaskToViewMode = function () {
 
 
-        $(this).find('.task-edit').slideUp().find('input, textarea').each(function () {
+            $(this).find('.task-edit').slideUp().find('input, textarea').each(function () {
 
-            //$(this).prop('disabled', true); NO - WOULDNT SEND DATA!!!
-        });
+                //$(this).prop('disabled', true); NO - WOULDNT SEND DATA!!!
+            });
 
-        $(this).find('.task-view').fadeIn();
+            $(this).find('.task-view').fadeIn();
 
-        return $(this)
-    }
+            return $(this)
+        }
 
 // Catch Enter Key in Tasks to prevent FORM POST
-    jQuery.fn.enableEnterListener = function () {
+        jQuery.fn.enableEnterListener = function () {
 
-        var self = this;
+            var self = this;
 
-        //Bind Keypress event on Field
-        $(this).find('.task-name-field :input').keydown(function (e) {
+            //Bind Keypress event on Field
+            $(this).find('.task-name-field :input').keydown(function (e) {
 
-            var code = e.keyCode || e.which;
+                var code = e.keyCode || e.which;
 
-            // if enter
-            if (code == 13) {
+                // if enter
+                if (code == 13) {
 
-                // save task and dont post form
-                $(self).find('.task-save').click();
-                return false;
-            }
+                    // save task and dont post form
+                    $(self).find('.task-save').click();
+                    return false;
+                }
 
-        });
-    }
+            });
+        }
 
-    $('.task').enableEnterListener();
+        $('.task').enableEnterListener();
 
 // count tasks from parent
-    jQuery.fn.countTasksFrom = function (parent) {
+        jQuery.fn.countTasksFrom = function (parent) {
 
-        return $(parent).find('li:not(.task-template, .workflow-task-add)').length;
-    }
+            return $(parent).find('li:not(.task-template, .workflow-task-add)').length;
+        }
 
 
 // UPDATE TASK ID
-    jQuery.fn.updateTaskId = function (id) {
+        jQuery.fn.updateTaskId = function (id) {
 
 
-        $(this).find('label, textarea, input').each(function () {
+            $(this).find('label, textarea, input').each(function () {
 
 
-            var props = ['name', 'for', 'id'];
+                var props = ['name', 'for', 'id'];
 
-            for (var i = 0; i < props.length; ++i) {
+                for (var i = 0; i < props.length; ++i) {
 
-                if ($(this).prop(props[i]) !== undefined) {
+                    if ($(this).prop(props[i]) !== undefined) {
 
-                    var newProp = $(this).prop(props[i]).replace('$placeholder$', id);
-                    $(this).prop(props[i], newProp);
+                        var newProp = $(this).prop(props[i]).replace('$placeholder$', id);
+                        $(this).prop(props[i], newProp);
+                    }
                 }
-            }
 
-        });
+            });
 
-        return $(this)
-    }
+            return $(this)
+        }
 
 
 // UPDATE STEP ID FROM SORTING
-    jQuery.fn.updateTaskStep = function () {
+        jQuery.fn.updateTaskStep = function () {
 
 
-        /*var task = $(this);
+            /*var task = $(this);
 
-         var taskStepField = task.find('.task-step-field').find('input');
+             var taskStepField = task.find('.task-step-field').find('input');
 
-         taskStepField
+             taskStepField
 
-         console.log(taskStepField.get(0));*/
+             console.log(taskStepField.get(0));*/
 
-        var taskList = $('.workflow-task-list li.task').each(function (i, el) {
+            var taskList = $('.workflow-task-list li.task').each(function (i, el) {
 
-            var taskStepField = $(this).find('.task-step-field').find('input');
+                var taskStepField = $(this).find('.task-step-field').find('input');
 
-            taskStepField.val(i);
+                taskStepField.val(i);
+
+            });
+
+            return $(this);
+        }
+
+// MAKE TASKS SORTABLE AND SET STEP
+        function sortableTasks() {
+
+
+            if ($.isFunction($.fn.sortable)) {
+
+                //SORTABLE TASKS
+                var taskList = $('.workflow-task-list');
+
+                taskList.sortable(
+
+                    {
+                        forcePlaceholderSize: true,
+                        items: ':not(.sort-disabled)'
+
+                    }).bind('sortupdate', function (e, ui) {
+
+                        ui.item.updateTaskStep();
+                    });
+            }
+
+        }
+
+// Ignite!
+        sortableTasks();
+
+
+        var classes = ['primary', 'warning', 'danger', 'info'];
+
+// BUTTON: ADD NEW TASK IN EDIT MODE FROM TEMPLATE .task-template
+        $('.workflow-task-list').on('click', '.workflow-task-add', function () {
+
+            //Find Template
+            var taskTemplate = ($(this).parent().find('li.task-template'));
+
+            // IF TEMPLATE Exists..
+            if (taskTemplate.length > 0) {
+
+                // Generate new Task Container from template (remove template class)
+                var newTask = taskTemplate.clone().removeClass('task-template').hide().addClass('task');
+
+                //Badge Color
+                newTask.find('.timeline-badge').addClass(classes[newTask.countTasksFrom(taskTemplate.parent()) % 4])
+
+                // .. show editable edit options only
+                newTask.switchTaskToEditMode();
+                // .. and set correct ID in fields, for Post data
+                newTask.updateTaskId(newTask.countTasksFrom(taskTemplate.parent()));
+
+                taskTemplate.before(newTask); // append before template / add button
+
+                newTask.slideDown('800')
+
+                sortableTasks();
+                newTask.updateTaskStep();
+                newTask.enableEnterListener();
+
+            }
+        });
+
+// BUTTON: SAVE TASK / GO TO VIEW MODE
+        $('ul.workflow-task-list').on('click', '.task-save', function () {
+
+            var task = $(this).parents('li.task');
+
+
+            // Get Representations
+            var taskName = task.find('h4.task-name');
+            var taskDescription = task.find('.task-description');
+
+            var taskNameField = task.find('.task-name-field').find('input');
+            var taskDescriptionField = task.find('.task-description-field').find('textarea');
+
+
+            if (taskNameField.val() === "") {
+
+                taskNameField.closest('.form-group').addClass('has-error');
+
+            } else {
+
+                // SET VALUES
+                taskName.find('hr').before(taskNameField.val());
+                taskDescription.html(taskDescriptionField.val());
+
+                task.switchTaskToViewMode();
+            }
 
         });
 
-        return $(this);
-    }
-
-// MAKE TASKS SORTABLE AND SET STEP
-    function sortableTasks() {
-
-
-        if ($.isFunction($.fn.sortable)) {
-
-            //SORTABLE TASKS
-            var taskList = $('.workflow-task-list');
-
-            taskList.sortable(
-
-                {
-                    forcePlaceholderSize: true,
-                    items: ':not(.sort-disabled)'
-
-                }).bind('sortupdate', function (e, ui) {
-
-                    ui.item.updateTaskStep();
-                });
-        }
-
-    }
-
-// Ignite!
-    sortableTasks();
-
-
-    var classes = ['primary', 'warning', 'danger', 'info'];
-
-// BUTTON: ADD NEW TASK IN EDIT MODE FROM TEMPLATE .task-template
-    $('.workflow-task-list').on('click', '.workflow-task-add', function () {
-
-        //Find Template
-        var taskTemplate = ($(this).parent().find('li.task-template'));
-
-        // IF TEMPLATE Exists..
-        if (taskTemplate.length > 0) {
-
-            // Generate new Task Container from template (remove template class)
-            var newTask = taskTemplate.clone().removeClass('task-template').hide().addClass('task');
-
-            //Badge Color
-            newTask.find('.timeline-badge').addClass(classes[newTask.countTasksFrom(taskTemplate.parent()) % 4])
-
-            // .. show editable edit options only
-            newTask.switchTaskToEditMode();
-            // .. and set correct ID in fields, for Post data
-            newTask.updateTaskId(newTask.countTasksFrom(taskTemplate.parent()));
-
-            taskTemplate.before(newTask); // append before template / add button
-
-            newTask.slideDown('800')
-
-            sortableTasks();
-            newTask.updateTaskStep();
-            newTask.enableEnterListener();
-
-        }
-    });
-
-// BUTTON: SAVE TASK / GO TO VIEW MODE
-    $('ul.workflow-task-list').on('click', '.task-save', function () {
-
-        var task = $(this).parents('li.task');
-
-
-        // Get Representations
-        var taskName = task.find('h4.task-name');
-        var taskDescription = task.find('.task-description');
-
-        var taskNameField = task.find('.task-name-field').find('input');
-        var taskDescriptionField = task.find('.task-description-field').find('textarea');
-
-
-        if (taskNameField.val() === "") {
-
-            taskNameField.closest('.form-group').addClass('has-error');
-
-        } else {
-
-            // SET VALUES
-            taskName.find('hr').before(taskNameField.val());
-            taskDescription.html(taskDescriptionField.val());
-
-            task.switchTaskToViewMode();
-        }
-
-    });
-
 
 // BUTTON: REMOVE TASK, IF TASK ALREADY EXISTENT: AJAX DELETE
-    $('ul.workflow-task-list').on('click', '.task-delete', function () {
+        $('ul.workflow-task-list').on('click', '.task-delete', function () {
 
-        var task = $(this).parents('li.task');
-        var taskId = task.find('.task-id-field').find('input').val();
+            var task = $(this).parents('li.task');
+            var taskId = task.find('.task-id-field').find('input').val();
 
-        if (typeof taskId !== 'undefined') {
+            if (typeof taskId !== 'undefined') {
 
-            if (confirm('Sind Sie sicher, dass die die Aufgabe entgültig löschen möchten ?')) {  // TODO SPRACHE
+                if (confirm('Sind Sie sicher, dass die die Aufgabe entgültig löschen möchten ?')) {  // TODO SPRACHE
 
-                $.post($appRoot + '/tasks/delete/' + taskId, function (data) {
+                    $.post($appRoot + '/tasks/delete/' + taskId, function (data) {
 
-                    alert('Killed Task');
+                        alert('Killed Task');
 
-                    task.slideUp('800', function () {
+                        task.slideUp('800', function () {
 
-                        task.remove();
+                            task.remove();
+                        });
+
                     });
+                }
 
+            } else {
+
+                task.slideUp('800', function () {
+
+                    task.remove();
                 });
             }
 
-        } else {
 
-            task.slideUp('800', function () {
-
-                task.remove();
-            });
-        }
-
-
-    });
+        });
 
 
 // CONFIG BUTTON: GOTO EDIT MODE
-    $('ul.workflow-task-list').on('click', '.task-config', function () {
+        $('ul.workflow-task-list').on('click', '.task-config', function () {
 
-        var task = $(this).parents('li.task');
+            var task = $(this).parents('li.task');
 
-        task.switchTaskToEditMode();
-    });
+            task.switchTaskToEditMode();
+        });
 
 // BUTTON: SWAP DONW
-    $('ul.workflow-task-list').on('click', '.task-down', function () {
+        $('ul.workflow-task-list').on('click', '.task-down', function () {
 
-        var task = $(this).parents('li.task');
+            var task = $(this).parents('li.task');
 
-        var nextTask = task.next('li.task:not(.task-template, .workflow-task-add)');
+            var nextTask = task.next('li.task:not(.task-template, .workflow-task-add)');
 
-        if (nextTask.length) {
+            if (nextTask.length) {
 
-            swapTasks(task, nextTask, task.updateTaskStep());
-        }
-    });
+                swapTasks(task, nextTask, task.updateTaskStep());
+            }
+        });
 
 // BUTTON: SWAP UP
-    $('ul.workflow-task-list').on('click', '.task-up', function () {
+        $('ul.workflow-task-list').on('click', '.task-up', function () {
 
-        var task = $(this).parents('li.task');
+            var task = $(this).parents('li.task');
 
-        var prevTask = task.prev('li.task:not(.task-template, .workflow-task-add)');
+            var prevTask = task.prev('li.task:not(.task-template, .workflow-task-add)');
 
-        if (prevTask.length) {
+            if (prevTask.length) {
 
-            swapTasks(prevTask, task);
+                swapTasks(prevTask, task);
+            }
+        });
+
+
+//######################################################################################################################
+//################################################# TICKETS   ##########################################################
+//######################################################################################################################
+
+
+        /**
+         * Ticket View Button
+         */
+        $('body').on('show.bs.tab', '#TicketsView[data-toggle="tab"]', function () {
+
+            $(this).getTickets();
+        });
+
+        /**
+         * My-Tickets View Button
+         */
+        $('body').on('show.bs.tab', '#MyTicketsView[data-toggle="tab"]', function () {
+
+            $(this).getTickets(true);
+        });
+
+
+        /**
+         * Append new Tickets.
+         */
+        jQuery.fn.appendNewTickets = function ($data, callback) {
+
+            $(this).show();
+            $data.hide();
+            $(this).html($data);
+
+            $data.slideDown('600');
         }
-    });
+
+        /**
+         * Get ajax Tickets
+         */
+        jQuery.fn.getTickets = function (my, callback) {
+
+            var url = $appRoot + '/tickets/feed'
+            url += (my) ? '/my' : '';
+
+            var $target = (my) ? $('.myTicketContainer') : $('.ticketContainer');
+            $target.hide();
+
+            var jqxhr = $.post(url,function (data) {
+
+                $target.appendNewTickets($(data));
+
+            }).fail(function () {
+
+                    alert("Aktuelle Tickets konnten nicht abgefragt werden.");
+
+                    // Reload (logout)
+                    window.location.replace(window.location.pathname);
+                })
+        }
+
+        /**
+         * Ticket Action Buttons
+         */
+        $('body').on('click', 'a.postLink', function () {
+
+            var $self = $(this);
+
+            var url = $(this).data("href"); //gets data-href
 
 
-//######################################################################################################################
-//############################################# TICKETS UPDATE  ########################################################
-//######################################################################################################################
+            var jqxhr = $.post(url,function () {
 
+                $self.parents('.ticket').slideUp(600, function () {
 
-    $('body').on('click', 'a.postLink', function () {
+                    $self.remove();
 
-        var $self = $(this);
+                    // UPDATE BOTH
+                    $self.getTickets(true);
+                    $self.getTickets(false);
+                });
 
-        var url = $(this).data("href"); //gets data-href
+            }).fail(function () {
 
+                    alert("Das Ticket konnte nicht aktualisiert werden.");
 
-        var jqxhr = $.post(url,function () {
+                    // Reload (logout)
+                    //window.location.replace(window.location.pathname);
+                })
+        });
 
-            $self.parents('.ticket').slideUp(600, function () {
-
-                $self.remove();
-            });
-
-        }).fail(function () {
-
-                alert("Das Ticket konnte nicht aktualisiert werden.");
-
-                // Reload (logout)
-                window.location.replace(window.location.pathname);
-            })
-    });
-
-})
+    }
+)
 ;

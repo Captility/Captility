@@ -57,9 +57,9 @@
                             <? // SORT TASKS TO SHOW IN RIGHT ORDER
 
                             // SORT
-                            if (!empty($workflow['Workflow']['Task'])) {
+                            if (!empty($workflow['Task'])) {
 
-                                usort($workflow['Workflow']['Task'], 'sortByStep');
+                                usort($workflow['Task'], 'sortByStep');
                             }
                             ?>
 
@@ -124,7 +124,7 @@
             </div>
             <!-- end body -->
             <div class="panel-heading">
-                    <span class="glyphicon glyphicon-film"></span><?php echo __('Captures');?>
+                <span class="glyphicon glyphicon-film"></span><?php echo __('Captures');?>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">

@@ -276,6 +276,7 @@ class Event extends AppModel {
             $this->updateStatus('Processing');
         }
 
+
         // IF NEW TASKS TO GENERATE TO TICKET
         if (!empty($event)) {
 
@@ -470,7 +471,6 @@ class Event extends AppModel {
 
         $userCondition = (isset($user_id)) ? array('Capture.user_id' => $user_id) : array();
 
-
         return $this->find('all', array(
                 'contain' => false,
                 'link' => array(
@@ -507,9 +507,7 @@ class Event extends AppModel {
 
                         $userCondition
                     )
-                ),
-
-
+                )
             )
         );
     }
