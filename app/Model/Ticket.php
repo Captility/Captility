@@ -214,18 +214,17 @@ class Ticket extends AppModel {
         //Boolean
         $created = ($created === 'true');
 
-
         // Check if Update or next Ticket required
         if (!$created && !empty($this->data) && isset($this->data['Ticket']['old_status'])) {
 
             // Only when status changed...
             if ($this->field('status') != $this->data['Ticket']['old_status']) {
 
-                // check if Ticket is now done and next is required
+                // check if Ticket is now done and next is required !Watch out: multiple recursive afterSaveCalls will happen
                 if ($this->field('status') == 'Done') {
 
                     // set ended
-                    $this->saveField('ended', date('Y-m-d H:i:s'));
+                    $this->saveField('ended', date('Y-m-d H:i:s')); //,true, false); //avoid new callback
 
                     // calc next Task
                     $this->Task->id = $this->field('task_id');
@@ -269,8 +268,6 @@ class Ticket extends AppModel {
 
     public function generateNewTicket($ticketData) {
 
-        //$this->create();
-
         // Custom Query for performance and to avoid integrity violations on ajax-call saveField::afterSave
         // Not needed anymore because of whitelisting!
         /*$insertQuery = "INSERT INTO `Captility`.`tickets` (`status`, `event_id`, `task_id`, `user_id`, `modified`, `created`) " .
@@ -285,11 +282,8 @@ class Ticket extends AppModel {
          * "Since you are creating the new Ticket from within the afterSave() method of Ticket itself after the initial update of the status field, the model's whitelist is set to the only field you were initially saving (status)."
          * @url http://stackoverflow.com/questions/21588917/cakephp-missing-fields-on-create-insert-into-query/21591713?noredirect=1#21591713
          */
-        if ($this->save($ticketData, false, array('event_id', 'task_id', 'user_id', 'status'))) {
-
-
-        }
-        else {
+        $this->create();
+        if (!$this->save($ticketData, false, array('event_id', 'task_id', 'user_id', 'status'))) {
 
             //debug($this->validationErrors);
             throw new InternalErrorException(__('The next Ticket of related workflow could not be generated.'));
