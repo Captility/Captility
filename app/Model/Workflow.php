@@ -86,7 +86,7 @@ class Workflow extends AppModel {
         'Task' => array(
             'className' => 'Task',
             'foreignKey' => 'workflow_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',
@@ -97,5 +97,23 @@ class Workflow extends AppModel {
             'counterQuery' => ''
         )
     );
+
+    public function beforeDelete($cascade = true) {
+
+        if ($cascade) {
+            $captures = $this->Capture->find("all", array(
+                "conditions" => array("Capture.workflow_id" => $this->id)
+            ));
+        }
+
+
+        foreach ($captures as $i => $capture) {
+
+            $capture['Capture']['workflow_id'] = null;
+            $this->Capture->save($capture['Capture']);
+        }
+
+        return true;
+    }
 
 }

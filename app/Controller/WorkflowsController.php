@@ -110,7 +110,7 @@ class WorkflowsController extends AppController {
             throw new NotFoundException(__('Invalid workflow'));
         }
         $this->request->onlyAllow('post', 'delete');
-        if ($this->Workflow->delete()) {
+        if ($this->Workflow->delete($this->Workflow->id, true)) {
             $this->Session->setFlash(__('The workflow has been deleted.'), 'default', array('class' => 'alert alert-success'));
         }
         else {

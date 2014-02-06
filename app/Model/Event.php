@@ -234,11 +234,11 @@ class Event extends AppModel {
      * Reformat Find resulst for COUNT.
      * @url Reference: http://nuts-and-bolts-of-cakephp.com/2008/09/29/dealing-with-calculated-fields-in-cakephps-find/
      */
-    function afterFind($results, $primary=false) {
-        if($primary == true) {
-            if(Set::check($results, '0.0')) {
+    function afterFind($results, $primary = false) {
+        if ($primary == true) {
+            if (Set::check($results, '0.0')) {
                 $fieldName = key($results[0][0]);
-                foreach($results as $key=>$value) {
+                foreach ($results as $key => $value) {
                     $results[$key][$this->alias][$fieldName] = $value[0][$fieldName];
                     unset($results[$key][0]);
                 }

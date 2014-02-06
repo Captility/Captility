@@ -272,23 +272,29 @@ class Ticket extends AppModel {
         //$this->create();
 
         // Custom Query for performance and to avoid integrity violations on ajax-call saveField::afterSave
-        $insertQuery = "INSERT INTO `Captility`.`tickets` (`status`, `event_id`, `task_id`, `user_id`, `modified`, `created`) " .
+        // Not needed anymore because of whitelisting!
+        /*$insertQuery = "INSERT INTO `Captility`.`tickets` (`status`, `event_id`, `task_id`, `user_id`, `modified`, `created`) " .
             "VALUES ('" . $ticketData['Ticket']['status'] . "', " . $ticketData['Ticket']['event_id'] . ", " .
             $ticketData['Ticket']['task_id'] . ", " . $ticketData['Ticket']['user_id'] . ", '" . date('Y-m-d H:i:s') . "', '" . date('Y-m-d H:i:s') . "')";
+        $this->query($insertQuery);*/
 
-        $this->query($insertQuery);
 
-        /*if ($this->save($ticketData)) {
+        /**
+         * WHITELIST
+         *
+         * "Since you are creating the new Ticket from within the afterSave() method of Ticket itself after the initial update of the status field, the model's whitelist is set to the only field you were initially saving (status)."
+         * @url http://stackoverflow.com/questions/21588917/cakephp-missing-fields-on-create-insert-into-query/21591713?noredirect=1#21591713
+         */
+        if ($this->save($ticketData, false, array('event_id', 'task_id', 'user_id', 'status'))) {
+
 
         }
         else {
 
-            debug($this->validationErrors);
-            //throw new InternalErrorException(__('The next Ticket of related workflow could not be generated.'));
-        }*/
+            //debug($this->validationErrors);
+            throw new InternalErrorException(__('The next Ticket of related workflow could not be generated.'));
+        }
 
-        /*$log = $this->getDataSource()->getLog(false, false);
-        debug($log);*/
     }
 
 
