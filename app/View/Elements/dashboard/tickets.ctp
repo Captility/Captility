@@ -42,7 +42,7 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
                 <th><?php echo __('Task'); ?></th>
                 <td colspan="4">
                     <span class="glyphicon glyphicon-tags"></span>
-                    <?php echo $this->Html->link($ticket['Task']['name'], array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id'])); ?>
+                    <?php echo /*$this->Html->link(*/h($ticket['Task']['name'])/*, array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id']));*/ ?>
                     &nbsp;
                 </td>
             </tr>

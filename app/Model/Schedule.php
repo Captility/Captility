@@ -242,14 +242,7 @@ class Schedule extends AppModel {
 
     public function afterSave($created, array $options = array()) {
 
-        $created = ($created === 'true');
-
-        if ($created) {
-
-            $this->Capture->Schedule->manageOwnEvents($this->id, $this->data);
-        }
-
-        return true;
+        return $this->Capture->Schedule->manageOwnEvents($this->id, $this->data);
     }
 
     /**
@@ -297,13 +290,13 @@ class Schedule extends AppModel {
             $this->Event->create();
             if ($this->Event->save($event)) {
 
-                //debug('TICKET SAVED'); //todo entfernen
+                //debug('EVENT SAVED'); //todo entfernen
                 return true;
             }
             else {
 
 
-                //debug('TICKET NOT SAVED'); //todo entfernen
+                //debug('EVENT NOT SAVED'); //todo entfernen
                 //debug($event); //todo entfernen
                 //debug($this->invalidFields()); //todo entfernen
 

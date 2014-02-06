@@ -114,7 +114,7 @@ class CapturesController extends AppController {
 
                 if ($this->Capture->Schedule->saveAll($Schedules)) {
 
-                    debug('SCHEDULE SAVED');
+                    //debug('SCHEDULE SAVED');
                     //$this->Capture->Schedule->delete();
 
                     return $this->redirect(array('action' => 'index'));

@@ -43,7 +43,7 @@
                 <th><?php echo __('Task'); ?></th>
                 <td>
                     <span class="glyphicon glyphicon-tags"></span>
-                    <?php echo $this->Html->link($ticket['Task']['name'], array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id'])); ?>
+                    <?php echo /*$this->Html->link(*/h($ticket['Task']['name']) /*, array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id']));*/ ?>
                     &nbsp;
                 </td>
             </tr>
@@ -58,7 +58,7 @@
             <tr>
                 <th><?php echo __('Status'); ?></th>
 
-                <td class="labels lower-labels">
+                <td class="labels">
 
                     <span class="glyphicon glyphicon-tasks"></span>
 

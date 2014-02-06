@@ -24,6 +24,7 @@ class Event extends AppModel {
      */
     public $displayField = 'title';
 
+
     /**
      * Validation rules
      *
@@ -229,6 +230,31 @@ class Event extends AppModel {
         return true;
     }
 
+    /**
+     * Reformat Find resulst for COUNT.
+     * @url Reference: http://nuts-and-bolts-of-cakephp.com/2008/09/29/dealing-with-calculated-fields-in-cakephps-find/
+     */
+    function afterFind($results, $primary=false) {
+        if($primary == true) {
+            if(Set::check($results, '0.0')) {
+                $fieldName = key($results[0][0]);
+                foreach($results as $key=>$value) {
+                    $results[$key][$this->alias][$fieldName] = $value[0][$fieldName];
+                    unset($results[$key][0]);
+                }
+            }
+        }
+
+        return $results;
+    }
+
+    /**
+     *
+     * Calculate data for new Ticket, generate new Ticket for Event after Workflow Rule. Set Event status.
+     *
+     * @param int $nextStep
+     * @param array $options
+     */
     public function generateNext($nextStep = 0, $options = array()) {
 
 

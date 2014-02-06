@@ -60,8 +60,8 @@ class CalendarsController extends AppController {
         // WEEK FOR OVERVIEW
 
         // Get german Week defaults
-        $week_start = $this->Ticket->getWeekStart();
-        $week_end = $this->Ticket->getNextWeekStart();
+        $week_start = $this->Event->getWeekStart();
+        $week_end = $this->Event->getNextWeekStart();
 
         // TICKETS
 
@@ -117,6 +117,48 @@ class CalendarsController extends AppController {
     public function updateEvents($salt = 0) {
 
 
+        $this->layout = "ajax";
 
+        $today_start = date('Y-m-d') . ' 00:00:00';
+        $today_now = date('Y-m-d H:i:s');
+
+        $events = $this->Event->find('all', array(
+
+                'fields' => array('Event.event_id', 'Event.title', 'Event.status',
+                    "(SELECT COUNT(event_id) FROM tickets AS Ticket WHERE Ticket.event_id = Event.event_id) AS ticketCount"),
+
+                'conditions' => array(
+
+                    'AND' => array(
+
+                        'Event.start >=' => $today_start,
+                        'Event.start <=' => $today_now,
+                        'Event.status !=' => array('Canceled', 'Failed', 'Online'),
+
+                    )
+                )
+            )
+        );
+
+        $count = 0;
+
+        foreach ($events as $i => $event) {
+
+            if ($event['Event']['ticketCount'] == 0) {
+
+                $jsonResponse[$i] = json_encode($event);
+
+                $this->Event->id = $event['Event']['event_id'];
+                $this->Event->generateNext();
+
+                $count++;
+            }
+        }
+
+        $jsonResponse['GENERATED'] = $count;
+
+        $this->set("json", json_encode($jsonResponse));
+
+        $this->render('json');
     }
 }

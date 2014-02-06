@@ -178,9 +178,9 @@
                             <tr>
                                 <td><?php echo $ticket['ticket_id']; ?></td>
                                 <td>
-                                    <?php echo $this->Html->link($ticket['Task']['name'], array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id'])); ?>
+                                    <?php echo h($ticket['Task']['name']); ?>
                                 </td>
-                                <td class="labels lower-labels"><?php $statuses = Configure::read('TICKET.STATUSES');
+                                <td class="labels"><?php $statuses = Configure::read('TICKET.STATUSES');
                                     $class = $statuses[$ticket['status']]; ?>
 
                                     <span
