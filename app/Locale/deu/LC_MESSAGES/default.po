@@ -1133,12 +1133,23 @@ msgstr "Dauer der Aufzeichnung"
 msgid "Choose the type of your Capture"
 msgstr "Wählen Sie die Art der Aufzeichnung"
 
+msgid "No Tickets found."
+msgstr "Keine Tickets gefunden"
 
+msgid "No open Tickets found."
+msgstr "Alles erledigt!"
 
+msgid "No open tickets during the requested period were found."
+msgstr "In der angegebenen Zeitspanne wurden keine offenen Tickets gefunden."
+
+msgid "No events found"
+msgstr "Keine Aufnahmen gefunden."
+
+msgid "There are no Captures this week."
+msgstr "Es existieren keine geplanten Aufnahmen in dieser Woche."
 
 msgid "Date"
 msgstr "Datum"
-
 
 msgid "Every"
 msgstr "Jede"

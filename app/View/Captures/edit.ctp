@@ -89,15 +89,12 @@
 ));?>
 
 
-
-
-
-<?php echo $this->Form->input('Event.event_type_id', array(
+<?php /*echo $this->Form->input('Event.event_type_id', array(
 
     'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-facetime-video input-group-glyphicon"></span>', 'afterInput' => '</div>',
     'selected' => $this->Form->value('Event.0.event_type_id')
 
-));?>
+));*/?>
 
 
 <?php echo $this->Form->input('link', array(

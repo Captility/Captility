@@ -1,8 +1,10 @@
 <?php $statuses = Configure::read('TICKET.STATUSES');
-$class = $statuses[$ticket['Ticket']['status']]; ?>
+$class = $statuses[$ticket['Ticket']['status']];
+
+$myTicket = ($ticket['User']['user_id'] === (AuthComponent::user('id')))?>
 
 <div
-    class="sideTicket ticket badger-left badger-<? echo $class ?> panel-<? echo ($class == 'primary') ? 'info' : $class ?>"
+    class="sideTicket <? if (!$myTicket) echo 'well ' ?>ticket badger-left badger-<? echo $class ?> panel-<? echo ($class == 'primary') ? 'info' : $class ?>"
     data-badger="Ticket #<? echo $ticket['Ticket']['ticket_id'] ?>">
 
 
@@ -11,12 +13,14 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
     </div>
 
     <div class="ticket-actions actions">
-        <a href="javascript:void(0)" class="postLink"
-           data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Error"><span
-                class="glyphicon glyphicon-remove pull-right"></span></a>
-        <a href="javascript:void(0)" class="postLink"
-           data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Done"><span
-                class="glyphicon glyphicon-ok pull-right"></span></a>
+        <? if ($myTicket) : ?>
+            <a href="javascript:void(0)" class="postLink"
+               data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Error"><span
+                    class="glyphicon glyphicon-remove pull-right"></span></a>
+            <a href="javascript:void(0)" class="postLink"
+               data-href="<? echo Router::url('/', true); ?>tickets/update/<? echo $ticket['Ticket']['ticket_id'] ?>/Done"><span
+                    class="glyphicon glyphicon-ok pull-right"></span></a>
+        <? endif; ?>
         <a href="<? echo Router::url('/', true); ?>tickets/edit/<? echo $ticket['Ticket']['ticket_id'] ?>"><span
                 class="glyphicon el-icon-pencil pull-right"></span></a>
         <a href="<? echo Router::url('/', true); ?>tickets/view/<? echo $ticket['Ticket']['ticket_id'] ?>"><span
@@ -42,7 +46,8 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
                 <th><?php echo __('Task'); ?></th>
                 <td colspan="4">
                     <span class="glyphicon glyphicon-tags"></span>
-                    <?php echo /*$this->Html->link(*/h($ticket['Task']['name'])/*, array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id']));*/ ?>
+                    <?php echo /*$this->Html->link(*/
+                    h($ticket['Task']['name'])/*, array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id']));*/ ?>
                     &nbsp;
                 </td>
             </tr>
@@ -68,14 +73,14 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
             </tr>
             <tr>
                 <th><?php echo __('Lecture'); ?></th>
-                <td colspan=>
+                <td>
                     <span class="glyphicon glyphicon-th-list"></span>
                     <?php echo $this->Html->link($this->Captility->trimLink('#' . $ticket['Lecture']['number'] . ' ' . $ticket['Lecture']['name'], 40),
                         array('controller' => 'lectures', 'action' => 'view', $ticket['Lecture']['lecture_id'])); ?>
 
                 </td>
                 <th><?php echo __('Host'); ?></th>
-                <td colspan=>
+                <td>
                     <span class="glyphicon glyphicon-th-list"></span>
                     <?php echo $this->Html->link($ticket['Host']['name'],
                         array('controller' => 'hosts', 'action' => 'view', $ticket['Host']['host_id'])); ?>
@@ -86,7 +91,7 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
 
                 <th><?php echo __('Status'); ?></th>
 
-                <td class="labels lower-labels">
+                <td class="labels">
 
                     <span class="glyphicon glyphicon-tasks"></span>
 
@@ -135,23 +140,6 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
                 </td>
             </tr>
 
-            <!--tr>
-                <th><?php /*echo __('Ended'); */?></th>
-                <td>
-                    <?php /*if (!empty($ticket['Ticket']['ended'])) echo
-
-                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
-                        $this->Html->link( // <a>
-
-                            $this->Time->nice(strtotime(h($ticket['Ticket']['ended'])), 'CET', '%A, %d.%m.%Y'), // Date
-                            '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['Ticket']['ended']))), // Calendar-Link
-                            array('escape' => false)) .
-                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
-                        $this->Time->nice(strtotime(h($ticket['Ticket']['ended'])), 'CET', '%H:%M')                       // Time
-                    */?>
-                </td>
-            </tr>-->
-
             <? if (h($ticket['Task']['description'] != '')): ?>
                 <tr>
                     <th><?php echo __('Description'); ?></th>
@@ -167,8 +155,5 @@ $class = $statuses[$ticket['Ticket']['status']]; ?>
 
             </tbody>
         </table>
-
-
     </div>
-
 </div>

@@ -32,6 +32,25 @@ class EventsController extends AppController {
     }
 
 
+    public function statusFeed() {
+
+
+        $this->layout = "ajax";
+
+        // WEEK FOR OVERVIEW
+
+        // Get german Week defaults
+        $week_start = $this->Event->getWeekStart();
+        $week_end = $this->Event->getNextWeekStart();
+
+        //Get OnlineStatus of this week
+        $events = $this->Event->getEventStatusList($week_start, $week_end);
+
+        $week_end = date('Y-m-d', strtotime('+' . (7 - date('w')) . ' days'));
+        $this->set(array('events' => $events, 'week_start' => $week_start, 'week_end' => $week_end));
+    }
+
+
     public function feed($my = null) {
 
 
@@ -54,6 +73,10 @@ class EventsController extends AppController {
             $events[$key]['id'] = $event['Event']['event_id'];
             $events[$key]['title'] = $event['Event']['title'];
             $events[$key]['start'] = $event['Event']['start'];
+            $events[$key]['status'] = __($event['Event']['status']);
+            $classes = Configure::read('EVENT.STATUSES');
+
+            $events[$key]['status_class'] = array_key_exists($event['Event']['status'], $classes)? $classes[$event['Event']['status']] : 'default';
             $events[$key]['end'] = $end;
             $events[$key]['allDay'] = $allday;
             //'url' => Router::url('/') . '/captures/view/'.$event['Capture']['capture_id'],

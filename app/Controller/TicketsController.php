@@ -92,13 +92,13 @@ class TicketsController extends AppController {
     }
 
 
-    public function feed($my = null, $limit = 3, $sideTicket = false) {
-
+    public function feed($my = null, $sideTicket = false) {
 
         $this->layout = "ajax";
 
         // MY TICKETS
-        $user_id = (isset($my)) ? $this->Auth->user('user_id') : null;
+        $user_id = (isset($my) && ($my == 'true')) ? $this->Auth->user('user_id') : null;
+        $sideTicket = ($sideTicket == 'true');
 
         $week_start = $this->Ticket->getWeekStart();
         $week_end = $this->Ticket->getNextWeekStart();
@@ -107,15 +107,8 @@ class TicketsController extends AppController {
         $tickets = $this->Ticket->getPendingTickets($week_start, $week_end, $user_id);
 
         $this->set('tickets', $tickets);
+        $this->set('sideTicket', $sideTicket); // true/false
 
-        if ($sideTicket) {
-
-            $this->render('feedSideTicket');
-        }
-        else {
-
-            $this->render('feed');
-        }
     }
 
     /**

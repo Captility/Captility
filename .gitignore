@@ -22,3 +22,11 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+
+# Captility Security #
+#################################################
+/app/Config/bootstrap.php
+/app/Config/core.php
+/cron_localhost
+/cron_localhost.log

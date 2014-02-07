@@ -83,8 +83,8 @@
                         <?php echo $this->fetch('content'); ?>
 
                         <div class="sideBar col-md-3 column">
-                            <?php echo $this->Element('sideCalendar');?>
-                            <?php echo $this->Element('sideTickets');?>
+                            <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>
+                            <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
                         </div>
 
 
@@ -113,7 +113,7 @@
 </div>
 
 
-<div class="captility-footer">
+<div class="captility-footer hidden-xs hidden-sm">
     <?php echo $this->Element('scrollTop');?>
 </div>
 

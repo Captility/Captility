@@ -32,7 +32,7 @@
                 <li><a href="#myTickets" id="MyTicketsView" data-toggle="tab"><span
                             class="glyphicon glyphicon-tasks glyphicon-leftTabs"></span><?php echo __('Mine') ?></a>
                 </li>
-                <li><a href="#online" id="OnlineView" data-toggle="tab"><span
+                <li><a href="#statusList" id="StatusList" data-toggle="tab"><span
                             class="glyphicon glyphicon-upload glyphicon-leftTabs"></span><?php echo __('Status') ?></a>
                 </li>
             </ul>
@@ -57,22 +57,14 @@
         <div class="tab-pane" id="tickets">
 
             <?php //echo $this->Element('tabContentDummy');?>
-            <? // Tab Content #b ?>
 
             <?php echo $this->Element('dashboard/week_header', array('week_start' => $week_start, 'week_end' => $week_end)); ?>
 
             <div class="ticketContainer">
 
-                <?// AJAX: ?>
-
-                <?/* if (!empty($data[0]['Ticket'])) foreach ($data as $i => $ticket): */?>
-
-                <?php /*echo $this->Element('dashboard/tickets', array('ticket' => $ticket)); */?>
-
-                <?/* endforeach; */?>
+                <?// AJAX CONTENT ?>
 
             </div>
-
         </div>
 
 
@@ -83,32 +75,30 @@
 
             <div class="myTicketContainer">
 
-                <?// AJAX: ?>
-
-                <?php /*if (!empty($tickets[0]['Ticket'])) foreach ($tickets as $i => $ticket): */?>
-
-                    <?php /*echo $this->Element('dashboard/tickets', array('ticket' => $ticket)); */?>
-
-                <?/* endforeach; */?>
+                <?// AJAX CONTENT ?>
 
             </div>
         </div>
 
-
-        <? // Tab Content #c ?>
-
-        <div class="tab-pane" id="online">
+        <div class="tab-pane" id="statusList">
             <?php /*echo $this->Element('tabContentDummy2');*/?>
 
             <?php echo $this->Element('dashboard/week_header', array('week_start' => $week_start, 'week_end' => $week_end)); ?>
 
-            <?php echo $this->Element('dashboard/online', array('events' => $events)); ?>
+            <div class="statusListContainer">
+
+                <?// AJAX CONTENT ?>
+
+            </div>
 
         </div>
     </div>
+
 </div>
 
 <div class="col-md-3 column">
 
-    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
+    <?php if (isset($sideCalendar) && $sideCalendar) echo $this->Element('sideCalendar');?>
+    <?php if (isset($sideTickets) && $sideTickets) echo $this->Element('sideTickets');?>
+
 </div><!-- end col md 3 -->

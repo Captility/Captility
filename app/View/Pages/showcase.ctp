@@ -136,8 +136,8 @@
 
                         <h2>Einfacher aufzeichnen</h2>
 
-                        <h4>Die wichtigsten Features und Vorteile vom
-                            <strong>&bdquo;Capture-Utility&ldquo;</strong>
+                        <h4>Die wichtigsten Features und Vorteile des
+                            <strong>Capture Utilitys</strong>
                             auf einen Blick... </h4>
                     </div>
 
@@ -164,7 +164,7 @@
                             <h3><strong class="media-heading">Veranstaltungskatalog</strong></h3>
                             <small>Captility ermöglicht ein schnell und klar strukturiertes, aber vorallem
                                 konsistentes
-                                Verwalten von Veranstaltungen, Dozenten, usw...
+                                Verwalten von Veranstaltungen, Dozenten, etc...
                             </small>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                             <h3><strong class="media-heading">Produktion im Blick</strong></h3>
                             <small>Die Pinnwand bietet stets eine praktische Übersicht der laufenden
                                 Woche. <br/>
-                                Ausstehende Aufnahmen, Postproduktion etc. nie mehr aus den Augen verlieren!
+                                Ausstehende Aufnahmen und Postproduktion nie mehr aus den Augen verlieren!
                             </small>
                         </div>
                     </div>
@@ -190,8 +190,9 @@
 
                         <div class="media-body landing-page landing-page-white">
                             <h3><strong class="media-heading">Mitarbeiter koordinieren</strong></h3>
-                            <small>Mitarbeiter-Rollen über Benutzergruppen verwalten und entsprechende Rechte
-                                zuweisen.
+                            <small>Koordinieren Sie die Rollen Ihrer Mitarbeiter über Benutzergruppen und weisen Sie
+                                entsprechende Rechte
+                                zu.
                             </small>
                         </div>
                     </div>
@@ -211,7 +212,7 @@
                             <h3><strong class="media-heading">Terminkalender</strong></h3>
                             <small>Nie mehr den Überblick über die kommenden Aufnahmen verlieren, oder Termine
                                 mühsam
-                                separat anlegen.
+                                separat verwalten.
                             </small>
                         </div>
                     </div>
@@ -226,7 +227,7 @@
                             <h3><strong class="media-heading">Aufnahmereihen erstellen</strong></h3>
                             <small>Mehrere Aufzeichnungen können einfach anhand von Zeitplänen auf einen
                                 Schlag
-                                generiert werden und sparen zeitaufwändige und mühsame Arbeit.
+                                generiert werden und sparen Zeit und mühsame Arbeit.
                             </small>
                         </div>
                     </div>
@@ -269,9 +270,9 @@
 
                         <div class="media-body landing-page landing-page-white">
                             <h3><strong class="media-heading">Routinen vorgeben</strong></h3>
-                            <small>Hängen Sie fertige Workflows an eine Kette von Aufzeichnungen und Aufgaben werden
-                                zu
-                                jeder Veranstaltung automatisch zugewiesen.
+                            <small>Weisen Sie einer Kette von Aufzeichnungen einen fertigen Workflow zu und Aufgaben
+                                werden
+                                zu jeder Aufzeichnung automatisch erstellt.
                             </small>
                         </div>
                     </div>
@@ -284,7 +285,7 @@
 
                         <div class="media-body landing-page landing-page-white">
                             <h3><strong class="media-heading">Informiert bleiben</strong></h3>
-                            <small>Benachrichtigungs-System mit laufenden Aufnahmen der Woche, Produktionsstatus und
+                            <small>Benachrichtigungssystem mit laufenden Aufnahmen der Woche, Produktionsstatus und
                                 mehr...
                             </small>
                         </div>
@@ -598,14 +599,16 @@
 
                 <div class="col-md-8 column landing-page landing-page-black landing-page-footer">
 
-                    <h3><strong>Disclaimer</strong></h3>
+                    <h3>
+                        <strong><? echo Configure::read('CAPTILITY.NAME') . '&nbsp;&nbsp;<small>' . Configure::read('CAPTILITY.VERSION') . '</small>';?> </strong>
+                    </h3>
 
 
                     <strong><span class="glyphicon el-icon-picasa"></span>Captility
-                        v<? echo Configure::read('CAPTILITY.VERSION');?> ©<? echo date("Y"); ?> Daniel
-                        Deppe</a></strong> <span>|</span> <a><span class="glyphicon el-icon-paper-clip-alt"></span>www.danieldeppe.de</a>
-                    <span>|</span> <a><span class="glyphicon el-icon-idea-alt"></span>Impressum</a> <span>|</span>
-                    <a><span class="glyphicon el-icon-envelope-alt"></span>Kontakt</a> <span>|</span>
+                        Copyright ©<? echo date("Y"); ?> Daniel
+                        Deppe</a></strong> <span>|</span> <a><span class="glyphicon el-icon-paper-clip"></span>www.danieldeppe.de</a>
+                    <span>|</span> <a><span class="glyphicon el-icon-idea"></span>Impressum</a> <span>|</span>
+                    <a><span class="glyphicon el-icon-envelope"></span>Kontakt</a> <span>|</span>
 
                 </div>
 
@@ -618,10 +621,18 @@
                     <div class="clearfix"></div>
 
                     <div class="media landing-page landing-page-black landing-page-footer pull-right">
+
+                        <a class="media-glyphicon pull-right" href="mailto:captility@danieldeppe.de">
+                            <span class="glyphicon el-icon-envelope"></span>
+                        </a>
+
                         <a class="media-glyphicon pull-right" href="javascript:void(0)">
                             <span class="glyphicon el-icon-facebook"></span>
                         </a>
 
+                        <a class="media-glyphicon pull-right" href="javascript:void(0)">
+                            <span class="glyphicon el-icon-googleplus"></span>
+                        </a>
 
                         <a class="media-glyphicon pull-right" href="javascript:void(0)">
                             <span class="glyphicon el-icon-twitter"></span>

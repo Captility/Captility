@@ -98,6 +98,7 @@ class UsersController extends AppController {
     public function login() {
 
         $this->set('headline', 'Login');
+        $this->set('sideTickets', false);
 
         //Already logged in
         if ($this->request->is('post')) {
@@ -138,6 +139,7 @@ class UsersController extends AppController {
     function register() {
 
         $this->set('headline', __('Registration'));
+        $this->set('sideTickets', false);
 
         /*if ($this->request->is('post') || $this->request->is('put')) {
 

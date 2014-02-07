@@ -22,6 +22,7 @@ class CalendarsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
 
+        $this->Auth->allow('updateEvents');
 
         if (in_array($this->action, array('dashboard', 'myLectures'))) {
             if ($this->Auth->user()) {
@@ -63,32 +64,29 @@ class CalendarsController extends AppController {
         $week_start = $this->Event->getWeekStart();
         $week_end = $this->Event->getNextWeekStart();
 
-        // TICKETS
+        // TICKETS NOW AJAX'ED
 
         // GET due Tickets this week, that aren't done or canceled or have failed.
-        $data = $this->Ticket->getPendingTickets($week_start, $week_end);
+        /*$data = $this->Ticket->getPendingTickets($week_start, $week_end);
 
-        $this->set('data', $data);
-        //debug($data);
+        $this->set('data', $data);*/
 
 
-        // MY TICKETS
+        // MY TICKETS NOW AJAX'ED
 
         // GET due Tickets this week, that aren't done or canceled or have failed.
-        $tickets = $this->Ticket->getPendingTickets($week_start, $week_end, $this->Auth->user('user_id'));
+        /*$tickets = $this->Ticket->getPendingTickets($week_start, $week_end, $this->Auth->user('user_id'));
 
-        $this->set('tickets', $tickets);
-        //debug($data);
+        $this->set('tickets', $tickets);*/
 
 
-        // ONLINE / STATUS
+        // ONLINE / STATUS NOW AJAX'ED
 
         //Get OnlineStatus of this week
-        $events = $this->Event->getEventStatusList($week_start, $week_end);
-        //debug($events);
+        /*$events = $this->Event->getEventStatusList($week_start, $week_end);*/
 
         $week_end = date('Y-m-d', strtotime('+' . (7 - date('w')) . ' days'));
-        $this->set(array('events' => $events, 'week_start' => $week_start, 'week_end' => $week_end));
+        $this->set(array(/*'events' => $events,*/ 'week_start' => $week_start, 'week_end' => $week_end));
     }
 
 
@@ -114,50 +112,77 @@ class CalendarsController extends AppController {
 
     }
 
+
+    public function cronTask($salt = 0) {
+
+        throw new NotFoundException();
+    }
+
+    /**
+     * CRON TASK for generating new Tasks for this day. Can be called as often as wanted.
+     * @param int $salt
+     */
     public function updateEvents($salt = 0) {
 
+        // Encrypt key
+        $cron_key = Security::hash($salt, 'sha1', true);
 
-        $this->layout = "ajax";
+        // Check if the cron key is correct
+        if ($cron_key == Configure::read('CAPTILITY.CRON_KEY')) {
 
-        $today_start = date('Y-m-d') . ' 00:00:00';
-        $today_now = date('Y-m-d H:i:s');
+            $this->layout = "ajax";
 
-        $events = $this->Event->find('all', array(
+            $today_start = date('Y-m-d') . ' 00:00:00';
+            $today_now = date('Y-m-d H:i:s');
 
-                'fields' => array('Event.event_id', 'Event.title', 'Event.status',
-                    "(SELECT COUNT(event_id) FROM tickets AS Ticket WHERE Ticket.event_id = Event.event_id) AS ticketCount"),
+            $events = $this->Event->find('all', array(
 
-                'conditions' => array(
+                    'fields' => array('Event.event_id', 'Event.title', 'Event.status',
+                        "(SELECT COUNT(event_id) FROM tickets AS Ticket WHERE Ticket.event_id = Event.event_id) AS ticketCount"),
 
-                    'AND' => array(
+                    'conditions' => array(
 
-                        'Event.start >=' => $today_start,
-                        'Event.start <=' => $today_now,
-                        'Event.status !=' => array('Canceled', 'Failed', 'Online'),
+                        'AND' => array(
 
+                            'Event.start >=' => $today_start,
+                            'Event.start <=' => $today_now,
+                            'Event.status !=' => array('Canceled', 'Failed', 'Online'),
+
+                        )
                     )
                 )
-            )
-        );
+            );
 
-        $count = 0;
+            $count = 0;
+            $jsonResponse = null;
 
-        foreach ($events as $i => $event) {
+            foreach ($events as $i => $event) {
 
-            if ($event['Event']['ticketCount'] == 0) {
+                if ($event['Event']['ticketCount'] == 0) {
 
-                $jsonResponse[$count] = json_encode($event);
+                    $jsonResponse[$count] = $event;
 
-                $this->Event->id = $event['Event']['event_id'];
-                $this->Event->generateNext();
-                $count++;
+                    $this->Event->id = $event['Event']['event_id'];
+                    $this->Event->generateNext();
+                    $count++;
+                }
             }
+
+            if(!empty($jsonResponse)){
+
+                $jsonResponse = date('Y-m-d H:i:s').' | '.json_encode($jsonResponse);
+            }
+
+            $this->set("json", $jsonResponse);
+
+            $this->render('json');
+
+        }
+        else {
+
+            throw new NotFoundException();
         }
 
-        $jsonResponse['GENERATED'] = $count;
 
-        $this->set("json", json_encode($jsonResponse));
-
-        $this->render('json');
     }
 }
