@@ -22,7 +22,7 @@ class CalendarsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
 
-        $this->Auth->allow('updateEvents');
+        $this->Auth->allow('cronTask', 'updateEvents');
 
         if (in_array($this->action, array('dashboard', 'myLectures'))) {
             if ($this->Auth->user()) {
@@ -67,7 +67,7 @@ class CalendarsController extends AppController {
         // TICKETS NOW AJAX'ED
 
         // GET due Tickets this week, that aren't done or canceled or have failed.
-        /*$data = $this->Ticket->getPendingTickets($week_start, $week_end);
+        /*$data = $this->Ticket->getPendingTicketsByWeek($week_start, $week_end);
 
         $this->set('data', $data);*/
 
@@ -75,7 +75,7 @@ class CalendarsController extends AppController {
         // MY TICKETS NOW AJAX'ED
 
         // GET due Tickets this week, that aren't done or canceled or have failed.
-        /*$tickets = $this->Ticket->getPendingTickets($week_start, $week_end, $this->Auth->user('user_id'));
+        /*$tickets = $this->Ticket->getPendingTicketsByWeek($week_start, $week_end, $this->Auth->user('user_id'));
 
         $this->set('tickets', $tickets);*/
 
@@ -86,7 +86,8 @@ class CalendarsController extends AppController {
         /*$events = $this->Event->getEventStatusList($week_start, $week_end);*/
 
         $week_end = date('Y-m-d', strtotime('+' . (7 - date('w')) . ' days'));
-        $this->set(array(/*'events' => $events,*/ 'week_start' => $week_start, 'week_end' => $week_end));
+        $this->set(array( /*'events' => $events,*/
+            'week_start' => $week_start, 'week_end' => $week_end));
     }
 
 
@@ -113,24 +114,46 @@ class CalendarsController extends AppController {
     }
 
 
-    public function cronTask($salt = 0) {
+    public function cronTask($hash = 0) {
 
-        throw new NotFoundException();
+        // Encrypt key
+        $cron_key = Security::hash($hash, 'sha1', true);
+
+        // Check if the cron key is correct
+        if ($cron_key == Configure::read('CAPTILITY.CRON_KEY')) {
+
+            $this->layout = "ajax";
+
+
+            $this->Ticket->updateUrgencyStatuses();
+
+            $this->redirect(array('action' => 'updateEvents/' . $hash));
+
+        }
+        else {
+
+            throw new NotFoundException();
+        }
+
     }
 
     /**
      * CRON TASK for generating new Tasks for this day. Can be called as often as wanted.
      * @param int $salt
      */
-    public function updateEvents($salt = 0) {
+    public function updateEvents($hash = 0) {
 
         // Encrypt key
-        $cron_key = Security::hash($salt, 'sha1', true);
+        $cron_key = Security::hash($hash, 'sha1', true);
 
         // Check if the cron key is correct
         if ($cron_key == Configure::read('CAPTILITY.CRON_KEY')) {
 
             $this->layout = "ajax";
+
+            // #########################################################################################################
+            // ################################ EVENT NEW TICKET GENERATION ############################################
+            // #########################################################################################################
 
             $today_start = date('Y-m-d') . ' 00:00:00';
             $today_now = date('Y-m-d H:i:s');
@@ -168,9 +191,9 @@ class CalendarsController extends AppController {
                 }
             }
 
-            if(!empty($jsonResponse)){
+            if (!empty($jsonResponse)) {
 
-                $jsonResponse = date('Y-m-d H:i:s').' | '.json_encode($jsonResponse);
+                $jsonResponse = date('Y-m-d H:i:s') . ' | ' . json_encode($jsonResponse);
             }
 
             $this->set("json", $jsonResponse);

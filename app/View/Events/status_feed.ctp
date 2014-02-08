@@ -1,9 +1,10 @@
 <? if (!empty($events[0]['Event'])): ?>
 
 
+    <?php echo $this->Element('dashboard/statusList', array('events' => $events)); ?>
 
 
-    <? //else: ?>
+<? else: ?>
 
 
     <div class="alert alert-warning alert-dismissable">

@@ -31,7 +31,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-Configure::write('debug', 2); //TODO auf 0 setzten
+Configure::write('debug', 0); //TODO auf 0 setzten
 Configure::write('Cache.disable', true);
 
 /**
@@ -224,12 +224,12 @@ Configure::write('Session.timeout', 150); //120min
 /**
  * A random string used in security hashing methods.
  */
-Configure::write('Security.salt', 'Ha07sM7fs8dzfnSDZDW2QFFQ9HPN0F1wfphFSIUG1D8ahfUinVx');
+Configure::write('Security.salt', '9NcoQ_d1IHw,py(§d9sWCN32KF08x_(/q1dOc=s§dmWÄy&$55na');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-Configure::write('Security.cipherSeed', 'h1F0jj7g1245g8hbKLJK7lv5bWb5DHNbjh2cJ');
+Configure::write('Security.cipherSeed', '8310246839102384568130138291052');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).

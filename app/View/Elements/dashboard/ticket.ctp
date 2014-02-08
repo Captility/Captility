@@ -1,7 +1,7 @@
 <?php $statuses = Configure::read('TICKET.STATUSES');
 $class = $statuses[$ticket['Ticket']['status']];
 
-$myTicket = ($ticket['User']['user_id'] === (AuthComponent::user('id')))?>
+$myTicket = ($ticket['User']['user_id'] === (AuthComponent::user('user_id')))?>
 
 <div
     class="sideTicket <? if (!$myTicket) echo 'well ' ?>ticket badger-left badger-<? echo $class ?> panel-<? echo ($class == 'primary') ? 'info' : $class ?>"

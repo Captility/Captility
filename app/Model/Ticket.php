@@ -292,7 +292,7 @@ class Ticket extends AppModel {
     }
 
 
-    public function getPendingTickets($week_start, $week_end, $user_id = null, $limit = 20) {
+    public function getPendingTicketsByWeek($week_start, $week_end, $user_id = null, $limit = PHP_INT_MAX) {
 
 
         $userCondition = (isset($user_id)) ? array('Ticket.user_id' => $user_id) : array();
@@ -355,4 +355,62 @@ class Ticket extends AppModel {
     }
 
 
+    public function getPendingTicketsByAge($untilDate, $statusesAllowed = array('New', 'Requested', 'Urgend'), $limit = PHP_INT_MAX) {
+
+
+        return $this->find('all', array(
+
+                'link' => array(
+
+                    'Event' => array(
+                        'conditions' => array('exactly' => 'Event.event_id = Ticket.event_id'),
+
+                    ),
+
+                ),
+
+                'conditions' => array(
+
+                    'AND' => array(
+
+                        'Event.start <=' => $untilDate,
+                        'Ticket.status' => $statusesAllowed,
+                    ),
+                ),
+
+                'limit' => $limit,
+            )
+        );
+    }
+
+
+    // #########################################################################################################
+    // ################################# CRON TASK TICKET PRIORITY #############################################
+    // #########################################################################################################
+
+    public function updateUrgencyStatuses() {
+
+
+        $deadlineOverdue = date('Y-m-d H:i:s', strtotime('-' . Configure::read('TICKET.OVERDUE_DAYS') . ' days'));
+        $overdueTickets = $this->getPendingTicketsByAge($deadlineOverdue);
+
+        foreach ($overdueTickets as $i => $overdueTicket) {
+
+            $this->id = $overdueTicket['Ticket']['ticket_id'];
+            $overdueTicket['Ticket']['status'] = 'Overdue';
+            $this->save($overdueTicket,  array('validate' => false, 'modified' => false, 'callbacks' => false));
+        }
+
+
+        $deadlineUrgend = date('Y-m-d H:i:s', strtotime('-' . Configure::read('TICKET.URGEND_DAYS') . ' days'));
+        $urgendTickets = $this->getPendingTicketsByAge($deadlineUrgend, array('New', 'Requested'));
+
+        foreach ($urgendTickets as $i => $urgendTicket) {
+
+            $this->id = $urgendTicket['Ticket']['ticket_id'];
+            $urgendTicket['Ticket']['status'] = 'Urgend';
+            $this->save($urgendTicket, array('validate' => false, 'modified' => false, 'callbacks' => false));
+        }
+
+    }
 }

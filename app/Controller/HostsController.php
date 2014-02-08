@@ -36,6 +36,9 @@ class HostsController extends AppController {
      * @return void
      */
     public function view($id = null) {
+
+        $this->set('sideCalendar', false);
+
         if (!$this->Host->exists($id)) {
             throw new NotFoundException(__('Invalid host'));
         }

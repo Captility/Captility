@@ -25,14 +25,15 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'showcase'));
-    #Router::connect('/', array('controller' => 'calendars', 'action' => 'dashboard'));
+Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'showcase'));
+#Router::connect('/', array('controller' => 'calendars', 'action' => 'dashboard'));
 
 /**
  * Calendars
  */
 Router::connect('/calendar', array('controller' => 'calendars', 'action' => 'index'));
 Router::connect('/dashboard', array('controller' => 'calendars', 'action' => 'dashboard'));
+
 
 /**
  * Authentification
@@ -44,17 +45,23 @@ Router::connect('/register', array('controller' => 'users', 'action' => 'registe
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
-	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+
+/**
+ * Allow Extension.
+ */
+
+Router::parseExtensions('rss');
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on
  * how to customize the loading of plugin routes.
  */
-	CakePlugin::routes();
+CakePlugin::routes();
 
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use
  * the built-in default routes.
  */
-	require CAKE . 'Config' . DS . 'routes.php';
+require CAKE . 'Config' . DS . 'routes.php';
 

@@ -381,11 +381,11 @@ $(document).ready(function () {
             $mediaQueryView = 'agendaDay';
         }
 
-        // Later changes on resize
-        $(window).bind('resize', function () {
+        /*// Later changes on resize
+        $(window).resize( function () {
             if ($(document).width() < $mobileMaxWidth) $('#calendar').fullCalendar('changeView', 'agendaDay');
-            else $('#calendar').fullCalendar('changeView', 'agendaWeek');
-        });
+           else $('#calendar').fullCalendar('changeView', 'agendaWeek');
+        });*/
 
         //Event Sources
         var captilityEventSources = {
@@ -1459,12 +1459,13 @@ $(document).ready(function () {
 
         var url = $appRoot + 'events/statusFeed';
 
-
         var $target = $('.statusListContainer');
+
+        $target.hide();
 
         var jqxhr = $.post(url,function (data) {
 
-            $target.hide().html(data).slideDown();
+            $target.html(data).slideDown(800);
 
         }).fail(function () {
 

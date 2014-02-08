@@ -47,7 +47,7 @@ class AppController extends Controller {
 
 // Prepare Helpers for Bootstrap layout
     public $helpers = array( //ToDo BooskCake Plugin Aufräumen:
-        'Session', 'Time', 'Js' => array('Jquery'),
+        'Session', 'Text', 'Time', 'Js' => array('Jquery'),
         'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
         'Form' => array('className' => 'BoostCake.BoostCakeForm'),
         'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),

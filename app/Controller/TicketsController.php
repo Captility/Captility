@@ -37,11 +37,34 @@ class TicketsController extends AppController {
      * @return void
      */
     public function view($id = null) {
+
+        $this->set('sideTickets', false);
+        $this->set('sideCalendar', false);
+
         if (!$this->Ticket->exists($id)) {
             throw new NotFoundException(__('Invalid ticket'));
         }
-        $options = array('conditions' => array('Ticket.' . $this->Ticket->primaryKey => $id), 'recursive' => 2);
-        $this->set('ticket', $this->Ticket->find('first', $options));
+        $ticket = $this->Ticket->find('first', array(
+
+                'contain' => array(
+
+                    'Task', 'User',
+                    'Event' => array(
+                        'Capture' => array(
+                            'Lecture' => array(
+                                'Host'
+                            )
+                        )
+                    ),
+                ),
+
+                'conditions' => array('Ticket.' . $this->Ticket->primaryKey => $id)
+            )
+        );
+
+
+        $this->set('ticket', $ticket);
+
     }
 
 
@@ -104,12 +127,34 @@ class TicketsController extends AppController {
         $week_end = $this->Ticket->getNextWeekStart();
 
         // GET due Tickets this week, that aren't done or canceled or have failed.
-        $tickets = $this->Ticket->getPendingTickets($week_start, $week_end, $user_id);
+        $tickets = $this->Ticket->getPendingTicketsByWeek($week_start, $week_end, $user_id);
 
         $this->set('tickets', $tickets);
         $this->set('sideTicket', $sideTicket); // true/false
 
     }
+
+
+    public function ticketFeed() {
+
+        $user_id = $this->params['named']['user_id'];
+
+        if ($this->RequestHandler->isRss()) {
+            $week_start = $this->Ticket->getWeekStart();
+            $week_end = $this->Ticket->getNextWeekStart();
+
+            // GET due Tickets this week, that aren't done or canceled or have failed.
+            $tickets = $this->Ticket->getPendingTicketsByWeek($week_start, $week_end, $user_id);
+
+            return $this->set(compact('tickets'));
+        }
+        else {
+
+            throw new NotFoundException();
+        }
+
+    }
+
 
     /**
      * add method
