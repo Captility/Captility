@@ -12,9 +12,7 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: .25em;
-
-  // Add hover effects, but only for links
+  border-radius: .25em; // Add hover effects, but only for links
   &[href] {
     &:hover,
     &:focus {
@@ -24,12 +22,12 @@
     }
   }
 
-  // Empty labels collapse automatically (not available in IE8)
+// Empty labels collapse automatically (not available in IE8)
   &:empty {
     display: none;
   }
 
-  // Quick fix for labels in buttons
+// Quick fix for labels in buttons
   .btn & {
     position: relative;
     top: -1px;
@@ -66,4 +64,8 @@
 .label-inverse {
 
   .label-variant(#000);
+}
+
+.label-misc {
+  .label-variant(@label-misc-bg);
 }

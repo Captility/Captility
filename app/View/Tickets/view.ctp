@@ -1,4 +1,4 @@
-<? $this->Breadcrumbs->addCrumb(__('Team'), '/pages/production'); ?>
+<? $this->Breadcrumbs->addCrumb(__('Team'), '/production'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-tags"></span>' . __('Tickets'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-tags"></span>' . __('Ticket') . ' #' . h($ticket['Ticket']['ticket_id']), '#', array('class' => 'active')); ?>
 <!--<div class=" view">-->

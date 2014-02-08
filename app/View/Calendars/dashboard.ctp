@@ -1,4 +1,4 @@
-<? $this->Breadcrumbs->addCrumb(__('Production'), '/pages/production'); ?>
+<? $this->Breadcrumbs->addCrumb(__('Production'), '/production'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-dashboard"></span>' . __('Dashboard'), '/dashboard', array('class' => 'active')); ?>
 
 

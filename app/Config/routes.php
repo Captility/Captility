@@ -33,6 +33,9 @@ Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'show
  */
 Router::connect('/calendar', array('controller' => 'calendars', 'action' => 'index'));
 Router::connect('/dashboard', array('controller' => 'calendars', 'action' => 'dashboard'));
+Router::connect('/production', array('controller' => 'calendars', 'action' => 'production'));
+Router::connect('/records', array('controller' => 'calendars', 'action' => 'production'));
+Router::connect('/stats', array('controller' => 'calendars', 'action' => 'stats'));
 
 
 /**

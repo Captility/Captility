@@ -1,4 +1,4 @@
-<? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Records'), '/records', array('class' => 'active')); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon cp-icon-lecturer"></span>' . __('Hosts'), '/hosts', array('class' => 'active')); ?>
 <? $this->Breadcrumbs->addCrumb(h($this->request->data['Host']['name']), '/hosts/view/' . h($this->request->data['Host']['host_id']), array('class' => 'active')); ?>
 <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>' . __('Edit Host'), '#', array('class' => 'active')); ?>

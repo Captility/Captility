@@ -398,7 +398,7 @@ class Ticket extends AppModel {
 
             $this->id = $overdueTicket['Ticket']['ticket_id'];
             $overdueTicket['Ticket']['status'] = 'Overdue';
-            $this->save($overdueTicket,  array('validate' => false, 'modified' => false, 'callbacks' => false));
+            $this->save($overdueTicket, array('validate' => false, 'modified' => false, 'callbacks' => false));
         }
 
 
@@ -412,5 +412,32 @@ class Ticket extends AppModel {
             $this->save($urgendTicket, array('validate' => false, 'modified' => false, 'callbacks' => false));
         }
 
+    }
+
+
+    public function getIntervalStats($start, $end) {
+
+
+        foreach (Configure::read('TICKET.STATUSES') as $status => $class) {
+
+            $statsResult[$status] = $this->find('count', array(
+
+                    'fields' => array('Event.event_id', 'Ticket.status'),
+
+                    'conditions' => array(
+
+                        'AND' => array(
+
+                            'Event.start >=' => $start,
+                            'Event.start <' => $end,
+                            'Ticket.status' => $status
+                        ),
+                    ),
+                )
+
+            );
+        }
+
+        return $statsResult;
     }
 }

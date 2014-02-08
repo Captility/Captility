@@ -161,6 +161,7 @@ CakePlugin::load('AclExtras');
 Configure::write('CAPTILITY.NAME', 'Captility');
 Configure::write('CAPTILITY.VERSION', '0.3.2 [alpha]');
 
+// Public Key
 Configure::write('CAPTILITY.CRON_KEY', '4516f866ba7ffba7a5b8f4bdf878136662ef8bc3');
 
 
@@ -182,7 +183,7 @@ Configure::write('TICKET.STATUSES', array(
     'Urgend' => 'warning',
     'Overdue' => 'danger',
     'Error' => 'inverse',
-    'Canceled' => 'inverse',
+    'Canceled' => 'misc',
     'Done' => 'success'
 
 ));
@@ -206,9 +207,9 @@ Configure::write('EVENT.STATUSES', array(
     // Name => Class
     'Due' => 'default',
     'Processing' => 'primary',
+    'Online' => 'success',
     'Canceled' => 'warning',
-    'Failed' => 'danger',
-    'Online' => 'success'
+    'Failed' => 'danger'
 
 ));
 

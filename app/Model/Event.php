@@ -537,4 +537,49 @@ class Event extends AppModel {
             )
         );
     }
+
+
+    public function getIntervalStats($start, $end, $scaleFormat, $iterationStep) {
+
+        $statsResult = array();
+
+        foreach (Configure::read('EVENT.STATUSES') as $status => $class) {
+
+            $i = 0;
+            $statsResult['scale'][$i] = array();
+            $statsResult[$status] = array();
+
+            $iterationDate = strtotime($start);
+
+            while ($iterationDate < strtotime($end)) {
+
+                array_push($statsResult[$status], $this->find('count', array(
+
+                            'fields' => array('Event.event_id', 'Event.status'),
+                            'recursive' => -1,
+
+                            'conditions' => array(
+
+                                'AND' => array(
+
+                                    'Event.start >=' => date('Y-m-d H:i:s', $iterationDate),
+                                    'Event.start <' => date('Y-m-d H:i:s', strtotime("+1 " . $iterationStep, $iterationDate)),
+                                    'Event.status' => $status
+                                ),
+                            ),
+                        )
+                    )
+                );
+
+                array_push($statsResult['scale'][$i], __(date($scaleFormat, $iterationDate)));
+
+                //Iterate the amount of requested weeks
+                $iterationDate = strtotime("+1 " . $iterationStep, $iterationDate);
+            }
+            $i++;
+        }
+
+        return $statsResult;
+    }
+
 }

@@ -98,6 +98,12 @@ h1 {
   margin-bottom: 15px;
 }
 
+canvas {
+
+  width: 100% !important;
+  height: 100% !important;
+}
+
 // NAVBAR
 
 /** Navbar Search Alignment */
@@ -241,6 +247,13 @@ small.disabled {
 
 }
 
+.cp-icon-lecturer-inverse {
+  background-image: url('../img/icons/cp-icon-lecturer-inverse.svg');
+  background-size: 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
 a.cp-icon-lecturer {
 
   &:hover, &:active {
@@ -268,7 +281,7 @@ a:hover, a:active {
   }
 }
 
-.cp-icon-lecturer:before {
+.cp-icon-lecturer:before, .cp-icon-lecturer-inverse:before {
   content: "\e";
 }
 
@@ -975,13 +988,13 @@ text-shadow: none;*/
   padding: 10px 5px 10px 10px;
 }
 
-.sideTicketTable, .calendarInfoTable{
+.sideTicketTable, .calendarInfoTable {
 
   margin-top: 3px;
   margin-bottom: 0px;
   padding-top: 5px;
 
-  td{
+  td {
 
     border: none !important;
     padding: 2px !important;
@@ -989,7 +1002,7 @@ text-shadow: none;*/
   }
 }
 
-.calendarInfoHr{
+.calendarInfoHr {
 
   margin-top: 0px;
   margin-bottom: 10px;
@@ -1954,4 +1967,51 @@ li.workflow-task-add:hover {
 
 .workflow-task-edit {
   min-width: 80%;
+}
+
+/* ###############################################
+ * ################# QUICKMENU ###################
+ * ###############################################*/
+
+.quickmenu {
+
+  .panel-body .row {
+
+    margin: 20px -15px;
+  }
+
+  .panel-body .btn:not(.btn-block) {
+
+    width: 48.5%;
+    margin-bottom: 10px;
+
+  }
+
+  .btn-lg {
+
+    line-height: 1.55;
+    font-size: 17px;
+    padding: 12px 0;
+
+    .glyphicon {
+
+      margin-right: 0px;
+      font-size: 22px;
+    }
+  }
+
+  .btn-block {
+
+    .glyphicon {
+
+      font-size: 17px;
+    }
+  }
+
+  small {
+
+    font-size: 14px;
+    line-height: 1.9;
+    letter-spacing: -0.03em;
+  }
 }

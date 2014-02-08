@@ -2850,7 +2850,7 @@ input[type="button"].btn-block {
   content: "\e043";
 }
 
-.glyphicon-bookmark:before {
+.el-icon-bookmark-empty:before {
   content: "\e044";
 }
 

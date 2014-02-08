@@ -1,4 +1,4 @@
-<? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records'); ?>
+<? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>' . __('Captures'), '/captures'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-play-alt"></span>' . __('Event'), '#', array('class' => 'active')); ?>
 <? $this->Breadcrumbs->addCrumb('#' . h($event['Event']['event_id']) . ' ' . h($event['Event']['title']), '#', array('class' => 'active')); ?>

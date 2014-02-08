@@ -39,12 +39,21 @@
         <li class="divider"></li>
 
         <li class="dropdown <? if (in_array($this->params['controller'], array('captures', 'lectures', 'hosts', 'eventTypes'))) echo 'active'; ?>">
-            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Records') ?><strong
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Records') ?>
+                <strong
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
 
-                <li role="presentation"
-                    class="dropdown-header list-info"><?php echo __('Edit catalog entries...') ?></li>
+                <!--<li role="presentation"
+                    class="dropdown-header list-info"><?php /*echo __('Edit catalog entries...') */?></li>-->
+
+                <li>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon el-icon-bookmark-empty')) . __('Overview'),
+                        array('controller' => 'calendars', 'action' => 'production'), array('escape' => false))?>
+                </li>
+                <li class="divider"></li>
 
 
                 <li>
@@ -78,7 +87,20 @@
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Team') ?><strong
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
-                <li role="presentation" class="dropdown-header list-info"><?php echo __('Manage duties...') ?>.</li>
+
+                <li>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon el-icon-bookmark-empty')) . __('Overview'),
+                        array('controller' => 'calendars', 'action' => 'production'), array('escape' => false))?>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon el-icon-random')) . __('Workflows'),
+                        array('controller' => 'workflows', 'action' => 'index'), array('escape' => false))?>
+                </li>
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
@@ -94,14 +116,8 @@
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
-                            'span', '', array('class' => 'glyphicon el-icon-random')) . __('Workflows'),
-                        array('controller' => 'workflows', 'action' => 'index'), array('escape' => false))?>
-                </li>
-                <li class="disabled">
-                    <?php echo $this->Html->link(
-                        $this->Html->tag(
                             'span', '', array('class' => 'glyphicon glyphicon-stats')) . __('Statistics'),
-                        array('controller' => 'calendars', 'action' => 'index'), array('escape' => false))?>
+                        array('controller' => 'calendars', 'action' => 'stats'), array('escape' => false))?>
                 </li>
                 <li class="divider"></li>
                 <li>

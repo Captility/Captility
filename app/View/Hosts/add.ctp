@@ -1,4 +1,4 @@
-<? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb(__('Records'), '/records', array('class' => 'active')); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon cp-icon-lecturer"></span>' . __('Hosts'), '/hosts', array('class' => 'active')); ?>
 <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-plus"></span>' . __('Add Host'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->

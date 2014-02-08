@@ -1517,8 +1517,6 @@ $(document).ready(function () {
 //################################################# SIDEBAR RESIZING ###################################################
 //######################################################################################################################
 
-
-    // Well, try this on for size!
     $('.container-lower').resize(function (e) {
 
         $self = $(this);
@@ -1536,6 +1534,5 @@ $(document).ready(function () {
     });
 
     $('.container-lower').resize();
-
 
 }); // DOC READY END

@@ -470,9 +470,6 @@ msgstr "Aufnahmeplan"
 msgid "Capture Id"
 msgstr "ID"
 
-msgid "Online"
-msgstr " Online "
-
 msgid "Comment"
 msgstr "Kommentar"
 
@@ -711,12 +708,8 @@ msgstr "Beendet"
 msgid "Task Id"
 msgstr "ID"
 
-
-
-
-
-
-
+msgid "Overview"
+msgstr "Übersicht"
 
 
 
@@ -841,7 +834,8 @@ msgstr "Admin::Zeitplan bearbeiten"
 
 
 
-
+msgid "Example"
+msgstr "Beispiel"
 
 msgid "Edit Schedule"
 msgstr "Zeitplan bearbeiten"
@@ -887,8 +881,8 @@ msgstr "Admin::Ticket anlegen"
 msgid "Admin Edit Ticket"
 msgstr "Admin::Ticket bearbeiten"
 
-msgid "Ticket"
-msgstr ""
+msgid "Ever"
+msgstr "Gesamt"
 
 
 
@@ -1091,6 +1085,12 @@ msgstr "Diese Email Adresse wird leider bereits benutzt."
 msgid "This language is not supported."
 msgstr "Diese Sprache wird zur Zeit leider nicht unterstützt."
 
+msgid "Not yet supported"
+msgstr "Funktion noch nicht unterstützt."
+
+msgid "Sorry, this feature is not supported in the current version of Captility."
+msgstr "Leider wird diese Funktion in der alpha-Version von Captility noch nicht unterstützt."
+
 msgid "Only gif, png and jpg are supported."
 msgstr "Bitte geben Sie nur die Dateiformate .jpg, .png und .gif an."
 
@@ -1241,6 +1241,18 @@ msgstr "November"
 msgid "December"
 msgstr "Dezember"
 
+msgid "Mar"
+msgstr "Mrz"
+
+msgid "Oct"
+msgstr "Okt"
+
+msgid "November"
+msgstr "November"
+
+msgid "Dec"
+msgstr "Dez"
+
 msgid "_Mon"
 msgstr "Mo."
 
@@ -1291,3 +1303,9 @@ msgstr "jeden"
 
 msgid "Day"
 msgstr "Tag"
+
+msgid "Month"
+msgstr "Monat"
+
+msgid "Year"
+msgstr "Jahr"

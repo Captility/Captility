@@ -1,4 +1,4 @@
-<? $this->Breadcrumbs->addCrumb(__('Team'), '/pages/production'); ?>
+<? $this->Breadcrumbs->addCrumb(__('Team'), '/production'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-tags"></span>' . __('Tickets'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->
 

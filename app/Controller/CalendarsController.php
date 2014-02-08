@@ -137,6 +137,14 @@ class CalendarsController extends AppController {
 
     }
 
+    public function production() {
+
+    }
+
+    public function catalog() {
+
+    }
+
     /**
      * CRON TASK for generating new Tasks for this day. Can be called as often as wanted.
      * @param int $salt
@@ -207,5 +215,75 @@ class CalendarsController extends AppController {
         }
 
 
+    }
+
+
+    public function stats() {
+
+        $this->set('leftTabs', true);
+        $this->set('sideCalendar', true);
+        $this->set('sideTickets', true);
+
+
+        // ###### TICKETS ########################################################################################## -->
+        $statsTicketsData = $this->Ticket->getIntervalStats(
+            date('Y-m-d 00:00:00', strtotime('monday this week')), //start of interval
+            date('Y-m-d 00:00:00', strtotime('monday next week'))); // interation strtotime
+
+        $this->set('statsTicketsData', $statsTicketsData);
+
+
+        // ###### WEEK ############################################################################################# -->
+        $statsWeekData = $this->Event->getIntervalStats(
+            date('Y-m-d 00:00:00', strtotime('monday this week')), //start of interval
+            date('Y-m-d 00:00:00', strtotime('monday next week')), //start of interval
+            'D, j.n.', // scale date-format
+            'day'); // interation strtotime
+
+
+        $this->set('statsWeekData', $statsWeekData);
+        $this->set('statsWeekScale', json_encode($statsWeekData['scale'][0]));
+
+
+        // ###### MONTH ############################################################################################# -->
+        $firstDayofNextMonth = date('Y-m-01 00:00:00', strtotime('next month')); // First Instant of next Month
+        $lastKWDay = date('Y-m-d 00:00:00', strtotime('first monday', strtotime($firstDayofNextMonth))); // First instance of next month's 'alone' KW
+
+        $statsMonthData = $this->Event->getIntervalStats(
+            date('Y-m-01 00:00:00'), //start of interval
+            $lastKWDay, //start of interval
+            '\K\W W', // scale date-format
+            'week'); // interation strtotime
+
+        $this->set('statsMonthData', $statsMonthData);
+        $this->set('statsMonthScale', json_encode($statsMonthData['scale'][0]));
+
+
+        // ###### YEAR ############################################################################################# -->
+        $statsYearData = $this->Event->getIntervalStats(
+            date('Y-01-01 00:00:00'), //start of interval
+            date('Y-01-01 00:00:00', strtotime('+1 year')), //end of interval
+            'M', // scale date-format
+            'month'); // interation strtotime
+
+        $this->set('statsYearStart', $statsYearData);
+        $this->set('statsYearEnd', json_encode($statsYearData['scale'][0]));
+        $this->set('statsYearData', $statsYearData);
+        $this->set('statsYearScale', json_encode($statsYearData['scale'][0]));
+
+
+        // ###### Ever ############################################################################################# -->
+        $firstEntryDate = $this->Event->find('first', array(
+            'fields' => array('Event.start'),
+            'order' => array('Event.start' => 'ASC')
+        ));
+        $statsEverData = $this->Event->getIntervalStats(
+            date('Y-01-01 00:00:00', strtotime($firstEntryDate['Event']['start'])), //start of interval
+            date('Y-01-01 00:00:00', strtotime('+1 year')), //end of interval
+            'Y', // scale date-format
+            'year'); // interation strtotime
+
+        $this->set('statsEverData', $statsEverData);
+        $this->set('statsEverScale', json_encode($statsEverData['scale'][0]));
     }
 }

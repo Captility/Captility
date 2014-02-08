@@ -1,4 +1,4 @@
-<? $this->Breadcrumbs->addCrumb(__('Records'), '/pages/records'); ?>
+<? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-facetime-video"></span>' . __('Event Types'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(h($this->request->data['EventType']['name']), '/event_types/view/' . h($this->request->data['EventType']['event_type_id'])); ?>
 <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-pencil"></span>' . __('Edit Event Type'), '#', array('class' => 'active')); ?>

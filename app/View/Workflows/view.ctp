@@ -1,4 +1,4 @@
-<? $this->Breadcrumbs->addCrumb(__('Team'), '/pages/production'); ?>
+<? $this->Breadcrumbs->addCrumb(__('Team'), '/production'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-random"></span>' . __('Workflows'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(' #' . h($workflow['Workflow']['workflow_id']) . ' ' . h($workflow['Workflow']['name']), '#'); ?>
 
