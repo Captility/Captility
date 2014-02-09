@@ -29,6 +29,11 @@ Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'show
 #Router::connect('/', array('controller' => 'calendars', 'action' => 'dashboard'));
 
 /**
+ * Cron Tasks
+ */
+Router::connect('/cronTask', array('controller' => 'calendars', 'action' => 'cronTask'));
+
+/**
  * Calendars
  */
 Router::connect('/calendar', array('controller' => 'calendars', 'action' => 'index'));
@@ -41,7 +46,6 @@ Router::connect('/stats', array('controller' => 'calendars', 'action' => 'stats'
 /**
  * Authentification
  */
-
 Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
 Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
 Router::connect('/register', array('controller' => 'users', 'action' => 'register'));

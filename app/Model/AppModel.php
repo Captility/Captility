@@ -189,16 +189,47 @@ class AppModel extends Model {
     }
 
 
-    public function getWeekStart() {
+    /**
+     * @return string Monday of current german Week.
+     */
+    public function getWeekStart($weekDay = null) {
 
-        // Get german Week defaults
-        return date('Y-m-d', strtotime('-' . date('w') + 1 . ' days'));
+        if (!isset($weekDay)) {
+
+            $weekDay = date('Y-m-d 00:00:00');
+        }
+
+
+        // return date('Y-m-d 00:00:00', strtotime('Monday this week', $weekDay)
+        //SUNDAY FIX FOR: https://bugs.php.net/bug.php?id=63740
+
+
+        $dayIndexPhp = date('w', strtotime($weekDay)); // Week where Sunday = 0, Monday =1 ...
+        $dayIndexGerman = ($dayIndexPhp == 0) ? 6 : 1 - $dayIndexPhp; // Week where Sunday = 7, Monday =0 ...
+
+        $weekStart = date('Y-m-d 00:00:00', strtotime(('-' . $dayIndexGerman . ' days'), strtotime($weekDay)));
+
+        return $weekStart;
+
     }
 
-    public function getNextWeekStart() {
+    public function getNextWeekStart($weekDay = null) {
 
-        // Get german Week defaults
-        return date('Y-m-d', strtotime('+' . (8 - date('w')) . ' days'));
+
+        if (!isset($weekDay)) {
+
+            $weekDay = date('Y-m-d 00:00:00', strtotime('+1 week'));
+
+        }
+        else {
+
+            $weekDay = date('Y-m-d 00:00:00', strtotime('+1 week', strtotime($weekDay)));
+        }
+
+        return $this->getWeekStart($weekDay);
+
+        // return date('Y-m-d 00:00:00', strtotime('Monday next week', $weekDay)
+        //SUNDAY FIX FOR: https://bugs.php.net/bug.php?id=63740
     }
 
 

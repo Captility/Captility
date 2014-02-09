@@ -227,19 +227,19 @@ class CalendarsController extends AppController {
 
         // ###### TICKETS ########################################################################################## -->
         $statsTicketsData = $this->Ticket->getIntervalStats(
-            date('Y-m-d 00:00:00', strtotime('monday this week')), //start of interval
-            date('Y-m-d 00:00:00', strtotime('monday next week'))); // interation strtotime
+            $this->Ticket->getWeekStart(),
+            $this->Ticket->getNextWeekStart()
+        ); // interation strtotime
 
         $this->set('statsTicketsData', $statsTicketsData);
 
 
         // ###### WEEK ############################################################################################# -->
         $statsWeekData = $this->Event->getIntervalStats(
-            date('Y-m-d 00:00:00', strtotime('monday this week')), //start of interval
-            date('Y-m-d 00:00:00', strtotime('monday next week')), //start of interval
-            'D, j.n.', // scale date-format
+            $this->Event->getWeekStart(), //start of interval //date('Y-m-d 00:00:00', strtotime('Monday this week'))
+            $this->Event->getNextWeekStart(), //start of interval
+            'l', // scale date-format
             'day'); // interation strtotime
-
 
         $this->set('statsWeekData', $statsWeekData);
         $this->set('statsWeekScale', json_encode($statsWeekData['scale'][0]));
