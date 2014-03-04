@@ -1,10 +1,18 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <? $this->Breadcrumbs->addCrumb(__('Production'), '/production'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-dashboard"></span>' . __('Dashboard'), '/dashboard', array('class' => 'active')); ?>
 
 
 <div class="row">
     <div class="col-md-1 column">
-        <div class="glyphicon-headline hidden-xs hidden-sm"><span class="glyphicon el-icon-captility"></span></div>
+        <div class="glyphicon-headline hidden-xs hidden-sm"><span class="glyphicon cp-icon-logo"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">

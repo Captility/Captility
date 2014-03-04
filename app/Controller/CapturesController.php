@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 /**
  * Captures Controller
- *
+ * @author Daniel, Captiliity
  * @property Capture $Capture
  * @property PaginatorComponent $Paginator
  */

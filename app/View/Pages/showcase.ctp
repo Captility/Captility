@@ -346,34 +346,36 @@
                     </a>
                 </div>
 
+
                 <div class="col-xs-6 col-md-4 col-lg-3 landing-page landing-page-blue">
-                    <a title="Nie mehr die Terminübersicht verlieren!" href="#LandingPageScreenshots"
+                    <a title="Unterschiedliche Statistiken zum Produktionsverlauf." href="#LandingPageScreenshots"
                        data-dismiss="modal"
                        class="thumbnail  landing-page-thumbnail">
                         <img
-                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-screenshot-0.png"
+                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-screenshot-2.png"
                             src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
                             alt="" class="landing-page-thumbnail"/>
                     </a>
                 </div>
 
                 <div class="col-xs-6 col-md-4 col-lg-3 landing-page landing-page-blue">
-                    <a title="Nie mehr die Terminübersicht verlieren!" href="#LandingPageScreenshots"
+                    <a title="Workflows praktisch erstellen und Tickets generieren lassen."
+                       href="#LandingPageScreenshots"
                        data-dismiss="modal"
                        class="thumbnail  landing-page-thumbnail">
                         <img
-                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-screenshot-0.png"
+                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-screenshot-3.png"
                             src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
                             alt="" class="landing-page-thumbnail"/>
                     </a>
                 </div>
 
                 <div class="col-xs-6 col-md-4 col-lg-3 landing-page landing-page-blue">
-                    <a title="Nie mehr die Terminübersicht verlieren!" href="#LandingPageScreenshots"
+                    <a title="Aufnahmen und Zeitpläne einmalig anlegen!" href="#LandingPageScreenshots"
                        data-dismiss="modal"
                        class="thumbnail  landing-page-thumbnail">
                         <img
-                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-screenshot-0.png"
+                            data-src="<? echo $this->Html->url('/', true) ?>img/landing-page/landing-page-screenshot-1.png"
                             src="<? echo $this->Html->url('/', true) ?>img/icons/captility-preloader.svg"
                             alt="" class="landing-page-thumbnail"/>
                     </a>
@@ -396,189 +398,6 @@
                         <div class="modal-body"></div>
                     </div>
                 </div>
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-</div>
-
-
-<div class="landing-page-wrapper landing-page-wrapper-white">
-    <div class="container landing-page">
-
-        <div class="col-md-12 column landing-page landing-page-white">
-
-            <div class="row clearfix">
-
-                <div class="col-md-9 column landing-page landing-page-white">
-
-
-                    <div class="container landing-page landing-page-white">
-
-                        <h2>Einfacher aufzeichnen</h2>
-
-                        <h4>Die wichtigsten Features und Vorteile vom
-                            <strong>&bdquo;Capture-Utility&ldquo;</strong>
-                            auf einen Blick... </h4>
-                    </div>
-
-                </div>
-                <div class="col-md-3 column landing-page landing-page-white">
-
-                </div>
-
-
-            </div>
-
-
-            <div class="row clearfix container" style="margin-top: 40px">
-
-
-                <div class="col-md-4 column landing-page landing-page-white">
-
-                    <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>lectures">
-                            <span class="glyphicon glyphicon-list"></span>
-                        </a>
-
-                        <div class="media-body landing-page landing-page-white">
-                            <h3><strong class="media-heading">Veranstaltungskatalog</strong></h3>
-                            <small>Captility ermöglicht ein schnell und klar strukturiertes, aber vorallem
-                                konsistentes
-                                Verwalten von Veranstaltungen, Dozenten, usw...
-                            </small>
-                        </div>
-                    </div>
-
-                    <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>">
-                            <span class="glyphicon glyphicon-dashboard"></span>
-                        </a>
-
-                        <div class="media-body landing-page landing-page-white">
-                            <h3><strong class="media-heading">Produktion im Blick</strong></h3>
-                            <small>Die Pinnwand bietet stets eine praktische Übersicht der laufenden
-                                Woche. <br/>
-                                Ausstehende Aufnahmen, Postproduktion etc. nie mehr aus den Augen verlieren!
-                            </small>
-                        </div>
-                    </div>
-
-                    <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>users">
-                            <span class="glyphicon el-icon-group"></span>
-                        </a>
-
-                        <div class="media-body landing-page landing-page-white">
-                            <h3><strong class="media-heading">Mitarbeiter koordinieren</strong></h3>
-                            <small>Mitarbeiter-Rollen über Benutzergruppen verwalten und entsprechende Rechte
-                                zuweisen.
-                            </small>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-md-4 column landing-page landing-page-white">
-
-
-                    <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>calendar"
-                           style="">
-                            <span class="glyphicon el-icon-calendar"></span>
-                        </a>
-
-                        <div class="media-body landing-page landing-page-white">
-                            <h3><strong class="media-heading">Terminkalender</strong></h3>
-                            <small>Nie mehr den Überblick über die kommenden Aufnahmen verlieren, oder Termine
-                                mühsam
-                                separat anlegen.
-                            </small>
-                        </div>
-                    </div>
-
-
-                    <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>captures">
-                            <span class="glyphicon glyphicon-film"></span>
-                        </a>
-
-                        <div class="media-body landing-page landing-page-white">
-                            <h3><strong class="media-heading">Aufnahmereihen erstellen</strong></h3>
-                            <small>Mehrere Aufzeichnungen können einfach anhand von Zeitplänen auf einen
-                                Schlag
-                                generiert werden und sparen zeitaufwändige und mühsame Arbeit.
-                            </small>
-                        </div>
-                    </div>
-
-                    <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left"
-                           href="<? echo $this->Html->url('/', true) ?>calendar/statistic">
-                            <span class="glyphicon el-icon-graph"></span>
-                        </a>
-
-                        <div class="media-body landing-page landing-page-white">
-                            <h3><strong class="media-heading">Projekte analysieren</strong></h3>
-                            <small>Reflektion und Beurteilung des Produktionsverlaufs mithilfe eigener Statistiken.
-                            </small>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-md-4 column landing-page landing-page-white">
-
-                    <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>tickets">
-                            <span class="glyphicon el-icon-tags"></span>
-                        </a>
-
-                        <div class="media-body landing-page landing-page-white">
-                            <h3><strong class="media-heading">Ticket-System</strong></h3>
-                            <small>Projektmanagement zentral, einfach und zugeschnitten. Aufgaben an Mitarbeiter
-                                verteilen und deren Status jederzeit einsehen.
-                            </small>
-                        </div>
-                    </div>
-
-
-                    <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="<? echo $this->Html->url('/', true) ?>workflows">
-                            <span class="glyphicon el-icon-random"></span>
-                        </a>
-
-                        <div class="media-body landing-page landing-page-white">
-                            <h3><strong class="media-heading">Routinen vorgeben</strong></h3>
-                            <small>Hängen Sie fertige Workflows an eine Kette von Aufzeichnungen und Aufgaben werden
-                                zu
-                                jeder Veranstaltung automatisch zugewiesen.
-                            </small>
-                        </div>
-                    </div>
-
-
-                    <div class="media landing-page landing-page-white">
-                        <a class="media-glyphicon pull-left" href="javascript:void(0)">
-                            <span class="glyphicon el-icon-rss"></span>
-                        </a>
-
-                        <div class="media-body landing-page landing-page-white">
-                            <h3><strong class="media-heading">Informiert bleiben</strong></h3>
-                            <small>Benachrichtigungs-System mit laufenden Aufnahmen der Woche, Produktionsstatus und
-                                mehr...
-                            </small>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
             </div>
 
 

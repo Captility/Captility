@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <!-- Element::Content-Pane -->
 
 

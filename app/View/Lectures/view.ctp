@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-th-list"></span>' . __('Lectures'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(' #' . h($lecture['Lecture']['number']) . ' ' . h($lecture['Lecture']['name']), '#', array('class' => 'active')); ?>

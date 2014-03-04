@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <? $this->Breadcrumbs->addCrumb(__('Production'), '/production'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-bookmark-empty"></span>' . __('Overview'), '/stats', array('class' => 'active')); ?>
 

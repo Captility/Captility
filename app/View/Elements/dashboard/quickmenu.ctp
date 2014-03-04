@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <div class="quickmenu">
     <div class="container">
         <div class="row">

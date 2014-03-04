@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>' . __('Captures'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(' #' . h($this->request->data['Capture']['capture_id']) . ' ' . h($this->request->data['Capture']['name']), '/captures/view/' . h($this->request->data['Capture']['capture_id'])); ?>

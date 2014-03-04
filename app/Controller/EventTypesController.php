@@ -3,6 +3,7 @@ App::uses('AppController', 'Controller');
 /**
  * EventTypes Controller
  *
+ * @author Daniel, Captiliity
  * @property EventType $EventType
  * @property PaginatorComponent $Paginator
  */

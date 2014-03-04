@@ -1,8 +1,16 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <script type="text/javascript">
     $(function() {
         $('textarea').tinymce({
             // Location of TinyMCE script
-            script_url : '/captility/js/jquery/tinymce/tinymce.min.js',
+            script_url : '/js/jquery/tinymce/tinymce.min.js',
 
 
             language: 'de',

@@ -139,6 +139,8 @@ class User extends AppModel {
             'extension' => array(
                 'rule' => array('extension', array('gif', 'png', 'jpg', 'svg')),
                 'message' => 'Only gif, png and jpg are supported.',
+                'required' => false,
+                'allowEmpty' => true
             )
         ),
         'group_id' => array(

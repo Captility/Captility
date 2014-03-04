@@ -1505,9 +1505,6 @@ input[type="button"].btn-block {
   }
 }
 /** Content Pane*/
-.content-pane {
-  overflow: scroll;
-}
 /** Margin under Navbar */
 .container-lower {
   margin-top: 30px;
@@ -1581,11 +1578,7 @@ canvas {
   background-color: #ffffff;
   border-bottom: 1px solid #dddddd;
 }
-.related {
-  overflow-x: scroll;
-}
 .actions-column .panel {
-  overflow: scroll;
   border: none;
   border-radius: 0px;
 }
@@ -1615,6 +1608,15 @@ small.disabled {
 /* ###############################################
  * ################# TYPOGRAPHY  #################
  * ###############################################*/
+.cp-icon-logo {
+  background-image: url('../img/logo/captility-logo-min-icon.svg');
+  background-size: 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+a:hover span.cp-icon-logo {
+  background-image: url('../img/logo/captility-logo-min-icon-inverse.svg');
+}
 .cp-icon-lecturer {
   background-image: url('../img/icons/cp-icon-lecturer.svg');
   background-size: 100%;
@@ -2357,6 +2359,20 @@ button .glyphicon {
   margin-left: 37px;
   position: absolute;
   right: 0;
+}
+.glyphicon-headline span.cp-icon-logo:empty {
+  font-size: 60px;
+  top: 4px;
+  margin-left: 46px;
+  position: absolute;
+  right: -12px;
+  height: 50px;
+}
+ul.captility-breadcrumb .cp-icon-logo {
+  font-size: 24px !important;
+  top: 4px;
+  height: 17px;
+  margin-right: 2px;
 }
 /** Show Auth-message as bootstrap alert*/
 #authMessage {
@@ -3244,7 +3260,7 @@ text-shadow: none;*/
  * ###############################################*/
 .sideTickets > .panel-body {
   padding-bottom: 0px;
-  overflow: scroll;
+  overflow-x: hidden !important;
   min-height: 225px;
   max-height: 225px;
 }
@@ -3697,6 +3713,7 @@ ol.landing-page-showcase-carousel-indicators > li.active {
   margin-top: 40px;
   padding: 5px 0px;
   background-color: #225588;
+  overflow: visible;
 }
 .glyphicon-alone {
   margin-right: 0;
@@ -3706,7 +3723,6 @@ ul.captility-breadcrumb {
   list-style: none;
   padding-left: 0px;
   margin-bottom: 0px;
-  overflow-x: scroll;
 }
 ul.captility-breadcrumb .glyphicon {
   font-size: 15px;

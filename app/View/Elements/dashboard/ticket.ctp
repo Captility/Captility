@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <?php $statuses = Configure::read('TICKET.STATUSES');
 $class = $statuses[$ticket['Ticket']['status']];
 

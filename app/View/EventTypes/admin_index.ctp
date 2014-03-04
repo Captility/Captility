@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-facetime-video"></span>'.__('Event Types'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->

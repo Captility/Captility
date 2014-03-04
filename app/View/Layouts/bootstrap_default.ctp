@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <?php
 
 $titleDescription = __d('project_name', 'Captility 0.2');

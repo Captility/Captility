@@ -1,4 +1,13 @@
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<?
+/**
+ * Project: Captility
+ * User: Daniel
+ * Date: 03.01.14
+ * Time: 16:19
+ */
+?>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

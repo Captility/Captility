@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>'.__('Capture'), '#', array('class' => 'active')); ?>
 <!--<div class=" view">-->

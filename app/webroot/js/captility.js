@@ -8,6 +8,10 @@
 
 $mobileMaxWidth = 992;
 
+
+//DEBUGGIN ON/OFF
+console.log = function() {};
+
 //######################################################################################################################
 //############################################### UTILITIES ############################################################
 //######################################################################################################################
@@ -1293,7 +1297,7 @@ $(document).ready(function () {
         } else {
 
             // SET VALUES
-            taskName.find('hr').before(taskNameField.val());
+            taskName.html(taskNameField.val()).append('<hr/>');
             taskDescription.html(taskDescriptionField.val());
 
             task.switchTaskToViewMode();
@@ -1314,7 +1318,7 @@ $(document).ready(function () {
 
                 $.post($appRoot + '/tasks/delete/' + taskId, function (data) {
 
-                    alert('Killed Task');
+                    //alert('Killed Task');
 
                     task.slideUp('800', function () {
 
@@ -1439,10 +1443,10 @@ $(document).ready(function () {
 
         }).fail(function () {
 
-                alert("Aktuelle Tickets konnten nicht abgefragt werden.");
+               /* alert("Aktuelle Tickets konnten nicht abgefragt werden.");
 
                 // Reload (logout)
-                window.location.replace(window.location.pathname);
+                window.location.replace(window.location.pathname);*/
             })
     }
 
@@ -1469,10 +1473,10 @@ $(document).ready(function () {
 
         }).fail(function () {
 
-                alert("Statusliste konnte nicht abgefragt werden.");
+                /*alert("Statusliste konnte nicht abgefragt werden.");
 
                 // Reload (logout)
-                window.location.replace(window.location.pathname);
+                window.location.replace(window.location.pathname);*/
             })
     }
 

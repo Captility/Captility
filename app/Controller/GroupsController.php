@@ -3,6 +3,7 @@ App::uses('AppController', 'Controller');
 /**
  * Groups Controller
  *
+ * @author Daniel, Captiliity
  * @property Group $Group
  * @property PaginatorComponent $Paginator
  */

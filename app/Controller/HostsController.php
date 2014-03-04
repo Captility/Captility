@@ -3,6 +3,7 @@ App::uses('AppController', 'Controller');
 /**
  * Hosts Controller
  *
+ * @author Daniel, Captiliity
  * @property Host $Host
  * @property PaginatorComponent $Paginator
  */

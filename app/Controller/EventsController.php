@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 App::uses('CakeTime', 'Utility');
 /**
  * Events Controller
- *
+ * @author Daniel, Captiliity
  * @property Event $Event
  * @property PaginatorComponent $Paginator
  */

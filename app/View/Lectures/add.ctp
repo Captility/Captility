@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-th-list"></span>' . __('Lectures'), array('action' => 'index')); ?>
 <?php $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-plus"></span>' . __('Add Lecture'), '#', array('class' => 'active')); ?>
@@ -5,7 +13,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-th-list"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-th-list"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -33,7 +41,7 @@
         'placeholder' => __('Number'),
         'beforeInput' => '<div class="input-group"><span class="input-group-addon input-group-glyphicon"><strong>#</strong></span>', 'afterInput' => '</div>',
         'div' => 'form-group form-split-6',
-        'autofocus'=>'autofocus'
+        'autofocus' => 'autofocus'
     ));?>
 
     <?php echo $this->Form->input('semester', array(
@@ -49,7 +57,8 @@
         'placeholder' => __('Name'),
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-th-list input-group-glyphicon"></span>', 'afterInput' => '</div>',
 
-    ));?><div></div>
+    ));?>
+    <div></div>
 
     <?php echo $this->Form->input('host_id', array(
 
@@ -157,7 +166,6 @@
     <?php echo $this->Element('submitArea');?>
 
     <?php echo $this->Form->end() ?>
-
 
 
 </div><!-- end col md 12 -->

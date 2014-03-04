@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <? $this->Breadcrumbs->addCrumb(__('Production'), '/production'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-calendar"></span>'.__('Calendar'), '/calendar', array('class' => 'active')); ?>
 

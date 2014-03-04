@@ -1,3 +1,19 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-group"></span>'.__('Groups'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->
 

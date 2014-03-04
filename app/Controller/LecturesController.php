@@ -3,6 +3,7 @@ App::uses('AppController', 'Controller');
 /**
  * Lectures Controller
  *
+ * @author Daniel, Captiliity
  * @property Lecture $Lecture
  * @property PaginatorComponent $Paginator
  */

@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-play-alt"></span>'.__('Event'), '#', array('class' => 'active')); ?>
 <!--<div class=" view">-->

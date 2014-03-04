@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-group"></span>'.__('Groups'),array('action' => 'index')); ?><?php $this->Breadcrumbs->addCrumb(__('Admin Add Group'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->

@@ -3,6 +3,7 @@ App::uses('AppController', 'Controller');
 /**
  * Users Controller
  *
+ * @author Daniel, Captiliity
  * @property User $User
  * @property PaginatorComponent $Paginator
  */

@@ -84,7 +84,6 @@
 /** Content Pane*/
 .content-pane {
 
-  overflow: scroll;
 }
 
 /** Margin under Navbar */
@@ -189,12 +188,12 @@ canvas {
 }
 
 .related {
-  overflow-x: scroll;
+  //overflow-x: scroll;
 }
 
 .actions-column .panel {
 
-  overflow: scroll;
+  //overflow: scroll;
   border: none;
   border-radius: 0px;
 }
@@ -238,6 +237,18 @@ small.disabled {
 /* ###############################################
  * ################# TYPOGRAPHY  #################
  * ###############################################*/
+
+.cp-icon-logo {
+  background-image: url('../img/logo/captility-logo-min-icon.svg');
+  background-size: 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+a&:hover span.cp-icon-logo {
+
+  background-image: url('../img/logo/captility-logo-min-icon-inverse.svg');
+}
 
 .cp-icon-lecturer {
   background-image: url('../img/icons/cp-icon-lecturer.svg');
@@ -537,6 +548,22 @@ button .glyphicon {
   margin-left: 37px;
   position: absolute;
   right: 0;
+}
+
+.glyphicon-headline span.cp-icon-logo:empty {
+  font-size: 60px;
+  top: 4px;
+  margin-left: 46px;
+  position: absolute;
+  right: -12px;
+  height: 50px;
+}
+
+ul.captility-breadcrumb .cp-icon-logo {
+  font-size: 24px !important;
+  top: 4px;
+  height: 17px;
+  margin-right: 2px;
 }
 
 /** Show Auth-message as bootstrap alert*/
@@ -977,7 +1004,7 @@ text-shadow: none;*/
 
     padding-bottom: 0px;
 
-    overflow: scroll;
+    overflow-x: hidden !important;
     min-height: 225px;
     max-height: 225px;
   }
@@ -1632,6 +1659,7 @@ ol.landing-page-showcase-carousel-indicators {
   margin-top: 40px;
   padding: 5px 0px;
   background-color: @landing-page-bgDefault; //height: 50px;
+  overflow: visible;
 }
 
 .glyphicon-alone {
@@ -1644,7 +1672,6 @@ ul.captility-breadcrumb {
   list-style: none; //display: inline-block;
   padding-left: 0px;
   margin-bottom: 0px;
-  overflow-x: scroll;
 
   .glyphicon {
 

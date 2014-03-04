@@ -3,6 +3,7 @@ App::uses('AppController', 'Controller');
 /**
  * Workflows Controller
  *
+ * @author Daniel, Captiliity
  * @property Workflow $Workflow
  * @property PaginatorComponent $Paginator
  */

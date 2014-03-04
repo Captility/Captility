@@ -3,6 +3,7 @@ App::uses('AppController', 'Controller');
 /**
  * Tickets Controller
  *
+ * @author Daniel, Captiliity
  * @property Ticket $Ticket
  * @property PaginatorComponent $Paginator
  */
@@ -122,6 +123,7 @@ class TicketsController extends AppController {
         // MY TICKETS
         $user_id = (isset($my) && ($my == 'true')) ? $this->Auth->user('user_id') : null;
         $sideTicket = ($sideTicket == 'true');
+
 
         $week_start = $this->Ticket->getWeekStart();
         $week_end = $this->Ticket->getNextWeekStart();

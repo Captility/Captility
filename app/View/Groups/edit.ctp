@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-myspace"></span>'.__('User Registry'), '/admin_center'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-group"></span>'.__('Groups'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(h($this->request->data['Group']['name']), '/groups/view/' . h($this->request->data['Group']['group_id'])); ?>

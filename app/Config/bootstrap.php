@@ -159,7 +159,7 @@ CakePlugin::load('AclExtras');
  * CAPTILITY VERSION
  */
 Configure::write('CAPTILITY.NAME', 'Captility');
-Configure::write('CAPTILITY.VERSION', '0.3.2 [alpha]');
+Configure::write('CAPTILITY.VERSION', '0.5 [alpha]');
 
 // Public Key
 Configure::write('CAPTILITY.CRON_KEY', '4516f866ba7ffba7a5b8f4bdf878136662ef8bc3');

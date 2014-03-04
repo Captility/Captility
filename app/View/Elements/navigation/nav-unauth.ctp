@@ -1,12 +1,12 @@
-<?php
+<?
 /**
  * Project: Captility
  * User: Daniel
  * Date: 03.01.14
  * Time: 16:19
- * Created with JetBrains PhpStorm.
  */
 ?>
+
 
 <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse"

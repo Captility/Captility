@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-play-circle"></span>'.__('Events'), array('action' => 'index')); ?><?php $this->Breadcrumbs->addCrumb(__('Admin Edit Event'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 

@@ -4,6 +4,7 @@ App::uses('CakeTime', 'Utility');
 /**
  * Schedules Controller
  *
+ * @author Daniel, Captiliity
  * @property Schedule $Schedule
  * @property PaginatorComponent $Paginator
  */

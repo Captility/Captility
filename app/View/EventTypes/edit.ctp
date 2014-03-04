@@ -1,3 +1,11 @@
+<?
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-facetime-video"></span>' . __('Event Types'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb(h($this->request->data['EventType']['name']), '/event_types/view/' . h($this->request->data['EventType']['event_type_id'])); ?>

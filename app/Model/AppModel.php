@@ -205,7 +205,8 @@ class AppModel extends Model {
 
 
         $dayIndexPhp = date('w', strtotime($weekDay)); // Week where Sunday = 0, Monday =1 ...
-        $dayIndexGerman = ($dayIndexPhp == 0) ? 6 : 1 - $dayIndexPhp; // Week where Sunday = 7, Monday =0 ...
+
+        $dayIndexGerman = ($dayIndexPhp == 0) ? 6 : -1 + $dayIndexPhp; // Week where Sunday = 7, Monday =0 ...
 
         $weekStart = date('Y-m-d 00:00:00', strtotime(('-' . $dayIndexGerman . ' days'), strtotime($weekDay)));
 
