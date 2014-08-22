@@ -69,7 +69,9 @@ class EventTypesController extends AppController {
             $this->EventType->create();
             if ($this->EventType->save($this->request->data)) {
                 $this->Session->setFlash(__('The event type has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->EventType->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The event type could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -96,7 +98,9 @@ class EventTypesController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->EventType->save($this->request->data)) {
                 $this->Session->setFlash(__('The event type has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->EventType->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The event type could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));

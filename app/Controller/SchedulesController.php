@@ -60,7 +60,9 @@ class SchedulesController extends AppController {
             $this->Schedule->create();
             if ($this->Schedule->save($this->request->data)) {
                 $this->Session->setFlash(__('The schedule has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Schedule->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -84,7 +86,9 @@ class SchedulesController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Schedule->save($this->request->data)) {
                 $this->Session->setFlash(__('The schedule has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Schedule->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -155,7 +159,9 @@ class SchedulesController extends AppController {
             $this->Schedule->create();
             if ($this->Schedule->save($this->request->data)) {
                 $this->Session->setFlash(__('The schedule has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Schedule->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -179,7 +185,9 @@ class SchedulesController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Schedule->save($this->request->data)) {
                 $this->Session->setFlash(__('The schedule has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Schedule->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The schedule could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));

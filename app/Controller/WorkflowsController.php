@@ -59,7 +59,9 @@ class WorkflowsController extends AppController {
             if ($this->Workflow->saveAssociated($this->request->data)) {
 
                 $this->Session->setFlash(__('The workflow has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Workflow->id));
+                //return $this->redirect(array('action' => 'index'));
 
             }
             else {
@@ -86,7 +88,9 @@ class WorkflowsController extends AppController {
             if ($this->Workflow->saveAll($this->request->data)) {
 
                 $this->Session->setFlash(__('The workflow has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Workflow->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The workflow could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));

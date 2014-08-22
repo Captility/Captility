@@ -119,16 +119,23 @@
     <?php echo $this->Form->input('location', array(
         'class' => 'form-control',
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-map-marker input-group-glyphicon"></span>', 'afterInput' => '</div>',
-        'placeholder' => __('Place')
+        'placeholder' => __('Place'),
+        'div' => 'form-group form-split-6',
 
+    ));?>
+
+    <?php echo $this->Form->input('device_id', array(
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-hdd input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'placeholder' => __('Device'),
+        'div' => 'form-group form-split-6',
+        'empty' => true, 'required' => false,
     ));?>
 
 
     <?php echo $this->Form->input('link', array(
         'class' => 'form-control',
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-link input-group-glyphicon"></span>', 'afterInput' => '</div>',
-        'placeholder' => 'Link'
-
+        'placeholder' => 'Link',
     ));?>
 
 

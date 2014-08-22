@@ -170,7 +170,9 @@ class TicketsController extends AppController {
             $this->Ticket->create();
             if ($this->Ticket->save($this->request->data)) {
                 $this->Session->setFlash(__('The ticket has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Ticket->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The ticket could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -196,7 +198,9 @@ class TicketsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Ticket->save($this->request->data)) {
                 $this->Session->setFlash(__('The ticket has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Ticket->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The ticket could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));

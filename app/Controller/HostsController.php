@@ -58,7 +58,9 @@ class HostsController extends AppController {
             $this->Host->create();
             if ($this->Host->save($this->request->data)) {
                 $this->Session->setFlash(__('The host has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Host->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The host could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -81,7 +83,9 @@ class HostsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Host->save($this->request->data)) {
                 $this->Session->setFlash(__('The host has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Host->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The host could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));

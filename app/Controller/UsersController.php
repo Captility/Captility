@@ -262,7 +262,9 @@ class UsersController extends AppController {
                 // Set Language after login
                 $this->Session->write('Config.language', $this->request->data['User']['language']);
 
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->User->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');
@@ -295,7 +297,9 @@ class UsersController extends AppController {
 
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('The user has been saved.'), 'flash/success');
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->User->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash/danger');

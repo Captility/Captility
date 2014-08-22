@@ -111,14 +111,15 @@
         'div' => 'form-group form-split-6'
     ));?>
 
-    <?php echo $this->Form->input('Device.password', array(
+    <?php echo $this->Form->input('Device.device_pwd', array(
         'placeholder' => __('Password'),
         'type' => 'password',
         'label' => __('Password'),
-        'value' => '',
+        //'value' => '',
         'autocomplete' => 'off',
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-lock input-group-glyphicon"></span>', 'afterInput' => '</div>',
-        'div' => 'form-group form-split-6'
+        'div' => 'form-group form-split-6',
+        'require' => false
     ));?>
 
     <hr class="input-group"/>

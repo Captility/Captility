@@ -131,4 +131,53 @@ class Device extends AppModel {
         )
     );
 
+
+    /**
+     * Password encryption
+     */
+    public function beforeSave($options = array()) {
+
+        parent::beforeSave($options);
+
+
+        //Encrypt Device Password for later Cronjob Commands/ HTTP-API requests
+        if (isset($this->data['Device']['device_pwd']) && $this->data['Device']['device_pwd'] != '') {
+
+
+            // Encrypt device password
+            if (!empty($this->data[$this->alias]['device_pwd'])) {
+
+                // Rather unsafe encryption technique to encrypt minor passwords like device-passwords, which need to be decrypted for cronjobs.
+                $enc = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, Configure::read('Security.rijndaelKey'), $this->data[$this->alias]['device_pwd'],
+                    'cbc', base64_decode(Configure::read('Security.rijndaelIV'))));
+
+                $this->data[$this->alias]['device_pwd'] = $enc;
+            }
+        }
+
+        return true;
+    }
+
+    public function afterFind($results, $primary = false) {
+
+        parent::afterFind($results, $primary);
+
+
+        foreach ($results as $result => $val) {
+
+            // Decrypt device password
+            if (isset($results[$result][$this->alias]['device_pwd']) && !empty($results[$result][$this->alias]['device_pwd'])) {
+
+                // Rather unsafe encryption technique to encrypt minor passwords like device-passwords, which need to be decrypted for cronjobs.
+                $dec = trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, Configure::read('Security.rijndaelKey'), base64_decode($results[$result][$this->alias]['device_pwd']),
+                    'cbc', base64_decode(Configure::read('Security.rijndaelIV'))));
+
+
+                $results[$result][$this->alias]['device_pwd'] = $dec;
+            }
+
+        }
+
+        return $results;
+    }
 }

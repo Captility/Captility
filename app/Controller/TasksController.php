@@ -54,7 +54,9 @@ class TasksController extends AppController {
 			$this->Task->create();
 			if ($this->Task->save($this->request->data)) {
 				$this->Session->setFlash(__('The task has been saved.'), 'default', array('class' => 'alert alert-success'));
-				return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Task->id));
+                //return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
@@ -77,7 +79,9 @@ class TasksController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Task->save($this->request->data)) {
 				$this->Session->setFlash(__('The task has been saved.'), 'default', array('class' => 'alert alert-success'));
-				return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Task->id));
+                //return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
@@ -145,7 +149,9 @@ class TasksController extends AppController {
 			$this->Task->create();
 			if ($this->Task->save($this->request->data)) {
 				$this->Session->setFlash(__('The task has been saved.'), 'default', array('class' => 'alert alert-success'));
-				return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Task->id));
+                //return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
@@ -168,7 +174,9 @@ class TasksController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Task->save($this->request->data)) {
 				$this->Session->setFlash(__('The task has been saved.'), 'default', array('class' => 'alert alert-success'));
-				return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Task->id));
+                //return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The task could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}

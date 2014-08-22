@@ -92,6 +92,13 @@
                     ?>
                 </td>
             </tr>
+            <tr>
+                <th><?php echo __('Device'); ?></th>
+                <td><span class="glyphicon el-icon-hdd"></span>
+                    <?php echo $this->Html->link($event['Device']['name'], array('controller' => 'devices', 'action' => 'view', $event['Device']['device_id'])); ?>
+                    &nbsp;
+                </td>
+            </tr>
             <!--<tr>
                 <th><?php /*echo __('All Day'); */?></th>
                 <td>

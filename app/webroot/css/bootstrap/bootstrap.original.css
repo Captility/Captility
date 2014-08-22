@@ -2678,7 +2678,7 @@ input[type="button"].btn-block {
   content: "\2709";
 }
 
-.el-icon-file-edit:before {
+.el-icon-pencil:before {
   content: "\270f";
 }
 
@@ -2930,7 +2930,7 @@ input[type="button"].btn-block {
   content: "\e064";
 }
 
-.el-icon-file-edit:before {
+.el-icon-pencil:before {
   content: "\e065";
 }
 

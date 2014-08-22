@@ -150,6 +150,9 @@ msgstr "Die Aufnahme wurde erfolgreich gesichert."
 msgid "The Device has been saved."
 msgstr "Das Aufnahmegerät wurde erfolgreich gesichert."
 
+msgid "The Device has been deleted."
+msgstr "Das Aufzeichnungsgerät wurde entfernt."
+
 msgid "The Event could not be saved. Please, try again."
 msgstr "Die Aufnahme konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 

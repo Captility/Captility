@@ -55,7 +55,9 @@ class LecturesController extends AppController {
             $this->Lecture->create();
             if ($this->Lecture->save($this->request->data)) {
                 $this->Session->setFlash(__('The lecture has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Lecture->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -83,7 +85,9 @@ class LecturesController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Lecture->save($this->request->data)) {
                 $this->Session->setFlash(__('The lecture has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Lecture->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -157,7 +161,9 @@ class LecturesController extends AppController {
             $this->Lecture->create();
             if ($this->Lecture->save($this->request->data)) {
                 $this->Session->setFlash(__('The lecture has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Lecture->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -183,7 +189,9 @@ class LecturesController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Lecture->save($this->request->data)) {
                 $this->Session->setFlash(__('The lecture has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Lecture->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The lecture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));

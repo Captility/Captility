@@ -76,7 +76,7 @@ class EventsController extends AppController {
             $events[$key]['status'] = __($event['Event']['status']);
             $classes = Configure::read('EVENT.STATUSES');
 
-            $events[$key]['status_class'] = array_key_exists($event['Event']['status'], $classes)? $classes[$event['Event']['status']] : 'default';
+            $events[$key]['status_class'] = array_key_exists($event['Event']['status'], $classes) ? $classes[$event['Event']['status']] : 'default';
             $events[$key]['end'] = $end;
             $events[$key]['allDay'] = $allday;
             //'url' => Router::url('/') . '/captures/view/'.$event['Capture']['capture_id'],
@@ -155,7 +155,9 @@ class EventsController extends AppController {
             $this->Event->create();
             if ($this->Event->save($this->request->data)) {
                 $this->Session->setFlash(__('The event has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Event->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -164,7 +166,8 @@ class EventsController extends AppController {
         $eventTypes = $this->Event->EventType->find('list');
         $schedules = $this->Event->Schedule->find('list');
         $captures = $this->Event->Capture->find('list');
-        $this->set(compact('eventTypes', 'schedules', 'captures'));
+        $devices = $this->Event->Device->find('list');
+        $this->set(compact('eventTypes', 'schedules', 'captures', 'devices'));
     }
 
     /**
@@ -182,7 +185,9 @@ class EventsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Event->save($this->request->data)) {
                 $this->Session->setFlash(__('The event has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Event->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -195,7 +200,8 @@ class EventsController extends AppController {
         $eventTypes = $this->Event->EventType->find('list');
         $schedules = $this->Event->Schedule->find('list');
         $captures = $this->Event->Capture->find('list');
-        $this->set(compact('eventTypes', 'schedules', 'captures'));
+        $devices = $this->Event->Device->find('list');
+        $this->set(compact('eventTypes', 'schedules', 'captures', 'devices'));
     }
 
     /**
@@ -259,7 +265,10 @@ class EventsController extends AppController {
             $this->Event->create();
             if ($this->Event->save($this->request->data)) {
                 $this->Session->setFlash(__('The event has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+
+                return $this->redirect(array('action' => 'view', $this->Event->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -268,7 +277,8 @@ class EventsController extends AppController {
         $eventTypes = $this->Event->EventType->find('list');
         $schedules = $this->Event->Schedule->find('list');
         $captures = $this->Event->Capture->find('list');
-        $this->set(compact('eventTypes', 'schedules', 'captures'));
+        $devices = $this->Event->Device->find('list');
+        $this->set(compact('eventTypes', 'schedules', 'captures', 'devices'));
     }
 
     /**
@@ -286,7 +296,9 @@ class EventsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Event->save($this->request->data)) {
                 $this->Session->setFlash(__('The event has been saved.'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+
+                return $this->redirect(array('action' => 'view', $this->Event->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -299,7 +311,8 @@ class EventsController extends AppController {
         $eventTypes = $this->Event->EventType->find('list');
         $schedules = $this->Event->Schedule->find('list');
         $captures = $this->Event->Capture->find('list');
-        $this->set(compact('eventTypes', 'schedules', 'captures'));
+        $devices = $this->Event->Device->find('list');
+        $this->set(compact('eventTypes', 'schedules', 'captures', 'devices'));
     }
 
     /**
