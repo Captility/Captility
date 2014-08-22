@@ -118,7 +118,7 @@
 
 
 
-<?php echo $this->Form->input('Event.link', array(
+<?php echo $this->Form->input('Capture.link', array(
 
     'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-link input-group-glyphicon"></span>', 'afterInput' => '</div>',
     'placeholder' => __('http://www.captility.de'),
@@ -246,7 +246,15 @@ if (empty($this->request->data['Schedule'])) {
             <?php echo $this->Form->input('Schedule.' . $i . '.location', array(
                 'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-map-marker input-group-glyphicon"></span>', 'afterInput' => '</div>',
                 'placeholder' => __('Place'),
+                'div' => 'form-group form-split-6',
                 'disabled' => $regular,
+            ));?>
+
+            <?php echo $this->Form->input('Schedule.' . $i . '.device_id', array(
+                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-hdd input-group-glyphicon"></span>', 'afterInput' => '</div>',
+                'placeholder' => __('Device'),
+                'div' => 'form-group form-split-6',
+                'empty' => true, 'required' => false,
             ));?>
 
         </div>
@@ -354,9 +362,16 @@ if (empty($this->request->data['Schedule'])) {
             <?php echo $this->Form->input('Schedule.' . $i . '.location', array(
                 'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-map-marker input-group-glyphicon"></span>', 'afterInput' => '</div>',
                 'disabled' => !$regular,
+                'div' => 'form-group form-split-6',
                 'placeholder' => __('Place'),
             ));?>
 
+            <?php echo $this->Form->input('Schedule.' . $i . '.device_id', array(
+                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-hdd input-group-glyphicon"></span>', 'afterInput' => '</div>',
+                'placeholder' => __('Device'),
+                'div' => 'form-group form-split-6',
+                'empty' => true, 'required' => false,
+            ));?>
 
         </div>
         <? ################################################################################################################## ?>

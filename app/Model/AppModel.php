@@ -233,5 +233,33 @@ class AppModel extends Model {
         //SUNDAY FIX FOR: https://bugs.php.net/bug.php?id=63740
     }
 
+    /**
+     * Encrypt String with Jijndael256 for DB serialisation with constant initialisation vector.
+     * Rather unsafe encryption technique to encrypt minor important passwords like device-passwords,
+     * which need to be decrypted for cronjobs. Do not use for user passwords!
+     *
+     * @param $plainField String as plain/ decrypted text
+     * @return string Encrypted and base64 decoded string
+     */
+    public function encryptField($plainField) {
+
+        return $encoded_pwd = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, Configure::read('Security.rijndaelKey'), $plainField,
+            'cbc', base64_decode(Configure::read('Security.rijndaelIV'))));
+    }
+
+    /**
+     * Decrypt String with Jijndael256 for DB serialisation with constant initialisation vector.
+     * Rather unsafe encryption technique to encrypt minor important passwords like device-passwords,
+     * which need to be decrypted for cronjobs. Do not use for user passwords!
+     *
+     * @param $encryptedField Encrypted string
+     * @return string Decrypted plain text.
+     */
+    public function decryptField($encryptedField) {
+
+        return $decoded_pwd = trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, Configure::read('Security.rijndaelKey'), base64_decode($encryptedField),
+            'cbc', base64_decode(Configure::read('Security.rijndaelIV'))));
+    }
+
 
 }

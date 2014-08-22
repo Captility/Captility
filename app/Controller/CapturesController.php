@@ -52,16 +52,18 @@ class CapturesController extends AppController {
     public function add() {
 
 
-        if ($this->request->is('post')) {
+        if ($this->request->is(array('post', 'put'))) {
 
 
             //debug($this->request->data);
+            $this->Capture->validates($this->request->data['Capture']);
 
-            // Markup Container
+
+            // Markup Schedule Container
             $Schedules = $this->request->data['Schedule'];
             $this->Capture->Schedule->validates($this->request->data['Schedule']);
 
-            // Extra Check valid data
+            // Extra check for valid data
             $validData = true;
             foreach ($Schedules as $i => $Schedule) {
 
@@ -84,7 +86,7 @@ class CapturesController extends AppController {
 
                     //SCHEDULE[Event] Data
                     $Schedules[$i]['Event']['event_type_id'] = $this->request->data['Event']['event_type_id'];
-                    $Schedules[$i]['Event']['link'] = $this->request->data['Event']['link'];
+                    $Schedules[$i]['Event']['link'] = $this->request->data['Capture']['link'];
 
                     $Schedules[$i]['Capture']['name'] = $this->request->data['Capture']['name'];
                     $Schedules[$i]['Capture']['status'] = $this->request->data['Capture']['status'];
@@ -117,7 +119,8 @@ class CapturesController extends AppController {
                     //debug('SCHEDULE SAVED');
                     //$this->Capture->Schedule->delete();
 
-                    return $this->redirect(array('action' => 'index'));
+                    return $this->redirect(array('action' => 'view', $this->Capture->id));
+                    //return $this->redirect(array('action' => 'index'));
                 }
                 else {
 
@@ -147,8 +150,10 @@ class CapturesController extends AppController {
         $schedules = $this->Capture->Schedule->find('list');
         $eventTypes = $this->Capture->Event->EventType->find('list', array(
             'fields' => array('EventType.event_type_id', 'EventType.name', 'EventType.color')));
+        $devices = $this->Capture->Event->Device->find('list', array(
+            'fields' => array('Device.device_id', 'Device.name', 'Device.location')));
 
-        $this->set(compact('lectures', 'users', 'workflows', 'schedules', 'events', 'eventTypes'));
+        $this->set(compact('lectures', 'users', 'workflows', 'schedules', 'events', 'eventTypes', 'devices'));
     }
 
     /**
@@ -254,7 +259,8 @@ class CapturesController extends AppController {
                     }
                 }*/
 
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'view', $this->Capture->id));
+                //return $this->redirect(array('action' => 'index'));
             }
             else {
                 $this->Session->setFlash(__('The Capture could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));

@@ -65,8 +65,8 @@ class Capture extends AppModel {
         ),
         'link' => array(
             'url' => array(
-                'rule' => array('url'),
-                'message' => 'Please enter a valid Link or leave this field empty.',
+                'rule' => array('url', true),
+                'message' => 'Please enter a valid Link, like http://www.captility.de',
                 'allowEmpty' => true,
                 'required' => false,
                 //'last' => false, // Stop validation after this rule

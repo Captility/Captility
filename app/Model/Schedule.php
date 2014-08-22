@@ -257,6 +257,8 @@ class Schedule extends AppModel {
         //$this->log(print_r($this->Event->validationErrors, true));
 
 
+        //debug($data);
+
         $schedule = $data['Schedule'];
         $event = $data['Event'];
 
@@ -270,9 +272,10 @@ class Schedule extends AppModel {
         //Foregn Keys
         $event['schedule_id'] = $scheduleId;
         $event['capture_id'] = $schedule['capture_id'];
+        $event['device_id'] = $schedule['device_id'];
 
 
-        //CHECK IF SINLE EVENT OR MULTIPLE EVENTS ARE INVOLED
+        //CHECK IF SINGLE EVENT OR MULTIPLE EVENTS ARE INVOLVED
         if (empty($schedule['interval_end'])) {
 
             //SINGLE EVENT CREATION ###################################################################################

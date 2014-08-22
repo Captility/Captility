@@ -10,7 +10,8 @@ $mobileMaxWidth = 992;
 
 
 //DEBUGGIN ON/OFF
-console.log = function() {};
+console.log = function () {
+};
 
 //######################################################################################################################
 //############################################### UTILITIES ############################################################
@@ -386,10 +387,10 @@ $(document).ready(function () {
         }
 
         /*// Later changes on resize
-        $(window).resize( function () {
-            if ($(document).width() < $mobileMaxWidth) $('#calendar').fullCalendar('changeView', 'agendaDay');
-           else $('#calendar').fullCalendar('changeView', 'agendaWeek');
-        });*/
+         $(window).resize( function () {
+         if ($(document).width() < $mobileMaxWidth) $('#calendar').fullCalendar('changeView', 'agendaDay');
+         else $('#calendar').fullCalendar('changeView', 'agendaWeek');
+         });*/
 
         //Event Sources
         var captilityEventSources = {
@@ -530,7 +531,6 @@ $(document).ready(function () {
                 content + '</td></tr>';
 
 
-
                 if (data.Lecture.lecture_id != null) {
                     content += '<tr><td><span class="glyphicon glyphicon-th-list"></span></td><td colspan="3"><a href="lectures/view/' + data.Lecture.lecture_id + '">' +
                         '' + data.Lecture.number + ' ' + data.Lecture.name + '</a>' +
@@ -551,7 +551,7 @@ $(document).ready(function () {
 
 
                 content += '</tbody>' +
-                '</table><hr class="calendarInfoHr"/>';
+                    '</table><hr class="calendarInfoHr"/>';
 
 
                 if (data.status_class != null) {
@@ -827,11 +827,24 @@ $(document).ready(function () {
 
         //APPEND
         $('#ScheduleContainer').append($schedule);
-        $schedule.slideDown();
+
 
         // UPDATE
         $schedule.find('.bootstrap-select').remove();
+
+
+        // TODO: Remove / Nothing Selected Bugfix:
+        $('select:not(.form-control-date)').addClass('show-tick').selectpicker({
+            selectedTextFormat: 'values',
+            noneSelectedText: '<span class="glyphicon el-icon-error"></span>',
+            noneResultsText: '<span class="glyphicon el-icon-remove-sign"></span>',
+            dropupAuto: false,
+            liveSearch: true
+        });
         $schedule.find('input, select').selectpicker('refresh');
+
+        $schedule.slideDown();
+
         $(this).updateScheduleRemoveState()
 
 
@@ -1415,11 +1428,11 @@ $(document).ready(function () {
 
         $(this).html($data);
 
-           console.log($data);
+        console.log($data);
 
-        $data.each(function(index) {
+        $data.each(function (index) {
             console.log($(this));
-            $(this).delay(200*index).slideDown('200');
+            $(this).delay(200 * index).slideDown('200');
         });
     }
 
@@ -1429,7 +1442,7 @@ $(document).ready(function () {
     jQuery.fn.getTickets = function (my, sideTicket) {
 
         var url = $appRoot + 'tickets/feed';
-        url += (typeof(my) === 'undefined')? '/false' : '/' + my;
+        url += (typeof(my) === 'undefined') ? '/false' : '/' + my;
         url += (typeof(sideTicket) === 'undefined') ? '/false' : '/' + sideTicket;
 
         var $target = (my) ? $('.myTicketContainer') : $('.ticketContainer');
@@ -1443,17 +1456,18 @@ $(document).ready(function () {
 
         }).fail(function () {
 
-               /* alert("Aktuelle Tickets konnten nicht abgefragt werden.");
+                /* alert("Aktuelle Tickets konnten nicht abgefragt werden.");
 
-                // Reload (logout)
-                window.location.replace(window.location.pathname);*/
+                 // Reload (logout)
+                 window.location.replace(window.location.pathname);*/
             })
     }
 
     //Init-Load SideTickets
     if ($('.sideTicketContainer').length) {
         $(this).getTickets(true, true);
-    };
+    }
+    ;
 
 
     /**
@@ -1475,15 +1489,16 @@ $(document).ready(function () {
 
                 /*alert("Statusliste konnte nicht abgefragt werden.");
 
-                // Reload (logout)
-                window.location.replace(window.location.pathname);*/
+                 // Reload (logout)
+                 window.location.replace(window.location.pathname);*/
             })
     }
 
     //Init-Load SideTickets
     if ($('.sideTicketContainer').length) {
         $(this).getTickets(true, true);
-    };
+    }
+    ;
 
     /**
      * Ticket Action Buttons

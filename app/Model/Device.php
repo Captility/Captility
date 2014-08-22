@@ -147,11 +147,7 @@ class Device extends AppModel {
             // Encrypt device password
             if (!empty($this->data[$this->alias]['device_pwd'])) {
 
-                // Rather unsafe encryption technique to encrypt minor passwords like device-passwords, which need to be decrypted for cronjobs.
-                $enc = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, Configure::read('Security.rijndaelKey'), $this->data[$this->alias]['device_pwd'],
-                    'cbc', base64_decode(Configure::read('Security.rijndaelIV'))));
-
-                $this->data[$this->alias]['device_pwd'] = $enc;
+                $this->data[$this->alias]['device_pwd'] = $this->encryptField($this->data[$this->alias]['device_pwd']);
             }
         }
 
@@ -166,14 +162,9 @@ class Device extends AppModel {
         foreach ($results as $result => $val) {
 
             // Decrypt device password
-            if (isset($results[$result][$this->alias]['device_pwd']) && !empty($results[$result][$this->alias]['device_pwd'])) {
+            if (is_array($results[$result]) && isset($results[$result][$this->alias]['device_pwd']) && !empty($results[$result][$this->alias]['device_pwd'])) {
 
-                // Rather unsafe encryption technique to encrypt minor passwords like device-passwords, which need to be decrypted for cronjobs.
-                $dec = trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, Configure::read('Security.rijndaelKey'), base64_decode($results[$result][$this->alias]['device_pwd']),
-                    'cbc', base64_decode(Configure::read('Security.rijndaelIV'))));
-
-
-                $results[$result][$this->alias]['device_pwd'] = $dec;
+                $results[$result][$this->alias]['device_pwd'] = $this->decryptField($results[$result][$this->alias]['device_pwd']);
             }
 
         }
