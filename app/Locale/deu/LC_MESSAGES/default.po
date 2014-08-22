@@ -47,6 +47,9 @@ msgstr "Aufzeichnungen anzeigen"
 msgid "List Schedules"
 msgstr "Zeitpläne anzeigen"
 
+msgid "List Devices"
+msgstr "Aufnahmegeräte anzeigen"
+
 msgid "New Capture"
 msgstr "Aufnahmeplan anlegen"
 
@@ -74,9 +77,18 @@ msgstr "Aufzeichnung anlegen"
 msgid "New Schedule"
 msgstr "Zeitplan anlegen"
 
+msgid "New Device"
+msgstr "Aufnahmegerät anlegen"
+
+
+msgid "Edit Device"
+msgstr "Aufnahmegerät bearbeiten"
+
+
+
+
 msgid "Delete Capture"
 msgstr "Aufnahmeplan entfernen"
-
 
 msgid "Delete User"
 msgstr "Benutzer entfernen"
@@ -105,6 +117,9 @@ msgstr "Aufzeichnung entfernen"
 msgid "Delete Schedule"
 msgstr "Zeitplan entfernen"
 
+msgid "Delete Device"
+msgstr "Aufnahmegeräte entfernen"
+
 msgid "Delete"
 msgstr "Entfernen"
 
@@ -132,8 +147,14 @@ msgstr "Der Aufnahmeplan wurde erfolgreich gesichert."
 msgid "The Event has been saved."
 msgstr "Die Aufnahme wurde erfolgreich gesichert."
 
+msgid "The Device has been saved."
+msgstr "Das Aufnahmegerät wurde erfolgreich gesichert."
+
 msgid "The Event could not be saved. Please, try again."
 msgstr "Die Aufnahme konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
+
+msgid "The Device could not be saved. Please, try again."
+msgstr "Das Aufnahmegerät konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
 
 msgid "The Capture could not be saved. Please, try again."
 msgstr "Der Aufnahmeplan konnte nicht gesichert werden. Bitte überprüfen Sie ihre Eingabe."
@@ -379,8 +400,14 @@ msgstr "Seite {:page} von {:pages}. Zeige: {:current} Einträge von insg. {:coun
 msgid "Captures"
 msgstr "Aufnahmepläne"
 
+msgid "Devices"
+msgstr "Aufnahmegeräte"
+
 msgid "Add Capture"
 msgstr "Aufnahmeplan anlegen"
+
+msgid "Add Device"
+msgstr "Aufnahmegerät anlegen"
 
 #: View/Tickets/admin_add.ctp:44
 msgid "Submit"
@@ -463,6 +490,8 @@ msgstr "Admin::Aufzeichnung bearbeiten"
 
 #: View/Workflows/admin_add.ctp:49
 
+msgid "Device"
+msgstr "Aufnahmegerät"
 
 msgid "Capture"
 msgstr "Aufnahmeplan"
@@ -549,6 +578,26 @@ msgstr "Ort der Aufzeichnung"
 
 msgid "Place"
 msgstr "Raum / Gebäude"
+
+msgid "Device place"
+msgstr "Standort"
+
+msgid "IP Adress"
+msgstr "IP-Adresse"
+
+msgid "Ip Adress"
+msgstr "IP-Adresse"
+
+msgid "Others"
+msgstr "Sonstige"
+
+
+msgid "Start Command"
+msgstr "Startbefehl"
+
+
+msgid "End Command"
+msgstr "Stoppbefehl"
 
 
 msgid "Edit Capture"
@@ -1064,6 +1113,9 @@ msgstr "Dieser Benutzername ist leider bereits belegt."
 msgid "This name is already in use."
 msgstr "Dieser Name wird bereits genutzt."
 
+msgid "This IP is already in use."
+msgstr "Diese IP-Adresse ist bereits belegt."
+
 msgid "Please enter a password."
 msgstr "Bitte geben Sie ein Passwort an."
 
@@ -1186,6 +1238,9 @@ msgstr "Zeitplan einstellen"
 
 msgid "Add another Schedule"
 msgstr "Weiterer Zeitplan"
+
+msgid "Please supply a valid IP address."
+msgstr "Geben Sie eine gültige IP-Adresse an."
 
 msgid "A Schedule is corrupt or missing information."
 msgstr "Ein Zeitplan ist unvollständig oder enthält Fehler."

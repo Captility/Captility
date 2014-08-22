@@ -213,6 +213,13 @@ Configure::write('EVENT.STATUSES', array(
 
 ));
 
+/** SUPPORTED DEVICE TYPES */
+Configure::write('DEVICE.TYPES', array(
+    // Name => Value
+    'Lecture Recorder X2' => 'Lecture Recorder X2',
+    'Lecture Recorder' => 'Lecture Recorder',
+    __('Others') => __('Others')
+));
 
 /**
  * Bootstrap Layout for Forms.

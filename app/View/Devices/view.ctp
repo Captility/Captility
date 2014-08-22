@@ -1,17 +1,27 @@
+<?php
 
-<? $this->Breadcrumbs->addCrumb(__('Device'), '#', array('class' => 'active')); ?>
-<!--<div class=" view">-->
+/**
+ * View Template
+ *
+ * @author Daniel, Captiliity
+ */
+?>
+
+<? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-hdd"></span>' . __('Devices'), array('action' => 'index')); ?>
+<? $this->Breadcrumbs->addCrumb('#' . h($device['Device']['device_id']) . ' ' . h($device['Device']['name']), '#', array('class' => 'active')); ?>
+
+
 <div class="row">
     <div class="col-md-1 column">
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon el-icon-hdd"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo __('Device'); ?></h1>
+            <h1><?php echo '#' . h($device['Device']['device_id']) . ' ' . h($device['Device']['name']); ?></h1>
         </div>
     </div>
 </div>
-
-<!--<div class="row">-->
 
 
 <div class="col-md-1 column">
@@ -19,146 +29,148 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <table cellpadding="0" cellspacing="0" class="table table-striped">
-        <tbody>
-        <tr>
-		<th><?php echo __('Device Id'); ?></th>
-		<td>
-			<?php echo h($device['Device']['device_id']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Name'); ?></th>
-		<td>
-			<?php echo h($device['Device']['name']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Ip Adress'); ?></th>
-		<td>
-			<?php echo h($device['Device']['ip_adress']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Location'); ?></th>
-		<td>
-			<?php echo h($device['Device']['location']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Username'); ?></th>
-		<td>
-			<?php echo h($device['Device']['username']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Password'); ?></th>
-		<td>
-			<?php echo h($device['Device']['password']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Type'); ?></th>
-		<td>
-			<?php echo h($device['Device']['type']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Link'); ?></th>
-		<td>
-			<?php echo h($device['Device']['link']); ?>
-			&nbsp;
-		</td>
-</tr>
-        </tbody>
-    </table>
+    <div class="panel panel-default badger-right badger-default"
+         data-badger="<? echo __('Device') . ' #' . h($device['Device']['device_id']); ?>">
 
-            <div class="related row">
-            <div class="col-md-12">
-                <h3><?php echo __('Related Events'); ?></h3>
-                <?php if (!empty($device['Event'])): ?>
-                <table cellpadding="0" cellspacing="0" class="table table-striped">
-                    <thead>
-                    <tr>
-                        		<th><?php echo __('Event Id'); ?></th>
-		<th><?php echo __('Title'); ?></th>
-		<th><?php echo __('Comment'); ?></th>
-		<th><?php echo __('Start'); ?></th>
-		<th><?php echo __('End'); ?></th>
-		<th><?php echo __('All Day'); ?></th>
-		<th><?php echo __('Status'); ?></th>
-		<th><?php echo __('Link'); ?></th>
-		<th><?php echo __('Location'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th><?php echo __('Event Type Id'); ?></th>
-		<th><?php echo __('Schedule Id'); ?></th>
-		<th><?php echo __('Capture Id'); ?></th>
-		<th><?php echo __('Device Id'); ?></th>
-                        <th class="actions"></th>
-                    </tr>
-                    <thead>
-                    <tbody>
-                    	<?php foreach ($device['Event'] as $event): ?>
-		<tr>
-			<td><?php echo $event['event_id']; ?></td>
-			<td><?php echo $event['title']; ?></td>
-			<td><?php echo $event['comment']; ?></td>
-			<td><?php echo $event['start']; ?></td>
-			<td><?php echo $event['end']; ?></td>
-			<td><?php echo $event['all_day']; ?></td>
-			<td><?php echo $event['status']; ?></td>
-			<td><?php echo $event['link']; ?></td>
-			<td><?php echo $event['location']; ?></td>
-			<td><?php echo $event['created']; ?></td>
-			<td><?php echo $event['modified']; ?></td>
-			<td><?php echo $event['event_type_id']; ?></td>
-			<td><?php echo $event['schedule_id']; ?></td>
-			<td><?php echo $event['capture_id']; ?></td>
-			<td><?php echo $event['device_id']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'events', 'action' => 'view', $event['event_id']), array('escape' => false)); ?>
-				<?php echo $this->Html->link(__('<span class="glyphicon el-icon-file-edit"></span>'), array('controller' => 'events', 'action' => 'edit', $event['event_id']), array('escape' => false)); ?>
-				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-trash"></span>'), array('controller' => 'events', 'action' => 'delete', $event['event_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $event['event_id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-                    </tbody>
-                </table>
-                <?php endif; ?>
+        <table cellpadding="0" cellspacing="0" class="table table-striped">
+            <tbody>
+            <tr>
+                <th><?php echo __('Device'); ?></th>
+                <td><span class="glyphicon el-icon-hdd"></span>
+                    <?php echo h($device['Device']['name']); ?>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Type'); ?></th>
+                <td><span class="glyphicon glyphicon-barcode"></span>
+                    <?php echo h($device['Device']['type']); ?>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Device place'); ?></th>
+                <td><span class="glyphicon glyphicon-map-marker"></span>
+                    <?php echo h($device['Device']['location']); ?>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Ip Adress'); ?></th>
+                <td><span class="glyphicon el-icon-website"></span>
+                    <?php echo h($device['Device']['ip_adress']); ?>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Link'); ?></th>
+                <td><span class="glyphicon glyphicon-link"></span>
+                    <?php if (!empty($device['Device']['link'])) echo $this->Html->link(h($device['Device']['link']),
+                        h($device['Device']['link']), array('full_base' => true, 'escape' => false));
+                    ?>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Username'); ?></th>
+                <td><span class="glyphicon el-icon-user"></span>
+                    <?php echo h($device['Device']['username']); ?>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Start Command'); ?></th>
+                <td><span class="glyphicon el-icon-record"></span>
+                    <?php echo h($device['Device']['start_command']); ?>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('End Command'); ?></th>
+                <td><span class="glyphicon el-icon-stop-alt"></span>
+                    <?php echo h($device['Device']['end_command']); ?>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Created'); ?></th>
+                <td>
+                    <?php if (!empty($device['Device']['created'])) echo
 
-                <div class="actions">
-                    <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Event'), array('controller' => 'events', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary')); ?>                </div>
-            </div>
-            <!-- end col md 12 -->
+                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                        $this->Html->link( // <a>
+
+                            $this->Time->nice(strtotime(h($device['Device']['created'])), 'CET', '%A, %d.%m.%Y'), // Date
+                            '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($device['Device']['created']))), // Calendar-Link
+                            array('escape' => false)) .
+                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                        $this->Time->nice(strtotime(h($device['Device']['created'])), 'CET', '%H:%M')                       // Time
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Modified'); ?></th>
+                <td>
+                    <?php if (!empty($device['Device']['modified'])) echo
+
+                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                        $this->Html->link( // <a>
+
+                            $this->Time->nice(strtotime(h($device['Device']['modified'])), 'CET', '%A, %d.%m.%Y'), // Date
+                            '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($device['Device']['modified']))), // Calendar-Link
+                            array('escape' => false)) .
+                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                        $this->Time->nice(strtotime(h($device['Device']['modified'])), 'CET', '%H:%M')                       // Time
+                    ?>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <hr/>
+
+    <? if (!empty($device['Device']['comment'])): ?>
+        <strong><?php echo __('Comment'); ?></strong>
+
+        <div class="comment-content well well-lg">
+            <?php echo $device['Device']['comment'] ?>
         </div>
-    
+
+        <hr/>
+
+    <? endif; ?>
+    <!-- end col md 9 -->
 
 </div>
-<!-- end col md 9 -->
 
 <div class="col-md-3 column">
     <div class="actions">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <span class="glyphicon glyphicon-link"></span><?php echo __('Related Actions');?>                </h3>
+                    <span class="glyphicon glyphicon-link"></span><?php echo __('Related Actions');?>
+                </h3>
             </div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    		<li><?php echo $this->Html->link(__('<span class="glyphicon el-icon-file-edit"></span>Edit Device'), array('action' => 'edit', $device['Device']['device_id']), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-trash"></span>Delete Device'), array('action' => 'delete', $device['Device']['device_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $device['Device']['device_id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Devices'), array('action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Device'), array('action' => 'add'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>List Events'), array('controller' => 'events', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>New Event'), array('controller' => 'events', 'action' => 'add'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>' . __('Edit Device'), array('action' => 'edit', $device['Device']['device_id']), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . __('Delete Device'), array('action' => 'delete', $device['Device']['device_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $device['Device']['device_id'])); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Devices'), array('action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Device'), array('action' => 'add'), array('escape' => false)); ?> </li>
+                </ul>
+            </div>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list"></span><?php echo __('Captures');?>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Captures'), array('controller' => 'captures', 'action' => 'index'), array('escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false)); ?> </li>
                 </ul>
             </div>
             <!-- end body -->

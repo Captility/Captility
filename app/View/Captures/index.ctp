@@ -8,7 +8,6 @@
 
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>' . __('Captures'), '#', array('class' => 'active')); ?>
-<!--<div class=" index">-->
 
 <div class="row">
     <div class="col-md-1 column">
@@ -19,11 +18,7 @@
             <h1><?php echo __('Captures'); ?></h1>
         </div>
     </div>
-    <!-- end col md 12 -->
-</div><!-- end row -->
-
-
-<!--<div class="row">-->
+</div>
 
 
 <div class="col-md-1 column">

@@ -49,10 +49,10 @@ class DevicesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Device->create();
 			if ($this->Device->save($this->request->data)) {
-				$this->Session->setFlash(__('The device has been saved.'), 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash(__('The Device has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The device could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+				$this->Session->setFlash(__('The Device could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
 	}
@@ -70,10 +70,10 @@ class DevicesController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Device->save($this->request->data)) {
-				$this->Session->setFlash(__('The device has been saved.'), 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash(__('The Device has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The device could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+				$this->Session->setFlash(__('The Device could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$options = array('conditions' => array('Device.' . $this->Device->primaryKey => $id));
@@ -95,9 +95,9 @@ class DevicesController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Device->delete()) {
-			$this->Session->setFlash(__('The device has been deleted.'), 'default', array('class' => 'alert alert-success'));
+			$this->Session->setFlash(__('The Device has been deleted.'), 'default', array('class' => 'alert alert-success'));
 		} else {
-			$this->Session->setFlash(__('The device could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+			$this->Session->setFlash(__('The Device could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

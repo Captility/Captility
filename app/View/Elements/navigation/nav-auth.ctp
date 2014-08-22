@@ -43,9 +43,6 @@
                     class="caret"></strong></a>
             <ul class="dropdown-menu">
 
-                <!--<li role="presentation"
-                    class="dropdown-header list-info"><?php /*echo __('Edit catalog entries...') */?></li>-->
-
                 <li>
                     <?php echo $this->Html->link(
                         $this->Html->tag(
@@ -72,6 +69,12 @@
                         $this->Html->tag(
                             'span', '', array('class' => 'glyphicon cp-icon-lecturer')) . __('Hosts'),
                         array('controller' => 'hosts', 'action' => 'index'), array('escape' => false))?>
+                </li>
+                <li>
+                    <?php echo $this->Html->link(
+                        $this->Html->tag(
+                            'span', '', array('class' => 'glyphicon el-icon-hdd')) . __('Devices'),
+                        array('controller' => 'devices', 'action' => 'index'), array('escape' => false))?>
                 </li>
                 <li>
                     <?php echo $this->Html->link(

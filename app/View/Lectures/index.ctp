@@ -7,12 +7,12 @@
 ?>
 
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-th-list"></span>'.__('Lectures'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-th-list"></span>' . __('Lectures'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-th-list"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-th-list"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">

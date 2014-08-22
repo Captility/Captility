@@ -31,7 +31,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-Configure::write('debug', 0); //TODO auf 0 setzten
+Configure::write('debug', 2); //TODO auf 0 setzten
 Configure::write('Cache.disable', true);
 
 /**

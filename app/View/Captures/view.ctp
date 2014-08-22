@@ -9,7 +9,7 @@
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-film"></span>' . __('Captures'), array('action' => 'index')); ?>
 <? $this->Breadcrumbs->addCrumb('#' . h($capture['Capture']['capture_id']) . ' ' . h($capture['Capture']['name']), '#', array('class' => 'active')); ?>
-<!--<div class=" view">-->
+
 <div class="row">
     <div class="col-md-1 column">
         <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-film"></span></div>
@@ -20,8 +20,6 @@
         </div>
     </div>
 </div>
-
-<!--<div class="row">-->
 
 
 <div class="col-md-1 column">

@@ -10,7 +10,7 @@
     $(function() {
         $('textarea').tinymce({
             // Location of TinyMCE script
-            script_url : '/js/jquery/tinymce/tinymce.min.js',
+            script_url : '<?echo Router::url('/')?>/js/jquery/tinymce/tinymce.min.js',
 
 
             language: 'de',
