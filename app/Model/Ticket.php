@@ -194,18 +194,17 @@ class Ticket extends AppModel {
         return false;
     }
 
-    public function beforeSave($created, $options = array()) {
+    public function beforeSave(/*$insert,*/ $options = array()) {
 
         //Boolean
-        $created = ($created === 'true');
+        $insert = empty($this->id);
 
-        if (!$created && isset($this->data['Ticket']['status'])) {
+        if (!$insert && isset($this->data['Ticket']['status'])) {
 
             $this->data['Ticket']['old_status'] = $this->field('status');
         }
 
         return true;
-
     }
 
     public function afterSave($created, $options = array()) {
@@ -325,7 +324,7 @@ class Ticket extends AppModel {
                 ),
 
                 'User' => array(
-                    'fields' => array('User.user_id', 'User.username'),
+                    'fields' => array('User.user_id', 'User.username', 'User.email'),
                     'conditions' => array('exactly' => 'User.user_id = Ticket.user_id')
                 ),
 

@@ -114,16 +114,21 @@ class CalendarsController extends AppController {
     }
 
 
+    /**
+     * CronTask to manage scheduled Events in Captility, called by cronjob.
+     *
+     * @param int $hash ValidationHash
+     * @throws NotFoundException Returns error with invalid hash.
+     */
     public function cronTask($hash = 0) {
 
-        // Encrypt key
+                // Encrypt key
         $cron_key = Security::hash($hash, 'sha1', true);
 
         // Check if the cron key is correct
         if ($cron_key == Configure::read('CAPTILITY.CRON_KEY')) {
 
             $this->layout = "ajax";
-
 
             $this->Ticket->updateUrgencyStatuses();
 
@@ -146,10 +151,13 @@ class CalendarsController extends AppController {
     }
 
     /**
-     * CRON TASK for generating new Tasks for this day. Can be called as often as wanted.
+     * CronTask for generating new Tasks for this day. Can be called as often as wanted.
      * @param int $salt
      */
     public function updateEvents($hash = 0) {
+
+        //TODO: Remove
+        debug('updateEvents started');
 
         // Encrypt key
         $cron_key = Security::hash($hash, 'sha1', true);
@@ -184,6 +192,8 @@ class CalendarsController extends AppController {
                 )
             );
 
+            debug($events);
+
             $count = 0;
             $jsonResponse = null;
 
@@ -213,6 +223,9 @@ class CalendarsController extends AppController {
 
             throw new NotFoundException();
         }
+
+        //TODO: Remove
+        debug('updateEvents executed');
 
 
     }
