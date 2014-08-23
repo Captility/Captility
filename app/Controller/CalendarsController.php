@@ -157,7 +157,7 @@ class CalendarsController extends AppController {
     public function updateEvents($hash = 0) {
 
         //TODO: Remove
-        debug('updateEvents started');
+        //debug('updateEvents started');
 
         // Encrypt key
         $cron_key = Security::hash($hash, 'sha1', true);
@@ -192,7 +192,7 @@ class CalendarsController extends AppController {
                 )
             );
 
-            debug($events);
+            //debug($events);
 
             $count = 0;
             $jsonResponse = null;
@@ -225,7 +225,7 @@ class CalendarsController extends AppController {
         }
 
         //TODO: Remove
-        debug('updateEvents executed');
+        //debug('updateEvents executed');
 
 
     }
