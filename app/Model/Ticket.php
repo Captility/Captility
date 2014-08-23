@@ -231,7 +231,7 @@ class Ticket extends AppModel {
 
                     // Order next Ticket for Event (Event does the rest)
                     $this->Event->id = $this->field('event_id');
-                    $this->Event->generateNext($nextStep, $options);
+                    $this->Event->generateNextTicketFromWorkflow($nextStep, $options);
                 }
 
 
@@ -259,7 +259,7 @@ class Ticket extends AppModel {
         $nextStep = 1 + $this->Task->field('step'); //TODO: TEST ENTFERNEN
 
         $this->Event->id = $this->field('event_id'); //TODO: TEST ENTFERNEN
-        $this->Event->generateNext($nextStep, $options); //TODO: TEST ENTFERNEN*/
+        $this->Event->generateNextTicketFromWorkflow($nextStep, $options); //TODO: TEST ENTFERNEN*/
 
         return true;
     }

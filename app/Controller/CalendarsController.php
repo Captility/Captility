@@ -22,7 +22,7 @@ class CalendarsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
 
-        $this->Auth->allow('cronTask', 'updateEvents');
+        $this->Auth->allow('cronTask');
 
         if (in_array($this->action, array('dashboard', 'myLectures'))) {
             if ($this->Auth->user()) {
@@ -115,14 +115,37 @@ class CalendarsController extends AppController {
 
 
     /**
-     * CronTask to manage scheduled Events in Captility, called by cronjob.
+     * CronTask function to manage scheduled Events in Captility, called by cronjob or manual cronjob injection.
      *
-     * @param int $hash ValidationHash
+     * @deprecated CaptilityShell should preferably be used instead per cake commandline to ensure security.
+     *
+     * CronTab should look like:
+     *
+     *  # Captility Event Execution
+     *  * /5 * * * * /Users/Daniel/Webdesign/BA/Captility/cron_localhost >> /Users/Daniel/Webdesign/BA/Captility/cron_localhost.log
+     *  # > /dev/null 2>&1 # alternate null output
+     *
+     *
+     * CronScript 'cron_localhost' should look like:
+     *
+     *   #!/usr/bin/php
+     *  <?php
+     *  $content = file_get_contents('http://localhost/captility/calendars/cronTask/6Q7dc2R7119XsS46U6f9cs7Saf8e70cD045e16Qh3e4f');
+     *
+     *  if(!empty($content)) {
+     *
+     *   $content += PHP_EOL;
+     *  }
+     *
+     *  echo $content;
+     *  ?>
+     *
+     * @param int $hash ValidationHash to ensure security.
      * @throws NotFoundException Returns error with invalid hash.
      */
     public function cronTask($hash = 0) {
 
-                // Encrypt key
+        // Encrypt key
         $cron_key = Security::hash($hash, 'sha1', true);
 
         // Check if the cron key is correct
@@ -130,9 +153,29 @@ class CalendarsController extends AppController {
 
             $this->layout = "ajax";
 
+
+            // #########################################################################################################
+            // ################################ CRONJOB TASK INJECTIONS ################################################
+            // #########################################################################################################
+
+            // ################################ TICKETS::Update Urgency Statuses  ######################################
             $this->Ticket->updateUrgencyStatuses();
 
-            $this->redirect(array('action' => 'updateEvents/' . $hash));
+            // ################################ EVENTS:: Generate new Tickets from WF  ##################################
+            $jsonResponse = $this->Event->updateTicketsFromWorkflow();
+
+            // #########################################################################################################
+
+
+            // Send response as JSON for log if soemthing was done:
+            if (!empty($jsonResponse)) {
+
+                $jsonResponse = date('Y-m-d H:i:s') . ' | ' . json_encode($jsonResponse);
+            }
+
+            $this->set("json", $jsonResponse);
+
+            $this->render('json');
 
         }
         else {
@@ -150,85 +193,6 @@ class CalendarsController extends AppController {
 
     }
 
-    /**
-     * CronTask for generating new Tasks for this day. Can be called as often as wanted.
-     * @param int $salt
-     */
-    public function updateEvents($hash = 0) {
-
-        //TODO: Remove
-        //debug('updateEvents started');
-
-        // Encrypt key
-        $cron_key = Security::hash($hash, 'sha1', true);
-
-        // Check if the cron key is correct
-        if ($cron_key == Configure::read('CAPTILITY.CRON_KEY')) {
-
-            $this->layout = "ajax";
-
-            // #########################################################################################################
-            // ################################ EVENT NEW TICKET GENERATION ############################################
-            // #########################################################################################################
-
-            $today_start = date('Y-m-d') . ' 00:00:00';
-            $today_now = date('Y-m-d H:i:s');
-
-            $events = $this->Event->find('all', array(
-
-                    'fields' => array('Event.event_id', 'Event.title', 'Event.status',
-                        "(SELECT COUNT(event_id) FROM tickets AS Ticket WHERE Ticket.event_id = Event.event_id) AS ticketCount"),
-
-                    'conditions' => array(
-
-                        'AND' => array(
-
-                            'Event.start >=' => $today_start,
-                            'Event.start <=' => $today_now,
-                            'Event.status !=' => array('Canceled', 'Failed', 'Online'),
-
-                        )
-                    )
-                )
-            );
-
-            //debug($events);
-
-            $count = 0;
-            $jsonResponse = null;
-
-            foreach ($events as $i => $event) {
-
-                if ($event['Event']['ticketCount'] == 0) {
-
-                    $jsonResponse[$count] = $event;
-
-                    $this->Event->id = $event['Event']['event_id'];
-                    $this->Event->generateNext();
-                    $count++;
-                }
-            }
-
-            if (!empty($jsonResponse)) {
-
-                $jsonResponse = date('Y-m-d H:i:s') . ' | ' . json_encode($jsonResponse);
-            }
-
-            $this->set("json", $jsonResponse);
-
-            $this->render('json');
-
-        }
-        else {
-
-            throw new NotFoundException();
-        }
-
-        //TODO: Remove
-        //debug('updateEvents executed');
-
-
-    }
 
 
     public function stats() {

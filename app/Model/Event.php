@@ -267,14 +267,68 @@ class Event extends AppModel {
         return $results;
     }
 
+
+    /**
+     * Generate new, first Tickets of ("now") occuring related events.
+     * Calls generateNextTicketFromWorkflow to create first Ticket of sequence once the event begins.
+     *
+     * @return $jsonResponse JSON String of modified Events and related Tickets.
+     */
+    public function updateTicketsFromWorkflow(){
+
+        // #########################################################################################################
+        // ################################ EVENT NEW TICKET GENERATION ############################################
+        // #########################################################################################################
+
+        $today_start = date('Y-m-d') . ' 00:00:00';
+        $today_now = date('Y-m-d H:i:s');
+
+        $events = $this->find('all', array(
+
+                'fields' => array('Event.event_id', 'Event.title', 'Event.status',
+                    "(SELECT COUNT(event_id) FROM tickets AS Ticket WHERE Ticket.event_id = Event.event_id) AS ticketCount"),
+
+                'conditions' => array(
+
+                    'AND' => array(
+
+                        'Event.start >=' => $today_start,
+                        'Event.start <=' => $today_now,
+                        'Event.status !=' => array('Canceled', 'Failed', 'Online'),
+
+                    )
+                )
+            )
+        );
+
+        $count = 0;
+        $jsonResponse = null;
+
+        foreach ($events as $i => $event) {
+
+            if ($event['Event']['ticketCount'] == 0) {
+
+                $jsonResponse[$count] = $event;
+
+                $this->id = $event['Event']['event_id'];
+                // generate first ticket instance
+                $this->generateNextTicketFromWorkflow();
+                $count++;
+            }
+        }
+
+        return $jsonResponse;
+    }
+
+
     /**
      *
-     * Calculate data for new Ticket, generate new Ticket for Event after Workflow Rule. Set Event status.
+     * Calculate data for specific new Ticket, generate new Ticket for Event after Workflow Routine. Set Event status.
      *
      * @param int $nextStep
      * @param array $options
      */
-    public function generateNext($nextStep = 0, $options = array()) {
+    public function generateNextTicketFromWorkflow($nextStep = 0, $options = array()) {
 
 
         $event = $this->find('first', array(
@@ -314,10 +368,10 @@ class Event extends AppModel {
         ));
 
 
-        //Update Processing Status with first Task
+        // Update Processing Status of event when second tasks occurs
         if ($nextStep == 1) {
 
-            // ELSE SET DONE
+            // set event status fro new to processing
             $this->updateStatus('Processing');
         }
 
