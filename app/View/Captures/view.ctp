@@ -58,8 +58,8 @@
         </tr>
         <tr>
             <th><?php echo __('Responsible'); ?></th>
-            <td><span class="glyphicon glyphicon-user"></span>
-                <?php echo $this->Html->link($capture['User']['username'], array('controller' => 'users', 'action' => 'view', $capture['User']['user_id'])); ?>
+            <td><!--<span class="glyphicon glyphicon-user"></span>-->
+                <?php echo $this->Html->link($this->Gravatar->identicon($capture['User']['email']).' '.$capture['User']['username'], array('controller' => 'users', 'action' => 'view', $capture['User']['user_id']), array('escape' => false)); ?>
                 &nbsp;
             </td>
         </tr>

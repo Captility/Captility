@@ -108,9 +108,7 @@ $myTicket = ($ticket['User']['user_id'] === (AuthComponent::user('user_id')))?>
                 </td>
                 <th><?php echo __('Responsible'); ?></th>
                 <td>
-                    <span class="glyphicon glyphicon-user"></span>
-                    <?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
-                    &nbsp;
+                    <?php echo $this->Html->link($this->Gravatar->identicon($ticket['User']['email']) . ' ' . $ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id']), array('escape' => false)); ?>
                 </td>
 
             </tr>

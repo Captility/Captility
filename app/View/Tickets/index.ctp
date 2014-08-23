@@ -75,16 +75,16 @@
                     </td>
 
                     <td>
-                        <?php if (!empty($ticket['Ticket']['modified'])) echo
+                        <?php if (!empty($ticket['Ticket']['ended'])) echo
 
                             '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
                             $this->Html->link( // <a>
 
-                                $this->Time->nice(strtotime(h($ticket['Ticket']['modified'])), 'CET', '%a, %d.%m.%Y'), // Date
-                                '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['Ticket']['modified']))), // Calendar-Link
+                                $this->Time->nice(strtotime(h($ticket['Ticket']['ended'])), 'CET', '%a, %d.%m.%Y'), // Date
+                                '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['Ticket']['ended']))), // Calendar-Link
                                 array('escape' => false)) .
                             '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
-                            $this->Time->nice(strtotime(h($ticket['Ticket']['modified'])), 'CET', '%H:%M')                       // Time
+                            $this->Time->nice(strtotime(h($ticket['Ticket']['ended'])), 'CET', '%H:%M')                       // Time
                         ?>
                     </td>
                     <td class="actions">

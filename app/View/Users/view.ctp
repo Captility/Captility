@@ -111,76 +111,14 @@
         </tr>
 
         <tr>
-            <th><?php echo '<span class="glyphicon el-icon-rss"></span>' . __('Notification'); ?></th>
-            <td><?php if (h($user['User']['notification'] <= 0)): echo '<span class="glyphicon glyphicon-ban-circle"></span>'; ?>
+            <th><?php echo __('Notification'); ?></th>
+            <td><span class="glyphicon el-icon-rss"></span>
+                <?php if (h($user['User']['notification'] <= 0)): echo '<span class="glyphicon glyphicon-ban-circle"></span>'; ?>
                 <?php else: echo '<span class="glyphicon glyphicon-ok"></span>'; ?><?php endif; ?>
             </td>
         </tr>
         </tbody>
     </table>
-</div>
-
-<hr/>
-
-<div class="related row">
-    <div class="col-md-12">
-        <h3><?php echo __('Related Captures'); ?></h3>
-        <?php if (!empty($user['Capture'])): ?>
-            <div class="panel panel-primary">
-                <!-- Default panel contents -->
-
-                <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
-                    <thead class="panel-heading">
-                    <tr>
-                        <th><?php echo __('Name'); ?></th>
-                        <th><?php echo __('Lecture'); ?></th>
-                        <th><?php echo __('Responsible'); ?></th>
-                        <th><?php echo __('Status'); ?></th>
-                        <th><?php echo __('Workflow'); ?></th>
-                        <th class="actions"></th>
-
-
-                    </tr>
-                    <thead>
-                    <tbody>
-                    <?php foreach ($user['Capture'] as $capture): ?>
-                        <tr onclick="document.location = '<? echo Router::url(array('controller' => 'captures', 'action' => 'view', h($capture['capture_id']))); ?>';">
-                            <td><?php echo $capture['name']; ?></td>
-                            <td>
-                                <?php echo $this->Html->link($capture['Lecture']['number'] . ' ' . $capture['Lecture']['name'] . ' (' . $capture['Lecture']['semester'] . ')', array('controller' => 'lectures', 'action' => 'view', $capture['lecture_id'])); ?>
-                            </td>
-                            <td style="white-space: nowrap;"><p>
-                                    <?php echo $this->Html->link($this->Gravatar->identicon($capture['User']['email']), array('controller' => 'users', 'action' => 'view', $capture['User']['user_id']), array('escape' => false)); ?>
-                                    <?php echo $this->Html->link($capture['User']['username'], array('controller' => 'users', 'action' => 'view', $capture['User']['user_id'])); ?>
-                                </p>
-                            </td>
-                            <td class="labels lower-labels"><?php $statuses = Configure::read('CAPTURE.STATUSES');
-                                $class = $statuses[$capture['status']]; ?>
-
-                                <span
-                                    class="label label-<? echo $class ?>"><? echo __(h($capture['status'])) ?></span>
-                            </td>
-                            <td>
-                                <?php echo $this->Html->link($capture['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $capture['Workflow']['workflow_id'])); ?>
-                            </td>
-
-                            <td class="actions">
-                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'captures', 'action' => 'view', $capture['capture_id']), array('escape' => false)); ?>
-                                <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'captures', 'action' => 'edit', $capture['capture_id']), array('escape' => false)); ?>
-                                <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('controller' => 'captures', 'action' => 'delete', $capture['capture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $capture['capture_id'])); ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
-                <div class="panel-footer"></div>
-            </div>
-        <?php endif; ?>
-
-        <div class="actions">
-            <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary pull-right')); ?>                </div>
-    </div>
-    <!-- end col md 12 -->
 </div>
 
 <hr/>
@@ -257,6 +195,68 @@
 
 <hr/>
 
+<div class="related row">
+    <div class="col-md-12">
+        <h3><?php echo __('Related Captures'); ?></h3>
+        <?php if (!empty($user['Capture'])): ?>
+            <div class="panel panel-primary">
+                <!-- Default panel contents -->
+
+                <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
+                    <thead class="panel-heading">
+                    <tr>
+                        <th><?php echo __('Name'); ?></th>
+                        <th><?php echo __('Lecture'); ?></th>
+                        <th><?php echo __('Responsible'); ?></th>
+                        <th><?php echo __('Status'); ?></th>
+                        <th><?php echo __('Workflow'); ?></th>
+                        <th class="actions"></th>
+
+
+                    </tr>
+                    <thead>
+                    <tbody>
+                    <?php foreach ($user['Capture'] as $capture): ?>
+                        <tr onclick="document.location = '<? echo Router::url(array('controller' => 'captures', 'action' => 'view', h($capture['capture_id']))); ?>';">
+                            <td><?php echo $capture['name']; ?></td>
+                            <td>
+                                <?php echo $this->Html->link($capture['Lecture']['number'] . ' ' . $capture['Lecture']['name'] . ' (' . $capture['Lecture']['semester'] . ')', array('controller' => 'lectures', 'action' => 'view', $capture['lecture_id'])); ?>
+                            </td>
+                            <td style="white-space: nowrap;"><p>
+                                    <?php echo $this->Html->link($this->Gravatar->identicon($capture['User']['email']), array('controller' => 'users', 'action' => 'view', $capture['User']['user_id']), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link($capture['User']['username'], array('controller' => 'users', 'action' => 'view', $capture['User']['user_id'])); ?>
+                                </p>
+                            </td>
+                            <td class="labels lower-labels"><?php $statuses = Configure::read('CAPTURE.STATUSES');
+                                $class = $statuses[$capture['status']]; ?>
+
+                                <span
+                                    class="label label-<? echo $class ?>"><? echo __(h($capture['status'])) ?></span>
+                            </td>
+                            <td>
+                                <?php echo $this->Html->link($capture['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $capture['Workflow']['workflow_id'])); ?>
+                            </td>
+
+                            <td class="actions">
+                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'captures', 'action' => 'view', $capture['capture_id']), array('escape' => false)); ?>
+                                <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'captures', 'action' => 'edit', $capture['capture_id']), array('escape' => false)); ?>
+                                <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('controller' => 'captures', 'action' => 'delete', $capture['capture_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $capture['capture_id'])); ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <div class="panel-footer"></div>
+            </div>
+        <?php endif; ?>
+
+        <div class="actions">
+            <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>' . __('New Capture'), array('controller' => 'captures', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-primary pull-right')); ?>                </div>
+    </div>
+    <!-- end col md 12 -->
+</div>
+
+<hr/>
 
 <div class="related row">
     <div class="col-md-12">

@@ -110,9 +110,8 @@
         </tr>
         <tr>
             <th><?php echo __('Responsible'); ?></th>
-            <td><span class="glyphicon glyphicon-user"></span>
-                <?php echo $this->Html->link($lecture['User']['username'], array('controller' => 'users', 'action' => 'view', $lecture['User']['user_id'])); ?>
-                &nbsp;
+            <td>
+                <?php echo $this->Html->link($this->Gravatar->identicon($lecture['User']['email']) . ' ' . $lecture['User']['username'], array('controller' => 'users', 'action' => 'view', $lecture['User']['user_id']), array('escape' => false)); ?>
             </td>
         </tr>
         <tr>
@@ -206,7 +205,7 @@
                             <td><?php echo h($capture['name']); ?>&nbsp;</td>
 
                             <td>
-                                <?php echo $this->Html->link($capture['Lecture']['number'].' '.$capture['Lecture']['name'] . ' (' . $capture['Lecture']['semester'] . ')', array('controller' => 'lectures', 'action' => 'view', $capture['Lecture']['lecture_id'])); ?>
+                                <?php echo $this->Html->link($capture['Lecture']['number'] . ' ' . $capture['Lecture']['name'] . ' (' . $capture['Lecture']['semester'] . ')', array('controller' => 'lectures', 'action' => 'view', $capture['Lecture']['lecture_id'])); ?>
                             </td>
                             <td style="white-space: nowrap;"><p>
                                     <?php echo $this->Html->link($this->Gravatar->identicon($capture['User']['email']), array('controller' => 'users', 'action' => 'view', $capture['User']['user_id']), array('escape' => false)); ?>
