@@ -29,36 +29,37 @@
     <div class="panel panel-primary" id="Pagination">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
             <tr>
-                <th><?php echo $this->Paginator->sort('capture_id', __('Capture Id')); ?></th>
+                <!--<th><?php /*echo $this->Paginator->sort('capture_id', __('Capture Id')); */?></th>-->
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
-                <th><?php echo $this->Paginator->sort('status'); ?></th>
                 <th><?php echo $this->Paginator->sort('lecture_id'); ?></th>
                 <th><?php echo $this->Paginator->sort('user_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('status'); ?></th>
                 <th><?php echo $this->Paginator->sort('workflow_id'); ?></th>
                 <th class="actions"></th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($captures as $capture): ?>
-                <tr>
-                    <td><?php echo h($capture['Capture']['capture_id']); ?>&nbsp;</td>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', h($capture['Capture']['capture_id']))); ?>';">
+                    <!--<td><?php /*echo h($capture['Capture']['capture_id']); */?>&nbsp;</td>-->
                     <td><?php echo h($capture['Capture']['name']); ?>&nbsp;</td>
 
+                    <td>
+                        <?php echo $this->Html->link($capture['Lecture']['number'].' '.$capture['Lecture']['name'] . ' (' . $capture['Lecture']['semester'] . ')', array('controller' => 'lectures', 'action' => 'view', $capture['Lecture']['lecture_id'])); ?>
+                    </td>
+                    <td style="white-space: nowrap;"><p>
+                            <?php echo $this->Html->link($this->Gravatar->identicon($capture['User']['email']), array('controller' => 'users', 'action' => 'view', $capture['User']['user_id']), array('escape' => false)); ?>
+                            <?php echo $this->Html->link($capture['User']['username'], array('controller' => 'users', 'action' => 'view', $capture['User']['user_id'])); ?>
+                        </p>
+                    </td>
                     <td class="labels lower-labels"><?php $statuses = Configure::read('CAPTURE.STATUSES');
                         $class = $statuses[$capture['Capture']['status']]; ?>
 
                         <span
                             class="label label-<? echo $class ?>"><? echo __(h($capture['Capture']['status'])) ?></span>
-                    </td>
-
-                    <td>
-                        <?php echo $this->Html->link($capture['Lecture']['name'], array('controller' => 'lectures', 'action' => 'view', $capture['Lecture']['lecture_id'])); ?>
-                    </td>
-                    <td>
-                        <?php echo $this->Html->link($capture['User']['username'], array('controller' => 'users', 'action' => 'view', $capture['User']['user_id'])); ?>
                     </td>
                     <td>
                         <?php echo $this->Html->link($capture['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $capture['Workflow']['workflow_id'])); ?>

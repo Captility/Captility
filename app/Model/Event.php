@@ -241,8 +241,10 @@ class Event extends AppModel {
 
     public function afterValidate($options = array()) {
 
-        //debug($this->data);
-        //debug($this->validationErrors);
+        /*debug('Event::afterValidate(data)');
+        debug($this->data);
+        debug('Event::validationErrors');
+        debug($this->validationErrors);*/
 
         return true;
     }

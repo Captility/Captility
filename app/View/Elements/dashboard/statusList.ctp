@@ -55,10 +55,16 @@
                     ?>
                 </td>
 
-                <td>
-                    <?php if (!empty($event['User']['username'])) echo $this->Html->link(
+                <td style="white-space: nowrap;"><p>
+
+                        <?php /*if (!empty($event['User']['username'])) echo $this->Html->link(
                         h($event['User']['username']), Router::url('/', true) . 'users/view/' . $event['User']['user_id'], array('full_base' => true, 'escape' => false));
-                    ?>
+                    */?>
+
+                        <?php if (!empty($event['User']['username'])) echo $this->Html->link(
+                            $this->Gravatar->identicon($event['User']['email']) . ' ' . h($event['User']['username']), Router::url('/', true) . 'users/view/' . $event['User']['user_id'], array('full_base' => true, 'escape' => false));
+                        ?>
+                    </p>
                 </td>
                 <td class="labels lower-labels">
                     <span class="label label-<? echo $class ?>"><? echo __(h($event['Event']['status'])) ?></span>

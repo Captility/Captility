@@ -33,7 +33,7 @@
     <div class="panel panel-primary">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
             <tr>
                 <th><?php echo $this->Paginator->sort('event_id', 'ID'); ?></th>
@@ -49,17 +49,37 @@
             </thead>
             <tbody>
             <?php foreach ($events as $event): ?>
-                <tr>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $event['Event']['event_id'])); ?>';">
                     <td><?php echo h($event['Event']['event_id']); ?>&nbsp;</td>
                     <td>
                         <?php echo h($event['Event']['title']); ?>
                     </td>
                     <td>
-                        <?php echo $this->Captility->linkDate(h($event['Event']['start']), '%d.%m.%Y %H:%M Uhr') ?>
-                    </td>
-                    <td>
+                        <?php if (!empty($event['Event']['start'])) echo
 
-                        <?php echo $this->Captility->linkDate(h($event['Event']['end']), '%d.%m.%Y %H:%M Uhr') ?>
+                            '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                            $this->Html->link( // <a>
+
+                                $this->Time->nice(strtotime(h($event['Event']['start'])), 'CET', '%a, %d.%m.%Y'), // Date
+                                '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($event['Event']['start']))), // Calendar-Link
+                                array('escape' => false)) .
+                            '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                            $this->Time->nice(strtotime(h($event['Event']['start'])), 'CET', '%H:%M')                       // Time
+                        ?>
+                    </td>
+
+                    <td>
+                        <?php if (!empty($event['Event']['end'])) echo
+
+                            '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                            $this->Html->link( // <a>
+
+                                $this->Time->nice(strtotime(h($event['Event']['end'])), 'CET', '%a, %d.%m.%Y'), // Date
+                                '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($event['Event']['end']))), // Calendar-Link
+                                array('escape' => false)) .
+                            '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                            $this->Time->nice(strtotime(h($event['Event']['end'])), 'CET', '%H:%M')                       // Time
+                        ?>
                     </td>
                     <td class="labels lower-labels"><?php $statuses = Configure::read('EVENT.STATUSES');
                         $class = $statuses[$event['Event']['status']]; ?>
@@ -131,7 +151,7 @@
             <!-- end body -->
             <div class="panel-heading">
 
-                    <span class="glyphicon glyphicon-facetime-video"></span><?php echo __('Event Types');?>
+                <span class="glyphicon glyphicon-facetime-video"></span><?php echo __('Event Types');?>
 
             </div>
             <div class="panel-body">
@@ -143,7 +163,7 @@
             <!-- end body -->
             <div class="panel-heading">
 
-                    <span class="glyphicon glyphicon-film"></span><?php echo __('Captures');?>
+                <span class="glyphicon glyphicon-film"></span><?php echo __('Captures');?>
 
             </div>
             <div class="panel-body">

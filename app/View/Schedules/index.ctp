@@ -24,7 +24,7 @@
     <div class="panel panel-primary">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
             <tr>
                 <th><?php echo $this->Paginator->sort('schedule_id'); ?></th>
@@ -42,7 +42,7 @@
             </thead>
             <tbody>
             <?php foreach ($schedules as $schedule): ?>
-                <tr>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $schedule['Schedule']['schedule_id'])); ?>';">
                     <td><?php echo h($schedule['Schedule']['schedule_id']); ?>&nbsp;</td>
                     <td><?php echo  $this->Time->nice(strtotime($schedule['Schedule']['interval_start']), 'CET', '%d.%m.%Y');?>&nbsp;</td>
                     <td><?php echo  $this->Time->nice(strtotime($schedule['Schedule']['interval_end']), 'CET', '%d.%m.%Y');?>&nbsp;</td>

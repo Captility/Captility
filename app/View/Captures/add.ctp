@@ -207,203 +207,205 @@ if (empty($this->request->data['Schedule'])) {
 
     <!-- Single Instance Schedule -->
     <div class="tab-content">
-        <div class="tab-pane <? if (!$regular) echo 'active' ?>" id="single<? echo $i ?>">
+    <div class="tab-pane <? if (!$regular) echo 'active' ?>" id="single<? echo $i ?>">
 
-            <div></div>
-            <?php echo $this->Form->input('Schedule.' . $i . '.interval_start', array(
-                'placeholder' => __('Date'),
-                'label' => __('Capture Date'),
-                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                'class' => 'form-control pickDate',
-                'type' => 'string',
-                'div' => 'form-group form-split-6',
-                'value' => $this->Captility->calcDate(h($this->Form->value('Schedule.' . $i . '.interval_start')), '%a, %d.%m.%Y'),
-                'disabled' => $regular,
-            ));?>
+        <div></div>
+        <?php echo $this->Form->input('Schedule.' . $i . '.interval_start', array(
+            'placeholder' => __('Date'),
+            'label' => __('Capture Date'),
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'class' => 'form-control pickDate',
+            'type' => 'string',
+            'div' => 'form-group form-split-6',
+            'value' => $this->Captility->calcDate(h($this->Form->value('Schedule.' . $i . '.interval_start')), '%a, %d.%m.%Y'),
+            'disabled' => $regular,
+        ));?>
 
-            <div class="form-group form-split-6">
-                <?php echo $this->Form->input('Schedule.' . $i . '.repeat_time', array(
-                    'placeholder' => __('Time'),
-                    'type' => 'string',
-                    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                    'class' => 'form-control pickTime pickStart',
-                    'div' => 'form-group col-xs-6',
-                    'value' => $this->Form->value('Schedule.' . $i . '.repeat_time'),
-                    'disabled' => $regular,
-                ));?>
-
-                <?php echo $this->Form->input('Schedule.' . $i . '.duration', array(
-                    'placeholder' => __('Time'),
-                    'type' => 'string',
-                    'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                    'class' => 'form-control pickTime pickEnd',
-                    'div' => 'form-group col-xs-6',
-                    'value' => $this->Form->value('Schedule.' . $i . '.duration'),
-                    'disabled' => $regular,
-                ));?>
-            </div>
-
-            <?php echo $this->Form->input('Schedule.' . $i . '.location', array(
-                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-map-marker input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                'placeholder' => __('Place'),
-                'div' => 'form-group form-split-6',
-                'disabled' => $regular,
-            ));?>
-
-            <?php echo $this->Form->input('Schedule.' . $i . '.device_id', array(
-                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-hdd input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                'placeholder' => __('Device'),
-                'div' => 'form-group form-split-6',
-                'empty' => true, 'required' => false,
-            ));?>
-
-        </div>
-
-        <? ################################################################################################################## ?>
-        <? ################################################## REGULAR SCHEDULE ############################################## ?>
-        <? ################################################################################################################## ?>
-
-        <!-- Regular Schedule -->
-        <div class="tab-pane <? if ($regular) echo 'active' ?>" id="regular<? echo $i ?>">
-
-            <div class="form-group">
-
-                <?php echo $this->Form->label('Schedule.' . $i . '.interval_start', __('Capture Interval'), array(
-                    'class' => 'control-label'));?>
-
-                <div class="input-group">
-
-                    <?php
-                    echo $this->Form->input('Schedule.' . $i . '.interval_start', array(
-                        'type' => 'string',
-                        'format' => array('label', 'before', 'input', 'error', 'after'),
-                        'label' => false,
-                        'div' => false,
-                        'class' => 'form-control pickDate',
-                        'before' => '<span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>',
-                        'placeholder' => __('Begin Interval'),
-                        'value' => $this->Form->value('Schedule.' . $i . '.interval_start'),
-                        'required' => true,
-                        'disabled' => !$regular,
-                    ));
-
-
-
-                    echo $this->Form->input('Schedule.' . $i . '.interval_end', array(
-                        'type' => 'string',
-                        'format' => array('label', 'before', 'input', 'error', 'after'),
-                        'label' => false,
-                        'div' => false,
-                        'class' => 'form-control pickDate',
-                        'before' => '<span class="input-group-addon">' . __('to') . '</span>',
-                        'placeholder' => __('End Interval'),
-                        'value' => $this->Form->value('Schedule.' . $i . '.interval_end'),
-                        'required' => true,
-                        'disabled' => !$regular,
-                    ));
-                    ?>
-
-                </div>
-            </div>
-
-
-            <?php echo $this->Form->input('Schedule.' . $i . '.repeat_week', array(
-
-                'div' => 'form-group form-split-6',
-                'placeholder' => __('1 = repeat every Week, 2 = every second and so on...'),
-                'options' => array(array(
-                    'name' => __('Every') . ' ' . __('Week'), 'value' => '1'), array(
-                    'name' => __('Every second') . ' ' . __('Week'), 'value' => '2'), array(
-                    'name' => __('Every third') . ' ' . __('Week'), 'value' => '3'), array(
-                    'name' => __('Every fourth') . ' ' . __('Week'), 'value' => '4')),
-                'selected' => $this->Form->value('Schedule.' . $i . '.repeat_week'),
-                'disabled' => !$regular,
-            ));?>
-
-
-
-            <?php echo $this->Form->input('Schedule.' . $i . '.repeat_day', array(
-                'div' => 'form-group form-split-6',
-                'placeholder' => __('"Friday" for every Friday ...'),
-                'options' => array(array(
-                    'name' => __('Monday'), 'value' => 'Monday'), array(
-                    'name' => __('Tuesday'), 'value' => 'Tuesday'), array(
-                    'name' => __('Wednesday'), 'value' => 'Wednesday'), array(
-                    'name' => __('Thursday'), 'value' => 'Thursday'), array(
-                    'name' => __('Friday'), 'value' => 'Friday'), array(
-                    'name' => __('Saturday'), 'value' => 'Saturday'), array(
-                    'name' => __('Sunday'), 'value' => 'Sunday')),
-                'selected' => $this->Form->value('Schedule.' . $i . '.repeat_day'),
-                'disabled' => !$regular,
-            ));?>
-
-
-
+        <div class="form-group form-split-6">
             <?php echo $this->Form->input('Schedule.' . $i . '.repeat_time', array(
                 'placeholder' => __('Time'),
                 'type' => 'string',
                 'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                'class' => 'form-control pickTime',
-                'div' => 'form-group form-split-6',
+                'class' => 'form-control pickTime pickStart',
+                'div' => 'form-group col-xs-6',
                 'value' => $this->Form->value('Schedule.' . $i . '.repeat_time'),
-                'disabled' => !$regular,
+                'disabled' => $regular,
             ));?>
 
             <?php echo $this->Form->input('Schedule.' . $i . '.duration', array(
                 'placeholder' => __('Time'),
                 'type' => 'string',
                 'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                'class' => 'form-control pickTime',
-                'div' => 'form-group form-split-6',
+                'class' => 'form-control pickTime pickEnd',
+                'div' => 'form-group col-xs-6',
                 'value' => $this->Form->value('Schedule.' . $i . '.duration'),
-                'disabled' => !$regular,
+                'disabled' => $regular,
             ));?>
-
-            <?php echo $this->Form->input('Schedule.' . $i . '.location', array(
-                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-map-marker input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                'disabled' => !$regular,
-                'div' => 'form-group form-split-6',
-                'placeholder' => __('Place'),
-            ));?>
-
-            <?php echo $this->Form->input('Schedule.' . $i . '.device_id', array(
-                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-hdd input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                'placeholder' => __('Device'),
-                'div' => 'form-group form-split-6',
-                'empty' => true, 'required' => false,
-            ));?>
-
         </div>
-        <? ################################################################################################################## ?>
-        <? ################################################ EXCEPTION SCHEDULE ############################################## ?>
-        <? ################################################################################################################## ?>
 
-        <!-- Exception Schedule -->
-        <div class="tab-pane" id="except<? echo $i ?>">
+        <?php echo $this->Form->input('Schedule.' . $i . '.location', array(
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-map-marker input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'placeholder' => __('Place'),
+            'div' => 'form-group form-split-6',
+            'disabled' => $regular,
+        ));?>
 
-            <div class="alert alert-warning alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <strong>Achtung!</strong> Ausnahmeregeln werden in der aktuellen Version von Captility noch nicht
-                unterstützt.
+        <?php echo $this->Form->input('Schedule.' . $i . '.device_id', array(
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-hdd input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'placeholder' => __('Device'),
+            'div' => 'form-group form-split-6',
+            'empty' => true, 'required' => false,
+            'disabled' => $regular,
+        ));?>
+
+    </div>
+
+    <? ################################################################################################################## ?>
+    <? ################################################## REGULAR SCHEDULE ############################################## ?>
+    <? ################################################################################################################## ?>
+
+    <!-- Regular Schedule -->
+    <div class="tab-pane <? if ($regular) echo 'active' ?>" id="regular<? echo $i ?>">
+
+        <div class="form-group">
+
+            <?php echo $this->Form->label('Schedule.' . $i . '.interval_start', __('Capture Interval'), array(
+                'class' => 'control-label'));?>
+
+            <div class="input-group">
+
+                <?php
+                echo $this->Form->input('Schedule.' . $i . '.interval_start', array(
+                    'type' => 'string',
+                    'format' => array('label', 'before', 'input', 'error', 'after'),
+                    'label' => false,
+                    'div' => false,
+                    'class' => 'form-control pickDate',
+                    'before' => '<span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>',
+                    'placeholder' => __('Begin Interval'),
+                    'value' => $this->Form->value('Schedule.' . $i . '.interval_start'),
+                    'required' => true,
+                    'disabled' => !$regular,
+                ));
+
+
+
+                echo $this->Form->input('Schedule.' . $i . '.interval_end', array(
+                    'type' => 'string',
+                    'format' => array('label', 'before', 'input', 'error', 'after'),
+                    'label' => false,
+                    'div' => false,
+                    'class' => 'form-control pickDate',
+                    'before' => '<span class="input-group-addon">' . __('to') . '</span>',
+                    'placeholder' => __('End Interval'),
+                    'value' => $this->Form->value('Schedule.' . $i . '.interval_end'),
+                    'required' => true,
+                    'disabled' => !$regular,
+                ));
+                ?>
+
             </div>
-
         </div>
 
 
-        <hr/>
+        <?php echo $this->Form->input('Schedule.' . $i . '.repeat_week', array(
+
+            'div' => 'form-group form-split-6',
+            'placeholder' => __('1 = repeat every Week, 2 = every second and so on...'),
+            'options' => array(array(
+                'name' => __('Every') . ' ' . __('Week'), 'value' => '1'), array(
+                'name' => __('Every second') . ' ' . __('Week'), 'value' => '2'), array(
+                'name' => __('Every third') . ' ' . __('Week'), 'value' => '3'), array(
+                'name' => __('Every fourth') . ' ' . __('Week'), 'value' => '4')),
+            'selected' => $this->Form->value('Schedule.' . $i . '.repeat_week'),
+            'disabled' => !$regular,
+        ));?>
 
 
-        <?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"></span>' . __('Add another Schedule'), array(
-            'class' => 'btn btn-default form-schedule-add pull-right',
-            'escape' => false,
-            'type' => 'button',
-        )); ?>
-        <?php echo $this->Form->button('<span class="glyphicon glyphicon-trash"></span > ' . __('Delete Schedule'), array(
-            'class' => 'btn btn-default form-schedule-remove',
-            'escape' => false,
-            'type' => 'button',
-            'disabled' => true,
-        )); ?>
+
+        <?php echo $this->Form->input('Schedule.' . $i . '.repeat_day', array(
+            'div' => 'form-group form-split-6',
+            'placeholder' => __('"Friday" for every Friday ...'),
+            'options' => array(array(
+                'name' => __('Monday'), 'value' => 'Monday'), array(
+                'name' => __('Tuesday'), 'value' => 'Tuesday'), array(
+                'name' => __('Wednesday'), 'value' => 'Wednesday'), array(
+                'name' => __('Thursday'), 'value' => 'Thursday'), array(
+                'name' => __('Friday'), 'value' => 'Friday'), array(
+                'name' => __('Saturday'), 'value' => 'Saturday'), array(
+                'name' => __('Sunday'), 'value' => 'Sunday')),
+            'selected' => $this->Form->value('Schedule.' . $i . '.repeat_day'),
+            'disabled' => !$regular,
+        ));?>
+
+
+
+        <?php echo $this->Form->input('Schedule.' . $i . '.repeat_time', array(
+            'placeholder' => __('Time'),
+            'type' => 'string',
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'class' => 'form-control pickTime',
+            'div' => 'form-group form-split-6',
+            'value' => $this->Form->value('Schedule.' . $i . '.repeat_time'),
+            'disabled' => !$regular,
+        ));?>
+
+        <?php echo $this->Form->input('Schedule.' . $i . '.duration', array(
+            'placeholder' => __('Time'),
+            'type' => 'string',
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'class' => 'form-control pickTime',
+            'div' => 'form-group form-split-6',
+            'value' => $this->Form->value('Schedule.' . $i . '.duration'),
+            'disabled' => !$regular,
+        ));?>
+
+        <?php echo $this->Form->input('Schedule.' . $i . '.location', array(
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-map-marker input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'disabled' => !$regular,
+            'div' => 'form-group form-split-6',
+            'placeholder' => __('Place'),
+        ));?>
+
+        <?php echo $this->Form->input('Schedule.' . $i . '.device_id', array(
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-hdd input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'placeholder' => __('Device'),
+            'div' => 'form-group form-split-6',
+            'disabled' => !$regular,
+            'empty' => true, 'required' => false,
+        ));?>
+
+    </div>
+    <? ################################################################################################################## ?>
+    <? ################################################ EXCEPTION SCHEDULE ############################################## ?>
+    <? ################################################################################################################## ?>
+
+    <!-- Exception Schedule -->
+    <div class="tab-pane" id="except<? echo $i ?>">
+
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Achtung!</strong> Ausnahmeregeln werden in der aktuellen Version von Captility noch nicht
+            unterstützt.
+        </div>
+
+    </div>
+
+
+    <hr/>
+
+
+    <?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"></span>' . __('Add another Schedule'), array(
+        'class' => 'btn btn-default form-schedule-add pull-right',
+        'escape' => false,
+        'type' => 'button',
+    )); ?>
+    <?php echo $this->Form->button('<span class="glyphicon glyphicon-trash"></span > ' . __('Delete Schedule'), array(
+        'class' => 'btn btn-default form-schedule-remove',
+        'escape' => false,
+        'type' => 'button',
+        'disabled' => true,
+    )); ?>
 
 
     </div>

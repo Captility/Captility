@@ -29,10 +29,12 @@
     <div class="panel panel-primary" id="Pagination">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
+
+
             <tr>
-                <th><?php echo $this->Paginator->sort('device_id', __('ID')); ?></th>
+                <!-- <th><?php /*echo $this->Paginator->sort('device_id', __('ID')); */?></th>-->
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th><?php echo $this->Paginator->sort('type'); ?></th>
                 <th><?php echo $this->Paginator->sort('location', __('Device place')); ?></th>
@@ -43,13 +45,12 @@
             </thead>
             <tbody>
             <?php foreach ($devices as $device): ?>
-                <tr>
-                    <td><?php echo h($device['Device']['device_id']); ?>&nbsp;</td>
-                    <td><?php echo $this->Html->link(h($device['Device']['name']), array('controller' => 'device', 'action' => 'view', $device['Device']['device_id'])); ?>
-                        &nbsp;</td>
-                    <td><?php echo h($device['Device']['type']); ?>&nbsp;</td>
-                    <td><?php echo h($device['Device']['location']); ?>&nbsp;</td>
-                    <td><?php echo h($device['Device']['ip_adress']); ?>&nbsp;</td>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $device['Device']['device_id'])); ?>';">
+                    <!--<td><?php /*echo h($device['Device']['device_id']); */?>&nbsp;</td>-->
+                    <td><?php echo h($device['Device']['name']); ?></td>
+                    <td><?php echo h($device['Device']['type']); ?></td>
+                    <td><?php echo h($device['Device']['location']); ?></td>
+                    <td><?php echo h($device['Device']['ip_adress']); ?></td>
                     <td>
                         <?php if (!empty($device['Device']['link'])) echo $this->Html->link(
                             $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-link')),

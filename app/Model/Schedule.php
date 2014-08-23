@@ -256,8 +256,8 @@ class Schedule extends AppModel {
 
         //$this->log(print_r($this->Event->validationErrors, true));
 
-
-        //debug($data);
+        /*debug('Schedule::manageOwnEvents(data)');
+        debug($data);*/
 
         $schedule = $data['Schedule'];
         $event = $data['Event'];

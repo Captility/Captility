@@ -35,10 +35,10 @@
     <div class="panel panel-primary">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
             <tr>
-                <th><?php echo $this->Paginator->sort('event_type_id', __('ID')); ?></th>
+                <!--<th><?php /*echo $this->Paginator->sort('event_type_id', __('ID')); */?></th>-->
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th><?php echo $this->Paginator->sort('color'); ?></th>
                 <th class="actions"></th>
@@ -46,8 +46,8 @@
             </thead>
             <tbody>
             <?php foreach ($eventTypes as $eventType): ?>
-                <tr>
-                    <td><?php echo h($eventType['EventType']['event_type_id']); ?>&nbsp;</td>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $eventType['EventType']['event_type_id'])); ?>';">
+                    <!--<td><?php /*echo h($eventType['EventType']['event_type_id']); */?>&nbsp;</td>-->
                     <td><?php echo h($eventType['EventType']['name']); ?>&nbsp;</td>
                     <td>
                         <button type="link" class="btn-color eventColor<?php echo $eventType['EventType']['color']; ?>"

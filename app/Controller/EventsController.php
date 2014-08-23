@@ -163,10 +163,15 @@ class EventsController extends AppController {
                 $this->Session->setFlash(__('The event could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
             }
         }
-        $eventTypes = $this->Event->EventType->find('list');
+
         $schedules = $this->Event->Schedule->find('list');
         $captures = $this->Event->Capture->find('list');
-        $devices = $this->Event->Device->find('list');
+
+        $eventTypes = $this->Event->EventType->find('list', array(
+            'fields' => array('EventType.event_type_id', 'EventType.name', 'EventType.color')));
+        $devices = $this->Event->Device->find('list', array(
+            'fields' => array('Device.device_id', 'Device.name', 'Device.location')));
+
         $this->set(compact('eventTypes', 'schedules', 'captures', 'devices'));
     }
 

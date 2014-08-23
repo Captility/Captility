@@ -176,44 +176,71 @@
                 <div class="panel panel-primary">
                     <!-- Default panel contents -->
 
-                    <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+                    <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
                         <thead class="panel-heading">
                         <tr>
                             <th><?php echo __('Ticket Id'); ?></th>
                             <th><?php echo __('Task'); ?></th>
+                            <th><?php echo __('Event'); ?></th>
+                            <th><?php echo __('Responsible'); ?></th>
                             <th><?php echo __('Status'); ?></th>
                             <th><?php echo __('Created'); ?></th>
-                            <th><?php echo __('Modified'); ?></th>
+                            <th><?php echo __('Ended'); ?></th>
                             <th class="actions"></th>
                         </tr>
                         <thead>
                         <tbody>
                         <?php foreach ($event['Ticket'] as $ticket): ?>
 
-                            <tr>
-                                <td><?php echo $ticket['ticket_id']; ?></td>
+                            <tr onclick="document.location = '<? echo Router::url(array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id'])); ?>';">
+                                <td><?php echo h($ticket['ticket_id']); ?>&nbsp;</td>
                                 <td>
-                                    <?php echo h($ticket['Task']['name']); ?>
+                                    <?php echo $ticket['Task']['name']; ?>
                                 </td>
-                                <td class="labels"><?php $statuses = Configure::read('TICKET.STATUSES');
+                                <td>
+                                    <?php echo $this->Html->link($ticket['Event']['title'], array('controller' => 'events', 'action' => 'view', $ticket['Event']['event_id'])); ?>
+                                </td>
+
+                                <td style="white-space: nowrap;"><p>
+                                        <?php echo $this->Html->link($this->Gravatar->identicon($ticket['User']['email']), array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id']), array('escape' => false)); ?>
+                                        <?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
+                                    </p>
+                                </td>
+                                <td class="labels lower-labels"><?php $statuses = Configure::read('TICKET.STATUSES');
                                     $class = $statuses[$ticket['status']]; ?>
 
-                                    <span
-                                        class="label label-<? echo $class ?>"><? echo __(h($ticket['status'])) ?></span>
+                                    <span class="label label-<? echo $class ?>"><? echo __(h($ticket['status'])) ?></span>
                                 </td>
+
+
                                 <td>
-                                    <?
-                                    echo '<span class="glyphicon glyphicon-calendar"></span>'.$this->Captility->linkDate(h($ticket['created']), '%d.%m.%Y');
-                                    echo ' <span class="glyphicon glyphicon-time"></span>'.$this->Captility->calcDate(h($ticket['created']), '%H:%M');
+                                    <?php if (!empty($ticket['created'])) echo
+
+                                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                                        $this->Html->link( // <a>
+
+                                            $this->Time->nice(strtotime(h($ticket['created'])), 'CET', '%a, %d.%m.%Y'), // Date
+                                            '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['created']))), // Calendar-Link
+                                            array('escape' => false)) .
+                                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                                        $this->Time->nice(strtotime(h($ticket['created'])), 'CET', '%H:%M')                       // Time
                                     ?>
                                 </td>
+
                                 <td>
-                                    <?
-                                    echo '<span class="glyphicon glyphicon-calendar"></span>'.$this->Captility->linkDate(h($ticket['modified']), '%d.%m.%Y');
-                                    echo ' <span class="glyphicon glyphicon-time"></span>'.$this->Captility->calcDate(h($ticket['modified']), '%H:%M');
+                                    <?php if (!empty($ticket['ended'])) echo
+
+                                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                                        $this->Html->link( // <a>
+
+                                            $this->Time->nice(strtotime(h($ticket['ended'])), 'CET', '%a, %d.%m.%Y'), // Date
+                                            '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['ended']))), // Calendar-Link
+                                            array('escape' => false)) .
+                                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                                        $this->Time->nice(strtotime(h($ticket['ended'])), 'CET', '%H:%M')                       // Time
                                     ?>
                                 </td>
-                                <!-- <td><?php /*echo $this->Captility->linkDate(h($ticket['ended']), '%d.%m.%Y %H:%M') */?></td>-->
+
                                 <td class="actions">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id']), array('escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'tickets', 'action' => 'edit', $ticket['ticket_id']), array('escape' => false)); ?>

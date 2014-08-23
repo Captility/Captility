@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo '#' . h($capture['Capture']['capture_id']) . ' ' . h($capture['Capture']['name']); ?></h1>
+            <h1><?php echo h($capture['Capture']['name']); ?></h1>
         </div>
     </div>
 </div>
@@ -126,7 +126,7 @@
             <div class="panel panel-primary">
                 <!-- Default panel contents -->
 
-                <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+                <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
                     <thead class="panel-heading">
                     <tr>
                         <th><?php echo __('Schedule Id'); ?></th>
@@ -140,7 +140,8 @@
                     <?php foreach ($capture['Schedule'] as $schedule): ?>
 
                         <?php $regular = (empty($schedule['interval_end'])) ? false : true; ?>
-                        <tr>
+
+                        <tr onclick="document.location = '<? echo Router::url(array('controller' => 'schedules', 'action' => 'view', h($schedule['schedule_id']))); ?>';">
                             <td><?php echo $schedule['schedule_id']; ?></td>
 
                             <td>
@@ -210,7 +211,7 @@
             <div class="panel panel-primary">
                 <!-- Default panel contents -->
 
-                <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+                <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
                     <thead class="panel-heading">
                     <tr>
                         <th><?php echo __('Event Id'); ?></th>
@@ -226,7 +227,7 @@
                     <thead>
                     <tbody>
                     <?php foreach ($capture['Event'] as $event): ?>
-                        <tr>
+                        <tr onclick="document.location = '<? echo Router::url(array('controller' => 'events', 'action' => 'view', h($event['event_id']))); ?>';">
                             <td><?php echo $event['event_id']; ?></td>
                             <!--<td><?php /*echo $event['title']; */?></td>-->
                             <td>

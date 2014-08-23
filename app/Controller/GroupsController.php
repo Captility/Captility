@@ -50,7 +50,7 @@ class GroupsController extends AppController {
         if (!$this->Group->exists($id)) {
             throw new NotFoundException(__('Invalid group'));
         }
-        $options = array('conditions' => array('Group.' . $this->Group->primaryKey => $id));
+        $options = array('conditions' => array('Group.' . $this->Group->primaryKey => $id), 'recursive' => 2);
         $this->set('group', $this->Group->find('first', $options));
     }
 

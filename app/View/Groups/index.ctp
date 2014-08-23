@@ -8,7 +8,7 @@
 
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-myspace"></span>'.__('User Registry'), '/admin_center'); ?>
 <? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-group"></span>'.__('Groups'), '#', array('class' => 'active')); ?>
-<!--<div class=" index">-->
+
 
 <div class="row">
     <div class="col-md-1 column">
@@ -23,7 +23,6 @@
 </div><!-- end row -->
 
 
-<!--<div class="row">-->
 
 
 <div class="col-md-1 column">
@@ -34,10 +33,10 @@
     <div class="panel panel-primary">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
             <tr>
-                <th><?php echo $this->Paginator->sort('group_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('group_id', __('ID')); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th><?php echo $this->Paginator->sort('created'); ?></th>
                 <th><?php echo $this->Paginator->sort('modified'); ?></th>
@@ -46,11 +45,23 @@
             </thead>
             <tbody>
             <?php foreach ($groups as $group): ?>
-                <tr>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $group['Group']['group_id'])); ?>';">
                     <td><?php echo h($group['Group']['group_id']); ?>&nbsp;</td>
                     <td><?php echo h($group['Group']['name']); ?>&nbsp;</td>
-                    <td><?php echo h($group['Group']['created']); ?>&nbsp;</td>
-                    <td><?php echo h($group['Group']['modified']); ?>&nbsp;</td>
+                    <td>
+                        <?php if (!empty($group['Group']['created'])) echo
+
+                            '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                            $this->Captility->linkDate($group['Group']['created'])
+                        ?>
+                    </td>
+                    <td>
+                        <?php if (!empty($group['Group']['modified'])) echo
+
+                            '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                            $this->Captility->linkDate($group['Group']['modified'])
+                        ?>
+                    </td>
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $group['Group']['group_id']), array('escape' => false)); ?>
                         <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('action' => 'edit', $group['Group']['group_id']), array('escape' => false)); ?>

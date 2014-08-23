@@ -26,7 +26,7 @@
     <div class="panel panel-primary">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
             <tr>
                 <th><?php echo $this->Paginator->sort('ticket_id', __('ID')); ?></th>
@@ -41,27 +41,52 @@
             </thead>
             <tbody>
             <?php foreach ($tickets as $ticket): ?>
-                <tr>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $ticket['Ticket']['ticket_id'])); ?>';">
                     <td><?php echo h($ticket['Ticket']['ticket_id']); ?>&nbsp;</td>
                     <td>
-                        <?php echo $this->Html->link($ticket['Task']['name'], array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id'])); ?>
+                        <?php echo $ticket['Task']['name']; ?>
                     </td>
                     <td>
                         <?php echo $this->Html->link($ticket['Event']['title'], array('controller' => 'events', 'action' => 'view', $ticket['Event']['event_id'])); ?>
                     </td>
-                    <td>
-                        <?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
-                    </td>
 
+                    <td style="white-space: nowrap;"><p>
+                            <?php echo $this->Html->link($this->Gravatar->identicon($ticket['User']['email']), array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id']), array('escape' => false)); ?>
+                            <?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
+                        </p>
+                    </td>
                     <td class="labels lower-labels"><?php $statuses = Configure::read('TICKET.STATUSES');
                         $class = $statuses[$ticket['Ticket']['status']]; ?>
 
                         <span class="label label-<? echo $class ?>"><? echo __(h($ticket['Ticket']['status'])) ?></span>
                     </td>
                     <td>
-                        <?php echo $this->Captility->linkDate(h($ticket['Ticket']['created']), '%d.%m.%Y %H:%M') ?>
+                        <?php if (!empty($ticket['Ticket']['created'])) echo
+
+                            '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                            $this->Html->link( // <a>
+
+                                $this->Time->nice(strtotime(h($ticket['Ticket']['created'])), 'CET', '%a, %d.%m.%Y'), // Date
+                                '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['Ticket']['created']))), // Calendar-Link
+                                array('escape' => false)) .
+                            '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                            $this->Time->nice(strtotime(h($ticket['Ticket']['created'])), 'CET', '%H:%M')                       // Time
+                        ?>
                     </td>
-                    <td><?php echo $this->Captility->linkDate(h($ticket['Ticket']['ended']), '%d.%m.%Y %H:%M') ?></td>
+
+                    <td>
+                        <?php if (!empty($ticket['Ticket']['modified'])) echo
+
+                            '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                            $this->Html->link( // <a>
+
+                                $this->Time->nice(strtotime(h($ticket['Ticket']['modified'])), 'CET', '%a, %d.%m.%Y'), // Date
+                                '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['Ticket']['modified']))), // Calendar-Link
+                                array('escape' => false)) .
+                            '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                            $this->Time->nice(strtotime(h($ticket['Ticket']['modified'])), 'CET', '%H:%M')                       // Time
+                        ?>
+                    </td>
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $ticket['Ticket']['ticket_id']), array('escape' => false)); ?>
                         <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('action' => 'edit', $ticket['Ticket']['ticket_id']), array('escape' => false)); ?>

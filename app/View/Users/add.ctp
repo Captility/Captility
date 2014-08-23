@@ -40,10 +40,10 @@
             'class' => 'col col-md-3 control-label'), 'placeholder' => __('Username')));?>
     </div>
 
-    <div class="form-group">
+    <?/*<div class="form-group">
         <?php echo $this->Form->input('avatar', array('label' => array('text' => __('Avatar'),
             'class' => 'col col-md-3 control-label'), 'placeholder' => 'Avatar (noch nicht unterstützt)'));?>
-    </div>
+    </div>*/?>
 
     <div class="form-group">
         <?php echo $this->Form->input('pwd', array(

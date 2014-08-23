@@ -229,7 +229,18 @@ Configure::write('Security.salt', '9NcoQ_d1IHw,py(§d9sWCN32KF08x_(/q1dOc=s§dmW
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-Configure::write('Security.cipherSeed', '8310246839102384568130138291052');
+//Configure::write('Security.cipherSeed', '8310246839102384568130138291052');
+Configure::write('Security.cipherSeed', '0581313102468391023845681301382910523727892572');
+
+
+/**
+ * A random numeric string (digits only) used to encrypt/decrypt raijael strings.
+ * Rather unsafe technique to encrypt minor passwords like device-passwords, which need to be decrypted for cronjobs.
+ */
+Configure::write('Security.rijndaelIV', 'mXTckIIIyXo24GpUAMNpKmmISqXfu2ksdxlhY4OHoZE');
+
+Configure::write('Security.rijndaelKey', '2Jc9Ps3q01cLskSac3X10');
+
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).

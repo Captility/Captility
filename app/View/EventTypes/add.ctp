@@ -7,13 +7,14 @@
 ?>
 
 <? $this->Breadcrumbs->addCrumb(__('Records'), '/records'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-facetime-video"></span>'.__('Event Types'), array('action' => 'index')); ?>
-<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-plus"></span>'.__('Add Event Type'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-facetime-video"></span>' . __('Event Types'), array('action' => 'index')); ?>
+<?php $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-plus"></span>' . __('Add Event Type'), '#', array('class' => 'active')); ?>
 <!--<div class=" form">-->
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-facetime-video"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-facetime-video"></span>
+        </div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -32,21 +33,27 @@
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
     <?php echo $this->Form->create('EventType', array('role' => 'form')); ?>
 
-    <div class="form-group">
-        <?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => 'Name'));?>
-    </div>
-    <label for="EventTypeColor">Color</label>
 
-    <div class="form-group">
-        <div style="display: inline-block">
-            <div class="input-group">
-                <span class="input-group-addon glyphicon glyphicon-facetime-video input-group-glyphicon"></span>
-                <input class="form-control selected-color" placeholder="Blue" name="data[EventType][color]"
-                       maxlength="255" type="text" value="<? echo $this->Form->value('EventType.color'); ?>"
-                       id="EventTypeColor" required="required" readonly>
+
+    <div class="form-group required">
+        <?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => 'Name',
+            'required' => true));?>
+    </div>
+
+    <div class="form-group required">
+        <label for="EventTypeColor">Color</label>
+
+        <div class="form-group required">
+            <div style="display: inline-block">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-facetime-video input-group-glyphicon"></span>
+                    <input class="form-control selected-color" placeholder="Blue" name="data[EventType][color]"
+                           maxlength="255" type="text" value="<? echo $this->Form->value('EventType.color'); ?>"
+                           id="EventTypeColor" required="required" readonly>
+                </div>
             </div>
+            <div style="display: inline-block" class="colorpalette"></div>
         </div>
-        <div style="display: inline-block" class="colorpalette"></div>
     </div>
 
     <?php echo $this->Element('submitArea');?>

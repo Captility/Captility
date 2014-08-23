@@ -126,7 +126,6 @@
 
     <?php echo $this->Form->input('device_id', array(
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-hdd input-group-glyphicon"></span>', 'afterInput' => '</div>',
-        'placeholder' => __('Device'),
         'div' => 'form-group form-split-6',
         'empty' => true, 'required' => false,
     ));?>

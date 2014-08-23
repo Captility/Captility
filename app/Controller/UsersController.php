@@ -138,8 +138,7 @@ class UsersController extends AppController {
     }
 
 
-    public function messages(){
-
+    public function messages() {
 
 
     }

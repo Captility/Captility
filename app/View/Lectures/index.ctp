@@ -34,7 +34,7 @@
     <div class="panel panel-primary">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
             <tr>
                 <th><?php echo $this->Paginator->sort('number'); ?></th>
@@ -49,25 +49,25 @@
             </thead>
             <tbody>
             <?php foreach ($lectures as $lecture): ?>
-                <tr>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $lecture['Lecture']['lecture_id'])); ?>';">
                     <td>
-                        <?php echo $this->Html->link(h($lecture['Lecture']['number']), array('action' => 'view', $lecture['Lecture']['lecture_id']), array('escape' => false)); ?>
+                        <?php echo h($lecture['Lecture']['number']); ?>
                     </td>
-                    <td><?php echo h($lecture['Lecture']['name']); ?>&nbsp;</td>
+                    <td><?php echo h($lecture['Lecture']['name']); ?></td>
                     <td>
                         <?php echo $this->Html->link($lecture['Host']['name'], array('controller' => 'hosts', 'action' => 'view', $lecture['Host']['host_id'])); ?>
                     </td>
-                    <td><?php echo h($lecture['Lecture']['semester']); ?>&nbsp;</td>
+                    <td><?php echo h($lecture['Lecture']['semester']); ?></td>
                     <td>
                         <?php if (!empty($lecture['Lecture']['link'])) echo $this->Html->link(
                             $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-link')),
                             h($lecture['Lecture']['link']), array('full_base' => true, 'escape' => false));
                         ?>
                     </td>
-
-
-                    <td>
-                        <?php echo $this->Html->link($lecture['User']['username'], array('controller' => 'users', 'action' => 'view', $lecture['User']['user_id'])); ?>
+                    <td style="white-space: nowrap;"><p>
+                            <?php echo $this->Html->link($this->Gravatar->identicon($lecture['User']['email']), array('controller' => 'users', 'action' => 'view', $lecture['User']['user_id']), array('escape' => false)); ?>
+                            <?php echo $this->Html->link($lecture['User']['username'], array('controller' => 'users', 'action' => 'view', $lecture['User']['user_id'])); ?>
+                        </p>
                     </td>
                     <td>
                         <?php echo $this->Form->create('EventTypes', array('url' => array('controller' => 'eventTypes', 'action' => 'view', $lecture['EventType']['event_type_id'])));?>

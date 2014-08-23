@@ -2,7 +2,7 @@
 <!--<div class=" view">-->
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-tags"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-tags"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -19,41 +19,43 @@
 <div class="col-md-8 column actions-column">
 
     <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
-    <div class="panel panel-primary">
+    <div class="panel panel-default badger-right badger-default"
+         data-badger="<? echo __('Task') . ' #' . h($task['Task']['task_id']); ?>">
+
         <table cellpadding="0" cellspacing="0" class="table table-striped">
             <tbody>
-            <tr>
-                <th><?php echo __('Task Id'); ?></th>
+            <!--<tr>
+                <th><?php /*echo __('Task Id'); */?></th>
                 <td>
-                    <?php echo h($task['Task']['task_id']); ?>
+                    <?php /*echo h($task['Task']['task_id']); */?>
                     &nbsp;
                 </td>
-            </tr>
+            </tr>-->
             <tr>
                 <th><?php echo __('Name'); ?></th>
-                <td>
+                <td><span class="glyphicon glyphicon-tag"></span>
                     <?php echo h($task['Task']['name']); ?>
                     &nbsp;
                 </td>
             </tr>
             <tr>
                 <th><?php echo __('Description'); ?></th>
-                <td>
+                <td><span class="glyphicon glyphicon-info-sign"></span>
                     <?php echo h($task['Task']['description']); ?>
                     &nbsp;
                 </td>
             </tr>
             <tr>
-                <th><?php echo __('Step'); ?></th>
-                <td>
-                    <?php echo h($task['Task']['step']); ?>
+                <th><?php echo __('Workflow'); ?></th>
+                <td><span class="glyphicon el-icon-random"></span>
+                    <?php echo $this->Html->link($task['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $task['Workflow']['workflow_id'])); ?>
                     &nbsp;
                 </td>
             </tr>
             <tr>
-                <th><?php echo __('Workflow'); ?></th>
-                <td>
-                    <?php echo $this->Html->link($task['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $task['Workflow']['workflow_id'])); ?>
+                <th><?php echo __('Step'); ?></th>
+                <td><span class="glyphicon glyphicon-barcode"></span>
+                    <?php echo h($task['Task']['step']); ?>
                     &nbsp;
                 </td>
             </tr>
@@ -67,36 +69,77 @@
     <div class="related row">
         <div class="col-md-12">
             <h3><?php echo __('Related Tickets'); ?></h3>
-            <?php if (!empty($task['Ticket'])): ?>                 <div class="panel panel-primary">
+            <?php if (!empty($task['Ticket'])): ?>
+                <div class="panel panel-primary">
                     <!-- Default panel contents -->
 
-                    <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+                    <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
                         <thead class="panel-heading">
                         <tr>
                             <th><?php echo __('Ticket Id'); ?></th>
+                            <th><?php echo __('Task'); ?></th>
+                            <th><?php echo __('Event'); ?></th>
+                            <th><?php echo __('Responsible'); ?></th>
                             <th><?php echo __('Status'); ?></th>
-                            <th><?php echo __('Comment'); ?></th>
                             <th><?php echo __('Created'); ?></th>
-                            <th><?php echo __('Modified'); ?></th>
                             <th><?php echo __('Ended'); ?></th>
-                            <th><?php echo __('User Id'); ?></th>
-                            <th><?php echo __('Task Id'); ?></th>
-                            <th><?php echo __('Event Id'); ?></th>
                             <th class="actions"></th>
+
+
                         </tr>
                         <thead>
                         <tbody>
                         <?php foreach ($task['Ticket'] as $ticket): ?>
-                            <tr>
-                                <td><?php echo $ticket['ticket_id']; ?></td>
-                                <td><?php echo $ticket['status']; ?></td>
-                                <td><?php echo $ticket['comment']; ?></td>
-                                <td><?php echo $ticket['created']; ?></td>
-                                <td><?php echo $ticket['modified']; ?></td>
-                                <td><?php echo $ticket['ended']; ?></td>
-                                <td><?php echo $ticket['user_id']; ?></td>
-                                <td><?php echo $ticket['task_id']; ?></td>
-                                <td><?php echo $ticket['event_id']; ?></td>
+                            <tr onclick="document.location = '<? echo Router::url(array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id'])); ?>';">
+                                <td><?php echo h($ticket['ticket_id']); ?>&nbsp;</td>
+                                <td>
+                                    <?php echo $this->Html->link($ticket['Task']['name'], array('controller' => 'tasks', 'action' => 'view', $ticket['Task']['task_id'])); ?>
+                                </td>
+                                <td>
+                                    <?php echo $this->Html->link($ticket['Event']['title'], array('controller' => 'events', 'action' => 'view', $ticket['Event']['event_id'])); ?>
+                                </td>
+
+                                <td style="white-space: nowrap;"><p>
+                                        <?php echo $this->Html->link($this->Gravatar->identicon($ticket['User']['email']), array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id']), array('escape' => false)); ?>
+                                        <?php echo $this->Html->link($ticket['User']['username'], array('controller' => 'users', 'action' => 'view', $ticket['User']['user_id'])); ?>
+                                    </p>
+                                </td>
+                                <td class="labels lower-labels"><?php $statuses = Configure::read('TICKET.STATUSES');
+                                    $class = $statuses[$ticket['status']]; ?>
+
+                                    <span
+                                        class="label label-<? echo $class ?>"><? echo __(h($ticket['status'])) ?></span>
+                                </td>
+
+
+                                <td>
+                                    <?php if (!empty($ticket['created'])) echo
+
+                                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                                        $this->Html->link( // <a>
+
+                                            $this->Time->nice(strtotime(h($ticket['created'])), 'CET', '%a, %d.%m.%Y'), // Date
+                                            '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['created']))), // Calendar-Link
+                                            array('escape' => false)) .
+                                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                                        $this->Time->nice(strtotime(h($ticket['created'])), 'CET', '%H:%M')                       // Time
+                                    ?>
+                                </td>
+
+                                <td>
+                                    <?php if (!empty($ticket['ended'])) echo
+
+                                        '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                                        $this->Html->link( // <a>
+
+                                            $this->Time->nice(strtotime(h($ticket['ended'])), 'CET', '%a, %d.%m.%Y'), // Date
+                                            '/calendar?date=' . date('D M d Y H:i:s O', strtotime(h($ticket['ended']))), // Calendar-Link
+                                            array('escape' => false)) .
+                                        '&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span>' . // Time Icon
+                                        $this->Time->nice(strtotime(h($ticket['ended'])), 'CET', '%H:%M')                       // Time
+                                    ?>
+                                </td>
+
                                 <td class="actions">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id']), array('escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'tickets', 'action' => 'edit', $ticket['ticket_id']), array('escape' => false)); ?>

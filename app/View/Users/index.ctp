@@ -1,10 +1,9 @@
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon el-icon-myspace"></span>'.__('User Registry'), '/admin_center'); ?>
-<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-user"></span>'.__('Users'), '#', array('class' => 'active')); ?>
+<? $this->Breadcrumbs->addCrumb('<span class="glyphicon glyphicon-user"></span>' . __('Users'), '#', array('class' => 'active')); ?>
 <!--<div class=" index">-->
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-user"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-user"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -26,40 +25,61 @@
     <div class="panel panel-primary">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
             <tr>
-                <th><?php echo $this->Paginator->sort('user_id', __('User Id')); ?></th>
+                <!--<th><?php /*echo $this->Paginator->sort('user_id', __('User Id')); */?></th>-->
                 <th><?php echo $this->Paginator->sort('username'); ?></th>
                 <th><?php echo $this->Paginator->sort('email'); ?></th>
-                <th><?php echo $this->Paginator->sort('avatar'); ?></th>
+                <th><?php echo $this->Paginator->sort('group_id'); ?></th>
                 <th><?php echo $this->Paginator->sort('created'); ?></th>
                 <th><?php echo $this->Paginator->sort('modified'); ?></th>
-                <th><?php echo $this->Paginator->sort('group_id'); ?></th>
                 <th><?php echo $this->Paginator->sort('notification', '<span class="glyphicon el-icon-rss"></span>', array('escape' => false)); ?></th>
                 <th class="actions"></th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($users as $user): ?>
-                <tr>
-                    <td><?php echo h($user['User']['user_id']); ?>&nbsp;</td>
-                    <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $user['User']['user_id'])); ?>';">
+                    <!--<td><?php /*echo h($user['User']['user_id']); */?>&nbsp;</td>-->
+
+                    <td style="white-space: nowrap;"><p>
+                            <?php echo $this->Html->link($this->Gravatar->identicon($user['User']['email']), array('controller' => 'users', 'action' => 'view', $user['User']['user_id']), array('escape' => false)); ?>
+                            <?php echo $user['User']['username']; ?>
+                        </p>
+                    </td>
+
                     <td>
                         <?php echo $this->Html->link(
                             $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-envelope')),
                             'mailto:' . h($user['User']['email']), array('full_base' => true, 'escape' => false));
                         ?>
                     </td>
-                    <td><?php echo h($user['User']['avatar']); ?>&nbsp;</td>
-                    <td><?php echo h($user['User']['created']); ?>&nbsp;</td>
-                    <td><?php echo h($user['User']['modified']); ?>&nbsp;</td>
-                    <td>
+
+
+                    <td><? echo '<span class="glyphicon el-icon-group"></span>'; ?>
                         <?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['group_id'])); ?>
                     </td>
+
+                    <td>
+                        <?php if (!empty($user['User']['created'])) echo
+
+                            '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                            $this->Captility->linkDate($user['User']['created'])
+                        ?>
+                    </td>
+                    <td>
+                        <?php if (!empty($user['User']['modified'])) echo
+
+                            '<span class="glyphicon glyphicon-calendar"></span>' . // Calendar Icon
+                            $this->Captility->linkDate($user['User']['modified'])
+                        ?>
+                    </td>
+
                     <td><?php if (h($user['User']['notification'] <= 0)): echo '<span class="glyphicon glyphicon-ban-circle"></span>'; ?>
                         <?php else: echo '<span class="glyphicon glyphicon-ok"></span>'; ?><?php endif; ?>
                     </td>
+
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $user['User']['user_id']), array('escape' => false)); ?>
                         <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('action' => 'edit', $user['User']['user_id']), array('escape' => false)); ?>

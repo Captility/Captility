@@ -25,7 +25,7 @@
     <div class="panel panel-primary">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
             <tr>
                 <th><?php echo $this->Paginator->sort('task_id'); ?></th>
@@ -38,7 +38,7 @@
             </thead>
             <tbody>
             <?php foreach ($tasks as $task): ?>
-                <tr>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $task['Task']['task_id'])); ?>';">
                     <td><?php echo h($task['Task']['task_id']); ?>&nbsp;</td>
                     <td><?php echo h($task['Task']['name']); ?>&nbsp;</td>
                     <td><?php echo h($task['Task']['description']); ?>&nbsp;</td>

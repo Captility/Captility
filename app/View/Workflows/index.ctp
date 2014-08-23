@@ -27,10 +27,10 @@
     <div class="panel panel-primary">
         <!-- Default panel contents -->
 
-        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
             <thead class="panel-heading">
             <tr>
-                <th><?php echo $this->Paginator->sort('workflow_id', __('ID')); ?></th>
+                <!--<th><?php /*echo $this->Paginator->sort('workflow_id', __('ID')); */?></th>-->
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th class="actions"></th>
             </tr>
@@ -47,9 +47,10 @@
             }?>
 
             <?php foreach ($workflows as $workflow): ?>
-                <tr>
-                    <td><?php echo h($workflow['Workflow']['workflow_id']); ?></td>
-                    <td><?php echo h($workflow['Workflow']['name']); ?></br>
+                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', h($workflow['Workflow']['workflow_id']))); ?>';">
+                    <!--<td><?php /*echo h($workflow['Workflow']['workflow_id']); */?></td>-->
+                    <td><?php echo h($workflow['Workflow']['name']) ?>
+                        <br/>
 
 
                         <?php if (!empty($workflow['Task'])): ?>

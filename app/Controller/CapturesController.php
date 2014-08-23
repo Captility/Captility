@@ -55,7 +55,12 @@ class CapturesController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
 
 
-            //debug($this->request->data);
+            /*debug('##################################');
+            debug('##################################');
+            debug('##################################');
+
+            debug('CaptureController::add(requestData)');
+            debug($this->request->data);*/
             $this->Capture->validates($this->request->data['Capture']);
 
 

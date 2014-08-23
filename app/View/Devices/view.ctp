@@ -18,7 +18,7 @@
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo '#' . h($device['Device']['device_id']) . ' ' . h($device['Device']['name']); ?></h1>
+            <h1><?php echo h($device['Device']['name']); ?></h1>
         </div>
     </div>
 </div>
