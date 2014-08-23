@@ -113,6 +113,7 @@
 .btn.active {
   outline: 0;
   background-image: none;
+  -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
@@ -123,6 +124,7 @@ fieldset[disabled] .btn {
   pointer-events: none;
   opacity: 0.65;
   filter: alpha(opacity=65);
+  -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -161,6 +163,7 @@ fieldset[disabled] .btn {
 .btn-m.active {
   outline: 0;
   background-image: none;
+  -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
@@ -171,6 +174,7 @@ fieldset[disabled] .btn-m {
   pointer-events: none;
   opacity: 0.65;
   filter: alpha(opacity=65);
+  -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -472,6 +476,7 @@ fieldset[disabled] .btn-misc.active {
 .btn-link[disabled],
 fieldset[disabled] .btn-link {
   background-color: transparent;
+  -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -1699,6 +1704,11 @@ h1,
 }
 .error-message {
   color: #a94442;
+}
+img.nav-identicon {
+  -moz-box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.75);
 }
 /* ###############################################
  * ################# Info Banners  ###############
@@ -3058,6 +3068,7 @@ text-shadow: none;*/
   border-top-left-radius: 0px !important;
 }
 #calendar .fc-event {
+  -moz-box-shadow: 2px 2px 3px #aaaaaa;
   -webkit-box-shadow: 2px 2px 3px #aaaaaa;
   box-shadow: 2px 2px 3px #aaaaaa;
 }
@@ -3293,6 +3304,7 @@ text-shadow: none;*/
 #tickets .ticket,
 #myTickets .ticket {
   margin-bottom: 40px;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   cursor: auto;

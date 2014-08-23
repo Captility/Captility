@@ -153,7 +153,7 @@
         <li class="dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle"
                data-toggle="dropdown">
-                <?php echo $this->Gravatar->identicon($this->Session->read('Auth.User.email')); ?>
+                <?php echo $this->Gravatar->identicon($this->Session->read('Auth.User.email'), array('default' => 'identicon', 'size' => 40, 'height' => 20, 'class' => 'nav-identicon')); ?>
                 &nbsp;<?php echo $this->Session->read('Auth.User.username') . ' '; ?>
                 <strong
                     class="caret"></strong></a>

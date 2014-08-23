@@ -35,7 +35,7 @@
                 <!--<th><?php /*echo $this->Paginator->sort('capture_id', __('Capture Id')); */?></th>-->
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th><?php echo $this->Paginator->sort('lecture_id'); ?></th>
-                <th><?php echo $this->Paginator->sort('user_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('user_id', __('Responsible')); ?></th>
                 <th><?php echo $this->Paginator->sort('status'); ?></th>
                 <th><?php echo $this->Paginator->sort('workflow_id'); ?></th>
                 <th class="actions"></th>
