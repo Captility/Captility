@@ -22,7 +22,7 @@
  * CronTab should look like:
  *
  *  # Captility Event Execution
- *  * /1 * * * * cd /full/path/to/captility/app && Console/cake captility --quiet >> /path/to/captility/app/tmp/logs/cronjob.log
+ *  * /1 * * * * cd /full/path/to/captility/app && Console/cake captility >> /path/to/captility/app/tmp/logs/cronjob.log
  *  # > /dev/null 2>&1 # alternate null output
  *
  * @param int $hash ValidationHash to ensure security.
@@ -34,6 +34,14 @@ class CaptilityShell extends AppShell {
 
 
     /**
+     * Ovverride Console header.
+     */
+    public function startup() {
+
+        //empty
+    }
+
+    /**
      * Default shell function to invoke 'Captility Tact' for Event-, Ticket-, Device-,.. updates and cleanup services.
      */
     public function main() {
@@ -43,26 +51,42 @@ class CaptilityShell extends AppShell {
         // ################################ CRONJOB TASK INJECTIONS ################################################
         // #########################################################################################################
 
-        // ################################ CLEANUP::Update Urgency Statuses  ######################################
-        $this->shortenLogs(); // Keep logfiles in captility/app/tmp/logs under fixed filsize.
+
+        // ################################ DEVICES: Stop and Start automatic recording  ###########################
+        $jsonResponse = $this->Device->startStopAutoRecording();
+
+        if (!empty($jsonResponse)) {
+
+            $jsonResponse = date('Y-m-d H:i:s') . ' | ' . json_encode($jsonResponse);
+
+            $this->out(PHP_EOL . '<comment>' . $jsonResponse . '</comment>' . PHP_EOL);
+        }
+
 
         // ################################ TICKETS::Update Urgency Statuses  ######################################
         $this->Ticket->updateUrgencyStatuses();
 
+
         // ################################ EVENTS:: Generate new Tickets from WF  #################################
         $jsonResponse = $this->Event->updateTicketsFromWorkflow();
-
-        // #########################################################################################################
-        // #########################################################################################################
-
 
         // Send response as JSON for log if soemthing was done:
         if (!empty($jsonResponse)) {
 
             $jsonResponse = date('Y-m-d H:i:s') . ' | ' . json_encode($jsonResponse);
+
+            $this->out(PHP_EOL . '<comment>' . $jsonResponse . '</comment>' . PHP_EOL);
         }
 
-        $this->out(PHP_EOL.'<comment>' . $jsonResponse . '</comment>'.PHP_EOL);
+        // ################################ CLEANUP::Update Urgency Statuses  ######################################
+        try {
+            $this->shortenLogs(); // Keep logfiles in captility/app/tmp/logs under fixed filsize.
+        } catch (Exception $e) {
+            throw new CakeLogException('Logs could not be shortened', 0, $e);
+        }
+
+        // #########################################################################################################
+        // #########################################################################################################
 
 
     }
@@ -75,7 +99,7 @@ class CaptilityShell extends AppShell {
     /**
      * Cleanup service to keep logfiles in captility/app/tmp/logs under fixed filsize.
      */
-    private function shortenLogs() {
+    public function shortenLogs() {
 
 
         $shorten_lines = 100;
@@ -96,7 +120,7 @@ class CaptilityShell extends AppShell {
                 file_put_contents($log, $content);
 
 
-                $this->out(PHP_EOL . date('Y-m-d H:i:s') . ' | <comment>Log "'.$log.'" was shortened.</comment>' . PHP_EOL, TRUE, Shell::QUIET);
+                $this->out(PHP_EOL . date('Y-m-d H:i:s') . ' | <comment>Log "' . $log . '" was shortened.</comment>' . PHP_EOL);
             }
         }
 
