@@ -202,10 +202,13 @@ class EventsController extends AppController {
             $options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
             $this->request->data = $this->Event->find('first', $options);
         }
-        $eventTypes = $this->Event->EventType->find('list');
+
         $schedules = $this->Event->Schedule->find('list');
         $captures = $this->Event->Capture->find('list');
-        $devices = $this->Event->Device->find('list');
+        $eventTypes = $this->Event->EventType->find('list', array(
+            'fields' => array('EventType.event_type_id', 'EventType.name', 'EventType.color')));
+        $devices = $this->Event->Device->find('list', array(
+            'fields' => array('Device.device_id', 'Device.name', 'Device.location')));
         $this->set(compact('eventTypes', 'schedules', 'captures', 'devices'));
     }
 

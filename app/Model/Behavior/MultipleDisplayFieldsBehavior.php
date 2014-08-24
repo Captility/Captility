@@ -18,7 +18,7 @@ class MultipleDisplayFieldsBehavior extends ModelBehavior {
     }
 
     function afterFind(&$model, $results) {
-        // if displayFields is set, attempt to populate 
+        // if displayFields is set, attempt to populate
         foreach ($results as $key => $val) {
             $displayFieldValues = array();
 
