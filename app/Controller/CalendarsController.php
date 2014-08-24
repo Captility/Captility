@@ -17,7 +17,7 @@ class CalendarsController extends AppController {
 
     //public $useTable = false;
 
-    var $uses = array('Lecture', 'Event', 'Ticket');
+    var $uses = array('Lecture', 'Event', 'Ticket', 'Device');
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -122,7 +122,7 @@ class CalendarsController extends AppController {
      * CronTab should look like:
      *
      *  # Captility Event Execution
-     *  * /5 * * * * /Users/Daniel/Webdesign/BA/Captility/cron_localhost >> /Users/Daniel/Webdesign/BA/Captility/cron_localhost.log
+     *  * /5 * * * * /path/to/captility/cron_localhost >> /path/to/captility/cron_localhost.log
      *  # > /dev/null 2>&1 # alternate null output
      *
      *

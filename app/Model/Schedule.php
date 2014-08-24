@@ -240,7 +240,8 @@ class Schedule extends AppModel {
         return true;
     }
 
-    public function afterSave($created, array $options = array()) {
+
+    public function afterSave($created, $options = array()) {
 
         return $this->Capture->Schedule->manageOwnEvents($this->id, $this->data);
     }
