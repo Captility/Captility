@@ -181,4 +181,68 @@ class Device extends AppModel {
 
         return $results;
     }
+
+    /**
+     * Function to control auto recording support of recording devices.
+     */
+    public function startStopAutoRecording() {
+
+
+        // stop first, so recording can start again if next event follows
+        $this->stopAutoRecording();
+
+        $this->startAutoRecording();
+
+    }
+
+    /**
+     * Function to control auto recording support of recording devices.
+     */
+    public function stopAutoRecording() {
+
+        // Search for events that just stopped and relate to a recording device:
+
+        $now_start = date('Y-m-d H:i:00');
+        $now_end = date('Y-m-d H:i:59');
+
+        // Todo: remove test dates for whole day instead minute
+        $now_start = date('Y-m-d 00:00:00');
+        $now_end = date('Y-m-d 23:59:59');
+
+
+        $devices =  $this->find('all', array(
+
+            'link' => array(
+
+                'Event' => array(
+                    'conditions' => array('exactly' => 'Event.device_id = Device.device_id'),
+                ),
+            ),
+
+            'conditions' => array(
+
+                'AND' => array(
+
+                    'Event.end >=' => $now_start,
+                    'Event.end <=' => $now_end,
+                )
+            ),
+
+        ));
+
+        debug('Devices found:');
+
+        debug($devices);
+
+    }
+
+    /**
+     * Function to control auto recording support of recording devices.
+     */
+    public function startAutoRecording() {
+
+
+    }
+
+
 }
