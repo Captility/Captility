@@ -210,7 +210,7 @@ class Device extends AppModel {
         $now_end = date('Y-m-d 23:59:59');
 
 
-        $devices =  $this->find('all', array(
+        $devices = $this->find('all', array(
 
             'link' => array(
 
@@ -230,9 +230,47 @@ class Device extends AppModel {
 
         ));
 
-        debug('Devices found:');
+        /*debug('Devices found:');
 
-        debug($devices);
+        debug($devices);*/
+
+
+        /*
+        array(
+	(int) 0 => array(
+		'Device' => array(
+			'device_id' => '9',
+			'name' => 'LR Bsp',
+			'ip_adress' => '',
+			'location' => 'H123',
+			'username' => 'unirekorder',
+			'device_pwd' => '1234',
+			'type' => 'Lecture Recorder X2',
+			'link' => 'http://127.0.0.1/admin',
+			'start_command' => '',
+			'end_command' => '',
+			'comment' => '',
+			'created' => '2014-08-22 15:16:00',
+			'modified' => '2014-08-22 20:16:17'
+		),
+		'Event' => array(
+			'event_id' => '1391',
+			'title' => 'Sonntags Früh',
+			'comment' => '',
+			'start' => '2014-08-24 01:30:00',
+			'end' => '2014-08-24 01:45:00',
+			'all_day' => false,
+			'status' => 'Processing',
+			'link' => '',
+			'location' => '',
+			'created' => '2014-08-24 01:29:33',
+			'modified' => '2014-08-24 01:35:49',
+			'event_type_id' => '4',
+			'schedule_id' => '241',
+			'capture_id' => '157',
+			'device_id' => '9'
+		)
+	),*/
 
     }
 

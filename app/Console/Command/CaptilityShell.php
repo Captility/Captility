@@ -25,6 +25,10 @@
  *  * /1 * * * * cd /full/path/to/captility/app && Console/cake captility >> /path/to/captility/app/tmp/logs/cronjob.log
  *  # > /dev/null 2>&1 # alternate null output
  *
+ *
+ * Attention: Running on XAMPP the right webserver bin/php needs to be specified to load dependencies:
+ * * /1 * * * * export PATH="/Applications/XAMPP/xamppfiles/bin:$PATH" && cd /full/path/to/captility/app && Console/cake captility >> /path/to/captility/app/tmp/logs/cronjob.log
+ *
  * @param int $hash ValidationHash to ensure security.
  * @throws NotFoundException Returns error with invalid hash.
  */
@@ -103,7 +107,7 @@ class CaptilityShell extends AppShell {
 
 
         $shorten_lines = 100;
-        $maxKB = 1;
+        $maxKB = 100;
         $logPath = getcwd() . '/tmp/logs/';
         $logFiles = glob($logPath . '*.log');
 
