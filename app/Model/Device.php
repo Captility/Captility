@@ -189,9 +189,11 @@ class Device extends AppModel {
 
 
         // stop first, so recording can start again if next event follows
-        $this->stopAutoRecording();
+        $result = $this->stopAutoRecording();
 
-        $this->startAutoRecording();
+        $result .= $this->startAutoRecording();
+
+        return $result;
 
     }
 
@@ -206,8 +208,8 @@ class Device extends AppModel {
         $now_end = date('Y-m-d H:i:59');
 
         // Todo: remove test dates for whole day instead minute
-        $now_start = date('Y-m-d 00:00:00');
-        $now_end = date('Y-m-d 23:59:59');
+        /*$now_start = date('Y-m-d 00:00:00');
+        $now_end = date('Y-m-d 23:59:59');*/
 
 
         $devices = $this->find('all', array(
@@ -230,10 +232,29 @@ class Device extends AppModel {
 
         ));
 
-        /*debug('Devices found:');
+        $jsonResponse = null;
 
-        debug($devices);*/
+        // Process found devices:
+        if (!empty($devices)) {
 
+            foreach ($devices as $device) {
+
+
+                // LECTURE RECORDER
+
+                // Look for Events with related Lecture Recorder
+                if ($device['Device']['type'] == 'Lecture Recorder X2' || $device['Device']['type'] == 'Lecture Recorder') {
+
+                    // Stop LR
+                    $stopResponse = $this->stopLectureRecorder($device['Device']['ip_adress'], $device['Device']['username'], $device['Device']['device_pwd']);
+
+
+
+                }
+            }
+        }
+
+        return $jsonResponse;
 
         /*
         array(
@@ -279,6 +300,49 @@ class Device extends AppModel {
      */
     public function startAutoRecording() {
 
+
+    }
+
+
+    public function getLectureRecorderStatus($device_ip) {
+
+        // CGI URL:
+        //http://129.70.97.9/admin/ajax/recorder_status.cgi
+    }
+
+    public function stopLectureRecorder($device_ip, $username = null, $password = null) {
+
+        // CGI URL:
+        //  http://192.30.23.45/admin/set_params.cgi?rec_enabled=""
+
+        $curl = curl_init($device_ip . Configure::read('DEVICE.LECTURE_RECORDER.STOP'));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        if (isset($username) && isset($password)) curl_setopt($curl, CURLOPT_USERPWD, $username . ":" . $password);
+        $response = curl_exec($curl);
+        $resultStatus = curl_getinfo($curl);
+        curl_close($curl);
+
+        /*debug($resultStatus['http_code']);
+        debug($resultStatus);
+        debug($response);*/
+
+
+        if ($resultStatus['http_code'] == 200) {
+
+            return true;
+        }
+        else {
+
+            return false;
+        }
+
+    }
+
+    public function startLectureRecorder($device_ip) {
+
+        // CGI URL:
+        //  http://192.30.23.45/admin/set_params.cgi?rec_enabled=on
 
     }
 

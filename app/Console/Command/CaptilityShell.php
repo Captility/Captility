@@ -106,7 +106,7 @@ class CaptilityShell extends AppShell {
     public function shortenLogs() {
 
 
-        $shorten_lines = 100;
+        $shorten_lines = 300;
         $maxKB = 100;
         $logPath = getcwd() . '/tmp/logs/';
         $logFiles = glob($logPath . '*.log');

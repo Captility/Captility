@@ -216,10 +216,16 @@ Configure::write('EVENT.STATUSES', array(
 /** SUPPORTED DEVICE TYPES */
 Configure::write('DEVICE.TYPES', array(
     // Name => Value
-    'Lecture Recorder X2' => 'Lecture Recorder X2',
-    'Lecture Recorder' => 'Lecture Recorder',
+    'Lecture Recorder X2' => 'Lecture Recorder X2', // type to access Lecture Recorder HTTP-API for recording
+    'Lecture Recorder' => 'Lecture Recorder', // type to access Lecture Recorder HTTP-API for recording
     __('Others') => __('Others')
 ));
+
+/** SUPPORTED DEVICE LECTURE RECORDER COMMAND */
+Configure::write('DEVICE.LECTURE_RECORDER.START', '/admin/set_params.cgi?rec_enabled=on');
+
+/** SUPPORTED DEVICE LECTURE RECORDER COMMAND */
+Configure::write('DEVICE.LECTURE_RECORDER.STOP', '/admin/set_params.cgi?rec_enabled=""');
 
 /**
  * Bootstrap Layout for Forms.
