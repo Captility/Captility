@@ -61,9 +61,9 @@ class CaptilityShell extends AppShell {
 
         if (!empty($jsonResponse)) {
 
-            $jsonResponse = date('Y-m-d H:i:s') . ' | ' . json_encode($jsonResponse);
+            $jsonResponse = PHP_EOL . date('Y-m-d H:i:s') . ' ################################### ' . PHP_EOL . PHP_EOL . $jsonResponse;
 
-            $this->out(PHP_EOL . '<comment>' . $jsonResponse . '</comment>' . PHP_EOL);
+            $this->out(PHP_EOL . $jsonResponse . PHP_EOL);
         }
 
 

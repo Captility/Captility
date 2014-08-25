@@ -1,11 +1,14 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('DeviceCurl', 'Lib');
 /**
  * Device Model
  *
  * @property Event $Event
  */
 class Device extends AppModel {
+
+    public $actsAs = array('DeviceRecordHandler');
 
     /**
      * Primary key field
@@ -200,7 +203,7 @@ class Device extends AppModel {
     /**
      * Function to control auto recording support of recording devices.
      */
-    public function stopAutoRecording() {
+    private function stopAutoRecording() {
 
         // Search for events that just stopped and relate to a recording device:
 
@@ -232,73 +235,96 @@ class Device extends AppModel {
 
         ));
 
-        $jsonResponse = null;
+        $response = null;
+
 
         // Process found devices:
         if (!empty($devices)) {
 
+
+            // Iterate found devices and search for supported devices
             foreach ($devices as $device) {
 
-
                 // LECTURE RECORDER
+                $lectureRecordersToStop = array();
 
                 // Look for Events with related Lecture Recorder
                 if ($device['Device']['type'] == 'Lecture Recorder X2' || $device['Device']['type'] == 'Lecture Recorder') {
 
-                    // Stop LR
-                    $stopResponse = $this->stopLectureRecorder($device['Device']['ip_adress'], $device['Device']['username'], $device['Device']['device_pwd']);
-
-
-
+                    array_push($lectureRecordersToStop, $device);
                 }
             }
+
+            // Process supported devices
+            $response = $this->curlLectureRecorders($lectureRecordersToStop, Configure::read('DEVICE.LECTURE_RECORDER.STOP'));
+
         }
 
-        return $jsonResponse;
-
-        /*
-        array(
-	(int) 0 => array(
-		'Device' => array(
-			'device_id' => '9',
-			'name' => 'LR Bsp',
-			'ip_adress' => '',
-			'location' => 'H123',
-			'username' => 'unirekorder',
-			'device_pwd' => '1234',
-			'type' => 'Lecture Recorder X2',
-			'link' => 'http://127.0.0.1/admin',
-			'start_command' => '',
-			'end_command' => '',
-			'comment' => '',
-			'created' => '2014-08-22 15:16:00',
-			'modified' => '2014-08-22 20:16:17'
-		),
-		'Event' => array(
-			'event_id' => '1391',
-			'title' => 'Sonntags Früh',
-			'comment' => '',
-			'start' => '2014-08-24 01:30:00',
-			'end' => '2014-08-24 01:45:00',
-			'all_day' => false,
-			'status' => 'Processing',
-			'link' => '',
-			'location' => '',
-			'created' => '2014-08-24 01:29:33',
-			'modified' => '2014-08-24 01:35:49',
-			'event_type_id' => '4',
-			'schedule_id' => '241',
-			'capture_id' => '157',
-			'device_id' => '9'
-		)
-	),*/
+        return $response;
 
     }
 
     /**
      * Function to control auto recording support of recording devices.
      */
-    public function startAutoRecording() {
+    private function startAutoRecording() {
+
+        // Search for events that just started and relate to a recording device:
+
+        $now_start = date('Y-m-d H:i:00');
+        $now_end = date('Y-m-d H:i:59');
+
+        // Todo: remove test dates for whole day instead minute
+        /*$now_start = date('Y-m-d 00:00:00');
+        $now_end = date('Y-m-d 23:59:59');*/
+
+
+        $devices = $this->find('all', array(
+
+            'link' => array(
+
+                'Event' => array(
+                    'conditions' => array('exactly' => 'Event.device_id = Device.device_id'),
+                ),
+            ),
+
+            'conditions' => array(
+
+                'AND' => array(
+
+                    'Event.start >=' => $now_start,
+                    'Event.start <=' => $now_end,
+                )
+            ),
+
+        ));
+
+        $response = null;
+
+
+        // Process found devices:
+        if (!empty($devices)) {
+
+
+            // Iterate found devices and search for supported devices
+            foreach ($devices as $device) {
+
+                // LECTURE RECORDER
+                $lectureRecordersToStart = array();
+
+                // Look for Events with related Lecture Recorder
+                if ($device['Device']['type'] == 'Lecture Recorder X2' || $device['Device']['type'] == 'Lecture Recorder') {
+
+                    array_push($lectureRecordersToStart, $device);
+                }
+            }
+
+            // Process supported devices
+            $response = $this->curlLectureRecorders($lectureRecordersToStart, Configure::read('DEVICE.LECTURE_RECORDER.START'));
+
+        }
+
+        return $response;
 
 
     }
@@ -308,42 +334,6 @@ class Device extends AppModel {
 
         // CGI URL:
         //http://129.70.97.9/admin/ajax/recorder_status.cgi
-    }
-
-    public function stopLectureRecorder($device_ip, $username = null, $password = null) {
-
-        // CGI URL:
-        //  http://192.30.23.45/admin/set_params.cgi?rec_enabled=""
-
-        $curl = curl_init($device_ip . Configure::read('DEVICE.LECTURE_RECORDER.STOP'));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        if (isset($username) && isset($password)) curl_setopt($curl, CURLOPT_USERPWD, $username . ":" . $password);
-        $response = curl_exec($curl);
-        $resultStatus = curl_getinfo($curl);
-        curl_close($curl);
-
-        /*debug($resultStatus['http_code']);
-        debug($resultStatus);
-        debug($response);*/
-
-
-        if ($resultStatus['http_code'] == 200) {
-
-            return true;
-        }
-        else {
-
-            return false;
-        }
-
-    }
-
-    public function startLectureRecorder($device_ip) {
-
-        // CGI URL:
-        //  http://192.30.23.45/admin/set_params.cgi?rec_enabled=on
-
     }
 
 
