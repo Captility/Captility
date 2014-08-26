@@ -40,7 +40,7 @@
             </thead>
             <tbody>
             <?php foreach ($users as $user): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $user['User']['user_id'])); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $user['User']['user_id'])); ?>';">
                     <!--<td><?php /*echo h($user['User']['user_id']); */?>&nbsp;</td>-->
 
                     <td style="white-space: nowrap;"><p>

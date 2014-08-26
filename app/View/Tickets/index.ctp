@@ -41,7 +41,7 @@
             </thead>
             <tbody>
             <?php foreach ($tickets as $ticket): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $ticket['Ticket']['ticket_id'])); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $ticket['Ticket']['ticket_id'])); ?>';">
                     <td><?php echo h($ticket['Ticket']['ticket_id']); ?>&nbsp;</td>
                     <td>
                         <?php echo $ticket['Task']['name']; ?>

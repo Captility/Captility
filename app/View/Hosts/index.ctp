@@ -47,7 +47,7 @@
             </thead>
             <tbody>
             <?php foreach ($hosts as $host): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $host['Host']['host_id'])); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $host['Host']['host_id'])); ?>';">
                     <!--<td><?php /*echo h($host['Host']['host_id']); */?>&nbsp;</td>-->
                     <td><?php echo h($host['Host']['name']); ?>&nbsp;</td>
                     <td>

@@ -192,7 +192,7 @@
                         <tbody>
                         <?php foreach ($event['Ticket'] as $ticket): ?>
 
-                            <tr onclick="document.location = '<? echo Router::url(array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id'])); ?>';">
+                            <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id'])); ?>';">
                                 <td><?php echo h($ticket['ticket_id']); ?>&nbsp;</td>
                                 <td>
                                     <?php echo $ticket['Task']['name']; ?>

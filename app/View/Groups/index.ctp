@@ -45,7 +45,7 @@
             </thead>
             <tbody>
             <?php foreach ($groups as $group): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $group['Group']['group_id'])); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $group['Group']['group_id'])); ?>';">
                     <td><?php echo h($group['Group']['group_id']); ?>&nbsp;</td>
                     <td><?php echo h($group['Group']['name']); ?>&nbsp;</td>
                     <td>

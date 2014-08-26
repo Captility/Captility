@@ -47,7 +47,7 @@
             }?>
 
             <?php foreach ($workflows as $workflow): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', h($workflow['Workflow']['workflow_id']))); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', h($workflow['Workflow']['workflow_id']))); ?>';">
                     <!--<td><?php /*echo h($workflow['Workflow']['workflow_id']); */?></td>-->
                     <td><?php echo h($workflow['Workflow']['name']) ?>
                         <br/>

@@ -50,7 +50,7 @@
             </thead>
             <tbody>
             <?php foreach ($devices as $device): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $device['Device']['device_id'])); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $device['Device']['device_id'])); ?>';">
                     <!--<td><?php /*echo h($device['Device']['device_id']); */?>&nbsp;</td>-->
                     <td><?php echo h($device['Device']['name']); ?></td>
                     <td><?php echo h($device['Device']['type']); ?></td>

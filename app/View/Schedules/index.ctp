@@ -42,7 +42,7 @@
             </thead>
             <tbody>
             <?php foreach ($schedules as $schedule): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $schedule['Schedule']['schedule_id'])); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $schedule['Schedule']['schedule_id'])); ?>';">
                     <td><?php echo h($schedule['Schedule']['schedule_id']); ?>&nbsp;</td>
                     <td><?php echo  $this->Time->nice(strtotime($schedule['Schedule']['interval_start']), 'CET', '%d.%m.%Y');?>&nbsp;</td>
                     <td><?php echo  $this->Time->nice(strtotime($schedule['Schedule']['interval_end']), 'CET', '%d.%m.%Y');?>&nbsp;</td>

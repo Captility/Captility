@@ -43,7 +43,7 @@
             </thead>
             <tbody>
             <?php foreach ($captures as $capture): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', h($capture['Capture']['capture_id']))); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', h($capture['Capture']['capture_id']))); ?>';">
                     <!--<td><?php /*echo h($capture['Capture']['capture_id']); */?>&nbsp;</td>-->
                     <td><?php echo h($capture['Capture']['name']); ?>&nbsp;</td>
 

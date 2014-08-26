@@ -141,7 +141,7 @@
 
                         <?php $regular = (empty($schedule['interval_end'])) ? false : true; ?>
 
-                        <tr onclick="document.location = '<? echo Router::url(array('controller' => 'schedules', 'action' => 'view', h($schedule['schedule_id']))); ?>';">
+                        <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => 'schedules', 'action' => 'view', h($schedule['schedule_id']))); ?>';">
                             <td><?php echo $schedule['schedule_id']; ?></td>
 
                             <td>
@@ -227,7 +227,7 @@
                     <thead>
                     <tbody>
                     <?php foreach ($capture['Event'] as $event): ?>
-                        <tr onclick="document.location = '<? echo Router::url(array('controller' => 'events', 'action' => 'view', h($event['event_id']))); ?>';">
+                        <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => 'events', 'action' => 'view', h($event['event_id']))); ?>';">
                             <td><?php echo $event['event_id']; ?></td>
                             <!--<td><?php /*echo $event['title']; */?></td>-->
                             <td>

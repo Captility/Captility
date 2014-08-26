@@ -146,7 +146,7 @@
                     <thead>
                     <tbody>
                     <?php foreach ($user['Lecture'] as $lecture): ?>
-                        <tr onclick="document.location = '<? echo Router::url(array('controller' => 'lectures', 'action' => 'view', $lecture['lecture_id'])); ?>';">
+                        <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => 'lectures', 'action' => 'view', $lecture['lecture_id'])); ?>';">
                             <td><?php echo $lecture['number']; ?></td>
                             <td><?php echo $lecture['name']; ?></td>
                             <td>
@@ -217,7 +217,7 @@
                     <thead>
                     <tbody>
                     <?php foreach ($user['Capture'] as $capture): ?>
-                        <tr onclick="document.location = '<? echo Router::url(array('controller' => 'captures', 'action' => 'view', h($capture['capture_id']))); ?>';">
+                        <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => 'captures', 'action' => 'view', h($capture['capture_id']))); ?>';">
                             <td><?php echo $capture['name']; ?></td>
                             <td>
                                 <?php echo $this->Html->link($capture['Lecture']['number'] . ' ' . $capture['Lecture']['name'] . ' (' . $capture['Lecture']['semester'] . ')', array('controller' => 'lectures', 'action' => 'view', $capture['lecture_id'])); ?>
@@ -281,7 +281,7 @@
                     <thead>
                     <tbody>
                     <?php foreach ($user['Ticket'] as $ticket): ?>
-                        <tr onclick="document.location = '<? echo Router::url(array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id'])); ?>';">
+                        <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => 'tickets', 'action' => 'view', $ticket['ticket_id'])); ?>';">
                             <td><?php echo h($ticket['ticket_id']); ?>&nbsp;</td>
                             <td>
                                 <?php echo $ticket['Task']['name']; ?>

@@ -49,7 +49,7 @@
             </thead>
             <tbody>
             <?php foreach ($events as $event): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $event['Event']['event_id'])); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $event['Event']['event_id'])); ?>';">
                     <td><?php echo h($event['Event']['event_id']); ?>&nbsp;</td>
                     <td>
                         <?php echo h($event['Event']['title']); ?>

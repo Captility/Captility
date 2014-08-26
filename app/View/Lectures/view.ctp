@@ -201,7 +201,7 @@
                     <thead>
                     <tbody>
                     <?php foreach ($lecture['Capture'] as $capture): ?>
-                        <tr onclick="document.location = '<? echo Router::url(array('controller' => 'captures', 'action' => 'view', h($capture['capture_id']))); ?>';">
+                        <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => 'captures', 'action' => 'view', h($capture['capture_id']))); ?>';">
                             <td><?php echo h($capture['name']); ?>&nbsp;</td>
 
                             <td>

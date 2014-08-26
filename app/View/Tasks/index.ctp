@@ -38,7 +38,7 @@
             </thead>
             <tbody>
             <?php foreach ($tasks as $task): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $task['Task']['task_id'])); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $task['Task']['task_id'])); ?>';">
                     <td><?php echo h($task['Task']['task_id']); ?>&nbsp;</td>
                     <td><?php echo h($task['Task']['name']); ?>&nbsp;</td>
                     <td><?php echo h($task['Task']['description']); ?>&nbsp;</td>

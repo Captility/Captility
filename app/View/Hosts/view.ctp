@@ -100,7 +100,7 @@
                 </thead>
                 <tbody>
                 <?php foreach ($host['Lecture'] as $lecture): ?>
-                    <tr onclick="document.location = '<? echo Router::url(array('controller' => 'lectures', 'action' => 'view',$lecture['lecture_id'])); ?>';">
+                    <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => 'lectures', 'action' => 'view',$lecture['lecture_id'])); ?>';">
                         <td>
                             <?php echo h($lecture['number']); ?>
                         </td>

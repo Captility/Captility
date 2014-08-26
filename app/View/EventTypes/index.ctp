@@ -46,7 +46,7 @@
             </thead>
             <tbody>
             <?php foreach ($eventTypes as $eventType): ?>
-                <tr onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $eventType['EventType']['event_type_id'])); ?>';">
+                <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', $eventType['EventType']['event_type_id'])); ?>';">
                     <!--<td><?php /*echo h($eventType['EventType']['event_type_id']); */?>&nbsp;</td>-->
                     <td><?php echo h($eventType['EventType']['name']); ?>&nbsp;</td>
                     <td>

@@ -109,7 +109,7 @@
                         <thead>
                         <tbody>
                         <?php foreach ($group['User'] as $user): ?>
-                            <tr onclick="document.location = '<? echo Router::url(array('controller' => 'users', 'action' => 'view', $user['user_id'])); ?>';">
+                            <tr class="tr-linked" onclick="document.location = '<? echo Router::url(array('controller' => 'users', 'action' => 'view', $user['user_id'])); ?>';">
 
                                 <td style="white-space: nowrap;"><p>
                                         <?php echo $this->Html->link($this->Gravatar->identicon($user['email']), array('controller' => 'users', 'action' => 'view', $user['user_id']), array('escape' => false)); ?>
