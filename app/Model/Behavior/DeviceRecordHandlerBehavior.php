@@ -27,8 +27,10 @@ class DeviceRecordHandlerBehavior extends ModelBehavior {
                 CURLOPT_RETURNTRANSFER => TRUE,
                 CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
                 CURLOPT_USERPWD => $device['Device']['username'] . ":" . $device['Device']['device_pwd'],
-                CURLOPT_FRESH_CONNECT, TRUE,
-                CURLOPT_FORBID_REUSE, TRUE
+                CURLOPT_FRESH_CONNECT => TRUE,
+                CURLOPT_FORBID_REUSE => TRUE,
+                CURLOPT_CONNECTTIMEOUT => 5,
+                CURLOPT_TIMEOUT, 60
             ));
 
             curl_multi_add_handle($parallelCurls, $curl);
@@ -110,17 +112,20 @@ class DeviceRecordHandlerBehavior extends ModelBehavior {
             CURLOPT_RETURNTRANSFER => TRUE,
             CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
             CURLOPT_USERPWD => $device['Device']['username'] . ":" . $device['Device']['device_pwd'],
-            CURLOPT_FRESH_CONNECT, TRUE,
-            CURLOPT_FORBID_REUSE, TRUE
+            CURLOPT_FRESH_CONNECT => TRUE,
+            CURLOPT_FORBID_REUSE => TRUE,
+            CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_TIMEOUT, 60
+
         ));
 
         $response = curl_exec($curl);
         $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
-        //debug(curl_getinfo($curl));
+
         curl_close($curl);
 
-        if ($httpcode!== 200) {
+        if (!($httpcode === 200)) {
 
             throw new NotFoundException();
         }

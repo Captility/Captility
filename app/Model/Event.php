@@ -274,7 +274,7 @@ class Event extends AppModel {
      *
      * @return $jsonResponse JSON String of modified Events and related Tickets.
      */
-    public function updateTicketsFromWorkflow(){
+    public function updateTicketsFromWorkflow() {
 
         // #########################################################################################################
         // ################################ EVENT NEW TICKET GENERATION ############################################
@@ -574,7 +574,11 @@ class Event extends AppModel {
                 'contain' => false,
                 'link' => array(
 
+                    'Device' => array(
+                        'fields' => array('Device.device_id', 'Device.name', 'Device.location', 'Device.type', 'Device.ip_adress')),
+
                     'EventType',
+
                     'Capture' => array(
                         'fields' => array('Capture.capture_id', 'Capture.status', 'Capture.user_id'),
                         'conditions' => array('exactly' => 'Event.capture_id = Capture.capture_id'),
