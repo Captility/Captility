@@ -432,7 +432,7 @@ msgstr "Verknüpfte Aktionen"
 
 
 msgid "Time does not lie after specified start time."
-msgstr "Zeit liegt nicht nach dem gewählten Startdatum."
+msgstr "Zeitpunkt liegt nicht nach dem gewählten Startpunkt."
 
 
 msgid "New"

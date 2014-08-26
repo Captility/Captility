@@ -114,6 +114,12 @@ class Lecture extends AppModel {
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'afterStart' => array(
+                'rule' => array('validateAfterDate', 'start'),
+                'message' => 'Time does not lie after specified start time.',
+                'required' => true,
+            )
+
         ),
         'created' => array(
             'date' => array(
@@ -181,13 +187,13 @@ class Lecture extends AppModel {
             ),
         ),
         'link' => array('url' => array(
-                'rule' => array('url', true),
-                'message' => 'Please enter a valid Link, like http://www.captility.de',
-                'allowEmpty' => true,
-                'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
+            'rule' => array('url', true),
+            'message' => 'Please enter a valid Link, like http://www.captility.de',
+            'allowEmpty' => true,
+            'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+        ),
         ),
     );
 

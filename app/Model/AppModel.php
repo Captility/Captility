@@ -110,6 +110,28 @@ class AppModel extends Model {
     }
 
     /**
+     * Checks if the value defined by the field name is in proper date format (yyyy-mm-dd).
+     *
+     * @param string $fieldName The name of the field to validate.
+     * @param array $params Extra validation parameters.
+     * @return bool True if value of the field name is in proper date format; false otherwise.
+     */
+    function validateDate($fieldName, $params) {
+        $date = $this->data[$this->name][$fieldName];
+
+        $datePattern = '/^\d{4}-\d?\d-\d?\d$/';
+        if ($date && preg_match($datePattern, $date)) {
+            $date = explode('-', $date);
+            $result = checkdate($date[1], $date[2], $date[0]);
+        }
+        else {
+            $result = false;
+        }
+
+        return $this->_evaluate($result, "is not a valid date", $fieldName, $params);
+    }
+
+    /**
      * Checks if the value defined by the field name is a date set in the future.  This
      * automatically checks if the value is in proper date format.
      *
@@ -129,13 +151,23 @@ class AppModel extends Model {
         return $this->_evaluate($date > time(), "is not set in a future date", $fieldName, $params);
     }
 
-    function validateAfterDate($afterDate, $beforeDate) {
 
-        $date1 = strtotime($this->data[$this->alias][$beforeDate]);
+    function validateAfterDate($afterDates = array(), $beforeDate = null) {
 
-        $date2 = strtotime($this->data[$this->alias][$afterDate]);
 
-        return ($date1 <= $date2);
+        foreach ($afterDates as $afterdate => $value) {
+
+            $date1 = strtotime($this->data[$this->alias][$beforeDate]);
+            $date2 = strtotime($value);
+
+            if ($date1 <= $date2) {
+                return true;
+            }
+            else {
+                continue;
+            }
+        }
+        return false;
 
     }
 

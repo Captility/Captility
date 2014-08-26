@@ -15,7 +15,7 @@
 
 <div class="row">
     <div class="col-md-1 column">
-     <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-th-list"></span></div>
+        <div class="glyphicon-headline hidden-sm hidden-xs"><span class="glyphicon glyphicon-th-list"></span></div>
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
@@ -40,7 +40,8 @@
 
     <div class="form-group">
         <?php echo $this->Form->input('lecture_id', array('class' => 'form-control', 'placeholder' => 'Lecture Id'));?>
-    </div><div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
 
 
     <?php echo $this->Form->input('number', array(
@@ -68,6 +69,8 @@
 
     ));?>
 
+    <div class="form-group"></div>
+
     <?php echo $this->Form->input('host_id', array(
 
         'placeholder' => __('Host_Id'),
@@ -86,13 +89,35 @@
     ));?>
 
 
+    <? // INTERVAL INPUT
+
+    $errorClass = '';
+
+    if ($this->Form->isFieldError('start')) $errorClass = 'has-error error';
+
+    if ($this->Form->isFieldError('end')) $errorClass = 'has-error error';
+    ?>
+
+    <div class="form-group <? echo $errorClass; ?>">
+
+        <?php echo $this->Form->label('start', __('Lecture Interval'));?>
+
+        <?php
+
+        // Calc DateField value based on request type (database string needs to be formated)
+        if ($this->request->is('put') || $this->request->is('post')) {
+
+            $startValue = $this->Form->value('Lecture.start');
+            $endValue = $this->Form->value('Lecture.end');
+        }
+        else {
 
 
+            $startValue = $this->Time->nice($this->Form->value('Lecture.start'), 'CET', '%a, %d.%m.%Y');
+            $endValue = $this->Time->nice($this->Form->value('Lecture.end'), 'CET', '%a, %d.%m.%Y');
+        }
 
-    <div class="form-group">
-
-        <?php echo $this->Form->label('start', __('Lecture Interval'), array(
-            'class' => 'control-label'));?>
+        ?>
 
         <div class="input-group">
             <?php
@@ -103,32 +128,33 @@
                 'div' => false,
                 'class' => 'form-control pickDate',
                 'before' => '<span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>',
-                'value' => $this->Time->nice($this->Form->value('start'), 'CET', '%a, %d.%m.%Y'),
+                'value' => $startValue,
                 'placeholder' => __('End Interval'),
-                'required' => true,
-                'error' => false,
+                'error' => false
             ));?>
 
 
             <?php
             echo $this->Form->input('end', array(
                 'type' => 'string',
-                'format' => array('label', 'before', 'input', 'error', 'after'),
+                'format' => array('label', 'before', 'input', 'after', 'error'),
                 'label' => false,
                 'div' => false,
                 'class' => 'form-control pickDate',
                 'before' => '<span class="input-group-addon">' . __('to') . '</span>',
-                'value' => $this->Time->nice($this->Form->value('end'), 'CET', '%a, %d.%m.%Y'),
+                'value' => $endValue,
                 'placeholder' => __('End Interval'),
                 'required' => true,
-                'error' => false,
+                'error' => false
             ));?>
+
 
         </div>
 
-        <? if ($this->Form->isFieldError('start')) {
-            echo $this->Form->error('start');
-        } ?>
+        <span class="help-block text-danger"><? echo $this->Form->error('start');?></span>
+        <span class="help-block text-danger"><? echo $this->Form->error('end');?></span>
+
+
     </div>
 
 

@@ -99,25 +99,40 @@
                 <div class="panel panel-primary">
                     <!-- Default panel contents -->
 
-                    <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+                    <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
                         <thead class="panel-heading">
                         <tr>
-                            <th><?php echo __('Capture Id'); ?></th>
                             <th><?php echo __('Name'); ?></th>
-                            <th><?php echo __('Status'); ?></th>
                             <th><?php echo __('Lecture'); ?></th>
                             <th><?php echo __('User'); ?></th>
+                            <th><?php echo __('Status'); ?></th>
+                            <th><?php echo __('Workflow'); ?></th>
                             <th class="actions"></th>
+
                         </tr>
                         <thead>
                         <tbody>
                         <?php foreach ($workflow['Capture'] as $capture): ?>
-                            <tr>
-                                <td><?php echo $capture['capture_id']; ?></td>
-                                <td><?php echo $capture['name']; ?></td>
-                                <td><?php echo $capture['status']; ?></td>
-                                <td><?php echo $this->Html->link($capture['Lecture']['name'], array('controller' => 'lectures', 'action' => 'view', $capture['Lecture']['lecture_id'])); ?></td>
-                                <td><?php echo $this->Html->link($capture['User']['username'], array('controller' => 'users', 'action' => 'view', $capture['User']['user_id'])); ?></td>
+                            <tr onclick="document.location = '<? echo Router::url(array('controller' => 'captures', 'action' => 'view', h($capture['capture_id']))); ?>';">
+                                <td><?php echo h($capture['name']); ?>&nbsp;</td>
+
+                                <td>
+                                    <?php echo $this->Html->link($capture['Lecture']['number'] . ' ' . $capture['Lecture']['name'] . ' (' . $capture['Lecture']['semester'] . ')', array('controller' => 'lectures', 'action' => 'view', $capture['Lecture']['lecture_id'])); ?>
+                                </td>
+                                <td style="white-space: nowrap;"><p>
+                                        <?php echo $this->Html->link($this->Gravatar->identicon($capture['User']['email']), array('controller' => 'users', 'action' => 'view', $capture['User']['user_id']), array('escape' => false)); ?>
+                                        <?php echo $this->Html->link($capture['User']['username'], array('controller' => 'users', 'action' => 'view', $capture['User']['user_id'])); ?>
+                                    </p>
+                                </td>
+                                <td class="labels lower-labels"><?php $statuses = Configure::read('CAPTURE.STATUSES');
+                                    $class = $statuses[$capture['status']]; ?>
+
+                                    <span
+                                        class="label label-<? echo $class ?>"><? echo __(h($capture['status'])) ?></span>
+                                </td>
+                                <td>
+                                    <?php echo $this->Html->link($capture['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $capture['Workflow']['workflow_id'])); ?>
+                                </td>
                                 <td class="actions">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('controller' => 'captures', 'action' => 'view', $capture['capture_id']), array('escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon el-icon-pencil"></span>', array('controller' => 'captures', 'action' => 'edit', $capture['capture_id']), array('escape' => false)); ?>

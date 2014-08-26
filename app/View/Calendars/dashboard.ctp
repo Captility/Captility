@@ -51,7 +51,7 @@
 </div>
 
 <div class="col-md-8 column content-pane">
-    <?php echo $this->Session->flash(); ?>
+    <?php echo $this->Session->flash(); ?>    <?php echo $this->Session->flash('auth'); ?>
 
     <div class="tab-content">
         <div class="tab-pane active" id="week">

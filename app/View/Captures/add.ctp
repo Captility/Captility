@@ -210,6 +210,7 @@ if (empty($this->request->data['Schedule'])) {
     <div class="tab-pane <? if (!$regular) echo 'active' ?>" id="single<? echo $i ?>">
 
         <div></div>
+
         <?php echo $this->Form->input('Schedule.' . $i . '.interval_start', array(
             'placeholder' => __('Date'),
             'label' => __('Capture Date'),
@@ -221,26 +222,27 @@ if (empty($this->request->data['Schedule'])) {
             'disabled' => $regular,
         ));?>
 
+
         <div class="form-group form-split-6">
             <?php echo $this->Form->input('Schedule.' . $i . '.repeat_time', array(
-                'placeholder' => __('Time'),
-                'type' => 'string',
-                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                'class' => 'form-control pickTime pickStart',
-                'div' => 'form-group col-xs-6',
-                'value' => $this->Form->value('Schedule.' . $i . '.repeat_time'),
-                'disabled' => $regular,
-            ));?>
+            'placeholder' => __('Time'),
+            'type' => 'string',
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'class' => 'form-control pickTime pickStart',
+            'div' => 'form-group col-xs-6',
+            'value' => $this->Form->value('Schedule.' . $i . '.repeat_time'),
+            'disabled' => $regular,
+        ));?>
 
             <?php echo $this->Form->input('Schedule.' . $i . '.duration', array(
-                'placeholder' => __('Time'),
-                'type' => 'string',
-                'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
-                'class' => 'form-control pickTime pickEnd',
-                'div' => 'form-group col-xs-6',
-                'value' => $this->Form->value('Schedule.' . $i . '.duration'),
-                'disabled' => $regular,
-            ));?>
+            'placeholder' => __('Time'),
+            'type' => 'string',
+            'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-time input-group-glyphicon"></span>', 'afterInput' => '</div>',
+            'class' => 'form-control pickTime pickEnd',
+            'div' => 'form-group col-xs-6',
+            'value' => $this->Form->value('Schedule.' . $i . '.duration'),
+            'disabled' => $regular,
+        ));?>
         </div>
 
         <?php echo $this->Form->input('Schedule.' . $i . '.location', array(
@@ -265,12 +267,56 @@ if (empty($this->request->data['Schedule'])) {
     <? ################################################################################################################## ?>
 
     <!-- Regular Schedule -->
-    <div class="tab-pane <? if ($regular) echo 'active' ?>" id="regular<? echo $i ?>">
+    <div class=" tab-pane <? if ($regular) echo 'active' ?>" id="regular<? echo $i ?>">
 
-        <div class="form-group">
 
-            <?php echo $this->Form->label('Schedule.' . $i . '.interval_start', __('Capture Interval'), array(
-                'class' => 'control-label'));?>
+        <?/* debug($this->validationErrors ); */?>
+
+
+        <? // INTERVAL INPUT ###########################################################################################
+
+        $errorClass = '';
+
+        if ($this->Form->isFieldError('Schedule.' . $i . '.interval_start')) $errorClass = 'has-error error';
+
+        if ($this->Form->isFieldError('Schedule.' . $i . '.interval_end')) $errorClass = 'has-error error';
+        ?>
+        <div class="form-group required <? echo $errorClass; ?>">
+
+            <?php echo $this->Form->label('start', __('Lecture Interval'), array('required' => true));?>
+
+            <?php
+
+            // Calc DateField value based on request type (database string needs to be formated)
+            if ($this->request->is('put') || $this->request->is('post')) {
+
+                $startValue = $this->Form->value('Schedule.' . $i . '.interval_start');
+                $endValue = $this->Form->value('Schedule.' . $i . '.interval_end');
+            }
+            else {
+
+                $now = strtotime('now');
+                // Default values
+                if ($now > strtotime('first day of july')) {
+                    // Default Dates of winter semester
+                    $semStart = strtotime('first day of october');
+                    $start = ($now > $semStart) ? $now : $semStart; // if in semester take now
+
+                    $startValue = $this->Time->nice($start, 'CET', '%a, %d.%m.%Y');
+                    $endValue = $this->Time->nice(strtotime('first day of march', strtotime('first day next year')), 'CET', '%a, %d.%m.%Y');
+
+                }
+                else {
+
+                    // Default Dates of summer semester
+                    $semStart = strtotime('first day of april');
+                    $start = ($now > $semStart) ? $now : $semStart; // if in semester take now
+
+                    $startValue = $this->Time->nice($start, 'CET', '%a, %d.%m.%Y');
+                    $endValue = $this->Time->nice(strtotime('first day of august'), 'CET', '%a, %d.%m.%Y');
+                }
+            }
+            ?>
 
             <div class="input-group">
 
@@ -283,8 +329,9 @@ if (empty($this->request->data['Schedule'])) {
                     'class' => 'form-control pickDate',
                     'before' => '<span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>',
                     'placeholder' => __('Begin Interval'),
-                    'value' => $this->Form->value('Schedule.' . $i . '.interval_start'),
+                    'value' => $startValue,
                     'required' => true,
+                    'error' => false,
                     'disabled' => !$regular,
                 ));
 
@@ -298,19 +345,26 @@ if (empty($this->request->data['Schedule'])) {
                     'class' => 'form-control pickDate',
                     'before' => '<span class="input-group-addon">' . __('to') . '</span>',
                     'placeholder' => __('End Interval'),
-                    'value' => $this->Form->value('Schedule.' . $i . '.interval_end'),
+                    'value' => $endValue,
                     'required' => true,
+                    'error' => false,
                     'disabled' => !$regular,
                 ));
                 ?>
 
             </div>
+
+            <span class="help-block text-danger"><? echo $this->Form->error('Schedule.' . $i . '.interval_start');?></span>
+            <span class="help-block text-danger"><? echo $this->Form->error('Schedule.' . $i . '.interval_end');?></span><div></div>
+
         </div>
+
+        <? // END INTERVAL ############################################################################################?>
 
 
         <?php echo $this->Form->input('Schedule.' . $i . '.repeat_week', array(
 
-            'div' => 'form-group form-split-6',
+            'div' => 'form-group form-split-6 required',
             'placeholder' => __('1 = repeat every Week, 2 = every second and so on...'),
             'options' => array(array(
                 'name' => __('Every') . ' ' . __('Week'), 'value' => '1'), array(
@@ -324,7 +378,7 @@ if (empty($this->request->data['Schedule'])) {
 
 
         <?php echo $this->Form->input('Schedule.' . $i . '.repeat_day', array(
-            'div' => 'form-group form-split-6',
+            'div' => 'form-group form-split-6 required',
             'placeholder' => __('"Friday" for every Friday ...'),
             'options' => array(array(
                 'name' => __('Monday'), 'value' => 'Monday'), array(

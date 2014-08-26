@@ -74,6 +74,12 @@ class Schedule extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),*/
+
+            'afterStart' => array(
+                'rule' => array('validateAfterDate', 'interval_start'),
+                'message' => 'Time does not lie after specified start time.',
+                'required' => true,
+            )
         ),
         'duration' => array(
             'duration' => array(
