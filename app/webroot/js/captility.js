@@ -922,6 +922,16 @@ $(document).ready(function () {
 
 
 //######################################################################################################################
+//############################### LINKED TR ONLICK COLLIDE WITH LINKS ##################################################
+//######################################################################################################################
+
+
+    $('.tr-linked').find('a').click(function (event) {
+
+        event.stopImmediatePropagation()
+    });
+
+// #####################################################################################################################
 //############################################# HASHED TABS ############################################################
 //######################################################################################################################
 
@@ -1446,16 +1456,16 @@ $(document).ready(function () {
      */
     jQuery.fn.pollDeviceStatuses = function () {
 
-        setTimeout(
+        //slight delay to prevent from too many simultaineous events
+        $.each($('.lr-ctrl-panel'), function (i, el) {
 
-            function () {
+            setTimeout(function () {
 
-                $('.lr-ctrl-panel').each(function (index) {
+                $(el).getDeviceStatus($(el), $(el).data("device_id"));
 
-                    $(this).getDeviceStatus($(this), $(this).data("device_id"));
-                });
+            }, (i * 150));
 
-            }, 1000);
+        });
 
 
     }
@@ -1481,15 +1491,15 @@ $(document).ready(function () {
                 $self.find('span.lr-icon-rec').parent().show();
                 $self.find('span.lr-icon-rec').parent().qtip('option', 'content.text', 'Status: Aufnahme läuft. [' + data['time'].toHHMMSS() + ']');
 
-                $self.closest('tr').addClass('success', 1000);
+                $self.closest('tr').removeClass().addClass('success');
             }
 
-            if (data['state'] == 'off') {
+            if (data['state'] == 'off' || data['state'] == '') {
 
                 $self.find('span.lr-status-ctrl').parent().hide();
                 $self.find('span.lr-icon-stop').parent().fadeIn();
 
-                $self.closest('tr').addClass('primary', 1000);
+                $self.closest('tr').removeClass().addClass('primary');
             }
 
         })
@@ -1499,7 +1509,7 @@ $(document).ready(function () {
                 $self.find('span.lr-icon-error').parent().fadeIn();
 
 
-                $self.closest('tr').addClass('danger', 1000);
+                $self.closest('tr').removeClass().addClass('danger');
 
             })
             .complete(function () {
