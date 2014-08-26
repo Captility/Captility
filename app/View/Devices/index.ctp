@@ -65,28 +65,34 @@
                     <td nowrap style="white-space:nowrap;">
                         <?php if (!empty($device['Device']['type']) && $device['Device']['type'] == 'Lecture Recorder' || $device['Device']['type'] == 'Lecture Recorder X2') {
 
-                            echo $this->Html->link(
-                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-refresh lr-icon lr-icon-pending spin')),
-                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => 'retrieving status...'));
+                            echo '<div data-device_id="' . h($device['Device']['device_id']) . '" class="lr-ctrl-panel">';
 
                             echo $this->Html->link(
-                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-record lr-icon lr-icon-rec pulse')),
-                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => 'Status: Recording', 'style' => 'display: none;'));
+                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-refresh lr-icon lr-status-ctrl lr-icon-pending spin')),
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => __('retrieving status...')));
 
                             echo $this->Html->link(
-                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-pause lr-icon lr-icon-stop')),
-                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => 'Status: Stopped', 'style' => 'display: none;'));
+                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-record lr-icon lr-icon-rec lr-status-ctrl pulse')),
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => __('Status: Recording'), 'style' => 'display: none;'));
+
+                            echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-pause lr-icon lr-status-ctrl lr-icon-stop')),
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => __('Status: Stopped'), 'style' => 'display: none;'));
+
+                            echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-exclamation-sign lr-icon lr-status-ctrl lr-icon-error')),
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => __('Couldn\'t retrieve status, device might be offline.'), 'style' => 'display: none;'));
 
                             echo $this->Html->link(
                                 $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-screen lr-icon')),
-                                'http://' . h($device['Device']['ip_adress'] . '/admin/preview.cgi'), array('full_base' => true, 'escape' => false, 'title' => 'Lecture Recorder Live-View'));
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/preview.cgi'), array('full_base' => true, 'escape' => false, 'title' => __('Lecture Recorder Live-View')));
 
                             echo $this->Html->link(
                                 $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-cogs lr-icon')),
-                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => 'Lecture Recorder Admin-Panel'));
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => __('Lecture Recorder Admin-Panel')));
 
+                            echo '</div>';
                         }
-
                         ?>
                     </td>
 

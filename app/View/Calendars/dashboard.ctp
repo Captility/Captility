@@ -41,7 +41,10 @@
                             class="glyphicon glyphicon-tasks glyphicon-leftTabs"></span><?php echo __('Mine') ?></a>
                 </li>
                 <li><a href="#statusList" id="StatusList" data-toggle="tab"><span
-                            class="glyphicon glyphicon-upload glyphicon-leftTabs"></span><?php echo __('Status') ?></a>
+                            class="glyphicon glyphicon-upload glyphicon-leftTabs"></span><?php echo __('Uploads') ?></a>
+                </li>
+                <li><a href="#deviceList" id="DeviceList" data-toggle="tab"><span
+                            class="glyphicon el-icon-hdd glyphicon-leftTabs"></span><?php echo __('Geräte') ?></a>
                 </li>
             </ul>
         </div>
@@ -94,6 +97,28 @@
             <?php echo $this->Element('dashboard/week_header', array('week_start' => $week_start, 'week_end' => $week_end)); ?>
 
             <div class="statusListContainer">
+
+                <?// AJAX CONTENT ?>
+
+            </div>
+
+        </div>
+
+
+        <div class="tab-pane" id="deviceList">
+
+            <table class="fc-header week-header">
+                <tbody>
+                <tr>
+                    <td class="fc-header-left">
+                            <span class="fc-header-title">
+                        <h2><? echo __('Device Status Overview'); ?></h2>
+                    </span></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="deviceListContainer">
 
                 <?// AJAX CONTENT ?>
 

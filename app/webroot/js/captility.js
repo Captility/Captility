@@ -9,9 +9,9 @@
 $mobileMaxWidth = 992;
 
 
-//DEBUGGIN ON/OFF
-console.log = function () {
-};
+// TODO DEBUGGIN ON/OFF
+/*console.log = function () {
+ };*/
 
 //######################################################################################################################
 //############################################### UTILITIES ############################################################
@@ -56,6 +56,26 @@ jQuery.fn.slideRight = function (speed, callback) {
 $(".panel-collapse  a").click(function (e) {
     e.stopPropagation();
 });
+
+// TIME FOMRAT
+String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+    var time = hours + ':' + minutes + ':' + seconds;
+    return time;
+}
 
 
 //SWITCH ELEMENTS
@@ -1393,6 +1413,79 @@ $(document).ready(function () {
 
 
 //######################################################################################################################
+//################################################# DEVICES   ##########################################################
+//######################################################################################################################
+
+
+    /**
+     * Start all poll statuses:
+     *
+     */
+    jQuery.fn.pollDeviceStatuses = function () {
+
+        $('.lr-ctrl-panel').each(function (index) {
+
+            $(this).getDeviceStatus($(this), $(this).data("device_id"));
+        });
+    }
+
+    $(document).ready(function () {
+
+        setTimeout(
+            function () {
+                $(this).pollDeviceStatuses();
+            }, 1000);
+    });
+
+
+    /**
+     * Get ajax Device Statuse by ip in polling loop:
+     */
+    jQuery.fn.getDeviceStatus = function ($self, $device_id) {
+
+        var url = $appRoot + 'devices/recorderStatusFeed/' + $device_id;
+
+        var jqxhr = $.getJSON(url, function (data) {
+
+            if (data['state'] == 'up') {
+
+                $self.find('span.lr-status-ctrl').parent().hide();
+                $self.find('span.lr-icon-rec').parent().show();
+                $self.find('span.lr-icon-rec').parent().qtip('option', 'content.text', 'Status: Aufnahme läuft. [' + data['time'].toHHMMSS() + ']');
+
+                $self.closest('tr').addClass('success', 1000);
+            }
+
+            if (data['state'] == 'off') {
+
+                $self.find('span.lr-status-ctrl').parent().hide();
+                $self.find('span.lr-icon-stop').parent().fadeIn();
+
+                $self.closest('tr').addClass('primary', 1000);
+            }
+
+        })
+            .fail(function () {
+
+                $self.find('span.lr-status-ctrl').parent().hide();
+                $self.find('span.lr-icon-error').parent().fadeIn();
+
+
+                $self.closest('tr').addClass('danger', 1000);
+
+            })
+            .always(function () {
+
+                setTimeout(function () {
+                    $self.getDeviceStatus($self, $device_id);
+                }, 5000);
+
+
+            });
+    }
+
+
+//######################################################################################################################
 //################################################# TICKETS   ##########################################################
 //######################################################################################################################
 
@@ -1432,10 +1525,10 @@ $(document).ready(function () {
 
         $(this).html($data);
 
-        console.log($data);
+        //console.log($data);
 
         $data.each(function (index) {
-            console.log($(this));
+            //console.log($(this));
             $(this).delay(200 * index).slideDown('200');
         });
     }

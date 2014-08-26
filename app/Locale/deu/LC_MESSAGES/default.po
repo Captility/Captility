@@ -430,6 +430,21 @@ msgstr "Verknüpfte Aktionen"
 #: View/Workflows/admin_index.ctp:77
 
 
+msgid "retrieving status..."
+msgstr "Lade Aufnahmestatus ..."
+
+msgid "Status: Stopped"
+msgstr "Status: Gestoppt"
+
+msgid "Status: Recording"
+msgstr "Status: Aufnahme läuft"
+
+msgid "Device Status Overview"
+msgstr "Statusübersicht der Aufnahmegeräte"
+
+msgid "Couldn\'t retrieve status, device might be offline."
+msgstr "Status konnte nicht ermittelt werden. Gerät offline oder defekt?"
+
 
 msgid "Time does not lie after specified start time."
 msgstr "Zeitpunkt liegt nicht nach dem gewählten Startpunkt."
@@ -504,12 +519,6 @@ msgstr "ID"
 
 msgid "Comment"
 msgstr "Kommentar"
-
-msgid "Name"
-msgstr ""
-
-msgid "Status"
-msgstr ""
 
 msgid "Lecture"
 msgstr "Veranstaltung"

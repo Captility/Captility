@@ -330,10 +330,35 @@ class Device extends AppModel {
     }
 
 
-    public function getLectureRecorderStatus($device_ip) {
+    public function getRecorderStatus($device_id) {
 
         // CGI URL:
         //http://129.70.97.9/admin/ajax/recorder_status.cgi
+
+        $device = $this->find('first', array(
+            'conditions' => array('Device.device_id' => $device_id),
+            'recursive' => -1));
+
+
+        if (!empty($device)) {
+
+            //Lecture Recorder
+            if ($device['Device']['type'] == 'Lecture Recorder X2' || $device['Device']['type'] == 'Lecture Recorder') {
+
+                return $this->getLectureRecorderStatus($device, Configure::read('DEVICE.LECTURE_RECORDER.GET_STATUS'));
+
+            }
+            else {
+
+                return null;
+            }
+
+        }
+        else {
+
+            throw new NotFoundException();
+        }
+
     }
 
 

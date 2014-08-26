@@ -15,6 +15,52 @@ class DevicesController extends AppController {
      */
     public $components = array('Paginator');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+
+        //$this->Auth->allow('cronTask');
+
+        if (in_array($this->action, array('recorderStatusFeed', 'recorderFeed'))) {
+            if ($this->Auth->user()) {
+                $this->Auth->allow('recorderStatusFeed');
+                $this->Auth->allow('recorderFeed');
+            }
+        }
+
+    }
+
+    /**
+     * Retrieve Lecture Recorder Status for selected device.
+     */
+    public function recorderStatusFeed($device_id) {
+
+        $this->layout = "ajax";
+
+        $this->set("json", $this->Device->getRecorderStatus($device_id));
+
+        $this->render('json');
+
+    }
+
+    public function recorderFeed() {
+
+
+        $this->layout = "ajax";
+
+        // WEEK FOR OVERVIEW
+
+        // Get german Week defaults
+        $week_start = $this->Event->getWeekStart();
+        $week_end = $this->Event->getNextWeekStart();
+
+        //Get OnlineStatus of this week
+        $events = $this->Event->getEventStatusList($week_start, $week_end);
+
+        $week_end = date('Y-m-d', strtotime('+' . (7 - date('w')) . ' days'));
+        $this->set(array('events' => $events, 'week_start' => $week_start, 'week_end' => $week_end));
+    }
+
+
     /**
      * index method
      *

@@ -159,7 +159,7 @@ CakePlugin::load('AclExtras');
  * CAPTILITY VERSION
  */
 Configure::write('CAPTILITY.NAME', 'Captility');
-Configure::write('CAPTILITY.VERSION', '0.5 [alpha]');
+Configure::write('CAPTILITY.VERSION', '0.5.3 [alpha]');
 
 // Public Key
 Configure::write('CAPTILITY.CRON_KEY', '4516f866ba7ffba7a5b8f4bdf878136662ef8bc3');
@@ -226,6 +226,9 @@ Configure::write('DEVICE.LECTURE_RECORDER.START', '/admin/set_params.cgi?rec_ena
 
 /** SUPPORTED DEVICE LECTURE RECORDER COMMAND */
 Configure::write('DEVICE.LECTURE_RECORDER.STOP', '/admin/set_params.cgi?rec_enabled=""');
+
+/** SUPPORTED DEVICE LECTURE RECORDER COMMAND */
+Configure::write('DEVICE.LECTURE_RECORDER.GET_STATUS', '/admin/ajax/recorder_status.cgi');
 
 /**
  * Bootstrap Layout for Forms.

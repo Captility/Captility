@@ -97,4 +97,35 @@ class DeviceRecordHandlerBehavior extends ModelBehavior {
 
         return $response;
     }
+
+
+    public function getLectureRecorderStatus(Model $Model, $device, $command) {
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+
+            CURLOPT_URL => $device['Device']['ip_adress'] . $command,
+            CURLOPT_RETURNTRANSFER => TRUE,
+            CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
+            CURLOPT_USERPWD => $device['Device']['username'] . ":" . $device['Device']['device_pwd'],
+            CURLOPT_FRESH_CONNECT, TRUE,
+            CURLOPT_FORBID_REUSE, TRUE
+        ));
+
+        $response = curl_exec($curl);
+        $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+        //debug(curl_getinfo($curl));
+        curl_close($curl);
+
+        if ($httpcode!== 200) {
+
+            throw new NotFoundException();
+        }
+
+        return $response;
+
+    }
 }
