@@ -28,8 +28,7 @@
             </th>
             <th>
                 <?php echo $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-adjust-alt'));
-                echo $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-adjust-alt'));
-                echo $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-adjust-alt'));?>
+                echo  __('Status'); ?>
             </th>
         </tr>
         </thead>

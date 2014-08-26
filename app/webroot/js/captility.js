@@ -1423,18 +1423,23 @@ $(document).ready(function () {
      */
     jQuery.fn.pollDeviceStatuses = function () {
 
-        $('.lr-ctrl-panel').each(function (index) {
+        setTimeout(
 
-            $(this).getDeviceStatus($(this), $(this).data("device_id"));
-        });
+            function () {
+
+                $('.lr-ctrl-panel').each(function (index) {
+
+                    $(this).getDeviceStatus($(this), $(this).data("device_id"));
+                });
+
+            }, 1000);
+
+
     }
 
     $(document).ready(function () {
 
-        setTimeout(
-            function () {
-                $(this).pollDeviceStatuses();
-            }, 1000);
+        $(this).pollDeviceStatuses();
     });
 
 
@@ -1484,9 +1489,6 @@ $(document).ready(function () {
                         $self.getDeviceStatus($self, $device_id);
                     }, 5000);
                 }
-
-
-
 
 
             });
@@ -1608,8 +1610,6 @@ $(document).ready(function () {
     }
 
 
-
-
     /**
      * Get ajax Devices
      */
@@ -1635,7 +1635,6 @@ $(document).ready(function () {
                  window.location.replace(window.location.pathname);*/
             })
     }
-
 
 
     //Init-Load SideTickets
