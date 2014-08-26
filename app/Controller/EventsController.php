@@ -22,11 +22,12 @@ class EventsController extends AppController {
         parent::beforeFilter();
 
         // A logged in user can't register or login. Others can!
-        if (in_array($this->action, array('update', 'feed', 'feedMy'))) {
+        if (in_array($this->action, array('update', 'feed', 'feedMy', 'statusFeed'))) {
             if ($this->Auth->user()) {
                 $this->Auth->allow('update');
                 $this->Auth->allow('feed');
                 $this->Auth->allow('feedMy');
+                $this->Auth->allow('statusFeed');
             }
         }
     }

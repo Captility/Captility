@@ -16,6 +16,20 @@ class TicketsController extends AppController {
      */
     public $components = array('Paginator');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+
+        //$this->Auth->allow('cronTask');
+
+        if (in_array($this->action, array('feed', 'update', 'ticketFeed'))) {
+            if ($this->Auth->user()) {
+                $this->Auth->allow('feed');
+                $this->Auth->allow('update');
+                $this->Auth->allow('ticketFeed');
+            }
+        }
+
+    }
 
     /**
      * index method

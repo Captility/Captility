@@ -22,7 +22,7 @@ class CalendarsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
 
-        $this->Auth->allow('cronTask');
+        //$this->Auth->allow('cronTask');
 
         if (in_array($this->action, array('dashboard', 'myLectures'))) {
             if ($this->Auth->user()) {

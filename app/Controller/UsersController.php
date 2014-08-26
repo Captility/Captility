@@ -131,7 +131,7 @@ class UsersController extends AppController {
 
         // If logged in -> logout and flash message.
         if ($this->Auth->user()) {
-            $this->Session->setFlash(__('Logout successfull.'), 'flash/success');
+            $this->Session->setFlash(__('Logout successfull.'), 'flash/info');
         }
 
         return $this->redirect($this->Auth->logout());
