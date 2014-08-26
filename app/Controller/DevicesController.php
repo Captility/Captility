@@ -47,17 +47,9 @@ class DevicesController extends AppController {
 
         $this->layout = "ajax";
 
-        // WEEK FOR OVERVIEW
+        //Get Devices-List
+        $this->set('devices', $this->Device->find('all', array('recursive' => -1)));
 
-        // Get german Week defaults
-        $week_start = $this->Event->getWeekStart();
-        $week_end = $this->Event->getNextWeekStart();
-
-        //Get OnlineStatus of this week
-        $events = $this->Event->getEventStatusList($week_start, $week_end);
-
-        $week_end = date('Y-m-d', strtotime('+' . (7 - date('w')) . ' days'));
-        $this->set(array('events' => $events, 'week_start' => $week_start, 'week_end' => $week_end));
     }
 
 

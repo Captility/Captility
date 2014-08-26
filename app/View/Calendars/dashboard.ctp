@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-11 column">
         <div class="page-header">
-            <h1><?php echo __('Dashboard – Week Overview') ?></h1>
+            <h1><?php echo __('Dashboard – Production Overview') ?></h1>
         </div>
     </div>
 </div>

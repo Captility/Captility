@@ -8,14 +8,17 @@
 
 <?php if (!empty($events[0]['Event'])): ?>
 
-    <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive">
+    <table cellpadding="0" cellspacing="0" class="table table-striped table-responsive table-hover">
         <thead>
-        <tr>
+        <tr style="white-space: nowrap;">
             <th>
                 <span class="glyphicon glyphicon-calendar"></span><? echo __('Day') ?>
             </th>
             <th>
                 <span class="glyphicon glyphicon-play-circle"></span><? echo __('Event') ?>
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-th-list"></span><? echo __('Lecture') ?>
             </th>
             <th>
                 <span class="glyphicon glyphicon-link"></span>&nbsp;
@@ -39,13 +42,19 @@
             $class = (array_key_exists($event['Event']['status'], $statuses)) ? $statuses[$event['Event']['status']] : "";
             ?>
 
-            <tr class="<? echo $class; ?>">
-                <td>
+            <tr class="<? echo $class; ?>" onclick="document.location = '<? echo Router::url(array('controller' => 'events', 'action' => 'view', $event['Event']['event_id'])); ?>';">
+
+            <td>
                     <?php echo $this->Captility->linkDate(h($event['Event']['start']), '%A') ?>
                 </td>
                 <td>
                     <?php if (!empty($event['Event']['title'])) echo $this->Html->link(
                         h($event['Event']['title']), Router::url('/', true) . 'events/view/' . $event['Event']['event_id'], array('full_base' => true, 'escape' => false));
+                    ?>
+                </td>
+                <td>
+                    <?php if (!empty($event['Lecture']['name'])) echo $this->Html->link(
+                        h($event['Lecture']['name']), Router::url('/', true) . 'lecture/view/' . $event['Lecture']['lecture_id'], array('full_base' => true, 'escape' => false));
                     ?>
                 </td>
                 <td>

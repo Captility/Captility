@@ -1474,11 +1474,19 @@ $(document).ready(function () {
                 $self.closest('tr').addClass('danger', 1000);
 
             })
-            .always(function () {
+            .complete(function () {
 
-                setTimeout(function () {
-                    $self.getDeviceStatus($self, $device_id);
-                }, 5000);
+                // As long as element is still in DOM...
+                if (jQuery.contains(document, $self[0])) {
+
+                    //... Repeat Poll
+                    setTimeout(function () {
+                        $self.getDeviceStatus($self, $device_id);
+                    }, 5000);
+                }
+
+
+
 
 
             });
@@ -1512,6 +1520,14 @@ $(document).ready(function () {
     $('body').on('show.bs.tab', '#StatusList[data-toggle="tab"]', function () {
 
         $(this).getStatusList();
+    });
+
+    /**
+     * My-Tickets View Button
+     */
+    $('body').on('show.bs.tab', '#DeviceList[data-toggle="tab"]', function () {
+
+        $(this).getDeviceList();
     });
 
 
@@ -1590,6 +1606,37 @@ $(document).ready(function () {
                  window.location.replace(window.location.pathname);*/
             })
     }
+
+
+
+
+    /**
+     * Get ajax Devices
+     */
+    jQuery.fn.getDeviceList = function () {
+
+        var url = $appRoot + 'devices/recorderFeed';
+
+        var $target = $('.deviceListContainer');
+
+        $target.hide();
+
+        var jqxhr = $.post(url,function (data) {
+
+            $target.empty();
+            $target.html(data).slideDown(800);
+            $(this).pollDeviceStatuses();
+
+        }).fail(function () {
+
+                /*alert("Statusliste konnte nicht abgefragt werden.");
+
+                 // Reload (logout)
+                 window.location.replace(window.location.pathname);*/
+            })
+    }
+
+
 
     //Init-Load SideTickets
     if ($('.sideTicketContainer').length) {

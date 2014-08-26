@@ -132,8 +132,8 @@ msgstr "Sie bearbeiten diesen Inhalt als Manager"
 msgid "Calendar"
 msgstr "Kalender"
 
-msgid "Dashboard – Week Overview"
-msgstr "Pinnwand - Wochenübersicht"
+msgid "Dashboard – Production Overview"
+msgstr "Pinnwand - Produktionsübersicht"
 
 msgid "My Lectures"
 msgstr "Meine Veranstaltungen"
@@ -1208,6 +1208,13 @@ msgstr "In der angegebenen Zeitspanne wurden keine offenen Tickets gefunden."
 
 msgid "No events found"
 msgstr "Keine Aufnahmen gefunden."
+
+msgid "No devices found"
+msgstr "Keine Aufnahmegeräte gefunden."
+
+msgid "No capture devices configured."
+msgstr "Es wurden noch keine Aufnahmegeräte angelegt."
+
 
 msgid "There are no Captures this week."
 msgstr "Es existieren keine geplanten Aufnahmen in dieser Woche."
