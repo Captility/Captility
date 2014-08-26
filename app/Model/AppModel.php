@@ -160,6 +160,26 @@ class AppModel extends Model {
             $date1 = strtotime($this->data[$this->alias][$beforeDate]);
             $date2 = strtotime($value);
 
+            if ($date1 < $date2) {
+                return true;
+            }
+            else {
+                continue;
+            }
+        }
+        return false;
+
+    }
+
+
+    function validateEqualOrAfterDate($afterDates = array(), $beforeDate = null) {
+
+
+        foreach ($afterDates as $afterdate => $value) {
+
+            $date1 = strtotime($this->data[$this->alias][$beforeDate]);
+            $date2 = strtotime($value);
+
             if ($date1 <= $date2) {
                 return true;
             }

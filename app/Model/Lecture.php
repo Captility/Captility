@@ -115,7 +115,7 @@ class Lecture extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'afterStart' => array(
-                'rule' => array('validateAfterDate', 'start'),
+                'rule' => array('validateEqualOrAfterDate', 'start'),
                 'message' => 'Time does not lie after specified start time.',
                 'required' => true,
             )

@@ -605,11 +605,11 @@ msgstr "Sonstige"
 
 
 msgid "Start Command"
-msgstr "Startbefehl"
+msgstr "Startbefehl (optional)"
 
 
 msgid "End Command"
-msgstr "Stoppbefehl"
+msgstr "Stoppbefehl (optional)"
 
 
 msgid "Edit Capture"

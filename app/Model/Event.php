@@ -81,6 +81,11 @@ class Event extends AppModel {
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'afterStart' => array(
+                'rule' => array('validateAfterDate', 'start'),
+                'message' => 'Time does not lie after specified start time.',
+                'required' => true,
+            )
         ), /*
         'end-time' => array(
             'datetime' => array(
