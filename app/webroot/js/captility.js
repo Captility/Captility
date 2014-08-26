@@ -537,6 +537,8 @@ $(document).ready(function () {
 
             eventClick: function (data, event, view) {
 
+                console.log(data);
+
                 var content = '' +
 
                     '<table cellpadding="0" cellspacing="0" class="table table-striped calendarInfoTable">' +
@@ -550,6 +552,25 @@ $(document).ready(function () {
                 }
                 content + '</td></tr>';
 
+                if (data.Device.device_id != null) {
+                    content += '<tr nowrap style="white-space: nowrap;"><td><span class="glyphicon el-icon-hdd"></span></td><td colspan="3"><a href="devices/view/' + data.Device.device_id + '">' +
+                        '' + data.Device.name + ' [' + data.Device.location + ']</a>';
+
+                    // Lecture Recorder Status
+                    if (data.Device.type == 'Lecture Recorder X2' || data.Device.type == 'Lecture Recorder') {
+                        content += '&nbsp;&nbsp;<span data-device_id="' + data.Device.device_id + '" class="lr-ctrl-panel">' +
+                            '<a href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Lecture Recorder Admin-Panel"><span class="glyphicon el-icon-cogs lr-icon pull-right"></span></a>' +
+                            '<a href="http://' + data.Device.ip_adress + '/admin/preview.cgi" full_base="1" title="Lecture Recorder Live-View"><span class="glyphicon el-icon-screen lr-icon pull-right"></span></a>' +
+                            '<a href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Lade Aufnahmestatus ..."><span class="glyphicon el-icon-refresh lr-icon lr-status-ctrl lr-icon-pending spin pull-right"></span></a>' +
+                            '<a href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status: Aufnahme läuft" style="display: none;"><span class="glyphicon el-icon-record lr-icon lr-icon-rec lr-status-ctrl pulse pull-right"></span></a>' +
+                            '<a href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status: Gestoppt" style="display: none;"><span  class="glyphicon el-icon-pause lr-icon lr-status-ctrl lr-icon-stop pull-right"></span></a>' +
+                            '<a href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status konnte nicht ermittelt werden. Gerät offline oder defekt?" style="display: none;"><span class="glyphicon el-icon-exclamation-sign lr-icon lr-status-ctrl lr-icon-error pull-right"></span></a>';
+
+                        content += '</span>';
+                    }
+
+                    content += '</td></tr>';
+                }
 
                 if (data.Lecture.lecture_id != null) {
                     content += '<tr><td><span class="glyphicon glyphicon-th-list"></span></td><td colspan="3"><a href="lectures/view/' + data.Lecture.lecture_id + '">' +
@@ -589,6 +610,8 @@ $(document).ready(function () {
                     'content.title': '<span class="glyphicon el-icon-play-circle"></span>' + data.title,
                     'style.classes': 'qtip-bootstrap ' + 'qtip-' + data.className
                 }).reposition(event).show(event);
+
+                $(this).pollDeviceStatuses();
             },
 
             // ######################################## Event Interaction ##################################################
