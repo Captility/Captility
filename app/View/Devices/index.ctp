@@ -40,6 +40,11 @@
                 <th><?php echo $this->Paginator->sort('location', __('Device place')); ?></th>
                 <th><?php echo $this->Paginator->sort('ip_adress'); ?></th>
                 <th><?php echo $this->Paginator->sort('link'); ?></th>
+                <th>
+                    <?php echo $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-adjust-alt'));
+                    echo $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-adjust-alt'));
+                    echo $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-adjust-alt'));?>
+                </th>
                 <th class="actions"></th>
             </tr>
             </thead>
@@ -55,6 +60,33 @@
                         <?php if (!empty($device['Device']['link'])) echo $this->Html->link(
                             $this->Html->tag('span', '', array('class' => 'glyphicon glyphicon-link')),
                             h($device['Device']['link']), array('full_base' => true, 'escape' => false));
+                        ?>
+                    </td>
+                    <td nowrap style="white-space:nowrap;">
+                        <?php if (!empty($device['Device']['type']) && $device['Device']['type'] == 'Lecture Recorder' || $device['Device']['type'] == 'Lecture Recorder X2') {
+
+                            echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-refresh lr-icon lr-icon-pending spin')),
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => 'retrieving status...'));
+
+                            echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-record lr-icon lr-icon-rec pulse')),
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => 'Status: Recording', 'style' => 'display: none;'));
+
+                            echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-pause lr-icon lr-icon-stop')),
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => 'Status: Stopped', 'style' => 'display: none;'));
+
+                            echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-screen lr-icon')),
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/preview.cgi'), array('full_base' => true, 'escape' => false, 'title' => 'Lecture Recorder Live-View'));
+
+                            echo $this->Html->link(
+                                $this->Html->tag('span', '', array('class' => 'glyphicon el-icon-cogs lr-icon')),
+                                'http://' . h($device['Device']['ip_adress'] . '/admin/infocfg'), array('full_base' => true, 'escape' => false, 'title' => 'Lecture Recorder Admin-Panel'));
+
+                        }
+
                         ?>
                     </td>
 

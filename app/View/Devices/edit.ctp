@@ -38,7 +38,8 @@
 
     <div class="form-group">
         <?php echo $this->Form->input('device_id', array('class' => 'form-control', 'placeholder' => 'Device Id'));?>
-    </div><div class="form-group"></div>
+    </div>
+    <div class="form-group"></div>
 
     <?php echo $this->Form->input('Device.name', array(
 
@@ -77,11 +78,33 @@
     ));?>
 
 
+
+
+    <?php echo $this->Form->input('Device.username', array(
+
+        'label' => __('Username'),
+        'placeholder' => __('Username'),
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'div' => 'form-group form-split-6'
+    ));?>
+
+    <?php echo $this->Form->input('Device.device_pwd', array(
+        'placeholder' => __('Password'),
+        'type' => 'password',
+        'label' => __('Password'),
+        //'value' => '',
+        'autocomplete' => 'off',
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-lock input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'div' => 'form-group form-split-6'
+    ));?>
+
+
     <?php echo $this->Form->input('Device.link', array(
         'placeholder' => __('Info Link'),
         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-link input-group-glyphicon"></span>', 'afterInput' => '</div>',
     ));?>
 
+    <hr class="input-group"/>
 
     <div class="info-banner info-banner-info" id="Infobanner">
 
@@ -108,25 +131,6 @@
         </div>
     </div>
 
-    <?php echo $this->Form->input('Device.username', array(
-
-        'label' => __('Username'),
-        'placeholder' => __('Username'),
-        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
-        'div' => 'form-group form-split-6'
-    ));?>
-
-    <?php echo $this->Form->input('Device.device_pwd', array(
-        'placeholder' => __('Password'),
-        'type' => 'password',
-        'label' => __('Password'),
-        //'value' => '',
-        'autocomplete' => 'off',
-        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-lock input-group-glyphicon"></span>', 'afterInput' => '</div>',
-        'div' => 'form-group form-split-6'
-    ));?>
-
-    <hr class="input-group"/>
 
     <?php echo $this->Form->input('Device.start_command', array(
         'placeholder' => __('Start Command'),
@@ -135,7 +139,7 @@
 
     <?php echo $this->Form->input('Device.end_command', array(
         'placeholder' => __('Stop Command'),
-        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-stop-alt input-group-glyphicon"></span>', 'afterInput' => '</div>',
+        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon el-icon-pause-alt input-group-glyphicon"></span>', 'afterInput' => '</div>',
     ));?>
 
 
@@ -168,7 +172,7 @@
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
 
-                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>'.__('Delete'), array('action' => 'delete', $this->Form->value('Device.device_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Device.device_id'))); ?></li>
+                    <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>' . __('Delete'), array('action' => 'delete', $this->Form->value('Device.device_id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Device.device_id'))); ?></li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>' . __('List Devices'), array('action' => 'index'), array('escape' => false)); ?></li>
                 </ul>
             </div>

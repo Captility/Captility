@@ -1032,6 +1032,10 @@ $(document).ready(function () {
     $('.captility-breadcrumb li').last().hide().css({"margin-left": "-400px"}).show().animate({"margin-left": "0"}, 600);
 
 
+    // TITLE QTIPS
+    $('a[title]').qtip({
+        style: 'qtip-bootstrap'});
+
 // QR-CODE:
 
     if ($.isFunction($.fn.qrcode)) {
@@ -1068,7 +1072,7 @@ $(document).ready(function () {
                     }
                 },
                 hide: {
-                    event: 'unfocus',
+                    event: 'unfocus mouseleave',
                     effect: function () {
                         $(this).animate({ opacity: 0 }, { duration: 300 });
                     }
