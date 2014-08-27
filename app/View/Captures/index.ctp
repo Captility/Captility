@@ -46,7 +46,8 @@
 
                     <?// Add a basic search
                     echo $this->Form->input("search", array(
-                        'placeholder' => "Search...",
+                        'label' => __('Search') . ' ' . __(Inflector::pluralize($this->name)),
+                        'placeholder' => __("Search contents for").' '.__('Name').', '.__('Lecture').', '.__('Workflow'),
                         'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-search input-group-glyphicon"></span>', 'afterInput' => '</div>',
                     ));?>
 
@@ -65,7 +66,7 @@
 
                     echo $this->Form->input('user_id', array(
                         'options' => $users, 'empty' => true, 'default' => '',
-                        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-th-list input-group-glyphicon"></span>', 'afterInput' => '</div>',
+                        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-user input-group-glyphicon"></span>', 'afterInput' => '</div>',
                         'div' => 'form-group form-split-6',
 
                     ));?>
@@ -100,7 +101,7 @@
 
                     echo $this->Form->input('workflow_id', array(
                         'options' => $workflows, 'empty' => true, 'default' => '',
-                        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-th-list input-group-glyphicon"></span>', 'afterInput' => '</div>',
+                        'beforeInput' => '<div class="input-group"><span class="input-group-addon glyphicon glyphicon-random input-group-glyphicon"></span>', 'afterInput' => '</div>',
                         'div' => 'form-group form-split-6',
 
                     ));
@@ -112,11 +113,11 @@
                     <!--Submit Area-->
                     <div class="clearfix">
 
-                        <hr class="submit-panel"/>
+                        <hr/>
 
                         <div class="form-group well well-sm col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                            <?php echo $this->Form->button('<span class="glyphicon glyphicon-saved"></span>' . __('Submit'), array(
+                            <?php echo $this->Form->button('<span class="glyphicon glyphicon-saved"></span>' . __('Filter'), array(
                                 'escape' => false,
                                 'type' => 'submit',
                                 'class' => 'btn btn-primary pull-right',
@@ -126,7 +127,7 @@
                                 'escape' => false,
                                 'class' => 'btn btn-danger',
                                 'action' => 'action',
-                                'onclick' => 'history.go(-1)',
+                                'onclick' => "location.href='" . Router::url(array('action' => 'index')) . "';",
                                 'formnovalidate' => TRUE,
                                 'div' => false,
                                 'type' => 'button',
@@ -136,10 +137,8 @@
                                 'escape' => false,
                                 'class' => 'btn btn-default btn-reset',
                                 'formnovalidate' => TRUE,
-                                'action' => 'action',
-                                'onclick' => "location.href='" . Router::url($base_url) . "';",
                                 'div' => false,
-                                'type' => 'button', //in reset form!
+                                'type' => 'reset',
                                 'style' => 'margin-right: 5px;')); ?>
 
                         </div>
@@ -174,10 +173,13 @@
             <tr class="tr-linked"
                 onclick="document.location = '<? echo Router::url(array('controller' => $this->name, 'action' => 'view', h($capture['Capture']['capture_id']))); ?>';">
                 <!--<td><?php /*echo h($capture['Capture']['capture_id']); */?>&nbsp;</td>-->
-                <td><?php echo h($capture['Capture']['name']); ?>&nbsp;</td>
+
+                <td><?php echo $this->Text->highlight(h($capture['Capture']['name']), $search); ?></td>
 
                 <td>
-                    <?php echo $this->Html->link($capture['Lecture']['number'] . ' ' . $capture['Lecture']['name'] . ' (' . $capture['Lecture']['semester'] . ')', array('controller' => 'lectures', 'action' => 'view', $capture['Lecture']['lecture_id'])); ?>
+                    <?php echo $this->Text->highlight(
+                        $this->Html->link($capture['Lecture']['number'] . ' ' . $capture['Lecture']['name'] . ' (' . $capture['Lecture']['semester'] . ')', array('controller' => 'lectures', 'action' => 'view', $capture['Lecture']['lecture_id'])),
+                        $search, array('html' => true)); ?>
                 </td>
                 <td style="white-space: nowrap;"><p>
                         <?php echo $this->Html->link($this->Gravatar->identicon($capture['User']['email']), array('controller' => 'users', 'action' => 'view', $capture['User']['user_id']), array('escape' => false)); ?>
@@ -191,7 +193,9 @@
                         class="label label-<? echo $class ?>"><? echo __(h($capture['Capture']['status'])) ?></span>
                 </td>
                 <td>
-                    <?php echo $this->Html->link($capture['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $capture['Workflow']['workflow_id'])); ?>
+                    <?php echo $this->Text->highlight(
+                        $this->Html->link($capture['Workflow']['name'], array('controller' => 'workflows', 'action' => 'view', $capture['Workflow']['workflow_id'])),
+                        $search, array('html' => true));?>
                 </td>
                 <td class="actions">
                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $capture['Capture']['capture_id']), array('escape' => false)); ?>

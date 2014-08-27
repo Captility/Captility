@@ -395,7 +395,7 @@ msgstr "Ihr aktuelles Passwort."
 #: View/Lectures/edit.ctp:91
 #: View/Workflows/view.ctp:67;106;135
 msgid "Are you sure you want to delete # %s?"
-msgstr "Sich die sicher, dass sie # %s und eventuell verknüpfte Elemente entfernen wollen?"
+msgstr "ACHTUNG! SInd sie sicher, dass sie # %s und alle eventuell verknüpfte Elemente unwiderruflich entfernen wollen?"
 
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
 msgstr "Seite {:page} von {:pages}. Zeige: {:current} Einträge von insg. {:count}. Beginnend mit Eintrag {:start} bis Eintrag {:end}."
@@ -656,6 +656,10 @@ msgstr "Benutzer"
 
 msgid "Search"
 msgstr "Suche"
+
+msgid "Search contents for"
+msgstr "Durchsuche Inhalte nach"
+
 
 msgid "Edit account"
 msgstr "Account verwalten"

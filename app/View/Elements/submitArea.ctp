@@ -27,7 +27,8 @@
             'escape' => false,
             'class' => 'btn btn-danger',
             'action' => 'action',
-            'onclick' => 'history.go(-1)',
+            /*'onclick' => 'history.go(-1)',*/
+            'onclick' => "location.href='" . Router::url(array('action' => 'index')) . "';",
             'formnovalidate' => TRUE,
             'div' => false,
             'type' => 'button',

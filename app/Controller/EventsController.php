@@ -227,6 +227,7 @@ class EventsController extends AppController {
             throw new NotFoundException(__('Invalid event'));
         }
         $this->request->onlyAllow('post', 'delete');
+
         if ($this->Event->delete($this->Event->id, true)) { //Delete Cascaded
             $this->Session->setFlash(__('The event has been deleted.'), 'default', array('class' => 'alert alert-success'));
         }

@@ -1816,6 +1816,12 @@ h1,
 .qtip-calendar {
   font-family: 'Titillium Web', 'Istok Web', Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
+.highlight {
+  background-color: #5bc0de;
+  color: #ffffff;
+  padding: 1px 2px;
+  border-radius: 3px;
+}
 .navbar-header a.navbar-brand {
   font-size: 22px;
   z-index: 100;

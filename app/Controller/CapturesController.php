@@ -32,7 +32,7 @@ class CapturesController extends AppController {
 
         $conditions = array();
         //Transform POST into GET
-        if(($this->request->is('post') || $this->request->is('put')) && isset($this->data['Filter'])){
+        if (($this->request->is('post') || $this->request->is('put')) && isset($this->data['Filter'])) {
 
             $filter_url['controller'] = $this->request->params['controller'];
             $filter_url['action'] = $this->request->params['action'];
@@ -41,39 +41,45 @@ class CapturesController extends AppController {
             $filter_url['page'] = 1;
 
             // for each filter we will add a GET parameter for the generated url
-            foreach($this->data['Filter'] as $name => $value){
-                if($value){
+            foreach ($this->data['Filter'] as $name => $value) {
+                if ($value) {
                     // You might want to sanitize the $value here
                     // or even do a urlencode to be sure
-                    $filter_url[$name] = urlencode($value);
+                    $filter_url[$name] = rawurlencode(rawurlencode($value));
                 }
             }
             // now that we have generated an url with GET parameters,
             // we'll redirect to that page
             return $this->redirect($filter_url);
 
-        } else {
+        }
+        else {
             // GET
 
             // Inspect all the named parameters to apply the filters
-            foreach($this->params['named'] as $param_name => $value){
+            foreach ($this->params['named'] as $param_name => $value) {
 
                 // Don't apply the default named parameters used for pagination
-                if(!in_array($param_name, array('page','sort','direction','limit'))){
+                if (!in_array($param_name, array('page', 'sort', 'direction', 'limit'))) {
 
                     // You may use a switch here to make special filters
                     // like "between dates", "greater than", etc
-                    if($param_name == "search"){
+                    if ($param_name == "search") {
+
+                        $value = rawurldecode($value);
                         $conditions['OR'] = array(
                             array('Capture.name LIKE' => '%' . $value . '%'),
                             array('Lecture.name LIKE' => '%' . $value . '%'),
-                            array('Lecture.number LIKE' => '%' . $value . '%')
+                            array('Lecture.number LIKE' => '%' . $value . '%'),
+                            array('Lecture.semester LIKE' => '%' . $value . '%')
                         );
-                    } else if($param_name == "lecture_id"){
+                    }
+                    else if ($param_name == "lecture_id") {
 
-                        $conditions['Lecture.'.$param_name] = $value;
-                    } else {
-                        $conditions['Capture.'.$param_name] = $value;
+                        $conditions['Lecture.' . $param_name] = $value;
+                    }
+                    else {
+                        $conditions['Capture.' . $param_name] = $value;
                     }
                     $this->request->data['Filter'][$param_name] = $value;
                 }
@@ -87,14 +93,30 @@ class CapturesController extends AppController {
             'limit' => 12,
             'conditions' => $conditions
         );
-        $this->set('captures', $this->Paginator->paginate());
+
+        // PAGINATE
+        try {
+
+            $captures = $this->Paginator->paginate();
+
+            // REDIRECT TO LAST PAGE
+        } catch (NotFoundException $e) {
+
+            // Prevent special case: On deleting last pagination page entry redirect to that page fails!
+            $page = $this->request->params['named']['page'];
+            if ($page > 1) {
+                //redirect to previous page
+                $this->redirect(array("page" => $page - 1));
+            }
+        }
 
         // get the possible values for the filters and
         // pass them to the view
-        $lectures = $this->Capture->Lecture->find('list');
+        $lectures = $this->Capture->Lecture->find('list', array(
+            'fields' => array('Lecture.lecture_id', 'Lecture.name', 'Lecture.semester')));
         $workflows = $this->Capture->Workflow->find('list');
         $users = $this->Capture->User->find('list');
-        $this->set(compact('lectures', 'workflows', 'users'));
+        $this->set(compact('captures', 'lectures', 'workflows', 'users'));
 
         // Pass the search parameter to highlight the text
         $this->set('search', isset($this->params['named']['search']) ? $this->params['named']['search'] : "");
@@ -444,7 +466,21 @@ class CapturesController extends AppController {
         else {
             $this->Session->setFlash(__('The capture could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
         }
-        return $this->redirect(array('action' => 'index'));
+
+        // REDIRECT
+
+        // if deleted from /view/id return to index since referer would cause 404
+        if ($this->referer() == Router::url(array('action' => 'view', $id), true)) {
+
+            return $this->redirect(array('action' => 'index'));
+        }
+        // else delete return to where it came
+        else {
+
+            return $this->redirect($this->referer());
+        }
+
+
     }
 
     /**

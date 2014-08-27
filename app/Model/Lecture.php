@@ -237,7 +237,7 @@ class Lecture extends AppModel {
         'Capture' => array(
             'className' => 'Capture',
             'foreignKey' => 'lecture_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',

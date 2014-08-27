@@ -126,7 +126,7 @@ class Capture extends AppModel {
         'Event' => array(
             'className' => 'Event',
             'foreignKey' => 'capture_id',
-            'dependent' => true,
+            'dependent' => false,
             'conditions' => '',
             'fields' => '',
             'order' => '',
