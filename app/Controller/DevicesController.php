@@ -60,6 +60,9 @@ class DevicesController extends AppController {
      */
     public function index() {
         $this->Device->recursive = 0;
+        $this->paginate = array(
+            'limit' => 10,
+        );
         $this->set('devices', $this->Paginator->paginate());
     }
 

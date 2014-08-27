@@ -1125,7 +1125,7 @@ $(document).ready(function () {
                     }
                 },
                 hide: {
-                    event: 'unfocus mouseleave',
+                    event: 'unfocus',
                     effect: function () {
                         $(this).animate({ opacity: 0 }, { duration: 300 });
                     }
@@ -1446,7 +1446,7 @@ $(document).ready(function () {
 
 
 //######################################################################################################################
-//################################################# DEVICES   ##########################################################
+//################################################# DEVICES ############################################################
 //######################################################################################################################
 
 
@@ -1491,7 +1491,7 @@ $(document).ready(function () {
                 $self.find('span.lr-icon-rec').parent().show();
                 $self.find('span.lr-icon-rec').parent().qtip('option', 'content.text', 'Status: Aufnahme läuft. [' + data['time'].toHHMMSS() + ']');
 
-                $self.closest('tr').removeClass().addClass('success');
+                $self.closest('tr').removeClass().addClass('tr-linked success');
             }
 
             if (data['state'] == 'off' || data['state'] == '') {
@@ -1499,17 +1499,25 @@ $(document).ready(function () {
                 $self.find('span.lr-status-ctrl').parent().hide();
                 $self.find('span.lr-icon-stop').parent().fadeIn();
 
-                $self.closest('tr').removeClass().addClass('primary');
+                $self.closest('tr').removeClass().addClass('tr-linked primary');
             }
 
         })
-            .fail(function () {
+            .fail(function (jqxhr, textStatus, error) {
 
-                $self.find('span.lr-status-ctrl').parent().hide();
-                $self.find('span.lr-icon-error').parent().fadeIn();
+                // 401 Error occurs when too many parallel ajax polls occur
+                if(jqxhr.status == 403){
 
+                    $self.find('span.lr-status-ctrl').parent().hide();
+                    $self.find('span.lr-icon-pending').parent().fadeIn();
+                    $self.closest('tr').removeClass().addClass('tr-linked');
 
-                $self.closest('tr').removeClass().addClass('danger');
+                } else {
+
+                    $self.find('span.lr-status-ctrl').parent().hide();
+                    $self.find('span.lr-icon-error').parent().fadeIn();
+                    $self.closest('tr').removeClass().addClass('tr-linked danger');
+                }
 
             })
             .complete(function () {
@@ -1538,6 +1546,7 @@ $(document).ready(function () {
      */
     $('body').on('show.bs.tab', '#TicketsView[data-toggle="tab"]', function () {
 
+        $('.deviceListContainer').empty();
         $(this).getTickets(false, false);
     });
 
@@ -1546,6 +1555,7 @@ $(document).ready(function () {
      */
     $('body').on('show.bs.tab', '#MyTicketsView[data-toggle="tab"]', function () {
 
+        $('.deviceListContainer').empty();
         $(this).getTickets(true, false);
     });
 
@@ -1554,6 +1564,7 @@ $(document).ready(function () {
      */
     $('body').on('show.bs.tab', '#StatusList[data-toggle="tab"]', function () {
 
+        $('.deviceListContainer').empty();
         $(this).getStatusList();
     });
 

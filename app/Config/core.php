@@ -217,10 +217,14 @@ Configure::write('Routing.prefixes', array('admin', 'manager'));
  *
  */
 Configure::write('Session', array(
-    'defaults' => 'php'
+    'defaults' => 'php',
+    'timeout'  => 14400,  // 4 hours, refers to 'session.gc_maxlifetime' in PHP settings
+    'cookieTimeout' => 20 * 14400, // 20 hours, refers to 'session.cookie_lifetime' in PHP settings
+    'autoRegenerate' => true
 ));
 
-Configure::write('Session.timeout', 240); //120min
+Configure::write('Session.checkAgent', false);
+
 /**
  * A random string used in security hashing methods.
  */
