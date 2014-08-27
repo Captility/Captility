@@ -416,6 +416,9 @@ msgstr "Aufnahmegerät anlegen"
 msgid "Submit"
 msgstr "Speichern"
 
+msgid "Apply Filter"
+msgstr "Filtern"
+
 msgid "Cancel"
 msgstr "Abbrechen"
 

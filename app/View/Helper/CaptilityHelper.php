@@ -6,7 +6,6 @@
  */
 
 
-
 App::uses('Helper', 'View');
 
 /**
@@ -20,7 +19,7 @@ App::uses('Helper', 'View');
 class CaptilityHelper extends AppHelper {
 
     var $helpers = array(
-        'Time',
+        'Time', 'Text',
         'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
         'Form' => array('className' => 'BoostCake.BoostCakeForm'));
 
@@ -81,4 +80,14 @@ class CaptilityHelper extends AppHelper {
         return h($s2);
     }
 
+
+    public function multiHighlight($haystack, $needlestack, $options = array('html' => true)) {
+
+        foreach ($needlestack as $needle) {
+
+            $haystack = $this->Text->highlight($haystack, $needle, $options);
+        }
+
+        return $haystack;
+    }
 }

@@ -1607,8 +1607,14 @@ small.disabled {
 .panel-link {
   cursor: pointer;
 }
+.filter-panel {
+  margin-bottom: 0;
+}
 .pagination {
   float: right !important;
+}
+.cake-debug-output {
+  margin-top: 60px;
 }
 /* ###############################################
  * ################# TYPOGRAPHY  #################

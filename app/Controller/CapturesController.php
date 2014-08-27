@@ -45,7 +45,7 @@ class CapturesController extends AppController {
                 if ($value) {
                     // You might want to sanitize the $value here
                     // or even do a urlencode to be sure
-                    $filter_url[$name] = rawurlencode(rawurlencode($value));
+                    $filter_url[$name] = urlencode(urlencode($value));
                 }
             }
             // now that we have generated an url with GET parameters,
@@ -66,13 +66,24 @@ class CapturesController extends AppController {
                     // like "between dates", "greater than", etc
                     if ($param_name == "search") {
 
-                        $value = rawurldecode($value);
-                        $conditions['OR'] = array(
-                            array('Capture.name LIKE' => '%' . $value . '%'),
-                            array('Lecture.name LIKE' => '%' . $value . '%'),
-                            array('Lecture.number LIKE' => '%' . $value . '%'),
-                            array('Lecture.semester LIKE' => '%' . $value . '%')
-                        );
+                        $value = urldecode($value);
+
+                        $words = preg_split('/[\ \,]+/', urldecode($value));
+                        $this->set('search', $words);
+
+                        foreach ($words as $word) {
+
+                            $con['OR'] = array(
+
+                                array('Capture.name LIKE' => '%' . $word . '%'),
+                                array('Lecture.name LIKE' => '%' . $word . '%'),
+                                array('Lecture.number LIKE' => '%' . $word . '%'),
+                                array('Lecture.semester LIKE' => '%' . $word . '%')
+                            );
+
+                            $conditions['OR'][] = $con;
+                        }
+
                     }
                     else if ($param_name == "lecture_id") {
 
@@ -119,7 +130,7 @@ class CapturesController extends AppController {
         $this->set(compact('captures', 'lectures', 'workflows', 'users'));
 
         // Pass the search parameter to highlight the text
-        $this->set('search', isset($this->params['named']['search']) ? $this->params['named']['search'] : "");
+        //$this->set('search', isset($this->params['named']['search']) ? urldecode($this->params['named']['search']) : "");
     }
 
     /**
