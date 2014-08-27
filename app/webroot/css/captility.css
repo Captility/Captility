@@ -1648,7 +1648,7 @@ a.cp-icon-lecturer:active {
   color: #d43f3a !important;
 }
 .lr-icon-error {
-  color: #979797!important;
+  color: #979797 !important;
 }
 .spin {
   -animation: spin 1.5s infinite linear;
@@ -1792,6 +1792,22 @@ a:active .cp-icon-lecturer {
 .cp-icon-lecturer:before,
 .cp-icon-lecturer-inverse:before {
   content: "\e";
+}
+th a.desc {
+  font-weight: bold;
+}
+th a.desc:after {
+  content: " \e6fb";
+  font-family: 'Elusive-Icons';
+  white-space: nowrap;
+}
+th a.asc {
+  font-weight: bold;
+}
+th a.asc:after {
+  content: " \e6fe";
+  font-family: 'Elusive-Icons';
+  white-space: nowrap;
 }
 h1,
 .fc-event-time,
