@@ -419,6 +419,9 @@ $(document).ready(function () {
                 url: $appRoot + 'events/feed',
                 type: 'GET',
                 cache: false,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                },
                 error: function () {
 
                     // Todo: If AuthComponent not ready in /events/feed
@@ -429,6 +432,9 @@ $(document).ready(function () {
                 url: $appRoot + 'events/feed/my',
                 type: 'GET',
                 cache: false,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                },
                 error: function () {
 
                     // Todo: If AuthComponent not ready in /events/feed
@@ -1623,6 +1629,9 @@ $(document).ready(function () {
 
                  // Reload (logout)
                  window.location.replace(window.location.pathname);*/
+
+                //Todo when AuthComponent fails
+                $().getTickets(my, sideTicket);
             })
     }
 
