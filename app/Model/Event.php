@@ -286,6 +286,8 @@ class Event extends AppModel {
         // #########################################################################################################
 
         $today_start = date('Y-m-d') . ' 00:00:00';
+
+        //$today_start = date('Y-m-d', strtotime('Monday this week')); fake to generate from weekstart
         $today_now = date('Y-m-d H:i:s');
 
         $events = $this->find('all', array(

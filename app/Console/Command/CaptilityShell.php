@@ -79,7 +79,7 @@ class CaptilityShell extends AppShell {
 
             $jsonResponse = date('Y-m-d H:i:s') . ' | ' . json_encode($jsonResponse);
 
-            $this->out(PHP_EOL . '<comment>' . $jsonResponse . '</comment>' . PHP_EOL);
+            $this->out(PHP_EOL  . $jsonResponse  . PHP_EOL);
         }
 
         // ################################ CLEANUP::Update Urgency Statuses  ######################################
@@ -124,7 +124,7 @@ class CaptilityShell extends AppShell {
                 file_put_contents($log, $content);
 
 
-                $this->out(PHP_EOL . date('Y-m-d H:i:s') . ' | <comment>Log "' . $log . '" was shortened.</comment>' . PHP_EOL);
+                //$this->out(PHP_EOL . date('Y-m-d H:i:s') . ' | Log "' . $log . '" was shortened.' . PHP_EOL);
             }
         }
 

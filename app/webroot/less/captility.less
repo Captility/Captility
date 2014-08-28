@@ -958,12 +958,13 @@ text-shadow: none;*/
 @eventColorBlue: #3a87ad;
 @eventColorBlack: #202020;
 @eventColorWhite: #FDFDFD;
-@eventColorOrange: #f70;
+@eventColorOrange: #F58E33; /*#f70;*/
 @eventColorRed: #FD3E20;
 @eventColorYellow: #FFEB00;
 @eventColorPurple: #5F43A8;
 @eventColorGreen: #009406;
-@eventColorIndigo: #009B9B;
+@eventColorIndigo: #3379F5;
+@eventColorTurquoise: #009B9B;
 @eventColorMint: #579B00;
 @eventColorPink: #FF38D7;
 
@@ -1019,6 +1020,11 @@ text-shadow: none;*/
 .eventColorIndigo {
   color: @eventColorTextLight;
   background-color: @eventColorIndigo !important;
+}
+
+.eventColorTurquoise {
+  color: @eventColorTextLight;
+  background-color: @eventColorTurquoise !important;
 }
 
 .eventColorMint {
@@ -1118,6 +1124,15 @@ text-shadow: none;*/
   >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
     .eventColorIndigo;
     border-color: @eventColorIndigo;
+  }
+}
+.qtip-eventColorTurquoise {
+
+  border-color: @eventColorTurquoise;
+
+  >.qtip-titlebar, .qtip-titlebar a.qtip-icon span.ui-icon {
+    .eventColorTurquoise;
+    border-color: @eventColorTurquoise;
   }
 }
 

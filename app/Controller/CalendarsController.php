@@ -196,7 +196,6 @@ class CalendarsController extends AppController {
     }
 
 
-
     public function stats() {
 
         $this->set('leftTabs', true);
@@ -256,13 +255,18 @@ class CalendarsController extends AppController {
             'fields' => array('Event.start'),
             'order' => array('Event.start' => 'ASC')
         ));
-        $statsEverData = $this->Event->getIntervalStats(
-            date('Y-01-01 00:00:00', strtotime($firstEntryDate['Event']['start'])), //start of interval
-            date('Y-01-01 00:00:00', strtotime('+1 year')), //end of interval
-            'Y', // scale date-format
-            'year'); // interation strtotime
 
-        $this->set('statsEverData', $statsEverData);
-        $this->set('statsEverScale', json_encode($statsEverData['scale'][0]));
+        if (!empty($firstEntryDate)) {
+            $statsEverData = $this->Event->getIntervalStats(
+                date('Y-01-01 00:00:00', strtotime($firstEntryDate['Event']['start'])), //start of interval
+                date('Y-01-01 00:00:00', strtotime('+1 year')), //end of interval
+                'Y', // scale date-format
+                'year'); // interation strtotime
+
+
+            $this->set('statsEverData', $statsEverData);
+            $this->set('statsEverScale', json_encode($statsEverData['scale'][0]));
+        }
+
     }
 }

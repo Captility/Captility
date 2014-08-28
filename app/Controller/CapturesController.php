@@ -56,6 +56,9 @@ class CapturesController extends AppController {
         else {
             // GET
 
+            // empty search
+            $this->set('search', array());
+
             // Inspect all the named parameters to apply the filters
             foreach ($this->params['named'] as $param_name => $value) {
 

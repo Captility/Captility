@@ -69,7 +69,7 @@ class Schedule extends AppModel {
             'afterStart' => array(
                 'rule' => array('validateEqualOrAfterDate', 'interval_start'),
                 'message' => 'Time does not lie after specified start time.',
-                'required' => true,
+                'allowEmpty' => true,
             )
         ),
         'duration' => array(

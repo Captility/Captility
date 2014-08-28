@@ -87,7 +87,7 @@ class DeviceRecordHandlerBehavior extends ModelBehavior {
 
                 $response .= 'DeviceRecordHandler: FAILED REQUEST to ' . $lr . ' [' . $total_time . 's].' . PHP_EOL;
 
-                $response .= curl_getinfo($handle['Curl']);
+                $response .= print_r(curl_getinfo($handle['Curl']));
 
                 //TODO Show event info
             }

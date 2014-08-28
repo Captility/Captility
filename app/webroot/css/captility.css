@@ -3252,6 +3252,7 @@ text-shadow: none;*/
   margin-left: 2px;
 }
 /** Define Event Colors **/
+/*#f70;*/
 .eventColorBlue {
   border: 1px solid #3a87ad;
   background-color: #3a87ad;
@@ -3267,7 +3268,7 @@ text-shadow: none;*/
 }
 .eventColorOrange {
   color: #ffffff;
-  background-color: #ff7700 !important;
+  background-color: #f58e33 !important;
 }
 .eventColorRed {
   color: #ffffff;
@@ -3289,6 +3290,10 @@ text-shadow: none;*/
   background-color: #009406 !important;
 }
 .eventColorIndigo {
+  color: #ffffff;
+  background-color: #3379f5 !important;
+}
+.eventColorTurquoise {
   color: #ffffff;
   background-color: #009b9b !important;
 }
@@ -3329,13 +3334,13 @@ text-shadow: none;*/
   border-color: #fdfdfd;
 }
 .qtip-eventColorOrange {
-  border-color: #ff7700;
+  border-color: #f58e33;
 }
 .qtip-eventColorOrange > .qtip-titlebar,
 .qtip-eventColorOrange .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #ffffff;
-  background-color: #ff7700 !important;
-  border-color: #ff7700;
+  background-color: #f58e33 !important;
+  border-color: #f58e33;
 }
 .qtip-eventColorRed {
   border-color: #fd3e20;
@@ -3378,10 +3383,19 @@ text-shadow: none;*/
   border-color: #009406;
 }
 .qtip-eventColorIndigo {
-  border-color: #009b9b;
+  border-color: #3379f5;
 }
 .qtip-eventColorIndigo > .qtip-titlebar,
 .qtip-eventColorIndigo .qtip-titlebar a.qtip-icon span.ui-icon {
+  color: #ffffff;
+  background-color: #3379f5 !important;
+  border-color: #3379f5;
+}
+.qtip-eventColorTurquoise {
+  border-color: #009b9b;
+}
+.qtip-eventColorTurquoise > .qtip-titlebar,
+.qtip-eventColorTurquoise .qtip-titlebar a.qtip-icon span.ui-icon {
   color: #ffffff;
   background-color: #009b9b !important;
   border-color: #009b9b;
