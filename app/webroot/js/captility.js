@@ -418,18 +418,22 @@ $(document).ready(function () {
             overview: {
                 url: $appRoot + 'events/feed',
                 type: 'GET',
-                cache: false
-                /*,error: function () {
-                 alert('Generelle Events konnten nicht geladen werden.');
-                 }*/
+                cache: false,
+                error: function () {
+
+                    // Todo: If AuthComponent not ready in /events/feed
+                    $('#calendar').fullCalendar('refetchEvents');
+                }
             },
             myweek: {
                 url: $appRoot + 'events/feed/my',
                 type: 'GET',
-                cache: false
-                /*,error: function () {
-                 alert('Eigene Events konnten nicht geladen werden.');
-                 }*/
+                cache: false,
+                error: function () {
+
+                    // Todo: If AuthComponent not ready in /events/feed
+                    $('#calendar').fullCalendar('refetchEvents');
+                }
             }
         };
 
@@ -1506,7 +1510,7 @@ $(document).ready(function () {
             .fail(function (jqxhr, textStatus, error) {
 
                 // 401 Error occurs when too many parallel ajax polls occur
-                if(jqxhr.status == 403){
+                if (jqxhr.status == 403) {
 
                     $self.find('span.lr-status-ctrl').parent().hide();
                     $self.find('span.lr-icon-pending').parent().fadeIn();

@@ -58,8 +58,8 @@ class UsersController extends AppController {
     }
 
 
-    //TODO: Remove ACL Action
-    public function initAuth() {
+
+    /*public function initAuth() {
 
         $group = $this->User->Group;
 
@@ -93,7 +93,7 @@ class UsersController extends AppController {
         //we add an exit to avoid an ugly "missing views" error message
         echo "all done";
         exit;
-    }
+    }*/
 
 
     public function login() {

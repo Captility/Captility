@@ -32,8 +32,8 @@
 <div id="filter-panel" class="panel filter-panel panel-default">
     <a style="display: block;" class="panel-heading" data-toggle="collapse" data-parent="#filter-panel"
        href="#collapseOne">
-        <h4 class="panel-title text-right"><span style="white-space: nowrap; display: block;"><span
-                    class="glyphicon el-icon-adjust-alt"></span><span>Filter</span></span></h4>
+        <h4 class="panel-title text-right"><span style="white-space: nowrap; display: block;"><span class="label label-default btn-sm"><span
+                    class="glyphicon el-icon-adjust-alt"></span>Filter</span></span></h4>
     </a>
 
     <div id="collapseOne" class="panel-collapse collapse <? echo ($filter_active) ? 'in' : ''; ?>">
