@@ -58,7 +58,6 @@ class UsersController extends AppController {
     }
 
 
-
     /*public function initAuth() {
 
         $group = $this->User->Group;
@@ -148,45 +147,60 @@ class UsersController extends AppController {
         $this->set('headline', __('Registration'));
         $this->set('sideTickets', false);
 
-        /*if ($this->request->is('post') || $this->request->is('put')) {
+        // Count Users already existing to check if first user:
+        $firstUser = (0 == $this->User->find('count'));
 
-            // Prepare Pojo for Save
-            $this->User->create();
+        if ($this->request->is('post') || $this->request->is('put')) {
 
-            //
-            $this->User->Behaviors->attach('Passwordable', array('require' => true, 'confirm' => true));
+            // If first user is about to be created or Creation globally enabled crete new user
+            if ($firstUser || Configure::read('Captility.UserCreationEnabled')) {
 
-            // Ensure new User has minimal rights
-            $this->request->data['User']['status'] = 'user';
-            $this->request->data['User']['group_id'] = 3;
-            $this->request->data['User']['password'] = $this->request->data['User']['pwd'];
+                // Prepare Pojo for Save
+                $this->User->create();
 
-            if ($this->User->save($this->request->data)) {
+                //
+                $this->User->Behaviors->attach('Passwordable', array('require' => true, 'confirm' => true));
 
-                $this->Session->setFlash(__('The user was successfully created.'), 'flash/success');
+                // Ensure new User has minimal rights
+                $this->request->data['User']['status'] = 'user';
 
-                if ($this->Auth->login()) {
+                $this->request->data['User']['group_id'] = ($firstUser) ? 1 : 3; // first is admin
 
-                    $this->Session->setFlash(__('The user was successfully created and logged in.'), 'flash/success');
+                $this->request->data['User']['password'] = $this->request->data['User']['pwd'];
 
-                    // Set Language after login
-                    $this->Session->write('Config.language', $this->Session->read('Auth.User.language'));
+                if ($this->User->save($this->request->data)) {
 
-                    return $this->redirect($this->Auth->redirect());
+                    $this->Session->setFlash(__('The user was successfully created.'), 'flash/success');
+
+                    if ($this->Auth->login()) {
+
+                        $this->Session->setFlash(__('The user was successfully created and logged in.'), 'flash/success');
+
+                        // Set Language after login
+                        $this->Session->write('Config.language', $this->Session->read('Auth.User.language'));
+
+                        return $this->redirect($this->Auth->redirect());
+                    }
+
+                    $this->Session->setFlash(__('The user could not be logged in.'), 'flash/danger');
+                }
+                else {
+                    $this->Session->setFlash(__('The user could not be created.'), 'flash/danger');
                 }
 
-                $this->Session->setFlash(__('The user could not be logged in.'), 'flash/danger');
-            }
-            else {
-                $this->Session->setFlash(__('The user could not be created.'), 'flash/danger');
             }
 
-        }*/
+        }
 
-        $this->Session->setFlash(__('This function is in the demo currently disabled.'), 'flash/info');
+        // If first user is about to be created or Creation globally enabled crete new user
+        if (!$firstUser || !Configure::read('Captility.UserCreationEnabled')) {
 
-        unset($this->request->data['User']['pwd']);
-        unset($this->request->data['User']['pwd_confirm']);
+
+            $this->Session->setFlash(__('This function is currently disabled.'), 'flash/info');
+
+            unset($this->request->data['User']['pwd']);
+            unset($this->request->data['User']['pwd_confirm']);
+        }
 
     }
 

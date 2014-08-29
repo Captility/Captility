@@ -161,13 +161,15 @@ CakePlugin::load('AclExtras');
 Configure::write('CAPTILITY.NAME', 'Captility');
 Configure::write('CAPTILITY.VERSION', '0.5.3 [alpha]');
 
-// Public Key
-Configure::write('CAPTILITY.CRON_KEY', '4516f866ba7ffba7a5b8f4bdf878136662ef8bc3');
-
 
 /**
  * GLOBAL VARIABLES AND CONSTANTS
  */
+
+/**
+ * Enable User-Registation.
+ */
+Configure::write('Captility.UserCreationEnabled', false);
 
 /**
  * Supported Languages.
