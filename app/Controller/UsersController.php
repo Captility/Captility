@@ -58,9 +58,9 @@ class UsersController extends AppController {
     }
 
 
-    /*public function initAuth() {
+    public function initAuth() {
 
-        $group = $this->User->Group;
+        /*$group = $this->User->Group;
 
         //Allow admins to everything
         $group->id = 1;
@@ -82,6 +82,7 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Tickets');
         $this->Acl->allow($group, 'controllers/Workflows');
         $this->Acl->allow($group, 'controllers/Schedules');
+        $this->Acl->allow($group, 'controllers/Devices');
 
 
         //allow users to only add and edit on posts and widgets
@@ -91,8 +92,8 @@ class UsersController extends AppController {
 
         //we add an exit to avoid an ugly "missing views" error message
         echo "all done";
-        exit;
-    }*/
+        exit;*/
+    }
 
 
     public function login() {
