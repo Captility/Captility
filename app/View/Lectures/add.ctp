@@ -78,53 +78,6 @@
 
 
 
-
-
-<div class="form-group">
-
-    <?php echo $this->Form->label('start', __('Lecture Interval'), array(
-        'class' => 'control-label'));?>
-
-    <div class="input-group">
-        <?php
-        echo $this->Form->input('start', array(
-            'type' => 'string',
-            'format' => array('label', 'before', 'input', 'error', 'after'),
-            'label' => false,
-            'div' => false,
-            'class' => 'form-control pickDate',
-            'before' => '<span class="input-group-addon glyphicon glyphicon-calendar input-group-glyphicon"></span>',
-            'value' => $this->Time->nice(strtotime('first Monday this week'), 'CET', '%a, %d.%m.%Y'),
-            'placeholder' => __('End Interval'),
-            'required' => true,
-            'error' => false,
-        ));?>
-
-
-        <?php
-        echo $this->Form->input('end', array(
-            'type' => 'string',
-            'format' => array('label', 'before', 'input', 'error', 'after'),
-            'label' => false,
-            'div' => false,
-            'class' => 'form-control pickDate',
-            'before' => '<span class="input-group-addon">' . __('to') . '</span>',
-            'value' => $this->Time->nice($this->Form->value('end'), 'CET', '%a, %d.%m.%Y'),
-            'placeholder' => __('End Interval'),
-            'required' => true,
-            'value' => $this->Time->nice(strtotime('first Sunday of +4 months'), 'CET', '%a, %d.%m.%Y'),
-            'error' => false,
-        ));?>
-
-    </div>
-
-    <? if ($this->Form->isFieldError('start')) {
-        echo $this->Form->error('start');
-    } ?>
-</div>
-
-
-
 <? // INTERVAL INPUT
 
 $errorClass = '';
