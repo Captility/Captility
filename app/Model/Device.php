@@ -211,8 +211,8 @@ class Device extends AppModel {
         $now_end = date('Y-m-d H:i:59');
 
         // Todo: remove test dates for whole day instead minute
-        /*$now_start = date('Y-m-d 00:00:00');
-        $now_end = date('Y-m-d 23:59:59');*/
+        $now_start = date('Y-m-d 00:00:00');
+        $now_end = date('Y-m-d 23:59:59');
 
 
         $devices = $this->find('all', array(
@@ -241,12 +241,12 @@ class Device extends AppModel {
         // Process found devices:
         if (!empty($devices)) {
 
+            // LECTURE RECORDERS TO STOP
+            $lectureRecordersToStop = array();
 
             // Iterate found devices and search for supported devices
             foreach ($devices as $device) {
 
-                // LECTURE RECORDER
-                $lectureRecordersToStop = array();
 
                 // Look for Events with related Lecture Recorder
                 if ($device['Device']['type'] == 'Lecture Recorder X2' || $device['Device']['type'] == 'Lecture Recorder') {
@@ -274,7 +274,7 @@ class Device extends AppModel {
         $now_start = date('Y-m-d H:i:00');
         $now_end = date('Y-m-d H:i:59');
 
-        // Todo: remove test dates for whole day instead minute
+        // Todo: remove debug dates for whole day instead minute
         /*$now_start = date('Y-m-d 00:00:00');
         $now_end = date('Y-m-d 23:59:59');*/
 
@@ -306,11 +306,12 @@ class Device extends AppModel {
         if (!empty($devices)) {
 
 
+            // LECTURE RECORDERS TO START
+            $lectureRecordersToStart = array();
+
             // Iterate found devices and search for supported devices
             foreach ($devices as $device) {
 
-                // LECTURE RECORDER
-                $lectureRecordersToStart = array();
 
                 // Look for Events with related Lecture Recorder
                 if ($device['Device']['type'] == 'Lecture Recorder X2' || $device['Device']['type'] == 'Lecture Recorder') {
