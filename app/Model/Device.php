@@ -211,8 +211,8 @@ class Device extends AppModel {
         $now_end = date('Y-m-d H:i:59');
 
         // Todo: remove test dates for whole day instead minute
-        $now_start = date('Y-m-d 00:00:00');
-        $now_end = date('Y-m-d 23:59:59');
+        /*$now_start = date('Y-m-d 00:00:00');
+        $now_end = date('Y-m-d 23:59:59');*/
 
 
         $devices = $this->find('all', array(
