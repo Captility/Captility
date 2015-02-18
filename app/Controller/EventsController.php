@@ -1,6 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('CakeTime', 'Utility');
+
 /**
  * Events Controller
  * @author Daniel, Captiliity
@@ -72,7 +73,11 @@ class EventsController extends AppController {
                 $end = $event['Event']['end'];
             }
             $events[$key]['id'] = $event['Event']['event_id'];
-            $events[$key]['title'] = $event['Event']['title'];
+
+            // Location in Title hack
+            $title_location = (($event['Event']['location'] != '') ? " [" . $event['Event']['location'] . "]" : "");
+
+            $events[$key]['title'] = $event['Event']['title'] . $title_location;
             $events[$key]['start'] = $event['Event']['start'];
             $events[$key]['status'] = __($event['Event']['status']);
             $classes = Configure::read('EVENT.STATUSES');
