@@ -569,12 +569,12 @@ $(document).ready(function () {
                     // Lecture Recorder Status
                     if (data.Device.type == 'Lecture Recorder X2' || data.Device.type == 'Lecture Recorder') {
                         content += '&nbsp;&nbsp;<span data-device_id="' + data.Device.device_id + '" class="lr-ctrl-panel">' +
-                            '<a href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Lecture Recorder Admin-Panel"><span class="glyphicon el-icon-cogs lr-icon pull-right"></span></a>' +
-                            '<a href="http://' + data.Device.ip_adress + '/admin/preview.cgi" full_base="1" title="Lecture Recorder Live-View"><span class="glyphicon el-icon-screen lr-icon pull-right"></span></a>' +
-                            '<a href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Lade Aufnahmestatus ..."><span class="glyphicon el-icon-refresh lr-icon lr-status-ctrl lr-icon-pending spin pull-right"></span></a>' +
-                            '<a href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status: Aufnahme läuft" style="display: none;"><span class="glyphicon el-icon-record lr-icon lr-icon-rec lr-status-ctrl pulse pull-right"></span></a>' +
-                            '<a href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status: Gestoppt" style="display: none;"><span  class="glyphicon el-icon-pause lr-icon lr-status-ctrl lr-icon-stop pull-right"></span></a>' +
-                            '<a href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status konnte nicht ermittelt werden. Gerät offline oder defekt?" style="display: none;"><span class="glyphicon el-icon-exclamation-sign lr-icon lr-status-ctrl lr-icon-error pull-right"></span></a>';
+                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Lecture Recorder Admin-Panel"><span class="glyphicon el-icon-cogs lr-icon pull-right"></span></a>' +
+                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/preview.cgi" full_base="1" title="Lecture Recorder Live-View"><span class="glyphicon el-icon-screen lr-icon pull-right"></span></a>' +
+                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Lade Aufnahmestatus ..."><span class="glyphicon el-icon-refresh lr-icon lr-status-ctrl lr-icon-pending spin pull-right"></span></a>' +
+                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status: Aufnahme läuft" style="display: none;"><span class="glyphicon el-icon-record lr-icon lr-icon-rec lr-status-ctrl pulse pull-right"></span></a>' +
+                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status: Gestoppt" style="display: none;"><span  class="glyphicon el-icon-pause lr-icon lr-status-ctrl lr-icon-stop pull-right"></span></a>' +
+                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status konnte nicht ermittelt werden. Gerät offline oder defekt?" style="display: none;"><span class="glyphicon el-icon-exclamation-sign lr-icon lr-status-ctrl lr-icon-error pull-right"></span></a>';
 
                         content += '</span>';
                     }

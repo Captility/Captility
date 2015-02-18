@@ -1686,7 +1686,7 @@ a.cp-icon-lecturer:active {
   }
 }
 .pulse {
-  -webkit-animation: pulsate 1.5s ease-out;
+  -webkit-animation: pulsate3 1.5s ease-out;
   -webkit-animation-iteration-count: infinite;
   -moz-animation: pulsate2 1.5s ease-out;
   -moz-animation-iteration-count: infinite;
@@ -1725,7 +1725,7 @@ a.cp-icon-lecturer:active {
     opacity: 0.0;
   }
 }
-@-webkit-keyframes pulsate4 {
+@-webkit-keyframes pulsate3 {
   0% {
     -webkit-transform: scale(0.4, 0.4);
     opacity: 0.0;
