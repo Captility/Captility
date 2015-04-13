@@ -253,7 +253,7 @@ class AppModel extends Model {
 
 
         // return date('Y-m-d 00:00:00', strtotime('Monday this week', $weekDay)
-        //SUNDAY FIX FOR: https://bugs.php.net/bug.php?id=63740
+        // SUNDAY FIX FOR: https://bugs.php.net/bug.php?id=63740
 
 
         $dayIndexPhp = date('w', strtotime($weekDay)); // Week where Sunday = 0, Monday =1 ...

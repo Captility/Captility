@@ -34,22 +34,48 @@ class EventsController extends AppController {
     }
 
 
-    public function statusFeed() {
+    /**
+     * Feed for showing event statuses on dashboard.
+     * @param null $weekOffsetIndex Offset for shown week of results. Not set or 0 means this week, -1 last week, 1 next week and so on.
+     */
+    public function statusFeed($weekOffsetIndex = null) {
 
+        // No Week Offset => Current week shown.
+        if (!isset($weekOffsetIndex) || $weekOffsetIndex == 0) {
+
+            $weekDay = date('Y-m-d 00:00:00');
+
+        }
+        else {
+
+
+            if ($weekOffsetIndex > 0) {
+
+                // Positive Week Offset
+                $weekDay = date('Y-m-d 00:00:00', strtotime('+' . $weekOffsetIndex . ' weeks'));
+
+
+            }
+            else {
+
+                // Negative Week Offset
+                $weekDay = date('Y-m-d 00:00:00', strtotime($weekOffsetIndex . ' weeks'));
+            }
+        }
 
         $this->layout = "ajax";
 
         // WEEK FOR OVERVIEW
 
         // Get german Week defaults
-        $week_start = $this->Event->getWeekStart();
-        $week_end = $this->Event->getNextWeekStart();
+        $week_start = $this->Event->getWeekStart($weekDay);
+        $week_end = $this->Event->getNextWeekStart($weekDay);
 
         //Get OnlineStatus of this week
         $events = $this->Event->getEventStatusList($week_start, $week_end);
 
         $week_end = date('Y-m-d', strtotime('+' . (7 - date('w')) . ' days'));
-        $this->set(array('events' => $events, 'week_start' => $week_start, 'week_end' => $week_end));
+        $this->set(array('events' => $events, 'week_start' => $week_start, 'week_end' => $week_end, 'weekIndex' => $weekOffsetIndex));
     }
 
 
