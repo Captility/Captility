@@ -101,47 +101,49 @@ function cssprop($e, id) {
     var a = $([]), e = $.resize = $.extend($.resize, {}), i, k = "setTimeout", j = "resize", d = j + "-special-event", b = "delay", f = "throttleWindow";
     e[b] = 250;
     e[f] = true;
-    $.event.special[j] = {setup: function () {
-        if (!e[f] && this[k]) {
-            return false
-        }
-        var l = $(this);
-        a = a.add(l);
-        $.data(this, d, {w: l.width(), h: l.height()});
-        if (a.length === 1) {
-            g()
-        }
-    }, teardown: function () {
-        if (!e[f] && this[k]) {
-            return false
-        }
-        var l = $(this);
-        a = a.not(l);
-        l.removeData(d);
-        if (!a.length) {
-            clearTimeout(i)
-        }
-    }, add: function (l) {
-        if (!e[f] && this[k]) {
-            return false
-        }
-        var n;
+    $.event.special[j] = {
+        setup: function () {
+            if (!e[f] && this[k]) {
+                return false
+            }
+            var l = $(this);
+            a = a.add(l);
+            $.data(this, d, {w: l.width(), h: l.height()});
+            if (a.length === 1) {
+                g()
+            }
+        }, teardown: function () {
+            if (!e[f] && this[k]) {
+                return false
+            }
+            var l = $(this);
+            a = a.not(l);
+            l.removeData(d);
+            if (!a.length) {
+                clearTimeout(i)
+            }
+        }, add: function (l) {
+            if (!e[f] && this[k]) {
+                return false
+            }
+            var n;
 
-        function m(s, o, p) {
-            var q = $(this), r = $.data(this, d);
-            r.w = o !== c ? o : q.width();
-            r.h = p !== c ? p : q.height();
-            n.apply(this, arguments)
-        }
+            function m(s, o, p) {
+                var q = $(this), r = $.data(this, d);
+                r.w = o !== c ? o : q.width();
+                r.h = p !== c ? p : q.height();
+                n.apply(this, arguments)
+            }
 
-        if ($.isFunction(l)) {
-            n = l;
-            return m
-        } else {
-            n = l.handler;
-            l.handler = m
+            if ($.isFunction(l)) {
+                n = l;
+                return m
+            } else {
+                n = l.handler;
+                l.handler = m
+            }
         }
-    }};
+    };
     function g() {
         i = h[k](function () {
             a.each(function () {
@@ -216,15 +218,14 @@ if ($.isFunction($.fn.datepicker) && $.isFunction($.fn.fullCalendar)) {
             $('#SideCalendar').datepicker({
                 format: "dd/mm/yyyy",
                 weekStart: 1,
-                todayBtn: true,
+                todayBtn: 'linked',
                 language: "de",
                 orientation: "top center",
                 daysOfWeekDisabled: "0,6",
                 calendarWeeks: true,
                 todayHighlight: true,
                 selectWeek: true,
-                autoclose: true,
-                todayBtn: true // Today selects current day instead of just showing (true)
+                autoclose: true
 
             }, function () {
 
@@ -371,7 +372,7 @@ $(document).ready(function () {
                 hide: {
                     event: 'unfocus',
                     effect: function () {
-                        $(this).animate({ opacity: 0 }, { duration: 300 });
+                        $(this).animate({opacity: 0}, {duration: 300});
                     }
                 },
                 style: 'qtip-bootstrap'
@@ -390,7 +391,7 @@ $(document).ready(function () {
             right: 'prev,today,next'
         };
         $mediaQueryView = 'agendaWeek';
-        $hiddenDays = [ 0, 6 ];
+        $hiddenDays = [0, 6];
 
         // Header for Calendar (big version)
         if ((window.location.href.indexOf("calendar") > -1) || (window.location.href.indexOf("full_calendar") > -1)) { // Todo Entferne FullCalendar
@@ -398,7 +399,7 @@ $(document).ready(function () {
             $mediaQueryHeader.center = 'title';
             $mediaQueryHeader.right = 'prev,today,next';
             $mediaQueryView = 'month';
-            $hiddenDays = [ 0 ];
+            $hiddenDays = [0];
         }
 
         //Initial Start View
@@ -477,8 +478,9 @@ $(document).ready(function () {
             }
 
         });
-
-        // ######################################## INIT CALENDAR ##########################################################
+        // #############################################################################################################
+        // ######################################## INIT CALENDAR ######################################################
+        // #############################################################################################################
 
         var calendar = $('#calendar').fullCalendar({
 
@@ -536,14 +538,17 @@ $(document).ready(function () {
             selectable: true,
 
 
-            // #############################################################################################################
             // ######################################## Sync Datepicker ####################################################
-            // #############################################################################################################
+
             viewRender: function (view, element) {
 
                 //console.log('FullCalendar: ' + view.start);
                 $('#SideCalendar').datepicker('update', new Date(view.start));
             },
+
+
+            // ######################################## Popups in Calendar #################################################
+
 
             eventClick: function (data, event, view) {
 
@@ -564,17 +569,17 @@ $(document).ready(function () {
 
                 if (data.Device.device_id != null) {
                     content += '<tr nowrap style="white-space: nowrap;"><td><span class="glyphicon el-icon-hdd"></span></td><td colspan="3"><a href="devices/view/' + data.Device.device_id + '">' +
-                        '' + data.Device.name + ' [' + data.Device.location + ']</a>';
+                    '' + data.Device.name + ' [' + data.Device.location + ']</a>';
 
                     // Lecture Recorder Status
                     if (data.Device.type == 'Lecture Recorder X2' || data.Device.type == 'Lecture Recorder') {
                         content += '&nbsp;&nbsp;<span data-device_id="' + data.Device.device_id + '" class="lr-ctrl-panel">' +
-                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Lecture Recorder Admin-Panel"><span class="glyphicon el-icon-cogs lr-icon pull-right"></span></a>' +
-                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/preview.cgi" full_base="1" title="Lecture Recorder Live-View"><span class="glyphicon el-icon-screen lr-icon pull-right"></span></a>' +
-                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Lade Aufnahmestatus ..."><span class="glyphicon el-icon-refresh lr-icon lr-status-ctrl lr-icon-pending spin pull-right"></span></a>' +
-                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status: Aufnahme läuft" style="display: none;"><span class="glyphicon el-icon-record lr-icon lr-icon-rec lr-status-ctrl pulse pull-right"></span></a>' +
-                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status: Gestoppt" style="display: none;"><span  class="glyphicon el-icon-pause lr-icon lr-status-ctrl lr-icon-stop pull-right"></span></a>' +
-                            '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status konnte nicht ermittelt werden. Gerät offline oder defekt?" style="display: none;"><span class="glyphicon el-icon-exclamation-sign lr-icon lr-status-ctrl lr-icon-error pull-right"></span></a>';
+                        '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Lecture Recorder Admin-Panel"><span class="glyphicon el-icon-cogs lr-icon pull-right"></span></a>' +
+                        '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/preview.cgi" full_base="1" title="Lecture Recorder Live-View"><span class="glyphicon el-icon-screen lr-icon pull-right"></span></a>' +
+                        '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Lade Aufnahmestatus ..."><span class="glyphicon el-icon-refresh lr-icon lr-status-ctrl lr-icon-pending spin pull-right"></span></a>' +
+                        '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status: Aufnahme läuft" style="display: none;"><span class="glyphicon el-icon-record lr-icon lr-icon-rec lr-status-ctrl pulse pull-right"></span></a>' +
+                        '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status: Gestoppt" style="display: none;"><span  class="glyphicon el-icon-pause lr-icon lr-status-ctrl lr-icon-stop pull-right"></span></a>' +
+                        '<a target="_blank" href="http://' + data.Device.ip_adress + '/admin/infocfg" full_base="1" title="Status konnte nicht ermittelt werden. Gerät offline oder defekt?" style="display: none;"><span class="glyphicon el-icon-exclamation-sign lr-icon lr-status-ctrl lr-icon-error pull-right"></span></a>';
 
                         content += '</span>';
                     }
@@ -584,16 +589,16 @@ $(document).ready(function () {
 
                 if (data.Lecture.lecture_id != null) {
                     content += '<tr><td><span class="glyphicon glyphicon-th-list"></span></td><td colspan="3"><a href="lectures/view/' + data.Lecture.lecture_id + '">' +
-                        '' + data.Lecture.number + ' ' + data.Lecture.name + '</a>' +
-                        (data.Lecture.link && '<a href="' + data.Lecture.link + '"> <span class="glyphicon glyphicon-link gl-ms"></span></a>') + '</td></tr>';
+                    '' + data.Lecture.number + ' ' + data.Lecture.name + '</a>' +
+                    (data.Lecture.link && '<a href="' + data.Lecture.link + '"> <span class="glyphicon glyphicon-link gl-ms"></span></a>') + '</td></tr>';
                 }
 
 
                 if (data.Host.host_id != null) {
                     content += '<tr><td><span class="glyphicon cp-icon-lecturer"></span></td><td colspan="3">' +
-                        '<a href="hosts/view/' + data.Host.host_id + '">' + data.Host.name + '</a>' +
-                        (data.Host.email && '<a href="mailto:' + data.Host.email + '"> <span class="glyphicon glyphicon-envelope gl-ms"></span></a>') +
-                        (data.Host.contact_email && '<a href="mailto:' + data.Host.contact_email + '"><span class="glyphicon glyphicon-envelope gl-ms"></span></a>') + '</td></tr>';
+                    '<a href="hosts/view/' + data.Host.host_id + '">' + data.Host.name + '</a>' +
+                    (data.Host.email && '<a href="mailto:' + data.Host.email + '"> <span class="glyphicon glyphicon-envelope gl-ms"></span></a>') +
+                    (data.Host.contact_email && '<a href="mailto:' + data.Host.contact_email + '"><span class="glyphicon glyphicon-envelope gl-ms"></span></a>') + '</td></tr>';
                 }
 
                 if (data.EventType.name != null) {
@@ -602,7 +607,7 @@ $(document).ready(function () {
 
 
                 content += '</tbody>' +
-                    '</table><hr class="calendarInfoHr"/>';
+                '</table><hr class="calendarInfoHr"/>';
 
 
                 if (data.status_class != null) {
@@ -611,7 +616,7 @@ $(document).ready(function () {
 
                 content += '<a class="btn-m btn-sm btn-default pull-right" name="Bearbeiten" href="' + $appRoot + 'events/edit/' + data.id + '"><span class="glyphicon glyphicon-alone el-icon-pencil"></span>&nbsp;' +
 
-                    '<a class="btn-m btn-sm btn-default pull-right" name="Anzeigen" href="' + $appRoot + 'events/view/' + data.id + '"><span class="glyphicon glyphicon-alone glyphicon-search"></span>&nbsp;';
+                '<a class="btn-m btn-sm btn-default pull-right" name="Anzeigen" href="' + $appRoot + 'events/view/' + data.id + '"><span class="glyphicon glyphicon-alone glyphicon-search"></span>&nbsp;';
 
 
                 //console.log(data);
@@ -725,7 +730,7 @@ var eventColorValues = {
     ]
 };
 
-var eventColorNames = ['Black', 'Blue', 'Orange', 'Green' , 'Yellow', 'Red', 'Purple', 'Turquoise', 'Indigo', 'Mint', 'Pink', 'White']
+var eventColorNames = ['Black', 'Blue', 'Orange', 'Green', 'Yellow', 'Red', 'Purple', 'Turquoise', 'Indigo', 'Mint', 'Pink', 'White']
 /*var eventColorNames = ['Black','Blue','Orange', 'Green' , 'Yellow','Red','Purple','Indigo', 'Mint', 'Pink','White']*/
 
 $(document).ready(function () {
@@ -769,6 +774,7 @@ $(document).ready(function () {
 //########################################### KEY CALENDAR CONTROL  ####################################################
 //######################################################################################################################
 
+
     $(document).keydown(function (e) {
 
         //prevent stealing input
@@ -781,7 +787,7 @@ $(document).ready(function () {
         if (e.keyCode == 37 || e.keyCode == 65) {
 
             //Move forward in current view
-            $('.fc-button-prev').click();
+            $('#calendar').fullCalendar('prev');
 
             return true;
         }
@@ -789,7 +795,7 @@ $(document).ready(function () {
         // If Key Right / D
         if (e.keyCode == 39 || e.keyCode == 68) {
 
-            $('.fc-button-next').click();
+            $('#calendar').fullCalendar('next');
 
             return true;
         }
@@ -797,11 +803,57 @@ $(document).ready(function () {
         // If Space / W / S
         if (e.keyCode == 32 || e.keyCode == 83 || e.keyCode == 87) {
 
-            $('.fc-button-today').click();
+            $('#calendar').fullCalendar('today');
 
             return true;
         }
 
+
+    });
+
+//######################################################################################################################
+//######################################  DASHBOARD WEEK BUTTONS CONTROL  ##############################################
+//######################################################################################################################
+
+
+    /*
+     * Control SideCalendar (datepicker) on dashboard via custom dashboard buttons.
+     */
+    $('#DashboardContentPane').on('click', '.cp-button-week', function () {
+
+        var $sideCalendar = $('#SideCalendar');
+        var $calendar = $('#calendar');
+        //var sideCalSelect = moment($sideCalendar.datepicker('getDate'));
+        var currentDate = moment($('#calendar').fullCalendar('getDate'));
+
+        console.log(currentDate.toDate());
+
+        // do associated action
+        if ($(this).hasClass('cp-button-week-prev')) {
+
+
+            currentDate.subtract(1, 'weeks');
+
+        } else if ($(this).hasClass('cp-button-week-next')) {
+
+            currentDate.add(1, 'weeks');
+
+        } else if ($(this).hasClass('cp-button-week-today')) {
+
+            currentDate = moment();
+        }
+
+        console.log(currentDate.toDate());
+
+        $('#calendar').fullCalendar('gotoDate', currentDate.toDate());
+        $('#SideCalendar').datepicker('update', currentDate.toDate());
+
+        //$sideCalendar.datepicker('setDate', currentDate.toDate()).datepicker('update');
+
+        /*console.log(moment(sideCalSelect).startOf('week').toDate());
+         console.log(moment(sideCalSelect).endOf('week').toDate());
+         console.log(moment(sideCalSelect).subtract(1, 'weeks').toDate());
+         console.log(moment(sideCalSelect).add(1, 'weeks').toDate());*/
 
     });
 
@@ -1097,7 +1149,8 @@ $(document).ready(function () {
 
     // TITLE QTIPS
     $('a[title]').qtip({
-        style: 'qtip-bootstrap'});
+        style: 'qtip-bootstrap'
+    });
 
 // QR-CODE:
 
@@ -1110,8 +1163,8 @@ $(document).ready(function () {
                 content: {
                     text: '<div class="qr-code-container"></div>',
                     title: '<a href="' + window.location.href + '">' +
-                        '<span class="glyphicon glyphicon-link"></span>'
-                        + window.location.href.substring(0, 30) + '...</a>',
+                    '<span class="glyphicon glyphicon-link"></span>'
+                    + window.location.href.substring(0, 30) + '...</a>',
                     button: 'Close'
                 },
                 show: {
@@ -1137,7 +1190,7 @@ $(document).ready(function () {
                 hide: {
                     event: 'unfocus',
                     effect: function () {
-                        $(this).animate({ opacity: 0 }, { duration: 300 });
+                        $(this).animate({opacity: 0}, {duration: 300});
                     }
                 }
 
@@ -1173,20 +1226,21 @@ $(document).ready(function () {
         move1 = h2 + Math.max(mb_2, mt_1) + Math.max(mb_prev, mt_2) - Math.max(mb_prev, mt_1);
         move2 = -h1 - Math.max(mb_1, mt_2) - Math.max(mb_prev, mt_1) + Math.max(mb_prev, mt_2);
         move3 = move1 + $taskUpper.first().offset().top + h1 - $taskLower.first().offset().top - h2 +
-            Math.max(mb_1, mt_next) - Math.max(mb_2, mt_next);
+        Math.max(mb_1, mt_next) - Math.max(mb_2, mt_next);
 
         // let's move stuff
         $taskUpper.css('position', 'relative');
         $taskLower.css('position', 'relative');
         $taskUpper.animate({'top': move1}, {duration: 800});
-        $taskLower.animate({'top': move2}, {duration: 800, complete: function () {
-            // rearrange the DOM and restore positioning when we're done moving
-            $taskUpper.insertAfter($taskLower.last())
-            $taskUpper.removeAttr('style');
-            $taskLower.removeAttr('style');
+        $taskLower.animate({'top': move2}, {
+            duration: 800, complete: function () {
+                // rearrange the DOM and restore positioning when we're done moving
+                $taskUpper.insertAfter($taskLower.last())
+                $taskUpper.removeAttr('style');
+                $taskLower.removeAttr('style');
 
-            $taskUpper.updateTaskStep();
-        }
+                $taskUpper.updateTaskStep();
+            }
         });
 
     }
@@ -1306,7 +1360,6 @@ $(document).ready(function () {
             var taskList = $('.workflow-task-list');
 
             taskList.sortable(
-
                 {
                     forcePlaceholderSize: true,
                     items: ':not(.sort-disabled)'
@@ -1462,7 +1515,6 @@ $(document).ready(function () {
 
     /**
      * Start all poll statuses:
-     *
      */
     jQuery.fn.pollDeviceStatuses = function () {
 
@@ -1487,7 +1539,7 @@ $(document).ready(function () {
 
 
     /**
-     * Get ajax Device Statuse by ip in polling loop:
+     * Get ajax device status by ip in polling loop:
      */
     jQuery.fn.getDeviceStatus = function ($self, $device_id) {
 
@@ -1619,20 +1671,20 @@ $(document).ready(function () {
 
         $target.hide();
 
-        var jqxhr = $.post(url,function (data) {
+        var jqxhr = $.post(url, function (data) {
 
             $target.appendNewTickets($(data));
 
         }).fail(function () {
 
-                /* alert("Aktuelle Tickets konnten nicht abgefragt werden.");
+            /* alert("Aktuelle Tickets konnten nicht abgefragt werden.");
 
-                 // Reload (logout)
-                 window.location.replace(window.location.pathname);*/
+             // Reload (logout)
+             window.location.replace(window.location.pathname);*/
 
-                //Todo when AuthComponent fails
-                $().getTickets(my, sideTicket);
-            })
+            //Todo when AuthComponent fails
+            $().getTickets(my, sideTicket);
+        })
     }
 
     //Init-Load SideTickets
@@ -1643,27 +1695,32 @@ $(document).ready(function () {
 
 
     /**
-     * Get ajax Tickets
+     * Offset Index for week scrolling of event statuses.
+     * @type {number}
      */
-    jQuery.fn.getStatusList = function (my, sideTicket) {
+    var eventStatusFeedOffsetIndex = 0;
+    /**
+     * Get ajax Event Status List with week offset.
+     */
+    jQuery.fn.getStatusList = function (weekoffsetindex) {
 
-        var url = $appRoot + 'events/statusFeed';
+        var url = $appRoot + 'events/statusFeed/' + weekoffsetindex;
 
         var $target = $('.statusListContainer');
 
         $target.hide();
 
-        var jqxhr = $.post(url,function (data) {
+        var jqxhr = $.post(url, function (data) {
 
             $target.html(data).slideDown(800);
 
         }).fail(function () {
 
-                /*alert("Statusliste konnte nicht abgefragt werden.");
+            /*alert("Statusliste konnte nicht abgefragt werden.");
 
-                 // Reload (logout)
-                 window.location.replace(window.location.pathname);*/
-            })
+             // Reload (logout)
+             window.location.replace(window.location.pathname);*/
+        })
     }
 
 
@@ -1678,7 +1735,7 @@ $(document).ready(function () {
 
         $target.hide();
 
-        var jqxhr = $.post(url,function (data) {
+        var jqxhr = $.post(url, function (data) {
 
             $target.empty();
             $target.html(data).slideDown(800);
@@ -1686,11 +1743,11 @@ $(document).ready(function () {
 
         }).fail(function () {
 
-                /*alert("Statusliste konnte nicht abgefragt werden.");
+            /*alert("Statusliste konnte nicht abgefragt werden.");
 
-                 // Reload (logout)
-                 window.location.replace(window.location.pathname);*/
-            })
+             // Reload (logout)
+             window.location.replace(window.location.pathname);*/
+        })
     }
 
 
@@ -1710,7 +1767,7 @@ $(document).ready(function () {
         var url = $(this).data("href"); //gets data-href
 
 
-        var jqxhr = $.post(url,function () {
+        var jqxhr = $.post(url, function () {
 
             $self.parents('.ticket, .sideTicket').slideUp(600, function () {
 
@@ -1724,11 +1781,11 @@ $(document).ready(function () {
 
         }).fail(function () {
 
-                alert("Das Ticket konnte nicht aktualisiert werden.");
+            alert("Das Ticket konnte nicht aktualisiert werden.");
 
-                // Reload (logout)
-                window.location.replace(window.location.pathname);
-            })
+            // Reload (logout)
+            window.location.replace(window.location.pathname);
+        })
     });
 
 
@@ -1746,7 +1803,7 @@ $(document).ready(function () {
 
         if ($tickets.length) {
 
-            $tickets.stop().animate({ 'max-height': (-$tickets.offset().top + $self.height() ) }, 200);
+            $tickets.stop().animate({'max-height': (-$tickets.offset().top + $self.height() )}, 200);
         }
 
 

@@ -6,7 +6,7 @@
  */
 ?>
 
-<table class="fc-header week-header">
+<table class="fc-header cp-week-header">
     <tbody>
     <tr>
         <td class="fc-header-left"><span class="fc-header-title">
@@ -22,10 +22,10 @@
         <td class="fc-header-center"></td>
         <td class="fc-header-right">
             <span
-                class="fc-button fc-button-prev fc-state-default fc-state-disabled fc-corner-left"
+                class="fc-button cp-button-week cp-button-week-prev fc-state-default fc-corner-left"
                 unselectable="on"><span class="fc-text-arrow">‹</span></span><span
-                class="fc-button fc-button-today fc-state-default fc-state-disabled" unselectable="on">Heute</span><span
-                class="fc-button fc-button-next fc-state-default fc-state-disabled fc-corner-right"
+                class="fc-button cp-button-week cp-button-week-today fc-state-default" unselectable="on">Heute</span><span
+                class="fc-button cp-button-week cp-button-week-next fc-state-default fc-corner-right"
                 unselectable="on"><span class="fc-text-arrow">›</span>
             </span>
         </td>
