@@ -54,7 +54,7 @@
                 </td>
                 <td>
                     <?php if (!empty($event['Lecture']['name'])) echo $this->Html->link(
-                        h($event['Lecture']['name']), Router::url('/', true) . 'lecture/view/' . $event['Lecture']['lecture_id'], array('full_base' => true, 'escape' => false));
+                        h($event['Lecture']['name']), Router::url('/', true) . 'lectures/view/' . $event['Lecture']['lecture_id'], array('full_base' => true, 'escape' => false));
                     ?>
                 </td>
                 <td>
